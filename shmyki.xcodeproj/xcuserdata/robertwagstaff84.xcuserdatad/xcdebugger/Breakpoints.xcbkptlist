@@ -9,11 +9,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "shmyki/PunchOnViewController.m"
-         timestampString = "360680047.016874"
+         timestampString = "360682886.952081"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "55"
-         endingLineNumber = "55"
+         startingLineNumber = "67"
+         endingLineNumber = "67"
          landmarkName = "-punchOnButtonPressed:"
          landmarkType = "5">
       </FileBreakpoint>

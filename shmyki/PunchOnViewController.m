@@ -15,7 +15,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        self.title = NSLocalizedString(@"Shmiki", nil);
+        self.title = NSLocalizedString(@"Punch On", nil);
         self.tabBarItem.image = [UIImage imageNamed:@"first"];
     }
     return self;
@@ -50,11 +50,37 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+- (void) viewWillAppear:(BOOL)animated
+{
+    [self.navigationController setNavigationBarHidden:YES animated:animated];
+    [super viewWillAppear:animated];
+}
+
+- (void) viewWillDisappear:(BOOL)animated
+{
+    [self.navigationController setNavigationBarHidden:NO animated:animated];
+    [super viewWillDisappear:animated];
+}
+
 #pragma mark IBActions
 - (IBAction)punchOnButtonPressed:(id)sender {
     UIViewController *enterIssueViewController = [[EnterIssueViewController alloc] initWithNibName:@"EnterIssueViewController" bundle:nil];
     
-    NSLog(@"nav controller = %@", self.navigationController); 
+    
+   // [self.view addSubview:enterIssueViewController.view];
+   // 
+    /*[UIView transitionWithView:self.view 
+                      duration:2 
+                       options:UIViewAnimationTransitionCurlUp //any animation
+                    animations:^ {[self.view addSubview:enterIssueViewController.view]; }
+                    completion:nil];*/
+    
+   // 
+    
+   // [self presentModalViewController:enterIssueViewController animated:YES];
+
+//    [enterIssueViewController setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
+  //  [self presentViewController:enterIssueViewController animated:YES completion:nil];
     [self.navigationController pushViewController:enterIssueViewController animated:YES];
 }
 
