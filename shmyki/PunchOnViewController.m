@@ -14,7 +14,8 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        self.title = NSLocalizedString(@"Punch On", nil);
+        self.tabBarItem.image = [UIImage imageNamed:@"first"];
     }
     return self;
 }
