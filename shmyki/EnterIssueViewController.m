@@ -1,22 +1,20 @@
 //
-//  PunchOnViewController.m
+//  EnterIssueViewController.m
 //  shmyki
 //
 //  Created by Robert Wagstaff on 6/06/12.
 //  Copyright (c) 2012 DWS Limited. All rights reserved.
 //
 
-#import "PunchOnViewController.h"
 #import "EnterIssueViewController.h"
 
-@implementation PunchOnViewController
+@implementation EnterIssueViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        self.title = NSLocalizedString(@"Shmiki", nil);
-        self.tabBarItem.image = [UIImage imageNamed:@"first"];
+        // Custom initialization
     }
     return self;
 }
@@ -49,14 +47,5 @@
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
-
-#pragma mark IBActions
-- (IBAction)punchOnButtonPressed:(id)sender {
-    UIViewController *enterIssueViewController = [[EnterIssueViewController alloc] initWithNibName:@"EnterIssueViewController" bundle:nil];
-    
-    NSLog(@"nav controller = %@", self.navigationController); 
-    [self.navigationController pushViewController:enterIssueViewController animated:YES];
-}
-
 
 @end

@@ -1,5 +1,5 @@
 //
-//  PunchOnViewController.h
+//  EnterIssueViewController.h
 //  shmyki
 //
 //  Created by Robert Wagstaff on 6/06/12.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PunchOnViewController : UIViewController
-
-- (IBAction)punchOnButtonPressed:(id)sender;
+@interface EnterIssueViewController : UIViewController
 
 @end

@@ -28,6 +28,8 @@
 		815C1A25157F68D20019419C /* InspectorMapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 815C1A23157F68D20019419C /* InspectorMapViewController.xib */; };
 		815C1A29157F79490019419C /* InformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 815C1A27157F79490019419C /* InformationViewController.m */; };
 		815C1A2A157F79490019419C /* InformationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 815C1A28157F79490019419C /* InformationViewController.xib */; };
+		815C1A2E157F836D0019419C /* EnterIssueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 815C1A2C157F836C0019419C /* EnterIssueViewController.m */; };
+		815C1A2F157F836D0019419C /* EnterIssueViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 815C1A2D157F836C0019419C /* EnterIssueViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +72,9 @@
 		815C1A26157F79490019419C /* InformationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InformationViewController.h; sourceTree = "<group>"; };
 		815C1A27157F79490019419C /* InformationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InformationViewController.m; sourceTree = "<group>"; };
 		815C1A28157F79490019419C /* InformationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InformationViewController.xib; sourceTree = "<group>"; };
+		815C1A2B157F836C0019419C /* EnterIssueViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnterIssueViewController.h; sourceTree = "<group>"; };
+		815C1A2C157F836C0019419C /* EnterIssueViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnterIssueViewController.m; sourceTree = "<group>"; };
+		815C1A2D157F836C0019419C /* EnterIssueViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EnterIssueViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,6 +186,9 @@
 				815C1A26157F79490019419C /* InformationViewController.h */,
 				815C1A27157F79490019419C /* InformationViewController.m */,
 				815C1A28157F79490019419C /* InformationViewController.xib */,
+				815C1A2B157F836C0019419C /* EnterIssueViewController.h */,
+				815C1A2C157F836C0019419C /* EnterIssueViewController.m */,
+				815C1A2D157F836C0019419C /* EnterIssueViewController.xib */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -282,6 +290,7 @@
 				815C1A11157F64470019419C /* PunchOnViewController.xib in Resources */,
 				815C1A25157F68D20019419C /* InspectorMapViewController.xib in Resources */,
 				815C1A2A157F79490019419C /* InformationViewController.xib in Resources */,
+				815C1A2F157F836D0019419C /* EnterIssueViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -321,6 +330,7 @@
 				815C1A10157F64470019419C /* PunchOnViewController.m in Sources */,
 				815C1A24157F68D20019419C /* InspectorMapViewController.m in Sources */,
 				815C1A29157F79490019419C /* InformationViewController.m in Sources */,
+				815C1A2E157F836D0019419C /* EnterIssueViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

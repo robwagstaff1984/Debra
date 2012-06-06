@@ -16,6 +16,7 @@
 
 @synthesize window = _window;
 @synthesize tabBarController = _tabBarController;
+@synthesize navigationController = _navigationController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -25,11 +26,12 @@
     UIViewController *inspectorMapViewController = [[InspectorMapViewController alloc] initWithNibName:@"InspectorMapViewController" bundle:nil];
     UIViewController *informationViewController = [[InformationViewController alloc] initWithNibName:@"InformationViewController" bundle:nil];
     
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:punchOnViewController];
     
     self.tabBarController = [[UITabBarController alloc] init];
-    self.tabBarController.viewControllers = [NSArray arrayWithObjects:inspectorMapViewController, punchOnViewController, informationViewController , nil];
+    self.tabBarController.viewControllers = [NSArray arrayWithObjects:inspectorMapViewController, navController, informationViewController , nil];
     [self.tabBarController setSelectedIndex:1];
-    
+
     self.window.rootViewController = self.tabBarController;
     [self.window makeKeyAndVisible];
     return YES;
