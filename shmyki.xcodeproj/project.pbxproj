@@ -1,0 +1,479 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		815C19CB157F63AD0019419C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 815C19CA157F63AD0019419C /* UIKit.framework */; };
+		815C19CD157F63AD0019419C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 815C19CC157F63AD0019419C /* Foundation.framework */; };
+		815C19CF157F63AD0019419C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 815C19CE157F63AD0019419C /* CoreGraphics.framework */; };
+		815C19D5157F63AD0019419C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 815C19D3157F63AD0019419C /* InfoPlist.strings */; };
+		815C19D7157F63AD0019419C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 815C19D6157F63AD0019419C /* main.m */; };
+		815C19DB157F63AD0019419C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 815C19DA157F63AD0019419C /* AppDelegate.m */; };
+		815C19DE157F63AD0019419C /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 815C19DD157F63AD0019419C /* FirstViewController.m */; };
+		815C19E0157F63AD0019419C /* first.png in Resources */ = {isa = PBXBuildFile; fileRef = 815C19DF157F63AD0019419C /* first.png */; };
+		815C19E2157F63AD0019419C /* first@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 815C19E1157F63AD0019419C /* first@2x.png */; };
+		815C19E5157F63AD0019419C /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 815C19E4157F63AD0019419C /* SecondViewController.m */; };
+		815C19E7157F63AD0019419C /* second.png in Resources */ = {isa = PBXBuildFile; fileRef = 815C19E6157F63AD0019419C /* second.png */; };
+		815C19E9157F63AD0019419C /* second@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 815C19E8157F63AD0019419C /* second@2x.png */; };
+		815C19EC157F63AD0019419C /* FirstViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 815C19EA157F63AD0019419C /* FirstViewController.xib */; };
+		815C19EF157F63AD0019419C /* SecondViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 815C19ED157F63AD0019419C /* SecondViewController.xib */; };
+		815C19F7157F63AD0019419C /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 815C19F6157F63AD0019419C /* SenTestingKit.framework */; };
+		815C19F8157F63AD0019419C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 815C19CA157F63AD0019419C /* UIKit.framework */; };
+		815C19F9157F63AD0019419C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 815C19CC157F63AD0019419C /* Foundation.framework */; };
+		815C1A01157F63AD0019419C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 815C19FF157F63AD0019419C /* InfoPlist.strings */; };
+		815C1A04157F63AD0019419C /* shmykiTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 815C1A03157F63AD0019419C /* shmykiTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		815C19FA157F63AD0019419C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 815C19BD157F63AC0019419C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 815C19C5157F63AD0019419C;
+			remoteInfo = shmyki;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		815C19C6157F63AD0019419C /* shmyki.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = shmyki.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		815C19CA157F63AD0019419C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		815C19CC157F63AD0019419C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		815C19CE157F63AD0019419C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		815C19D2157F63AD0019419C /* shmyki-Info.plist */ = {isa = PBXFileReference; path = "shmyki-Info.plist"; sourceTree = "<group>"; };
+		815C19D4157F63AD0019419C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		815C19D6157F63AD0019419C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		815C19D8157F63AD0019419C /* shmyki-Prefix.pch */ = {isa = PBXFileReference; path = "shmyki-Prefix.pch"; sourceTree = "<group>"; };
+		815C19D9157F63AD0019419C /* AppDelegate.h */ = {isa = PBXFileReference; path = AppDelegate.h; sourceTree = "<group>"; };
+		815C19DA157F63AD0019419C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		815C19DC157F63AD0019419C /* FirstViewController.h */ = {isa = PBXFileReference; path = FirstViewController.h; sourceTree = "<group>"; };
+		815C19DD157F63AD0019419C /* FirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
+		815C19DF157F63AD0019419C /* first.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = first.png; sourceTree = "<group>"; };
+		815C19E1157F63AD0019419C /* first@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "first@2x.png"; sourceTree = "<group>"; };
+		815C19E3157F63AD0019419C /* SecondViewController.h */ = {isa = PBXFileReference; path = SecondViewController.h; sourceTree = "<group>"; };
+		815C19E4157F63AD0019419C /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
+		815C19E6157F63AD0019419C /* second.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = second.png; sourceTree = "<group>"; };
+		815C19E8157F63AD0019419C /* second@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "second@2x.png"; sourceTree = "<group>"; };
+		815C19EB157F63AD0019419C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/FirstViewController.xib; sourceTree = "<group>"; };
+		815C19EE157F63AD0019419C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SecondViewController.xib; sourceTree = "<group>"; };
+		815C19F5157F63AD0019419C /* shmykiTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = shmykiTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		815C19F6157F63AD0019419C /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		815C19FE157F63AD0019419C /* shmykiTests-Info.plist */ = {isa = PBXFileReference; path = "shmykiTests-Info.plist"; sourceTree = "<group>"; };
+		815C1A00157F63AD0019419C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		815C1A02157F63AD0019419C /* shmykiTests.h */ = {isa = PBXFileReference; path = shmykiTests.h; sourceTree = "<group>"; };
+		815C1A03157F63AD0019419C /* shmykiTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = shmykiTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		815C19C3157F63AD0019419C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				815C19CB157F63AD0019419C /* UIKit.framework in Frameworks */,
+				815C19CD157F63AD0019419C /* Foundation.framework in Frameworks */,
+				815C19CF157F63AD0019419C /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		815C19F1157F63AD0019419C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				815C19F7157F63AD0019419C /* SenTestingKit.framework in Frameworks */,
+				815C19F8157F63AD0019419C /* UIKit.framework in Frameworks */,
+				815C19F9157F63AD0019419C /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		815C19BB157F63AC0019419C = {
+			isa = PBXGroup;
+			children = (
+				815C19D0157F63AD0019419C /* shmyki */,
+				815C19FC157F63AD0019419C /* shmykiTests */,
+				815C19C9157F63AD0019419C /* Frameworks */,
+				815C19C7157F63AD0019419C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		815C19C7157F63AD0019419C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				815C19C6157F63AD0019419C /* shmyki.app */,
+				815C19F5157F63AD0019419C /* shmykiTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		815C19C9157F63AD0019419C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				815C19CA157F63AD0019419C /* UIKit.framework */,
+				815C19CC157F63AD0019419C /* Foundation.framework */,
+				815C19CE157F63AD0019419C /* CoreGraphics.framework */,
+				815C19F6157F63AD0019419C /* SenTestingKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		815C19D0157F63AD0019419C /* shmyki */ = {
+			isa = PBXGroup;
+			children = (
+				815C19D9157F63AD0019419C /* AppDelegate.h */,
+				815C19DA157F63AD0019419C /* AppDelegate.m */,
+				815C19DC157F63AD0019419C /* FirstViewController.h */,
+				815C19DD157F63AD0019419C /* FirstViewController.m */,
+				815C19DF157F63AD0019419C /* first.png */,
+				815C19E1157F63AD0019419C /* first@2x.png */,
+				815C19E3157F63AD0019419C /* SecondViewController.h */,
+				815C19E4157F63AD0019419C /* SecondViewController.m */,
+				815C19E6157F63AD0019419C /* second.png */,
+				815C19E8157F63AD0019419C /* second@2x.png */,
+				815C19EA157F63AD0019419C /* FirstViewController.xib */,
+				815C19ED157F63AD0019419C /* SecondViewController.xib */,
+				815C19D1157F63AD0019419C /* Supporting Files */,
+			);
+			path = shmyki;
+			sourceTree = "<group>";
+		};
+		815C19D1157F63AD0019419C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				815C19D2157F63AD0019419C /* shmyki-Info.plist */,
+				815C19D3157F63AD0019419C /* InfoPlist.strings */,
+				815C19D6157F63AD0019419C /* main.m */,
+				815C19D8157F63AD0019419C /* shmyki-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		815C19FC157F63AD0019419C /* shmykiTests */ = {
+			isa = PBXGroup;
+			children = (
+				815C1A02157F63AD0019419C /* shmykiTests.h */,
+				815C1A03157F63AD0019419C /* shmykiTests.m */,
+				815C19FD157F63AD0019419C /* Supporting Files */,
+			);
+			path = shmykiTests;
+			sourceTree = "<group>";
+		};
+		815C19FD157F63AD0019419C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				815C19FE157F63AD0019419C /* shmykiTests-Info.plist */,
+				815C19FF157F63AD0019419C /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		815C19C5157F63AD0019419C /* shmyki */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 815C1A07157F63AD0019419C /* Build configuration list for PBXNativeTarget "shmyki" */;
+			buildPhases = (
+				815C19C2157F63AD0019419C /* Sources */,
+				815C19C3157F63AD0019419C /* Frameworks */,
+				815C19C4157F63AD0019419C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = shmyki;
+			productName = shmyki;
+			productReference = 815C19C6157F63AD0019419C /* shmyki.app */;
+			productType = "com.apple.product-type.application";
+		};
+		815C19F4157F63AD0019419C /* shmykiTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 815C1A0A157F63AD0019419C /* Build configuration list for PBXNativeTarget "shmykiTests" */;
+			buildPhases = (
+				815C19F0157F63AD0019419C /* Sources */,
+				815C19F1157F63AD0019419C /* Frameworks */,
+				815C19F2157F63AD0019419C /* Resources */,
+				815C19F3157F63AD0019419C /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				815C19FB157F63AD0019419C /* PBXTargetDependency */,
+			);
+			name = shmykiTests;
+			productName = shmykiTests;
+			productReference = 815C19F5157F63AD0019419C /* shmykiTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		815C19BD157F63AC0019419C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+				ORGANIZATIONNAME = "DWS Limited";
+			};
+			buildConfigurationList = 815C19C0157F63AC0019419C /* Build configuration list for PBXProject "shmyki" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 815C19BB157F63AC0019419C;
+			productRefGroup = 815C19C7157F63AD0019419C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				815C19C5157F63AD0019419C /* shmyki */,
+				815C19F4157F63AD0019419C /* shmykiTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		815C19C4157F63AD0019419C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				815C19D5157F63AD0019419C /* InfoPlist.strings in Resources */,
+				815C19E0157F63AD0019419C /* first.png in Resources */,
+				815C19E2157F63AD0019419C /* first@2x.png in Resources */,
+				815C19E7157F63AD0019419C /* second.png in Resources */,
+				815C19E9157F63AD0019419C /* second@2x.png in Resources */,
+				815C19EC157F63AD0019419C /* FirstViewController.xib in Resources */,
+				815C19EF157F63AD0019419C /* SecondViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		815C19F2157F63AD0019419C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				815C1A01157F63AD0019419C /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		815C19F3157F63AD0019419C /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		815C19C2157F63AD0019419C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				815C19D7157F63AD0019419C /* main.m in Sources */,
+				815C19DB157F63AD0019419C /* AppDelegate.m in Sources */,
+				815C19DE157F63AD0019419C /* FirstViewController.m in Sources */,
+				815C19E5157F63AD0019419C /* SecondViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		815C19F0157F63AD0019419C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				815C1A04157F63AD0019419C /* shmykiTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		815C19FB157F63AD0019419C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 815C19C5157F63AD0019419C /* shmyki */;
+			targetProxy = 815C19FA157F63AD0019419C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		815C19D3157F63AD0019419C /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				815C19D4157F63AD0019419C /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		815C19EA157F63AD0019419C /* FirstViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				815C19EB157F63AD0019419C /* en */,
+			);
+			name = FirstViewController.xib;
+			sourceTree = "<group>";
+		};
+		815C19ED157F63AD0019419C /* SecondViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				815C19EE157F63AD0019419C /* en */,
+			);
+			name = SecondViewController.xib;
+			sourceTree = "<group>";
+		};
+		815C19FF157F63AD0019419C /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				815C1A00157F63AD0019419C /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		815C1A05157F63AD0019419C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		815C1A06157F63AD0019419C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		815C1A08157F63AD0019419C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "shmyki/shmyki-Prefix.pch";
+				INFOPLIST_FILE = "shmyki/shmyki-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		815C1A09157F63AD0019419C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "shmyki/shmyki-Prefix.pch";
+				INFOPLIST_FILE = "shmyki/shmyki-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		815C1A0B157F63AD0019419C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/shmyki.app/shmyki";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "shmyki/shmyki-Prefix.pch";
+				INFOPLIST_FILE = "shmykiTests/shmykiTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		815C1A0C157F63AD0019419C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/shmyki.app/shmyki";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "shmyki/shmyki-Prefix.pch";
+				INFOPLIST_FILE = "shmykiTests/shmykiTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		815C19C0157F63AC0019419C /* Build configuration list for PBXProject "shmyki" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				815C1A05157F63AD0019419C /* Debug */,
+				815C1A06157F63AD0019419C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		815C1A07157F63AD0019419C /* Build configuration list for PBXNativeTarget "shmyki" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				815C1A08157F63AD0019419C /* Debug */,
+				815C1A09157F63AD0019419C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		815C1A0A157F63AD0019419C /* Build configuration list for PBXNativeTarget "shmykiTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				815C1A0B157F63AD0019419C /* Debug */,
+				815C1A0C157F63AD0019419C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 815C19BD157F63AC0019419C /* Project object */;
+}
