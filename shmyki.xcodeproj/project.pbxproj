@@ -26,6 +26,10 @@
 		815C19F9157F63AD0019419C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 815C19CC157F63AD0019419C /* Foundation.framework */; };
 		815C1A01157F63AD0019419C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 815C19FF157F63AD0019419C /* InfoPlist.strings */; };
 		815C1A04157F63AD0019419C /* shmykiTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 815C1A03157F63AD0019419C /* shmykiTests.m */; };
+		815C1A10157F64470019419C /* PunchOnViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 815C1A0E157F64470019419C /* PunchOnViewController.m */; };
+		815C1A11157F64470019419C /* PunchOnViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 815C1A0F157F64470019419C /* PunchOnViewController.xib */; };
+		815C1A24157F68D20019419C /* InspectorMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 815C1A22157F68D20019419C /* InspectorMapViewController.m */; };
+		815C1A25157F68D20019419C /* InspectorMapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 815C1A23157F68D20019419C /* InspectorMapViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,17 +47,17 @@
 		815C19CA157F63AD0019419C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		815C19CC157F63AD0019419C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		815C19CE157F63AD0019419C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		815C19D2157F63AD0019419C /* shmyki-Info.plist */ = {isa = PBXFileReference; path = "shmyki-Info.plist"; sourceTree = "<group>"; };
+		815C19D2157F63AD0019419C /* shmyki-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "shmyki-Info.plist"; sourceTree = "<group>"; };
 		815C19D4157F63AD0019419C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		815C19D6157F63AD0019419C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		815C19D8157F63AD0019419C /* shmyki-Prefix.pch */ = {isa = PBXFileReference; path = "shmyki-Prefix.pch"; sourceTree = "<group>"; };
-		815C19D9157F63AD0019419C /* AppDelegate.h */ = {isa = PBXFileReference; path = AppDelegate.h; sourceTree = "<group>"; };
+		815C19D8157F63AD0019419C /* shmyki-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "shmyki-Prefix.pch"; sourceTree = "<group>"; };
+		815C19D9157F63AD0019419C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		815C19DA157F63AD0019419C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		815C19DC157F63AD0019419C /* FirstViewController.h */ = {isa = PBXFileReference; path = FirstViewController.h; sourceTree = "<group>"; };
+		815C19DC157F63AD0019419C /* FirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
 		815C19DD157F63AD0019419C /* FirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
 		815C19DF157F63AD0019419C /* first.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = first.png; sourceTree = "<group>"; };
 		815C19E1157F63AD0019419C /* first@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "first@2x.png"; sourceTree = "<group>"; };
-		815C19E3157F63AD0019419C /* SecondViewController.h */ = {isa = PBXFileReference; path = SecondViewController.h; sourceTree = "<group>"; };
+		815C19E3157F63AD0019419C /* SecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
 		815C19E4157F63AD0019419C /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
 		815C19E6157F63AD0019419C /* second.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = second.png; sourceTree = "<group>"; };
 		815C19E8157F63AD0019419C /* second@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "second@2x.png"; sourceTree = "<group>"; };
@@ -61,10 +65,16 @@
 		815C19EE157F63AD0019419C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SecondViewController.xib; sourceTree = "<group>"; };
 		815C19F5157F63AD0019419C /* shmykiTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = shmykiTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		815C19F6157F63AD0019419C /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		815C19FE157F63AD0019419C /* shmykiTests-Info.plist */ = {isa = PBXFileReference; path = "shmykiTests-Info.plist"; sourceTree = "<group>"; };
+		815C19FE157F63AD0019419C /* shmykiTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "shmykiTests-Info.plist"; sourceTree = "<group>"; };
 		815C1A00157F63AD0019419C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		815C1A02157F63AD0019419C /* shmykiTests.h */ = {isa = PBXFileReference; path = shmykiTests.h; sourceTree = "<group>"; };
+		815C1A02157F63AD0019419C /* shmykiTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = shmykiTests.h; sourceTree = "<group>"; };
 		815C1A03157F63AD0019419C /* shmykiTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = shmykiTests.m; sourceTree = "<group>"; };
+		815C1A0D157F64470019419C /* PunchOnViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PunchOnViewController.h; sourceTree = "<group>"; };
+		815C1A0E157F64470019419C /* PunchOnViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PunchOnViewController.m; sourceTree = "<group>"; };
+		815C1A0F157F64470019419C /* PunchOnViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PunchOnViewController.xib; sourceTree = "<group>"; };
+		815C1A21157F68D20019419C /* InspectorMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InspectorMapViewController.h; sourceTree = "<group>"; };
+		815C1A22157F68D20019419C /* InspectorMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InspectorMapViewController.m; sourceTree = "<group>"; };
+		815C1A23157F68D20019419C /* InspectorMapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InspectorMapViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,18 +134,11 @@
 		815C19D0157F63AD0019419C /* shmyki */ = {
 			isa = PBXGroup;
 			children = (
+				815C1A18157F64DF0019419C /* Model */,
+				815C1A17157F64930019419C /* Images */,
 				815C19D9157F63AD0019419C /* AppDelegate.h */,
 				815C19DA157F63AD0019419C /* AppDelegate.m */,
-				815C19DC157F63AD0019419C /* FirstViewController.h */,
-				815C19DD157F63AD0019419C /* FirstViewController.m */,
-				815C19DF157F63AD0019419C /* first.png */,
-				815C19E1157F63AD0019419C /* first@2x.png */,
-				815C19E3157F63AD0019419C /* SecondViewController.h */,
-				815C19E4157F63AD0019419C /* SecondViewController.m */,
-				815C19E6157F63AD0019419C /* second.png */,
-				815C19E8157F63AD0019419C /* second@2x.png */,
-				815C19EA157F63AD0019419C /* FirstViewController.xib */,
-				815C19ED157F63AD0019419C /* SecondViewController.xib */,
+				815C1A16157F64750019419C /* ViewControllers */,
 				815C19D1157F63AD0019419C /* Supporting Files */,
 			);
 			path = shmyki;
@@ -169,6 +172,43 @@
 				815C19FF157F63AD0019419C /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		815C1A16157F64750019419C /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				815C19DC157F63AD0019419C /* FirstViewController.h */,
+				815C19DD157F63AD0019419C /* FirstViewController.m */,
+				815C19E3157F63AD0019419C /* SecondViewController.h */,
+				815C19E4157F63AD0019419C /* SecondViewController.m */,
+				815C19EA157F63AD0019419C /* FirstViewController.xib */,
+				815C19ED157F63AD0019419C /* SecondViewController.xib */,
+				815C1A0D157F64470019419C /* PunchOnViewController.h */,
+				815C1A0E157F64470019419C /* PunchOnViewController.m */,
+				815C1A0F157F64470019419C /* PunchOnViewController.xib */,
+				815C1A21157F68D20019419C /* InspectorMapViewController.h */,
+				815C1A22157F68D20019419C /* InspectorMapViewController.m */,
+				815C1A23157F68D20019419C /* InspectorMapViewController.xib */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		815C1A17157F64930019419C /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				815C19DF157F63AD0019419C /* first.png */,
+				815C19E1157F63AD0019419C /* first@2x.png */,
+				815C19E6157F63AD0019419C /* second.png */,
+				815C19E8157F63AD0019419C /* second@2x.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
+		815C1A18157F64DF0019419C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -249,6 +289,8 @@
 				815C19E9157F63AD0019419C /* second@2x.png in Resources */,
 				815C19EC157F63AD0019419C /* FirstViewController.xib in Resources */,
 				815C19EF157F63AD0019419C /* SecondViewController.xib in Resources */,
+				815C1A11157F64470019419C /* PunchOnViewController.xib in Resources */,
+				815C1A25157F68D20019419C /* InspectorMapViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,6 +329,8 @@
 				815C19DB157F63AD0019419C /* AppDelegate.m in Sources */,
 				815C19DE157F63AD0019419C /* FirstViewController.m in Sources */,
 				815C19E5157F63AD0019419C /* SecondViewController.m in Sources */,
+				815C1A10157F64470019419C /* PunchOnViewController.m in Sources */,
+				815C1A24157F68D20019419C /* InspectorMapViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
