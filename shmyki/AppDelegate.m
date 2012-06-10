@@ -11,6 +11,7 @@
 #import "PunchOnViewController.h"
 #import "InspectorMapViewController.h"
 #import "InformationViewController.h"
+#import "PunchOnLogsViewController.h"
 #import <Parse/Parse.h>
 
 @implementation AppDelegate
@@ -27,12 +28,14 @@
     UIViewController *punchOnViewController = [[PunchOnViewController alloc] initWithNibName:@"PunchOnViewController" bundle:nil];
     UIViewController *informationViewController = [[InformationViewController alloc] initWithNibName:@"InformationViewController" bundle:nil];
     
+    PunchOnLogsViewController *punchOnLogsViewController = [[PunchOnLogsViewController alloc] init];
+    
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:punchOnViewController];
     
     
     
     self.tabBarController = [[UITabBarController alloc] init];
-    self.tabBarController.viewControllers = [NSArray arrayWithObjects:inspectorMapViewController, navController, informationViewController , nil];
+    self.tabBarController.viewControllers = [NSArray arrayWithObjects:inspectorMapViewController, navController, informationViewController ,punchOnLogsViewController, nil];
     [self.tabBarController setSelectedIndex:1];
 
     self.window.rootViewController = self.tabBarController;
