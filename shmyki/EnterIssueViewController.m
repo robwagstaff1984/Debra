@@ -7,8 +7,11 @@
 //
 
 #import "EnterIssueViewController.h"
+#import "Parse/Parse.h"
 
 @implementation EnterIssueViewController
+
+@synthesize locationTextField, commentsTextView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -31,7 +34,19 @@
 
 - (void)viewDidLoad
 {
+    [self.locationTextField setDelegate:self];
+    [self.locationTextField setReturnKeyType:UIReturnKeyDone];
+    [self.locationTextField addTarget:self
+                       action:@selector(textFieldFinished:)
+             forControlEvents:UIControlEventEditingDidEndOnExit];
+    
+    [self.commentsTextView setDelegate:self];
+ //   [self.commentsTextView addTarget:self
+   //                            action:@selector(textFieldFinished:)
+     //                forControlEvents:UIControlEventEditingDidEndOnExit];
+    
     [super viewDidLoad];
+    
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -46,6 +61,32 @@
 {
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+#pragma mark IBActions
+- (IBAction)logIssue:(id)sender {
+     PFObject *punchOnLog = [PFObject objectWithClassName:@"PunchOnLog"];
+    [punchOnLog setObject:locationTextField.text forKey:@"location"];
+    [punchOnLog setObject:commentsTextView.text forKey:@"message"];
+    [punchOnLog saveInBackground];
+}
+
+
+#pragma mark textField delegate
+- (void)textFieldFinished:(id)sender
+{
+     [sender resignFirstResponder];
+}
+
+#pragma mark textView delegate
+- (BOOL)textView:(UITextView *)textView
+shouldChangeTextInRange:(NSRange)range
+ replacementText:(NSString *)text
+{
+    if ([text isEqualToString:@"\n"]) {
+        [textView resignFirstResponder];
+    }
+    return YES;
 }
 
 @end

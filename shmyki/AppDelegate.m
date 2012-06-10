@@ -11,6 +11,7 @@
 #import "PunchOnViewController.h"
 #import "InspectorMapViewController.h"
 #import "InformationViewController.h"
+#import <Parse/Parse.h>
 
 @implementation AppDelegate
 
@@ -36,6 +37,10 @@
 
     self.window.rootViewController = self.tabBarController;
     [self.window makeKeyAndVisible];
+    
+    [Parse setApplicationId:@"0ZOhCs6SN4VQ6KfvV1nHUQrXSpU391AiWStEGKpf"
+                  clientKey:@"nHODOwsVCOGeziCH3byVfDdQVZECBvWqCZHApSS9"];
+    
     return YES;
 }
 

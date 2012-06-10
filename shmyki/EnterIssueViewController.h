@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface EnterIssueViewController : UIViewController
+@interface EnterIssueViewController : UIViewController <UITextFieldDelegate, UITextViewDelegate>
+
+@property (strong, nonatomic) IBOutlet UITextField *locationTextField;
+@property (strong, nonatomic) IBOutlet UITextView *commentsTextView;
+
+- (IBAction)logIssue:(id)sender;
 
 @end

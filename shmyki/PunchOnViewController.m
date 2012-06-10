@@ -9,7 +9,10 @@
 #import "PunchOnViewController.h"
 #import "EnterIssueViewController.h"
 
+
 @implementation PunchOnViewController
+
+@synthesize enterIssueViewController;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -64,7 +67,7 @@
 
 #pragma mark IBActions
 - (IBAction)punchOnButtonPressed:(id)sender {
-    UIViewController *enterIssueViewController = [[EnterIssueViewController alloc] initWithNibName:@"EnterIssueViewController" bundle:nil];
+   // UIViewController *enterIssueViewController = [[EnterIssueViewController alloc] initWithNibName:@"sEnterIssueViewController" bundle:nil];
     
     
    // [self.view addSubview:enterIssueViewController.view];
@@ -81,6 +84,9 @@
 
 //    [enterIssueViewController setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
   //  [self presentViewController:enterIssueViewController animated:YES completion:nil];
+
+    
+    
     [self.navigationController pushViewController:enterIssueViewController animated:YES];
 }
 

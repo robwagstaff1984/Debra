@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "EnterIssueViewController.h"
 
 @interface PunchOnViewController : UIViewController
 
 - (IBAction)punchOnButtonPressed:(id)sender;
+
+@property (strong, nonatomic) IBOutlet EnterIssueViewController *enterIssueViewController;
 
 @end
