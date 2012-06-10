@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MapKit/MapKit.h>
+#import <CoreLocation/CoreLocation.h>
 
-@interface InspectorMapViewController : UIViewController
+@interface InspectorMapViewController : UIViewController<MKMapViewDelegate, CLLocationManagerDelegate>
+
+
 
 @end

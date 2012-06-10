@@ -39,6 +39,8 @@
 		815C1A971580AF200019419C /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 815C1A961580AF200019419C /* Security.framework */; };
 		815C1A991580AF2B0019419C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 815C1A981580AF2B0019419C /* QuartzCore.framework */; };
 		818BE4241584618B00775392 /* PunchOnLogsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 818BE4231584618B00775392 /* PunchOnLogsViewController.m */; };
+		818BE42A1584689400775392 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 818BE4291584689400775392 /* MapKit.framework */; };
+		818BE42C1584689E00775392 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 818BE42B1584689E00775392 /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,6 +96,8 @@
 		815C1A981580AF2B0019419C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		818BE4221584618A00775392 /* PunchOnLogsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PunchOnLogsViewController.h; sourceTree = "<group>"; };
 		818BE4231584618B00775392 /* PunchOnLogsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PunchOnLogsViewController.m; sourceTree = "<group>"; };
+		818BE4291584689400775392 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		818BE42B1584689E00775392 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +105,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				818BE42C1584689E00775392 /* CoreLocation.framework in Frameworks */,
+				818BE42A1584689400775392 /* MapKit.framework in Frameworks */,
 				815C1A991580AF2B0019419C /* QuartzCore.framework in Frameworks */,
 				815C1A971580AF200019419C /* Security.framework in Frameworks */,
 				815C1A951580AF120019419C /* libz.1.1.3.dylib in Frameworks */,
@@ -131,6 +137,8 @@
 		815C19BB157F63AC0019419C = {
 			isa = PBXGroup;
 			children = (
+				818BE42B1584689E00775392 /* CoreLocation.framework */,
+				818BE4291584689400775392 /* MapKit.framework */,
 				815C1A981580AF2B0019419C /* QuartzCore.framework */,
 				815C1A961580AF200019419C /* Security.framework */,
 				815C1A941580AF110019419C /* libz.1.1.3.dylib */,
