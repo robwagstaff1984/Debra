@@ -10,6 +10,8 @@
 
 @implementation InspectorMapViewController
 
+@synthesize mapView;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -33,6 +35,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    CLLocationCoordinate2D coord = {.latitude =  -37.813174, .longitude =  144.962219};
+    MKCoordinateSpan span = {.latitudeDelta =  0.015, .longitudeDelta =  0.015};
+    MKCoordinateRegion region = {coord, span};
+    
+    [mapView setRegion:region];
+    
     // Do any additional setup after loading the view from its nib.
 }
 
