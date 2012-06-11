@@ -28,15 +28,13 @@
     UIViewController *punchOnViewController = [[PunchOnViewController alloc] initWithNibName:@"PunchOnViewController" bundle:nil];
     UIViewController *informationViewController = [[InformationViewController alloc] initWithNibName:@"InformationViewController" bundle:nil];
     
-    PunchOnLogsViewController *punchOnLogsViewController = [[PunchOnLogsViewController alloc] init];
-    
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:punchOnViewController];
     
     
     
     self.tabBarController = [[UITabBarController alloc] init];
-    self.tabBarController.viewControllers = [NSArray arrayWithObjects:inspectorMapViewController, navController, informationViewController ,punchOnLogsViewController, nil];
-    [self.tabBarController setSelectedIndex:1];
+    self.tabBarController.viewControllers = [NSArray arrayWithObjects:navController, inspectorMapViewController,  informationViewController, nil];
+    //[self.tabBarController setSelectedIndex:1];
 
     self.window.rootViewController = self.tabBarController;
     [self.window makeKeyAndVisible];
