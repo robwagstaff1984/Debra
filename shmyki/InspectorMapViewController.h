@@ -14,6 +14,7 @@
 
 @property (strong, nonatomic) IBOutlet MKMapView *inspectorMapView;
 @property (strong) CLLocationManager *locationManager;
+@property(strong) NSMutableArray *listOfInspectorLocations;
 
 
 - (void) saveInspectorWithLocationCoordinate:(CLLocationCoordinate2D)inspectorLocationCoordinate; 

@@ -51,11 +51,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "shmyki/InspectorMapViewController.m"
-         timestampString = "361095997.055013"
+         timestampString = "361103313.082295"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "44"
-         endingLineNumber = "44"
+         startingLineNumber = "45"
+         endingLineNumber = "45"
          landmarkName = "-viewDidLoad"
          landmarkType = "5">
       </FileBreakpoint>
@@ -65,7 +65,7 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "shmyki/InspectorMapViewController.h"
-         timestampString = "361080842.071547"
+         timestampString = "361103313.082295"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "16"
@@ -103,11 +103,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "shmyki/InspectorMapViewController.m"
-         timestampString = "361095997.055013"
+         timestampString = "361105539.742387"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "71"
-         endingLineNumber = "71"
+         startingLineNumber = "73"
+         endingLineNumber = "73"
          landmarkName = "-locationManager:didUpdateToLocation:fromLocation:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -131,12 +131,12 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "shmyki/InspectorMapViewController.m"
-         timestampString = "361096085.919198"
+         timestampString = "361107394.217438"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "118"
-         endingLineNumber = "118"
-         landmarkName = "-saveInspectorWithLocationCoordinate:"
+         startingLineNumber = "151"
+         endingLineNumber = "151"
+         landmarkName = "-findInspectors"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -145,11 +145,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "shmyki/InspectorMapViewController.m"
-         timestampString = "361097211.879415"
+         timestampString = "361106797.954366"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "109"
-         endingLineNumber = "109"
+         startingLineNumber = "111"
+         endingLineNumber = "111"
          landmarkName = "-spotAnInspector:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -159,7 +159,60 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "shmyki/InspectorMapViewController.m"
-         timestampString = "361097330.654799"
+         timestampString = "361105539.742387"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "89"
+         endingLineNumber = "89"
+         landmarkName = "-mapView:viewForAnnotation:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "shmyki/InspectorMapViewController.m"
+         timestampString = "361106039.401335"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "105"
+         endingLineNumber = "105"
+         landmarkName = "-locateMeButtonPressed:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "shmyki/InspectorMapViewController.m"
+         timestampString = "361106797.954366"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "140"
+         endingLineNumber = "140"
+         landmarkName = "-findInspectors"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "shmyki/InspectorMapViewController.m"
+         timestampString = "361106797.954366"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "125"
+         endingLineNumber = "125"
+         landmarkName = "-findInspectors"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "shmyki/InspectorMapViewController.m"
+         timestampString = "361106033.907047"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "87"
@@ -171,14 +224,26 @@
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         isPathRelative = "1"
          filePath = "shmyki/InspectorMapViewController.m"
-         timestampString = "361097464.792979"
+         timestampString = "361106797.954366"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "103"
-         endingLineNumber = "103"
-         landmarkName = "-locateMeButtonPressed:"
+         startingLineNumber = "139"
+         endingLineNumber = "139"
+         landmarkName = "-findInspectors"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "shmyki/InspectorMapViewController.m"
+         timestampString = "361106774.992205"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "136"
+         endingLineNumber = "136"
+         landmarkName = "-findInspectors"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

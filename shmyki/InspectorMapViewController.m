@@ -12,14 +12,15 @@
 
 @implementation InspectorMapViewController
 
-@synthesize inspectorMapView, locationManager;
+@synthesize inspectorMapView, locationManager, listOfInspectorLocations;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.title = NSLocalizedString(@"Inspectors", nil);
-        self.tabBarItem.image = [UIImage imageNamed:@"TabInspectOff"];
+        self.tabBarItem.image = [UIImage imageNamed:@"images/TabInspectOff"];
+        self.listOfInspectorLocations = [[NSMutableArray alloc] initWithCapacity:30];
         self.locationManager = nil;
         self.locationManager = [[CLLocationManager alloc] init]; 
         self.locationManager.delegate = self; 
@@ -52,6 +53,7 @@
 
 - (void)viewDidUnload
 {
+    [self setInspectorMapView:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -111,11 +113,42 @@
     [annotation setSpotDate:[NSDate date]];
     [inspectorMapView addAnnotation:annotation];
     
-  //  [self saveInspectorWithLocationCoordinate:inspectorLocationCoordinate];
+    [self saveInspectorWithLocationCoordinate:inspectorLocationCoordinate];
 }
 
+-(IBAction)findInspectorsButtonPressed:(id)sender {
+    [self findInspectors];    
+}
+
+-(void) findInspectors {
+    PFQuery *query = [PFQuery queryWithClassName:@"InspectorLocation"];
+    [query addDescendingOrder:@"createdAt"];
+    query.limit = (NSInteger)[NSNumber numberWithInt:30];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *inspectorLocations, NSError *error) {
+        
+        int i;
+        for(i=0; i < [inspectorLocations count]; i++) {
+            PFObject *inspectorLocationObject =[inspectorLocations objectAtIndex:i];
+            CLLocationCoordinate2D coordinate;
+            coordinate.latitude = [[inspectorLocationObject objectForKey:@"latitude"] doubleValue];
+            coordinate.longitude = [[inspectorLocationObject objectForKey:@"longitude"] doubleValue];
+            
+            NSLog(@"%f, %f", coordinate.latitude, coordinate.latitude);
+            InspectorMapKitAnnotation *inspectorAnnotation = [[InspectorMapKitAnnotation alloc] initWithCoords:coordinate];
+            [inspectorAnnotation setSpotDate: inspectorLocationObject.createdAt];
+            [listOfInspectorLocations addObject:inspectorAnnotation];
+        }
+        for(InspectorMapKitAnnotation *annotation in listOfInspectorLocations) {
+            NSLog(@"second part %f, %f", annotation.coordinate.latitude, annotation.coordinate.latitude);
+            [self.inspectorMapView addAnnotation:annotation]; 
+        }
+        NSLog(@"%@",listOfInspectorLocations );
+    }];
+}
+
+#pragma mark Parse saving
 - (void) saveInspectorWithLocationCoordinate:(CLLocationCoordinate2D)inspectorLocationCoordinate  {
-    PFObject *inspectorLocation = [PFObject objectWithClassName:@"inspectorLocation"];
+    PFObject *inspectorLocation = [PFObject objectWithClassName:@"InspectorLocation"];
     [inspectorLocation setObject:[NSNumber numberWithDouble:inspectorLocationCoordinate.latitude]  forKey:@"latitude"];
     [inspectorLocation setObject:[NSNumber numberWithDouble:inspectorLocationCoordinate.longitude] forKey:@"longitude"];
     [inspectorLocation saveInBackground];
