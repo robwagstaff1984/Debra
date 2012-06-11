@@ -39,6 +39,13 @@
 		815C1A971580AF200019419C /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 815C1A961580AF200019419C /* Security.framework */; };
 		815C1A991580AF2B0019419C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 815C1A981580AF2B0019419C /* QuartzCore.framework */; };
 		818811481585A9DA00CDDF3E /* InspectorMapKitAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 818811471585A9DA00CDDF3E /* InspectorMapKitAnnotation.m */; };
+		8188115B1585E49500CDDF3E /* TabAboutOff.png in Resources */ = {isa = PBXBuildFile; fileRef = 818811551585E49500CDDF3E /* TabAboutOff.png */; };
+		8188115C1585E49500CDDF3E /* TabAboutOn.png in Resources */ = {isa = PBXBuildFile; fileRef = 818811561585E49500CDDF3E /* TabAboutOn.png */; };
+		8188115D1585E49500CDDF3E /* TabInspectOff.png in Resources */ = {isa = PBXBuildFile; fileRef = 818811571585E49500CDDF3E /* TabInspectOff.png */; };
+		8188115E1585E49500CDDF3E /* TabInspectOn.png in Resources */ = {isa = PBXBuildFile; fileRef = 818811581585E49500CDDF3E /* TabInspectOn.png */; };
+		8188115F1585E49500CDDF3E /* TabPunchOff.png in Resources */ = {isa = PBXBuildFile; fileRef = 818811591585E49500CDDF3E /* TabPunchOff.png */; };
+		818811601585E49500CDDF3E /* TabPunchOn.png in Resources */ = {isa = PBXBuildFile; fileRef = 8188115A1585E49500CDDF3E /* TabPunchOn.png */; };
+		818811621585E5E700CDDF3E /* TabPunchOff@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 818811611585E5E700CDDF3E /* TabPunchOff@2x.png */; };
 		818BE4241584618B00775392 /* PunchOnLogsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 818BE4231584618B00775392 /* PunchOnLogsViewController.m */; };
 		818BE42A1584689400775392 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 818BE4291584689400775392 /* MapKit.framework */; };
 		818BE42C1584689E00775392 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 818BE42B1584689E00775392 /* CoreLocation.framework */; };
@@ -97,6 +104,13 @@
 		815C1A981580AF2B0019419C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		818811461585A9DA00CDDF3E /* InspectorMapKitAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InspectorMapKitAnnotation.h; sourceTree = "<group>"; };
 		818811471585A9DA00CDDF3E /* InspectorMapKitAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InspectorMapKitAnnotation.m; sourceTree = "<group>"; };
+		818811551585E49500CDDF3E /* TabAboutOff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = TabAboutOff.png; path = images/TabAboutOff.png; sourceTree = SOURCE_ROOT; };
+		818811561585E49500CDDF3E /* TabAboutOn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = TabAboutOn.png; path = images/TabAboutOn.png; sourceTree = SOURCE_ROOT; };
+		818811571585E49500CDDF3E /* TabInspectOff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = TabInspectOff.png; path = images/TabInspectOff.png; sourceTree = SOURCE_ROOT; };
+		818811581585E49500CDDF3E /* TabInspectOn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = TabInspectOn.png; path = images/TabInspectOn.png; sourceTree = SOURCE_ROOT; };
+		818811591585E49500CDDF3E /* TabPunchOff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = TabPunchOff.png; path = images/TabPunchOff.png; sourceTree = SOURCE_ROOT; };
+		8188115A1585E49500CDDF3E /* TabPunchOn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = TabPunchOn.png; path = images/TabPunchOn.png; sourceTree = SOURCE_ROOT; };
+		818811611585E5E700CDDF3E /* TabPunchOff@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "TabPunchOff@2x.png"; path = "images/TabPunchOff@2x.png"; sourceTree = SOURCE_ROOT; };
 		818BE4221584618A00775392 /* PunchOnLogsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PunchOnLogsViewController.h; sourceTree = "<group>"; };
 		818BE4231584618B00775392 /* PunchOnLogsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PunchOnLogsViewController.m; sourceTree = "<group>"; };
 		818BE4291584689400775392 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -232,9 +246,9 @@
 				815C1A26157F79490019419C /* InformationViewController.h */,
 				815C1A27157F79490019419C /* InformationViewController.m */,
 				815C1A28157F79490019419C /* InformationViewController.xib */,
-				815C1A2B157F836C0019419C /* EnterIssueViewController.h */,
 				818BE4221584618A00775392 /* PunchOnLogsViewController.h */,
 				818BE4231584618B00775392 /* PunchOnLogsViewController.m */,
+				815C1A2B157F836C0019419C /* EnterIssueViewController.h */,
 				815C1A2C157F836C0019419C /* EnterIssueViewController.m */,
 				815C1A2D157F836C0019419C /* EnterIssueViewController.xib */,
 			);
@@ -244,6 +258,13 @@
 		815C1A17157F64930019419C /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				818811551585E49500CDDF3E /* TabAboutOff.png */,
+				818811561585E49500CDDF3E /* TabAboutOn.png */,
+				818811571585E49500CDDF3E /* TabInspectOff.png */,
+				818811581585E49500CDDF3E /* TabInspectOn.png */,
+				818811591585E49500CDDF3E /* TabPunchOff.png */,
+				818811611585E5E700CDDF3E /* TabPunchOff@2x.png */,
+				8188115A1585E49500CDDF3E /* TabPunchOn.png */,
 				815C19DF157F63AD0019419C /* first.png */,
 				815C19E1157F63AD0019419C /* first@2x.png */,
 				815C19E6157F63AD0019419C /* second.png */,
@@ -341,6 +362,13 @@
 				815C1A25157F68D20019419C /* InspectorMapViewController.xib in Resources */,
 				815C1A2A157F79490019419C /* InformationViewController.xib in Resources */,
 				815C1A2F157F836D0019419C /* EnterIssueViewController.xib in Resources */,
+				8188115B1585E49500CDDF3E /* TabAboutOff.png in Resources */,
+				8188115C1585E49500CDDF3E /* TabAboutOn.png in Resources */,
+				8188115D1585E49500CDDF3E /* TabInspectOff.png in Resources */,
+				8188115E1585E49500CDDF3E /* TabInspectOn.png in Resources */,
+				8188115F1585E49500CDDF3E /* TabPunchOff.png in Resources */,
+				818811601585E49500CDDF3E /* TabPunchOn.png in Resources */,
+				818811621585E5E700CDDF3E /* TabPunchOff@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,6 +8,7 @@
 
 #import "InspectorMapViewController.h"
 #import "InspectorMapKitAnnotation.h"
+#import "Parse/Parse.h"
 
 @implementation InspectorMapViewController
 
@@ -18,7 +19,11 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.title = NSLocalizedString(@"Inspectors", nil);
-        self.tabBarItem.image = [UIImage imageNamed:@"second"];
+        self.tabBarItem.image = [UIImage imageNamed:@"TabInspectOff"];
+        self.locationManager = nil;
+        self.locationManager = [[CLLocationManager alloc] init]; 
+        self.locationManager.delegate = self; 
+        [self.locationManager startUpdatingLocation];
     }
     return self;
 }
@@ -84,8 +89,7 @@
                                                                                      reuseIdentifier:inspectorAnnotationIdentifier];
         customPinView.pinColor = MKPinAnnotationColorPurple; customPinView.animatesDrop = YES;
         customPinView.canShowCallout = YES;
-        //UIButton* rightButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
-        //customPinView.rightCalloutAccessoryView = rightButton;
+        
         return customPinView;
     } else{
         annotationView.annotation = annotation;
@@ -96,22 +100,25 @@
 #pragma mark IBActions
 
 - (IBAction)locateMeButtonPressed:(id)sender {
-    self.locationManager = nil;
-    self.locationManager = [[CLLocationManager alloc] init]; 
-    self.locationManager.delegate = self; 
     [self.locationManager startUpdatingLocation];
 }
 
 -(IBAction)spotAnInspector:(id)sender {
-    CLLocationCoordinate2D pinlocation = [self.locationManager.location coordinate];
+    CLLocationCoordinate2D inspectorLocationCoordinate = [self.locationManager.location coordinate];
+
+    InspectorMapKitAnnotation *annotation = [[InspectorMapKitAnnotation alloc] initWithCoords:inspectorLocationCoordinate];
     
-    
-    InspectorMapKitAnnotation *annotation = [[InspectorMapKitAnnotation alloc] initWithCoords:pinlocation];
+    [annotation setSpotDate:[NSDate date]];
     [inspectorMapView addAnnotation:annotation];
- //   annotation = [annotation initWithCoords: coordinate];
-    //= [InspectorMapKitAnnotation initWithCo];
     
-  //  [mapView addAnnotation:annotation]; 
+  //  [self saveInspectorWithLocationCoordinate:inspectorLocationCoordinate];
+}
+
+- (void) saveInspectorWithLocationCoordinate:(CLLocationCoordinate2D)inspectorLocationCoordinate  {
+    PFObject *inspectorLocation = [PFObject objectWithClassName:@"inspectorLocation"];
+    [inspectorLocation setObject:[NSNumber numberWithDouble:inspectorLocationCoordinate.latitude]  forKey:@"latitude"];
+    [inspectorLocation setObject:[NSNumber numberWithDouble:inspectorLocationCoordinate.longitude] forKey:@"longitude"];
+    [inspectorLocation saveInBackground];
 }
 
 @end
