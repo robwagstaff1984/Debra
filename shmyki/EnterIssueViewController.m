@@ -65,6 +65,7 @@
 
 #pragma mark IBActions
 - (IBAction)logIssue:(id)sender {
+    
      PFObject *punchOnLog = [PFObject objectWithClassName:@"PunchOnLog"];
     [punchOnLog setObject:locationTextField.text forKey:@"location"];
     [punchOnLog setObject:commentsTextView.text forKey:@"message"];

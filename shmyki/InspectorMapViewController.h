@@ -12,6 +12,7 @@
 
 @interface InspectorMapViewController : UIViewController<MKMapViewDelegate, CLLocationManagerDelegate>
 
-@property (strong, nonatomic) IBOutlet MKMapView *mapView;
+@property (strong, nonatomic) IBOutlet MKMapView *inspectorMapView;
+@property (strong) CLLocationManager *locationManager;
 
 @end

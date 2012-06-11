@@ -7,10 +7,11 @@
 //
 
 #import "InspectorMapViewController.h"
+#import "InspectorMapKitAnnotation.h"
 
 @implementation InspectorMapViewController
 
-@synthesize mapView;
+@synthesize inspectorMapView, locationManager;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -39,7 +40,7 @@
     MKCoordinateSpan span = {.latitudeDelta =  0.015, .longitudeDelta =  0.015};
     MKCoordinateRegion region = {coord, span};
     
-    [mapView setRegion:region];
+    [inspectorMapView setRegion:region];
     
     // Do any additional setup after loading the view from its nib.
 }
@@ -55,6 +56,62 @@
 {
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+#pragma mark locationManager Delegate
+
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation
+           fromLocation:(CLLocation *)oldLocation{
+    [manager stopUpdatingLocation];
+    MKCoordinateSpan span; 
+    span.latitudeDelta = 0.02; 
+    span.longitudeDelta = 0.02;
+    MKCoordinateRegion region; 
+    region.span = span;
+    region.center = newLocation.coordinate;
+    [inspectorMapView setRegion:region animated:TRUE];
+}
+
+#pragma mark mapViewDelegate 
+
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation {
+    static NSString*  inspectorAnnotationIdentifier = @"InspectorAnnotationIdentifier"; 
+    MKPinAnnotationView* annotationView = (MKPinAnnotationView *) [mapView dequeueReusableAnnotationViewWithIdentifier:inspectorAnnotationIdentifier]; 
+            
+    if (!annotationView) {
+        MKPinAnnotationView* customPinView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation
+                                                                                     reuseIdentifier:inspectorAnnotationIdentifier];
+        customPinView.pinColor = MKPinAnnotationColorPurple; customPinView.animatesDrop = YES;
+        customPinView.canShowCallout = YES;
+        //UIButton* rightButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+        //customPinView.rightCalloutAccessoryView = rightButton;
+        return customPinView;
+    } else{
+        annotationView.annotation = annotation;
+        return annotationView; 
+    }
+}
+
+#pragma mark IBActions
+
+- (IBAction)locateMeButtonPressed:(id)sender {
+    self.locationManager = nil;
+    self.locationManager = [[CLLocationManager alloc] init]; 
+    self.locationManager.delegate = self; 
+    [self.locationManager startUpdatingLocation];
+}
+
+-(IBAction)spotAnInspector:(id)sender {
+    CLLocationCoordinate2D pinlocation = [self.locationManager.location coordinate];
+    
+    
+    InspectorMapKitAnnotation *annotation = [[InspectorMapKitAnnotation alloc] initWithCoords:pinlocation];
+    [inspectorMapView addAnnotation:annotation];
+ //   annotation = [annotation initWithCoords: coordinate];
+    //= [InspectorMapKitAnnotation initWithCo];
+    
+  //  [mapView addAnnotation:annotation]; 
 }
 
 @end
