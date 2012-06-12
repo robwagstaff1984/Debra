@@ -9,6 +9,7 @@
 #import "InspectorMapViewController.h"
 #import "InspectorMapKitAnnotation.h"
 #import "Parse/Parse.h"
+#import "ShmykiContstants.h"
 
 @implementation InspectorMapViewController
 
@@ -20,7 +21,7 @@
     if (self) {
         self.title = NSLocalizedString(@"Inspectors", nil);
         self.tabBarItem.image = [UIImage imageNamed:@"images/TabInspectOff"];
-        self.listOfInspectorLocations = [[NSMutableArray alloc] initWithCapacity:30];
+        self.listOfInspectorLocations = [[NSMutableArray alloc] initWithCapacity:MAX_INSPECTORS_DISPLAYED];
         self.locationManager = nil;
         self.locationManager = [[CLLocationManager alloc] init]; 
         self.locationManager.delegate = self; 
@@ -106,6 +107,7 @@
 }
 
 -(IBAction)spotAnInspector:(id)sender {
+    [self.locationManager startUpdatingLocation];
     CLLocationCoordinate2D inspectorLocationCoordinate = [self.locationManager.location coordinate];
 
     InspectorMapKitAnnotation *annotation = [[InspectorMapKitAnnotation alloc] initWithCoords:inspectorLocationCoordinate];
@@ -123,7 +125,7 @@
 -(void) findInspectors {
     PFQuery *query = [PFQuery queryWithClassName:@"InspectorLocation"];
     [query addDescendingOrder:@"createdAt"];
-    query.limit = (NSInteger)[NSNumber numberWithInt:30];
+    query.limit = (NSInteger)[NSNumber numberWithInt:MAX_INSPECTORS_DISPLAYED];
     [query findObjectsInBackgroundWithBlock:^(NSArray *inspectorLocations, NSError *error) {
         
         int i;
@@ -137,11 +139,23 @@
             [inspectorAnnotation setSpotDate: inspectorLocationObject.createdAt];
             [listOfInspectorLocations addObject:inspectorAnnotation];
         }
+        
+        [self removeInspectorAnnotations];
         [self.inspectorMapView addAnnotations:listOfInspectorLocations];
 //        for(InspectorMapKitAnnotation *annotation in listOfInspectorLocations) {
 //            [self.inspectorMapView addAnnotation:annotation]; 
 //        }
     }];
+}
+
+-(void) removeInspectorAnnotations {
+    NSMutableArray *annotationsToRemove = [NSMutableArray arrayWithCapacity:MAX_INSPECTORS_DISPLAYED];
+    for (id annotation in inspectorMapView.annotations) {
+        if(annotation != inspectorMapView.userLocation){
+            [annotationsToRemove addObject:annotation];
+        }
+    }
+    [inspectorMapView removeAnnotations:annotationsToRemove];
 }
 
 #pragma mark Parse saving

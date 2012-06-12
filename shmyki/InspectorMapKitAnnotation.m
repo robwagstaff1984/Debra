@@ -7,11 +7,8 @@
 //
 
 #import "InspectorMapKitAnnotation.h"
+#import "ShmykiContstants.h"
 
-#define SECONDS_IN_A_MINUTE 60
-#define SECONDS_IN_AN_HOUR 3600
-#define SECONDS_IN_AN_DAY 86400
-#define SECONDS_IN_AN_WEEK 86400
 
 @implementation InspectorMapKitAnnotation
 

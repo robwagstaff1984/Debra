@@ -34,6 +34,7 @@
 		815C1A951580AF120019419C /* libz.1.1.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 815C1A941580AF110019419C /* libz.1.1.3.dylib */; };
 		815C1A971580AF200019419C /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 815C1A961580AF200019419C /* Security.framework */; };
 		815C1A991580AF2B0019419C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 815C1A981580AF2B0019419C /* QuartzCore.framework */; };
+		817BFA521587277100F3BEE1 /* ShmykiContstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 817BFA511587277100F3BEE1 /* ShmykiContstants.m */; };
 		818020AB1585EC7300501773 /* images in Resources */ = {isa = PBXBuildFile; fileRef = 818020AA1585EC7300501773 /* images */; };
 		818811481585A9DA00CDDF3E /* InspectorMapKitAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 818811471585A9DA00CDDF3E /* InspectorMapKitAnnotation.m */; };
 		818BE4241584618B00775392 /* PunchOnLogsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 818BE4231584618B00775392 /* PunchOnLogsViewController.m */; };
@@ -88,6 +89,8 @@
 		815C1A941580AF110019419C /* libz.1.1.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.1.3.dylib; path = usr/lib/libz.1.1.3.dylib; sourceTree = SDKROOT; };
 		815C1A961580AF200019419C /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		815C1A981580AF2B0019419C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		817BFA501587277100F3BEE1 /* ShmykiContstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShmykiContstants.h; sourceTree = "<group>"; };
+		817BFA511587277100F3BEE1 /* ShmykiContstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShmykiContstants.m; sourceTree = "<group>"; };
 		818020AA1585EC7300501773 /* images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = images; sourceTree = SOURCE_ROOT; };
 		818811461585A9DA00CDDF3E /* InspectorMapKitAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InspectorMapKitAnnotation.h; sourceTree = "<group>"; };
 		818811471585A9DA00CDDF3E /* InspectorMapKitAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InspectorMapKitAnnotation.m; sourceTree = "<group>"; };
@@ -248,6 +251,8 @@
 			children = (
 				818811461585A9DA00CDDF3E /* InspectorMapKitAnnotation.h */,
 				818811471585A9DA00CDDF3E /* InspectorMapKitAnnotation.m */,
+				817BFA501587277100F3BEE1 /* ShmykiContstants.h */,
+				817BFA511587277100F3BEE1 /* ShmykiContstants.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -371,6 +376,7 @@
 				815C1A2E157F836D0019419C /* EnterIssueViewController.m in Sources */,
 				818BE4241584618B00775392 /* PunchOnLogsViewController.m in Sources */,
 				818811481585A9DA00CDDF3E /* InspectorMapKitAnnotation.m in Sources */,
+				817BFA521587277100F3BEE1 /* ShmykiContstants.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
