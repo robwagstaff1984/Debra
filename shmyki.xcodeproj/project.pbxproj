@@ -297,7 +297,7 @@
 		815C19BD157F63AC0019419C /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0420;
+				LastUpgradeCheck = 0430;
 				ORGANIZATIONNAME = "DWS Limited";
 			};
 			buildConfigurationList = 815C19C0157F63AC0019419C /* Build configuration list for PBXProject "shmyki" */;

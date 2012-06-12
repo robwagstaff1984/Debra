@@ -133,16 +133,14 @@
             coordinate.latitude = [[inspectorLocationObject objectForKey:@"latitude"] doubleValue];
             coordinate.longitude = [[inspectorLocationObject objectForKey:@"longitude"] doubleValue];
             
-            NSLog(@"%f, %f", coordinate.latitude, coordinate.latitude);
             InspectorMapKitAnnotation *inspectorAnnotation = [[InspectorMapKitAnnotation alloc] initWithCoords:coordinate];
             [inspectorAnnotation setSpotDate: inspectorLocationObject.createdAt];
             [listOfInspectorLocations addObject:inspectorAnnotation];
         }
-        for(InspectorMapKitAnnotation *annotation in listOfInspectorLocations) {
-            NSLog(@"second part %f, %f", annotation.coordinate.latitude, annotation.coordinate.latitude);
-            [self.inspectorMapView addAnnotation:annotation]; 
-        }
-        NSLog(@"%@",listOfInspectorLocations );
+        [self.inspectorMapView addAnnotations:listOfInspectorLocations];
+//        for(InspectorMapKitAnnotation *annotation in listOfInspectorLocations) {
+//            [self.inspectorMapView addAnnotation:annotation]; 
+//        }
     }];
 }
 

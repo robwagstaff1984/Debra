@@ -8,6 +8,11 @@
 
 #import "InspectorMapKitAnnotation.h"
 
+#define SECONDS_IN_A_MINUTE 60
+#define SECONDS_IN_AN_HOUR 3600
+#define SECONDS_IN_AN_DAY 86400
+#define SECONDS_IN_AN_WEEK 86400
+
 @implementation InspectorMapKitAnnotation
 
 @synthesize coordinate, subtitle, title, spotDate;
@@ -28,14 +33,14 @@
     NSTimeInterval secondsBetween = [[NSDate date] timeIntervalSinceDate:spotDate];
     int seconds = secondsBetween / 1;
     
-    if(seconds < 60) {
+    if(seconds < SECONDS_IN_A_MINUTE) {
         displayTitle = [NSString stringWithFormat:@"just now", seconds];
-    } else if (seconds < 3600) {
-        displayTitle = [NSString stringWithFormat:@"%d minutes ago", (seconds / 60)];
-    } else if (seconds < 86400) {
-         displayTitle = [NSString stringWithFormat:@"%d hours ago", (seconds / 3600)];
-    } else if (seconds < 604800) {
-         displayTitle = [NSString stringWithFormat:@"%d days ago", (seconds / 86400)];
+    } else if (seconds < SECONDS_IN_AN_HOUR) {
+        displayTitle = [NSString stringWithFormat:@"%d minutes ago", (seconds / SECONDS_IN_A_MINUTE)];
+    } else if (seconds < SECONDS_IN_AN_DAY) {
+         displayTitle = [NSString stringWithFormat:@"%d hours ago", (seconds / SECONDS_IN_AN_HOUR)];
+    } else if (seconds < SECONDS_IN_AN_WEEK) {
+         displayTitle = [NSString stringWithFormat:@"%d days ago", (seconds / SECONDS_IN_AN_DAY)];
     } else {
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
         [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
