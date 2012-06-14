@@ -15,9 +15,10 @@
 @property (nonatomic, readonly, copy) NSString *subtitle;
 @property (nonatomic, readonly, copy) NSString *title;
 @property (nonatomic, strong) NSDate *spotDate;
+@property (nonatomic) NSUInteger inspectorAnnotationColour;
+@property (nonatomic) BOOL justSpotted;
 
 
 - (id)initWithCoords:(CLLocationCoordinate2D) coords;
-
 
 @end

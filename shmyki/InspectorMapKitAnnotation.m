@@ -12,7 +12,7 @@
 
 @implementation InspectorMapKitAnnotation
 
-@synthesize coordinate, subtitle, title, spotDate;
+@synthesize coordinate, subtitle, title, spotDate, inspectorAnnotationColour, justSpotted;
 
 - (id) initWithCoords:(CLLocationCoordinate2D) coords{
     self = [super init];
@@ -25,7 +25,6 @@
 
 - (NSString *)title
 {
-    
     NSString *displayTitle;
     NSTimeInterval secondsBetween = [[NSDate date] timeIntervalSinceDate:spotDate];
     int seconds = secondsBetween / 1;

@@ -25,7 +25,6 @@
         self.locationManager = nil;
         self.locationManager = [[CLLocationManager alloc] init]; 
         self.locationManager.delegate = self; 
-        [self.locationManager startUpdatingLocation];
     }
     return self;
 }
@@ -48,6 +47,9 @@
     MKCoordinateRegion region = {coord, span};
     
     [inspectorMapView setRegion:region];
+    [self.locationManager startUpdatingLocation];
+
+    [inspectorMapView setShowsUserLocation:YES];
     
     // Do any additional setup after loading the view from its nib.
 }
@@ -71,6 +73,7 @@
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation
            fromLocation:(CLLocation *)oldLocation{
+
     [manager stopUpdatingLocation];
     MKCoordinateSpan span; 
     span.latitudeDelta = 0.02; 
@@ -84,21 +87,34 @@
 #pragma mark mapViewDelegate 
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation {
-    static NSString*  inspectorAnnotationIdentifier = @"InspectorAnnotationIdentifier"; 
-    MKPinAnnotationView* annotationView = (MKPinAnnotationView *) [mapView dequeueReusableAnnotationViewWithIdentifier:inspectorAnnotationIdentifier]; 
-            
-    if (!annotationView) {
-        MKPinAnnotationView* customPinView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation
-                                                                                     reuseIdentifier:inspectorAnnotationIdentifier];
-        customPinView.pinColor = MKPinAnnotationColorPurple; customPinView.animatesDrop = YES;
-        customPinView.canShowCallout = YES;
         
-        return customPinView;
-    } else{
-        annotationView.annotation = annotation;
-        return annotationView; 
+    if ([annotation isKindOfClass:[InspectorMapKitAnnotation class]]) {
+        static NSString*  inspectorAnnotationIdentifier = @"InspectorAnnotationIdentifier"; 
+
+        MKPinAnnotationView* annotationView = (MKPinAnnotationView *) [mapView dequeueReusableAnnotationViewWithIdentifier:inspectorAnnotationIdentifier]; 
+            
+        if (!annotationView) {
+            MKPinAnnotationView* customPinView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation
+                                                                                     reuseIdentifier:inspectorAnnotationIdentifier];
+            customPinView.pinColor = MKPinAnnotationColorPurple; 
+            if([(InspectorMapKitAnnotation*)annotation justSpotted]){
+                customPinView.animatesDrop= YES;
+                [(InspectorMapKitAnnotation*)annotation setJustSpotted:NO];
+            }
+
+            customPinView.canShowCallout = YES;
+        
+            return customPinView;
+        } else{
+            annotationView.annotation = annotation;
+            return annotationView; 
+        }
+    } else {
+        return nil;
     }
 }
+
+
 
 #pragma mark IBActions
 
@@ -113,6 +129,7 @@
     InspectorMapKitAnnotation *annotation = [[InspectorMapKitAnnotation alloc] initWithCoords:inspectorLocationCoordinate];
     
     [annotation setSpotDate:[NSDate date]];
+    [annotation setJustSpotted:YES];
     [inspectorMapView addAnnotation:annotation];
     
     [self saveInspectorWithLocationCoordinate:inspectorLocationCoordinate];
@@ -142,9 +159,6 @@
         
         [self removeInspectorAnnotations];
         [self.inspectorMapView addAnnotations:listOfInspectorLocations];
-//        for(InspectorMapKitAnnotation *annotation in listOfInspectorLocations) {
-//            [self.inspectorMapView addAnnotation:annotation]; 
-//        }
     }];
 }
 
