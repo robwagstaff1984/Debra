@@ -11,13 +11,13 @@
 
 @implementation EnterIssueViewController
 
-@synthesize locationTextField, commentsTextView;
+@synthesize commentsTextView, punchOnIssues, punchOnTableView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        punchOnIssues = [[PunchOnIssues alloc] init];
     }
     return self;
 }
@@ -34,27 +34,22 @@
 
 - (void)viewDidLoad
 {
-    [self.locationTextField setDelegate:self];
-    [self.locationTextField setReturnKeyType:UIReturnKeyDone];
-    [self.locationTextField addTarget:self
-                       action:@selector(textFieldFinished:)
-             forControlEvents:UIControlEventEditingDidEndOnExit];
     
     [self.commentsTextView setDelegate:self];
- //   [self.commentsTextView addTarget:self
-   //                            action:@selector(textFieldFinished:)
-     //                forControlEvents:UIControlEventEditingDidEndOnExit];
-    
+    [self.commentsTextView setReturnKeyType:UIReturnKeyDone];
+
     [super viewDidLoad];
-    
+    /*   PFObject *punchOnLog = [PFObject objectWithClassName:@"PunchOnLog"];
+     [punchOnLog setObject:locationTextField.text forKey:@"location"];
+     [punchOnLog setObject:commentsTextView.text forKey:@"message"];
+     [punchOnLog saveInBackground];*/
     // Do any additional setup after loading the view from its nib.
 }
 
 - (void)viewDidUnload
 {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -63,31 +58,45 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-#pragma mark IBActions
-- (IBAction)logIssue:(id)sender {
+#pragma mark UITableViewDataSource
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return [self.punchOnIssues.issues count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+
+    static NSString *cellIdentifier = @"punchOnCell";
     
-     PFObject *punchOnLog = [PFObject objectWithClassName:@"PunchOnLog"];
-    [punchOnLog setObject:locationTextField.text forKey:@"location"];
-    [punchOnLog setObject:commentsTextView.text forKey:@"message"];
-    [punchOnLog saveInBackground];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    
+    if(cell == nil) {
+        cell= [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault 
+                                     reuseIdentifier:cellIdentifier];
+    }
+    
+    cell.textLabel.text = [self.punchOnIssues.issues objectAtIndex:indexPath.row];
+    
+    return cell;
 }
 
-
-#pragma mark textField delegate
-- (void)textFieldFinished:(id)sender
-{
-     [sender resignFirstResponder];
-}
 
 #pragma mark textView delegate
-- (BOOL)textView:(UITextView *)textView
-shouldChangeTextInRange:(NSRange)range
- replacementText:(NSString *)text
-{
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
     if ([text isEqualToString:@"\n"]) {
         [textView resignFirstResponder];
     }
     return YES;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *selectedTableViewCell = [self.punchOnTableView cellForRowAtIndexPath:indexPath];
+    if ( selectedTableViewCell.accessoryType == UITableViewCellAccessoryCheckmark) {
+        selectedTableViewCell.accessoryType = UITableViewCellAccessoryNone;
+    } else {
+        selectedTableViewCell.accessoryType = UITableViewCellAccessoryCheckmark;
+    }
+    [selectedTableViewCell setSelected:NO animated:YES];
 }
 
 @end

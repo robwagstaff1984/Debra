@@ -12,8 +12,6 @@
 
 @implementation PunchOnViewController
 
-@synthesize enterIssueViewController;
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -67,26 +65,8 @@
 
 #pragma mark IBActions
 - (IBAction)punchOnButtonPressed:(id)sender {
-   // UIViewController *enterIssueViewController = [[EnterIssueViewController alloc] initWithNibName:@"sEnterIssueViewController" bundle:nil];
-    
-    
-   // [self.view addSubview:enterIssueViewController.view];
-   // 
-    /*[UIView transitionWithView:self.view 
-                      duration:2 
-                       options:UIViewAnimationTransitionCurlUp //any animation
-                    animations:^ {[self.view addSubview:enterIssueViewController.view]; }
-                    completion:nil];*/
-    
-   // 
-    
-   // [self presentModalViewController:enterIssueViewController animated:YES];
+    UIViewController *enterIssueViewController = [[EnterIssueViewController alloc] initWithNibName:@"EnterIssueViewController" bundle:nil];
 
-//    [enterIssueViewController setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
-  //  [self presentViewController:enterIssueViewController animated:YES completion:nil];
-
-    
-    
     [self.navigationController pushViewController:enterIssueViewController animated:YES];
 }
 

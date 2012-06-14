@@ -13,6 +13,4 @@
 
 - (IBAction)punchOnButtonPressed:(id)sender;
 
-@property (strong, nonatomic) IBOutlet EnterIssueViewController *enterIssueViewController;
-
 @end

@@ -7,12 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PunchOnIssues.h"
 
-@interface EnterIssueViewController : UIViewController <UITextFieldDelegate, UITextViewDelegate>
+@interface EnterIssueViewController : UIViewController <UITextViewDelegate, UITableViewDataSource, UITableViewDelegate>
 
-@property (strong, nonatomic) IBOutlet UITextField *locationTextField;
+@property (strong, nonatomic) PunchOnIssues *punchOnIssues;
 @property (strong, nonatomic) IBOutlet UITextView *commentsTextView;
-
-- (IBAction)logIssue:(id)sender;
+@property (strong, nonatomic) IBOutlet UITableView *punchOnTableView;
 
 @end

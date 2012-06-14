@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		814B25981589E88A0067D161 /* PunchOnIssues.m in Sources */ = {isa = PBXBuildFile; fileRef = 814B25971589E88A0067D161 /* PunchOnIssues.m */; };
 		815C19CB157F63AD0019419C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 815C19CA157F63AD0019419C /* UIKit.framework */; };
 		815C19CD157F63AD0019419C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 815C19CC157F63AD0019419C /* Foundation.framework */; };
 		815C19CF157F63AD0019419C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 815C19CE157F63AD0019419C /* CoreGraphics.framework */; };
@@ -53,6 +54,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		814B25961589E88A0067D161 /* PunchOnIssues.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PunchOnIssues.h; sourceTree = "<group>"; };
+		814B25971589E88A0067D161 /* PunchOnIssues.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PunchOnIssues.m; sourceTree = "<group>"; };
 		815C19C6157F63AD0019419C /* shmyki.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = shmyki.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		815C19CA157F63AD0019419C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		815C19CC157F63AD0019419C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -253,6 +256,8 @@
 				818811471585A9DA00CDDF3E /* InspectorMapKitAnnotation.m */,
 				817BFA501587277100F3BEE1 /* ShmykiContstants.h */,
 				817BFA511587277100F3BEE1 /* ShmykiContstants.m */,
+				814B25961589E88A0067D161 /* PunchOnIssues.h */,
+				814B25971589E88A0067D161 /* PunchOnIssues.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -377,6 +382,7 @@
 				818BE4241584618B00775392 /* PunchOnLogsViewController.m in Sources */,
 				818811481585A9DA00CDDF3E /* InspectorMapKitAnnotation.m in Sources */,
 				817BFA521587277100F3BEE1 /* ShmykiContstants.m in Sources */,
+				814B25981589E88A0067D161 /* PunchOnIssues.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
