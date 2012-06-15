@@ -10,6 +10,8 @@
 		814B25981589E88A0067D161 /* PunchOnIssues.m in Sources */ = {isa = PBXBuildFile; fileRef = 814B25971589E88A0067D161 /* PunchOnIssues.m */; };
 		814B25AB158B461D0067D161 /* MykiBalanceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 814B25A9158B461C0067D161 /* MykiBalanceViewController.m */; };
 		814B25AC158B461D0067D161 /* MykiBalanceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 814B25AA158B461C0067D161 /* MykiBalanceViewController.xib */; };
+		814B25B4158B61950067D161 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 814B25B3158B61950067D161 /* libxml2.dylib */; };
+		814B25B7158B7A2A0067D161 /* MykiAccountInformation.m in Sources */ = {isa = PBXBuildFile; fileRef = 814B25B6158B7A2A0067D161 /* MykiAccountInformation.m */; };
 		815C19CB157F63AD0019419C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 815C19CA157F63AD0019419C /* UIKit.framework */; };
 		815C19CD157F63AD0019419C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 815C19CC157F63AD0019419C /* Foundation.framework */; };
 		815C19CF157F63AD0019419C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 815C19CE157F63AD0019419C /* CoreGraphics.framework */; };
@@ -61,6 +63,10 @@
 		814B25A8158B461C0067D161 /* MykiBalanceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MykiBalanceViewController.h; sourceTree = "<group>"; };
 		814B25A9158B461C0067D161 /* MykiBalanceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MykiBalanceViewController.m; sourceTree = "<group>"; };
 		814B25AA158B461C0067D161 /* MykiBalanceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MykiBalanceViewController.xib; sourceTree = "<group>"; };
+		814B25B1158B60C30067D161 /* libxml2.2.7.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.7.3.dylib; path = usr/lib/libxml2.2.7.3.dylib; sourceTree = SDKROOT; };
+		814B25B3158B61950067D161 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
+		814B25B5158B7A2A0067D161 /* MykiAccountInformation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MykiAccountInformation.h; sourceTree = "<group>"; };
+		814B25B6158B7A2A0067D161 /* MykiAccountInformation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MykiAccountInformation.m; sourceTree = "<group>"; };
 		815C19C6157F63AD0019419C /* shmyki.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = shmyki.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		815C19CA157F63AD0019419C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		815C19CC157F63AD0019419C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -113,6 +119,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				814B25B4158B61950067D161 /* libxml2.dylib in Frameworks */,
 				818BE42C1584689E00775392 /* CoreLocation.framework in Frameworks */,
 				818BE42A1584689400775392 /* MapKit.framework in Frameworks */,
 				815C1A991580AF2B0019419C /* QuartzCore.framework in Frameworks */,
@@ -145,6 +152,8 @@
 		815C19BB157F63AC0019419C = {
 			isa = PBXGroup;
 			children = (
+				814B25B3158B61950067D161 /* libxml2.dylib */,
+				814B25B1158B60C30067D161 /* libxml2.2.7.3.dylib */,
 				815C19D0157F63AD0019419C /* shmyki */,
 				815C19FC157F63AD0019419C /* shmykiTests */,
 				815C19C9157F63AD0019419C /* Frameworks */,
@@ -266,6 +275,8 @@
 				817BFA511587277100F3BEE1 /* ShmykiContstants.m */,
 				814B25961589E88A0067D161 /* PunchOnIssues.h */,
 				814B25971589E88A0067D161 /* PunchOnIssues.m */,
+				814B25B5158B7A2A0067D161 /* MykiAccountInformation.h */,
+				814B25B6158B7A2A0067D161 /* MykiAccountInformation.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -393,6 +404,7 @@
 				817BFA521587277100F3BEE1 /* ShmykiContstants.m in Sources */,
 				814B25981589E88A0067D161 /* PunchOnIssues.m in Sources */,
 				814B25AB158B461D0067D161 /* MykiBalanceViewController.m in Sources */,
+				814B25B7158B7A2A0067D161 /* MykiAccountInformation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MykiAccountInformation.h"
 
 @interface MykiBalanceViewController : UIViewController <UIWebViewDelegate>
 
@@ -15,5 +16,9 @@
 @property (nonatomic, strong) NSString *mykiLoginUrl;
 @property (nonatomic, strong) UIWebView *mykiWebstiteWebView;
 @property (nonatomic) BOOL userIsLoggedIn;
+@property (nonatomic, strong) MykiAccountInformation *mykiAccountInformation;
+
+@property (nonatomic, strong) IBOutlet UILabel *label1;
+
 
 @end
