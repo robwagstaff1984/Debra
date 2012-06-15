@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		814B25981589E88A0067D161 /* PunchOnIssues.m in Sources */ = {isa = PBXBuildFile; fileRef = 814B25971589E88A0067D161 /* PunchOnIssues.m */; };
+		814B25AB158B461D0067D161 /* MykiBalanceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 814B25A9158B461C0067D161 /* MykiBalanceViewController.m */; };
+		814B25AC158B461D0067D161 /* MykiBalanceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 814B25AA158B461C0067D161 /* MykiBalanceViewController.xib */; };
 		815C19CB157F63AD0019419C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 815C19CA157F63AD0019419C /* UIKit.framework */; };
 		815C19CD157F63AD0019419C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 815C19CC157F63AD0019419C /* Foundation.framework */; };
 		815C19CF157F63AD0019419C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 815C19CE157F63AD0019419C /* CoreGraphics.framework */; };
@@ -56,6 +58,9 @@
 /* Begin PBXFileReference section */
 		814B25961589E88A0067D161 /* PunchOnIssues.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PunchOnIssues.h; sourceTree = "<group>"; };
 		814B25971589E88A0067D161 /* PunchOnIssues.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PunchOnIssues.m; sourceTree = "<group>"; };
+		814B25A8158B461C0067D161 /* MykiBalanceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MykiBalanceViewController.h; sourceTree = "<group>"; };
+		814B25A9158B461C0067D161 /* MykiBalanceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MykiBalanceViewController.m; sourceTree = "<group>"; };
+		814B25AA158B461C0067D161 /* MykiBalanceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MykiBalanceViewController.xib; sourceTree = "<group>"; };
 		815C19C6157F63AD0019419C /* shmyki.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = shmyki.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		815C19CA157F63AD0019419C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		815C19CC157F63AD0019419C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -237,6 +242,9 @@
 				815C1A2B157F836C0019419C /* EnterIssueViewController.h */,
 				815C1A2C157F836C0019419C /* EnterIssueViewController.m */,
 				815C1A2D157F836C0019419C /* EnterIssueViewController.xib */,
+				814B25A8158B461C0067D161 /* MykiBalanceViewController.h */,
+				814B25A9158B461C0067D161 /* MykiBalanceViewController.m */,
+				814B25AA158B461C0067D161 /* MykiBalanceViewController.xib */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -339,6 +347,7 @@
 				815C1A2A157F79490019419C /* InformationViewController.xib in Resources */,
 				815C1A2F157F836D0019419C /* EnterIssueViewController.xib in Resources */,
 				818020AB1585EC7300501773 /* images in Resources */,
+				814B25AC158B461D0067D161 /* MykiBalanceViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -383,6 +392,7 @@
 				818811481585A9DA00CDDF3E /* InspectorMapKitAnnotation.m in Sources */,
 				817BFA521587277100F3BEE1 /* ShmykiContstants.m in Sources */,
 				814B25981589E88A0067D161 /* PunchOnIssues.m in Sources */,
+				814B25AB158B461D0067D161 /* MykiBalanceViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

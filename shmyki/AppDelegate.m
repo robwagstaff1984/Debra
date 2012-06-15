@@ -12,6 +12,7 @@
 #import "InspectorMapViewController.h"
 #import "InformationViewController.h"
 #import "PunchOnLogsViewController.h"
+#import "MykiBalanceViewController.h"
 #import <Parse/Parse.h>
 
 @implementation AppDelegate
@@ -29,12 +30,10 @@
     UIViewController *informationViewController = [[InformationViewController alloc] initWithNibName:@"InformationViewController" bundle:nil];
     
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:punchOnViewController];
-    
-    
+    UIViewController *mykiBalanceViewController = [[MykiBalanceViewController alloc] initWithNibName:@"MykiBalanceViewController" bundle:nil];
     
     self.tabBarController = [[UITabBarController alloc] init];
-    self.tabBarController.viewControllers = [NSArray arrayWithObjects:navController, inspectorMapViewController,  informationViewController, nil];
-    //[self.tabBarController setSelectedIndex:1];
+    self.tabBarController.viewControllers = [NSArray arrayWithObjects:navController, inspectorMapViewController,  informationViewController, mykiBalanceViewController, nil];
 
     self.window.rootViewController = self.tabBarController;
     [self.window makeKeyAndVisible];
