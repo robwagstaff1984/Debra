@@ -14,5 +14,11 @@
 @property (strong, nonatomic) PunchOnIssues *punchOnIssues;
 @property (strong, nonatomic) IBOutlet UITextView *commentsTextView;
 @property (strong, nonatomic) IBOutlet UITableView *punchOnTableView;
+@property (nonatomic) BOOL facebookIsSelected;
+@property (nonatomic) BOOL twitterIsSelected;
+@property (nonatomic) BOOL punchOnIsValid;
+
+- (IBAction)toggleTwitterButton:(id)sender;
+- (IBAction)toggleFacebookButton:(id)sender; 
 
 @end

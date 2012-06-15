@@ -8,16 +8,20 @@
 
 #import "EnterIssueViewController.h"
 #import "Parse/Parse.h"
+#import "ShmykiContstants.h"
 
 @implementation EnterIssueViewController
 
-@synthesize commentsTextView, punchOnIssues, punchOnTableView;
+@synthesize commentsTextView, punchOnIssues, punchOnTableView, facebookIsSelected, twitterIsSelected, punchOnIsValid;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         punchOnIssues = [[PunchOnIssues alloc] init];
+        facebookIsSelected = NO;
+        twitterIsSelected = NO;
+        punchOnIsValid = NO;
     }
     return self;
 }
@@ -35,9 +39,17 @@
 - (void)viewDidLoad
 {
     
-    [self.commentsTextView setDelegate:self];
-    [self.commentsTextView setReturnKeyType:UIReturnKeyDone];
-
+    [commentsTextView setDelegate:self];
+    [commentsTextView setReturnKeyType:UIReturnKeyDone];
+    [self addHintTextToCommentsTextView];
+ 
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] 
+                                                                    initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self
+                                                                    action:@selector(issueEntered:)];
+    self.navigationItem.rightBarButtonItem.enabled = NO;
+    
+    
     [super viewDidLoad];
     /*   PFObject *punchOnLog = [PFObject objectWithClassName:@"PunchOnLog"];
      [punchOnLog setObject:locationTextField.text forKey:@"location"];
@@ -73,9 +85,11 @@
     if(cell == nil) {
         cell= [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault 
                                      reuseIdentifier:cellIdentifier];
+        
+        [cell.textLabel setFont:[UIFont systemFontOfSize:14.0f]];
+        [cell.textLabel setTextColor:[UIColor grayColor]];
+        cell.textLabel.text = [self.punchOnIssues.issues objectAtIndex:indexPath.row];
     }
-    
-    cell.textLabel.text = [self.punchOnIssues.issues objectAtIndex:indexPath.row];
     
     return cell;
 }
@@ -97,6 +111,63 @@
         selectedTableViewCell.accessoryType = UITableViewCellAccessoryCheckmark;
     }
     [selectedTableViewCell setSelected:NO animated:YES];
+}
+
+- (void)textViewDidBeginEditing:(UITextView *)textView {
+    if ([textView.text isEqualToString:PUNCH_ON_HINT_TEXT]){ 
+        [self removeHintTextToCommentsTextView];
+    }
+}       
+
+- (void)textViewDidEndEditing:(UITextView *)textView {
+    if (!textView.hasText){
+        [self addHintTextToCommentsTextView];
+    }
+}
+
+- (void)textViewDidChange:(UITextView *)textView {
+   if (commentsTextView.hasText){
+       punchOnIsValid = YES;
+   }
+}
+
+#pragma mark actions
+                                                                   
+- (void) issueEntered {
+
+}
+
+- (IBAction)toggleTwitterButton:(id)sender {
+    if (twitterIsSelected) {
+        [sender setImage:[UIImage imageNamed: @"images/IconTwitterOff"] forState:UIControlStateNormal];
+    } else {
+        [sender setImage:[UIImage imageNamed: @"images/IconTwitterOn"] forState:UIControlStateNormal];
+    }
+    twitterIsSelected = !twitterIsSelected;
+}
+
+- (IBAction)toggleFacebookButton:(id)sender {
+    if (facebookIsSelected) {
+        [sender setImage:[UIImage imageNamed: @"images/IconFacebookOff"] forState:UIControlStateNormal];
+    } else {
+        [sender setImage:[UIImage imageNamed: @"images/IconFacebookOn"] forState:UIControlStateNormal];
+    }
+    facebookIsSelected = !facebookIsSelected;
+}
+
+#pragma  mark helper methods 
+
+- (void) addHintTextToCommentsTextView {
+    [commentsTextView setText: PUNCH_ON_HINT_TEXT];
+    [commentsTextView setFont:[UIFont italicSystemFontOfSize:18.0f]];
+	[commentsTextView setTextColor:[UIColor lightGrayColor]];
+
+}
+
+- (void) removeHintTextToCommentsTextView {
+    [commentsTextView setText: @""];
+    [commentsTextView setFont:[UIFont italicSystemFontOfSize:18.0f]];
+	[commentsTextView setTextColor:[UIColor blackColor]];
 }
 
 @end

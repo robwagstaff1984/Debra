@@ -140,15 +140,6 @@
 		815C19BB157F63AC0019419C = {
 			isa = PBXGroup;
 			children = (
-				818BE42B1584689E00775392 /* CoreLocation.framework */,
-				818BE4291584689400775392 /* MapKit.framework */,
-				815C1A981580AF2B0019419C /* QuartzCore.framework */,
-				815C1A961580AF200019419C /* Security.framework */,
-				815C1A941580AF110019419C /* libz.1.1.3.dylib */,
-				815C1A921580AEB50019419C /* MobileCoreServices.framework */,
-				815C1A901580AEA40019419C /* SystemConfiguration.framework */,
-				815C1A8E1580AE870019419C /* CFNetwork.framework */,
-				815C1A8C1580AE7B0019419C /* AudioToolbox.framework */,
 				815C19D0157F63AD0019419C /* shmyki */,
 				815C19FC157F63AD0019419C /* shmykiTests */,
 				815C19C9157F63AD0019419C /* Frameworks */,
@@ -168,6 +159,15 @@
 		815C19C9157F63AD0019419C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				818BE42B1584689E00775392 /* CoreLocation.framework */,
+				818BE4291584689400775392 /* MapKit.framework */,
+				815C1A981580AF2B0019419C /* QuartzCore.framework */,
+				815C1A961580AF200019419C /* Security.framework */,
+				815C1A941580AF110019419C /* libz.1.1.3.dylib */,
+				815C1A921580AEB50019419C /* MobileCoreServices.framework */,
+				815C1A901580AEA40019419C /* SystemConfiguration.framework */,
+				815C1A8E1580AE870019419C /* CFNetwork.framework */,
+				815C1A8C1580AE7B0019419C /* AudioToolbox.framework */,
 				815C1A8A1580AD800019419C /* Parse.framework */,
 				815C19CA157F63AD0019419C /* UIKit.framework */,
 				815C19CC157F63AD0019419C /* Foundation.framework */,
