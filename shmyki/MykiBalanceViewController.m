@@ -13,7 +13,8 @@
 @implementation MykiBalanceViewController
 
 @synthesize mykiPassword, mykiUsername, mykiLoginUrl, mykiWebstiteWebView, userIsLoggedIn, mykiAccountInformation;
-@synthesize bottomView;
+@synthesize topView, bottomView, loginTableView, loginScrollView;
+@synthesize usernameTextField, passwordTextField;
 /*@synthesize cardHolderLabel, cardTypeLabel, cardExpiryLabel, cardStatusLabel, currentMykiMoneyBalanceLabel, mykiMoneyTopUpInProgressLabel, totalMykiMoneyBalanceLabel, currentMykiPassActiveLabel, currentMykiPassNotYetActiveLabel, lastMykiTransactionDateLabel;*/
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -27,6 +28,10 @@
         mykiWebstiteWebView.delegate = self;
         userIsLoggedIn = NO;
         mykiAccountInformation = [[MykiAccountInformation alloc] init];
+        usernameTextField = [[UITextField alloc] init];
+        passwordTextField = [[UITextField alloc] init];
+        usernameTextField.delegate = self;
+        passwordTextField.delegate = self;
         [self setTitle:@"Balances"];
         [[self navigationItem] setTitle:@"Balances"];
         
@@ -41,13 +46,23 @@
     NSURLRequest *requestObj = [NSURLRequest requestWithURL:[NSURL URLWithString:mykiLoginUrl]];
     [mykiWebstiteWebView loadRequest:requestObj];
     
-    UIView *myView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 100)];
     CAGradientLayer *gradient = [CAGradientLayer layer];
     gradient.frame = bottomView.bounds;
-    gradient.colors = [NSArray arrayWithObjects:(id)[[UIColor blackColor] CGColor], (id)[[UIColor whiteColor] CGColor], nil];
-    [myView.layer insertSublayer:gradient atIndex:0];
-    self.view = myView;
-    // Do any additional setup after loading the view from its nib.
+    gradient.colors = [NSArray arrayWithObjects:(id)[[UIColor whiteColor] CGColor], (id)[[UIColor blueColor ] CGColor], nil];
+    [bottomView.layer insertSublayer:gradient atIndex:0];
+
+	loginScrollView.layer.cornerRadius = 8;
+	[loginScrollView setShowsVerticalScrollIndicator:NO];
+    loginScrollView.scrollEnabled = NO;
+	
+	//loginTableView = [[U alloc] initWithStyle:UITableViewStylePlain];
+	loginTableView.scrollEnabled = NO;
+	loginTableView.layer.cornerRadius = 8;
+	
+	//[scrollView setContentSize:CGSizeMake(300, 88)];
+	//table.tableView.frame = CGRectMake(0, 0, 300, 88);
+	//[scrollView addSubview:table.tableView];
+    
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
@@ -116,5 +131,72 @@
     NSTextCheckingResult *result = [regEx firstMatchInString:page options:0 range:NSMakeRange(0, [page length])];
     return [page substringWithRange:[result rangeAtIndex:1]];
 }
+
+#pragma mark tableViewDataSource delegate
+#pragma mark UITableViewDataSource
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 2;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    static NSString *cellIdentifier = @"mykiBalanceCell";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    
+    if(cell == nil) {
+        cell= [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault 
+                                     reuseIdentifier:cellIdentifier];
+        
+        UITextField *textField = [[UITextField alloc] initWithFrame:CGRectMake(20, 10, 235, 40)];
+        [textField setFont:[UIFont systemFontOfSize:14.0f]];
+        [textField setTextColor:[UIColor grayColor]];
+        textField.delegate = self;
+
+        if(indexPath.row == 0) {
+            textField.text = @"Username";
+        } else {
+            textField.text = @"Password";
+        }
+        [cell.contentView addSubview:textField];
+        
+    }
+    
+    return cell;
+}
+
+
+#pragma mark textField delegate
+-(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    if ([string isEqualToString:@"\n"]) {
+        [textField resignFirstResponder];
+    }
+    return YES;
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+    
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    
+}
+
+#pragma  mark helper methods 
+
+- (void) addHintTextToCommentsTextView {
+    /*[commentsTextView setText: PUNCH_ON_HINT_TEXT];
+    [commentsTextView setFont:[UIFont italicSystemFontOfSize:18.0f]];
+	[commentsTextView setTextColor:[UIColor lightGrayColor]];*/
+    
+}
+
+- (void) removeHintTextToCommentsTextView {
+    /*[commentsTextView setText: @""];
+    [commentsTextView setFont:[UIFont italicSystemFontOfSize:18.0f]];
+	[commentsTextView setTextColor:[UIColor blackColor]];*/
+}
+
 
 @end

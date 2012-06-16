@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "MykiAccountInformation.h"
 
-@interface MykiBalanceViewController : UIViewController <UIWebViewDelegate>
+@interface MykiBalanceViewController : UIViewController <UIWebViewDelegate, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
 
 @property (nonatomic, strong) NSString *mykiUsername; 
 @property (nonatomic, strong) NSString *mykiPassword;
@@ -17,7 +17,12 @@
 @property (nonatomic, strong) UIWebView *mykiWebstiteWebView;
 @property (nonatomic) BOOL userIsLoggedIn;
 @property (nonatomic, strong) MykiAccountInformation *mykiAccountInformation;
+@property (nonatomic, strong) IBOutlet UIView *topView;
 @property (nonatomic, strong) IBOutlet UIView *bottomView;
+@property (nonatomic, strong) IBOutlet UITableView *loginTableView;
+@property (nonatomic, strong) IBOutlet UIScrollView *loginScrollView;
+@property (nonatomic, strong) UITextField *usernameTextField;
+@property (nonatomic, strong) UITextField *passwordTextField;
 
 /*@property (nonatomic, strong) IBOutlet UILabel* cardHolderLabel;
 @property (nonatomic, strong) IBOutlet UILabel* cardTypeLabel;

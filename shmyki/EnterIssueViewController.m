@@ -94,6 +94,7 @@
     return cell;
 }
 
+#pragma mark tableView delegate
 - (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *selectedTableViewCell = [self.punchOnTableView cellForRowAtIndexPath:indexPath];
     [selectedTableViewCell setSelectionStyle:UITableViewCellSelectionStyleGray];
