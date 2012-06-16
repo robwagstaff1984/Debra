@@ -20,5 +20,5 @@
 
 
 - (id)initWithCoords:(CLLocationCoordinate2D) coords;
-
+- (UIImage*) getPoiImageForTime;
 @end

@@ -50,6 +50,7 @@
     [self.locationManager startUpdatingLocation];
 
     [inspectorMapView setShowsUserLocation:YES];
+    [self findInspectors];
     
     // Do any additional setup after loading the view from its nib.
 }
@@ -91,19 +92,15 @@
     if ([annotation isKindOfClass:[InspectorMapKitAnnotation class]]) {
         static NSString*  inspectorAnnotationIdentifier = @"InspectorAnnotationIdentifier"; 
 
-        MKPinAnnotationView* annotationView = (MKPinAnnotationView *) [mapView dequeueReusableAnnotationViewWithIdentifier:inspectorAnnotationIdentifier]; 
+        MKAnnotationView* annotationView = (MKAnnotationView *) [mapView dequeueReusableAnnotationViewWithIdentifier:inspectorAnnotationIdentifier]; 
             
         if (!annotationView) {
-            MKPinAnnotationView* customPinView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation
+            MKAnnotationView* customPinView = [[MKAnnotationView alloc] initWithAnnotation:annotation
                                                                                      reuseIdentifier:inspectorAnnotationIdentifier];
-            customPinView.pinColor = MKPinAnnotationColorPurple; 
-            if([(InspectorMapKitAnnotation*)annotation justSpotted]){
-                customPinView.animatesDrop= YES;
-                [(InspectorMapKitAnnotation*)annotation setJustSpotted:NO];
-            }
-
+            
+            customPinView.image = [(InspectorMapKitAnnotation*)annotation getPoiImageForTime];
             customPinView.canShowCallout = YES;
-        
+
             return customPinView;
         } else{
             annotationView.annotation = annotation;
@@ -114,7 +111,23 @@
     }
 }
 
-
+- (void)mapView:(MKMapView *)mapView didAddAnnotationViews:(NSArray *)views {   
+    for (MKAnnotationView *pin in views) {
+        if ([[pin annotation] isKindOfClass:[InspectorMapKitAnnotation class]])
+            
+            if([(InspectorMapKitAnnotation*)[pin annotation] justSpotted]){
+                
+                CGRect endFrame = pin.frame;
+                pin.frame = CGRectOffset(pin.frame, 0, -230);
+                
+                [UIView beginAnimations:nil context:nil];
+                [UIView setAnimationDuration:0.45f];
+                [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+                pin.frame = endFrame;
+                [UIView commitAnimations];
+            }
+    }
+} 
 
 #pragma mark IBActions
 
@@ -142,11 +155,9 @@
 -(void) findInspectors {
     PFQuery *query = [PFQuery queryWithClassName:@"InspectorLocation"];
     [query addDescendingOrder:@"createdAt"];
-    query.limit = (NSInteger)[NSNumber numberWithInt:MAX_INSPECTORS_DISPLAYED];
+    query.limit = MAX_INSPECTORS_DISPLAYED;
     [query findObjectsInBackgroundWithBlock:^(NSArray *inspectorLocations, NSError *error) {
-        
-        int i;
-        for(i=0; i < [inspectorLocations count]; i++) {
+        for(int i=0; i <[inspectorLocations count]; i++) {
             PFObject *inspectorLocationObject =[inspectorLocations objectAtIndex:i];
             CLLocationCoordinate2D coordinate;
             coordinate.latitude = [[inspectorLocationObject objectForKey:@"latitude"] doubleValue];
@@ -158,7 +169,7 @@
         }
         
         [self removeInspectorAnnotations];
-        [self.inspectorMapView addAnnotations:listOfInspectorLocations];
+        [self.inspectorMapView addAnnotations:[[listOfInspectorLocations reverseObjectEnumerator] allObjects]];
     }];
 }
 

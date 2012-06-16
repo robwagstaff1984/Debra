@@ -48,4 +48,17 @@
     return displayTitle;
 }
 
+-(UIImage*) getPoiImageForTime {
+    NSTimeInterval secondsBetween = [[NSDate date] timeIntervalSinceDate:spotDate];
+    int seconds = secondsBetween / 1;
+
+    if (seconds < SECONDS_FOR_RED_POI) {
+        return [UIImage imageNamed:@"/images/IconPoiRed"];
+    } else if (seconds < SECONDS_FOR_AMBER_POI) {
+        return [UIImage imageNamed:@"/images/IconPoiAmber"];
+    } else {
+        return [UIImage imageNamed:@"/images/IconPoiBlack"];
+    }
+}
+
 @end

@@ -94,6 +94,22 @@
     return cell;
 }
 
+- (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *selectedTableViewCell = [self.punchOnTableView cellForRowAtIndexPath:indexPath];
+    [selectedTableViewCell setSelectionStyle:UITableViewCellSelectionStyleGray];
+    return indexPath;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *selectedTableViewCell = [self.punchOnTableView cellForRowAtIndexPath:indexPath];
+    [selectedTableViewCell setSelected:NO animated:YES];
+    
+    if ( selectedTableViewCell.accessoryType == UITableViewCellAccessoryCheckmark) {
+        selectedTableViewCell.accessoryType = UITableViewCellAccessoryNone;
+    } else {
+        selectedTableViewCell.accessoryType = UITableViewCellAccessoryCheckmark;
+    }
+}
 
 #pragma mark textView delegate
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
@@ -101,16 +117,6 @@
         [textView resignFirstResponder];
     }
     return YES;
-}
-
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *selectedTableViewCell = [self.punchOnTableView cellForRowAtIndexPath:indexPath];
-    if ( selectedTableViewCell.accessoryType == UITableViewCellAccessoryCheckmark) {
-        selectedTableViewCell.accessoryType = UITableViewCellAccessoryNone;
-    } else {
-        selectedTableViewCell.accessoryType = UITableViewCellAccessoryCheckmark;
-    }
-    [selectedTableViewCell setSelected:NO animated:YES];
 }
 
 - (void)textViewDidBeginEditing:(UITextView *)textView {
