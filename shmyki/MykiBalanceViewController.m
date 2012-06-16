@@ -13,7 +13,7 @@
 @implementation MykiBalanceViewController
 
 @synthesize mykiPassword, mykiUsername, mykiLoginUrl, mykiWebstiteWebView, userIsLoggedIn, mykiAccountInformation;
-@synthesize topView, bottomView, loginTableView, loginScrollView;
+@synthesize topView, bottomView, loginTableView, loginScrollView, pageScrollView;
 @synthesize usernameTextField, passwordTextField;
 /*@synthesize cardHolderLabel, cardTypeLabel, cardExpiryLabel, cardStatusLabel, currentMykiMoneyBalanceLabel, mykiMoneyTopUpInProgressLabel, totalMykiMoneyBalanceLabel, currentMykiPassActiveLabel, currentMykiPassNotYetActiveLabel, lastMykiTransactionDateLabel;*/
 
@@ -43,6 +43,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(scrollViewToPositionForNotification:) name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(scrollViewToPositionForNotification:) name:UIKeyboardWillHideNotification object:nil];
+    
     NSURLRequest *requestObj = [NSURLRequest requestWithURL:[NSURL URLWithString:mykiLoginUrl]];
     [mykiWebstiteWebView loadRequest:requestObj];
     
@@ -153,6 +156,7 @@
         [textField setFont:[UIFont systemFontOfSize:14.0f]];
         [textField setTextColor:[UIColor grayColor]];
         textField.delegate = self;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
 
         if(indexPath.row == 0) {
             textField.text = @"Username";
@@ -175,12 +179,26 @@
     return YES;
 }
 
-- (void)textFieldDidBeginEditing:(UITextField *)textField {
+-(void)scrollViewToPositionForNotification:(NSNotification*)notification {
     
-}
+    float position;
+    if ([notification.name isEqualToString:UIKeyboardWillShowNotification]) {
+        position = 200.0;
+    } else {
+        position = 0.0;
+    }
 
-- (void)textFieldDidEndEditing:(UITextField *)textField {
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationCurve:[[[notification userInfo] objectForKey:UIKeyboardAnimationCurveUserInfoKey] intValue]];
+    [UIView setAnimationDuration:[[[notification userInfo] objectForKey:UIKeyboardAnimationDurationUserInfoKey] floatValue]];
+
+    UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, position, 0.0);
+    pageScrollView.contentInset = contentInsets;
+    pageScrollView.scrollIndicatorInsets = contentInsets;
+    CGPoint scrollPoint = CGPointMake(0.0, position);
+    [pageScrollView setContentOffset:scrollPoint animated:YES];
     
+    [UIView commitAnimations];
 }
 
 #pragma  mark helper methods 
@@ -191,12 +209,12 @@
 	[commentsTextView setTextColor:[UIColor lightGrayColor]];*/
     
 }
-
 - (void) removeHintTextToCommentsTextView {
     /*[commentsTextView setText: @""];
     [commentsTextView setFont:[UIFont italicSystemFontOfSize:18.0f]];
 	[commentsTextView setTextColor:[UIColor blackColor]];*/
 }
 
-
+     
+     
 @end
