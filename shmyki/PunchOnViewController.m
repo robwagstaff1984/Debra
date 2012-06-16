@@ -8,6 +8,7 @@
 
 #import "PunchOnViewController.h"
 #import "EnterIssueViewController.h"
+#import "ShmykiContstants.h"
 
 
 @implementation PunchOnViewController
@@ -16,7 +17,8 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        self.title = NSLocalizedString(@"Punch On", nil);
+        [self.tabBarItem setTitle:@"Punch On"];
+        [[self navigationItem] setTitle:APP_NAME];
         self.tabBarItem.image = [UIImage imageNamed:@"images/TabPunchOff"];
     }
     return self;
@@ -49,18 +51,6 @@
 {
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-
-- (void) viewWillAppear:(BOOL)animated
-{
-    [self.navigationController setNavigationBarHidden:YES animated:animated];
-    [super viewWillAppear:animated];
-}
-
-- (void) viewWillDisappear:(BOOL)animated
-{
-    [self.navigationController setNavigationBarHidden:NO animated:animated];
-    [super viewWillDisappear:animated];
 }
 
 #pragma mark IBActions

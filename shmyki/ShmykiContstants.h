@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+#define APP_NAME @"shmyki"
+
 #define SECONDS_IN_A_MINUTE 60
 #define SECONDS_IN_TEN_MINUTE 60
 #define SECONDS_IN_AN_HOUR 3600

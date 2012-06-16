@@ -17,8 +17,9 @@
 @property (nonatomic, strong) UIWebView *mykiWebstiteWebView;
 @property (nonatomic) BOOL userIsLoggedIn;
 @property (nonatomic, strong) MykiAccountInformation *mykiAccountInformation;
+@property (nonatomic, strong) IBOutlet UIView *bottomView;
 
-@property (nonatomic, strong) IBOutlet UILabel* cardHolderLabel;
+/*@property (nonatomic, strong) IBOutlet UILabel* cardHolderLabel;
 @property (nonatomic, strong) IBOutlet UILabel* cardTypeLabel;
 @property (nonatomic, strong) IBOutlet UILabel* cardExpiryLabel;
 @property (nonatomic, strong) IBOutlet UILabel* cardStatusLabel;
@@ -28,7 +29,7 @@
 @property (nonatomic, strong) IBOutlet UILabel* currentMykiPassActiveLabel;
 @property (nonatomic, strong) IBOutlet UILabel* currentMykiPassNotYetActiveLabel;
 @property (nonatomic, strong) IBOutlet UILabel* lastMykiTransactionDateLabel;
-
+*/
 
 
 @end

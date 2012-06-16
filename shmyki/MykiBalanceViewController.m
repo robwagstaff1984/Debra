@@ -8,11 +8,13 @@
 
 #import "MykiBalanceViewController.h"
 #import "ShmykiContstants.h"
+#import <QuartzCore/QuartzCore.h>
 
 @implementation MykiBalanceViewController
 
 @synthesize mykiPassword, mykiUsername, mykiLoginUrl, mykiWebstiteWebView, userIsLoggedIn, mykiAccountInformation;
-@synthesize cardHolderLabel, cardTypeLabel, cardExpiryLabel, cardStatusLabel, currentMykiMoneyBalanceLabel, mykiMoneyTopUpInProgressLabel, totalMykiMoneyBalanceLabel, currentMykiPassActiveLabel, currentMykiPassNotYetActiveLabel, lastMykiTransactionDateLabel;
+@synthesize bottomView;
+/*@synthesize cardHolderLabel, cardTypeLabel, cardExpiryLabel, cardStatusLabel, currentMykiMoneyBalanceLabel, mykiMoneyTopUpInProgressLabel, totalMykiMoneyBalanceLabel, currentMykiPassActiveLabel, currentMykiPassNotYetActiveLabel, lastMykiTransactionDateLabel;*/
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -25,6 +27,10 @@
         mykiWebstiteWebView.delegate = self;
         userIsLoggedIn = NO;
         mykiAccountInformation = [[MykiAccountInformation alloc] init];
+        [self setTitle:@"Balances"];
+        [[self navigationItem] setTitle:@"Balances"];
+        
+        //[self.bottomView addSubview:myView];
     }
     return self;
 }
@@ -34,6 +40,13 @@
     [super viewDidLoad];
     NSURLRequest *requestObj = [NSURLRequest requestWithURL:[NSURL URLWithString:mykiLoginUrl]];
     [mykiWebstiteWebView loadRequest:requestObj];
+    
+    UIView *myView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 100)];
+    CAGradientLayer *gradient = [CAGradientLayer layer];
+    gradient.frame = bottomView.bounds;
+    gradient.colors = [NSArray arrayWithObjects:(id)[[UIColor blackColor] CGColor], (id)[[UIColor whiteColor] CGColor], nil];
+    [myView.layer insertSublayer:gradient atIndex:0];
+    self.view = myView;
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -85,7 +98,7 @@
 }
 
 -(void) showMykiAccountIformation {
-    [cardHolderLabel setText:[mykiAccountInformation cardHolder]];
+   /* [cardHolderLabel setText:[mykiAccountInformation cardHolder]];
     [cardTypeLabel setText:[mykiAccountInformation cardType]];
     [cardExpiryLabel setText:[mykiAccountInformation cardExpiry]];
     [cardStatusLabel setText:[mykiAccountInformation cardStatus]];
@@ -94,7 +107,7 @@
     [totalMykiMoneyBalanceLabel setText:[mykiAccountInformation totalMykiMoneyBalance]];
     [currentMykiPassActiveLabel setText:[mykiAccountInformation currentMykiPassActive]];
     [currentMykiPassNotYetActiveLabel setText:[mykiAccountInformation currentMykiPassNotYetActive]];
-    [lastMykiTransactionDateLabel setText:[mykiAccountInformation lastMykiTransactionDate]];
+    [lastMykiTransactionDateLabel setText:[mykiAccountInformation lastMykiTransactionDate]];*/
 }
 
 -(NSString*) extractInformationFromHtml:(NSString*) page withRegeEx: (NSString*) regExString {

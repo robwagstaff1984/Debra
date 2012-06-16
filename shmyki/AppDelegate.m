@@ -25,15 +25,21 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 
-    UIViewController *inspectorMapViewController = [[InspectorMapViewController alloc] initWithNibName:@"InspectorMapViewController" bundle:nil];
     UIViewController *punchOnViewController = [[PunchOnViewController alloc] initWithNibName:@"PunchOnViewController" bundle:nil];
+    UINavigationController *punchOnNavController = [[UINavigationController alloc] initWithRootViewController:punchOnViewController];
+    
+    UIViewController *inspectorMapViewController = [[InspectorMapViewController alloc] initWithNibName:@"InspectorMapViewController" bundle:nil];
+    
     UIViewController *informationViewController = [[InformationViewController alloc] initWithNibName:@"InformationViewController" bundle:nil];
     
-    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:punchOnViewController];
+
     UIViewController *mykiBalanceViewController = [[MykiBalanceViewController alloc] initWithNibName:@"MykiBalanceViewController" bundle:nil];
+    UINavigationController *mykiBalanceNavController = [[UINavigationController alloc] initWithRootViewController:mykiBalanceViewController];
     
     self.tabBarController = [[UITabBarController alloc] init];
-    self.tabBarController.viewControllers = [NSArray arrayWithObjects:navController, inspectorMapViewController,  informationViewController, mykiBalanceViewController, nil];
+    self.tabBarController.viewControllers = [NSArray arrayWithObjects:punchOnNavController, inspectorMapViewController,  informationViewController, mykiBalanceNavController, nil];
+    
+    
 
     self.window.rootViewController = self.tabBarController;
     [self.window makeKeyAndVisible];
