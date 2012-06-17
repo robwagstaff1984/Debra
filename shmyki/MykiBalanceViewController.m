@@ -58,6 +58,7 @@
         
         [self setTitle:@"Balances"];
         [[self navigationItem] setTitle:@"Balances"];
+        self.tabBarItem.image = [UIImage imageNamed:@"images/TabBalanceOff"];
         
     }
     return self;

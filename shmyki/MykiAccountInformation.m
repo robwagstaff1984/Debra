@@ -28,5 +28,6 @@
     [self setMykiUsername: storedMykiUsername];
     [self setMykiPassword: storedMykiPassword];
 }
+ 
 
 @end
