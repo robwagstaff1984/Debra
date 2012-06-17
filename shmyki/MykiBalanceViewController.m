@@ -29,32 +29,9 @@
         mykiWebstiteWebView.delegate = self;
         userIsLoggedIn = NO;
         [self retrieveMykiBalance];
-        
-        usernameTextField = [[UITextField alloc] initWithFrame:CGRectMake(20, 10, 235, 40)];
-        usernameTextField.delegate = self;
-        [usernameTextField setFont:[UIFont systemFontOfSize:14.0f]];
-        [usernameTextField setTextColor:[UIColor grayColor]];
-        if ([[mykiAccountInformation mykiUsername] isEqualToString:@""]) {
-            usernameTextField.text = @"Username";
-        } else {
-            usernameTextField.text = [mykiAccountInformation mykiUsername];
-        }
-        NSInteger usernameTag = USERNAME_TEXTFIELD_TAG;
-        usernameTextField.tag = usernameTag;
-        [usernameTextField setReturnKeyType:UIReturnKeyNext];
 
-        passwordTextField = [[UITextField alloc] initWithFrame:CGRectMake(20, 10, 235, 40)];
-        passwordTextField.delegate = self;
-        [passwordTextField setFont:[UIFont systemFontOfSize:14.0f]];
-        [passwordTextField setTextColor:[UIColor grayColor]];
-        if ([[mykiAccountInformation mykiPassword] isEqualToString:@""]) {
-            passwordTextField.text = @"Password";
-        } else {
-            passwordTextField.text = [mykiAccountInformation mykiPassword];
-        }
-        NSInteger passwordTag = PASSWORD_TEXTFIELD_TAG;
-        passwordTextField.tag = passwordTag;
-        [passwordTextField setReturnKeyType:UIReturnKeyDone];
+        usernameTextField = [self setUpTextField:usernameTextField withText:@"Username" withUserDetail:[mykiAccountInformation mykiUsername] withReturnKey:UIReturnKeyNext withTag:USERNAME_TEXTFIELD_TAG];
+        passwordTextField = [self setUpTextField:passwordTextField withText:@"Password" withUserDetail:[mykiAccountInformation mykiPassword] withReturnKey:UIReturnKeyDone withTag:PASSWORD_TEXTFIELD_TAG];
         
         [self setTitle:@"Balances"];
         [[self navigationItem] setTitle:@"Balances"];
@@ -63,6 +40,27 @@
     }
     return self;
 }
+
+#pragma mark setUp
+-(UITextField*) setUpTextField:(UITextField*)textField withText:(NSString*)defaultText withUserDetail:(NSString*)userDetail withReturnKey:(UIReturnKeyType)returnKey withTag:(int)tag {
+    
+    textField = [[UITextField alloc] initWithFrame:CGRectMake(20, 10, 235, 40)];
+    textField.delegate = self;
+    [textField setFont:[UIFont systemFontOfSize:14.0f]];
+    textField.autocapitalizationType = UITextAutocapitalizationTypeNone;
+    if ([userDetail isEqualToString:@""]) {
+        textField.text = defaultText;
+        [textField setTextColor:[UIColor grayColor]];
+    } else {
+        textField.text = userDetail;
+        [textField setTextColor:[UIColor blackColor]];
+    }
+    NSInteger usernameTag = tag;
+    textField.tag = usernameTag;
+    [textField setReturnKeyType:returnKey];
+    return textField;
+}
+#pragma mark view methods
 
 - (void)viewDidLoad
 {
@@ -73,6 +71,16 @@
     [self drawBottomViewGradientWithCorners];
     [self drawBalanceViewGradientWithCorners];
     [self showMykiAccountInformation];
+}
+
+- (void)viewDidUnload
+{
+    [super viewDidUnload];
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
 -(void)retrieveMykiBalance {
@@ -103,15 +111,7 @@
     }
 }
 
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-}
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
 
 -(void) extractMykiAccountInfoFromHtml:(NSString*) page {
 
@@ -240,7 +240,7 @@
     
     float position;
     if ([notification.name isEqualToString:UIKeyboardWillShowNotification]) {
-        position = 200.0;
+        position = 224.0;
     } else {
         position = 0.0;
     }
@@ -258,24 +258,10 @@
     [UIView commitAnimations];
 }
 
-
-
-- (void) addHintTextToCommentsTextView {
-    /*[commentsTextView setText: PUNCH_ON_HINT_TEXT];
-    [commentsTextView setFont:[UIFont italicSystemFontOfSize:18.0f]];
-	[commentsTextView setTextColor:[UIColor lightGrayColor]];*/
-    
-}
-- (void) removeHintTextToCommentsTextView {
-    /*[commentsTextView setText: @""];
-    [commentsTextView setFont:[UIFont italicSystemFontOfSize:18.0f]];
-	[commentsTextView setTextColor:[UIColor blackColor]];*/
-}
-
 - (void) drawBottomViewGradientWithCorners {
     CAGradientLayer *gradient = [CAGradientLayer layer];
     gradient.frame = bottomView.bounds;
-    UIColor *startColour = [UIColor colorWithHue:.580555 saturation:0.31 brightness:0.90 alpha:1.0];
+    UIColor *startColour = [UIColor colorWithHue:.58333 saturation:0.35 brightness:0.88 alpha:1.0];
     UIColor *endColour = [UIColor colorWithHue:.58333 saturation:0.50 brightness:0.62 alpha:1.0];
     gradient.colors = [NSArray arrayWithObjects:(id)[startColour CGColor], (id)[endColour CGColor], nil];
     
@@ -291,8 +277,8 @@
 -(void) drawBalanceViewGradientWithCorners {
     CAGradientLayer *gradient = [CAGradientLayer layer];
     gradient.frame = balanceDisplayView.bounds;
-    UIColor *startColour = [UIColor colorWithHue:.58333 saturation:0.00 brightness:0.41 alpha:1.0];
-    UIColor *endColour = [UIColor colorWithHue:.58333 saturation:0.00 brightness:0.73 alpha:1.0];
+    UIColor *startColour = [UIColor colorWithHue:0.0 saturation:0.00 brightness:0.45 alpha:1.0];
+    UIColor *endColour = [UIColor colorWithHue:0.0 saturation:0.00 brightness:0.70 alpha:1.0];
     gradient.colors = [NSArray arrayWithObjects:(id)[startColour CGColor], (id)[endColour CGColor], nil];
     balanceDisplayView.layer.cornerRadius = 10;
     gradient.cornerRadius = 10;

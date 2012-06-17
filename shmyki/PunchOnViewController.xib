@@ -67,10 +67,7 @@
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<int key="IBUIContentHorizontalAlignment">0</int>
 								<int key="IBUIContentVerticalAlignment">0</int>
-								<object class="NSColor" key="IBUITintColor">
-									<int key="NSColorSpace">3</int>
-									<bytes key="NSWhite">MAA</bytes>
-								</object>
+								<bool key="IBUIAdjustsImageWhenHighlighted">NO</bool>
 								<object class="NSColor" key="IBUIHighlightedTitleColor">
 									<int key="NSColorSpace">3</int>
 									<bytes key="NSWhite">MQA</bytes>
@@ -83,11 +80,11 @@
 									<int key="NSColorSpace">3</int>
 									<bytes key="NSWhite">MC41AA</bytes>
 								</object>
-								<object class="NSCustomResource" key="IBUIHighlightedBackgroundImage" id="603172138">
+								<object class="NSCustomResource" key="IBUIHighlightedBackgroundImage" id="470780788">
 									<string key="NSClassName">NSImage</string>
 									<string key="NSResourceName">images/PunchOnButtonDown.png</string>
 								</object>
-								<reference key="IBUISelectedBackgroundImage" ref="603172138"/>
+								<reference key="IBUISelectedBackgroundImage" ref="470780788"/>
 								<object class="NSCustomResource" key="IBUINormalBackgroundImage">
 									<string key="NSClassName">NSImage</string>
 									<string key="NSResourceName">images/PunchOnButtonUp.png</string>
@@ -120,7 +117,6 @@
 						<string key="NSFrame">{{0, 223}, {320, 144}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">3</int>

@@ -255,7 +255,7 @@
 									<object class="IBUILabel" id="951513701">
 										<reference key="NSNextResponder" ref="766586467"/>
 										<int key="NSvFlags">292</int>
-										<string key="NSFrame">{{21, 158}, {279, 21}}</string>
+										<string key="NSFrame">{{21, 166}, {279, 21}}</string>
 										<reference key="NSSuperview" ref="766586467"/>
 										<reference key="NSWindow"/>
 										<reference key="NSNextKeyView" ref="14117565"/>
@@ -283,7 +283,7 @@
 									<object class="IBUILabel" id="14117565">
 										<reference key="NSNextResponder" ref="766586467"/>
 										<int key="NSvFlags">292</int>
-										<string key="NSFrame">{{108, 173}, {105, 21}}</string>
+										<string key="NSFrame">{{108, 183}, {105, 21}}</string>
 										<reference key="NSSuperview" ref="766586467"/>
 										<reference key="NSWindow"/>
 										<reference key="NSNextKeyView" ref="88977363"/>
@@ -324,9 +324,10 @@
 											<object class="IBUITableView" id="75499443">
 												<reference key="NSNextResponder" ref="460646777"/>
 												<int key="NSvFlags">274</int>
-												<string key="NSFrameSize">{255, 80}</string>
+												<string key="NSFrameSize">{280, 80}</string>
 												<reference key="NSSuperview" ref="460646777"/>
 												<reference key="NSWindow"/>
+												<reference key="NSNextKeyView"/>
 												<string key="NSReuseIdentifierKey">_NS:9</string>
 												<reference key="IBUIBackgroundColor" ref="961050831"/>
 												<bool key="IBUIClipsSubviews">YES</bool>
@@ -341,7 +342,7 @@
 												<float key="IBUISectionFooterHeight">22</float>
 											</object>
 										</array>
-										<string key="NSFrame">{{33, 34}, {255, 80}}</string>
+										<string key="NSFrame">{{20, 35}, {280, 80}}</string>
 										<reference key="NSSuperview" ref="88977363"/>
 										<reference key="NSWindow"/>
 										<reference key="NSNextKeyView" ref="75499443"/>
@@ -351,7 +352,7 @@
 										<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 									</object>
 								</array>
-								<string key="NSFrame">{{0, 224}, {320, 250}}</string>
+								<string key="NSFrame">{{0, 224}, {320, 205}}</string>
 								<reference key="NSSuperview" ref="939612035"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="460646777"/>
