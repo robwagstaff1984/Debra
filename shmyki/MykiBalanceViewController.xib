@@ -37,12 +37,12 @@
 				<reference key="NSNextResponder"/>
 				<int key="NSvFlags">274</int>
 				<array class="NSMutableArray" key="NSSubviews">
-					<object class="IBUIScrollView" id="322301988">
+					<object class="IBUIScrollView" id="434528453">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">268</int>
 						<array class="NSMutableArray" key="NSSubviews">
 							<object class="IBUIView" id="766586467">
-								<reference key="NSNextResponder" ref="322301988"/>
+								<reference key="NSNextResponder" ref="434528453"/>
 								<int key="NSvFlags">292</int>
 								<array class="NSMutableArray" key="NSSubviews">
 									<object class="IBUILabel" id="452620253">
@@ -50,7 +50,6 @@
 										<int key="NSvFlags">292</int>
 										<string key="NSFrame">{{29, 20}, {262, 21}}</string>
 										<reference key="NSSuperview" ref="766586467"/>
-										<reference key="NSWindow"/>
 										<reference key="NSNextKeyView" ref="88977363"/>
 										<string key="NSReuseIdentifierKey">_NS:9</string>
 										<bool key="IBUIOpaque">NO</bool>
@@ -78,8 +77,7 @@
 									</object>
 								</array>
 								<string key="NSFrameSize">{320, 200}</string>
-								<reference key="NSSuperview" ref="322301988"/>
-								<reference key="NSWindow"/>
+								<reference key="NSSuperview" ref="434528453"/>
 								<reference key="NSNextKeyView" ref="452620253"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<object class="NSColor" key="IBUIBackgroundColor">
@@ -89,7 +87,7 @@
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 							</object>
 							<object class="IBUIView" id="88977363">
-								<reference key="NSNextResponder" ref="322301988"/>
+								<reference key="NSNextResponder" ref="434528453"/>
 								<int key="NSvFlags">274</int>
 								<array class="NSMutableArray" key="NSSubviews">
 									<object class="IBUIScrollView" id="460646777">
@@ -101,7 +99,6 @@
 												<int key="NSvFlags">274</int>
 												<string key="NSFrameSize">{255, 80}</string>
 												<reference key="NSSuperview" ref="460646777"/>
-												<reference key="NSWindow"/>
 												<reference key="NSNextKeyView"/>
 												<string key="NSReuseIdentifierKey">_NS:9</string>
 												<object class="NSColor" key="IBUIBackgroundColor">
@@ -122,7 +119,6 @@
 										</array>
 										<string key="NSFrame">{{33, 46}, {255, 80}}</string>
 										<reference key="NSSuperview" ref="88977363"/>
-										<reference key="NSWindow"/>
 										<reference key="NSNextKeyView" ref="75499443"/>
 										<string key="NSReuseIdentifierKey">_NS:9</string>
 										<bool key="IBUIClipsSubviews">YES</bool>
@@ -131,20 +127,18 @@
 									</object>
 								</array>
 								<string key="NSFrame">{{0, 200}, {320, 250}}</string>
-								<reference key="NSSuperview" ref="322301988"/>
-								<reference key="NSWindow"/>
+								<reference key="NSSuperview" ref="434528453"/>
 								<reference key="NSNextKeyView" ref="460646777"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<object class="NSColor" key="IBUIBackgroundColor">
 									<int key="NSColorSpace">2</int>
-									<bytes key="NSRGB">MC4wOTgwMzkyMjQ3NCAwLjQ1MDk4MDQyNDkgMQA</bytes>
+									<bytes key="NSRGB">MC42MjM1Mjk0MzQyIDAuNzY0NzA1OTU2IDAuODk4MDM5MjgxNAA</bytes>
 								</object>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 							</object>
 						</array>
 						<string key="NSFrameSize">{320, 432}</string>
 						<reference key="NSSuperview" ref="191373211"/>
-						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="766586467"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -154,8 +148,7 @@
 				</array>
 				<string key="NSFrame">{{0, 64}, {320, 372}}</string>
 				<reference key="NSSuperview"/>
-				<reference key="NSWindow"/>
-				<reference key="NSNextKeyView" ref="322301988"/>
+				<reference key="NSNextKeyView" ref="434528453"/>
 				<object class="NSColor" key="IBUIBackgroundColor">
 					<int key="NSColorSpace">3</int>
 					<bytes key="NSWhite">MQA</bytes>
@@ -219,7 +212,7 @@
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">pageScrollView</string>
 						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="322301988"/>
+						<reference key="destination" ref="434528453"/>
 					</object>
 					<int key="connectionID">52</int>
 				</object>
@@ -252,7 +245,7 @@
 						<int key="objectID">1</int>
 						<reference key="object" ref="191373211"/>
 						<array class="NSMutableArray" key="children">
-							<reference ref="322301988"/>
+							<reference ref="434528453"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -269,7 +262,7 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">50</int>
-						<reference key="object" ref="322301988"/>
+						<reference key="object" ref="434528453"/>
 						<array class="NSMutableArray" key="children">
 							<reference ref="88977363"/>
 							<reference ref="766586467"/>
@@ -282,7 +275,7 @@
 						<array class="NSMutableArray" key="children">
 							<reference ref="452620253"/>
 						</array>
-						<reference key="parent" ref="322301988"/>
+						<reference key="parent" ref="434528453"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">35</int>
@@ -295,7 +288,7 @@
 						<array class="NSMutableArray" key="children">
 							<reference ref="460646777"/>
 						</array>
-						<reference key="parent" ref="322301988"/>
+						<reference key="parent" ref="434528453"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">48</int>
@@ -331,47 +324,7 @@
 			<nil key="sourceID"/>
 			<int key="maxID">52</int>
 		</object>
-		<object class="IBClassDescriber" key="IBDocument.Classes">
-			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
-				<object class="IBPartialClassDescription">
-					<string key="className">MykiBalanceViewController</string>
-					<string key="superclassName">UIViewController</string>
-					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="bottomView">UIView</string>
-						<string key="loginScrollView">UIScrollView</string>
-						<string key="loginTableView">UITableView</string>
-						<string key="pageScrollView">UIScrollView</string>
-						<string key="topView">UIView</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="bottomView">
-							<string key="name">bottomView</string>
-							<string key="candidateClassName">UIView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="loginScrollView">
-							<string key="name">loginScrollView</string>
-							<string key="candidateClassName">UIScrollView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="loginTableView">
-							<string key="name">loginTableView</string>
-							<string key="candidateClassName">UITableView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="pageScrollView">
-							<string key="name">pageScrollView</string>
-							<string key="candidateClassName">UIScrollView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="topView">
-							<string key="name">topView</string>
-							<string key="candidateClassName">UIView</string>
-						</object>
-					</dictionary>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/MykiBalanceViewController.h</string>
-					</object>
-				</object>
-			</array>
-		</object>
+		<object class="IBClassDescriber" key="IBDocument.Classes"/>
 		<int key="IBDocument.localizationMode">0</int>
 		<string key="IBDocument.TargetRuntimeIdentifier">IBCocoaTouchFramework</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDependencyDefaults">

@@ -28,14 +28,21 @@
         mykiWebstiteWebView.delegate = self;
         userIsLoggedIn = NO;
         mykiAccountInformation = [[MykiAccountInformation alloc] init];
-        usernameTextField = [[UITextField alloc] init];
-        passwordTextField = [[UITextField alloc] init];
+        
+        usernameTextField = [[UITextField alloc] initWithFrame:CGRectMake(20, 10, 235, 40)];
         usernameTextField.delegate = self;
+        [usernameTextField setFont:[UIFont systemFontOfSize:14.0f]];
+        [usernameTextField setTextColor:[UIColor grayColor]];
+        usernameTextField.text = @"Username";
+
+        passwordTextField = [[UITextField alloc] initWithFrame:CGRectMake(20, 10, 235, 40)];
         passwordTextField.delegate = self;
+        [passwordTextField setFont:[UIFont systemFontOfSize:14.0f]];
+        [passwordTextField setTextColor:[UIColor grayColor]];
+        passwordTextField.text = @"Password";
+        
         [self setTitle:@"Balances"];
         [[self navigationItem] setTitle:@"Balances"];
-        
-        //[self.bottomView addSubview:myView];
     }
     return self;
 }
@@ -51,21 +58,17 @@
     
     CAGradientLayer *gradient = [CAGradientLayer layer];
     gradient.frame = bottomView.bounds;
-    gradient.colors = [NSArray arrayWithObjects:(id)[[UIColor whiteColor] CGColor], (id)[[UIColor blueColor ] CGColor], nil];
+    UIColor *startColour = [UIColor colorWithHue:.580555 saturation:0.31 brightness:0.90 alpha:1.0];
+    UIColor *endColour = [UIColor colorWithHue:.58333 saturation:0.50 brightness:0.62 alpha:1.0];
+    gradient.colors = [NSArray arrayWithObjects:(id)[startColour CGColor], (id)[endColour CGColor], nil];
     [bottomView.layer insertSublayer:gradient atIndex:0];
 
 	loginScrollView.layer.cornerRadius = 8;
 	[loginScrollView setShowsVerticalScrollIndicator:NO];
     loginScrollView.scrollEnabled = NO;
 	
-	//loginTableView = [[U alloc] initWithStyle:UITableViewStylePlain];
 	loginTableView.scrollEnabled = NO;
 	loginTableView.layer.cornerRadius = 8;
-	
-	//[scrollView setContentSize:CGSizeMake(300, 88)];
-	//table.tableView.frame = CGRectMake(0, 0, 300, 88);
-	//[scrollView addSubview:table.tableView];
-    
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
@@ -152,21 +155,15 @@
         cell= [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault 
                                      reuseIdentifier:cellIdentifier];
         
-        UITextField *textField = [[UITextField alloc] initWithFrame:CGRectMake(20, 10, 235, 40)];
-        [textField setFont:[UIFont systemFontOfSize:14.0f]];
-        [textField setTextColor:[UIColor grayColor]];
-        textField.delegate = self;
+        
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
 
         if(indexPath.row == 0) {
-            textField.text = @"Username";
+            [cell.contentView addSubview:usernameTextField];
         } else {
-            textField.text = @"Password";
+            [cell.contentView addSubview:passwordTextField];
         }
-        [cell.contentView addSubview:textField];
-        
     }
-    
     return cell;
 }
 
@@ -174,7 +171,11 @@
 #pragma mark textField delegate
 -(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
     if ([string isEqualToString:@"\n"]) {
-        [textField resignFirstResponder];
+        if ([textField.text isEqualToString: usernameTextField.text]) {
+            [passwordTextField becomeFirstResponder];
+        } else {
+            [passwordTextField resignFirstResponder];
+        }
     }
     return YES;
 }
