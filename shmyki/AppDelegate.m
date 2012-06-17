@@ -24,7 +24,9 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-
+    NSLog(@"%@",@"time start");
+    UIViewController *mykiBalanceViewController = [[MykiBalanceViewController alloc] initWithNibName:@"MykiBalanceViewController" bundle:nil];
+    
     UIViewController *punchOnViewController = [[PunchOnViewController alloc] initWithNibName:@"PunchOnViewController" bundle:nil];
     UINavigationController *punchOnNavController = [[UINavigationController alloc] initWithRootViewController:punchOnViewController];
     
@@ -33,7 +35,7 @@
     UIViewController *informationViewController = [[InformationViewController alloc] initWithNibName:@"InformationViewController" bundle:nil];
     
 
-    UIViewController *mykiBalanceViewController = [[MykiBalanceViewController alloc] initWithNibName:@"MykiBalanceViewController" bundle:nil];
+
     UINavigationController *mykiBalanceNavController = [[UINavigationController alloc] initWithRootViewController:mykiBalanceViewController];
     
     self.tabBarController = [[UITabBarController alloc] init];

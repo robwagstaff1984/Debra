@@ -12,7 +12,7 @@
 
 @implementation MykiBalanceViewController
 
-@synthesize mykiLoginUrl, mykiWebstiteWebView, userIsLoggedIn, mykiAccountInformation;
+@synthesize mykiLoginUrl, mykiWebstiteWebView, userIsLoggedIn, mykiAccountInformation, errorLoadingBalance;
 @synthesize topView, bottomView, loginTableView, loginScrollView, pageScrollView, balanceDisplayView;
 @synthesize usernameTextField, passwordTextField;
 @synthesize balanceHeaderLabel, balanceMykiPassExpiryLabel, balanceMykiPassAdditionalLabel, balanceMykiMoneyAmountLabel, balanceMykiMoneyAdditionalLabel, balanceFooterLabelOne, balanceFooterLabelTwo;
@@ -23,12 +23,12 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         mykiAccountInformation = [[MykiAccountInformation alloc] init]; 
-        [mykiAccountInformation setMykiUsername: @"rwagstaff84"];
-        [mykiAccountInformation setMykiPassword: @"rob11ert"];
+        [mykiAccountInformation loadAccountInformation];
         mykiLoginUrl = MYKI_LOGIN_URL;
         mykiWebstiteWebView = [[UIWebView alloc] init];
         mykiWebstiteWebView.delegate = self;
         userIsLoggedIn = NO;
+        [self retrieveMykiBalance];
         
         usernameTextField = [[UITextField alloc] initWithFrame:CGRectMake(20, 10, 235, 40)];
         usernameTextField.delegate = self;
@@ -58,6 +58,7 @@
         
         [self setTitle:@"Balances"];
         [[self navigationItem] setTitle:@"Balances"];
+        
     }
     return self;
 }
@@ -68,11 +69,14 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(scrollViewToPositionForNotification:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(scrollViewToPositionForNotification:) name:UIKeyboardWillHideNotification object:nil];
     
-    NSURLRequest *requestObj = [NSURLRequest requestWithURL:[NSURL URLWithString:mykiLoginUrl]];
-    [mykiWebstiteWebView loadRequest:requestObj];
-    
     [self drawBottomViewGradientWithCorners];
     [self drawBalanceViewGradientWithCorners];
+    [self showMykiAccountInformation];
+}
+
+-(void)retrieveMykiBalance {
+    NSURLRequest *requestObj = [NSURLRequest requestWithURL:[NSURL URLWithString:mykiLoginUrl]];
+    [mykiWebstiteWebView loadRequest:requestObj];
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
@@ -83,7 +87,8 @@
         NSError *error;
         NSString *page = [NSString stringWithContentsOfURL:url encoding:NSASCIIStringEncoding error:&error];
         [self extractMykiAccountInfoFromHtml:page];
-        [self showMykiAccountIformation];
+        NSLog(@"%@",@"time done");
+        [self showMykiAccountInformation];
     } else {
         NSString *populateUserNameJavascript = [NSString stringWithFormat:JAVASCRIPT_ENTER_USERNAME, [mykiAccountInformation mykiUsername]];
         NSString *populatePasswordJavascript = [NSString stringWithFormat:JAVASCRIPT_ENTER_PASSWORD, [mykiAccountInformation mykiPassword]];
@@ -109,7 +114,11 @@
 
 -(void) extractMykiAccountInfoFromHtml:(NSString*) page {
 
-
+    if([page length] == 0) {
+        self.errorLoadingBalance = YES;
+        self.userIsLoggedIn = NO;
+        return;
+    }
     [mykiAccountInformation setCardHolder:[self extractInformationFromHtml:page withRegeEx:REG_EX_CARD_HOLDER]];
     [mykiAccountInformation setCardType:[self extractInformationFromHtml:page withRegeEx:REG_EX_CARD_TYPE]];
     [mykiAccountInformation setCardExpiry:[self extractInformationFromHtml:page withRegeEx:REG_EX_CARD_EXPIRY]];
@@ -120,11 +129,20 @@
     [mykiAccountInformation setCurrentMykiPassActive:[self extractInformationFromHtml:page withRegeEx:REG_EX_CURRENT_MYKI_PASS_ACTIVE]];
     [mykiAccountInformation setCurrentMykiPassNotYetActive:[self extractInformationFromHtml:page withRegeEx:REG_EX_CURRENT_MYKI_PASS_NOT_YET_ACTIVE]];
     [mykiAccountInformation setLastMykiTransactionDate:[self extractInformationFromHtml:page withRegeEx:REG_EX_LAST_MYKI_TRANSACTION_DATE]];
+    self.errorLoadingBalance = NO;
 }
 
--(void) showMykiAccountIformation {
-    [balanceMykiPassExpiryLabel setText: [mykiAccountInformation currentMykiPassActive]];
-   /* [cardHolderLabel setText:[mykiAccountInformation cardHolder]];
+-(void) showMykiAccountInformation {
+    if(errorLoadingBalance) {
+       // [balanceMykiPassExpiryLabel setText: [mykiAccountInformation currentMykiPassActive]];
+        //[balanceMykiMoneyAmountLabel setText: [mykiAccountInformation currentMykiMoneyBalance]];
+
+    } else {
+        [balanceMykiPassExpiryLabel setText: [mykiAccountInformation currentMykiPassActive]];
+        [balanceMykiMoneyAmountLabel setText: [mykiAccountInformation currentMykiMoneyBalance]];
+
+    }
+       /* [cardHolderLabel setText:[mykiAccountInformation cardHolder]];
     [cardTypeLabel setText:[mykiAccountInformation cardType]];
     [cardExpiryLabel setText:[mykiAccountInformation cardExpiry]];
     [cardStatusLabel setText:[mykiAccountInformation cardStatus]];
@@ -143,7 +161,6 @@
     return [page substringWithRange:[result rangeAtIndex:1]];
 }
 
-#pragma mark tableViewDataSource delegate
 #pragma mark UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -212,8 +229,7 @@
             [passwordTextField setText: @"Password"];
             [passwordTextField setTextColor:[UIColor grayColor]];
         } else {
-            [self updateLoginDetails];
-            //[self getMykiBalance];
+            [self retryRetrieveMykiBalance];
         }
     }
 }
@@ -283,10 +299,12 @@
 }
 
 
--(void) updateLoginDetails {
+-(void) retryRetrieveMykiBalance {
     [mykiAccountInformation setMykiUsername: usernameTextField.text];
     [mykiAccountInformation setMykiPassword: passwordTextField.text];
     [mykiAccountInformation saveAccountInformation];
+    self.userIsLoggedIn = NO;
+    [self retrieveMykiBalance];
 }
 
      
