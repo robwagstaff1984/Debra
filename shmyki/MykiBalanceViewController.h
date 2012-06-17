@@ -11,8 +11,7 @@
 
 @interface MykiBalanceViewController : UIViewController <UIWebViewDelegate, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
 
-@property (nonatomic, strong) NSString *mykiUsername; 
-@property (nonatomic, strong) NSString *mykiPassword;
+
 @property (nonatomic, strong) NSString *mykiLoginUrl;
 @property (nonatomic, strong) UIWebView *mykiWebstiteWebView;
 @property (nonatomic) BOOL userIsLoggedIn;

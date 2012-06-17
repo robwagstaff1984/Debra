@@ -21,4 +21,9 @@
 @property (nonatomic, strong) NSString* currentMykiPassNotYetActive;
 @property (nonatomic, strong) NSString* lastMykiTransactionDate;
 
+@property (nonatomic, strong) NSString *mykiUsername; 
+@property (nonatomic, strong) NSString *mykiPassword;
+
+-(void) saveAccountInformation;
+-(void) loadAccountInformation;
 @end

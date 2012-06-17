@@ -12,7 +12,7 @@
 
 @implementation MykiBalanceViewController
 
-@synthesize mykiPassword, mykiUsername, mykiLoginUrl, mykiWebstiteWebView, userIsLoggedIn, mykiAccountInformation;
+@synthesize mykiLoginUrl, mykiWebstiteWebView, userIsLoggedIn, mykiAccountInformation;
 @synthesize topView, bottomView, loginTableView, loginScrollView, pageScrollView, balanceDisplayView;
 @synthesize usernameTextField, passwordTextField;
 @synthesize balanceHeaderLabel, balanceMykiPassExpiryLabel, balanceMykiPassAdditionalLabel, balanceMykiMoneyAmountLabel, balanceMykiMoneyAdditionalLabel, balanceFooterLabelOne, balanceFooterLabelTwo;
@@ -22,29 +22,39 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        mykiUsername = @"rwagstaff84";
-        mykiPassword = @"rob11ert";
+        mykiAccountInformation = [[MykiAccountInformation alloc] init]; 
+        [mykiAccountInformation setMykiUsername: @"rwagstaff84"];
+        [mykiAccountInformation setMykiPassword: @"rob11ert"];
         mykiLoginUrl = MYKI_LOGIN_URL;
         mykiWebstiteWebView = [[UIWebView alloc] init];
         mykiWebstiteWebView.delegate = self;
         userIsLoggedIn = NO;
-        mykiAccountInformation = [[MykiAccountInformation alloc] init];
         
         usernameTextField = [[UITextField alloc] initWithFrame:CGRectMake(20, 10, 235, 40)];
         usernameTextField.delegate = self;
         [usernameTextField setFont:[UIFont systemFontOfSize:14.0f]];
         [usernameTextField setTextColor:[UIColor grayColor]];
-        usernameTextField.text = @"Username";
+        if ([[mykiAccountInformation mykiUsername] isEqualToString:@""]) {
+            usernameTextField.text = @"Username";
+        } else {
+            usernameTextField.text = [mykiAccountInformation mykiUsername];
+        }
         NSInteger usernameTag = USERNAME_TEXTFIELD_TAG;
         usernameTextField.tag = usernameTag;
+        [usernameTextField setReturnKeyType:UIReturnKeyNext];
 
         passwordTextField = [[UITextField alloc] initWithFrame:CGRectMake(20, 10, 235, 40)];
         passwordTextField.delegate = self;
         [passwordTextField setFont:[UIFont systemFontOfSize:14.0f]];
         [passwordTextField setTextColor:[UIColor grayColor]];
-        passwordTextField.text = @"Password";
+        if ([[mykiAccountInformation mykiPassword] isEqualToString:@""]) {
+            passwordTextField.text = @"Password";
+        } else {
+            passwordTextField.text = [mykiAccountInformation mykiPassword];
+        }
         NSInteger passwordTag = PASSWORD_TEXTFIELD_TAG;
         passwordTextField.tag = passwordTag;
+        [passwordTextField setReturnKeyType:UIReturnKeyDone];
         
         [self setTitle:@"Balances"];
         [[self navigationItem] setTitle:@"Balances"];
@@ -75,8 +85,8 @@
         [self extractMykiAccountInfoFromHtml:page];
         [self showMykiAccountIformation];
     } else {
-        NSString *populateUserNameJavascript = [NSString stringWithFormat:JAVASCRIPT_ENTER_USERNAME, mykiUsername];
-        NSString *populatePasswordJavascript = [NSString stringWithFormat:JAVASCRIPT_ENTER_PASSWORD, mykiPassword];
+        NSString *populateUserNameJavascript = [NSString stringWithFormat:JAVASCRIPT_ENTER_USERNAME, [mykiAccountInformation mykiUsername]];
+        NSString *populatePasswordJavascript = [NSString stringWithFormat:JAVASCRIPT_ENTER_PASSWORD, [mykiAccountInformation mykiPassword]];
         NSString *submitMykiLoginField = JAVASCRIPT_CLICK_SUBMIT; 
         
         [self.mykiWebstiteWebView stringByEvaluatingJavaScriptFromString: populateUserNameJavascript];
@@ -201,6 +211,9 @@
         if([passwordTextField.text isEqualToString:@""]) {
             [passwordTextField setText: @"Password"];
             [passwordTextField setTextColor:[UIColor grayColor]];
+        } else {
+            [self updateLoginDetails];
+            //[self getMykiBalance];
         }
     }
 }
@@ -269,6 +282,12 @@
     [balanceDisplayView.layer insertSublayer:gradient atIndex:0];
 }
 
+
+-(void) updateLoginDetails {
+    [mykiAccountInformation setMykiUsername: usernameTextField.text];
+    [mykiAccountInformation setMykiPassword: passwordTextField.text];
+    [mykiAccountInformation saveAccountInformation];
+}
 
      
      
