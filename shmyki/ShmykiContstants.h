@@ -39,6 +39,9 @@
 #define REG_EX_CURRENT_MYKI_PASS_NOT_YET_ACTIVE @"<strong>Current myki pass \\(not yet active\\)</strong></td>\\s+<td>\\s+(.+)<br />"
 #define REG_EX_LAST_MYKI_TRANSACTION_DATE @"<strong>Last myki transaction date</strong></td>\\s+<td>\\s+(.+)</td>"
 
+#define USERNAME_TEXTFIELD_TAG 200
+#define PASSWORD_TEXTFIELD_TAG 201
+
 @interface ShmykiContstants
 
 

@@ -24,18 +24,14 @@
 @property (nonatomic, strong) UITextField *usernameTextField;
 @property (nonatomic, strong) UITextField *passwordTextField;
 @property (nonatomic, strong) IBOutlet UIScrollView *pageScrollView;
+@property (nonatomic, strong) IBOutlet UIView *balanceDisplayView;
 
-/*@property (nonatomic, strong) IBOutlet UILabel* cardHolderLabel;
-@property (nonatomic, strong) IBOutlet UILabel* cardTypeLabel;
-@property (nonatomic, strong) IBOutlet UILabel* cardExpiryLabel;
-@property (nonatomic, strong) IBOutlet UILabel* cardStatusLabel;
-@property (nonatomic, strong) IBOutlet UILabel* currentMykiMoneyBalanceLabel;
-@property (nonatomic, strong) IBOutlet UILabel* mykiMoneyTopUpInProgressLabel;
-@property (nonatomic, strong) IBOutlet UILabel* totalMykiMoneyBalanceLabel;
-@property (nonatomic, strong) IBOutlet UILabel* currentMykiPassActiveLabel;
-@property (nonatomic, strong) IBOutlet UILabel* currentMykiPassNotYetActiveLabel;
-@property (nonatomic, strong) IBOutlet UILabel* lastMykiTransactionDateLabel;
-*/
-
+@property (nonatomic, strong) IBOutlet UILabel* balanceHeaderLabel;
+@property (nonatomic, strong) IBOutlet UILabel* balanceMykiPassExpiryLabel;
+@property (nonatomic, strong) IBOutlet UILabel* balanceMykiPassAdditionalLabel;
+@property (nonatomic, strong) IBOutlet UILabel* balanceMykiMoneyAmountLabel;
+@property (nonatomic, strong) IBOutlet UILabel* balanceMykiMoneyAdditionalLabel;
+@property (nonatomic, strong) IBOutlet UILabel* balanceFooterLabelOne;
+@property (nonatomic, strong) IBOutlet UILabel* balanceFooterLabelTwo;
 
 @end

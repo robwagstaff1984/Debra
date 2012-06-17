@@ -13,9 +13,10 @@
 @implementation MykiBalanceViewController
 
 @synthesize mykiPassword, mykiUsername, mykiLoginUrl, mykiWebstiteWebView, userIsLoggedIn, mykiAccountInformation;
-@synthesize topView, bottomView, loginTableView, loginScrollView, pageScrollView;
+@synthesize topView, bottomView, loginTableView, loginScrollView, pageScrollView, balanceDisplayView;
 @synthesize usernameTextField, passwordTextField;
-/*@synthesize cardHolderLabel, cardTypeLabel, cardExpiryLabel, cardStatusLabel, currentMykiMoneyBalanceLabel, mykiMoneyTopUpInProgressLabel, totalMykiMoneyBalanceLabel, currentMykiPassActiveLabel, currentMykiPassNotYetActiveLabel, lastMykiTransactionDateLabel;*/
+@synthesize balanceHeaderLabel, balanceMykiPassExpiryLabel, balanceMykiPassAdditionalLabel, balanceMykiMoneyAmountLabel, balanceMykiMoneyAdditionalLabel, balanceFooterLabelOne, balanceFooterLabelTwo;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -34,12 +35,16 @@
         [usernameTextField setFont:[UIFont systemFontOfSize:14.0f]];
         [usernameTextField setTextColor:[UIColor grayColor]];
         usernameTextField.text = @"Username";
+        NSInteger usernameTag = USERNAME_TEXTFIELD_TAG;
+        usernameTextField.tag = usernameTag;
 
         passwordTextField = [[UITextField alloc] initWithFrame:CGRectMake(20, 10, 235, 40)];
         passwordTextField.delegate = self;
         [passwordTextField setFont:[UIFont systemFontOfSize:14.0f]];
         [passwordTextField setTextColor:[UIColor grayColor]];
         passwordTextField.text = @"Password";
+        NSInteger passwordTag = PASSWORD_TEXTFIELD_TAG;
+        passwordTextField.tag = passwordTag;
         
         [self setTitle:@"Balances"];
         [[self navigationItem] setTitle:@"Balances"];
@@ -56,19 +61,8 @@
     NSURLRequest *requestObj = [NSURLRequest requestWithURL:[NSURL URLWithString:mykiLoginUrl]];
     [mykiWebstiteWebView loadRequest:requestObj];
     
-    CAGradientLayer *gradient = [CAGradientLayer layer];
-    gradient.frame = bottomView.bounds;
-    UIColor *startColour = [UIColor colorWithHue:.580555 saturation:0.31 brightness:0.90 alpha:1.0];
-    UIColor *endColour = [UIColor colorWithHue:.58333 saturation:0.50 brightness:0.62 alpha:1.0];
-    gradient.colors = [NSArray arrayWithObjects:(id)[startColour CGColor], (id)[endColour CGColor], nil];
-    [bottomView.layer insertSublayer:gradient atIndex:0];
-
-	loginScrollView.layer.cornerRadius = 8;
-	[loginScrollView setShowsVerticalScrollIndicator:NO];
-    loginScrollView.scrollEnabled = NO;
-	
-	loginTableView.scrollEnabled = NO;
-	loginTableView.layer.cornerRadius = 8;
+    [self drawBottomViewGradientWithCorners];
+    [self drawBalanceViewGradientWithCorners];
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
@@ -119,6 +113,7 @@
 }
 
 -(void) showMykiAccountIformation {
+    [balanceMykiPassExpiryLabel setText: [mykiAccountInformation currentMykiPassActive]];
    /* [cardHolderLabel setText:[mykiAccountInformation cardHolder]];
     [cardTypeLabel setText:[mykiAccountInformation cardType]];
     [cardExpiryLabel setText:[mykiAccountInformation cardExpiry]];
@@ -167,19 +162,50 @@
     return cell;
 }
 
-
 #pragma mark textField delegate
 -(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
     if ([string isEqualToString:@"\n"]) {
-        if ([textField.text isEqualToString: usernameTextField.text]) {
+        int textFieldTag = textField.tag;        
+        if(textFieldTag == USERNAME_TEXTFIELD_TAG) {          
             [passwordTextField becomeFirstResponder];
-        } else {
+        } else if (textFieldTag == PASSWORD_TEXTFIELD_TAG) {
             [passwordTextField resignFirstResponder];
         }
     }
     return YES;
 }
 
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+    int textFieldTag = textField.tag;        
+    if(textFieldTag == USERNAME_TEXTFIELD_TAG) {
+        if([usernameTextField.text isEqualToString:@"Username"]) {
+            [usernameTextField setText: @""];
+            [usernameTextField setTextColor:[UIColor blackColor]];
+        }
+    } else if (textFieldTag == PASSWORD_TEXTFIELD_TAG) {
+        if([passwordTextField.text isEqualToString:@"Password"]) {
+            [passwordTextField setText: @""];
+            [passwordTextField setTextColor:[UIColor blackColor]];
+        }
+    }
+}       
+
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    int textFieldTag = textField.tag;        
+    if(textFieldTag == USERNAME_TEXTFIELD_TAG) {
+        if([usernameTextField.text isEqualToString:@""]) {
+            [usernameTextField setText: @"Username"];
+            [usernameTextField setTextColor:[UIColor grayColor]];
+        }
+    } else if (textFieldTag == PASSWORD_TEXTFIELD_TAG) {
+        if([passwordTextField.text isEqualToString:@""]) {
+            [passwordTextField setText: @"Password"];
+            [passwordTextField setTextColor:[UIColor grayColor]];
+        }
+    }
+}
+
+#pragma  mark helper methods 
 -(void)scrollViewToPositionForNotification:(NSNotification*)notification {
     
     float position;
@@ -202,7 +228,7 @@
     [UIView commitAnimations];
 }
 
-#pragma  mark helper methods 
+
 
 - (void) addHintTextToCommentsTextView {
     /*[commentsTextView setText: PUNCH_ON_HINT_TEXT];
@@ -215,6 +241,34 @@
     [commentsTextView setFont:[UIFont italicSystemFontOfSize:18.0f]];
 	[commentsTextView setTextColor:[UIColor blackColor]];*/
 }
+
+- (void) drawBottomViewGradientWithCorners {
+    CAGradientLayer *gradient = [CAGradientLayer layer];
+    gradient.frame = bottomView.bounds;
+    UIColor *startColour = [UIColor colorWithHue:.580555 saturation:0.31 brightness:0.90 alpha:1.0];
+    UIColor *endColour = [UIColor colorWithHue:.58333 saturation:0.50 brightness:0.62 alpha:1.0];
+    gradient.colors = [NSArray arrayWithObjects:(id)[startColour CGColor], (id)[endColour CGColor], nil];
+    
+    [bottomView.layer insertSublayer:gradient atIndex:0];
+    loginScrollView.layer.cornerRadius = 8;
+	[loginScrollView setShowsVerticalScrollIndicator:NO];
+    loginScrollView.scrollEnabled = NO;
+	
+	loginTableView.scrollEnabled = NO;
+	loginTableView.layer.cornerRadius = 8;
+}
+
+-(void) drawBalanceViewGradientWithCorners {
+    CAGradientLayer *gradient = [CAGradientLayer layer];
+    gradient.frame = balanceDisplayView.bounds;
+    UIColor *startColour = [UIColor colorWithHue:.58333 saturation:0.00 brightness:0.41 alpha:1.0];
+    UIColor *endColour = [UIColor colorWithHue:.58333 saturation:0.00 brightness:0.73 alpha:1.0];
+    gradient.colors = [NSArray arrayWithObjects:(id)[startColour CGColor], (id)[endColour CGColor], nil];
+    balanceDisplayView.layer.cornerRadius = 10;
+    gradient.cornerRadius = 10;
+    [balanceDisplayView.layer insertSublayer:gradient atIndex:0];
+}
+
 
      
      
