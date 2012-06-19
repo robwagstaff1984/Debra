@@ -13,7 +13,7 @@
 
 
 @implementation PunchOnViewController
-@synthesize punchOnCommentsView;
+@synthesize punchOnCommentsView, punchOnCommentsTableView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -44,6 +44,7 @@
     UIPanGestureRecognizer * recognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handleCustomPan:)];
     recognizer.delegate = self;
     [punchOnCommentsView addGestureRecognizer:recognizer];
+     [punchOnCommentsView addGestureRecognizer:recognizer];
 }
 
 - (void)viewDidUnload
@@ -70,12 +71,12 @@
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     UITouch *touch = [[event allTouches] anyObject];
     
-    if( [touch view] == punchOnCommentsView)
-    {
+   // if( [touch view] == punchOnCommentsView)
+ //   {
        // CGPoint touchLocation = [touch locationInView:self.view];
        // NSLog(@"original %f", touchLocation.y);
         _punchOnCommentsViewPreTouchLocation = punchOnCommentsView.center.y;
-    }
+  //  }
     [super touchesBegan:touches withEvent:event];
 }
 
@@ -92,11 +93,10 @@
             
            
             newPunchOnCommentsLocation.y = _punchOnCommentsViewPreTouchLocation + translationDifferenceFromPan.y;
-           // NSLog(@"%f",newPunchOnCommentsLocation.y);
-            if(newPunchOnCommentsLocation.y < 184.00) {
-                newPunchOnCommentsLocation.y = 184.00;
-            } else if (newPunchOnCommentsLocation.y > 407.00) {
-                newPunchOnCommentsLocation.y = 407.00;
+            if(newPunchOnCommentsLocation.y < COMMENTS_ORIGIN_TO_ANCHOR_TOP) {
+                newPunchOnCommentsLocation.y = COMMENTS_ORIGIN_TO_ANCHOR_TOP;
+            } else if (newPunchOnCommentsLocation.y > COMMENTS_ORIGIN_TO_ANCHOR_BOTTOM) {
+                newPunchOnCommentsLocation.y = COMMENTS_ORIGIN_TO_ANCHOR_BOTTOM;
             }
             
             punchOnCommentsView.center = newPunchOnCommentsLocation;
@@ -107,13 +107,11 @@
             
             [UIView beginAnimations:nil context:NULL];
             [UIView setAnimationDuration:0.3f];
-           // [UIView setAnimationDuration:[[[notification userInfo] objectForKey:UIKeyboardAnimationDurationUserInfoKey] floatValue]];
-           //if(newPunchOnCommentsLocation.y)
-            int threshold = ((407.0 - 184.0) /2) + 184;
+            int threshold = ((COMMENTS_ORIGIN_TO_ANCHOR_BOTTOM - COMMENTS_ORIGIN_TO_ANCHOR_TOP) /2) + COMMENTS_ORIGIN_TO_ANCHOR_TOP;
             if(newPunchOnCommentsLocation.y < threshold) {
-                newPunchOnCommentsLocation.y = 184.0;
+                newPunchOnCommentsLocation.y = COMMENTS_ORIGIN_TO_ANCHOR_TOP;
             } else {
-                newPunchOnCommentsLocation.y = 407.0;
+                newPunchOnCommentsLocation.y = COMMENTS_ORIGIN_TO_ANCHOR_BOTTOM;
             }
             punchOnCommentsView.center = newPunchOnCommentsLocation;
 
@@ -123,6 +121,28 @@
         default:
             break;
     }
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 5;
+}
+
+// Row display. Implementers should *always* try to reuse cells by setting each cell's reuseIdentifier and querying for available reusable cells with dequeueReusableCellWithIdentifier:
+// Cell gets various attributes set automatically based on table (separators) and data source (accessory views, editing controls)
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString *CellIdentifier = @"punchOnLogsCell";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+    }
+    
+    // Configure the cell
+   // cell.textLabel.text = [object objectForKey:@"message"];
+ //   cell.detailTextLabel.text = [NSString stringWithFormat:@"Location: %@", [object objectForKey:@"location"]];
+    cell.textLabel.text = @"rob";
+    return cell;
 }
 
 @end
