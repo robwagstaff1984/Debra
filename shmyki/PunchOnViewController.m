@@ -79,7 +79,8 @@
     [super touchesBegan:touches withEvent:event];
 }
 
-- (void)handleCustomPan:(UIPanGestureRecognizer *)sender {    
+- (void)handleCustomPan:(UIPanGestureRecognizer *)sender { 
+    CGPoint newPunchOnCommentsLocation = punchOnCommentsView.center;
     switch (sender.state) {
         case UIGestureRecognizerStateChanged:
             if (1==1)
@@ -89,9 +90,9 @@
             
             CGPoint translationDifferenceFromPan = [sender translationInView:self.view];
             
-            CGPoint newPunchOnCommentsLocation = punchOnCommentsView.center;
+           
             newPunchOnCommentsLocation.y = _punchOnCommentsViewPreTouchLocation + translationDifferenceFromPan.y;
-            NSLog(@"%f",newPunchOnCommentsLocation.y);
+           // NSLog(@"%f",newPunchOnCommentsLocation.y);
             if(newPunchOnCommentsLocation.y < 184.00) {
                 newPunchOnCommentsLocation.y = 184.00;
             } else if (newPunchOnCommentsLocation.y > 407.00) {
@@ -103,7 +104,20 @@
             break;
             
         case UIGestureRecognizerStateEnded:
-          //  [self removePanLabel];
+            
+            [UIView beginAnimations:nil context:NULL];
+            [UIView setAnimationDuration:0.3f];
+           // [UIView setAnimationDuration:[[[notification userInfo] objectForKey:UIKeyboardAnimationDurationUserInfoKey] floatValue]];
+           //if(newPunchOnCommentsLocation.y)
+            int threshold = ((407.0 - 184.0) /2) + 184;
+            if(newPunchOnCommentsLocation.y < threshold) {
+                newPunchOnCommentsLocation.y = 184.0;
+            } else {
+                newPunchOnCommentsLocation.y = 407.0;
+            }
+            punchOnCommentsView.center = newPunchOnCommentsLocation;
+
+            [UIView commitAnimations];
             break;
             
         default:
