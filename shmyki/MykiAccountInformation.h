@@ -26,4 +26,5 @@
 
 -(void) saveAccountInformation;
 -(void) loadAccountInformation;
+-(void) extractMykiAccountInfoFromHtml:(NSString*) page;
 @end

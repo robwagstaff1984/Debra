@@ -95,9 +95,16 @@
         NSURL *url = [NSURL URLWithString:fullURL];  
         NSError *error;
         NSString *page = [NSString stringWithContentsOfURL:url encoding:NSASCIIStringEncoding error:&error];
-        [self extractMykiAccountInfoFromHtml:page];
-        NSLog(@"%@",@"time done");
-        [self showMykiAccountInformation];
+    
+        if([page length] == 0) {
+            NSLog(@"error",nil);
+            self.errorLoadingBalance = YES;
+            self.userIsLoggedIn = NO;
+        } else {
+            [mykiAccountInformation extractMykiAccountInfoFromHtml:page];
+            self.errorLoadingBalance = NO;
+            [self showMykiAccountInformation];
+        }
     } else {
         NSString *populateUserNameJavascript = [NSString stringWithFormat:JAVASCRIPT_ENTER_USERNAME, [mykiAccountInformation mykiUsername]];
         NSString *populatePasswordJavascript = [NSString stringWithFormat:JAVASCRIPT_ENTER_PASSWORD, [mykiAccountInformation mykiPassword]];
@@ -111,27 +118,6 @@
     }
 }
 
-
-
--(void) extractMykiAccountInfoFromHtml:(NSString*) page {
-
-    if([page length] == 0) {
-        self.errorLoadingBalance = YES;
-        self.userIsLoggedIn = NO;
-        return;
-    }
-    [mykiAccountInformation setCardHolder:[self extractInformationFromHtml:page withRegeEx:REG_EX_CARD_HOLDER]];
-    [mykiAccountInformation setCardType:[self extractInformationFromHtml:page withRegeEx:REG_EX_CARD_TYPE]];
-    [mykiAccountInformation setCardExpiry:[self extractInformationFromHtml:page withRegeEx:REG_EX_CARD_EXPIRY]];
-    [mykiAccountInformation setCardStatus:[self extractInformationFromHtml:page withRegeEx:REG_EX_CARD_STATUS]];
-    [mykiAccountInformation setCurrentMykiMoneyBalance:[self extractInformationFromHtml:page withRegeEx:REG_EX_CURRENT_MYKI_MONEY_BALANCE]];
-    [mykiAccountInformation setMykiMoneyTopUpInProgress:[self extractInformationFromHtml:page withRegeEx:REG_EX_MYKI_MONEY_TOP_UP_IN_PROGRESS]];
-    [mykiAccountInformation setTotalMykiMoneyBalance:[self extractInformationFromHtml:page withRegeEx:REG_EX_TOTAL_MYKI_MONEY_BALANCE]];
-    [mykiAccountInformation setCurrentMykiPassActive:[self extractInformationFromHtml:page withRegeEx:REG_EX_CURRENT_MYKI_PASS_ACTIVE]];
-    [mykiAccountInformation setCurrentMykiPassNotYetActive:[self extractInformationFromHtml:page withRegeEx:REG_EX_CURRENT_MYKI_PASS_NOT_YET_ACTIVE]];
-    [mykiAccountInformation setLastMykiTransactionDate:[self extractInformationFromHtml:page withRegeEx:REG_EX_LAST_MYKI_TRANSACTION_DATE]];
-    self.errorLoadingBalance = NO;
-}
 
 -(void) showMykiAccountInformation {
     if(errorLoadingBalance) {
@@ -153,13 +139,6 @@
     [currentMykiPassActiveLabel setText:[mykiAccountInformation currentMykiPassActive]];
     [currentMykiPassNotYetActiveLabel setText:[mykiAccountInformation currentMykiPassNotYetActive]];
     [lastMykiTransactionDateLabel setText:[mykiAccountInformation lastMykiTransactionDate]];*/
-}
-
--(NSString*) extractInformationFromHtml:(NSString*) page withRegeEx: (NSString*) regExString {
-    NSError *error;
-    NSRegularExpression *regEx = [NSRegularExpression regularExpressionWithPattern:regExString options:0 error:&error];
-    NSTextCheckingResult *result = [regEx firstMatchInString:page options:0 range:NSMakeRange(0, [page length])];
-    return [page substringWithRange:[result rangeAtIndex:1]];
 }
 
 #pragma mark UITableViewDataSource
