@@ -9,11 +9,11 @@
 #import "PunchOnViewController.h"
 #import "EnterIssueViewController.h"
 #import "ShmykiContstants.h"
-
-
+#import "Parse/Parse.h"
+#import "PunchOnLog.h"
 
 @implementation PunchOnViewController
-@synthesize punchOnCommentsView, punchOnCommentsTableView;
+@synthesize punchOnCommentsView, punchOnCommentsTableView, listOfPunchOnLogs;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -22,6 +22,8 @@
         [self.tabBarItem setTitle:@"Punch On"];
         [[self navigationItem] setTitle:APP_NAME];
         self.tabBarItem.image = [UIImage imageNamed:@"images/TabPunchOff"];
+        self.listOfPunchOnLogs = [[NSMutableArray alloc] initWithCapacity:MAX_PUNCH_ON_LOGS_RETRIEVED];
+        [self updatePunchOnLogs];
     }
     return self;
 }
@@ -41,15 +43,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    UIPanGestureRecognizer * recognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handleCustomPan:)];
-    recognizer.delegate = self;
-    NSArray *myArray = [punchOnCommentsTableView gestureRecognizers];
-    
-    for(int i=0; i < [myArray count]; i++) {
-        [punchOnCommentsTableView removeGestureRecognizer:[myArray objectAtIndex:i]];
-    }
-    [punchOnCommentsTableView addGestureRecognizer:recognizer];
-    // [punchOnCommentsTableView addGestureRecognizer:recognizer];
+    _panGestureRecognizerForCommentsView = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handleCustomPan:)];
+    _panGestureRecognizerForCommentsView.delegate = self;
+    punchOnCommentsTableView.userInteractionEnabled= NO;
+    [punchOnCommentsView addGestureRecognizer:_panGestureRecognizerForCommentsView];
 }
 
 - (void)viewDidUnload
@@ -74,14 +71,7 @@
 
 #pragma mark gesture recognition delegate
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    UITouch *touch = [[event allTouches] anyObject];
-    
-   // if( [touch view] == punchOnCommentsView)
- //   {
-       // CGPoint touchLocation = [touch locationInView:self.view];
-       // NSLog(@"original %f", touchLocation.y);
-        _punchOnCommentsViewPreTouchLocation = punchOnCommentsView.center.y;
-  //  }
+    _punchOnCommentsViewPreTouchLocation = punchOnCommentsView.center.y;
     [super touchesBegan:touches withEvent:event];
 }
 
@@ -93,14 +83,10 @@
             break;
         
         case UIGestureRecognizerStateChanged:
-            if (1==1)
-            {
+            if (1==1){}
 
-            }
-            
             CGPoint translationDifferenceFromPan = [sender translationInView:self.view];
             
-           
             newPunchOnCommentsLocation.y = _punchOnCommentsViewPreTouchLocation + translationDifferenceFromPan.y;
             if(newPunchOnCommentsLocation.y < COMMENTS_ORIGIN_TO_ANCHOR_TOP) {
                 newPunchOnCommentsLocation.y = COMMENTS_ORIGIN_TO_ANCHOR_TOP;
@@ -119,6 +105,8 @@
             int threshold = ((COMMENTS_ORIGIN_TO_ANCHOR_BOTTOM - COMMENTS_ORIGIN_TO_ANCHOR_TOP) /2) + COMMENTS_ORIGIN_TO_ANCHOR_TOP;
             if(newPunchOnCommentsLocation.y < threshold) {
                 newPunchOnCommentsLocation.y = COMMENTS_ORIGIN_TO_ANCHOR_TOP;
+                punchOnCommentsTableView.userInteractionEnabled= YES;
+                [punchOnCommentsView removeGestureRecognizer:_panGestureRecognizerForCommentsView];
             } else {
                 newPunchOnCommentsLocation.y = COMMENTS_ORIGIN_TO_ANCHOR_BOTTOM;
             }
@@ -133,7 +121,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 5;
+    return [self.listOfPunchOnLogs count];
 }
 
 // Row display. Implementers should *always* try to reuse cells by setting each cell's reuseIdentifier and querying for available reusable cells with dequeueReusableCellWithIdentifier:
@@ -148,10 +136,33 @@
     }
     
     // Configure the cell
-   // cell.textLabel.text = [object objectForKey:@"message"];
+    
+    PunchOnLog *punchOnLog = [listOfPunchOnLogs objectAtIndex:indexPath.row];
+    NSLog(@"%d %@", indexPath.row,punchOnLog.message);
+    cell.textLabel.text = punchOnLog.message;
  //   cell.detailTextLabel.text = [NSString stringWithFormat:@"Location: %@", [object objectForKey:@"location"]];
-    cell.textLabel.text = @"rob";
     return cell;
+}
+
+#pragma mark Parse 
+
+-(void) updatePunchOnLogs {
+    PFQuery *query = [PFQuery queryWithClassName:@"PunchOnLog"];
+    [query addDescendingOrder:@"createdAt"];
+    query.limit = MAX_PUNCH_ON_LOGS_RETRIEVED;
+    [query findObjectsInBackgroundWithBlock:^(NSArray *punchOnLogParseObjects, NSError *error) {
+        
+        PFObject *punchOnLogParseObject;
+        for(int i=0; i <[punchOnLogParseObjects count]; i++) {
+            punchOnLogParseObject = [punchOnLogParseObjects objectAtIndex:i];
+            PunchOnLog *punchOnLog = [[PunchOnLog alloc] init];
+            [punchOnLog setMessage:[punchOnLogParseObject objectForKey:@"message"]];
+            [punchOnLog setLocation:[punchOnLogParseObject objectForKey:@"location"]];
+            [self.listOfPunchOnLogs addObject:punchOnLog];
+        }
+        [punchOnCommentsTableView reloadData];
+    }];
+
 }
 
 @end

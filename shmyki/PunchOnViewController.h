@@ -11,14 +11,17 @@
 
 @interface PunchOnViewController : UIViewController <UIGestureRecognizerDelegate, UITableViewDelegate, UITableViewDataSource> {
     int _punchOnCommentsViewPreTouchLocation;
+    UIPanGestureRecognizer * _panGestureRecognizerForCommentsView;
 }
 
 
 @property (nonatomic, strong) IBOutlet UIView *punchOnCommentsView;
 @property (nonatomic, strong) IBOutlet UITableView *punchOnCommentsTableView;
+@property (nonatomic, strong) NSMutableArray *listOfPunchOnLogs;
 
 - (IBAction)punchOnButtonPressed:(id)sender;
 //- (void) touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event;
 - (void)handleCustomPan:(UIPanGestureRecognizer *)sender;
+- (void)updatePunchOnLogs;
 
 @end
