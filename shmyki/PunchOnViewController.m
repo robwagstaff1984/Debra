@@ -43,8 +43,13 @@
     
     UIPanGestureRecognizer * recognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handleCustomPan:)];
     recognizer.delegate = self;
-    [punchOnCommentsView addGestureRecognizer:recognizer];
-     [punchOnCommentsView addGestureRecognizer:recognizer];
+    NSArray *myArray = [punchOnCommentsTableView gestureRecognizers];
+    
+    for(int i=0; i < [myArray count]; i++) {
+        [punchOnCommentsTableView removeGestureRecognizer:[myArray objectAtIndex:i]];
+    }
+    [punchOnCommentsTableView addGestureRecognizer:recognizer];
+    // [punchOnCommentsTableView addGestureRecognizer:recognizer];
 }
 
 - (void)viewDidUnload
@@ -83,6 +88,10 @@
 - (void)handleCustomPan:(UIPanGestureRecognizer *)sender { 
     CGPoint newPunchOnCommentsLocation = punchOnCommentsView.center;
     switch (sender.state) {
+        case UIGestureRecognizerStateBegan:
+             _punchOnCommentsViewPreTouchLocation = punchOnCommentsView.center.y;
+            break;
+        
         case UIGestureRecognizerStateChanged:
             if (1==1)
             {
