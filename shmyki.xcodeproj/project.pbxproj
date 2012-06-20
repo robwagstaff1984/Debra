@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8129EACD1591C94D004D0C6F /* PunchOnLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 8129EACC1591C94D004D0C6F /* PunchOnLog.m */; };
+		8129EAD31591DD86004D0C6F /* TableViewCellForPunchOnLogs.m in Sources */ = {isa = PBXBuildFile; fileRef = 8129EAD21591DD86004D0C6F /* TableViewCellForPunchOnLogs.m */; };
 		814B25981589E88A0067D161 /* PunchOnIssues.m in Sources */ = {isa = PBXBuildFile; fileRef = 814B25971589E88A0067D161 /* PunchOnIssues.m */; };
 		814B25AB158B461D0067D161 /* MykiBalanceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 814B25A9158B461C0067D161 /* MykiBalanceViewController.m */; };
 		814B25AC158B461D0067D161 /* MykiBalanceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 814B25AA158B461C0067D161 /* MykiBalanceViewController.xib */; };
@@ -61,6 +62,8 @@
 /* Begin PBXFileReference section */
 		8129EACB1591C94D004D0C6F /* PunchOnLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PunchOnLog.h; sourceTree = "<group>"; };
 		8129EACC1591C94D004D0C6F /* PunchOnLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PunchOnLog.m; sourceTree = "<group>"; };
+		8129EAD11591DD86004D0C6F /* TableViewCellForPunchOnLogs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewCellForPunchOnLogs.h; sourceTree = "<group>"; };
+		8129EAD21591DD86004D0C6F /* TableViewCellForPunchOnLogs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewCellForPunchOnLogs.m; sourceTree = "<group>"; };
 		814B25961589E88A0067D161 /* PunchOnIssues.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PunchOnIssues.h; sourceTree = "<group>"; };
 		814B25971589E88A0067D161 /* PunchOnIssues.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PunchOnIssues.m; sourceTree = "<group>"; };
 		814B25A8158B461C0067D161 /* MykiBalanceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MykiBalanceViewController.h; sourceTree = "<group>"; };
@@ -257,6 +260,8 @@
 				814B25A8158B461C0067D161 /* MykiBalanceViewController.h */,
 				814B25A9158B461C0067D161 /* MykiBalanceViewController.m */,
 				814B25AA158B461C0067D161 /* MykiBalanceViewController.xib */,
+				8129EAD11591DD86004D0C6F /* TableViewCellForPunchOnLogs.h */,
+				8129EAD21591DD86004D0C6F /* TableViewCellForPunchOnLogs.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -411,6 +416,7 @@
 				814B25AB158B461D0067D161 /* MykiBalanceViewController.m in Sources */,
 				814B25B7158B7A2A0067D161 /* MykiAccountInformation.m in Sources */,
 				8129EACD1591C94D004D0C6F /* PunchOnLog.m in Sources */,
+				8129EAD31591DD86004D0C6F /* TableViewCellForPunchOnLogs.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

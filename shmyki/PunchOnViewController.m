@@ -11,6 +11,7 @@
 #import "ShmykiContstants.h"
 #import "Parse/Parse.h"
 #import "PunchOnLog.h"
+#import "TableViewCellForPunchOnLogs.h"
 
 @implementation PunchOnViewController
 @synthesize punchOnCommentsView, punchOnCommentsTableView, listOfPunchOnLogs;
@@ -130,18 +131,31 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"punchOnLogsCell";
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    TableViewCellForPunchOnLogs *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+        cell = [[TableViewCellForPunchOnLogs alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier];
     }
     
-    // Configure the cell
-    
     PunchOnLog *punchOnLog = [listOfPunchOnLogs objectAtIndex:indexPath.row];
-    NSLog(@"%d %@", indexPath.row,punchOnLog.message);
-    cell.textLabel.text = punchOnLog.message;
- //   cell.detailTextLabel.text = [NSString stringWithFormat:@"Location: %@", [object objectForKey:@"location"]];
+    cell.messageLabel.text = punchOnLog.message;
+    cell.locationLabel.text = punchOnLog.location;
+    cell.dateLabel.text = @"45 mins";
+    
     return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath;
+{
+    PunchOnLog *punchOnLog = [listOfPunchOnLogs objectAtIndex:[indexPath row]];  
+
+    CGSize constraint = CGSizeMake(320.0 - (CELL_CONTENT_HORIZONTAL_MARGIN * 2), 40000.0f);
+    
+    CGSize messageLabelSize = [punchOnLog.message sizeWithFont:[UIFont systemFontOfSize:MESSAGE_FONT_SIZE] constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
+    NSString *tempDate = @"45 mins";
+    CGSize dateLabelSize = [tempDate sizeWithFont:[UIFont systemFontOfSize:LOCATION_FONT_SIZE] constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
+    
+    return messageLabelSize.height + dateLabelSize.height + (CELL_CONTENT_VERTICAL_MARGIN * 3);
+    
 }
 
 #pragma mark Parse 
