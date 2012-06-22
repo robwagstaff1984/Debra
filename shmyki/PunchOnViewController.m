@@ -12,6 +12,7 @@
 #import "Parse/Parse.h"
 #import "PunchOnLog.h"
 #import "TableViewCellForPunchOnLogs.h"
+#import "TableViewHeaderHelper.h"
 
 @implementation PunchOnViewController
 @synthesize punchOnCommentsView, punchOnCommentsTableView, listOfPunchOnLogs;
@@ -47,6 +48,8 @@
     _panGestureRecognizerForCommentsView = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handleCustomPan:)];
     _panGestureRecognizerForCommentsView.delegate = self;
     punchOnCommentsTableView.userInteractionEnabled= NO;
+    punchOnCommentsTableView.allowsSelection = NO;
+    [self addTableViewHeader];
     [punchOnCommentsView addGestureRecognizer:_panGestureRecognizerForCommentsView];
 }
 
@@ -121,12 +124,10 @@
     }
 }
 
+#pragma tableView datasource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [self.listOfPunchOnLogs count];
 }
-
-// Row display. Implementers should *always* try to reuse cells by setting each cell's reuseIdentifier and querying for available reusable cells with dequeueReusableCellWithIdentifier:
-// Cell gets various attributes set automatically based on table (separators) and data source (accessory views, editing controls)
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"punchOnLogsCell";
@@ -157,6 +158,12 @@
     return messageLabelSize.height + dateLabelSize.height + (CELL_CONTENT_VERTICAL_MARGIN * 3);
     
 }
+
+-(void) addTableViewHeader {
+    punchOnCommentsTableView.tableHeaderView = [TableViewHeaderHelper makeFullScreenHeaderWith:1021];
+}
+
+
 
 #pragma mark Parse 
 

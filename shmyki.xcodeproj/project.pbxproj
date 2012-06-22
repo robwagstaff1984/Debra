@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		8129EACD1591C94D004D0C6F /* PunchOnLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 8129EACC1591C94D004D0C6F /* PunchOnLog.m */; };
 		8129EAD31591DD86004D0C6F /* TableViewCellForPunchOnLogs.m in Sources */ = {isa = PBXBuildFile; fileRef = 8129EAD21591DD86004D0C6F /* TableViewCellForPunchOnLogs.m */; };
+		8129EAE0159204F9004D0C6F /* TableViewHeaderHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8129EADF159204F9004D0C6F /* TableViewHeaderHelper.m */; };
 		814B25981589E88A0067D161 /* PunchOnIssues.m in Sources */ = {isa = PBXBuildFile; fileRef = 814B25971589E88A0067D161 /* PunchOnIssues.m */; };
 		814B25AB158B461D0067D161 /* MykiBalanceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 814B25A9158B461C0067D161 /* MykiBalanceViewController.m */; };
 		814B25AC158B461D0067D161 /* MykiBalanceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 814B25AA158B461C0067D161 /* MykiBalanceViewController.xib */; };
@@ -64,6 +65,8 @@
 		8129EACC1591C94D004D0C6F /* PunchOnLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PunchOnLog.m; sourceTree = "<group>"; };
 		8129EAD11591DD86004D0C6F /* TableViewCellForPunchOnLogs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewCellForPunchOnLogs.h; sourceTree = "<group>"; };
 		8129EAD21591DD86004D0C6F /* TableViewCellForPunchOnLogs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewCellForPunchOnLogs.m; sourceTree = "<group>"; };
+		8129EADE159204F9004D0C6F /* TableViewHeaderHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewHeaderHelper.h; sourceTree = "<group>"; };
+		8129EADF159204F9004D0C6F /* TableViewHeaderHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewHeaderHelper.m; sourceTree = "<group>"; };
 		814B25961589E88A0067D161 /* PunchOnIssues.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PunchOnIssues.h; sourceTree = "<group>"; };
 		814B25971589E88A0067D161 /* PunchOnIssues.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PunchOnIssues.m; sourceTree = "<group>"; };
 		814B25A8158B461C0067D161 /* MykiBalanceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MykiBalanceViewController.h; sourceTree = "<group>"; };
@@ -155,6 +158,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8129EADA159202ED004D0C6F /* customViews */ = {
+			isa = PBXGroup;
+			children = (
+				8129EAD11591DD86004D0C6F /* TableViewCellForPunchOnLogs.h */,
+				8129EAD21591DD86004D0C6F /* TableViewCellForPunchOnLogs.m */,
+				8129EADE159204F9004D0C6F /* TableViewHeaderHelper.h */,
+				8129EADF159204F9004D0C6F /* TableViewHeaderHelper.m */,
+			);
+			name = customViews;
+			sourceTree = "<group>";
+		};
 		815C19BB157F63AC0019419C = {
 			isa = PBXGroup;
 			children = (
@@ -200,6 +214,7 @@
 		815C19D0157F63AD0019419C /* shmyki */ = {
 			isa = PBXGroup;
 			children = (
+				8129EADA159202ED004D0C6F /* customViews */,
 				815C1A18157F64DF0019419C /* Model */,
 				815C1A17157F64930019419C /* Images */,
 				815C19D9157F63AD0019419C /* AppDelegate.h */,
@@ -260,8 +275,6 @@
 				814B25A8158B461C0067D161 /* MykiBalanceViewController.h */,
 				814B25A9158B461C0067D161 /* MykiBalanceViewController.m */,
 				814B25AA158B461C0067D161 /* MykiBalanceViewController.xib */,
-				8129EAD11591DD86004D0C6F /* TableViewCellForPunchOnLogs.h */,
-				8129EAD21591DD86004D0C6F /* TableViewCellForPunchOnLogs.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -417,6 +430,7 @@
 				814B25B7158B7A2A0067D161 /* MykiAccountInformation.m in Sources */,
 				8129EACD1591C94D004D0C6F /* PunchOnLog.m in Sources */,
 				8129EAD31591DD86004D0C6F /* TableViewCellForPunchOnLogs.m in Sources */,
+				8129EAE0159204F9004D0C6F /* TableViewHeaderHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
