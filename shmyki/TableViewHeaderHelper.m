@@ -31,15 +31,19 @@
     [headerLabel setTextColor:[UIColor blueColor]];
 
     
-    UILabel *closeButton = [[UILabel alloc] initWithFrame:CGRectMake(240,5, 60, 25)];
+    UILabel *closeButton = [[UILabel alloc] initWithFrame:CGRectMake(240,5, 90, 25)];
     closeButton.text = @"Close";
+    closeButton.tag = TAG_FOR_CLOSE_BUTTON_LABEL;
+    closeButton.userInteractionEnabled = YES;
     
     UIImageView *closeButtonImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"images/IconArrowDown"]];
     
     closeButtonImage.frame = CGRectMake(300, 12, 12, 12);
+
 //    headerLabel.backgroundColor = [UIColor redColor];
 //    headerView.backgroundColor = [UIColor greenColor];
 //    closeButton.backgroundColor = [UIColor yellowColor];
+//    closeButtonImage.backgroundColor = [UIColor purpleColor];
     
     [headerView addSubview:headerLabel];
     [headerView addSubview:closeButton];

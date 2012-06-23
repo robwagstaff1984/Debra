@@ -12,6 +12,7 @@
 @interface PunchOnViewController : UIViewController <UIGestureRecognizerDelegate, UITableViewDelegate, UITableViewDataSource> {
     int _punchOnCommentsViewPreTouchLocation;
     UIPanGestureRecognizer * _panGestureRecognizerForCommentsView;
+    BOOL _commentsTableViewIsUp;
 }
 
 
