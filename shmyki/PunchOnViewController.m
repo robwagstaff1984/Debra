@@ -173,7 +173,7 @@
 
 }
 
-#pragma mark Helper Methods 
+#pragma mark Punch On Table effects Helper Methods 
 
 -(void) panCommentsTableViewToAppropriateStateForLocation:(CGPoint)tableViewCenterLocation{
     int threshold = ((COMMENTS_ORIGIN_TO_ANCHOR_BOTTOM - COMMENTS_ORIGIN_TO_ANCHOR_TOP) /2) + COMMENTS_ORIGIN_TO_ANCHOR_TOP;

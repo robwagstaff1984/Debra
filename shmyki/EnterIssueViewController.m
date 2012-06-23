@@ -7,8 +7,10 @@
 //
 
 #import "EnterIssueViewController.h"
+#import "EnterLocationViewController.h"
 #import "Parse/Parse.h"
 #import "ShmykiContstants.h"
+
 
 @implementation EnterIssueViewController
 
@@ -46,7 +48,7 @@
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] 
                                                                     initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self
-                                                                    action:@selector(issueEntered:)];
+                                                                    action:@selector(issueEntered)];
     self.navigationItem.rightBarButtonItem.enabled = NO;
     
     
@@ -135,13 +137,18 @@
 - (void)textViewDidChange:(UITextView *)textView {
    if (commentsTextView.hasText){
        punchOnIsValid = YES;
+       self.navigationItem.rightBarButtonItem.enabled = YES;
+   } else {
+       punchOnIsValid = NO;
+       self.navigationItem.rightBarButtonItem.enabled = NO;
    }
 }
 
 #pragma mark actions
                                                                    
 - (void) issueEntered {
-
+    UIViewController *enterIssueViewController = [[EnterLocationViewController alloc] initWithNibName:@"EnterLocationViewController" bundle:nil];
+    [self.navigationController pushViewController:enterIssueViewController animated:YES];
 }
 
 - (IBAction)toggleTwitterButton:(id)sender {

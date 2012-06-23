@@ -49,6 +49,8 @@
 		818BE4241584618B00775392 /* PunchOnLogsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 818BE4231584618B00775392 /* PunchOnLogsViewController.m */; };
 		818BE42A1584689400775392 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 818BE4291584689400775392 /* MapKit.framework */; };
 		818BE42C1584689E00775392 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 818BE42B1584689E00775392 /* CoreLocation.framework */; };
+		819A6A1D1595D22E002ABA35 /* EnterLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 819A6A1B1595D22E002ABA35 /* EnterLocationViewController.m */; };
+		819A6A1E1595D22E002ABA35 /* EnterLocationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 819A6A1C1595D22E002ABA35 /* EnterLocationViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -124,6 +126,9 @@
 		818BE4231584618B00775392 /* PunchOnLogsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PunchOnLogsViewController.m; sourceTree = "<group>"; };
 		818BE4291584689400775392 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		818BE42B1584689E00775392 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		819A6A1A1595D22E002ABA35 /* EnterLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnterLocationViewController.h; sourceTree = "<group>"; };
+		819A6A1B1595D22E002ABA35 /* EnterLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnterLocationViewController.m; sourceTree = "<group>"; };
+		819A6A1C1595D22E002ABA35 /* EnterLocationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EnterLocationViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -288,6 +293,9 @@
 				814B25A8158B461C0067D161 /* MykiBalanceViewController.h */,
 				814B25A9158B461C0067D161 /* MykiBalanceViewController.m */,
 				814B25AA158B461C0067D161 /* MykiBalanceViewController.xib */,
+				819A6A1A1595D22E002ABA35 /* EnterLocationViewController.h */,
+				819A6A1B1595D22E002ABA35 /* EnterLocationViewController.m */,
+				819A6A1C1595D22E002ABA35 /* EnterLocationViewController.xib */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -395,6 +403,7 @@
 				815C1A2F157F836D0019419C /* EnterIssueViewController.xib in Resources */,
 				818020AB1585EC7300501773 /* images in Resources */,
 				814B25AC158B461D0067D161 /* MykiBalanceViewController.xib in Resources */,
+				819A6A1E1595D22E002ABA35 /* EnterLocationViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -445,6 +454,7 @@
 				8129EAD31591DD86004D0C6F /* TableViewCellForPunchOnLogs.m in Sources */,
 				8129EAE0159204F9004D0C6F /* TableViewHeaderHelper.m in Sources */,
 				8129EAEB1594B844004D0C6F /* MBProgressHUD.m in Sources */,
+				819A6A1D1595D22E002ABA35 /* EnterLocationViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
