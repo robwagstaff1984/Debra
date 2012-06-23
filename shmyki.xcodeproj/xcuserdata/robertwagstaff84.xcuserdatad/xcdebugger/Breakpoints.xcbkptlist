@@ -353,11 +353,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "shmyki/MykiBalanceViewController.m"
-         timestampString = "361789814.962941"
+         timestampString = "362105512.074797"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "159"
-         endingLineNumber = "159"
+         startingLineNumber = "170"
+         endingLineNumber = "170"
          landmarkName = "-tableView:cellForRowAtIndexPath:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -366,11 +366,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "shmyki/MykiBalanceViewController.m"
-         timestampString = "361789814.962941"
+         timestampString = "362105512.074797"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "132"
-         endingLineNumber = "132"
+         startingLineNumber = "143"
+         endingLineNumber = "143"
          landmarkName = "-showMykiAccountInformation"
          landmarkType = "5">
       </FileBreakpoint>
@@ -379,11 +379,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "shmyki/MykiBalanceViewController.m"
-         timestampString = "361789814.962941"
+         timestampString = "362105512.074797"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "185"
-         endingLineNumber = "185"
+         startingLineNumber = "196"
+         endingLineNumber = "196"
          landmarkName = "-textFieldDidBeginEditing:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -392,11 +392,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "shmyki/MykiBalanceViewController.m"
-         timestampString = "361789814.962941"
+         timestampString = "362105512.074797"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "186"
-         endingLineNumber = "186"
+         startingLineNumber = "197"
+         endingLineNumber = "197"
          landmarkName = "-textFieldDidBeginEditing:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -405,11 +405,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "shmyki/MykiBalanceViewController.m"
-         timestampString = "361789814.962941"
+         timestampString = "362105512.074797"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "187"
-         endingLineNumber = "187"
+         startingLineNumber = "198"
+         endingLineNumber = "198"
          landmarkName = "-textFieldDidBeginEditing:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -418,11 +418,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "shmyki/MykiBalanceViewController.m"
-         timestampString = "361789814.962941"
+         timestampString = "362105512.074797"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "202"
-         endingLineNumber = "202"
+         startingLineNumber = "213"
+         endingLineNumber = "213"
          landmarkName = "-textFieldDidEndEditing:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -431,11 +431,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "shmyki/MykiBalanceViewController.m"
-         timestampString = "361789814.962941"
+         timestampString = "362105512.074797"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "109"
-         endingLineNumber = "109"
+         startingLineNumber = "119"
+         endingLineNumber = "119"
          landmarkName = "-webViewDidFinishLoad:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -444,11 +444,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "shmyki/MykiBalanceViewController.m"
-         timestampString = "361610779.904919"
+         timestampString = "362068572.287413"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "25"
-         endingLineNumber = "25"
+         startingLineNumber = "26"
+         endingLineNumber = "26"
          landmarkName = "-initWithNibName:bundle:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -457,11 +457,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "shmyki/MykiBalanceViewController.m"
-         timestampString = "361630965.920982"
+         timestampString = "362105165.289812"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "73"
-         endingLineNumber = "73"
+         startingLineNumber = "75"
+         endingLineNumber = "75"
          landmarkName = "-viewDidLoad"
          landmarkType = "5">
       </FileBreakpoint>
@@ -470,11 +470,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "shmyki/MykiBalanceViewController.m"
-         timestampString = "361610796.626913"
+         timestampString = "362068572.287413"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "26"
-         endingLineNumber = "26"
+         startingLineNumber = "27"
+         endingLineNumber = "27"
          landmarkName = "-initWithNibName:bundle:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -509,11 +509,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "shmyki/MykiBalanceViewController.m"
-         timestampString = "361630965.920982"
+         timestampString = "362105165.289812"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "97"
-         endingLineNumber = "97"
+         startingLineNumber = "105"
+         endingLineNumber = "105"
          landmarkName = "-webViewDidFinishLoad:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -522,11 +522,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "shmyki/MykiBalanceViewController.m"
-         timestampString = "361630965.920982"
+         timestampString = "362105165.289812"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "87"
-         endingLineNumber = "87"
+         startingLineNumber = "94"
+         endingLineNumber = "94"
          landmarkName = "-retrieveMykiBalance"
          landmarkType = "5">
       </FileBreakpoint>
@@ -535,11 +535,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "shmyki/MykiBalanceViewController.m"
-         timestampString = "361630965.920982"
+         timestampString = "362105165.289812"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "94"
-         endingLineNumber = "94"
+         startingLineNumber = "102"
+         endingLineNumber = "102"
          landmarkName = "-webViewDidFinishLoad:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -548,11 +548,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "shmyki/MykiBalanceViewController.m"
-         timestampString = "361630965.920982"
+         timestampString = "362105165.289812"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "92"
-         endingLineNumber = "92"
+         startingLineNumber = "99"
+         endingLineNumber = "99"
          landmarkName = "-webViewDidFinishLoad:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -561,11 +561,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "shmyki/MykiBalanceViewController.m"
-         timestampString = "361630965.920982"
+         timestampString = "362105165.289812"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "98"
-         endingLineNumber = "98"
+         startingLineNumber = "106"
+         endingLineNumber = "106"
          landmarkName = "-webViewDidFinishLoad:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -626,11 +626,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "shmyki/MykiBalanceViewController.m"
-         timestampString = "361789878.195281"
+         timestampString = "362105165.289812"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "91"
-         endingLineNumber = "91"
+         startingLineNumber = "98"
+         endingLineNumber = "98"
          landmarkName = "-webViewDidFinishLoad:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -730,55 +730,55 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "shmyki/PunchOnViewController.m"
-         timestampString = "361891467.309226"
+         timestampString = "362068572.287413"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "251"
-         endingLineNumber = "251">
+         startingLineNumber = "253"
+         endingLineNumber = "253">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "shmyki/PunchOnViewController.m"
-         timestampString = "361891467.309226"
+         timestampString = "362068572.287413"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "237"
-         endingLineNumber = "237">
+         startingLineNumber = "239"
+         endingLineNumber = "239">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "shmyki/PunchOnViewController.m"
-         timestampString = "361891467.309226"
+         timestampString = "362068572.287413"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "224"
-         endingLineNumber = "224">
+         startingLineNumber = "226"
+         endingLineNumber = "226">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "shmyki/PunchOnViewController.m"
-         timestampString = "361891467.309226"
+         timestampString = "362068572.287413"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "218"
-         endingLineNumber = "218">
+         startingLineNumber = "220"
+         endingLineNumber = "220">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "shmyki/PunchOnViewController.m"
-         timestampString = "361891467.309226"
+         timestampString = "362068572.287413"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "195"
-         endingLineNumber = "195">
+         startingLineNumber = "197"
+         endingLineNumber = "197">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -987,6 +987,32 @@
          endingLineNumber = "12"
          landmarkName = "@implementation TableViewHeaderHelper"
          landmarkType = "3">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "shmyki/MykiBalanceViewController.m"
+         timestampString = "362068906.898878"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "31"
+         endingLineNumber = "31"
+         landmarkName = "-initWithNibName:bundle:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "shmyki/MykiBalanceViewController.m"
+         timestampString = "362105512.074797"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "292"
+         endingLineNumber = "292"
+         landmarkName = "-hudWasHidden:"
+         landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>
 </Bucket>

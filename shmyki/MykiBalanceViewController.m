@@ -16,6 +16,7 @@
 @synthesize topView, bottomView, loginTableView, loginScrollView, pageScrollView, balanceDisplayView;
 @synthesize usernameTextField, passwordTextField;
 @synthesize balanceHeaderLabel, balanceMykiPassExpiryLabel, balanceMykiPassAdditionalLabel, balanceMykiMoneyAmountLabel, balanceMykiMoneyAdditionalLabel, balanceFooterLabelOne, balanceFooterLabelTwo;
+@synthesize HUD;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -28,6 +29,7 @@
         mykiWebstiteWebView = [[UIWebView alloc] init];
         mykiWebstiteWebView.delegate = self;
         userIsLoggedIn = NO;
+
         [self retrieveMykiBalance];
 
         usernameTextField = [self setUpTextField:usernameTextField withText:@"Username" withUserDetail:[mykiAccountInformation mykiUsername] withReturnKey:UIReturnKeyNext withTag:USERNAME_TEXTFIELD_TAG];
@@ -84,11 +86,17 @@
 }
 
 -(void)retrieveMykiBalance {
+    HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    HUD.delegate = self;
+    HUD.dimBackground = YES;
+    HUD.labelText = @"Connecting";
+
     NSURLRequest *requestObj = [NSURLRequest requestWithURL:[NSURL URLWithString:mykiLoginUrl]];
     [mykiWebstiteWebView loadRequest:requestObj];
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
+   
     if(userIsLoggedIn) {
  
         NSString *fullURL = MYKI_ACCOUNT_INFO_URL;
@@ -97,15 +105,17 @@
         NSString *page = [NSString stringWithContentsOfURL:url encoding:NSASCIIStringEncoding error:&error];
     
         if([page length] == 0) {
-            NSLog(@"error",nil);
             self.errorLoadingBalance = YES;
             self.userIsLoggedIn = NO;
         } else {
             [mykiAccountInformation extractMykiAccountInfoFromHtml:page];
             self.errorLoadingBalance = NO;
             [self showMykiAccountInformation];
+            self.userIsLoggedIn = NO;
         }
+        [HUD hide:YES];
     } else {
+               
         NSString *populateUserNameJavascript = [NSString stringWithFormat:JAVASCRIPT_ENTER_USERNAME, [mykiAccountInformation mykiUsername]];
         NSString *populatePasswordJavascript = [NSString stringWithFormat:JAVASCRIPT_ENTER_PASSWORD, [mykiAccountInformation mykiPassword]];
         NSString *submitMykiLoginField = JAVASCRIPT_CLICK_SUBMIT; 
@@ -114,7 +124,8 @@
         [self.mykiWebstiteWebView stringByEvaluatingJavaScriptFromString: populatePasswordJavascript];
         [self.mykiWebstiteWebView stringByEvaluatingJavaScriptFromString:submitMykiLoginField]; 
 
-        userIsLoggedIn = YES;        
+        userIsLoggedIn = YES;   
+        HUD.labelText = @"Retrieving Balance";
     }
 }
 
@@ -209,7 +220,7 @@
             [passwordTextField setText: @"Password"];
             [passwordTextField setTextColor:[UIColor grayColor]];
         } else {
-            [self retryRetrieveMykiBalance];
+            [self retrieveMykiBalance];
         }
     }
 }
@@ -271,6 +282,15 @@
     [mykiAccountInformation saveAccountInformation];
     self.userIsLoggedIn = NO;
     [self retrieveMykiBalance];
+}
+
+#pragma mark -
+#pragma mark MBProgressHUDDelegate methods
+
+- (void)hudWasHidden:(MBProgressHUD *)hud {
+	// Remove HUD from screen when the HUD was hidded
+	[HUD removeFromSuperview];
+	HUD = nil;
 }
 
      

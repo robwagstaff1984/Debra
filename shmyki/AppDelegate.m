@@ -39,6 +39,7 @@
 
     UINavigationController *mykiBalanceNavController = [[UINavigationController alloc] initWithRootViewController:mykiBalanceViewController];
     
+    
     self.tabBarController = [[UITabBarController alloc] init];
     self.tabBarController.viewControllers = [NSArray arrayWithObjects:punchOnNavController, inspectorMapViewController, mykiBalanceNavController, nil];
     

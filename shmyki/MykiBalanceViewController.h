@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "MykiAccountInformation.h"
+#import "MBProgressHUD.h"
 
-@interface MykiBalanceViewController : UIViewController <UIWebViewDelegate, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
+@interface MykiBalanceViewController : UIViewController <UIWebViewDelegate, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, MBProgressHUDDelegate>
 
 
 @property (nonatomic, strong) NSString *mykiLoginUrl;
@@ -34,6 +35,9 @@
 @property (nonatomic, strong) IBOutlet UILabel* balanceFooterLabelOne;
 @property (nonatomic, strong) IBOutlet UILabel* balanceFooterLabelTwo;
 
+@property (nonatomic, strong) MBProgressHUD *HUD;
+
 -(void)retrieveMykiBalance;
+- (void)webViewDidFinishLoad:(UIWebView *)webView;
 
 @end
