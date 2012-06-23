@@ -108,7 +108,7 @@
         case UIGestureRecognizerStateEnded:
             
             [self panCommentsTableViewToAppropriateStateForLocation:punchOnCommentsLocation];
-            
+           
             
             break;
             
@@ -177,6 +177,7 @@
 
 -(void) panCommentsTableViewToAppropriateStateForLocation:(CGPoint)tableViewCenterLocation{
     int threshold = ((COMMENTS_ORIGIN_TO_ANCHOR_BOTTOM - COMMENTS_ORIGIN_TO_ANCHOR_TOP) /2) + COMMENTS_ORIGIN_TO_ANCHOR_TOP;
+    int shouldReplaceHeader = YES;
     if(tableViewCenterLocation.y < threshold) {
         tableViewCenterLocation.y = COMMENTS_ORIGIN_TO_ANCHOR_TOP;
         punchOnCommentsTableView.scrollEnabled = YES;
@@ -184,10 +185,15 @@
         [punchOnCommentsView removeGestureRecognizer:_panGestureRecognizerForCommentsView];
     } else {
         tableViewCenterLocation.y = COMMENTS_ORIGIN_TO_ANCHOR_BOTTOM;
+        shouldReplaceHeader = _commentsTableViewIsUp;
         _commentsTableViewIsUp = NO;
         punchOnCommentsTableView.scrollEnabled = NO;
     }
     [self panCommentsTableToLocationY: tableViewCenterLocation.y];
+    
+    if(shouldReplaceHeader) {
+        [self toggleTableViewHeaderWithFadeEffect:YES];
+    }
 }
 
 -(void) panCommentsTableToLocationY:(int)locationY {
@@ -197,42 +203,42 @@
     panToLocation.y = locationY;
     punchOnCommentsView.center = panToLocation;
     //   self.punchOnCommentsTableView.tableHeaderView = [TableViewHeaderHelper makeTableUpHeaderWith:1021];
-    self.punchOnCommentsTableView.tableHeaderView = [TableViewHeaderHelper makeTableDownHeader];
+    //self.punchOnCommentsTableView.tableHeaderView = [TableViewHeaderHelper makeTableDownHeader];
     [UIView commitAnimations];
 
 }
 
-- (void)toggleCommentsTableViewUpAndDown:(UITapGestureRecognizer *)recognizer
+- (void)toggleCommentsTableViewUpAndDown
 {
     if(_commentsTableViewIsUp)  {
         _commentsTableViewIsUp = NO;
         self.punchOnCommentsTableView.scrollEnabled = NO;
         [self panCommentsTableToLocationY:COMMENTS_ORIGIN_TO_ANCHOR_BOTTOM];
         [self.punchOnCommentsView addGestureRecognizer:_panGestureRecognizerForCommentsView];
-        [self toggleTableViewHeader];
+        [self toggleTableViewHeaderWithFadeEffect:YES];
     } else {
         _commentsTableViewIsUp = YES;
         self.punchOnCommentsTableView.scrollEnabled = YES;
         [self panCommentsTableToLocationY:COMMENTS_ORIGIN_TO_ANCHOR_TOP];
         [self.punchOnCommentsView removeGestureRecognizer:_panGestureRecognizerForCommentsView];
-        [self toggleTableViewHeader];
+        [self toggleTableViewHeaderWithFadeEffect:YES];
     }
 }
 
--(void) toggleTableViewHeader {
+-(void) toggleTableViewHeaderWithFadeEffect:(BOOL)fadeEffect {
     
     if(_commentsTableViewIsUp) {
         self.punchOnCommentsTableView.tableHeaderView = [TableViewHeaderHelper makeTableUpHeaderWith:1021];
-        [self addGesturesToTableViewHeaderWithFadeEffect:YES];
+        [self addGesturesToTableViewHeaderWithFadeEffect:fadeEffect];
     } else {
         self.punchOnCommentsTableView.tableHeaderView = [TableViewHeaderHelper makeTableDownHeader];
-        [self addGesturesToTableViewHeaderWithFadeEffect:YES];
+        [self addGesturesToTableViewHeaderWithFadeEffect:fadeEffect];
     }
 }
 
 
 -(void) addGesturesToTableViewHeaderWithFadeEffect:(BOOL)fadeEffect {
-    UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(toggleCommentsTableViewUpAndDown:)];
+    UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(toggleCommentsTableViewUpAndDown)];
     NSArray *tableHeaderSubViews = self.punchOnCommentsTableView.tableHeaderView.subviews;
 
     if(fadeEffect) {
