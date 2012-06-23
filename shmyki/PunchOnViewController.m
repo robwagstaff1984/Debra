@@ -51,7 +51,8 @@
     self.punchOnCommentsTableView.scrollEnabled =NO;
     self.punchOnCommentsTableView.allowsSelection = NO;
     self.punchOnCommentsTableView.tableHeaderView.userInteractionEnabled = YES;
-    [self addTableViewHeader];
+    self.punchOnCommentsTableView.tableHeaderView = [TableViewHeaderHelper makeTableDownHeader];
+    [self addGesturesToTableViewHeaderWithFadeEffect:NO];
     [punchOnCommentsView addGestureRecognizer:_panGestureRecognizerForCommentsView];
 }
 
@@ -149,20 +150,6 @@
     
     return messageLabelSize.height + dateLabelSize.height + (CELL_CONTENT_VERTICAL_MARGIN * 3);
     
-}
-
--(void) addTableViewHeader {
-   
-    self.punchOnCommentsTableView.tableHeaderView = [TableViewHeaderHelper makeFullScreenHeaderWith:1021];
-    UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(toggleCommentsTableViewUpAndDown:)];
-    NSArray *tableHeaderSubViews = self.punchOnCommentsTableView.tableHeaderView.subviews;
-
-    for (UIView* tableHeaderSubView in tableHeaderSubViews) {
-        if(tableHeaderSubView.tag == TAG_FOR_CLOSE_BUTTON_LABEL) {
-            [tableHeaderSubView addGestureRecognizer:recognizer];
-        }
-    }
-    
 }  
 
 #pragma mark Parse 
@@ -209,6 +196,8 @@
     CGPoint panToLocation = punchOnCommentsView.center;
     panToLocation.y = locationY;
     punchOnCommentsView.center = panToLocation;
+    //   self.punchOnCommentsTableView.tableHeaderView = [TableViewHeaderHelper makeTableUpHeaderWith:1021];
+    self.punchOnCommentsTableView.tableHeaderView = [TableViewHeaderHelper makeTableDownHeader];
     [UIView commitAnimations];
 
 }
@@ -220,11 +209,43 @@
         self.punchOnCommentsTableView.scrollEnabled = NO;
         [self panCommentsTableToLocationY:COMMENTS_ORIGIN_TO_ANCHOR_BOTTOM];
         [self.punchOnCommentsView addGestureRecognizer:_panGestureRecognizerForCommentsView];
+        [self toggleTableViewHeader];
     } else {
         _commentsTableViewIsUp = YES;
         self.punchOnCommentsTableView.scrollEnabled = YES;
         [self panCommentsTableToLocationY:COMMENTS_ORIGIN_TO_ANCHOR_TOP];
         [self.punchOnCommentsView removeGestureRecognizer:_panGestureRecognizerForCommentsView];
+        [self toggleTableViewHeader];
+    }
+}
+
+-(void) toggleTableViewHeader {
+    
+    if(_commentsTableViewIsUp) {
+        self.punchOnCommentsTableView.tableHeaderView = [TableViewHeaderHelper makeTableUpHeaderWith:1021];
+        [self addGesturesToTableViewHeaderWithFadeEffect:YES];
+    } else {
+        self.punchOnCommentsTableView.tableHeaderView = [TableViewHeaderHelper makeTableDownHeader];
+        [self addGesturesToTableViewHeaderWithFadeEffect:YES];
+    }
+}
+
+
+-(void) addGesturesToTableViewHeaderWithFadeEffect:(BOOL)fadeEffect {
+    UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(toggleCommentsTableViewUpAndDown:)];
+    NSArray *tableHeaderSubViews = self.punchOnCommentsTableView.tableHeaderView.subviews;
+
+    if(fadeEffect) {
+        self.punchOnCommentsTableView.tableHeaderView.alpha = 0;
+        [UIView beginAnimations:nil context:NULL];
+        [UIView setAnimationDuration:.6f];
+        self.punchOnCommentsTableView.tableHeaderView.alpha = 1;
+        [UIView commitAnimations];
+    }
+    for (UIView* tableHeaderSubView in tableHeaderSubViews) {
+        if(tableHeaderSubView.tag == TAG_FOR_CLOSE_BUTTON_LABEL) {
+            [tableHeaderSubView addGestureRecognizer:recognizer];
+        }
     }
 }
 

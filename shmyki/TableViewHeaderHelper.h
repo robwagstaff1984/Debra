@@ -10,6 +10,6 @@
 
 @interface TableViewHeaderHelper : NSObject
 
-+(UIView*) makeFullScreenHeaderWith:(int)numberOfPunchOns;
-
++(UIView*) makeTableUpHeaderWith:(int)numberOfPunchOns;
++(UIView*) makeTableDownHeader;
 @end

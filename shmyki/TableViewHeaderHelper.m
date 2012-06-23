@@ -11,7 +11,7 @@
 
 @implementation TableViewHeaderHelper
 
-+(UIView*) makeFullScreenHeaderWith:(int)numberOfPunchOns {
++(UIView*) makeTableUpHeaderWith:(int)numberOfPunchOns {
     
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0,0,320,80)];
                                
@@ -50,5 +50,24 @@
     [headerView addSubview:closeButtonImage];
     return headerView;
 }
+
++(UIView*) makeTableDownHeader {
+    
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0,0,320,25)];
+    
+    UILabel *closeButton = [[UILabel alloc] initWithFrame:CGRectMake(240,5, 90, 25)];
+    closeButton.text = @"1021";
+    closeButton.tag = TAG_FOR_CLOSE_BUTTON_LABEL;
+    closeButton.userInteractionEnabled = YES;
+    
+    UIImageView *closeButtonImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"images/IconArrowDown"]];
+    
+    closeButtonImage.frame = CGRectMake(300, 12, 12, 12);
+    
+    [headerView addSubview:closeButton];
+    [headerView addSubview:closeButtonImage];
+    return headerView;
+}
+
 
 @end
