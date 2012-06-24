@@ -28,7 +28,7 @@
 }
 
 -(void) addTrainLocations {
-    
+    [self.trainLocations addObject:@"A train location"];
 }
 
 
@@ -63,11 +63,12 @@
     [self.tramLocations addObject:@"96 - East Brunswick - St Kilda Beach"];
     [self.tramLocations addObject:@"109 - Box Hill - Port Melbourne"];
     [self.tramLocations addObject:@"112 - West Preston - St Kilda"];
+    //[self.tramLocations sortUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
 }
 
 
 -(void) addBusLocations {
-    
+    [self.busLocations addObject:@"A bus location"];
 }
 
 -(NSInteger)getNumberOfStationsForSelectedTransport:(NSInteger)selectedTransportType {
@@ -82,10 +83,14 @@
 
 -(NSMutableArray*)getStationsForSelectedTransport:(NSInteger)selectedTransportType {
     if(selectedTransportType == SELECTED_TRANSPORT_TRAIN) {
+
+       
         return self.trainLocations;
     } else if(selectedTransportType == SELECTED_TRANSPORT_BUS)  {
-        return self.busLocations;
+       // [self.busLocations sortUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
+        return self.busLocations ;
     } else  {
+        //[self.tramLocations sortUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
         return self.tramLocations;
     }
 }

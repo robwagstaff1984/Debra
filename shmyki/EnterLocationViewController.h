@@ -15,4 +15,13 @@
 @property (nonatomic, strong) StationLocations *stationLocations;
 @property (nonatomic, strong) IBOutlet UITableView *stationsTable;
 
+@property (nonatomic, strong) IBOutlet UIButton *tramButton;
+@property (nonatomic, strong) IBOutlet UIButton *trainButton;
+@property (nonatomic, strong) IBOutlet UIButton *busButton;
+@property (nonatomic, strong) IBOutlet NSMutableArray *stationsForCurrentSelection;
+
+- (IBAction)tramButtonTapped:(id)sender;
+- (IBAction)trainButtonTapped:(id)sender;
+- (IBAction)busButtonTapped:(id)sender;
+
 @end

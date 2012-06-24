@@ -11,8 +11,8 @@
 
 @implementation EnterLocationViewController
 
-@synthesize selectedTransportType, stationLocations, stationsTable;
-
+@synthesize selectedTransportType, stationLocations, stationsTable, tramButton, trainButton, busButton;
+@synthesize stationsForCurrentSelection;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -20,6 +20,8 @@
     if (self) {
         selectedTransportType = SELECTED_TRANSPORT_TRAM;
         stationLocations = [[StationLocations alloc] init];
+        stationsForCurrentSelection = [[NSMutableArray alloc] init];
+        stationsForCurrentSelection = [stationLocations getStationsForSelectedTransport:selectedTransportType];
     }
     return self;
 }
@@ -49,11 +51,8 @@
 #pragma mark tableView data source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-  return [stationLocations getNumberOfStationsForSelectedTransport:selectedTransportType];
+    return [self.stationsForCurrentSelection count];
 }
-
-// Row display. Implementers should *always* try to reuse cells by setting each cell's reuseIdentifier and querying for available reusable cells with dequeueReusableCellWithIdentifier:
-// Cell gets various attributes set automatically based on table (separators) and data source (accessory views, editing controls)
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
@@ -61,19 +60,19 @@
     static NSString *cellIdentifier = @"stationLocationCell";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-    
+   // 
     if(cell == nil) {
         cell= [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault 
-                                     reuseIdentifier:cellIdentifier];
+                                    reuseIdentifier:cellIdentifier];
         
         
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell.textLabel.text = [[stationLocations getStationsForSelectedTransport:selectedTransportType] objectAtIndex:indexPath.row];
+
+        cell.selectionStyle = UITableViewCellSelectionStyleBlue;
         
     }
+    cell.textLabel.text = [self.stationsForCurrentSelection objectAtIndex:indexPath.row];
+   
     return cell;
-    
-    
 }
 
 
@@ -81,6 +80,22 @@
 
 -(void) savePunchOnLog {
     
+}
+
+- (IBAction)tramButtonTapped:(id)sender {
+    self.selectedTransportType = SELECTED_TRANSPORT_TRAM;
+    self.stationsForCurrentSelection = [stationLocations getStationsForSelectedTransport:selectedTransportType];
+    [self.stationsTable reloadData];
+}
+- (IBAction)trainButtonTapped:(id)sender {
+    self.selectedTransportType = SELECTED_TRANSPORT_TRAIN;
+    self.stationsForCurrentSelection = [stationLocations getStationsForSelectedTransport:selectedTransportType];
+    [self.stationsTable reloadData];
+}
+- (IBAction)busButtonTapped:(id)sender {
+    self.selectedTransportType = SELECTED_TRANSPORT_BUS;
+    self.stationsForCurrentSelection = [stationLocations getStationsForSelectedTransport:selectedTransportType];
+    [self.stationsTable reloadData];
 }
 
 @end

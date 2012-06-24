@@ -49,7 +49,7 @@
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] 
                                                                     initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self
                                                                     action:@selector(issueEntered)];
-    self.navigationItem.rightBarButtonItem.enabled = NO;
+    //self.navigationItem.rightBarButtonItem.enabled = NO;
     
     
     [super viewDidLoad];
