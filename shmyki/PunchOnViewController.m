@@ -15,17 +15,17 @@
 #import "TableViewHeaderHelper.h"
 
 @implementation PunchOnViewController
-@synthesize punchOnCommentsView, punchOnCommentsTableView, listOfPunchOnLogs;
+@synthesize punchOnCommentsView, punchOnCommentsTableView, listOfPunchOnLogs, totalPunchOns;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
+        [self updatePunchOnLogs];
         [self.tabBarItem setTitle:@"Punch On"];
         [[self navigationItem] setTitle:APP_NAME];
         self.tabBarItem.image = [UIImage imageNamed:@"images/TabPunchOff"];
         self.listOfPunchOnLogs = [[NSMutableArray alloc] initWithCapacity:MAX_PUNCH_ON_LOGS_RETRIEVED];
-        [self updatePunchOnLogs];
     }
     return self;
 }
@@ -47,11 +47,10 @@
     
     _panGestureRecognizerForCommentsView = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handleCustomPan:)];
     _panGestureRecognizerForCommentsView.delegate = self;
-    //self.punchOnCommentsTableView.userInteractionEnabled= NO;
     self.punchOnCommentsTableView.scrollEnabled =NO;
     self.punchOnCommentsTableView.allowsSelection = NO;
     self.punchOnCommentsTableView.tableHeaderView.userInteractionEnabled = YES;
-    self.punchOnCommentsTableView.tableHeaderView = [TableViewHeaderHelper makeTableDownHeader];
+    self.punchOnCommentsTableView.tableHeaderView = [TableViewHeaderHelper makeTableDownHeaderWith:self.totalPunchOns];
     [self addGesturesToTableViewHeaderWithFadeEffect:NO];
     [punchOnCommentsView addGestureRecognizer:_panGestureRecognizerForCommentsView];
 }
@@ -157,18 +156,21 @@
 -(void) updatePunchOnLogs {
     PFQuery *query = [PFQuery queryWithClassName:@"PunchOnLog"];
     [query addDescendingOrder:@"createdAt"];
-    query.limit = MAX_PUNCH_ON_LOGS_RETRIEVED;
+   // query.limit = MAX_PUNCH_ON_LOGS_RETRIEVED;
     [query findObjectsInBackgroundWithBlock:^(NSArray *punchOnLogParseObjects, NSError *error) {
-        
+            
+        self.totalPunchOns = [punchOnLogParseObjects count];
         PFObject *punchOnLogParseObject;
-        for(int i=0; i <[punchOnLogParseObjects count]; i++) {
+        for(int i=0; (i <[punchOnLogParseObjects count] && i < MAX_PUNCH_ON_LOGS_RETRIEVED); i++) {
             punchOnLogParseObject = [punchOnLogParseObjects objectAtIndex:i];
             PunchOnLog *punchOnLog = [[PunchOnLog alloc] init];
             [punchOnLog setMessage:[punchOnLogParseObject objectForKey:@"message"]];
             [punchOnLog setLocation:[punchOnLogParseObject objectForKey:@"location"]];
             [self.listOfPunchOnLogs addObject:punchOnLog];
         }
-        [punchOnCommentsTableView reloadData];
+        [self.punchOnCommentsTableView reloadData];
+        [(UILabel*)[self.punchOnCommentsTableView.tableHeaderView.subviews objectAtIndex:TOTAL_PUNCH_ONS_SUBVIEW_NUMBER] setText: [[NSNumber numberWithInt:self.totalPunchOns] stringValue]];
+
     }];
 
 }
@@ -202,8 +204,6 @@
     CGPoint panToLocation = punchOnCommentsView.center;
     panToLocation.y = locationY;
     punchOnCommentsView.center = panToLocation;
-    //   self.punchOnCommentsTableView.tableHeaderView = [TableViewHeaderHelper makeTableUpHeaderWith:1021];
-    //self.punchOnCommentsTableView.tableHeaderView = [TableViewHeaderHelper makeTableDownHeader];
     [UIView commitAnimations];
 
 }
@@ -228,10 +228,10 @@
 -(void) toggleTableViewHeaderWithFadeEffect:(BOOL)fadeEffect {
     
     if(_commentsTableViewIsUp) {
-        self.punchOnCommentsTableView.tableHeaderView = [TableViewHeaderHelper makeTableUpHeaderWith:1021];
+        self.punchOnCommentsTableView.tableHeaderView = [TableViewHeaderHelper makeTableUpHeaderWith:self.totalPunchOns];
         [self addGesturesToTableViewHeaderWithFadeEffect:fadeEffect];
     } else {
-        self.punchOnCommentsTableView.tableHeaderView = [TableViewHeaderHelper makeTableDownHeader];
+        self.punchOnCommentsTableView.tableHeaderView = [TableViewHeaderHelper makeTableDownHeaderWith:self.totalPunchOns];
         [self addGesturesToTableViewHeaderWithFadeEffect:fadeEffect];
     }
 }

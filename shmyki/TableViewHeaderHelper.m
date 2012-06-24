@@ -44,19 +44,20 @@
 //    headerView.backgroundColor = [UIColor greenColor];
 //    closeButton.backgroundColor = [UIColor yellowColor];
 //    closeButtonImage.backgroundColor = [UIColor purpleColor];
-    
+   
     [headerView addSubview:headerLabel];
     [headerView addSubview:closeButton];
     [headerView addSubview:closeButtonImage];
+
     return headerView;
 }
 
-+(UIView*) makeTableDownHeader {
++(UIView*) makeTableDownHeaderWith:(int)numberOfPunchOns {
     
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0,0,320,25)];
     
     UILabel *closeButton = [[UILabel alloc] initWithFrame:CGRectMake(240,5, 90, 25)];
-    closeButton.text = @"1021";
+    closeButton.text = [[NSNumber numberWithInt:numberOfPunchOns] stringValue];
     closeButton.tag = TAG_FOR_CLOSE_BUTTON_LABEL;
     closeButton.userInteractionEnabled = YES;
     

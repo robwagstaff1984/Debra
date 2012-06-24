@@ -19,6 +19,7 @@
 @property (nonatomic, strong) IBOutlet UIView *punchOnCommentsView;
 @property (nonatomic, strong) IBOutlet UITableView *punchOnCommentsTableView;
 @property (nonatomic, strong) NSMutableArray *listOfPunchOnLogs;
+@property (nonatomic) NSInteger totalPunchOns;
 
 - (IBAction)punchOnButtonPressed:(id)sender;
 //- (void) touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event;

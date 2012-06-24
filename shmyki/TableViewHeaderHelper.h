@@ -11,5 +11,5 @@
 @interface TableViewHeaderHelper : NSObject
 
 +(UIView*) makeTableUpHeaderWith:(int)numberOfPunchOns;
-+(UIView*) makeTableDownHeader;
++(UIView*) makeTableDownHeaderWith:(int)numberOfPunchOns;
 @end
