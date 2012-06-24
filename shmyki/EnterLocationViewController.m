@@ -97,29 +97,6 @@
     [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
     [[tableView cellForRowAtIndexPath:indexPath] setSelected:NO animated:YES];
 }
-/*
-- (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    //UITableViewCell *selectedTableViewCell = [self.stationsTable cellForRowAtIndexPath:indexPath];
-    //[selectedTableViewCell setSelectionStyle:UITableViewCellSelectionStyleBlue];
-    
-    return indexPath;
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    UITableViewCell* newCell = [tableView cellForRowAtIndexPath:indexPath]; 
-    int newRow = [indexPath row]; 
-    int oldRow = (lastIndexPath != nil) ? [lastIndexPath row] : -1; 
-    
-    if(newRow != oldRow) 
-    { 
-        newCell.accessoryType = UITableViewCellAccessoryCheckmark; 
-        UITableViewCell* oldCell = [tableView cellForRowAtIndexPath:lastIndexPath]; 
-        oldCell.accessoryType = UITableViewCellAccessoryNone;
-        lastIndexPath = indexPath; 
-    } 
-    [newCell setSelected:NO animated:YES];
-}*/
 
 #pragma mark Actions
 

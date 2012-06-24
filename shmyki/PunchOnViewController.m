@@ -169,7 +169,7 @@
             [self.listOfPunchOnLogs addObject:punchOnLog];
         }
         [self.punchOnCommentsTableView reloadData];
-        [(UILabel*)[self.punchOnCommentsTableView.tableHeaderView.subviews objectAtIndex:TOTAL_PUNCH_ONS_SUBVIEW_NUMBER] setText: [[NSNumber numberWithInt:self.totalPunchOns] stringValue]];
+        [(UILabel*)[self.punchOnCommentsTableView.tableHeaderView.subviews objectAtIndex:TOTAL_PUNCH_ONS_SUBVIEW_NUMBER] setText: [NSString stringWithFormat:@"%@        ",[[NSNumber numberWithInt:totalPunchOns] stringValue]]];
 
     }];
 
