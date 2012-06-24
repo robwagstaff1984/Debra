@@ -138,6 +138,8 @@
     } else {
         [balanceMykiPassExpiryLabel setText: [mykiAccountInformation currentMykiPassActive]];
         [balanceMykiMoneyAmountLabel setText: [mykiAccountInformation currentMykiMoneyBalance]];
+        [balanceMykiMoneyAdditionalLabel setText:[mykiAccountInformation mykiMoneyTopUpInProgress]];
+        [balanceMykiPassAdditionalLabel setText:[mykiAccountInformation currentMykiPassNotYetActive]];
 
     }
        /* [cardHolderLabel setText:[mykiAccountInformation cardHolder]];

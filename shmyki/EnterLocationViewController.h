@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "StationLocations.h"
 
-@interface EnterLocationViewController : UIViewController
+@interface EnterLocationViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+
+@property NSInteger selectedTransportType;
+@property (nonatomic, strong) StationLocations *stationLocations;
+@property (nonatomic, strong) IBOutlet UITableView *stationsTable;
 
 @end

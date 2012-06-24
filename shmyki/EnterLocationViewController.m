@@ -7,18 +7,19 @@
 //
 
 #import "EnterLocationViewController.h"
-
-@interface EnterLocationViewController ()
-
-@end
+#import "ShmykiContstants.h"
 
 @implementation EnterLocationViewController
+
+@synthesize selectedTransportType, stationLocations, stationsTable;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        selectedTransportType = SELECTED_TRANSPORT_TRAM;
+        stationLocations = [[StationLocations alloc] init];
     }
     return self;
 }
@@ -44,6 +45,37 @@
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
+
+#pragma mark tableView data source
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+  return [stationLocations getNumberOfStationsForSelectedTransport:selectedTransportType];
+}
+
+// Row display. Implementers should *always* try to reuse cells by setting each cell's reuseIdentifier and querying for available reusable cells with dequeueReusableCellWithIdentifier:
+// Cell gets various attributes set automatically based on table (separators) and data source (accessory views, editing controls)
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    
+    static NSString *cellIdentifier = @"stationLocationCell";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    
+    if(cell == nil) {
+        cell= [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault 
+                                     reuseIdentifier:cellIdentifier];
+        
+        
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.textLabel.text = [[stationLocations getStationsForSelectedTransport:selectedTransportType] objectAtIndex:indexPath.row];
+        
+    }
+    return cell;
+    
+    
+}
+
 
 #pragma mark Actions
 

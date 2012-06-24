@@ -51,6 +51,7 @@
 		818BE42C1584689E00775392 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 818BE42B1584689E00775392 /* CoreLocation.framework */; };
 		819A6A1D1595D22E002ABA35 /* EnterLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 819A6A1B1595D22E002ABA35 /* EnterLocationViewController.m */; };
 		819A6A1E1595D22E002ABA35 /* EnterLocationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 819A6A1C1595D22E002ABA35 /* EnterLocationViewController.xib */; };
+		819A6A221596C5F4002ABA35 /* StationLocations.m in Sources */ = {isa = PBXBuildFile; fileRef = 819A6A211596C5F4002ABA35 /* StationLocations.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -129,6 +130,8 @@
 		819A6A1A1595D22E002ABA35 /* EnterLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnterLocationViewController.h; sourceTree = "<group>"; };
 		819A6A1B1595D22E002ABA35 /* EnterLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnterLocationViewController.m; sourceTree = "<group>"; };
 		819A6A1C1595D22E002ABA35 /* EnterLocationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EnterLocationViewController.xib; sourceTree = "<group>"; };
+		819A6A201596C5F4002ABA35 /* StationLocations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StationLocations.h; sourceTree = "<group>"; };
+		819A6A211596C5F4002ABA35 /* StationLocations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StationLocations.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -321,6 +324,8 @@
 				814B25B6158B7A2A0067D161 /* MykiAccountInformation.m */,
 				8129EACB1591C94D004D0C6F /* PunchOnLog.h */,
 				8129EACC1591C94D004D0C6F /* PunchOnLog.m */,
+				819A6A201596C5F4002ABA35 /* StationLocations.h */,
+				819A6A211596C5F4002ABA35 /* StationLocations.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -455,6 +460,7 @@
 				8129EAE0159204F9004D0C6F /* TableViewHeaderHelper.m in Sources */,
 				8129EAEB1594B844004D0C6F /* MBProgressHUD.m in Sources */,
 				819A6A1D1595D22E002ABA35 /* EnterLocationViewController.m in Sources */,
+				819A6A221596C5F4002ABA35 /* StationLocations.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -61,7 +61,7 @@
     closeButton.tag = TAG_FOR_CLOSE_BUTTON_LABEL;
     closeButton.userInteractionEnabled = YES;
     
-    UIImageView *closeButtonImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"images/IconArrowDown"]];
+    UIImageView *closeButtonImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"images/IconArrowUp"]];
     
     closeButtonImage.frame = CGRectMake(300, 12, 12, 12);
     
