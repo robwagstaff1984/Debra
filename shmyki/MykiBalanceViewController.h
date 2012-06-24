@@ -20,6 +20,7 @@
 @property (nonatomic, strong) MykiAccountInformation *mykiAccountInformation;
 @property (nonatomic, strong) IBOutlet UIView *topView;
 @property (nonatomic, strong) IBOutlet UIView *bottomView;
+@property (nonatomic, strong) IBOutlet UIView *errorView;
 @property (nonatomic, strong) IBOutlet UITableView *loginTableView;
 @property (nonatomic, strong) IBOutlet UIScrollView *loginScrollView;
 @property (nonatomic, strong) UITextField *usernameTextField;
@@ -40,5 +41,6 @@
 
 -(void)retrieveMykiBalance;
 - (void)webViewDidFinishLoad:(UIWebView *)webView;
+-(IBAction)tryAgainButtonTapped:(id)sender;
 
 @end

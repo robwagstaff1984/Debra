@@ -34,7 +34,7 @@
 //    NSLog(currentMykiPassActiveToSet);
 //    currentMykiPassActive = currentMykiPassActiveToSet;
 //}
- 
+
 -(void) extractMykiAccountInfoFromHtml:(NSString*) page {
 
     [self setCardHolder:[self extractInformationFromHtml:page withRegeEx:REG_EX_CARD_HOLDER]];
@@ -48,6 +48,11 @@
     [self setCurrentMykiPassActive: [self convertMykiPassActiveToDays:[self extractInformationFromHtml:page withRegeEx:REG_EX_CURRENT_MYKI_PASS_ACTIVE]]];
     [self setCurrentMykiPassNotYetActive:[self extractInformationFromHtml:page withRegeEx:REG_EX_CURRENT_MYKI_PASS_NOT_YET_ACTIVE]];
     [self setLastMykiTransactionDate:[self extractInformationFromHtml:page withRegeEx:REG_EX_LAST_MYKI_TRANSACTION_DATE]];
+}
+
+-(BOOL)isLoginUnsuccessful:(NSString*)page {
+    NSString *loggedInPageTitle = [self extractInformationFromHtml:page withRegeEx:REG_EX_ERROR_LOGGING_IN];
+    return [loggedInPageTitle isEqualToString:@"Myki-Session Expired"];
 }
 
 -(NSString*) convertMykiPassActiveToDays:(NSString*)currentMykiPassActiveRaw {

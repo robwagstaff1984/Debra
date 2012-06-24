@@ -27,4 +27,5 @@
 -(void) saveAccountInformation;
 -(void) loadAccountInformation;
 -(void) extractMykiAccountInfoFromHtml:(NSString*) page;
+-(BOOL) isLoginUnsuccessful:(NSString*)page;
 @end

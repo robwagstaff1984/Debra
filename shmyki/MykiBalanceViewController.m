@@ -13,7 +13,7 @@
 @implementation MykiBalanceViewController
 
 @synthesize mykiLoginUrl, mykiWebstiteWebView, userIsLoggedIn, mykiAccountInformation, errorLoadingBalance;
-@synthesize topView, bottomView, loginTableView, loginScrollView, pageScrollView, balanceDisplayView;
+@synthesize topView, bottomView, loginTableView, loginScrollView, pageScrollView, balanceDisplayView, errorView;
 @synthesize usernameTextField, passwordTextField;
 @synthesize balanceHeaderLabel, balanceMykiPassExpiryLabel, balanceMykiPassAdditionalLabel, balanceMykiMoneyAmountLabel, balanceMykiMoneyAdditionalLabel, balanceFooterLabelOne, balanceFooterLabelTwo, balanceSeperatorImage;
 @synthesize HUD;
@@ -38,6 +38,11 @@
         [self setTitle:@"Balances"];
         [[self navigationItem] setTitle:@"Balances"];
         self.tabBarItem.image = [UIImage imageNamed:@"images/TabBalanceOff"];
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] 
+                                                  initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self
+                                                  action:@selector(switchToLoginState)];
+        self.navigationItem.rightBarButtonItem.enabled = NO;
+
         
     }
     return self;
@@ -104,17 +109,19 @@
         NSError *error;
         NSString *page = [NSString stringWithContentsOfURL:url encoding:NSASCIIStringEncoding error:&error];
     
-        if([page length] == 0) {
+        if([page length] == 0 || [mykiAccountInformation isLoginUnsuccessful:page]) {
             self.errorLoadingBalance = YES;
             self.userIsLoggedIn = NO;
+            [self switchToErrorState];
         } else {
             [mykiAccountInformation extractMykiAccountInfoFromHtml:page];
             self.errorLoadingBalance = NO;
             [self showMykiAccountInformation];
             self.userIsLoggedIn = NO;
-            [self moveLoginViewDown];
+            [self switchToSuccessState];
         }
         [HUD hide:YES];
+        self.navigationItem.rightBarButtonItem.enabled = YES;
     } else {
                
         NSString *populateUserNameJavascript = [NSString stringWithFormat:JAVASCRIPT_ENTER_USERNAME, [mykiAccountInformation mykiUsername]];
@@ -223,7 +230,7 @@
             [passwordTextField setText: @"Password"];
             [passwordTextField setTextColor:[UIColor grayColor]];
         } else {
-            [self retrieveMykiBalance];
+            [self retryRetrieveMykiBalance];
         }
     }
 }
@@ -310,21 +317,39 @@
 }
 
 #pragma mark move views     
--(void)moveLoginViewDown {
+-(void)switchToSuccessState {
     [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationDuration:1.0];
+    [UIView setAnimationDuration:.4];
     self.bottomView.frame = CGRectMake(0, 705, 320, 205);
+    self.errorView.frame = CGRectMake(0, 705, 320, 150);
     [self drawBalanceViewGradientWithCornersWithActiveState:YES];
     self.balanceSeperatorImage.image = [UIImage imageNamed:@"images/BalanceLine.png"];
     [UIView commitAnimations];
 }
 
--(void)moveLoginViewUp {
+-(void)switchToLoginState {
     [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationDuration:1.0];
-    self.bottomView.frame = CGRectMake(0, 395, 320, 205);
+    [UIView setAnimationDuration:.4];
+    self.bottomView.frame = CGRectMake(0, 224, 320, 205);
+    self.errorView.frame = CGRectMake(0, 705, 320, 150);
+    [self drawBalanceViewGradientWithCornersWithActiveState:NO];
+    self.balanceSeperatorImage.image = [UIImage imageNamed:@"images/BalanceLineBlk.png"];
     [UIView commitAnimations];
 }
 
+-(void)switchToErrorState {
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:.4];
+    self.bottomView.frame = CGRectMake(0, 705, 320, 205);
+    self.errorView.frame = CGRectMake(0, 224, 320, 150);
+    [self drawBalanceViewGradientWithCornersWithActiveState:NO];
+    self.balanceSeperatorImage.image = [UIImage imageNamed:@"images/BalanceLineBlk.png"];
+    [UIView commitAnimations];
+}
+
+-(IBAction)tryAgainButtonTapped:(id)sender {
+    //[self switchToLoginState];
+    [self retrieveMykiBalance];
+}
      
 @end
