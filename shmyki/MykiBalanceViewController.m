@@ -34,6 +34,7 @@
 
         usernameTextField = [self setUpTextField:usernameTextField withText:@"Username" withUserDetail:[mykiAccountInformation mykiUsername] withReturnKey:UIReturnKeyNext withTag:USERNAME_TEXTFIELD_TAG];
         passwordTextField = [self setUpTextField:passwordTextField withText:@"Password" withUserDetail:[mykiAccountInformation mykiPassword] withReturnKey:UIReturnKeyDone withTag:PASSWORD_TEXTFIELD_TAG];
+        passwordTextField.secureTextEntry = YES;
         
         [self setTitle:@"Balances"];
         [[self navigationItem] setTitle:@"Balances"];
