@@ -42,7 +42,7 @@
     [self setCardExpiry:[self extractInformationFromHtml:page withRegeEx:REG_EX_CARD_EXPIRY]];
     [self setCardStatus:[self extractInformationFromHtml:page withRegeEx:REG_EX_CARD_STATUS]];
     [self setCurrentMykiMoneyBalance:[self extractInformationFromHtml:page withRegeEx:REG_EX_CURRENT_MYKI_MONEY_BALANCE]];
-    [self setMykiMoneyTopUpInProgress:[self extractInformationFromHtml:page withRegeEx:REG_EX_MYKI_MONEY_TOP_UP_IN_PROGRESS]];
+    [self setMykiMoneyTopUpInProgress:[self convertMykiMoneyTopUpInProgress:[self extractInformationFromHtml:page withRegeEx:REG_EX_MYKI_MONEY_TOP_UP_IN_PROGRESS]]];
     [self setTotalMykiMoneyBalance:[self extractInformationFromHtml:page withRegeEx:REG_EX_TOTAL_MYKI_MONEY_BALANCE]];
     
     [self setCurrentMykiPassActive: [self convertMykiPassActiveToDays:[self extractInformationFromHtml:page withRegeEx:REG_EX_CURRENT_MYKI_PASS_ACTIVE]]];
@@ -50,7 +50,7 @@
     [self setLastMykiTransactionDate:[self extractInformationFromHtml:page withRegeEx:REG_EX_LAST_MYKI_TRANSACTION_DATE]];
 }
 
--(NSString*) convertMykiPassActiveToDays:currentMykiPassActiveRaw {
+-(NSString*) convertMykiPassActiveToDays:(NSString*)currentMykiPassActiveRaw {
     NSString* currentMykiPassActiveDateString = [self extractInformationFromHtml:currentMykiPassActiveRaw withRegeEx:REG_EX_CURRENT_MYKI_PASS_ACTIVE_IN_DAYS];
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
@@ -67,6 +67,13 @@
     return currentMykiPassActiveDateString;
 }
 
+-(NSString*) convertMykiMoneyTopUpInProgress:(NSString*)mykiMoneyTopUpInProgressRaw  {
+    if([mykiMoneyTopUpInProgress isEqualToString:@"$0.00"]) {
+        return @"";
+    } else {
+        return [NSString stringWithFormat:@"%@ in progress", mykiMoneyTopUpInProgressRaw];
+    }
+}
 
 -(NSString*) extractInformationFromHtml:(NSString*) page withRegeEx: (NSString*) regExString {
     NSError *error;

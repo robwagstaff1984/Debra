@@ -103,11 +103,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "shmyki/InspectorMapKitAnnotation.m"
-         timestampString = "361354861.995865"
+         timestampString = "362221842.179812"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "48"
-         endingLineNumber = "48"
+         startingLineNumber = "47"
+         endingLineNumber = "47"
          landmarkName = "-title"
          landmarkType = "5">
       </FileBreakpoint>
@@ -613,11 +613,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "shmyki/MykiAccountInformation.m"
-         timestampString = "361789584.837931"
+         timestampString = "362222478.985941"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "72"
-         endingLineNumber = "72"
+         startingLineNumber = "79"
+         endingLineNumber = "79"
          landmarkName = "-extractInformationFromHtml:withRegeEx:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1201,11 +1201,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "shmyki/EnterLocationViewController.m"
-         timestampString = "362211369.444787"
+         timestampString = "362224933.773045"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "75"
-         endingLineNumber = "75"
+         startingLineNumber = "84"
+         endingLineNumber = "84"
          landmarkName = "-tableView:cellForRowAtIndexPath:"
          landmarkType = "5">
       </FileBreakpoint>

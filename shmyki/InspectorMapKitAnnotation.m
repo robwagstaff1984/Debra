@@ -39,8 +39,7 @@
          displayTitle = [NSString stringWithFormat:@"%d days ago", (seconds / SECONDS_IN_AN_DAY)];
     } else {
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-        [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
-        [dateFormatter setTimeStyle:NSDateFormatterMediumStyle];
+        dateFormatter.dateFormat = @"MMM dd hh:mm a";     
         [dateFormatter setTimeZone:[NSTimeZone localTimeZone]]; 
         displayTitle =  [dateFormatter stringFromDate:[NSDate date]];
     }

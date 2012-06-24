@@ -123,25 +123,23 @@
 					<object class="IBUIButton" id="415661227">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{265, 367}, {55, 44}}</string>
+						<string key="NSFrame">{{265, 367}, {55, 45}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:225</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<int key="IBUIContentHorizontalAlignment">0</int>
 						<int key="IBUIContentVerticalAlignment">0</int>
-						<int key="IBUIButtonType">1</int>
 						<reference key="IBUIHighlightedTitleColor" ref="1044518315"/>
 						<object class="NSColor" key="IBUINormalTitleColor">
 							<int key="NSColorSpace">1</int>
 							<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
 						</object>
 						<reference key="IBUINormalTitleShadowColor" ref="159483499"/>
-						<object class="NSCustomResource" key="IBUINormalImage">
+						<object class="NSCustomResource" key="IBUINormalBackgroundImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">images/MapFindOff.png</string>
+							<string key="NSResourceName">images/MapRefreshOff.png</string>
 						</object>
 						<reference key="IBUIFontDescription" ref="286663718"/>
 						<reference key="IBUIFont" ref="488868228"/>
@@ -227,9 +225,9 @@
 						<reference key="object" ref="191373211"/>
 						<array class="NSMutableArray" key="children">
 							<reference ref="254176737"/>
-							<reference ref="415661227"/>
 							<reference ref="1073585430"/>
 							<reference ref="266234142"/>
+							<reference ref="415661227"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -316,8 +314,8 @@
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
-			<string key="images/MapFindOff.png">{16, 16}</string>
 			<string key="images/MapLocateOff.png">{16, 16}</string>
+			<string key="images/MapRefreshOff.png">{16, 16}</string>
 			<string key="images/MapSpotOff.png">{16, 16}</string>
 		</dictionary>
 		<string key="IBCocoaTouchPluginVersion">1181</string>

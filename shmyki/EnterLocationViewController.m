@@ -66,15 +66,60 @@
                                     reuseIdentifier:cellIdentifier];
         
         
-
-        cell.selectionStyle = UITableViewCellSelectionStyleBlue;
+        [cell.textLabel setFont:[UIFont systemFontOfSize:14.0f]];
+        [cell.textLabel setTextColor:[UIColor grayColor]];
+        cell.selectionStyle = UITableViewCellSelectionStyleGray;
+        //cell.accessoryType = UITableViewCellAccessoryCheckmark;
         
     }
     cell.textLabel.text = [self.stationsForCurrentSelection objectAtIndex:indexPath.row];
    
+    NSIndexPath* selection = [tableView indexPathForSelectedRow];
+    if (selection && selection.row == indexPath.row) {
+        cell.accessoryType = UITableViewCellAccessoryCheckmark; 
+    } else {
+        cell.accessoryType = UITableViewCellAccessoryNone;  
+    }
+    
     return cell;
 }
 
+
+#pragma mark table view delegate
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryCheckmark;
+    [[tableView cellForRowAtIndexPath:indexPath] setSelected:NO animated:YES];
+}
+
+- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
+    [[tableView cellForRowAtIndexPath:indexPath] setSelected:NO animated:YES];
+}
+/*
+- (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    //UITableViewCell *selectedTableViewCell = [self.stationsTable cellForRowAtIndexPath:indexPath];
+    //[selectedTableViewCell setSelectionStyle:UITableViewCellSelectionStyleBlue];
+    
+    return indexPath;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell* newCell = [tableView cellForRowAtIndexPath:indexPath]; 
+    int newRow = [indexPath row]; 
+    int oldRow = (lastIndexPath != nil) ? [lastIndexPath row] : -1; 
+    
+    if(newRow != oldRow) 
+    { 
+        newCell.accessoryType = UITableViewCellAccessoryCheckmark; 
+        UITableViewCell* oldCell = [tableView cellForRowAtIndexPath:lastIndexPath]; 
+        oldCell.accessoryType = UITableViewCellAccessoryNone;
+        lastIndexPath = indexPath; 
+    } 
+    [newCell setSelected:NO animated:YES];
+}*/
 
 #pragma mark Actions
 

@@ -43,6 +43,7 @@
 						<string key="NSFrame">{{0, 178}, {320, 193}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">1</int>
@@ -92,15 +93,16 @@
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
 						<array class="NSMutableArray" key="NSSubviews">
-							<object class="IBUIButton" id="768085496">
+							<object class="IBUIButton" id="986197478">
 								<reference key="NSNextResponder" ref="258702369"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{244, 0}, {22, 22}}</string>
+								<string key="NSFrame">{{273, -2}, {32, 32}}</string>
 								<reference key="NSSuperview" ref="258702369"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="986197478"/>
+								<reference key="NSNextKeyView" ref="23245739"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
+								<int key="IBUIContentMode">4</int>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<int key="IBUIContentHorizontalAlignment">0</int>
 								<int key="IBUIContentVerticalAlignment">0</int>
@@ -118,27 +120,28 @@
 								</object>
 								<object class="NSCustomResource" key="IBUINormalImage">
 									<string key="NSClassName">NSImage</string>
-									<string key="NSResourceName">images/IconTwitterOff.png</string>
+									<string key="NSResourceName">images/IconFacebookOff.png</string>
 								</object>
 								<object class="IBUIFontDescription" key="IBUIFontDescription" id="819957306">
 									<int key="type">2</int>
 									<double key="pointSize">15</double>
 								</object>
-								<object class="NSFont" key="IBUIFont" id="59997492">
+								<object class="NSFont" key="IBUIFont" id="726063488">
 									<string key="NSName">Helvetica-Bold</string>
 									<double key="NSSize">15</double>
 									<int key="NSfFlags">16</int>
 								</object>
 							</object>
-							<object class="IBUIButton" id="986197478">
+							<object class="IBUIButton" id="768085496">
 								<reference key="NSNextResponder" ref="258702369"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{278, 0}, {22, 22}}</string>
+								<string key="NSFrame">{{239, -2}, {32, 32}}</string>
 								<reference key="NSSuperview" ref="258702369"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="23245739"/>
+								<reference key="NSNextKeyView" ref="986197478"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
+								<int key="IBUIContentMode">4</int>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<int key="IBUIContentHorizontalAlignment">0</int>
 								<int key="IBUIContentVerticalAlignment">0</int>
@@ -150,15 +153,16 @@
 								<reference key="IBUINormalTitleShadowColor" ref="49994904"/>
 								<object class="NSCustomResource" key="IBUINormalImage">
 									<string key="NSClassName">NSImage</string>
-									<string key="NSResourceName">images/IconFacebookOff.png</string>
+									<string key="NSResourceName">images/IconTwitterOff.png</string>
 								</object>
 								<reference key="IBUIFontDescription" ref="819957306"/>
-								<reference key="IBUIFont" ref="59997492"/>
+								<reference key="IBUIFont" ref="726063488"/>
 							</object>
 						</array>
 						<string key="NSFrame">{{0, 146}, {320, 32}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView" ref="768085496"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">3</int>
@@ -299,19 +303,19 @@
 						<int key="objectID">21</int>
 						<reference key="object" ref="258702369"/>
 						<array class="NSMutableArray" key="children">
-							<reference ref="768085496"/>
 							<reference ref="986197478"/>
+							<reference ref="768085496"/>
 						</array>
 						<reference key="parent" ref="191373211"/>
 					</object>
 					<object class="IBObjectRecord">
-						<int key="objectID">17</int>
-						<reference key="object" ref="768085496"/>
+						<int key="objectID">22</int>
+						<reference key="object" ref="986197478"/>
 						<reference key="parent" ref="258702369"/>
 					</object>
 					<object class="IBObjectRecord">
-						<int key="objectID">22</int>
-						<reference key="object" ref="986197478"/>
+						<int key="objectID">17</int>
+						<reference key="object" ref="768085496"/>
 						<reference key="parent" ref="258702369"/>
 					</object>
 				</array>
