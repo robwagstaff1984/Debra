@@ -15,7 +15,7 @@
 @synthesize mykiLoginUrl, mykiWebstiteWebView, userIsLoggedIn, mykiAccountInformation, errorLoadingBalance;
 @synthesize topView, bottomView, loginTableView, loginScrollView, pageScrollView, balanceDisplayView;
 @synthesize usernameTextField, passwordTextField;
-@synthesize balanceHeaderLabel, balanceMykiPassExpiryLabel, balanceMykiPassAdditionalLabel, balanceMykiMoneyAmountLabel, balanceMykiMoneyAdditionalLabel, balanceFooterLabelOne, balanceFooterLabelTwo;
+@synthesize balanceHeaderLabel, balanceMykiPassExpiryLabel, balanceMykiPassAdditionalLabel, balanceMykiMoneyAmountLabel, balanceMykiMoneyAdditionalLabel, balanceFooterLabelOne, balanceFooterLabelTwo, balanceSeperatorImage;
 @synthesize HUD;
 
 
@@ -71,7 +71,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(scrollViewToPositionForNotification:) name:UIKeyboardWillHideNotification object:nil];
     
     [self drawBottomViewGradientWithCorners];
-    [self drawBalanceViewGradientWithCorners];
+    [self drawBalanceViewGradientWithCornersWithActiveState:NO];
     [self showMykiAccountInformation];
 }
 
@@ -112,6 +112,7 @@
             self.errorLoadingBalance = NO;
             [self showMykiAccountInformation];
             self.userIsLoggedIn = NO;
+            [self moveLoginViewDown];
         }
         [HUD hide:YES];
     } else {
@@ -266,15 +267,28 @@
 	loginTableView.layer.cornerRadius = 8;
 }
 
--(void) drawBalanceViewGradientWithCorners {
+-(void) drawBalanceViewGradientWithCornersWithActiveState:(BOOL)isActiveState {
     CAGradientLayer *gradient = [CAGradientLayer layer];
     gradient.frame = balanceDisplayView.bounds;
-    UIColor *startColour = [UIColor colorWithHue:0.0 saturation:0.00 brightness:0.45 alpha:1.0];
-    UIColor *endColour = [UIColor colorWithHue:0.0 saturation:0.00 brightness:0.70 alpha:1.0];
+    UIColor *startColour;
+    UIColor *endColour;
+    if(isActiveState) {
+        startColour = [UIColor colorWithHue:0.5833 saturation:0.50 brightness:0.62 alpha:1.0];
+        endColour = [UIColor colorWithHue:0.5833 saturation:0.35 brightness:0.88 alpha:1.0];
+    } else {
+        startColour = [UIColor colorWithHue:0.0 saturation:0.00 brightness:0.45 alpha:1.0];
+        endColour = [UIColor colorWithHue:0.0 saturation:0.00 brightness:0.70 alpha:1.0];
+    }
     gradient.colors = [NSArray arrayWithObjects:(id)[startColour CGColor], (id)[endColour CGColor], nil];
     balanceDisplayView.layer.cornerRadius = 10;
     gradient.cornerRadius = 10;
-    [balanceDisplayView.layer insertSublayer:gradient atIndex:0];
+    
+    CALayer *currentGradient = [balanceDisplayView.layer.sublayers objectAtIndex:0];
+    if(currentGradient.position.x != 74) {
+        [balanceDisplayView.layer replaceSublayer:[balanceDisplayView.layer.sublayers objectAtIndex:0] with:gradient];
+    } else {
+        [balanceDisplayView.layer insertSublayer:gradient atIndex:0];
+    }
 }
 
 
@@ -295,6 +309,22 @@
 	HUD = nil;
 }
 
-     
+#pragma mark move views     
+-(void)moveLoginViewDown {
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:1.0];
+    self.bottomView.frame = CGRectMake(0, 705, 320, 205);
+    [self drawBalanceViewGradientWithCornersWithActiveState:YES];
+    self.balanceSeperatorImage.image = [UIImage imageNamed:@"images/BalanceLine.png"];
+    [UIView commitAnimations];
+}
+
+-(void)moveLoginViewUp {
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:1.0];
+    self.bottomView.frame = CGRectMake(0, 395, 320, 205);
+    [UIView commitAnimations];
+}
+
      
 @end

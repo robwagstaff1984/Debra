@@ -34,6 +34,7 @@
 @property (nonatomic, strong) IBOutlet UILabel* balanceMykiMoneyAdditionalLabel;
 @property (nonatomic, strong) IBOutlet UILabel* balanceFooterLabelOne;
 @property (nonatomic, strong) IBOutlet UILabel* balanceFooterLabelTwo;
+@property (nonatomic, strong) IBOutlet UIImageView* balanceSeperatorImage;
 
 @property (nonatomic, strong) MBProgressHUD *HUD;
 
