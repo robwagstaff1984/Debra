@@ -50,9 +50,8 @@
 }
 
 -(BOOL)isLoginUnsuccessful:(NSString*)page {
-    NSLog(@"start of unsuccessful test");
+
     NSString *loggedInPageTitle = [self extractInformationFromHtml:page withRegeEx:REG_EX_ERROR_LOGGING_IN];
-    NSLog(@"end of unsuccessful test");
     return [loggedInPageTitle isEqualToString:@"Myki-Session Expired"];
 }
 

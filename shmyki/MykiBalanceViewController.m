@@ -12,7 +12,7 @@
 
 @implementation MykiBalanceViewController
 
-@synthesize mykiLoginUrl, mykiWebstiteWebView, userIsLoggedIn, mykiAccountInformation, errorLoadingBalance;
+@synthesize mykiLoginUrl, mykiWebstiteWebView, userIsLoggedIn, mykiAccountInformation;
 @synthesize topView, bottomView, loginTableView, loginScrollView, pageScrollView, balanceDisplayView, errorView;
 @synthesize usernameTextField, passwordTextField;
 @synthesize balanceHeaderLabel, balanceMykiPassExpiryLabel, balanceMykiPassAdditionalLabel, balanceMykiMoneyAmountLabel, balanceMykiMoneyAdditionalLabel, balanceFooterLabelOne, balanceFooterLabelTwo, balanceSeperatorImage;
@@ -108,29 +108,29 @@
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
-    NSLog(@"Loaded: ", nil);
+    NSLog(@"Loaded: ");
     if(userIsLoggedIn) {
- 
+        // [webView stopLoading];
         NSString *fullURL = MYKI_ACCOUNT_INFO_URL;
         NSURL *url = [NSURL URLWithString:fullURL];  
         NSError *error;
-            NSLog(@"start of balance page: ", nil);
+        NSLog(@"start of balance page: ");
         NSString *page = [NSString stringWithContentsOfURL:url encoding:NSASCIIStringEncoding error:&error];
-        NSLog(@"end of balance page: ", nil);
+        NSLog(@"end of balance page: ");
         if([page length] == 0 || [mykiAccountInformation isLoginUnsuccessful:page]) {
-            self.errorLoadingBalance = YES;
             self.userIsLoggedIn = NO;
             [self switchToErrorState];
+            [HUD hide:YES];
+            self.navigationItem.rightBarButtonItem.enabled = YES;
         } else {
-            NSLog(@"start of extract ", nil);
+            NSLog(@"start of extract ");
             [mykiAccountInformation extractMykiAccountInfoFromHtml:page];
-            self.errorLoadingBalance = NO;
-            [self showMykiAccountInformation];
             self.userIsLoggedIn = NO;
+            [self showMykiAccountInformation];
             [self switchToSuccessState];
+            [HUD hide:YES];
+            self.navigationItem.rightBarButtonItem.enabled = YES;
         }
-        [HUD hide:YES];
-        self.navigationItem.rightBarButtonItem.enabled = YES;
     } else {
                
         NSString *populateUserNameJavascript = [NSString stringWithFormat:JAVASCRIPT_ENTER_USERNAME, [mykiAccountInformation mykiUsername]];
@@ -143,32 +143,17 @@
 
         userIsLoggedIn = YES;   
         HUD.labelText = @"Retrieving Balance";
+        NSLog(@"submit button pressed: ", nil);
     }
 }
 
 
 -(void) showMykiAccountInformation {
-    if(errorLoadingBalance) {
-       // [balanceMykiPassExpiryLabel setText: [mykiAccountInformation currentMykiPassActive]];
-        //[balanceMykiMoneyAmountLabel setText: [mykiAccountInformation currentMykiMoneyBalance]];
 
-    } else {
-        [balanceMykiPassExpiryLabel setText: [mykiAccountInformation currentMykiPassActive]];
-        [balanceMykiMoneyAmountLabel setText: [mykiAccountInformation currentMykiMoneyBalance]];
-        [balanceMykiMoneyAdditionalLabel setText:[mykiAccountInformation mykiMoneyTopUpInProgress]];
-        [balanceMykiPassAdditionalLabel setText:[mykiAccountInformation currentMykiPassNotYetActive]];
-
-    }
-       /* [cardHolderLabel setText:[mykiAccountInformation cardHolder]];
-    [cardTypeLabel setText:[mykiAccountInformation cardType]];
-    [cardExpiryLabel setText:[mykiAccountInformation cardExpiry]];
-    [cardStatusLabel setText:[mykiAccountInformation cardStatus]];
-    [currentMykiMoneyBalanceLabel setText:[mykiAccountInformation currentMykiMoneyBalance]];
-    [mykiMoneyTopUpInProgressLabel setText:[mykiAccountInformation mykiMoneyTopUpInProgress]];
-    [totalMykiMoneyBalanceLabel setText:[mykiAccountInformation totalMykiMoneyBalance]];
-    [currentMykiPassActiveLabel setText:[mykiAccountInformation currentMykiPassActive]];
-    [currentMykiPassNotYetActiveLabel setText:[mykiAccountInformation currentMykiPassNotYetActive]];
-    [lastMykiTransactionDateLabel setText:[mykiAccountInformation lastMykiTransactionDate]];*/
+    [balanceMykiPassExpiryLabel setText: [mykiAccountInformation currentMykiPassActive]];
+    [balanceMykiMoneyAmountLabel setText: [mykiAccountInformation currentMykiMoneyBalance]];
+    [balanceMykiMoneyAdditionalLabel setText:[mykiAccountInformation mykiMoneyTopUpInProgress]];
+    [balanceMykiPassAdditionalLabel setText:[mykiAccountInformation currentMykiPassNotYetActive]];
 }
 
 #pragma mark UITableViewDataSource
@@ -239,6 +224,9 @@
             [passwordTextField setText: @"Password"];
             [passwordTextField setTextColor:[UIColor grayColor]];
         } else {
+            [mykiAccountInformation setMykiUsername: usernameTextField.text];
+            [mykiAccountInformation setMykiPassword: passwordTextField.text];
+            [mykiAccountInformation saveAccountInformation];
             [self retryRetrieveMykiBalance];
         }
     }
@@ -310,10 +298,6 @@
 
 -(void) retryRetrieveMykiBalance {
     self.navigationItem.rightBarButtonItem.enabled = NO;
-    [mykiAccountInformation setMykiUsername: usernameTextField.text];
-    [mykiAccountInformation setMykiPassword: passwordTextField.text];
-    [mykiAccountInformation saveAccountInformation];
-    self.userIsLoggedIn = NO;
     [self retrieveMykiBalance];
 }
 

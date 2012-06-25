@@ -16,7 +16,6 @@
 @property (nonatomic, strong) NSString *mykiLoginUrl;
 @property (nonatomic, strong) UIWebView *mykiWebstiteWebView;
 @property (nonatomic) BOOL userIsLoggedIn;
-@property (nonatomic) BOOL errorLoadingBalance;
 @property (nonatomic, strong) MykiAccountInformation *mykiAccountInformation;
 @property (nonatomic, strong) IBOutlet UIView *topView;
 @property (nonatomic, strong) IBOutlet UIView *bottomView;
