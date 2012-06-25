@@ -53,7 +53,7 @@
 #define REG_EX_CURRENT_MYKI_PASS_NOT_YET_ACTIVE @"<strong>Current myki pass \\(not yet active\\)</strong></td>\\s+<td>\\s+(.+)<br />"
 #define REG_EX_LAST_MYKI_TRANSACTION_DATE @"<strong>Last myki transaction date</strong></td>\\s+<td>\\s+(.+)</td>"
 #define REG_EX_CURRENT_MYKI_PASS_ACTIVE_IN_DAYS @".*Valid to (.+)"
-#define REG_EX_ERROR_LOGGING_IN @".*(Myki-Session Expired).*"
+#define REG_EX_ERROR_LOGGING_IN @"<title>\\s*(Myki-Session Expired)\\s*</title>"
 
 
 #define USERNAME_TEXTFIELD_TAG 200

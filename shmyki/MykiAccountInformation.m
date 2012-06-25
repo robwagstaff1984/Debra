@@ -37,21 +37,22 @@
 
 -(void) extractMykiAccountInfoFromHtml:(NSString*) page {
 
-    [self setCardHolder:[self extractInformationFromHtml:page withRegeEx:REG_EX_CARD_HOLDER]];
-    [self setCardType:[self extractInformationFromHtml:page withRegeEx:REG_EX_CARD_TYPE]];
-    [self setCardExpiry:[self extractInformationFromHtml:page withRegeEx:REG_EX_CARD_EXPIRY]];
-    [self setCardStatus:[self extractInformationFromHtml:page withRegeEx:REG_EX_CARD_STATUS]];
+    //[self setCardHolder:[self extractInformationFromHtml:page withRegeEx:REG_EX_CARD_HOLDER]];
+    //[self setCardType:[self extractInformationFromHtml:page withRegeEx:REG_EX_CARD_TYPE]];
+    //[self setCardExpiry:[self extractInformationFromHtml:page withRegeEx:REG_EX_CARD_EXPIRY]];
+    //[self setCardStatus:[self extractInformationFromHtml:page withRegeEx:REG_EX_CARD_STATUS]];
     [self setCurrentMykiMoneyBalance:[self extractInformationFromHtml:page withRegeEx:REG_EX_CURRENT_MYKI_MONEY_BALANCE]];
     [self setMykiMoneyTopUpInProgress:[self convertMykiMoneyTopUpInProgress:[self extractInformationFromHtml:page withRegeEx:REG_EX_MYKI_MONEY_TOP_UP_IN_PROGRESS]]];
-    [self setTotalMykiMoneyBalance:[self extractInformationFromHtml:page withRegeEx:REG_EX_TOTAL_MYKI_MONEY_BALANCE]];
-    
+    //[self setTotalMykiMoneyBalance:[self extractInformationFromHtml:page withRegeEx:REG_EX_TOTAL_MYKI_MONEY_BALANCE]];
     [self setCurrentMykiPassActive: [self convertMykiPassActiveToDays:[self extractInformationFromHtml:page withRegeEx:REG_EX_CURRENT_MYKI_PASS_ACTIVE]]];
     [self setCurrentMykiPassNotYetActive:[self extractInformationFromHtml:page withRegeEx:REG_EX_CURRENT_MYKI_PASS_NOT_YET_ACTIVE]];
-    [self setLastMykiTransactionDate:[self extractInformationFromHtml:page withRegeEx:REG_EX_LAST_MYKI_TRANSACTION_DATE]];
+   // [self setLastMykiTransactionDate:[self extractInformationFromHtml:page withRegeEx:REG_EX_LAST_MYKI_TRANSACTION_DATE]];
 }
 
 -(BOOL)isLoginUnsuccessful:(NSString*)page {
+    NSLog(@"start of unsuccessful test");
     NSString *loggedInPageTitle = [self extractInformationFromHtml:page withRegeEx:REG_EX_ERROR_LOGGING_IN];
+    NSLog(@"end of unsuccessful test");
     return [loggedInPageTitle isEqualToString:@"Myki-Session Expired"];
 }
 
@@ -73,7 +74,7 @@
 }
 
 -(NSString*) convertMykiMoneyTopUpInProgress:(NSString*)mykiMoneyTopUpInProgressRaw  {
-    if([mykiMoneyTopUpInProgress isEqualToString:@"$0.00"]) {
+    if([mykiMoneyTopUpInProgressRaw isEqualToString:@"$0.00"]) {
         return @"";
     } else {
         return [NSString stringWithFormat:@"%@ in progress", mykiMoneyTopUpInProgressRaw];

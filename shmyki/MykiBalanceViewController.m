@@ -29,7 +29,7 @@
         mykiWebstiteWebView = [[UIWebView alloc] init];
         mykiWebstiteWebView.delegate = self;
         userIsLoggedIn = NO;
-
+        
         [self retrieveMykiBalance];
 
         usernameTextField = [self setUpTextField:usernameTextField withText:@"Username" withUserDetail:[mykiAccountInformation mykiUsername] withReturnKey:UIReturnKeyNext withTag:USERNAME_TEXTFIELD_TAG];
@@ -92,6 +92,8 @@
 }
 
 -(void)retrieveMykiBalance {
+    
+    
     HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     HUD.delegate = self;
     HUD.dimBackground = YES;
@@ -101,20 +103,26 @@
     [mykiWebstiteWebView loadRequest:requestObj];
 }
 
+- (void)webViewDidStartLoad:(UIWebView *)webView {
+    NSLog(@"Start Load: ", nil);
+}
+
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
-   
+    NSLog(@"Loaded: ", nil);
     if(userIsLoggedIn) {
  
         NSString *fullURL = MYKI_ACCOUNT_INFO_URL;
         NSURL *url = [NSURL URLWithString:fullURL];  
         NSError *error;
+            NSLog(@"start of balance page: ", nil);
         NSString *page = [NSString stringWithContentsOfURL:url encoding:NSASCIIStringEncoding error:&error];
-    
+        NSLog(@"end of balance page: ", nil);
         if([page length] == 0 || [mykiAccountInformation isLoginUnsuccessful:page]) {
             self.errorLoadingBalance = YES;
             self.userIsLoggedIn = NO;
             [self switchToErrorState];
         } else {
+            NSLog(@"start of extract ", nil);
             [mykiAccountInformation extractMykiAccountInfoFromHtml:page];
             self.errorLoadingBalance = NO;
             [self showMykiAccountInformation];
@@ -301,6 +309,7 @@
 
 
 -(void) retryRetrieveMykiBalance {
+    self.navigationItem.rightBarButtonItem.enabled = NO;
     [mykiAccountInformation setMykiUsername: usernameTextField.text];
     [mykiAccountInformation setMykiPassword: passwordTextField.text];
     [mykiAccountInformation saveAccountInformation];
