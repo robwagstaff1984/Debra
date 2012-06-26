@@ -43,9 +43,9 @@
     [self setCardStatus:[self extractInformationFromHtml:page withRegeEx:REG_EX_CARD_STATUS]];
     [self setCurrentMykiMoneyBalance:[self extractInformationFromHtml:page withRegeEx:REG_EX_CURRENT_MYKI_MONEY_BALANCE]];
     [self setMykiMoneyTopUpInProgress:[self convertMykiMoneyTopUpInProgress:[self extractInformationFromHtml:page withRegeEx:REG_EX_MYKI_MONEY_TOP_UP_IN_PROGRESS]]];
-    [self setTotalMykiMoneyBalance:[self extractInformationFromHtml:page withRegeEx:REG_EX_TOTAL_MYKI_MONEY_BALANCE]];
+    //[self setTotalMykiMoneyBalance:[self extractInformationFromHtml:page withRegeEx:REG_EX_TOTAL_MYKI_MONEY_BALANCE]];
     [self setCurrentMykiPassActive: [self convertMykiPassActiveToDays:[self extractInformationFromHtml:page withRegeEx:REG_EX_CURRENT_MYKI_PASS_ACTIVE]]];
-    [self setCurrentMykiPassNotYetActive:[self extractInformationFromHtml:page withRegeEx:REG_EX_CURRENT_MYKI_PASS_NOT_YET_ACTIVE]];
+    [self setCurrentMykiPassNotYetActive:[self convertMykiPassNotYetActive: [self extractInformationFromHtml:page withRegeEx:REG_EX_CURRENT_MYKI_PASS_NOT_YET_ACTIVE]]];
     [self setLastMykiTransactionDate:[self extractInformationFromHtml:page withRegeEx:REG_EX_LAST_MYKI_TRANSACTION_DATE]];
 }
 
@@ -70,6 +70,17 @@
         currentMykiPassActiveDateString =@"N/A";
     }
     return currentMykiPassActiveDateString;
+}
+
+-(NSString*) convertMykiPassNotYetActive:(NSString*)mykiPassNotYetActiveRaw  {
+    NSString *mykiPassNotYetActiveConverted = @"";
+
+    if ([mykiPassNotYetActiveRaw length] != 0 && ![mykiPassNotYetActiveRaw isEqualToString:@" "]) {
+        NSRange range = [mykiPassNotYetActiveRaw rangeOfString:@","];
+        NSString *days = [NSString stringWithString :[mykiPassNotYetActiveRaw substringToIndex:range.location] ];
+        mykiPassNotYetActiveConverted = [NSString stringWithFormat:@"%@not yet active", days];
+    }
+    return mykiPassNotYetActiveConverted;
 }
 
 -(NSString*) convertMykiMoneyTopUpInProgress:(NSString*)mykiMoneyTopUpInProgressRaw  {
