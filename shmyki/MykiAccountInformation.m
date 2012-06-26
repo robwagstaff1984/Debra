@@ -94,17 +94,39 @@
     NSString *headerLabel = @"";
     if(cardExpiry != nil && ![cardExpiry isEqualToString:@""]) {
         headerLabel = [NSString stringWithFormat: @"Last transaction %@", lastMykiTransactionDate];
+    } else {
+        headerLabel = DEFAULT_HEADER_LABEL;
     }
     return headerLabel;
 }
-   
+ 
+-(NSString*)transformMykiPassToMykiPassLabel {
+    
+    NSString *mykiPassLabel =@"Days";
+    if(currentMykiPassActive != nil && [currentMykiPassActive isEqualToString:@""]) {
+        mykiPassLabel = currentMykiPassActive;
+    }
+    return mykiPassLabel;
+}
+
+-(NSString*)transformMykiMoneyToMykiMoneyLabel {
+    
+    NSString *mykiMoneyLabel =@"$";
+    if(currentMykiMoneyBalance != nil && [currentMykiMoneyBalance isEqualToString:@""]) {
+        mykiMoneyLabel = currentMykiMoneyBalance;
+    }
+    return mykiMoneyLabel;
+}
+
 -(NSString*)transformAccountInfoToBottomLabelOne {
     NSString *bottomLabelOne = @"";
     if(cardHolder != nil && ![cardHolder isEqualToString:@""]) {
         bottomLabelOne = [bottomLabelOne stringByAppendingString:cardHolder];
         if(![cardStatus isEqualToString:@""]) {
-            bottomLabelOne = [bottomLabelOne stringByAppendingFormat:@"has an %@ %@ card", cardStatus, cardType];
-        }
+            bottomLabelOne = [bottomLabelOne stringByAppendingFormat:@" has an %@ %@ card", cardStatus, cardType];
+        } 
+    } else {
+        bottomLabelOne = DEFAULT_BOTTOM_LABEL_ONE;
     }
     return bottomLabelOne;
 }
@@ -113,6 +135,8 @@
     NSString *bottomLabelTwo = @"";
     if(cardHolder != nil && ![cardExpiry isEqualToString:@""]) {
         bottomLabelTwo = [NSString stringWithFormat: @"Expires %@", cardExpiry];
+    } else {
+        bottomLabelTwo = DEFAULT_BOTTOM_LABEL_TWO;
     }
     return bottomLabelTwo;
 }

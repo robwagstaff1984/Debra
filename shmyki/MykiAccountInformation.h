@@ -30,6 +30,8 @@
 -(BOOL) isLoginUnsuccessful:(NSString*)page;
 
 -(NSString*)transformAccountInfoToHeaderLabel;
+-(NSString*)transformMykiPassToMykiPassLabel;
+-(NSString*)transformMykiMoneyToMykiMoneyLabel; 
 -(NSString*)transformAccountInfoToBottomLabelOne;
 -(NSString*)transformAccountInfoToBottomLabelTwo; 
 @end

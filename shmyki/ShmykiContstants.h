@@ -55,6 +55,9 @@
 #define REG_EX_CURRENT_MYKI_PASS_ACTIVE_IN_DAYS @".*Valid to (.+)"
 #define REG_EX_ERROR_LOGGING_IN @"<title>\\s*(Myki-Session Expired)\\s*</title>"
 
+#define DEFAULT_HEADER_LABEL @"Sign in to see your account details"
+#define DEFAULT_BOTTOM_LABEL_ONE @"You need to have a registered account to"
+#define DEFAULT_BOTTOM_LABEL_TWO @"show your balance"
 
 #define USERNAME_TEXTFIELD_TAG 200
 #define PASSWORD_TEXTFIELD_TAG 201

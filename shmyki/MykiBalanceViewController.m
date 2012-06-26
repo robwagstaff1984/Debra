@@ -142,8 +142,8 @@
 
 -(void) showMykiAccountInformation {
 
-    [balanceMykiPassExpiryLabel setText: [mykiAccountInformation currentMykiPassActive]];
-    [balanceMykiMoneyAmountLabel setText: [mykiAccountInformation currentMykiMoneyBalance]];
+    [balanceMykiPassExpiryLabel setText: [mykiAccountInformation transformMykiPassToMykiPassLabel]];
+    [balanceMykiMoneyAmountLabel setText: [mykiAccountInformation transformMykiMoneyToMykiMoneyLabel]];
     [balanceMykiMoneyAdditionalLabel setText:[mykiAccountInformation mykiMoneyTopUpInProgress]];
     [balanceMykiPassAdditionalLabel setText:[mykiAccountInformation currentMykiPassNotYetActive]];
     
