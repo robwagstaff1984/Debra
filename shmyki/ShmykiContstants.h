@@ -43,7 +43,7 @@
 #define JAVASCRIPT_CLICK_SUBMIT @"var submitButton = document.getElementById(\"ctl00_uxContentPlaceHolder_uxLogin\"); submitButton.click();"
 
 #define REG_EX_CARD_HOLDER @"<strong>Card holder</strong></td>\\s+<td>\\s+(.+)</td>"
-#define REG_EX_CARD_TYPE @"<strong>Card type</strong>\\s+</td>\\s+<td>\\s+(.+)</td>"
+#define REG_EX_CARD_TYPE @"<strong>Card type</strong>\\s+</td>\\s+<td>\\s+(.*?)\\s+</td>"
 #define REG_EX_CARD_EXPIRY @"<strong>Card expiry</strong></td>\\s+<td>\\s+(.+)</td>"
 #define REG_EX_CARD_STATUS @"<strong>Card status</strong></td>\\s+<td>\\s+(.+)</td>"
 #define REG_EX_CURRENT_MYKI_MONEY_BALANCE @"<strong>Current myki money balance</strong></td>\\s+<td>\\s+(.+)</td>"
@@ -56,8 +56,8 @@
 #define REG_EX_ERROR_LOGGING_IN @"<title>\\s*(Myki-Session Expired)\\s*</title>"
 
 #define DEFAULT_HEADER_LABEL @"Sign in to see your account details"
-#define DEFAULT_BOTTOM_LABEL_ONE @"You need to have a registered account to"
-#define DEFAULT_BOTTOM_LABEL_TWO @"show your balance"
+#define DEFAULT_BOTTOM_LABEL_ONE @"You need to have a registered account with"
+#define DEFAULT_BOTTOM_LABEL_TWO @"myki to show your balance"
 
 #define USERNAME_TEXTFIELD_TAG 200
 #define PASSWORD_TEXTFIELD_TAG 201
