@@ -30,11 +30,18 @@
         mykiWebstiteWebView.delegate = self;
         userIsLoggedIn = NO;
         
-        [self retrieveMykiBalance];
-
         usernameTextField = [self setUpTextField:usernameTextField withText:@"Username" withUserDetail:[mykiAccountInformation mykiUsername] withReturnKey:UIReturnKeyNext withTag:USERNAME_TEXTFIELD_TAG];
-        passwordTextField = [self setUpTextField:passwordTextField withText:@"Password" withUserDetail:[mykiAccountInformation mykiPassword] withReturnKey:UIReturnKeyDone withTag:PASSWORD_TEXTFIELD_TAG];
-        passwordTextField.secureTextEntry = YES;
+        passwordTextField = [self setUpTextField:passwordTextField withText:@"Password" withUserDetail: [mykiAccountInformation mykiPassword] withReturnKey:UIReturnKeyDone withTag:PASSWORD_TEXTFIELD_TAG];        
+        
+        passwordTextField.clearsOnBeginEditing = NO;
+        
+        
+        
+        if([usernameTextField.text length] != 0 && [passwordTextField.text length] != 0) {
+            [self retrieveMykiBalance];
+        } else {
+            [self switchToLoginState];
+        }
         
         [self setTitle:@"Balances"];
         [[self navigationItem] setTitle:@"Balances"];
@@ -56,13 +63,19 @@
     textField.delegate = self;
     [textField setFont:[UIFont systemFontOfSize:14.0f]];
     textField.autocapitalizationType = UITextAutocapitalizationTypeNone;
-    if ([userDetail isEqualToString:@""]) {
-        textField.text = defaultText;
+    textField.text = userDetail;
+    [textField setPlaceholder:defaultText];
+    
+    /*if ([userDetail length] == 0) {
         [textField setTextColor:[UIColor grayColor]];
     } else {
-        textField.text = userDetail;
         [textField setTextColor:[UIColor blackColor]];
+    }*/
+
+    if(tag == PASSWORD_TEXTFIELD_TAG) {
+       textField.secureTextEntry = YES;
     }
+
     NSInteger usernameTag = tag;
     textField.tag = usernameTag;
     [textField setReturnKeyType:returnKey];
@@ -150,18 +163,6 @@
     [balanceHeaderLabel setText: [mykiAccountInformation transformAccountInfoToHeaderLabel]];
     [balanceFooterLabelOne setText: [mykiAccountInformation transformAccountInfoToBottomLabelOne]];
     [balanceFooterLabelTwo setText: [mykiAccountInformation transformAccountInfoToBottomLabelTwo]];
-    
-    
-    /*[cardHolderLabel setText:[mykiAccountInformation cardHolder]];
-    [cardTypeLabel setText:[mykiAccountInformation cardType]];
-    [cardExpiryLabel setText:[mykiAccountInformation cardExpiry]];
-    [cardStatusLabel setText:[mykiAccountInformation cardStatus]];
-    [currentMykiMoneyBalanceLabel setText:[mykiAccountInformation currentMykiMoneyBalance]];
-    [mykiMoneyTopUpInProgressLabel setText:[mykiAccountInformation mykiMoneyTopUpInProgress]];
-    [totalMykiMoneyBalanceLabel setText:[mykiAccountInformation totalMykiMoneyBalance]];
-    [currentMykiPassActiveLabel setText:[mykiAccountInformation currentMykiPassActive]];
-    [currentMykiPassNotYetActiveLabel setText:[mykiAccountInformation currentMykiPassNotYetActive]];
-    [lastMykiTransactionDateLabel setText:[mykiAccountInformation lastMykiTransactionDate]];*/
 }
 
 #pragma mark UITableViewDataSource
@@ -199,45 +200,16 @@
         if(textFieldTag == USERNAME_TEXTFIELD_TAG) {          
             [passwordTextField becomeFirstResponder];
         } else if (textFieldTag == PASSWORD_TEXTFIELD_TAG) {
+            if ([usernameTextField.text length] != 0 && [passwordTextField.text length] != 0) {
+                [mykiAccountInformation setMykiUsername: usernameTextField.text];
+                [mykiAccountInformation setMykiPassword: passwordTextField.text];
+                [mykiAccountInformation saveAccountInformation];
+                [self retryRetrieveMykiBalance];
+            }
             [passwordTextField resignFirstResponder];
         }
     }
     return YES;
-}
-
-- (void)textFieldDidBeginEditing:(UITextField *)textField {
-    int textFieldTag = textField.tag;        
-    if(textFieldTag == USERNAME_TEXTFIELD_TAG) {
-        if([usernameTextField.text isEqualToString:@"Username"]) {
-            [usernameTextField setText: @""];
-            [usernameTextField setTextColor:[UIColor blackColor]];
-        }
-    } else if (textFieldTag == PASSWORD_TEXTFIELD_TAG) {
-        if([passwordTextField.text isEqualToString:@"Password"]) {
-            [passwordTextField setText: @""];
-            [passwordTextField setTextColor:[UIColor blackColor]];
-        }
-    }
-}       
-
-- (void)textFieldDidEndEditing:(UITextField *)textField {
-    int textFieldTag = textField.tag;        
-    if(textFieldTag == USERNAME_TEXTFIELD_TAG) {
-        if([usernameTextField.text isEqualToString:@""]) {
-            [usernameTextField setText: @"Username"];
-            [usernameTextField setTextColor:[UIColor grayColor]];
-        }
-    } else if (textFieldTag == PASSWORD_TEXTFIELD_TAG) {
-        if([passwordTextField.text isEqualToString:@""]) {
-            [passwordTextField setText: @"Password"];
-            [passwordTextField setTextColor:[UIColor grayColor]];
-        } else {
-            [mykiAccountInformation setMykiUsername: usernameTextField.text];
-            [mykiAccountInformation setMykiPassword: passwordTextField.text];
-            [mykiAccountInformation saveAccountInformation];
-            [self retryRetrieveMykiBalance];
-        }
-    }
 }
 
 #pragma  mark helper methods 
