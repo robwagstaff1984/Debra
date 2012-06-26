@@ -103,27 +103,20 @@
     [mykiWebstiteWebView loadRequest:requestObj];
 }
 
-- (void)webViewDidStartLoad:(UIWebView *)webView {
-    NSLog(@"Start Load: ", nil);
-}
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
-    NSLog(@"Loaded: ");
     if(userIsLoggedIn) {
         // [webView stopLoading];
         NSString *fullURL = MYKI_ACCOUNT_INFO_URL;
         NSURL *url = [NSURL URLWithString:fullURL];  
         NSError *error;
-        NSLog(@"start of balance page: ");
         NSString *page = [NSString stringWithContentsOfURL:url encoding:NSASCIIStringEncoding error:&error];
-        NSLog(@"end of balance page: ");
         if([page length] == 0 || [mykiAccountInformation isLoginUnsuccessful:page]) {
             self.userIsLoggedIn = NO;
             [self switchToErrorState];
             [HUD hide:YES];
             self.navigationItem.rightBarButtonItem.enabled = YES;
         } else {
-            NSLog(@"start of extract ");
             [mykiAccountInformation extractMykiAccountInfoFromHtml:page];
             self.userIsLoggedIn = NO;
             [self showMykiAccountInformation];
@@ -143,7 +136,6 @@
 
         userIsLoggedIn = YES;   
         HUD.labelText = @"Retrieving Balance";
-        NSLog(@"submit button pressed: ", nil);
     }
 }
 
@@ -154,6 +146,22 @@
     [balanceMykiMoneyAmountLabel setText: [mykiAccountInformation currentMykiMoneyBalance]];
     [balanceMykiMoneyAdditionalLabel setText:[mykiAccountInformation mykiMoneyTopUpInProgress]];
     [balanceMykiPassAdditionalLabel setText:[mykiAccountInformation currentMykiPassNotYetActive]];
+    
+    [balanceHeaderLabel setText: [mykiAccountInformation transformAccountInfoToHeaderLabel]];
+    [balanceFooterLabelOne setText: [mykiAccountInformation transformAccountInfoToBottomLabelOne]];
+    [balanceFooterLabelTwo setText: [mykiAccountInformation transformAccountInfoToBottomLabelTwo]];
+    
+    
+    /*[cardHolderLabel setText:[mykiAccountInformation cardHolder]];
+    [cardTypeLabel setText:[mykiAccountInformation cardType]];
+    [cardExpiryLabel setText:[mykiAccountInformation cardExpiry]];
+    [cardStatusLabel setText:[mykiAccountInformation cardStatus]];
+    [currentMykiMoneyBalanceLabel setText:[mykiAccountInformation currentMykiMoneyBalance]];
+    [mykiMoneyTopUpInProgressLabel setText:[mykiAccountInformation mykiMoneyTopUpInProgress]];
+    [totalMykiMoneyBalanceLabel setText:[mykiAccountInformation totalMykiMoneyBalance]];
+    [currentMykiPassActiveLabel setText:[mykiAccountInformation currentMykiPassActive]];
+    [currentMykiPassNotYetActiveLabel setText:[mykiAccountInformation currentMykiPassNotYetActive]];
+    [lastMykiTransactionDateLabel setText:[mykiAccountInformation lastMykiTransactionDate]];*/
 }
 
 #pragma mark UITableViewDataSource

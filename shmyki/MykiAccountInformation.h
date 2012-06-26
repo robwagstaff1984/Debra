@@ -28,4 +28,8 @@
 -(void) loadAccountInformation;
 -(void) extractMykiAccountInfoFromHtml:(NSString*) page;
 -(BOOL) isLoginUnsuccessful:(NSString*)page;
+
+-(NSString*)transformAccountInfoToHeaderLabel;
+-(NSString*)transformAccountInfoToBottomLabelOne;
+-(NSString*)transformAccountInfoToBottomLabelTwo; 
 @end

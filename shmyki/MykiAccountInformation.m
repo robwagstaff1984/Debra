@@ -37,16 +37,16 @@
 
 -(void) extractMykiAccountInfoFromHtml:(NSString*) page {
 
-    //[self setCardHolder:[self extractInformationFromHtml:page withRegeEx:REG_EX_CARD_HOLDER]];
-    //[self setCardType:[self extractInformationFromHtml:page withRegeEx:REG_EX_CARD_TYPE]];
-    //[self setCardExpiry:[self extractInformationFromHtml:page withRegeEx:REG_EX_CARD_EXPIRY]];
-    //[self setCardStatus:[self extractInformationFromHtml:page withRegeEx:REG_EX_CARD_STATUS]];
+    [self setCardHolder:[self extractInformationFromHtml:page withRegeEx:REG_EX_CARD_HOLDER]];
+    [self setCardType:[self extractInformationFromHtml:page withRegeEx:REG_EX_CARD_TYPE]];
+    [self setCardExpiry:[self extractInformationFromHtml:page withRegeEx:REG_EX_CARD_EXPIRY]];
+    [self setCardStatus:[self extractInformationFromHtml:page withRegeEx:REG_EX_CARD_STATUS]];
     [self setCurrentMykiMoneyBalance:[self extractInformationFromHtml:page withRegeEx:REG_EX_CURRENT_MYKI_MONEY_BALANCE]];
     [self setMykiMoneyTopUpInProgress:[self convertMykiMoneyTopUpInProgress:[self extractInformationFromHtml:page withRegeEx:REG_EX_MYKI_MONEY_TOP_UP_IN_PROGRESS]]];
-    //[self setTotalMykiMoneyBalance:[self extractInformationFromHtml:page withRegeEx:REG_EX_TOTAL_MYKI_MONEY_BALANCE]];
+    [self setTotalMykiMoneyBalance:[self extractInformationFromHtml:page withRegeEx:REG_EX_TOTAL_MYKI_MONEY_BALANCE]];
     [self setCurrentMykiPassActive: [self convertMykiPassActiveToDays:[self extractInformationFromHtml:page withRegeEx:REG_EX_CURRENT_MYKI_PASS_ACTIVE]]];
     [self setCurrentMykiPassNotYetActive:[self extractInformationFromHtml:page withRegeEx:REG_EX_CURRENT_MYKI_PASS_NOT_YET_ACTIVE]];
-   // [self setLastMykiTransactionDate:[self extractInformationFromHtml:page withRegeEx:REG_EX_LAST_MYKI_TRANSACTION_DATE]];
+    [self setLastMykiTransactionDate:[self extractInformationFromHtml:page withRegeEx:REG_EX_LAST_MYKI_TRANSACTION_DATE]];
 }
 
 -(BOOL)isLoginUnsuccessful:(NSString*)page {
@@ -86,6 +86,38 @@
     NSTextCheckingResult *result = [regEx firstMatchInString:page options:0 range:NSMakeRange(0, [page length])];
     return [page substringWithRange:[result rangeAtIndex:1]];
 }
+
+
+#pragma mark transform account info to labels
+-(NSString*)transformAccountInfoToHeaderLabel {
+
+    NSString *headerLabel = @"";
+    if(cardExpiry != nil && ![cardExpiry isEqualToString:@""]) {
+        headerLabel = [NSString stringWithFormat: @"Last transaction %@", lastMykiTransactionDate];
+    }
+    return headerLabel;
+}
+   
+-(NSString*)transformAccountInfoToBottomLabelOne {
+    NSString *bottomLabelOne = @"";
+    if(cardHolder != nil && ![cardHolder isEqualToString:@""]) {
+        bottomLabelOne = [bottomLabelOne stringByAppendingString:cardHolder];
+        if(![cardStatus isEqualToString:@""]) {
+            bottomLabelOne = [bottomLabelOne stringByAppendingFormat:@"has an %@ %@ card", cardStatus, cardType];
+        }
+    }
+    return bottomLabelOne;
+}
+
+-(NSString*)transformAccountInfoToBottomLabelTwo {
+    NSString *bottomLabelTwo = @"";
+    if(cardHolder != nil && ![cardExpiry isEqualToString:@""]) {
+        bottomLabelTwo = [NSString stringWithFormat: @"Expires %@", cardExpiry];
+    }
+    return bottomLabelTwo;
+}
+
+
 
 
 
