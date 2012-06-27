@@ -30,6 +30,46 @@
     [self setMykiPassword: storedMykiPassword];
 }
 
+-(void) saveAccountBalanceInformation {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];    
+    [defaults setObject:cardHolder forKey:@"cardHolder"];
+    [defaults setObject:cardType forKey:@"cardType"];
+    [defaults setObject:cardExpiry forKey:@"cardExpiry"];
+    [defaults setObject:cardStatus forKey:@"cardStatus"];
+    [defaults setObject:currentMykiMoneyBalance forKey:@"currentMykiMoneyBalance"];
+    [defaults setObject:mykiMoneyTopUpInProgress forKey:@"mykiMoneyTopUpInProgress"];
+    [defaults setObject:currentMykiPassActive forKey:@"currentMykiPassActive"];
+    [defaults setObject:currentMykiPassNotYetActive forKey:@"currentMykiPassNotYetActive"];
+    [defaults setObject:lastMykiTransactionDate forKey:@"lastMykiTransactionDate"];
+    
+    [defaults synchronize];
+
+}
+
+-(void) loadAccountBalanceInformation {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    NSString *storedCardHolder = [defaults objectForKey:@"cardHolder"];
+    NSString *storedCardType = [defaults objectForKey:@"cardType"];
+    NSString *storedCardExpiry = [defaults objectForKey:@"cardExpiry"];
+    NSString *storedCardStatus = [defaults objectForKey:@"cardStatus"];
+    NSString *storedCurrentMykiMoneyBalance = [defaults objectForKey:@"currentMykiMoneyBalance"];
+    NSString *storedMykiMoneyTopUpInProgress = [defaults objectForKey:@"mykiMoneyTopUpInProgress"];
+    NSString *storedCurrentMykiPassActive = [defaults objectForKey:@"currentMykiPassActive"];
+    NSString *storedCurrentMykiPassNotYetActive = [defaults objectForKey:@"currentMykiPassNotYetActive"];
+    NSString *storedLastMykiTransactionDate = [defaults objectForKey:@"lastMykiTransactionDate"];
+
+    [self setCardHolder: storedCardHolder];
+    [self setCardType: storedCardType];
+    [self setCardExpiry: storedCardExpiry];
+    [self setCardStatus: storedCardStatus];
+    [self setCurrentMykiMoneyBalance: storedCurrentMykiMoneyBalance];
+    [self setMykiMoneyTopUpInProgress: storedMykiMoneyTopUpInProgress];
+    [self setCurrentMykiPassActive: storedCurrentMykiPassActive];
+    [self setCurrentMykiPassNotYetActive: storedCurrentMykiPassNotYetActive];
+    [self setLastMykiTransactionDate: storedLastMykiTransactionDate];
+}
+
 //-(void)setCurrentMykiPassActive:(NSString *)currentMykiPassActiveToSet {
 //    NSLog(currentMykiPassActiveToSet);
 //    currentMykiPassActive = currentMykiPassActiveToSet;
@@ -47,6 +87,7 @@
     [self setCurrentMykiPassActive: [self convertMykiPassActiveToDays:[self extractInformationFromHtml:page withRegeEx:REG_EX_CURRENT_MYKI_PASS_ACTIVE]]];
     [self setCurrentMykiPassNotYetActive:[self convertMykiPassNotYetActive: [self extractInformationFromHtml:page withRegeEx:REG_EX_CURRENT_MYKI_PASS_NOT_YET_ACTIVE]]];
     [self setLastMykiTransactionDate:[self extractInformationFromHtml:page withRegeEx:REG_EX_LAST_MYKI_TRANSACTION_DATE]];
+    [self saveAccountBalanceInformation];
 }
 
 -(BOOL)isLoginUnsuccessful:(NSString*)page {

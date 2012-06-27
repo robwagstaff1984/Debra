@@ -25,6 +25,7 @@
     if (self) {
         mykiAccountInformation = [[MykiAccountInformation alloc] init]; 
         [mykiAccountInformation loadAccountInformation];
+        [mykiAccountInformation loadAccountBalanceInformation];
         mykiLoginUrl = MYKI_LOGIN_URL;
         mykiWebstiteWebView = [[UIWebView alloc] init];
         mykiWebstiteWebView.delegate = self;
