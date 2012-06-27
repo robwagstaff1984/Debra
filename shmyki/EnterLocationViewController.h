@@ -20,7 +20,12 @@
 @property (nonatomic, strong) IBOutlet UIButton *tramButton;
 @property (nonatomic, strong) IBOutlet UIButton *trainButton;
 @property (nonatomic, strong) IBOutlet UIButton *busButton;
-@property (nonatomic, strong) IBOutlet NSMutableArray *stationsForCurrentSelection;
+@property (nonatomic, strong) NSMutableArray *stationsForCurrentSelection;
+@property (nonatomic, strong) NSMutableArray *filteredStationsForCurrentSelection;
+
+@property (nonatomic, strong) IBOutlet UISearchBar *stationsSearchBar;
+
+@property BOOL isFiltered;
 
 - (IBAction)tramButtonTapped:(id)sender;
 - (IBAction)trainButtonTapped:(id)sender;

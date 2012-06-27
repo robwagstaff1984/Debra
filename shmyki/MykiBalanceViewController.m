@@ -111,7 +111,7 @@
     HUD.dimBackground = YES;
     HUD.labelText = @"Connecting";
 
-    NSURLRequest *requestObj = [NSURLRequest requestWithURL:[NSURL URLWithString:mykiLoginUrl] cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:40.0f];
+    NSURLRequest *requestObj = [NSURLRequest requestWithURL:[NSURL URLWithString:mykiLoginUrl] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:40.0f];
     [mykiWebstiteWebView loadRequest:requestObj];
     
 }

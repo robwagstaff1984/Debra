@@ -11,8 +11,8 @@
 
 @implementation EnterLocationViewController
 
-@synthesize selectedTransportType, stationLocations, stationsTable, tramButton, trainButton, busButton;
-@synthesize stationsForCurrentSelection;
+@synthesize selectedTransportType, stationLocations, stationsTable, tramButton, trainButton, busButton, stationsSearchBar;
+@synthesize stationsForCurrentSelection, filteredStationsForCurrentSelection, isFiltered;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -51,8 +51,20 @@
 #pragma mark tableView data source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.stationsForCurrentSelection count];
+    
+    int rowCount;
+    if(self.isFiltered)
+        rowCount = filteredStationsForCurrentSelection.count;
+    else
+        rowCount = stationsForCurrentSelection.count;
+    
+    return rowCount;
 }
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 40.0f;
+}
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
@@ -60,7 +72,7 @@
     static NSString *cellIdentifier = @"stationLocationCell";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-   // 
+    
     if(cell == nil) {
         cell= [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault 
                                     reuseIdentifier:cellIdentifier];
@@ -69,10 +81,13 @@
         [cell.textLabel setFont:[UIFont systemFontOfSize:14.0f]];
         [cell.textLabel setTextColor:[UIColor grayColor]];
         cell.selectionStyle = UITableViewCellSelectionStyleGray;
-        //cell.accessoryType = UITableViewCellAccessoryCheckmark;
-        
     }
-    cell.textLabel.text = [self.stationsForCurrentSelection objectAtIndex:indexPath.row];
+
+    if(isFiltered) {
+        cell.textLabel.text = [self.filteredStationsForCurrentSelection objectAtIndex:indexPath.row];
+    } else {
+        cell.textLabel.text = [self.stationsForCurrentSelection objectAtIndex:indexPath.row];
+    }
    
     NSIndexPath* selection = [tableView indexPathForSelectedRow];
     if (selection && selection.row == indexPath.row) {
@@ -98,6 +113,36 @@
     [[tableView cellForRowAtIndexPath:indexPath] setSelected:NO animated:YES];
 }
 
+#pragma mark search bar delegate
+
+-(void)searchBar:(UISearchBar*)searchBar textDidChange:(NSString*)text
+{
+    if(text.length == 0)
+    {
+        isFiltered = FALSE;
+    } else {
+        isFiltered = true;
+        filteredStationsForCurrentSelection = [[NSMutableArray alloc] init];
+        
+        for (NSString* stationLocation in stationsForCurrentSelection)
+        {
+            NSRange stationLocationRange = [stationLocation rangeOfString:text options:NSCaseInsensitiveSearch];
+            if(stationLocationRange.location != NSNotFound)
+            {
+                [filteredStationsForCurrentSelection addObject:stationLocation];
+            }
+        }
+    }
+    [self.stationsTable reloadData];
+}
+
+- (BOOL)searchBar:(UISearchBar *)searchBar shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
+    if ([text isEqualToString:@"\n"]) {
+        [searchBar resignFirstResponder];
+    }
+    return YES;
+}
+
 #pragma mark Actions
 
 -(void) savePunchOnLog {
@@ -107,16 +152,25 @@
 - (IBAction)tramButtonTapped:(id)sender {
     self.selectedTransportType = SELECTED_TRANSPORT_TRAM;
     self.stationsForCurrentSelection = [stationLocations getStationsForSelectedTransport:selectedTransportType];
+    self.filteredStationsForCurrentSelection = nil;
+    self.stationsSearchBar.text = @"";
+    [self.stationsSearchBar resignFirstResponder];
     [self.stationsTable reloadData];
 }
 - (IBAction)trainButtonTapped:(id)sender {
     self.selectedTransportType = SELECTED_TRANSPORT_TRAIN;
     self.stationsForCurrentSelection = [stationLocations getStationsForSelectedTransport:selectedTransportType];
+    self.filteredStationsForCurrentSelection = nil;
+    self.stationsSearchBar.text = @"";
+    [self.stationsSearchBar resignFirstResponder];
     [self.stationsTable reloadData];
 }
 - (IBAction)busButtonTapped:(id)sender {
     self.selectedTransportType = SELECTED_TRANSPORT_BUS;
     self.stationsForCurrentSelection = [stationLocations getStationsForSelectedTransport:selectedTransportType];
+    self.filteredStationsForCurrentSelection = nil;
+    self.stationsSearchBar.text = @"";
+    [self.stationsSearchBar resignFirstResponder];
     [self.stationsTable reloadData];
 }
 
