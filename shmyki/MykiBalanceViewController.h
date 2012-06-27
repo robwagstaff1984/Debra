@@ -37,6 +37,7 @@
 @property (nonatomic, strong) IBOutlet UIImageView* balanceSeperatorImage;
 
 @property (nonatomic, strong) MBProgressHUD *HUD;
+@property (nonatomic, strong) NSTimer *timer;
 
 -(void)retrieveMykiBalance;
 - (void)webViewDidFinishLoad:(UIWebView *)webView;

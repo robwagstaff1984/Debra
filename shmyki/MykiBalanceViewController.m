@@ -16,7 +16,7 @@
 @synthesize topView, bottomView, loginTableView, loginScrollView, pageScrollView, balanceDisplayView, errorView;
 @synthesize usernameTextField, passwordTextField;
 @synthesize balanceHeaderLabel, balanceMykiPassExpiryLabel, balanceMykiPassAdditionalLabel, balanceMykiMoneyAmountLabel, balanceMykiMoneyAdditionalLabel, balanceFooterLabelOne, balanceFooterLabelTwo, balanceSeperatorImage;
-@synthesize HUD;
+@synthesize HUD, timer;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -106,14 +106,26 @@
 
 -(void)retrieveMykiBalance {
     
+    timer = [NSTimer scheduledTimerWithTimeInterval: 40.0 target:self selector:@selector(cancelRequest:) userInfo:nil repeats: NO];
     
+    //timer = [NSTimer timerWithTimeInterval:1.0 target:self selector:@selector(cancelRequest:) userInfo:nil repeats:NO];
     HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     HUD.delegate = self;
     HUD.dimBackground = YES;
     HUD.labelText = @"Connecting";
 
-    NSURLRequest *requestObj = [NSURLRequest requestWithURL:[NSURL URLWithString:mykiLoginUrl]];
+    NSURLRequest *requestObj = [NSURLRequest requestWithURL:[NSURL URLWithString:mykiLoginUrl] cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:40.0f];
     [mykiWebstiteWebView loadRequest:requestObj];
+    
+}
+
+-(void) cancelRequest:(NSTimer*) theTimer {
+
+    [mykiWebstiteWebView stopLoading];
+    self.userIsLoggedIn = NO;
+    [HUD hide:YES];
+    [self switchToErrorState];
+    NSLog(@"error biatch");
 }
 
 
@@ -124,6 +136,7 @@
         NSURL *url = [NSURL URLWithString:fullURL];  
         NSError *error;
         NSString *page = [NSString stringWithContentsOfURL:url encoding:NSASCIIStringEncoding error:&error];
+        [timer invalidate];
         if([page length] == 0 || [mykiAccountInformation isLoginUnsuccessful:page]) {
             self.userIsLoggedIn = NO;
             [self switchToErrorState];
