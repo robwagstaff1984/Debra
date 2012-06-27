@@ -36,14 +36,6 @@
         
         passwordTextField.clearsOnBeginEditing = NO;
         
-        
-        
-        if([usernameTextField.text length] != 0 && [passwordTextField.text length] != 0) {
-            [self retrieveMykiBalance];
-        } else {
-            [self switchToLoginState];
-        }
-        
         [self setTitle:@"Balances"];
         [[self navigationItem] setTitle:@"Balances"];
         self.tabBarItem.image = [UIImage imageNamed:@"images/TabBalanceOff"];
@@ -51,8 +43,12 @@
                                                   initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self
                                                   action:@selector(switchToLoginState)];
         self.navigationItem.rightBarButtonItem.enabled = NO;
-
         
+        if([usernameTextField.text length] != 0 && [passwordTextField.text length] != 0) {
+            [self retrieveMykiBalance];
+        } else {
+            [self switchToLoginState];
+        }
     }
     return self;
 }
@@ -106,7 +102,7 @@
 }
 
 -(void)retrieveMykiBalance {
-    
+
     timer = [NSTimer scheduledTimerWithTimeInterval: 40.0 target:self selector:@selector(cancelRequest:) userInfo:nil repeats: NO];
     
     //timer = [NSTimer timerWithTimeInterval:1.0 target:self selector:@selector(cancelRequest:) userInfo:nil repeats:NO];
@@ -142,14 +138,12 @@
             self.userIsLoggedIn = NO;
             [self switchToErrorState];
             [HUD hide:YES];
-            self.navigationItem.rightBarButtonItem.enabled = YES;
         } else {
             [mykiAccountInformation extractMykiAccountInfoFromHtml:page];
             self.userIsLoggedIn = NO;
             [self showMykiAccountInformation];
             [self switchToSuccessState];
             [HUD hide:YES];
-            self.navigationItem.rightBarButtonItem.enabled = YES;
         }
     } else {
                
@@ -215,11 +209,11 @@
             [passwordTextField becomeFirstResponder];
         } else if (textFieldTag == PASSWORD_TEXTFIELD_TAG) {
             if ([usernameTextField.text length] != 0 && [passwordTextField.text length] != 0) {
-                [mykiAccountInformation setMykiUsername: usernameTextField.text];
-                [mykiAccountInformation setMykiPassword: passwordTextField.text];
-                [mykiAccountInformation saveAccountInformation];
                 [self retryRetrieveMykiBalance];
             }
+            [mykiAccountInformation setMykiUsername: usernameTextField.text];
+            [mykiAccountInformation setMykiPassword: passwordTextField.text];
+            [mykiAccountInformation saveAccountInformation];
             [passwordTextField resignFirstResponder];
         }
     }
@@ -313,6 +307,7 @@
     [self drawBalanceViewGradientWithCornersWithActiveState:YES];
     self.balanceSeperatorImage.image = [UIImage imageNamed:@"images/BalanceLine.png"];
     [UIView commitAnimations];
+        self.navigationItem.rightBarButtonItem.enabled = YES;
 }
 
 -(void)switchToLoginState {
@@ -323,6 +318,7 @@
     [self drawBalanceViewGradientWithCornersWithActiveState:NO];
     self.balanceSeperatorImage.image = [UIImage imageNamed:@"images/BalanceLineBlk.png"];
     [UIView commitAnimations];
+    self.navigationItem.rightBarButtonItem.enabled = NO;
 }
 
 -(void)switchToErrorState {
@@ -333,6 +329,7 @@
     [self drawBalanceViewGradientWithCornersWithActiveState:NO];
     self.balanceSeperatorImage.image = [UIImage imageNamed:@"images/BalanceLineBlk.png"];
     [UIView commitAnimations];
+    self.navigationItem.rightBarButtonItem.enabled = YES;
 }
 
 -(IBAction)tryAgainButtonTapped:(id)sender {
