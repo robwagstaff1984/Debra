@@ -223,11 +223,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "shmyki/EnterIssueViewController.m"
-         timestampString = "362824977.417373"
+         timestampString = "362826381.850147"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "98"
-         endingLineNumber = "98"
+         startingLineNumber = "96"
+         endingLineNumber = "96"
          landmarkName = "-tableView:cellForRowAtIndexPath:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -262,11 +262,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "shmyki/EnterIssueViewController.m"
-         timestampString = "362824977.417373"
+         timestampString = "362826381.850147"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "86"
-         endingLineNumber = "86"
+         startingLineNumber = "84"
+         endingLineNumber = "84"
          landmarkName = "-tableView:cellForRowAtIndexPath:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -275,11 +275,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "shmyki/EnterIssueViewController.m"
-         timestampString = "362824977.417373"
+         timestampString = "362826381.850147"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "87"
-         endingLineNumber = "87"
+         startingLineNumber = "85"
+         endingLineNumber = "85"
          landmarkName = "-tableView:cellForRowAtIndexPath:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -301,11 +301,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "shmyki/EnterIssueViewController.m"
-         timestampString = "362824977.417373"
+         timestampString = "362826381.850147"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "95"
-         endingLineNumber = "95"
+         startingLineNumber = "93"
+         endingLineNumber = "93"
          landmarkName = "-tableView:cellForRowAtIndexPath:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -993,11 +993,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "shmyki/EnterIssueViewController.m"
-         timestampString = "362824977.417373"
+         timestampString = "362826381.850147"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "152"
-         endingLineNumber = "152"
+         startingLineNumber = "150"
+         endingLineNumber = "150"
          landmarkName = "-toggleTwitterButton:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1500,46 +1500,7 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "shmyki/EnterIssueViewController.m"
-         timestampString = "362824977.417373"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "157"
-         endingLineNumber = "157"
-         landmarkName = "-issueEntered"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "shmyki/EnterIssueViewController.m"
-         timestampString = "362824977.417373"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "156"
-         endingLineNumber = "156"
-         landmarkName = "-issueEntered"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "shmyki/AppDelegate.m"
-         timestampString = "362824977.417373"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "94"
-         endingLineNumber = "94"
-         landmarkName = "-postToFacebook"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "shmyki/EnterIssueViewController.m"
-         timestampString = "362824977.417373"
+         timestampString = "362826381.850147"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "155"
@@ -1552,7 +1513,7 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "shmyki/EnterIssueViewController.m"
-         timestampString = "362824977.417373"
+         timestampString = "362826381.850147"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "154"
@@ -1564,12 +1525,51 @@
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "shmyki/EnterIssueViewController.m"
-         timestampString = "362824977.417373"
+         filePath = "shmyki/AppDelegate.m"
+         timestampString = "362826515.687245"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "166"
-         endingLineNumber = "166"
+         startingLineNumber = "92"
+         endingLineNumber = "92"
+         landmarkName = "-postToFacebook"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "shmyki/EnterIssueViewController.m"
+         timestampString = "362826381.850147"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "153"
+         endingLineNumber = "153"
+         landmarkName = "-issueEntered"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "shmyki/EnterIssueViewController.m"
+         timestampString = "362826381.850147"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "152"
+         endingLineNumber = "152"
+         landmarkName = "-issueEntered"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "shmyki/EnterIssueViewController.m"
+         timestampString = "362826381.850147"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "165"
+         endingLineNumber = "165"
          landmarkName = "-toggleTwitterButton:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1578,12 +1578,38 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "shmyki/EnterIssueViewController.m"
-         timestampString = "362824977.417373"
+         timestampString = "362826381.850147"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "166"
-         endingLineNumber = "166"
+         startingLineNumber = "165"
+         endingLineNumber = "165"
          landmarkName = "-toggleTwitterButton:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "shmyki/AppDelegate.m"
+         timestampString = "362826515.687245"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "154"
+         endingLineNumber = "154"
+         landmarkName = "-postToTwitter"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "shmyki/AppDelegate.m"
+         timestampString = "362826480.048747"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "91"
+         endingLineNumber = "91"
+         landmarkName = "-postToFacebook"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

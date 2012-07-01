@@ -14,15 +14,13 @@
 
 @implementation EnterIssueViewController
 
-@synthesize commentsTextView, punchOnIssues, punchOnTableView, facebookIsSelected, twitterIsSelected, punchOnIsValid;
+@synthesize commentsTextView, punchOnIssues, punchOnTableView, punchOnIsValid;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         punchOnIssues = [[PunchOnIssues alloc] init];
-        facebookIsSelected = NO;
-        twitterIsSelected = NO;
         punchOnIsValid = NO;
     }
     return self;
@@ -162,25 +160,25 @@
 }
 
 - (IBAction)toggleTwitterButton:(id)sender {
+    BOOL twitterIsSelected =  [(AppDelegate*)[[UIApplication sharedApplication]delegate] isTwitterRequired];
     if (twitterIsSelected) {
         [sender setImage:[UIImage imageNamed: @"images/IconTwitterOff"] forState:UIControlStateNormal];
     } else {
         [sender setImage:[UIImage imageNamed: @"images/IconTwitterOn"] forState:UIControlStateNormal];
         [self presentTwitterLoginIfRequired];
     }
-    twitterIsSelected = !twitterIsSelected;
+    [(AppDelegate*)[[UIApplication sharedApplication]delegate] setIsTwitterRequired:!twitterIsSelected];
 }
 
 - (IBAction)toggleFacebookButton:(id)sender {
+    BOOL facebookIsSelected =  [(AppDelegate*)[[UIApplication sharedApplication]delegate] isFaceBookRequired];
     if (facebookIsSelected) {
         [sender setImage:[UIImage imageNamed: @"images/IconFacebookOff"] forState:UIControlStateNormal];
-        
-        //        [(AppDelegate*)[[UIApplication sharedApplication] delegate] logOutOfFacebook];
     } else {
         [sender setImage:[UIImage imageNamed: @"images/IconFacebookOn"] forState:UIControlStateNormal];
         [(AppDelegate*)[[UIApplication sharedApplication] delegate] logInToFacebook];
     }
-    facebookIsSelected = !facebookIsSelected;
+    [(AppDelegate*)[[UIApplication sharedApplication]delegate] setIsFaceBookRequired:!facebookIsSelected];
 }
 
 #pragma  mark helper methods 

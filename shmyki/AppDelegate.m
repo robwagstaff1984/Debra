@@ -24,7 +24,7 @@
 @synthesize window = _window;
 @synthesize tabBarController = _tabBarController;
 @synthesize navigationController = _navigationController;
-@synthesize facebook, twitterEngine, currentUsersPunchOnLog;
+@synthesize facebook, twitterEngine, currentUsersPunchOnLog, isTwitterRequired, isFaceBookRequired;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -88,19 +88,18 @@
 }
 
 -(void) postToFacebook {
-    
-    
-    
-    NSMutableDictionary* params = [[NSMutableDictionary alloc] initWithCapacity:3];
-    
-    NSString *facebookMessage = [NSString stringWithFormat:@"I just punched on with yourKi:\n\n\"%@\"",  currentUsersPunchOnLog.message];
-    [params setObject:facebookMessage forKey:@"message"];
-    [params setObject:@"http://www.facebook.com/YourKiApp" forKey:@"link"];
-    [params setObject:@"Get the app that give you your Myki balance, ticket inspector locations and access to the YourKi community" forKey:@"caption"];
-    [params setObject:@"YourKi -  \"It's YOUR key\""  forKey:@"description"];
-    //[params setObject:@"http://a5.sphotos.ak.fbcdn.net/hphotos-ak-snc6/s720x720/251964_337995966278198_401361979_n.jpg"  forKey:@"picture"];
-    
-    [facebook requestWithGraphPath:@"me/feed" andParams:params andHttpMethod:@"POST" andDelegate:self];
+    if(self.isFaceBookRequired) {
+        NSMutableDictionary* params = [[NSMutableDictionary alloc] initWithCapacity:3];
+        
+        NSString *facebookMessage = [NSString stringWithFormat:@"I just punched on with yourKi:\n\n\"%@\"",  currentUsersPunchOnLog.message];
+        [params setObject:facebookMessage forKey:@"message"];
+        [params setObject:@"http://www.facebook.com/YourKiApp" forKey:@"link"];
+        [params setObject:@"Get the app that give you your Myki balance, ticket inspector locations and access to the YourKi community" forKey:@"caption"];
+        [params setObject:@"YourKi -  \"It's YOUR key\""  forKey:@"description"];
+        //[params setObject:@"http://a5.sphotos.ak.fbcdn.net/hphotos-ak-snc6/s720x720/251964_337995966278198_401361979_n.jpg"  forKey:@"picture"];
+        
+        [facebook requestWithGraphPath:@"me/feed" andParams:params andHttpMethod:@"POST" andDelegate:self];
+    }
 }
 
 - (void)fbDidLogin {
@@ -151,9 +150,12 @@
 }
 
 -(void) postToTwitter {
-    NSString *twitterMessage = [NSString stringWithFormat:@"I just punched on with yourKi:\n\n\"%@\"",  currentUsersPunchOnLog.message];
     
-    [twitterEngine sendUpdate:twitterMessage];
+    if(self.isTwitterRequired) { 
+        NSString *twitterMessage = [NSString stringWithFormat:@"I just punched on with yourKi:\n\n\"%@\"",  currentUsersPunchOnLog.message];
+    
+        [twitterEngine sendUpdate:twitterMessage];
+    }
 }
 
 #pragma mark Facebook request delegate

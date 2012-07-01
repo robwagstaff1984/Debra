@@ -25,6 +25,10 @@
 
 @property (nonatomic, strong) PunchOnLog *currentUsersPunchOnLog;
 
+@property (nonatomic) BOOL isFaceBookRequired;
+
+@property (nonatomic) BOOL isTwitterRequired;
+
 
 -(void)logInToFacebook;
 -(void)postToFacebook;
