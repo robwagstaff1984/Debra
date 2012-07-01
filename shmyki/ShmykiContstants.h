@@ -66,6 +66,9 @@
 #define SELECTED_TRANSPORT_TRAIN 1
 #define SELECTED_TRANSPORT_BUS 2
 
+#define kOAuthConsumerKey				@"XpVsm04szjaPMBRuelQsQ"
+#define kOAuthConsumerSecret			@"BhYG56Bjlt7nlHL0JrVllZziH9dDCPB0GMUju7GIBM"
+
 @interface ShmykiContstants
 
 

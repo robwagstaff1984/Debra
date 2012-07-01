@@ -11,6 +11,8 @@
 #import "Parse/Parse.h"
 #import "ShmykiContstants.h"
 #import "AppDelegate.h"
+#import "SA_OAuthTwitterEngine.h"  
+
 
 
 @implementation EnterIssueViewController
@@ -67,6 +69,15 @@
     [super viewDidUnload];
 }
 
+-(void)viewDidAppear: (BOOL)animated {  
+
+    if(!_engine){  
+        _engine = [[SA_OAuthTwitterEngine alloc] initOAuthWithDelegate:self];  
+        _engine.consumerKey    = kOAuthConsumerKey;  
+        _engine.consumerSecret = kOAuthConsumerSecret;  
+    }  
+    [super viewDidAppear:animated];
+}  
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
@@ -162,7 +173,16 @@
 - (IBAction)toggleTwitterButton:(id)sender {
     if (twitterIsSelected) {
         [sender setImage:[UIImage imageNamed: @"images/IconTwitterOff"] forState:UIControlStateNormal];
+        [_engine sendUpdate:@"test"];
     } else {
+        if(![_engine isAuthorized]){  
+            UIViewController *controller = [SA_OAuthTwitterController controllerToEnterCredentialsWithTwitterEngine:_engine delegate:self];  
+            
+            if (controller){  
+                [self presentModalViewController: controller animated: YES];  
+            }  
+        }
+        
         [sender setImage:[UIImage imageNamed: @"images/IconTwitterOn"] forState:UIControlStateNormal];
     }
     twitterIsSelected = !twitterIsSelected;
@@ -194,5 +214,26 @@
     [commentsTextView setFont:[UIFont italicSystemFontOfSize:18.0f]];
 	[commentsTextView setTextColor:[UIColor blackColor]];
 }
+
+#pragma mark SA_OAuthTwitterEngineDelegate  
+- (void) storeCachedTwitterOAuthData: (NSString *) data forUsername: (NSString *) username {  
+    NSUserDefaults          *defaults = [NSUserDefaults standardUserDefaults];  
+    
+    [defaults setObject: data forKey: @"authData"];  
+    [defaults synchronize];  
+}  
+
+- (NSString *) cachedTwitterOAuthDataForUsername: (NSString *) username {  
+    return [[NSUserDefaults standardUserDefaults] objectForKey: @"authData"];  
+}  
+
+#pragma mark TwitterEngineDelegate  
+- (void) requestSucceeded: (NSString *) requestIdentifier {  
+    NSLog(@"Request %@ succeeded", requestIdentifier);  
+}  
+
+- (void) requestFailed: (NSString *) requestIdentifier withError: (NSError *) error {  
+    NSLog(@"Request %@ failed with error: %@", requestIdentifier, error);  
+}  
 
 @end
