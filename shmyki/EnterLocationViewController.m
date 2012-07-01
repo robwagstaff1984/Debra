@@ -14,7 +14,7 @@
 @implementation EnterLocationViewController
 
 @synthesize selectedTransportType, stationLocations, stationsTable, tramButton, trainButton, busButton, stationsSearchBar;
-@synthesize stationsForCurrentSelection, filteredStationsForCurrentSelection, isFiltered;
+@synthesize stationsForCurrentSelection, filteredStationsForCurrentSelection, isFiltered, selectedLocation;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -24,6 +24,7 @@
         stationLocations = [[StationLocations alloc] init];
         stationsForCurrentSelection = [[NSMutableArray alloc] init];
         stationsForCurrentSelection = [stationLocations getStationsForSelectedTransport:selectedTransportType];
+        selectedLocation = @"";
     }
     return self;
 }
@@ -107,6 +108,7 @@
 {
     [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryCheckmark;
     [[tableView cellForRowAtIndexPath:indexPath] setSelected:NO animated:YES];
+    selectedLocation = [[[tableView cellForRowAtIndexPath:indexPath] textLabel] text];
 }
 
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -148,9 +150,14 @@
 #pragma mark Actions
 
 -(void) savePunchOnLog {
+    [[(AppDelegate*)[[UIApplication sharedApplication] delegate] currentUsersPunchOnLog] setLocation:selectedLocation];
+    
     [(AppDelegate*)[[UIApplication sharedApplication] delegate] postToFacebook];
     [(AppDelegate*)[[UIApplication sharedApplication] delegate] postToTwitter];
-    [(AppDelegate*)[[UIApplication sharedApplication]delegate] saveCurrentUsersPunchOnLog];
+    [(AppDelegate*)[[UIApplication sharedApplication] delegate] saveCurrentUsersPunchOnLog];
+    
+    [self.navigationController popToRootViewControllerAnimated:YES];
+    
 }
 
 - (IBAction)tramButtonTapped:(id)sender {

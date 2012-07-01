@@ -21,7 +21,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        [self updatePunchOnLogs];
+        
         [self.tabBarItem setTitle:@"Punch On"];
         [[self navigationItem] setTitle:APP_NAME];
         self.tabBarItem.image = [UIImage imageNamed:@"images/TabPunchOff"];
@@ -60,6 +60,11 @@
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
+}
+
+-(void)viewDidAppear:(BOOL)animated {
+    [self updatePunchOnLogs];
+    [super viewDidAppear:animated];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

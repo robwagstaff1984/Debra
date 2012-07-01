@@ -24,6 +24,7 @@
 @property (nonatomic, strong) NSMutableArray *filteredStationsForCurrentSelection;
 
 @property (nonatomic, strong) IBOutlet UISearchBar *stationsSearchBar;
+@property (nonatomic, strong) NSString *selectedLocation;
 
 @property BOOL isFiltered;
 
