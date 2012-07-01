@@ -9,6 +9,7 @@
 #import "EnterLocationViewController.h"
 #import "ShmykiContstants.h"
 #import "AppDelegate.h"
+#import "Parse/Parse.h"
 
 @implementation EnterLocationViewController
 
@@ -149,6 +150,7 @@
 -(void) savePunchOnLog {
     [(AppDelegate*)[[UIApplication sharedApplication] delegate] postToFacebook];
     [(AppDelegate*)[[UIApplication sharedApplication] delegate] postToTwitter];
+    [(AppDelegate*)[[UIApplication sharedApplication]delegate] saveCurrentUsersPunchOnLog];
 }
 
 - (IBAction)tramButtonTapped:(id)sender {

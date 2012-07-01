@@ -8,7 +8,6 @@
 
 #import "EnterIssueViewController.h"
 #import "EnterLocationViewController.h"
-#import "Parse/Parse.h"
 #import "ShmykiContstants.h"
 #import "AppDelegate.h"
 

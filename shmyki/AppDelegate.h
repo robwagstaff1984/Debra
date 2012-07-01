@@ -35,4 +35,6 @@
 
 - (UIViewController*) getlogInToTwitterViewController;
 -(void)postToTwitter;
+
+-(void)saveCurrentUsersPunchOnLog;
 @end

@@ -188,6 +188,26 @@
     NSLog(@"Request %@ failed with error: %@", requestIdentifier, error);  
 }  
 
+#pragma mark Parse
+
+-(void) saveCurrentUsersPunchOnLog {
+    PFObject *punchOnLog = [PFObject objectWithClassName:@"PunchOnLog"];
+    
+    NSString *location = currentUsersPunchOnLog.location;
+    if(location == nil) {
+        location = @"";
+    }
+    
+    NSString *message = currentUsersPunchOnLog.message;
+    if(message == nil) {
+        message = @"";
+    }
+    
+    [punchOnLog setObject:location forKey:@"location"];
+    [punchOnLog setObject:message forKey:@"message"];
+    [punchOnLog saveInBackground];
+}
+
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {
