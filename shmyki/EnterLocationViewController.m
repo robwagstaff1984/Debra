@@ -8,6 +8,7 @@
 
 #import "EnterLocationViewController.h"
 #import "ShmykiContstants.h"
+#import "AppDelegate.h"
 
 @implementation EnterLocationViewController
 
@@ -32,7 +33,7 @@
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] 
                                               initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self
                                               action:@selector(savePunchOnLog)];
-    self.navigationItem.rightBarButtonItem.enabled = NO;
+    //self.navigationItem.rightBarButtonItem.enabled = NO;
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -146,7 +147,7 @@
 #pragma mark Actions
 
 -(void) savePunchOnLog {
-    
+    [(AppDelegate*)[[UIApplication sharedApplication] delegate] postToFacebook];
 }
 
 - (IBAction)tramButtonTapped:(id)sender {

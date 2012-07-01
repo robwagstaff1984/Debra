@@ -10,6 +10,7 @@
 #import "EnterLocationViewController.h"
 #import "Parse/Parse.h"
 #import "ShmykiContstants.h"
+#import "AppDelegate.h"
 
 
 @implementation EnterIssueViewController
@@ -146,7 +147,14 @@
 
 #pragma mark actions
                                                                    
+#pragma mark actions
+
 - (void) issueEntered {
+    NSString *savedComment = @"";
+    if(![commentsTextView.text isEqualToString:PUNCH_ON_HINT_TEXT]) {
+        savedComment = commentsTextView.text;
+    }
+    [[(AppDelegate*)[[UIApplication sharedApplication]delegate] currentUsersPunchOnLog] setMessage:savedComment];
     UIViewController *enterIssueViewController = [[EnterLocationViewController alloc] initWithNibName:@"EnterLocationViewController" bundle:nil];
     [self.navigationController pushViewController:enterIssueViewController animated:YES];
 }
@@ -163,8 +171,11 @@
 - (IBAction)toggleFacebookButton:(id)sender {
     if (facebookIsSelected) {
         [sender setImage:[UIImage imageNamed: @"images/IconFacebookOff"] forState:UIControlStateNormal];
+        
+        //        [(AppDelegate*)[[UIApplication sharedApplication] delegate] logOutOfFacebook];
     } else {
         [sender setImage:[UIImage imageNamed: @"images/IconFacebookOn"] forState:UIControlStateNormal];
+        [(AppDelegate*)[[UIApplication sharedApplication] delegate] logInToFacebook];
     }
     facebookIsSelected = !facebookIsSelected;
 }

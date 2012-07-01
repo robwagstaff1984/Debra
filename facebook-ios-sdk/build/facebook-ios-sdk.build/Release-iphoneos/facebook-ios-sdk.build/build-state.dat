@@ -1,0 +1,802 @@
+Tfacebook-ios-sdk
+v5
+r1
+cCheck dependencies
+cCpHeader FBConnect.h /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/facebook-ios-sdk/FBConnect.h
+cCpHeader FBRequest.h /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/facebook-ios-sdk/FBRequest.h
+cCpHeader Facebook.h /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/facebook-ios-sdk/Facebook.h
+cCpHeader FBLoginDialog.h /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/facebook-ios-sdk/FBLoginDialog.h
+cCpHeader FBDialog.h /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/facebook-ios-sdk/FBDialog.h
+cCpHeader JSON/JSON.h /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/facebook-ios-sdk/JSON.h
+cCpHeader JSON/NSObject+SBJSON.h /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/facebook-ios-sdk/NSObject+SBJSON.h
+cCpHeader JSON/NSString+SBJSON.h /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/facebook-ios-sdk/NSString+SBJSON.h
+cCpHeader JSON/SBJSON.h /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/facebook-ios-sdk/SBJSON.h
+cCpHeader JSON/SBJsonBase.h /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/facebook-ios-sdk/SBJsonBase.h
+cCpHeader JSON/SBJsonParser.h /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/facebook-ios-sdk/SBJsonParser.h
+cCpHeader JSON/SBJsonWriter.h /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/facebook-ios-sdk/SBJsonWriter.h
+cProcessPCH /var/folders/yt/kq2c51m16ns2kl6z57vgcs000000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/facebook_ios_sdk_Prefix-gietkqmuszrdauctdhmvuugudzhx/facebook_ios_sdk_Prefix.pch.pth facebook_ios_sdk_Prefix.pch normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cProcessPCH /var/folders/yt/kq2c51m16ns2kl6z57vgcs000000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/facebook_ios_sdk_Prefix-cckutfkxnhioifcqqdckapukcrxc/facebook_ios_sdk_Prefix.pch.pth facebook_ios_sdk_Prefix.pch normal armv6 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv7/FBRequest.o /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/FBRequest.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv7/Facebook.o /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/Facebook.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv7/FBLoginDialog.o /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/FBLoginDialog.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv7/FBDialog.o /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/FBDialog.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv7/NSObject+SBJSON.o /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/JSON/NSObject+SBJSON.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv7/NSString+SBJSON.o /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/JSON/NSString+SBJSON.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv7/SBJSON.o /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/JSON/SBJSON.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv7/SBJsonBase.o /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/JSON/SBJsonBase.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv7/SBJsonParser.o /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/JSON/SBJsonParser.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv7/SBJsonWriter.o /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/JSON/SBJsonWriter.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv7/FBFrictionlessRequestSettings.o /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/FBFrictionlessRequestSettings.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv6/FBRequest.o /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/FBRequest.m normal armv6 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv6/Facebook.o /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/Facebook.m normal armv6 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv6/FBLoginDialog.o /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/FBLoginDialog.m normal armv6 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv6/FBDialog.o /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/FBDialog.m normal armv6 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cLibtool /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv7/libfacebook_ios_sdk.a normal armv7
+cCompileC /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv6/NSObject+SBJSON.o /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/JSON/NSObject+SBJSON.m normal armv6 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv6/NSString+SBJSON.o /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/JSON/NSString+SBJSON.m normal armv6 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv6/SBJSON.o /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/JSON/SBJSON.m normal armv6 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv6/SBJsonBase.o /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/JSON/SBJsonBase.m normal armv6 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv6/SBJsonParser.o /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/JSON/SBJsonParser.m normal armv6 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv6/SBJsonWriter.o /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/JSON/SBJsonWriter.m normal armv6 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv6/FBFrictionlessRequestSettings.o /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/FBFrictionlessRequestSettings.m normal armv6 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cLibtool /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv6/libfacebook_ios_sdk.a normal armv6
+cCreateUniversalBinary /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/libfacebook_ios_sdk.a normal "armv7 armv6"
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.1.sdk
+c000000004F453DF20000000000000110
+t1329937906
+s272
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.1.sdk/System/Library/Frameworks/Foundation.framework/Foundation
+c000000004FD453B9000000000052C940
+t1339315129
+s5425472
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.1.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.h
+c000000004FD453B80000000000001534
+t1339315128
+s5428
+
+N/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/facebook-ios-sdk/FBConnect.h
+t2
+s0
+
+N/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/facebook-ios-sdk/FBDialog.h
+t2
+s0
+
+N/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/facebook-ios-sdk/FBLoginDialog.h
+t2
+s0
+
+N/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/facebook-ios-sdk/FBRequest.h
+t2
+s0
+
+N/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/facebook-ios-sdk/Facebook.h
+t2
+s0
+
+N/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/facebook-ios-sdk/JSON.h
+t2
+s0
+
+N/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/facebook-ios-sdk/NSObject+SBJSON.h
+t2
+s0
+
+N/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/facebook-ios-sdk/NSString+SBJSON.h
+t2
+s0
+
+N/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/facebook-ios-sdk/SBJSON.h
+t2
+s0
+
+N/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/facebook-ios-sdk/SBJsonBase.h
+t2
+s0
+
+N/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/facebook-ios-sdk/SBJsonParser.h
+t2
+s0
+
+N/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/facebook-ios-sdk/SBJsonWriter.h
+t2
+s0
+
+N/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/libfacebook_ios_sdk.a
+t2
+s0
+
+N/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv6/FBDialog.o
+t2
+s0
+
+N/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv6/FBFrictionlessRequestSettings.o
+t2
+s0
+
+N/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv6/FBLoginDialog.o
+t2
+s0
+
+N/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv6/FBRequest.o
+t2
+s0
+
+N/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv6/Facebook.o
+t2
+s0
+
+N/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv6/NSObject+SBJSON.o
+t2
+s0
+
+N/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv6/NSString+SBJSON.o
+t2
+s0
+
+N/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv6/SBJSON.o
+t2
+s0
+
+N/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv6/SBJsonBase.o
+t2
+s0
+
+N/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv6/SBJsonParser.o
+t2
+s0
+
+N/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv6/SBJsonWriter.o
+t2
+s0
+
+N/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv6/facebook_ios_sdk.LinkFileList
+c000000004FEE644F0000000000000706
+t1341023311
+s1798
+
+N/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv6/libfacebook_ios_sdk.a
+t2
+s0
+
+N/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv7/FBDialog.o
+t2
+s0
+
+N/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv7/FBFrictionlessRequestSettings.o
+t2
+s0
+
+N/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv7/FBLoginDialog.o
+t2
+s0
+
+N/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv7/FBRequest.o
+t2
+s0
+
+N/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv7/Facebook.o
+t2
+s0
+
+N/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv7/NSObject+SBJSON.o
+t2
+s0
+
+N/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv7/NSString+SBJSON.o
+t2
+s0
+
+N/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv7/SBJSON.o
+t2
+s0
+
+N/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv7/SBJsonBase.o
+t2
+s0
+
+N/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv7/SBJsonParser.o
+t2
+s0
+
+N/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv7/SBJsonWriter.o
+t2
+s0
+
+N/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv7/facebook_ios_sdk.LinkFileList
+c000000004FEE644F0000000000000706
+t1341023311
+s1798
+
+N/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv7/libfacebook_ios_sdk.a
+t2
+s0
+
+N/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/FBConnect.h
+c000000004FEC265400000000000002C2
+t1340876372
+s706
+
+N/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/FBDialog.h
+c000000004FEC265400000000000012BD
+t1340876372
+s4797
+
+N/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/FBDialog.m
+c000000004FEC2654000000000000677B
+t1340876372
+s26491
+
+N/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/FBFrictionlessRequestSettings.m
+c000000004FEC2654000000000000164B
+t1340876372
+s5707
+
+N/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/FBLoginDialog.h
+c000000004FEC26540000000000000571
+t1340876372
+s1393
+
+N/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/FBLoginDialog.m
+c000000004FEC26540000000000000C40
+t1340876372
+s3136
+
+N/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/FBRequest.h
+c000000004FEC26540000000000001016
+t1340876372
+s4118
+
+N/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/FBRequest.m
+c000000004FEC2654000000000000333F
+t1340876372
+s13119
+
+N/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/Facebook.h
+c000000004FEC2654000000000000132D
+t1340876372
+s4909
+
+N/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/Facebook.m
+c000000004FEC26540000000000007F1F
+t1340876372
+s32543
+
+N/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/JSON/JSON.h
+c000000004FEC265400000000000008F9
+t1340876372
+s2297
+
+N/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/JSON/NSObject+SBJSON.h
+c000000004FEC26540000000000000A01
+t1340876372
+s2561
+
+N/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/JSON/NSObject+SBJSON.m
+c000000004FEC2654000000000000089E
+t1340876372
+s2206
+
+N/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/JSON/NSString+SBJSON.h
+c000000004FEC26540000000000000916
+t1340876372
+s2326
+
+N/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/JSON/NSString+SBJSON.m
+c000000004FEC2654000000000000087D
+t1340876372
+s2173
+
+N/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/JSON/SBJSON.h
+c000000004FEC26540000000000000AED
+t1340876372
+s2797
+
+N/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/JSON/SBJSON.m
+c000000004FEC26540000000000001ABC
+t1340876372
+s6844
+
+N/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/JSON/SBJsonBase.h
+c000000004FEC26540000000000000B82
+t1340876372
+s2946
+
+N/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/JSON/SBJsonBase.m
+c000000004FEC26540000000000000AC1
+t1340876372
+s2753
+
+N/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/JSON/SBJsonParser.h
+c000000004FEC26540000000000000C0B
+t1340876372
+s3083
+
+N/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/JSON/SBJsonParser.m
+c000000004FEC265400000000000036D0
+t1340876372
+s14032
+
+N/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/JSON/SBJsonWriter.h
+c000000004FEC26540000000000001140
+t1340876372
+s4416
+
+N/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/JSON/SBJsonWriter.m
+c000000004FEC26540000000000001F26
+t1340876372
+s7974
+
+N/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/facebook_ios_sdk_Prefix.pch
+c000000004FEC265400000000000000BC
+t1340876372
+s188
+i<Foundation/Foundation.h>
+
+N/var/folders/yt/kq2c51m16ns2kl6z57vgcs000000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/facebook_ios_sdk_Prefix-cckutfkxnhioifcqqdckapukcrxc/facebook_ios_sdk_Prefix.pch.pth
+t2
+s0
+
+N/var/folders/yt/kq2c51m16ns2kl6z57vgcs000000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/facebook_ios_sdk_Prefix-gietkqmuszrdauctdhmvuugudzhx/facebook_ios_sdk_Prefix.pch.pth
+t2
+s0
+
+CCheck dependencies
+r0
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection18"Check dependencies8141d2cf9b9eb541^533ceacf9b9eb541^---0#1#0#--18"Check dependencies36"C7214A9F-E533-429C-A867-D75F40A5139A-
+
+CCompileC /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv6/FBDialog.o /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/FBDialog.m normal armv6 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s362716114.140584
+e362716115.049697
+r1
+xCompileC
+x/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv6/FBDialog.o
+x/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/FBDialog.m
+xnormal
+xarmv6
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection80"Compile /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/FBDialog.m4a5f24d29b9eb541^28b80cd39b9eb541^---0#0#0#-19%DVTDocumentLocation2@88"file://localhost/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/FBDialog.m0000000000000000^3580"CompileC /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv6/FBDialog.o FBDialog.m normal armv6 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch armv6 -fmessage-length=0 -std=c99 -Wno-trigraphs -fpascal-strings -Os -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-sign-compare -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.1.sdk -Wprotocol -Wdeprecated-declarations -g -Wno-conversion -Wno-sign-conversion -mthumb "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -miphoneos-version-min=3.0 -iquote /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/facebook_ios_sdk-generated-files.hmap -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/facebook_ios_sdk-own-target-headers.hmap -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/facebook_ios_sdk-all-target-headers.hmap -iquote /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/facebook_ios_sdk-project-headers.hmap -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/include -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/DerivedSources/armv6 -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/DerivedSources -F/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos -include /var/folders/yt/kq2c51m16ns2kl6z57vgcs000000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/facebook_ios_sdk_Prefix-cckutfkxnhioifcqqdckapukcrxc/facebook_ios_sdk_Prefix.pch -MMD -MT dependencies -MF /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv6/FBDialog.d --serialize-diagnostics /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv6/FBDialog.dia -c /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/FBDialog.m -o /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv6/FBDialog.o36"C60506C0-98F9-43F2-8DA6-CD39D847AD92-
+
+CCompileC /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv6/FBFrictionlessRequestSettings.o /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/FBFrictionlessRequestSettings.m normal armv6 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s362716114.642856
+e362716115.053560
+r1
+xCompileC
+x/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv6/FBFrictionlessRequestSettings.o
+x/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/FBFrictionlessRequestSettings.m
+xnormal
+xarmv6
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection101"Compile /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/FBFrictionlessRequestSettings.medd4a4d29b9eb541^20b50dd39b9eb541^---0#0#0#-19%DVTDocumentLocation2@109"file://localhost/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/FBFrictionlessRequestSettings.m0000000000000000^3706"CompileC /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv6/FBFrictionlessRequestSettings.o FBFrictionlessRequestSettings.m normal armv6 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch armv6 -fmessage-length=0 -std=c99 -Wno-trigraphs -fpascal-strings -Os -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-sign-compare -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.1.sdk -Wprotocol -Wdeprecated-declarations -g -Wno-conversion -Wno-sign-conversion -mthumb "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -miphoneos-version-min=3.0 -iquote /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/facebook_ios_sdk-generated-files.hmap -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/facebook_ios_sdk-own-target-headers.hmap -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/facebook_ios_sdk-all-target-headers.hmap -iquote /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/facebook_ios_sdk-project-headers.hmap -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/include -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/DerivedSources/armv6 -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/DerivedSources -F/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos -include /var/folders/yt/kq2c51m16ns2kl6z57vgcs000000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/facebook_ios_sdk_Prefix-cckutfkxnhioifcqqdckapukcrxc/facebook_ios_sdk_Prefix.pch -MMD -MT dependencies -MF /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv6/FBFrictionlessRequestSettings.d --serialize-diagnostics /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv6/FBFrictionlessRequestSettings.dia -c /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/FBFrictionlessRequestSettings.m -o /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv6/FBFrictionlessRequestSettings.o36"2B50B051-3600-4973-8A04-191D28C95292-
+
+CCompileC /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv6/FBLoginDialog.o /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/FBLoginDialog.m normal armv6 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s362716113.888348
+e362716114.300076
+r1
+xCompileC
+x/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv6/FBLoginDialog.o
+x/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/FBLoginDialog.m
+xnormal
+xarmv6
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection85"Compile /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/FBLoginDialog.m09fae3d19b9eb541^b3d24cd29b9eb541^---0#0#0#-19%DVTDocumentLocation2@93"file://localhost/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/FBLoginDialog.m0000000000000000^3610"CompileC /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv6/FBLoginDialog.o FBLoginDialog.m normal armv6 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch armv6 -fmessage-length=0 -std=c99 -Wno-trigraphs -fpascal-strings -Os -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-sign-compare -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.1.sdk -Wprotocol -Wdeprecated-declarations -g -Wno-conversion -Wno-sign-conversion -mthumb "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -miphoneos-version-min=3.0 -iquote /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/facebook_ios_sdk-generated-files.hmap -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/facebook_ios_sdk-own-target-headers.hmap -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/facebook_ios_sdk-all-target-headers.hmap -iquote /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/facebook_ios_sdk-project-headers.hmap -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/include -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/DerivedSources/armv6 -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/DerivedSources -F/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos -include /var/folders/yt/kq2c51m16ns2kl6z57vgcs000000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/facebook_ios_sdk_Prefix-cckutfkxnhioifcqqdckapukcrxc/facebook_ios_sdk_Prefix.pch -MMD -MT dependencies -MF /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv6/FBLoginDialog.d --serialize-diagnostics /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv6/FBLoginDialog.dia -c /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/FBLoginDialog.m -o /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv6/FBLoginDialog.o36"61EC7F25-C141-4E27-9317-09634F562535-
+
+CCompileC /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv6/FBRequest.o /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/FBRequest.m normal armv6 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s362716113.722674
+e362716114.324913
+r1
+xCompileC
+x/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv6/FBRequest.o
+x/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/FBRequest.m
+xnormal
+xarmv6
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection81"Compile /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/FBRequest.m53b1b9d19b9eb541^193d53d29b9eb541^---0#0#0#-19%DVTDocumentLocation2@89"file://localhost/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/FBRequest.m0000000000000000^3586"CompileC /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv6/FBRequest.o FBRequest.m normal armv6 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch armv6 -fmessage-length=0 -std=c99 -Wno-trigraphs -fpascal-strings -Os -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-sign-compare -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.1.sdk -Wprotocol -Wdeprecated-declarations -g -Wno-conversion -Wno-sign-conversion -mthumb "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -miphoneos-version-min=3.0 -iquote /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/facebook_ios_sdk-generated-files.hmap -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/facebook_ios_sdk-own-target-headers.hmap -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/facebook_ios_sdk-all-target-headers.hmap -iquote /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/facebook_ios_sdk-project-headers.hmap -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/include -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/DerivedSources/armv6 -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/DerivedSources -F/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos -include /var/folders/yt/kq2c51m16ns2kl6z57vgcs000000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/facebook_ios_sdk_Prefix-cckutfkxnhioifcqqdckapukcrxc/facebook_ios_sdk_Prefix.pch -MMD -MT dependencies -MF /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv6/FBRequest.d --serialize-diagnostics /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv6/FBRequest.dia -c /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/FBRequest.m -o /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv6/FBRequest.o36"F5395B2D-2438-4A4B-8D27-28E3414EF111-
+
+CCompileC /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv6/Facebook.o /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/Facebook.m normal armv6 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s362716113.783757
+e362716114.641097
+r1
+xCompileC
+x/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv6/Facebook.o
+x/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/Facebook.m
+xnormal
+xarmv6
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection80"Compile /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/Facebook.m3529c9d19b9eb541^882ea4d29b9eb541^---0#0#0#-19%DVTDocumentLocation2@88"file://localhost/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/Facebook.m0000000000000000^3580"CompileC /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv6/Facebook.o Facebook.m normal armv6 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch armv6 -fmessage-length=0 -std=c99 -Wno-trigraphs -fpascal-strings -Os -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-sign-compare -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.1.sdk -Wprotocol -Wdeprecated-declarations -g -Wno-conversion -Wno-sign-conversion -mthumb "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -miphoneos-version-min=3.0 -iquote /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/facebook_ios_sdk-generated-files.hmap -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/facebook_ios_sdk-own-target-headers.hmap -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/facebook_ios_sdk-all-target-headers.hmap -iquote /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/facebook_ios_sdk-project-headers.hmap -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/include -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/DerivedSources/armv6 -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/DerivedSources -F/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos -include /var/folders/yt/kq2c51m16ns2kl6z57vgcs000000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/facebook_ios_sdk_Prefix-cckutfkxnhioifcqqdckapukcrxc/facebook_ios_sdk_Prefix.pch -MMD -MT dependencies -MF /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv6/Facebook.d --serialize-diagnostics /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv6/Facebook.dia -c /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/Facebook.m -o /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv6/Facebook.o36"6E9BEAFA-C02A-412F-A250-094318433B52-
+
+CCompileC /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv6/NSObject+SBJSON.o /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/JSON/NSObject+SBJSON.m normal armv6 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s362716114.326572
+e362716114.419778
+r1
+xCompileC
+x/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv6/NSObject+SBJSON.o
+x/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/JSON/NSObject+SBJSON.m
+xnormal
+xarmv6
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection92"Compile /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/JSON/NSObject+SBJSON.m331754d29b9eb541^b98c6bd29b9eb541^---0#0#0#-19%DVTDocumentLocation2@100"file://localhost/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/JSON/NSObject+SBJSON.m0000000000000000^3632"CompileC /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv6/NSObject+SBJSON.o JSON/NSObject+SBJSON.m normal armv6 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch armv6 -fmessage-length=0 -std=c99 -Wno-trigraphs -fpascal-strings -Os -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-sign-compare -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.1.sdk -Wprotocol -Wdeprecated-declarations -g -Wno-conversion -Wno-sign-conversion -mthumb "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -miphoneos-version-min=3.0 -iquote /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/facebook_ios_sdk-generated-files.hmap -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/facebook_ios_sdk-own-target-headers.hmap -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/facebook_ios_sdk-all-target-headers.hmap -iquote /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/facebook_ios_sdk-project-headers.hmap -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/include -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/DerivedSources/armv6 -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/DerivedSources -F/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos -include /var/folders/yt/kq2c51m16ns2kl6z57vgcs000000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/facebook_ios_sdk_Prefix-cckutfkxnhioifcqqdckapukcrxc/facebook_ios_sdk_Prefix.pch -MMD -MT dependencies -MF /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv6/NSObject+SBJSON.d --serialize-diagnostics /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv6/NSObject+SBJSON.dia -c /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/JSON/NSObject+SBJSON.m -o /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv6/NSObject+SBJSON.o36"D6479897-DBED-4B47-97B6-368C69A35C6F-
+
+CCompileC /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv6/NSString+SBJSON.o /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/JSON/NSString+SBJSON.m normal armv6 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s362716114.327094
+e362716114.419775
+r1
+xCompileC
+x/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv6/NSString+SBJSON.o
+x/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/JSON/NSString+SBJSON.m
+xnormal
+xarmv6
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection92"Compile /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/JSON/NSString+SBJSON.m6f2c54d29b9eb541^d4826bd29b9eb541^---0#0#0#-19%DVTDocumentLocation2@100"file://localhost/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/JSON/NSString+SBJSON.m0000000000000000^3632"CompileC /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv6/NSString+SBJSON.o JSON/NSString+SBJSON.m normal armv6 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch armv6 -fmessage-length=0 -std=c99 -Wno-trigraphs -fpascal-strings -Os -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-sign-compare -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.1.sdk -Wprotocol -Wdeprecated-declarations -g -Wno-conversion -Wno-sign-conversion -mthumb "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -miphoneos-version-min=3.0 -iquote /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/facebook_ios_sdk-generated-files.hmap -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/facebook_ios_sdk-own-target-headers.hmap -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/facebook_ios_sdk-all-target-headers.hmap -iquote /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/facebook_ios_sdk-project-headers.hmap -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/include -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/DerivedSources/armv6 -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/DerivedSources -F/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos -include /var/folders/yt/kq2c51m16ns2kl6z57vgcs000000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/facebook_ios_sdk_Prefix-cckutfkxnhioifcqqdckapukcrxc/facebook_ios_sdk_Prefix.pch -MMD -MT dependencies -MF /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv6/NSString+SBJSON.d --serialize-diagnostics /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv6/NSString+SBJSON.dia -c /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/JSON/NSString+SBJSON.m -o /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv6/NSString+SBJSON.o36"0F3E49CE-0AB1-420F-9CDA-E792565DA65A-
+
+CCompileC /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv6/SBJSON.o /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/JSON/SBJSON.m normal armv6 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s362716114.421073
+e362716114.592214
+r1
+xCompileC
+x/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv6/SBJSON.o
+x/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/JSON/SBJSON.m
+xnormal
+xarmv6
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection83"Compile /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/JSON/SBJSON.m54746cd29b9eb541^5b9a97d29b9eb541^---0#0#0#-19%DVTDocumentLocation2@91"file://localhost/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/JSON/SBJSON.m0000000000000000^3578"CompileC /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv6/SBJSON.o JSON/SBJSON.m normal armv6 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch armv6 -fmessage-length=0 -std=c99 -Wno-trigraphs -fpascal-strings -Os -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-sign-compare -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.1.sdk -Wprotocol -Wdeprecated-declarations -g -Wno-conversion -Wno-sign-conversion -mthumb "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -miphoneos-version-min=3.0 -iquote /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/facebook_ios_sdk-generated-files.hmap -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/facebook_ios_sdk-own-target-headers.hmap -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/facebook_ios_sdk-all-target-headers.hmap -iquote /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/facebook_ios_sdk-project-headers.hmap -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/include -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/DerivedSources/armv6 -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/DerivedSources -F/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos -include /var/folders/yt/kq2c51m16ns2kl6z57vgcs000000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/facebook_ios_sdk_Prefix-cckutfkxnhioifcqqdckapukcrxc/facebook_ios_sdk_Prefix.pch -MMD -MT dependencies -MF /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv6/SBJSON.d --serialize-diagnostics /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv6/SBJSON.dia -c /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/JSON/SBJSON.m -o /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv6/SBJSON.o36"C52292E4-4550-4C74-8735-3970C5EC4AC6-
+
+CCompileC /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv6/SBJsonBase.o /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/JSON/SBJsonBase.m normal armv6 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s362716114.424627
+e362716114.530946
+r1
+xCompileC
+x/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv6/SBJsonBase.o
+x/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/JSON/SBJsonBase.m
+xnormal
+xarmv6
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection87"Compile /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/JSON/SBJsonBase.mf5106dd29b9eb541^25ec87d29b9eb541^---0#0#0#-19%DVTDocumentLocation2@95"file://localhost/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/JSON/SBJsonBase.m0000000000000000^3602"CompileC /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv6/SBJsonBase.o JSON/SBJsonBase.m normal armv6 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch armv6 -fmessage-length=0 -std=c99 -Wno-trigraphs -fpascal-strings -Os -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-sign-compare -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.1.sdk -Wprotocol -Wdeprecated-declarations -g -Wno-conversion -Wno-sign-conversion -mthumb "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -miphoneos-version-min=3.0 -iquote /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/facebook_ios_sdk-generated-files.hmap -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/facebook_ios_sdk-own-target-headers.hmap -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/facebook_ios_sdk-all-target-headers.hmap -iquote /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/facebook_ios_sdk-project-headers.hmap -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/include -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/DerivedSources/armv6 -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/DerivedSources -F/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos -include /var/folders/yt/kq2c51m16ns2kl6z57vgcs000000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/facebook_ios_sdk_Prefix-cckutfkxnhioifcqqdckapukcrxc/facebook_ios_sdk_Prefix.pch -MMD -MT dependencies -MF /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv6/SBJsonBase.d --serialize-diagnostics /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv6/SBJsonBase.dia -c /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/JSON/SBJsonBase.m -o /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv6/SBJsonBase.o36"34D883AC-3402-4D4A-818A-D0CC8738714E-
+
+CCompileC /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv6/SBJsonParser.o /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/JSON/SBJsonParser.m normal armv6 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s362716114.532346
+e362716114.961941
+r1
+xCompileC
+x/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv6/SBJsonParser.o
+x/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/JSON/SBJsonParser.m
+xnormal
+xarmv6
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection89"Compile /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/JSON/SBJsonParser.m5bb488d29b9eb541^cf4ef6d29b9eb541^---0#0#0#-19%DVTDocumentLocation2@97"file://localhost/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/JSON/SBJsonParser.m0000000000000000^3614"CompileC /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv6/SBJsonParser.o JSON/SBJsonParser.m normal armv6 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch armv6 -fmessage-length=0 -std=c99 -Wno-trigraphs -fpascal-strings -Os -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-sign-compare -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.1.sdk -Wprotocol -Wdeprecated-declarations -g -Wno-conversion -Wno-sign-conversion -mthumb "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -miphoneos-version-min=3.0 -iquote /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/facebook_ios_sdk-generated-files.hmap -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/facebook_ios_sdk-own-target-headers.hmap -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/facebook_ios_sdk-all-target-headers.hmap -iquote /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/facebook_ios_sdk-project-headers.hmap -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/include -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/DerivedSources/armv6 -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/DerivedSources -F/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos -include /var/folders/yt/kq2c51m16ns2kl6z57vgcs000000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/facebook_ios_sdk_Prefix-cckutfkxnhioifcqqdckapukcrxc/facebook_ios_sdk_Prefix.pch -MMD -MT dependencies -MF /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv6/SBJsonParser.d --serialize-diagnostics /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv6/SBJsonParser.dia -c /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/JSON/SBJsonParser.m -o /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv6/SBJsonParser.o36"47BA855D-B905-41E0-90A0-64243B37B567-
+
+CCompileC /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv6/SBJsonWriter.o /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/JSON/SBJsonWriter.m normal armv6 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s362716114.593692
+e362716114.845606
+r1
+xCompileC
+x/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv6/SBJsonWriter.o
+x/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/JSON/SBJsonWriter.m
+xnormal
+xarmv6
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection89"Compile /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/JSON/SBJsonWriter.m763298d29b9eb541^3178d8d29b9eb541^---0#0#0#-19%DVTDocumentLocation2@97"file://localhost/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/JSON/SBJsonWriter.m0000000000000000^3614"CompileC /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv6/SBJsonWriter.o JSON/SBJsonWriter.m normal armv6 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch armv6 -fmessage-length=0 -std=c99 -Wno-trigraphs -fpascal-strings -Os -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-sign-compare -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.1.sdk -Wprotocol -Wdeprecated-declarations -g -Wno-conversion -Wno-sign-conversion -mthumb "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -miphoneos-version-min=3.0 -iquote /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/facebook_ios_sdk-generated-files.hmap -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/facebook_ios_sdk-own-target-headers.hmap -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/facebook_ios_sdk-all-target-headers.hmap -iquote /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/facebook_ios_sdk-project-headers.hmap -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/include -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/DerivedSources/armv6 -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/DerivedSources -F/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos -include /var/folders/yt/kq2c51m16ns2kl6z57vgcs000000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/facebook_ios_sdk_Prefix-cckutfkxnhioifcqqdckapukcrxc/facebook_ios_sdk_Prefix.pch -MMD -MT dependencies -MF /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv6/SBJsonWriter.d --serialize-diagnostics /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv6/SBJsonWriter.dia -c /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/JSON/SBJsonWriter.m -o /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv6/SBJsonWriter.o36"80C793D4-64F5-49B6-A6C1-05D5B571AC30-
+
+CCompileC /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv7/FBDialog.o /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/FBDialog.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s362716112.511281
+e362716113.778936
+r1
+xCompileC
+x/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv7/FBDialog.o
+x/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/FBDialog.m
+xnormal
+xarmv7
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection80"Compile /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/FBDialog.mf70283d09b9eb541^ddb2c7d19b9eb541^---0#0#0#-19%DVTDocumentLocation2@88"file://localhost/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/FBDialog.m0000000000000000^3580"CompileC /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv7/FBDialog.o FBDialog.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch armv7 -fmessage-length=0 -std=c99 -Wno-trigraphs -fpascal-strings -Os -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-sign-compare -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.1.sdk -Wprotocol -Wdeprecated-declarations -g -Wno-conversion -Wno-sign-conversion -mthumb "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -miphoneos-version-min=3.0 -iquote /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/facebook_ios_sdk-generated-files.hmap -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/facebook_ios_sdk-own-target-headers.hmap -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/facebook_ios_sdk-all-target-headers.hmap -iquote /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/facebook_ios_sdk-project-headers.hmap -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/include -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/DerivedSources/armv7 -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/DerivedSources -F/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos -include /var/folders/yt/kq2c51m16ns2kl6z57vgcs000000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/facebook_ios_sdk_Prefix-gietkqmuszrdauctdhmvuugudzhx/facebook_ios_sdk_Prefix.pch -MMD -MT dependencies -MF /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv7/FBDialog.d --serialize-diagnostics /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv7/FBDialog.dia -c /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/FBDialog.m -o /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv7/FBDialog.o36"B85A2D6B-4BCF-4F1B-833A-5B8B328489F0-
+
+CCompileC /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv7/FBFrictionlessRequestSettings.o /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/FBFrictionlessRequestSettings.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s362716113.533095
+e362716114.135886
+r1
+xCompileC
+x/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv7/FBFrictionlessRequestSettings.o
+x/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/FBFrictionlessRequestSettings.m
+xnormal
+xarmv7
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection101"Compile /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/FBFrictionlessRequestSettings.mb2f588d19b9eb541^60c822d29b9eb541^---0#0#0#-19%DVTDocumentLocation2@109"file://localhost/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/FBFrictionlessRequestSettings.m0000000000000000^3706"CompileC /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv7/FBFrictionlessRequestSettings.o FBFrictionlessRequestSettings.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch armv7 -fmessage-length=0 -std=c99 -Wno-trigraphs -fpascal-strings -Os -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-sign-compare -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.1.sdk -Wprotocol -Wdeprecated-declarations -g -Wno-conversion -Wno-sign-conversion -mthumb "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -miphoneos-version-min=3.0 -iquote /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/facebook_ios_sdk-generated-files.hmap -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/facebook_ios_sdk-own-target-headers.hmap -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/facebook_ios_sdk-all-target-headers.hmap -iquote /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/facebook_ios_sdk-project-headers.hmap -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/include -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/DerivedSources/armv7 -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/DerivedSources -F/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos -include /var/folders/yt/kq2c51m16ns2kl6z57vgcs000000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/facebook_ios_sdk_Prefix-gietkqmuszrdauctdhmvuugudzhx/facebook_ios_sdk_Prefix.pch -MMD -MT dependencies -MF /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv7/FBFrictionlessRequestSettings.d --serialize-diagnostics /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv7/FBFrictionlessRequestSettings.dia -c /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/FBFrictionlessRequestSettings.m -o /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv7/FBFrictionlessRequestSettings.o36"E00549B1-31A4-4347-B0F4-63167E5F5904-
+
+CCompileC /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv7/FBLoginDialog.o /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/FBLoginDialog.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s362716112.511273
+e362716113.056577
+r1
+xCompileC
+x/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv7/FBLoginDialog.o
+x/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/FBLoginDialog.m
+xnormal
+xarmv7
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection85"Compile /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/FBLoginDialog.m530983d09b9eb541^1c7b0ed19b9eb541^---0#0#0#-19%DVTDocumentLocation2@93"file://localhost/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/FBLoginDialog.m0000000000000000^3610"CompileC /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv7/FBLoginDialog.o FBLoginDialog.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch armv7 -fmessage-length=0 -std=c99 -Wno-trigraphs -fpascal-strings -Os -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-sign-compare -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.1.sdk -Wprotocol -Wdeprecated-declarations -g -Wno-conversion -Wno-sign-conversion -mthumb "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -miphoneos-version-min=3.0 -iquote /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/facebook_ios_sdk-generated-files.hmap -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/facebook_ios_sdk-own-target-headers.hmap -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/facebook_ios_sdk-all-target-headers.hmap -iquote /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/facebook_ios_sdk-project-headers.hmap -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/include -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/DerivedSources/armv7 -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/DerivedSources -F/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos -include /var/folders/yt/kq2c51m16ns2kl6z57vgcs000000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/facebook_ios_sdk_Prefix-gietkqmuszrdauctdhmvuugudzhx/facebook_ios_sdk_Prefix.pch -MMD -MT dependencies -MF /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv7/FBLoginDialog.d --serialize-diagnostics /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv7/FBLoginDialog.dia -c /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/FBLoginDialog.m -o /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv7/FBLoginDialog.o36"29355548-71BE-47A6-97D1-3C1D9F88B459-
+
+CCompileC /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv7/FBRequest.o /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/FBRequest.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s362716112.510757
+e362716113.250561
+r1
+xCompileC
+x/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv7/FBRequest.o
+x/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/FBRequest.m
+xnormal
+xarmv7
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection81"Compile /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/FBRequest.m22de82d09b9eb541^666840d19b9eb541^---0#0#0#-19%DVTDocumentLocation2@89"file://localhost/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/FBRequest.m0000000000000000^3586"CompileC /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv7/FBRequest.o FBRequest.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch armv7 -fmessage-length=0 -std=c99 -Wno-trigraphs -fpascal-strings -Os -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-sign-compare -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.1.sdk -Wprotocol -Wdeprecated-declarations -g -Wno-conversion -Wno-sign-conversion -mthumb "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -miphoneos-version-min=3.0 -iquote /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/facebook_ios_sdk-generated-files.hmap -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/facebook_ios_sdk-own-target-headers.hmap -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/facebook_ios_sdk-all-target-headers.hmap -iquote /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/facebook_ios_sdk-project-headers.hmap -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/include -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/DerivedSources/armv7 -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/DerivedSources -F/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos -include /var/folders/yt/kq2c51m16ns2kl6z57vgcs000000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/facebook_ios_sdk_Prefix-gietkqmuszrdauctdhmvuugudzhx/facebook_ios_sdk_Prefix.pch -MMD -MT dependencies -MF /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv7/FBRequest.d --serialize-diagnostics /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv7/FBRequest.dia -c /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/FBRequest.m -o /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv7/FBRequest.o36"79058F95-0BD0-4AA9-BB6C-A6E06E250D55-
+
+CCompileC /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv7/Facebook.o /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/Facebook.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s362716112.510758
+e362716113.531555
+r1
+xCompileC
+x/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv7/Facebook.o
+x/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/Facebook.m
+xnormal
+xarmv7
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection80"Compile /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/Facebook.m87de82d09b9eb541^551388d19b9eb541^---0#0#0#-19%DVTDocumentLocation2@88"file://localhost/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/Facebook.m0000000000000000^3580"CompileC /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv7/Facebook.o Facebook.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch armv7 -fmessage-length=0 -std=c99 -Wno-trigraphs -fpascal-strings -Os -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-sign-compare -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.1.sdk -Wprotocol -Wdeprecated-declarations -g -Wno-conversion -Wno-sign-conversion -mthumb "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -miphoneos-version-min=3.0 -iquote /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/facebook_ios_sdk-generated-files.hmap -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/facebook_ios_sdk-own-target-headers.hmap -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/facebook_ios_sdk-all-target-headers.hmap -iquote /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/facebook_ios_sdk-project-headers.hmap -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/include -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/DerivedSources/armv7 -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/DerivedSources -F/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos -include /var/folders/yt/kq2c51m16ns2kl6z57vgcs000000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/facebook_ios_sdk_Prefix-gietkqmuszrdauctdhmvuugudzhx/facebook_ios_sdk_Prefix.pch -MMD -MT dependencies -MF /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv7/Facebook.d --serialize-diagnostics /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv7/Facebook.dia -c /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/Facebook.m -o /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv7/Facebook.o36"6DC2FC2A-5810-43C3-887A-22311B7B4C10-
+
+CCompileC /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv7/NSObject+SBJSON.o /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/JSON/NSObject+SBJSON.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s362716113.058179
+e362716113.135633
+r1
+xCompileC
+x/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv7/NSObject+SBJSON.o
+x/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/JSON/NSObject+SBJSON.m
+xnormal
+xarmv7
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection92"Compile /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/JSON/NSObject+SBJSON.m282a0fd19b9eb541^58c622d19b9eb541^---0#0#0#-19%DVTDocumentLocation2@100"file://localhost/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/JSON/NSObject+SBJSON.m0000000000000000^3632"CompileC /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv7/NSObject+SBJSON.o JSON/NSObject+SBJSON.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch armv7 -fmessage-length=0 -std=c99 -Wno-trigraphs -fpascal-strings -Os -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-sign-compare -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.1.sdk -Wprotocol -Wdeprecated-declarations -g -Wno-conversion -Wno-sign-conversion -mthumb "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -miphoneos-version-min=3.0 -iquote /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/facebook_ios_sdk-generated-files.hmap -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/facebook_ios_sdk-own-target-headers.hmap -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/facebook_ios_sdk-all-target-headers.hmap -iquote /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/facebook_ios_sdk-project-headers.hmap -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/include -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/DerivedSources/armv7 -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/DerivedSources -F/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos -include /var/folders/yt/kq2c51m16ns2kl6z57vgcs000000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/facebook_ios_sdk_Prefix-gietkqmuszrdauctdhmvuugudzhx/facebook_ios_sdk_Prefix.pch -MMD -MT dependencies -MF /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv7/NSObject+SBJSON.d --serialize-diagnostics /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv7/NSObject+SBJSON.dia -c /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/JSON/NSObject+SBJSON.m -o /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv7/NSObject+SBJSON.o36"019607D3-7684-4F81-BCDB-6015E49ABE64-
+
+CCompileC /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv7/NSString+SBJSON.o /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/JSON/NSString+SBJSON.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s362716113.136920
+e362716113.230076
+r1
+xCompileC
+x/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv7/NSString+SBJSON.o
+x/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/JSON/NSString+SBJSON.m
+xnormal
+xarmv7
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection92"Compile /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/JSON/NSString+SBJSON.m6f9d23d19b9eb541^fb943bd19b9eb541^---0#0#0#-19%DVTDocumentLocation2@100"file://localhost/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/JSON/NSString+SBJSON.m0000000000000000^3632"CompileC /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv7/NSString+SBJSON.o JSON/NSString+SBJSON.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch armv7 -fmessage-length=0 -std=c99 -Wno-trigraphs -fpascal-strings -Os -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-sign-compare -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.1.sdk -Wprotocol -Wdeprecated-declarations -g -Wno-conversion -Wno-sign-conversion -mthumb "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -miphoneos-version-min=3.0 -iquote /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/facebook_ios_sdk-generated-files.hmap -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/facebook_ios_sdk-own-target-headers.hmap -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/facebook_ios_sdk-all-target-headers.hmap -iquote /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/facebook_ios_sdk-project-headers.hmap -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/include -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/DerivedSources/armv7 -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/DerivedSources -F/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos -include /var/folders/yt/kq2c51m16ns2kl6z57vgcs000000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/facebook_ios_sdk_Prefix-gietkqmuszrdauctdhmvuugudzhx/facebook_ios_sdk_Prefix.pch -MMD -MT dependencies -MF /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv7/NSString+SBJSON.d --serialize-diagnostics /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv7/NSString+SBJSON.dia -c /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/JSON/NSString+SBJSON.m -o /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv7/NSString+SBJSON.o36"A8D3CB69-C679-4576-A091-39A32F4E58B7-
+
+CCompileC /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv7/SBJSON.o /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/JSON/SBJSON.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s362716113.234523
+e362716113.420645
+r1
+xCompileC
+x/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv7/SBJSON.o
+x/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/JSON/SBJSON.m
+xnormal
+xarmv7
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection83"Compile /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/JSON/SBJSON.m20423cd19b9eb541^76c66bd19b9eb541^---0#0#0#-19%DVTDocumentLocation2@91"file://localhost/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/JSON/SBJSON.m0000000000000000^3578"CompileC /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv7/SBJSON.o JSON/SBJSON.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch armv7 -fmessage-length=0 -std=c99 -Wno-trigraphs -fpascal-strings -Os -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-sign-compare -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.1.sdk -Wprotocol -Wdeprecated-declarations -g -Wno-conversion -Wno-sign-conversion -mthumb "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -miphoneos-version-min=3.0 -iquote /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/facebook_ios_sdk-generated-files.hmap -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/facebook_ios_sdk-own-target-headers.hmap -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/facebook_ios_sdk-all-target-headers.hmap -iquote /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/facebook_ios_sdk-project-headers.hmap -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/include -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/DerivedSources/armv7 -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/DerivedSources -F/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos -include /var/folders/yt/kq2c51m16ns2kl6z57vgcs000000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/facebook_ios_sdk_Prefix-gietkqmuszrdauctdhmvuugudzhx/facebook_ios_sdk_Prefix.pch -MMD -MT dependencies -MF /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv7/SBJSON.d --serialize-diagnostics /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv7/SBJSON.dia -c /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/JSON/SBJSON.m -o /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv7/SBJSON.o36"B0476716-DEE6-4005-A2AF-20A4770D3F73-
+
+CCompileC /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv7/SBJsonBase.o /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/JSON/SBJsonBase.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s362716113.255389
+e362716113.376455
+r1
+xCompileC
+x/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv7/SBJsonBase.o
+x/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/JSON/SBJsonBase.m
+xnormal
+xarmv7
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection87"Compile /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/JSON/SBJsonBase.m7bbf41d19b9eb541^9a7760d19b9eb541^---0#0#0#-19%DVTDocumentLocation2@95"file://localhost/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/JSON/SBJsonBase.m0000000000000000^3602"CompileC /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv7/SBJsonBase.o JSON/SBJsonBase.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch armv7 -fmessage-length=0 -std=c99 -Wno-trigraphs -fpascal-strings -Os -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-sign-compare -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.1.sdk -Wprotocol -Wdeprecated-declarations -g -Wno-conversion -Wno-sign-conversion -mthumb "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -miphoneos-version-min=3.0 -iquote /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/facebook_ios_sdk-generated-files.hmap -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/facebook_ios_sdk-own-target-headers.hmap -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/facebook_ios_sdk-all-target-headers.hmap -iquote /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/facebook_ios_sdk-project-headers.hmap -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/include -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/DerivedSources/armv7 -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/DerivedSources -F/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos -include /var/folders/yt/kq2c51m16ns2kl6z57vgcs000000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/facebook_ios_sdk_Prefix-gietkqmuszrdauctdhmvuugudzhx/facebook_ios_sdk_Prefix.pch -MMD -MT dependencies -MF /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv7/SBJsonBase.d --serialize-diagnostics /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv7/SBJsonBase.dia -c /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/JSON/SBJsonBase.m -o /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv7/SBJsonBase.o36"EFD3C0DA-1B20-481E-99CD-2C5DC995639B-
+
+CCompileC /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv7/SBJsonParser.o /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/JSON/SBJsonParser.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s362716113.378037
+e362716113.884754
+r1
+xCompileC
+x/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv7/SBJsonParser.o
+x/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/JSON/SBJsonParser.m
+xnormal
+xarmv7
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection89"Compile /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/JSON/SBJsonParser.mf52b61d19b9eb541^d97ae2d19b9eb541^---0#0#0#-19%DVTDocumentLocation2@97"file://localhost/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/JSON/SBJsonParser.m0000000000000000^3614"CompileC /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv7/SBJsonParser.o JSON/SBJsonParser.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch armv7 -fmessage-length=0 -std=c99 -Wno-trigraphs -fpascal-strings -Os -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-sign-compare -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.1.sdk -Wprotocol -Wdeprecated-declarations -g -Wno-conversion -Wno-sign-conversion -mthumb "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -miphoneos-version-min=3.0 -iquote /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/facebook_ios_sdk-generated-files.hmap -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/facebook_ios_sdk-own-target-headers.hmap -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/facebook_ios_sdk-all-target-headers.hmap -iquote /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/facebook_ios_sdk-project-headers.hmap -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/include -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/DerivedSources/armv7 -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/DerivedSources -F/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos -include /var/folders/yt/kq2c51m16ns2kl6z57vgcs000000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/facebook_ios_sdk_Prefix-gietkqmuszrdauctdhmvuugudzhx/facebook_ios_sdk_Prefix.pch -MMD -MT dependencies -MF /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv7/SBJsonParser.d --serialize-diagnostics /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv7/SBJsonParser.dia -c /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/JSON/SBJsonParser.m -o /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv7/SBJsonParser.o36"6F60C21F-30F7-4964-807A-D4B15051CECD-
+
+CCompileC /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv7/SBJsonWriter.o /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/JSON/SBJsonWriter.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s362716113.428212
+e362716113.721363
+r1
+xCompileC
+x/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv7/SBJsonWriter.o
+x/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/JSON/SBJsonWriter.m
+xnormal
+xarmv7
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection89"Compile /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/JSON/SBJsonWriter.md7126ed19b9eb541^97aab8d19b9eb541^---0#0#0#-19%DVTDocumentLocation2@97"file://localhost/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/JSON/SBJsonWriter.m0000000000000000^3614"CompileC /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv7/SBJsonWriter.o JSON/SBJsonWriter.m normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch armv7 -fmessage-length=0 -std=c99 -Wno-trigraphs -fpascal-strings -Os -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-sign-compare -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.1.sdk -Wprotocol -Wdeprecated-declarations -g -Wno-conversion -Wno-sign-conversion -mthumb "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -miphoneos-version-min=3.0 -iquote /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/facebook_ios_sdk-generated-files.hmap -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/facebook_ios_sdk-own-target-headers.hmap -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/facebook_ios_sdk-all-target-headers.hmap -iquote /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/facebook_ios_sdk-project-headers.hmap -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/include -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/DerivedSources/armv7 -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/DerivedSources -F/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos -include /var/folders/yt/kq2c51m16ns2kl6z57vgcs000000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/facebook_ios_sdk_Prefix-gietkqmuszrdauctdhmvuugudzhx/facebook_ios_sdk_Prefix.pch -MMD -MT dependencies -MF /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv7/SBJsonWriter.d --serialize-diagnostics /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv7/SBJsonWriter.dia -c /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/JSON/SBJsonWriter.m -o /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv7/SBJsonWriter.o36"E1EDBBF4-B84D-473E-90EF-CC30357BE066-
+
+CCpHeader FBConnect.h /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/facebook-ios-sdk/FBConnect.h
+s362716111.930849
+e362716111.933606
+r1
+xCpHeader
+xFBConnect.h
+x/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/facebook-ios-sdk/FBConnect.h
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection114"Copy /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/facebook-ios-sdk/FBConnect.h5662eecf9b9eb541^0001efcf9b9eb541^---0#0#0#-19%DVTDocumentLocation2@125"file://localhost/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/facebook-ios-sdk/FBConnect.h000000000080d041^826"CpHeader FBConnect.h /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/facebook-ios-sdk/FBConnect.h    cd /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -strip-debug-symbols -resolve-src-symlinks -strip-tool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/strip /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/FBConnect.h /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/facebook-ios-sdk36"DC43E4B4-7B35-48F6-A6EE-6E9B3AEC62EB-
+
+CCpHeader FBDialog.h /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/facebook-ios-sdk/FBDialog.h
+s362716111.934742
+e362716111.938420
+r1
+xCpHeader
+xFBDialog.h
+x/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/facebook-ios-sdk/FBDialog.h
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection113"Copy /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/facebook-ios-sdk/FBDialog.hdb88efcf9b9eb541^363df0cf9b9eb541^---0#0#0#-19%DVTDocumentLocation2@124"file://localhost/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/facebook-ios-sdk/FBDialog.h000000000080d041^823"CpHeader FBDialog.h /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/facebook-ios-sdk/FBDialog.h    cd /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -strip-debug-symbols -resolve-src-symlinks -strip-tool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/strip /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/FBDialog.h /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/facebook-ios-sdk36"54433FCA-08AB-4E58-AF9F-F9E3602A2007-
+
+CCpHeader FBLoginDialog.h /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/facebook-ios-sdk/FBLoginDialog.h
+s362716111.932578
+e362716111.937832
+r1
+xCpHeader
+xFBLoginDialog.h
+x/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/facebook-ios-sdk/FBLoginDialog.h
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection118"Copy /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/facebook-ios-sdk/FBLoginDialog.h1cd0eecf9b9eb541^2217f0cf9b9eb541^---0#0#0#-19%DVTDocumentLocation2@129"file://localhost/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/facebook-ios-sdk/FBLoginDialog.h000000000080d041^838"CpHeader FBLoginDialog.h /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/facebook-ios-sdk/FBLoginDialog.h    cd /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -strip-debug-symbols -resolve-src-symlinks -strip-tool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/strip /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/FBLoginDialog.h /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/facebook-ios-sdk36"A9C96B0A-F847-4F8D-9B0B-BFCB79925970-
+
+CCpHeader FBRequest.h /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/facebook-ios-sdk/FBRequest.h
+s362716111.931361
+e362716111.934428
+r1
+xCpHeader
+xFBRequest.h
+x/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/facebook-ios-sdk/FBRequest.h
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection114"Copy /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/facebook-ios-sdk/FBRequest.h5e83eecf9b9eb541^bd36efcf9b9eb541^---0#0#0#-19%DVTDocumentLocation2@125"file://localhost/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/facebook-ios-sdk/FBRequest.h000000000080d041^826"CpHeader FBRequest.h /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/facebook-ios-sdk/FBRequest.h    cd /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -strip-debug-symbols -resolve-src-symlinks -strip-tool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/strip /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/FBRequest.h /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/facebook-ios-sdk36"C65FBF21-D3AB-4BBA-928F-93AD08695162-
+
+CCpHeader Facebook.h /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/facebook-ios-sdk/Facebook.h
+s362716111.931366
+e362716111.937491
+r1
+xCpHeader
+xFacebook.h
+x/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/facebook-ios-sdk/Facebook.h
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection113"Copy /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/facebook-ios-sdk/Facebook.h2385eecf9b9eb541^9bffefcf9b9eb541^---0#0#0#-19%DVTDocumentLocation2@124"file://localhost/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/facebook-ios-sdk/Facebook.h000000000080d041^823"CpHeader Facebook.h /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/facebook-ios-sdk/Facebook.h    cd /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -strip-debug-symbols -resolve-src-symlinks -strip-tool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/strip /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/Facebook.h /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/facebook-ios-sdk36"BBB3D4D0-E9E8-45CC-B130-10A406CBB87D-
+
+CCpHeader JSON/JSON.h /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/facebook-ios-sdk/JSON.h
+s362716111.934760
+e362716111.940639
+r1
+xCpHeader
+xJSON/JSON.h
+x/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/facebook-ios-sdk/JSON.h
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection109"Copy /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/facebook-ios-sdk/JSON.hb894efcf9b9eb541^bbd4f0cf9b9eb541^---0#0#0#-19%DVTDocumentLocation2@120"file://localhost/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/facebook-ios-sdk/JSON.h000000000080d041^821"CpHeader JSON/JSON.h /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/facebook-ios-sdk/JSON.h    cd /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -strip-debug-symbols -resolve-src-symlinks -strip-tool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/strip /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/JSON/JSON.h /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/facebook-ios-sdk36"4F5CBBDC-4224-486A-B6A4-A40C40439C5D-
+
+CCpHeader JSON/NSObject+SBJSON.h /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/facebook-ios-sdk/NSObject+SBJSON.h
+s362716111.938653
+e362716111.943618
+r1
+xCpHeader
+xJSON/NSObject+SBJSON.h
+x/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/facebook-ios-sdk/NSObject+SBJSON.h
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection120"Copy /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/facebook-ios-sdk/NSObject+SBJSON.hf662f0cf9b9eb541^5f97f1cf9b9eb541^---0#0#0#-19%DVTDocumentLocation2@131"file://localhost/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/facebook-ios-sdk/NSObject+SBJSON.h000000000080d041^854"CpHeader JSON/NSObject+SBJSON.h /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/facebook-ios-sdk/NSObject+SBJSON.h    cd /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -strip-debug-symbols -resolve-src-symlinks -strip-tool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/strip /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/JSON/NSObject+SBJSON.h /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/facebook-ios-sdk36"166CDB8C-C39C-4E26-89B3-FF45A9460990-
+
+CCpHeader JSON/NSString+SBJSON.h /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/facebook-ios-sdk/NSString+SBJSON.h
+s362716111.938666
+e362716111.942629
+r1
+xCpHeader
+xJSON/NSString+SBJSON.h
+x/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/facebook-ios-sdk/NSString+SBJSON.h
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection120"Copy /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/facebook-ios-sdk/NSString+SBJSON.h1763f0cf9b9eb541^b551f1cf9b9eb541^---0#0#0#-19%DVTDocumentLocation2@131"file://localhost/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/facebook-ios-sdk/NSString+SBJSON.h000000000080d041^854"CpHeader JSON/NSString+SBJSON.h /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/facebook-ios-sdk/NSString+SBJSON.h    cd /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -strip-debug-symbols -resolve-src-symlinks -strip-tool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/strip /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/JSON/NSString+SBJSON.h /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/facebook-ios-sdk36"40732767-38ED-466B-A275-FDD24F690064-
+
+CCpHeader JSON/SBJSON.h /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/facebook-ios-sdk/SBJSON.h
+s362716111.938919
+e362716111.946648
+r1
+xCpHeader
+xJSON/SBJSON.h
+x/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/facebook-ios-sdk/SBJSON.h
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection111"Copy /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/facebook-ios-sdk/SBJSON.hda74f0cf9b9eb541^8060f2cf9b9eb541^---0#0#0#-19%DVTDocumentLocation2@122"file://localhost/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/facebook-ios-sdk/SBJSON.h000000000080d041^827"CpHeader JSON/SBJSON.h /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/facebook-ios-sdk/SBJSON.h    cd /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -strip-debug-symbols -resolve-src-symlinks -strip-tool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/strip /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/JSON/SBJSON.h /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/facebook-ios-sdk36"74EB016D-A365-401D-A6B1-C380B441CE62-
+
+CCpHeader JSON/SBJsonBase.h /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/facebook-ios-sdk/SBJsonBase.h
+s362716111.942184
+e362716111.947872
+r1
+xCpHeader
+xJSON/SBJsonBase.h
+x/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/facebook-ios-sdk/SBJsonBase.h
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection115"Copy /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/facebook-ios-sdk/SBJsonBase.h8061f1cf9b9eb541^75b0f2cf9b9eb541^---0#0#0#-19%DVTDocumentLocation2@126"file://localhost/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/facebook-ios-sdk/SBJsonBase.h000000000080d041^839"CpHeader JSON/SBJsonBase.h /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/facebook-ios-sdk/SBJsonBase.h    cd /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -strip-debug-symbols -resolve-src-symlinks -strip-tool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/strip /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/JSON/SBJsonBase.h /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/facebook-ios-sdk36"8EC0A43F-469D-4D18-BB20-A3E031B2DC9C-
+
+CCpHeader JSON/SBJsonParser.h /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/facebook-ios-sdk/SBJsonParser.h
+s362716111.943831
+e362716111.948597
+r1
+xCpHeader
+xJSON/SBJsonParser.h
+x/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/facebook-ios-sdk/SBJsonParser.h
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection117"Copy /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/facebook-ios-sdk/SBJsonParser.h3acef1cf9b9eb541^e0d9f2cf9b9eb541^---0#0#0#-19%DVTDocumentLocation2@128"file://localhost/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/facebook-ios-sdk/SBJsonParser.h000000000080d041^845"CpHeader JSON/SBJsonParser.h /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/facebook-ios-sdk/SBJsonParser.h    cd /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -strip-debug-symbols -resolve-src-symlinks -strip-tool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/strip /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/JSON/SBJsonParser.h /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/facebook-ios-sdk36"45C0B05A-4F78-4011-B322-9DFD58885641-
+
+CCpHeader JSON/SBJsonWriter.h /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/facebook-ios-sdk/SBJsonWriter.h
+s362716111.943848
+e362716111.950798
+r1
+xCpHeader
+xJSON/SBJsonWriter.h
+x/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/facebook-ios-sdk/SBJsonWriter.h
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection117"Copy /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/facebook-ios-sdk/SBJsonWriter.hbc20f2cf9b9eb541^a167f3cf9b9eb541^---0#0#0#-19%DVTDocumentLocation2@128"file://localhost/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/facebook-ios-sdk/SBJsonWriter.h000000000080d041^845"CpHeader JSON/SBJsonWriter.h /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/facebook-ios-sdk/SBJsonWriter.h    cd /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -strip-debug-symbols -resolve-src-symlinks -strip-tool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/strip /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/JSON/SBJsonWriter.h /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/facebook-ios-sdk36"EF39FADC-4709-4734-9843-0F3363F75D59-
+
+CCreateUniversalBinary /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/libfacebook_ios_sdk.a normal "armv7 armv6"
+s362716115.078780
+e362716115.114535
+r1
+xCreateUniversalBinary
+x/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/libfacebook_ios_sdk.a
+xnormal
+xarmv7 armv6
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection126"Create universal binary /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/libfacebook_ios_sdk.ac43f14d39b9eb541^b5511dd39b9eb541^---0#0#0#-19%DVTDocumentLocation2@118"file://localhost/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/libfacebook_ios_sdk.a000000000080d041^897"CreateUniversalBinary /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/libfacebook_ios_sdk.a normal "armv7 armv6"    cd /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin"    libtool -static /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv7/libfacebook_ios_sdk.a /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv6/libfacebook_ios_sdk.a -o /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/libfacebook_ios_sdk.a36"D1D7DF72-0F5B-4913-B702-F01C3B26B011-
+
+CLibtool /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv6/libfacebook_ios_sdk.a normal armv6
+s362716115.061294
+e362716115.071859
+r1
+xLibtool
+x/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv6/libfacebook_ios_sdk.a
+xnormal
+xarmv6
+o/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool: -dynamic not specified the following flags are invalid: -ObjC 
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection190"Libtool /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv6/libfacebook_ios_sdk.a normal armv6c5cb0fd39b9eb541^ae6512d39b9eb541^-159"/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool: -dynamic not specified the following flags are invalid: -ObjC -0#0#0#--1228"Libtool /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv6/libfacebook_ios_sdk.a normal armv6    cd /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src    setenv IPHONEOS_DEPLOYMENT_TARGET 3.0    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool -static -arch_only armv6 -syslibroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.1.sdk -L/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos -filelist /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv6/facebook_ios_sdk.LinkFileList -ObjC -framework Foundation -o /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv6/libfacebook_ios_sdk.a36"CB046681-4D53-43DB-B888-C98F0B5D262C-
+
+CLibtool /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv7/libfacebook_ios_sdk.a normal armv7
+s362716114.301654
+e362716114.324843
+r1
+xLibtool
+x/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv7/libfacebook_ios_sdk.a
+xnormal
+xarmv7
+o/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool: -dynamic not specified the following flags are invalid: -ObjC 
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection190"Libtool /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv7/libfacebook_ios_sdk.a normal armv7d68b4dd29b9eb541^df3653d29b9eb541^-159"/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool: -dynamic not specified the following flags are invalid: -ObjC -0#0#0#--1228"Libtool /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv7/libfacebook_ios_sdk.a normal armv7    cd /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src    setenv IPHONEOS_DEPLOYMENT_TARGET 3.0    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool -static -arch_only armv7 -syslibroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.1.sdk -L/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos -filelist /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv7/facebook_ios_sdk.LinkFileList -ObjC -framework Foundation -o /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/Objects-normal/armv7/libfacebook_ios_sdk.a36"0088AE63-2A0A-4E85-B959-5BF997208BAE-
+
+CProcessPCH /var/folders/yt/kq2c51m16ns2kl6z57vgcs000000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/facebook_ios_sdk_Prefix-cckutfkxnhioifcqqdckapukcrxc/facebook_ios_sdk_Prefix.pch.pth facebook_ios_sdk_Prefix.pch normal armv6 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s362716111.960411
+e362716112.503997
+r1
+xProcessPCH
+x/var/folders/yt/kq2c51m16ns2kl6z57vgcs000000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/facebook_ios_sdk_Prefix-cckutfkxnhioifcqqdckapukcrxc/facebook_ios_sdk_Prefix.pch.pth
+xfacebook_ios_sdk_Prefix.pch
+xnormal
+xarmv6
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection38"Precompile facebook_ios_sdk_Prefix.pch4b59f6cf9b9eb541^130e81d09b9eb541^---0#0#0#-19%DVTDocumentLocation2@105"file://localhost/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/facebook_ios_sdk_Prefix.pch0000000000000000^3515"ProcessPCH /var/folders/yt/kq2c51m16ns2kl6z57vgcs000000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/facebook_ios_sdk_Prefix-cckutfkxnhioifcqqdckapukcrxc/facebook_ios_sdk_Prefix.pch.pth facebook_ios_sdk_Prefix.pch normal armv6 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c-header -arch armv6 -fmessage-length=0 -std=c99 -Wno-trigraphs -fpascal-strings -Os -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-sign-compare -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.1.sdk -Wprotocol -Wdeprecated-declarations -g -Wno-conversion -Wno-sign-conversion -mthumb "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -miphoneos-version-min=3.0 -iquote /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/facebook_ios_sdk-generated-files.hmap -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/facebook_ios_sdk-own-target-headers.hmap -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/facebook_ios_sdk-all-target-headers.hmap -iquote /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/facebook_ios_sdk-project-headers.hmap -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/include -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/DerivedSources/armv6 -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/DerivedSources -F/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos --serialize-diagnostics /var/folders/yt/kq2c51m16ns2kl6z57vgcs000000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/facebook_ios_sdk_Prefix-cckutfkxnhioifcqqdckapukcrxc/facebook_ios_sdk_Prefix.pch.dia -c /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/facebook_ios_sdk_Prefix.pch -o /var/folders/yt/kq2c51m16ns2kl6z57vgcs000000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/facebook_ios_sdk_Prefix-cckutfkxnhioifcqqdckapukcrxc/facebook_ios_sdk_Prefix.pch.pth -MMD -MT dependencies -MF /var/folders/yt/kq2c51m16ns2kl6z57vgcs000000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/facebook_ios_sdk_Prefix-cckutfkxnhioifcqqdckapukcrxc/facebook_ios_sdk_Prefix.pch.d36"70EA8957-F268-428F-9B9B-4E7C8421C43D-
+
+CProcessPCH /var/folders/yt/kq2c51m16ns2kl6z57vgcs000000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/facebook_ios_sdk_Prefix-gietkqmuszrdauctdhmvuugudzhx/facebook_ios_sdk_Prefix.pch.pth facebook_ios_sdk_Prefix.pch normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s362716111.960371
+e362716112.503629
+r1
+xProcessPCH
+x/var/folders/yt/kq2c51m16ns2kl6z57vgcs000000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/facebook_ios_sdk_Prefix-gietkqmuszrdauctdhmvuugudzhx/facebook_ios_sdk_Prefix.pch.pth
+xfacebook_ios_sdk_Prefix.pch
+xnormal
+xarmv7
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection38"Precompile facebook_ios_sdk_Prefix.pch355ef6cf9b9eb541^74ec80d09b9eb541^---0#0#0#-19%DVTDocumentLocation2@105"file://localhost/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/facebook_ios_sdk_Prefix.pch0000000000000000^3515"ProcessPCH /var/folders/yt/kq2c51m16ns2kl6z57vgcs000000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/facebook_ios_sdk_Prefix-gietkqmuszrdauctdhmvuugudzhx/facebook_ios_sdk_Prefix.pch.pth facebook_ios_sdk_Prefix.pch normal armv7 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c-header -arch armv7 -fmessage-length=0 -std=c99 -Wno-trigraphs -fpascal-strings -Os -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-uninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-sign-compare -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.1.sdk -Wprotocol -Wdeprecated-declarations -g -Wno-conversion -Wno-sign-conversion -mthumb "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -miphoneos-version-min=3.0 -iquote /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/facebook_ios_sdk-generated-files.hmap -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/facebook_ios_sdk-own-target-headers.hmap -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/facebook_ios_sdk-all-target-headers.hmap -iquote /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/facebook_ios_sdk-project-headers.hmap -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos/include -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/DerivedSources/armv7 -I/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/facebook-ios-sdk.build/Release-iphoneos/facebook-ios-sdk.build/DerivedSources -F/Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/build/Release-iphoneos --serialize-diagnostics /var/folders/yt/kq2c51m16ns2kl6z57vgcs000000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/facebook_ios_sdk_Prefix-gietkqmuszrdauctdhmvuugudzhx/facebook_ios_sdk_Prefix.pch.dia -c /Users/robertwagstaff84/workspace/shmyki/facebook-ios-sdk/src/facebook_ios_sdk_Prefix.pch -o /var/folders/yt/kq2c51m16ns2kl6z57vgcs000000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/facebook_ios_sdk_Prefix-gietkqmuszrdauctdhmvuugudzhx/facebook_ios_sdk_Prefix.pch.pth -MMD -MT dependencies -MF /var/folders/yt/kq2c51m16ns2kl6z57vgcs000000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/facebook_ios_sdk_Prefix-gietkqmuszrdauctdhmvuugudzhx/facebook_ios_sdk_Prefix.pch.d36"324B14F9-1B9C-4D9F-9876-8828CE86FB0B-
+
