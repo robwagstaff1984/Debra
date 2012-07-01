@@ -15,6 +15,8 @@
 #import "MykiBalanceViewController.h"
 #import <Parse/Parse.h>
 #import "Facebook.h"
+#import "SA_OAuthTwitterEngine.h"  
+#import "ShmykiContstants.h"
 
 
 @implementation AppDelegate
@@ -22,7 +24,7 @@
 @synthesize window = _window;
 @synthesize tabBarController = _tabBarController;
 @synthesize navigationController = _navigationController;
-@synthesize facebook, currentUsersPunchOnLog;
+@synthesize facebook, twitterEngine, currentUsersPunchOnLog;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -53,6 +55,7 @@
     currentUsersPunchOnLog = [[PunchOnLog alloc] init];
     
     [self setUpFaceBook];
+    [self setUpTwitter];
     return YES;
 }
 
@@ -126,6 +129,33 @@
     return [facebook handleOpenURL:url]; 
 }
 
+#pragma mark twitter 
+
+-(void) setUpTwitter {
+    if(!twitterEngine){  
+        twitterEngine = [[SA_OAuthTwitterEngine alloc] initOAuthWithDelegate:self];  
+        twitterEngine.consumerKey    = kOAuthConsumerKey;  
+        twitterEngine.consumerSecret = kOAuthConsumerSecret;  
+    } 
+}
+
+- (UIViewController*) getlogInToTwitterViewController {
+    if(![twitterEngine isAuthorized]){  
+        UIViewController *controller = [SA_OAuthTwitterController controllerToEnterCredentialsWithTwitterEngine:twitterEngine delegate:self];  
+        
+        if (controller){  
+            return controller;
+        }  
+    } 
+    return nil;
+}
+
+-(void) postToTwitter {
+    NSString *twitterMessage = [NSString stringWithFormat:@"I just punched on with yourKi:\n\n\"%@\"",  currentUsersPunchOnLog.message];
+    
+    [twitterEngine sendUpdate:twitterMessage];
+}
+
 #pragma mark Facebook request delegate
 
 - (void)request:(FBRequest *)request didFailWithError:(NSError *)error {
@@ -134,6 +164,28 @@
 - (void)request:(FBRequest *)request didLoad:(id)result {
        NSLog(@"didLoad"); 
 }
+
+#pragma mark SA_OAuthTwitterEngineDelegate  
+- (void) storeCachedTwitterOAuthData: (NSString *) data forUsername: (NSString *) username {  
+    NSUserDefaults          *defaults = [NSUserDefaults standardUserDefaults];  
+    
+    [defaults setObject: data forKey: @"authData"];  
+    [defaults synchronize];  
+}  
+
+- (NSString *) cachedTwitterOAuthDataForUsername: (NSString *) username {  
+    return [[NSUserDefaults standardUserDefaults] objectForKey: @"authData"];  
+}  
+
+#pragma mark TwitterEngineDelegate  
+- (void) requestSucceeded: (NSString *) requestIdentifier {  
+    NSLog(@"Request %@ succeeded", requestIdentifier);  
+}  
+
+- (void) requestFailed: (NSString *) requestIdentifier withError: (NSError *) error {  
+    NSLog(@"Request %@ failed with error: %@", requestIdentifier, error);  
+}  
+
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {

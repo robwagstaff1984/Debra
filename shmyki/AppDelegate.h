@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "FBConnect.h"
 #import "PunchOnLog.h"
+#import "SA_OAuthTwitterController.h"  
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate, UITabBarControllerDelegate, FBSessionDelegate, FBRequestDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate, UITabBarControllerDelegate, FBSessionDelegate, FBRequestDelegate,SA_OAuthTwitterControllerDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
@@ -20,8 +21,14 @@
 
 @property (nonatomic, strong) Facebook *facebook;
 
+@property (nonatomic, strong) SA_OAuthTwitterEngine *twitterEngine; 
+
 @property (nonatomic, strong) PunchOnLog *currentUsersPunchOnLog;
+
 
 -(void)logInToFacebook;
 -(void)postToFacebook;
+
+- (UIViewController*) getlogInToTwitterViewController;
+-(void)postToTwitter;
 @end

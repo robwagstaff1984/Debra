@@ -148,6 +148,7 @@
 
 -(void) savePunchOnLog {
     [(AppDelegate*)[[UIApplication sharedApplication] delegate] postToFacebook];
+    [(AppDelegate*)[[UIApplication sharedApplication] delegate] postToTwitter];
 }
 
 - (IBAction)tramButtonTapped:(id)sender {

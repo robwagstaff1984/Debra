@@ -8,13 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "PunchOnIssues.h"
-#import "SA_OAuthTwitterController.h"  
+
 
 @class SA_OAuthTwitterEngine; 
 
-@interface EnterIssueViewController : UIViewController <UITextViewDelegate, UITableViewDataSource, UITableViewDelegate, SA_OAuthTwitterControllerDelegate> {
-    SA_OAuthTwitterEngine    *_engine; 
-}
+@interface EnterIssueViewController : UIViewController <UITextViewDelegate, UITableViewDataSource, UITableViewDelegate> 
 
 @property (strong, nonatomic) PunchOnIssues *punchOnIssues;
 @property (strong, nonatomic) IBOutlet UITextView *commentsTextView;
