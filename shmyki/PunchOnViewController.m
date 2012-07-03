@@ -273,7 +273,7 @@
     }
     if(isModeChanged) {
         if(distance > 100) {
-            animationDuration = .2f;
+            animationDuration = .25f;
         } else {
              animationDuration = .1f;
         }

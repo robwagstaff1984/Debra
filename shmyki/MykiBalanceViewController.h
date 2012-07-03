@@ -40,6 +40,7 @@
 @property (nonatomic, strong) NSTimer *timer;
 
 -(void)retrieveMykiBalance;
+-(void) retryRetrieveMykiBalance;
 - (void)webViewDidFinishLoad:(UIWebView *)webView;
 -(IBAction)tryAgainButtonTapped:(id)sender;
 

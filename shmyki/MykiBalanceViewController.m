@@ -97,7 +97,7 @@
 
 -(void)retrieveMykiBalance {
 
-    timer = [NSTimer scheduledTimerWithTimeInterval: 40.0 target:self selector:@selector(cancelRequest:) userInfo:nil repeats: NO];
+    timer = [NSTimer scheduledTimerWithTimeInterval: 30.0 target:self selector:@selector(cancelRequest:) userInfo:nil repeats: NO];
     
     //timer = [NSTimer timerWithTimeInterval:1.0 target:self selector:@selector(cancelRequest:) userInfo:nil repeats:NO];
     HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
@@ -105,7 +105,7 @@
     HUD.dimBackground = YES;
     HUD.labelText = @"Connecting";
 
-    NSURLRequest *requestObj = [NSURLRequest requestWithURL:[NSURL URLWithString:mykiLoginUrl] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:40.0f];
+    NSURLRequest *requestObj = [NSURLRequest requestWithURL:[NSURL URLWithString:mykiLoginUrl] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:30.0f];
     [mykiWebstiteWebView loadRequest:requestObj];
     
 }

@@ -46,15 +46,10 @@
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] 
                                                                     initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self
                                                                     action:@selector(issueEntered)];
-    //self.navigationItem.rightBarButtonItem.enabled = NO;
+    self.navigationItem.rightBarButtonItem.enabled = NO;
     
     
     [super viewDidLoad];
-    /*   PFObject *punchOnLog = [PFObject objectWithClassName:@"PunchOnLog"];
-     [punchOnLog setObject:locationTextField.text forKey:@"location"];
-     [punchOnLog setObject:commentsTextView.text forKey:@"message"];
-     [punchOnLog saveInBackground];*/
-    // Do any additional setup after loading the view from its nib.
 }
 
 - (void)viewDidUnload

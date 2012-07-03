@@ -208,6 +208,20 @@
     [punchOnLog saveInBackground];
 }
 
+#pragma mark multitask
+-(void) reloadBalance {
+   
+    for (UIViewController *vc in self.tabBarController.viewControllers) {
+        if ([vc isKindOfClass:[UINavigationController class]]){
+            
+            if ([[(UINavigationController*)vc topViewController] isKindOfClass:[MykiBalanceViewController class]]) {
+                [(MykiBalanceViewController*)[(UINavigationController*)vc topViewController] retryRetrieveMykiBalance];
+            }
+        }
+    }
+}
+
+
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {
@@ -227,6 +241,7 @@
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
+     //  [self reloadBalance];
     /*
      Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
      */
@@ -234,6 +249,7 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
+ 
     /*
      Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
      */
