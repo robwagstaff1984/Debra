@@ -13,8 +13,6 @@
     int _punchOnCommentsViewPreTouchLocation;
     UIPanGestureRecognizer * _panGestureUpRecognizerForCommentsView;
     UIPanGestureRecognizer * _panGestureDownRecognizerForCommentsView;
-    UISwipeGestureRecognizer * _swipeUpGestureRecognizerForCommentsView;
-    UISwipeGestureRecognizer * _swipeDownGestureRecognizerForCommentsView;
     
     BOOL _commentsTableViewIsUp;
 }
