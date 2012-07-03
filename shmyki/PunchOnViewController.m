@@ -45,17 +45,28 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    _panGestureRecognizerForCommentsView = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handleCustomPan:)];
-    _panGestureRecognizerForCommentsView.delegate = self;
+    _panGestureUpRecognizerForCommentsView = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handleCustomUpPan:)];
+    _panGestureUpRecognizerForCommentsView.delegate = self;
+    
+    _panGestureDownRecognizerForCommentsView = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handleCustomDownPan:)];
+    _panGestureDownRecognizerForCommentsView.delegate = self;
+    
     _swipeDownGestureRecognizerForCommentsView = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleCustomSwipeDown:)];
     _swipeDownGestureRecognizerForCommentsView.delegate = self;
     _swipeDownGestureRecognizerForCommentsView.direction = UISwipeGestureRecognizerDirectionDown;
+    
+    _swipeUpGestureRecognizerForCommentsView = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleCustomSwipeUp:)];
+    _swipeUpGestureRecognizerForCommentsView.delegate = self;
+    _swipeUpGestureRecognizerForCommentsView.direction = UISwipeGestureRecognizerDirectionUp;
+    
+    
+    
     self.punchOnCommentsTableView.scrollEnabled =NO;
     self.punchOnCommentsTableView.allowsSelection = NO;
     self.punchOnCommentsTableView.tableHeaderView.userInteractionEnabled = YES;
     self.punchOnCommentsTableView.tableHeaderView = [TableViewHeaderHelper makeTableDownHeaderWith:self.totalPunchOns];
     [self addGesturesToTableViewHeaderWithFadeEffect:NO];
-    [punchOnCommentsView addGestureRecognizer:_panGestureRecognizerForCommentsView];
+    [punchOnCommentsView addGestureRecognizer:_panGestureUpRecognizerForCommentsView];
 }
 
 - (void)viewDidUnload
@@ -83,53 +94,6 @@
     [self.navigationController pushViewController:enterIssueViewController animated:YES];
 }
 
-#pragma mark gesture recognition delegate
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    _punchOnCommentsViewPreTouchLocation = punchOnCommentsView.center.y;
-    [super touchesBegan:touches withEvent:event];
-}
-
-- (void)handleCustomPan:(UIPanGestureRecognizer *)sender { 
-    CGPoint punchOnCommentsLocation = punchOnCommentsView.center;
-    switch (sender.state) {
-        case UIGestureRecognizerStateBegan:
-             _punchOnCommentsViewPreTouchLocation = punchOnCommentsView.center.y;
-            break;
-        
-        case UIGestureRecognizerStateChanged:
-            if (1==1){}
-
-            CGPoint translationDifferenceFromPan = [sender translationInView:self.view];
-            
-            punchOnCommentsLocation.y = _punchOnCommentsViewPreTouchLocation + translationDifferenceFromPan.y;
-            if(punchOnCommentsLocation.y < COMMENTS_ORIGIN_TO_ANCHOR_TOP) {
-                punchOnCommentsLocation.y = COMMENTS_ORIGIN_TO_ANCHOR_TOP;
-            } else if (punchOnCommentsLocation.y > COMMENTS_ORIGIN_TO_ANCHOR_BOTTOM) {
-                punchOnCommentsLocation.y = COMMENTS_ORIGIN_TO_ANCHOR_BOTTOM;
-            }
-            
-            punchOnCommentsView.center = punchOnCommentsLocation;
-            
-            break;
-            
-        case UIGestureRecognizerStateEnded:
-            
-            [self panCommentsTableViewToAppropriateStateForLocation:punchOnCommentsLocation];
-           
-            
-            break;
-            
-        default:
-            break;
-    }
-}
-
-- (void)handleCustomSwipeDown:(UISwipeGestureRecognizer *)sender { 
-    if (self.punchOnCommentsTableView.contentOffset.y < 0) {
-        [self toggleCommentsTableViewUpAndDown];
-    }
-}
-
 #pragma mark tableView datasource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [self.listOfPunchOnLogs count];
@@ -154,7 +118,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath;
 {
     PunchOnLog *punchOnLog = [listOfPunchOnLogs objectAtIndex:[indexPath row]];  
-
+    
     CGSize constraint = CGSizeMake(320.0 - (CELL_CONTENT_HORIZONTAL_MARGIN * 2), 40000.0f);
     
     CGSize messageLabelSize = [punchOnLog.message sizeWithFont:[UIFont systemFontOfSize:MESSAGE_FONT_SIZE] constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
@@ -170,9 +134,9 @@
 -(void) updatePunchOnLogs {
     PFQuery *query = [PFQuery queryWithClassName:@"PunchOnLog"];
     [query addDescendingOrder:@"createdAt"];
-   // query.limit = MAX_PUNCH_ON_LOGS_RETRIEVED;
+    // query.limit = MAX_PUNCH_ON_LOGS_RETRIEVED;
     [query findObjectsInBackgroundWithBlock:^(NSArray *punchOnLogParseObjects, NSError *error) {
-            
+        
         self.totalPunchOns = [punchOnLogParseObjects count];
         PFObject *punchOnLogParseObject;
         self.listOfPunchOnLogs = [[NSMutableArray alloc] initWithCapacity:MAX_PUNCH_ON_LOGS_RETRIEVED];
@@ -185,9 +149,115 @@
         }
         [self.punchOnCommentsTableView reloadData];
         [(UILabel*)[self.punchOnCommentsTableView.tableHeaderView.subviews objectAtIndex:TOTAL_PUNCH_ONS_SUBVIEW_NUMBER] setText: [NSString stringWithFormat:@"%@        ",[[NSNumber numberWithInt:totalPunchOns] stringValue]]];
-
+        
     }];
+    
+}
 
+#pragma mark gesture recognition delegate
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    _punchOnCommentsViewPreTouchLocation = punchOnCommentsView.center.y;
+    [super touchesBegan:touches withEvent:event];
+}
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer; 
+{
+    return YES;
+}
+
+#pragma mark custom pans
+- (void)handleCustomUpPan:(UIPanGestureRecognizer *)sender {
+    NSLog(@"PAN UP %f",self.punchOnCommentsTableView.contentOffset.y);
+    CGPoint punchOnCommentsLocation = punchOnCommentsView.center;
+    
+    switch (sender.state) {
+        case UIGestureRecognizerStateBegan:
+            _punchOnCommentsViewPreTouchLocation = punchOnCommentsView.center.y;
+            break;
+            
+        case UIGestureRecognizerStateChanged:
+            if (1==1){}
+            
+            CGPoint translationDifferenceFromPan = [sender translationInView:self.view];
+             NSLog(@"TEST UP %f", punchOnCommentsLocation.y);
+            punchOnCommentsLocation.y = _punchOnCommentsViewPreTouchLocation + translationDifferenceFromPan.y;
+            if(punchOnCommentsLocation.y < COMMENTS_ORIGIN_TO_ANCHOR_TOP) {
+                punchOnCommentsLocation.y = COMMENTS_ORIGIN_TO_ANCHOR_TOP;
+            } else if (punchOnCommentsLocation.y > COMMENTS_ORIGIN_TO_ANCHOR_BOTTOM) {
+                punchOnCommentsLocation.y = COMMENTS_ORIGIN_TO_ANCHOR_BOTTOM;
+            }
+            
+            punchOnCommentsView.center = punchOnCommentsLocation;
+            
+            break;
+            
+        case UIGestureRecognizerStateEnded:
+            
+            [self panCommentsTableViewToAppropriateStateForLocation:punchOnCommentsLocation];
+            
+            
+            break;
+            
+        default:
+            break;
+    } 
+}
+
+- (void)handleCustomDownPan:(UIPanGestureRecognizer *)sender { 
+   // NSLog(@"PAN DOWN %f",self.punchOnCommentsTableView.contentOffset.y);
+    
+    CGPoint punchOnCommentsLocation = punchOnCommentsView.center;
+    
+    switch (sender.state) {
+        case UIGestureRecognizerStateBegan:
+            _punchOnCommentsViewPreTouchLocation = punchOnCommentsView.center.y;
+            break;
+            
+        case UIGestureRecognizerStateChanged:
+            if (1==1){}
+            
+            NSLog(@"TEST DOWN %f", self.punchOnCommentsTableView.contentOffset.y);
+            if (self.punchOnCommentsTableView.contentOffset.y <= 0) {
+                 NSLog(@"PAN DOWN %f", punchOnCommentsLocation.y);
+                self.punchOnCommentsTableView.scrollEnabled =NO;
+                CGPoint translationDifferenceFromPan = [sender translationInView:self.view];
+                
+                punchOnCommentsLocation.y = _punchOnCommentsViewPreTouchLocation + translationDifferenceFromPan.y;
+                if(punchOnCommentsLocation.y < COMMENTS_ORIGIN_TO_ANCHOR_TOP) {
+                    punchOnCommentsLocation.y = COMMENTS_ORIGIN_TO_ANCHOR_TOP;
+                } else if (punchOnCommentsLocation.y > COMMENTS_ORIGIN_TO_ANCHOR_BOTTOM) {
+                    punchOnCommentsLocation.y = COMMENTS_ORIGIN_TO_ANCHOR_BOTTOM;
+                }
+                
+                punchOnCommentsView.center = punchOnCommentsLocation;
+            }
+            break;
+            
+        case UIGestureRecognizerStateEnded:
+            
+            [self panCommentsTableViewToAppropriateStateForLocation:punchOnCommentsLocation];
+            
+            
+            break;
+            
+        default:
+            break;
+    } 
+
+}
+
+- (void)handleCustomSwipeUp:(UISwipeGestureRecognizer *)sender { 
+    NSLog(@"SWIPE UP %f",self.punchOnCommentsTableView.contentOffset.y);
+    //if (self.punchOnCommentsTableView.contentOffset.y < 0) {
+        // [self toggleCommentsTableViewUpAndDown];
+   // }
+}
+
+- (void)handleCustomSwipeDown:(UISwipeGestureRecognizer *)sender { 
+    NSLog(@"SWIPE DOWN %f",self.punchOnCommentsTableView.contentOffset.y);
+    //if (self.punchOnCommentsTableView.contentOffset.y < 0) {
+       // [self toggleCommentsTableViewUpAndDown];
+   // }
 }
 
 #pragma mark Punch On Table effects Helper Methods 
@@ -199,13 +269,19 @@
         tableViewCenterLocation.y = COMMENTS_ORIGIN_TO_ANCHOR_TOP;
         punchOnCommentsTableView.scrollEnabled = YES;
         _commentsTableViewIsUp = YES;
-        [punchOnCommentsView removeGestureRecognizer:_panGestureRecognizerForCommentsView];
+        [punchOnCommentsView removeGestureRecognizer:_panGestureUpRecognizerForCommentsView];
+        [punchOnCommentsView removeGestureRecognizer:_swipeUpGestureRecognizerForCommentsView];
         [punchOnCommentsView addGestureRecognizer:_swipeDownGestureRecognizerForCommentsView];
+        [punchOnCommentsView addGestureRecognizer:_panGestureDownRecognizerForCommentsView];
     } else {
         tableViewCenterLocation.y = COMMENTS_ORIGIN_TO_ANCHOR_BOTTOM;
         shouldReplaceHeader = _commentsTableViewIsUp;
         _commentsTableViewIsUp = NO;
         punchOnCommentsTableView.scrollEnabled = NO;
+        [punchOnCommentsView removeGestureRecognizer:_swipeDownGestureRecognizerForCommentsView];
+        [punchOnCommentsView removeGestureRecognizer:_panGestureUpRecognizerForCommentsView];
+        [punchOnCommentsView addGestureRecognizer:_panGestureDownRecognizerForCommentsView];
+        [punchOnCommentsView addGestureRecognizer:_swipeUpGestureRecognizerForCommentsView];
     }
     [self panCommentsTableToLocationY: tableViewCenterLocation.y];
     
@@ -230,13 +306,13 @@
         _commentsTableViewIsUp = NO;
         self.punchOnCommentsTableView.scrollEnabled = NO;
         [self panCommentsTableToLocationY:COMMENTS_ORIGIN_TO_ANCHOR_BOTTOM];
-        [self.punchOnCommentsView addGestureRecognizer:_panGestureRecognizerForCommentsView];
+        [self.punchOnCommentsView addGestureRecognizer:_panGestureUpRecognizerForCommentsView];
         [self toggleTableViewHeaderWithFadeEffect:YES];
     } else {
         _commentsTableViewIsUp = YES;
         self.punchOnCommentsTableView.scrollEnabled = YES;
         [self panCommentsTableToLocationY:COMMENTS_ORIGIN_TO_ANCHOR_TOP];
-        [self.punchOnCommentsView removeGestureRecognizer:_panGestureRecognizerForCommentsView];
+        [self.punchOnCommentsView removeGestureRecognizer:_panGestureUpRecognizerForCommentsView];
         [self toggleTableViewHeaderWithFadeEffect:YES];
     }
 }
@@ -271,10 +347,6 @@
     }
 }
 
-- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer; 
-{
-    return YES;
-}
 
 
 @end
