@@ -33,6 +33,7 @@
     
     UILabel *closeButton = [[UILabel alloc] initWithFrame:CGRectMake(250,5, 90, 25)];
     closeButton.text = @"Close";
+    [closeButton setTextColor:[UIColor grayColor]];
     closeButton.tag = TAG_FOR_CLOSE_BUTTON_LABEL;
     closeButton.userInteractionEnabled = YES;
     
@@ -61,6 +62,7 @@
     closeButton.tag = TAG_FOR_CLOSE_BUTTON_LABEL;
     closeButton.userInteractionEnabled = YES;
     closeButton.textAlignment = UITextAlignmentRight; 
+    [closeButton setTextColor:[UIColor grayColor]];
     //closeButton.backgroundColor = [UIColor yellowColor];
     
     UIImageView *closeButtonImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"images/IconArrowUp"]];

@@ -47,6 +47,9 @@
     
     _panGestureRecognizerForCommentsView = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handleCustomPan:)];
     _panGestureRecognizerForCommentsView.delegate = self;
+    _swipeDownGestureRecognizerForCommentsView = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleCustomSwipeDown:)];
+    _swipeDownGestureRecognizerForCommentsView.delegate = self;
+    _swipeDownGestureRecognizerForCommentsView.direction = UISwipeGestureRecognizerDirectionDown;
     self.punchOnCommentsTableView.scrollEnabled =NO;
     self.punchOnCommentsTableView.allowsSelection = NO;
     self.punchOnCommentsTableView.tableHeaderView.userInteractionEnabled = YES;
@@ -121,7 +124,13 @@
     }
 }
 
-#pragma tableView datasource
+- (void)handleCustomSwipeDown:(UISwipeGestureRecognizer *)sender { 
+    if (self.punchOnCommentsTableView.contentOffset.y < 0) {
+        [self toggleCommentsTableViewUpAndDown];
+    }
+}
+
+#pragma mark tableView datasource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [self.listOfPunchOnLogs count];
 }
@@ -191,6 +200,7 @@
         punchOnCommentsTableView.scrollEnabled = YES;
         _commentsTableViewIsUp = YES;
         [punchOnCommentsView removeGestureRecognizer:_panGestureRecognizerForCommentsView];
+        [punchOnCommentsView addGestureRecognizer:_swipeDownGestureRecognizerForCommentsView];
     } else {
         tableViewCenterLocation.y = COMMENTS_ORIGIN_TO_ANCHOR_BOTTOM;
         shouldReplaceHeader = _commentsTableViewIsUp;
@@ -259,6 +269,11 @@
             [tableHeaderSubView addGestureRecognizer:recognizer];
         }
     }
+}
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer; 
+{
+    return YES;
 }
 
 
