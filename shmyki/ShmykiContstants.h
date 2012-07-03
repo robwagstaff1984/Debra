@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-#define APP_NAME @"shmyki"
+#define APP_NAME @"yourKi"
 
-#define TAG_FOR_CLOSE_BUTTON_LABEL 88
+#define TAG_FOR_CLOSE_BUTTON_LABEL 88 
 #define TAG_FOR_CLOSE_BUTTON_IMAGE 89
 #define TOTAL_PUNCH_ONS_SUBVIEW_NUMBER 0
 

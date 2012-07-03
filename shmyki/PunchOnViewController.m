@@ -166,6 +166,7 @@
             
         self.totalPunchOns = [punchOnLogParseObjects count];
         PFObject *punchOnLogParseObject;
+        self.listOfPunchOnLogs = [[NSMutableArray alloc] initWithCapacity:MAX_PUNCH_ON_LOGS_RETRIEVED];
         for(int i=0; (i <[punchOnLogParseObjects count] && i < MAX_PUNCH_ON_LOGS_RETRIEVED); i++) {
             punchOnLogParseObject = [punchOnLogParseObjects objectAtIndex:i];
             PunchOnLog *punchOnLog = [[PunchOnLog alloc] init];

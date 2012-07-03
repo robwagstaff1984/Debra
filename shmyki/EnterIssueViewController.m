@@ -154,8 +154,12 @@
         savedComment = commentsTextView.text;
     }
     [[(AppDelegate*)[[UIApplication sharedApplication]delegate] currentUsersPunchOnLog] setMessage:savedComment];
-    UIViewController *enterIssueViewController = [[EnterLocationViewController alloc] initWithNibName:@"EnterLocationViewController" bundle:nil];
-    [self.navigationController pushViewController:enterIssueViewController animated:YES];
+    [(AppDelegate*)[[UIApplication sharedApplication] delegate] postToFacebook];
+    [(AppDelegate*)[[UIApplication sharedApplication] delegate] postToTwitter];
+    [(AppDelegate*)[[UIApplication sharedApplication] delegate] saveCurrentUsersPunchOnLog];
+    
+    [self.navigationController popToRootViewControllerAnimated:YES];
+    
 }
 
 - (IBAction)toggleTwitterButton:(id)sender {
