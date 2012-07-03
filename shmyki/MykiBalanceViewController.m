@@ -62,12 +62,6 @@
     textField.autocapitalizationType = UITextAutocapitalizationTypeNone;
     textField.text = userDetail;
     [textField setPlaceholder:defaultText];
-    
-    /*if ([userDetail length] == 0) {
-        [textField setTextColor:[UIColor grayColor]];
-    } else {
-        [textField setTextColor:[UIColor blackColor]];
-    }*/
 
     if(tag == PASSWORD_TEXTFIELD_TAG) {
        textField.secureTextEntry = YES;
