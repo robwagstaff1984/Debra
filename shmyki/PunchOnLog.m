@@ -11,4 +11,20 @@
 @implementation PunchOnLog
 
 @synthesize message, location, dateLogged;
+
+-(void)encodeWithCoder:(NSCoder *)encoder
+{
+    [encoder encodeObject:message forKey:@"message"];
+    [encoder encodeObject:location forKey:@"location"];
+    [encoder encodeObject:dateLogged forKey:@"dateLogged"];
+}
+
+-(id)initWithCoder:(NSCoder *)decoder
+{
+    self.message = [decoder decodeObjectForKey:@"message"];
+    self.location = [decoder decodeObjectForKey:@"location"];
+    self.dateLogged = [decoder decodeObjectForKey:@"dateLogged"];
+    return self;
+}
+
 @end

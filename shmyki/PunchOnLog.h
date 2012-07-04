@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface PunchOnLog : NSObject
+@interface PunchOnLog : NSObject<NSCoding>
 
 @property(nonatomic, strong) NSString *message;
 @property(nonatomic, strong) NSString *location;

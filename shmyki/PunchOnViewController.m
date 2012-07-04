@@ -13,6 +13,7 @@
 #import "PunchOnLog.h"
 #import "TableViewCellForPunchOnLogs.h"
 #import "TableViewHeaderHelper.h"
+#import "PunchOnLogsCache.h"
 
 @implementation PunchOnViewController
 @synthesize punchOnCommentsView, punchOnCommentsTableView, listOfPunchOnLogs, totalPunchOns;
@@ -57,6 +58,9 @@
     self.punchOnCommentsTableView.tableHeaderView = [TableViewHeaderHelper makeTableDownHeaderWith:self.totalPunchOns];
     [self addGesturesToTableViewHeaderWithFadeEffect:NO];
     [punchOnCommentsView addGestureRecognizer:_panGestureUpRecognizerForCommentsView];
+    
+    self.listOfPunchOnLogs = [[PunchOnLogsCache sharedModel] loadPunchOnLogsCache];
+    
 }
 
 - (void)viewDidUnload
@@ -156,7 +160,7 @@
         }
         [self.punchOnCommentsTableView reloadData];
         [(UILabel*)[self.punchOnCommentsTableView.tableHeaderView.subviews objectAtIndex:TOTAL_PUNCH_ONS_SUBVIEW_NUMBER] setText: [NSString stringWithFormat:@"%@        ",[[NSNumber numberWithInt:totalPunchOns] stringValue]]];
-        
+        [[PunchOnLogsCache sharedModel] savePunchOnLogsCache:self.listOfPunchOnLogs];
     }];
     
 }

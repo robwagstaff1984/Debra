@@ -23,6 +23,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
+        self.navigationItem.title = @"yourMyki";
         mykiAccountInformation = [[MykiAccountInformation alloc] init]; 
         [mykiAccountInformation loadAccountInformation];
         [mykiAccountInformation loadAccountBalanceInformation];
@@ -103,7 +104,6 @@
     HUD.delegate = self;
     HUD.dimBackground = YES;
     HUD.labelText = @"Connecting";
-    NSLog(@"retrieve");
 
     NSURLRequest *requestObj = [NSURLRequest requestWithURL:[NSURL URLWithString:mykiLoginUrl]];
        // NSURLRequest *requestObj = [NSURLRequest requestWithURL:[NSURL URLWithString:mykiLoginUrl] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:30.0f];
@@ -116,7 +116,6 @@
     [mykiWebstiteWebView stopLoading];
     self.userIsLoggedIn = NO;
     [self switchToErrorState];
-    NSLog(@"cancel");
 }
 
 -(void) retryRetrieveMykiBalance {
@@ -127,9 +126,8 @@
 -(void)stopRequest {
     [HUD hide:YES];
     if(mykiWebstiteWebView.loading) {
-        NSLog(@"stopping it");
+        [mykiWebstiteWebView stopLoading];
     }
-    [mykiWebstiteWebView stopLoading];
     self.userIsLoggedIn = NO;
     [timer invalidate];
 }
