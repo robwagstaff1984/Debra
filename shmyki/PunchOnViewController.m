@@ -25,8 +25,11 @@
         
         [self.tabBarItem setTitle:@"Punch On"];
         [[self navigationItem] setTitle:APP_NAME];
-        [self.tabBarItem setFinishedSelectedImage:[UIImage imageNamed:@"images/TabPunchOn"] withFinishedUnselectedImage:[UIImage imageNamed:@"images/TabPunchOff"]];
-
+        if ([self.tabBarItem respondsToSelector:@selector(setFinishedSelectedImage:withFinishedUnselectedImage:)] ==YES) {
+            [self.tabBarItem setFinishedSelectedImage:[UIImage imageNamed:@"images/TabPunchOn"] withFinishedUnselectedImage:[UIImage imageNamed:@"images/TabPunchOff"]];
+        } else {
+            self.tabBarItem.image = [UIImage imageNamed:@"images/TabPunchOff"];
+        }
         
         self.listOfPunchOnLogs = [[NSMutableArray alloc] initWithCapacity:MAX_PUNCH_ON_LOGS_RETRIEVED];
     }

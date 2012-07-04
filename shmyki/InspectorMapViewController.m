@@ -20,7 +20,11 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.title = NSLocalizedString(@"Inspectors", nil);
-        [self.tabBarItem setFinishedSelectedImage:[UIImage imageNamed:@"images/TabInspectOn"] withFinishedUnselectedImage:[UIImage imageNamed:@"images/TabInspectOff"]];
+        if ([self.tabBarItem respondsToSelector:@selector(setFinishedSelectedImage:withFinishedUnselectedImage:)] ==YES) {
+            [self.tabBarItem setFinishedSelectedImage:[UIImage imageNamed:@"images/TabInspectOn"] withFinishedUnselectedImage:[UIImage imageNamed:@"images/TabInspectOff"]];
+        } else {
+            self.tabBarItem.image = [UIImage imageNamed:@"images/TabInspectOff"];
+        }
         self.listOfInspectorLocations = [[NSMutableArray alloc] initWithCapacity:MAX_INSPECTORS_DISPLAYED];
         self.locationManager = nil;
         self.locationManager = [[CLLocationManager alloc] init]; 

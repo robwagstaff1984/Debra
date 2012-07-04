@@ -39,7 +39,12 @@
         
         [self setTitle:@"Balances"];
         [self.navigationItem setTitle:@"yourMyki"];
-        [self.tabBarItem setFinishedSelectedImage:[UIImage imageNamed:@"images/TabBalanceOn"] withFinishedUnselectedImage:[UIImage imageNamed:@"images/TabBalanceOff"]];
+        if ([self.tabBarItem respondsToSelector:@selector(setFinishedSelectedImage:withFinishedUnselectedImage:)] ==YES) {
+            [self.tabBarItem setFinishedSelectedImage:[UIImage imageNamed:@"images/TabBalanceOn"] withFinishedUnselectedImage:[UIImage imageNamed:@"images/TabBalanceOff"]];
+        } else {
+            self.tabBarItem.image = [UIImage imageNamed:@"images/TabInspectOff"];
+        }
+
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] 
                                                   initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self
                                                   action:@selector(switchToLoginState)];
