@@ -34,7 +34,7 @@
 
 #define MAX_INSPECTORS_DISPLAYED 30
 #define MAX_PUNCH_ON_LOGS_RETRIEVED 30
-#define PUNCH_ON_HINT_TEXT @"Have your voice heard! Tell us know what you think of Myki"
+#define PUNCH_ON_HINT_TEXT @"Have your voice heard! Tell us all what you think of Myki"
 
 #define MYKI_LOGIN_URL @"https://www.mymyki.com.au/NTSWebPortal/Login.aspx"
 #define MYKI_ACCOUNT_INFO_URL @"https://www.mymyki.com.au/NTSWebPortal/Registered/ManageMyCard.aspx?menu=Manage%20my%20card";

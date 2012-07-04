@@ -110,28 +110,18 @@
 
 #pragma mark textView delegate
 
-- (void)textViewDidBeginEditing:(UITextView *)textView {
-    
-}       
-
-- (void)textViewDidEndEditing:(UITextView *)textView {
-   // if (!textView.hasText){
-     //   [self addHintTextToCommentsTextView];
-    //}
-}
-
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
     if ([textView.text isEqualToString:PUNCH_ON_HINT_TEXT]){ 
         [self removeHintTextToCommentsTextView];
-    } else if (textView.text){
-           [self addHintTextToCommentsTextView];
-        }
+    } else if ([textView.text length] == 1 && [text isEqualToString:@""]){
+        [self addHintTextToCommentsTextView];
+        return NO;
+    }
     return YES;
 }
 
 - (void)textViewDidChange:(UITextView *)textView {
-    
-    
+
     if (commentsTextView.hasText){
        punchOnIsValid = YES;
        self.navigationItem.rightBarButtonItem.enabled = YES;
@@ -182,13 +172,15 @@
 #pragma  mark helper methods 
 
 - (void) addHintTextToCommentsTextView {
+    commentsTextView.autocorrectionType = UITextAutocorrectionTypeNo;
     [commentsTextView setText: PUNCH_ON_HINT_TEXT];
     [commentsTextView setFont:[UIFont italicSystemFontOfSize:18.0f]];
 	[commentsTextView setTextColor:[UIColor lightGrayColor]];
-
+    commentsTextView.selectedRange = NSMakeRange(0, 0);
 }
 
 - (void) removeHintTextToCommentsTextView {
+    commentsTextView.autocorrectionType = UITextAutocorrectionTypeDefault;
     [commentsTextView setText: @""];
     [commentsTextView setFont:[UIFont italicSystemFontOfSize:18.0f]];
 	[commentsTextView setTextColor:[UIColor blackColor]];
