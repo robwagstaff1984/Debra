@@ -97,28 +97,42 @@
 
 -(void)retrieveMykiBalance {
 
-    timer = [NSTimer scheduledTimerWithTimeInterval: 30.0 target:self selector:@selector(cancelRequest:) userInfo:nil repeats: NO];
+    timer = [NSTimer scheduledTimerWithTimeInterval: 30.0 target:self selector:@selector(cancelRequest) userInfo:nil repeats: NO];
     
-    //timer = [NSTimer timerWithTimeInterval:1.0 target:self selector:@selector(cancelRequest:) userInfo:nil repeats:NO];
     HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     HUD.delegate = self;
     HUD.dimBackground = YES;
     HUD.labelText = @"Connecting";
+    NSLog(@"retrieve");
 
-    NSURLRequest *requestObj = [NSURLRequest requestWithURL:[NSURL URLWithString:mykiLoginUrl] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:30.0f];
+    NSURLRequest *requestObj = [NSURLRequest requestWithURL:[NSURL URLWithString:mykiLoginUrl]];
+       // NSURLRequest *requestObj = [NSURLRequest requestWithURL:[NSURL URLWithString:mykiLoginUrl] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:30.0f];
     [mykiWebstiteWebView loadRequest:requestObj];
     
 }
 
--(void) cancelRequest:(NSTimer*) theTimer {
-
+-(void) cancelRequest {
+    [HUD hide:YES];
     [mykiWebstiteWebView stopLoading];
     self.userIsLoggedIn = NO;
-    [HUD hide:YES];
     [self switchToErrorState];
-    NSLog(@"error biatch");
+    NSLog(@"cancel");
 }
 
+-(void) retryRetrieveMykiBalance {
+    self.navigationItem.rightBarButtonItem.enabled = NO;
+    [self retrieveMykiBalance];
+}
+
+-(void)stopRequest {
+    [HUD hide:YES];
+    if(mykiWebstiteWebView.loading) {
+        NSLog(@"stopping it");
+    }
+    [mykiWebstiteWebView stopLoading];
+    self.userIsLoggedIn = NO;
+    [timer invalidate];
+}
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
     if(userIsLoggedIn) {
@@ -275,12 +289,6 @@
     } else {
         [balanceDisplayView.layer insertSublayer:gradient atIndex:0];
     }
-}
-
-
--(void) retryRetrieveMykiBalance {
-    self.navigationItem.rightBarButtonItem.enabled = NO;
-    [self retrieveMykiBalance];
 }
 
 #pragma mark -

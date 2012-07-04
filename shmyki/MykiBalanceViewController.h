@@ -38,9 +38,12 @@
 
 @property (nonatomic, strong) MBProgressHUD *HUD;
 @property (nonatomic, strong) NSTimer *timer;
+@property (nonatomic) BOOL isMultiTaskRetryRequired;
+
 
 -(void)retrieveMykiBalance;
 -(void) retryRetrieveMykiBalance;
+-(void) stopRequest;
 - (void)webViewDidFinishLoad:(UIWebView *)webView;
 -(IBAction)tryAgainButtonTapped:(id)sender;
 
