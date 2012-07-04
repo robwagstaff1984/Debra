@@ -38,8 +38,6 @@
 
 @property (nonatomic, strong) MBProgressHUD *HUD;
 @property (nonatomic, strong) NSTimer *timer;
-@property (nonatomic) BOOL isMultiTaskRetryRequired;
-
 
 -(void)retrieveMykiBalance;
 -(void) retryRetrieveMykiBalance;

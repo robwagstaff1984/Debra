@@ -66,8 +66,24 @@
     // e.g. self.myOutlet = nil;
 }
 
+- (void) viewWillAppear:(BOOL)animated
+{
+    [self.navigationController setNavigationBarHidden:YES animated:animated];
+    [super viewWillAppear:animated];
+ //   UIBarButtonItem *_backButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:nil action:nil];
+   // hidesBackButton
+ 
+}
+
+- (void) viewWillDisappear:(BOOL)animated
+{
+    [self.navigationController setNavigationBarHidden:NO animated:animated];
+    [super viewWillDisappear:animated];
+}
+
 -(void)viewDidAppear:(BOOL)animated {
     [self updatePunchOnLogs];
+           
     [super viewDidAppear:animated];
 }
 

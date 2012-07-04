@@ -13,12 +13,13 @@
 
 @implementation EnterIssueViewController
 
-@synthesize commentsTextView, punchOnIssues, punchOnTableView, punchOnIsValid;
+@synthesize commentsTextView, punchOnIssues, punchOnIsValid;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
+        [self.navigationItem setTitle:@"Punch On"];
         punchOnIssues = [[PunchOnIssues alloc] init];
         punchOnIsValid = NO;
     }
@@ -39,15 +40,14 @@
 {
     
     [commentsTextView setDelegate:self];
-    [commentsTextView setReturnKeyType:UIReturnKeyDone];
     [self addHintTextToCommentsTextView];
+   // [commentsTextView becomeFirstResponder];
  
-    
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] 
                                                                     initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self
                                                                     action:@selector(issueEntered)];
     self.navigationItem.rightBarButtonItem.enabled = NO;
-    
+    //self.navigationItem.leftBarButtonItem.style = UIBarButtonSystemItemCancel;
     
     [super viewDidLoad];
 }
@@ -58,9 +58,24 @@
     [super viewDidUnload];
 }
 
--(void)viewDidAppear: (BOOL)animated {  
+-(void)viewDidAppear: (BOOL)animated { 
     [super viewDidAppear:animated];
 }  
+
+-(void)viewWillAppear:(BOOL)animated {
+   // [self.navigationController setNavigationBarHidden:NO]; 
+//    UIBarButtonItem *_backButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStyleDone target:self action:@selector(popNavigationController)];
+//    self.navigationItem.leftBarButtonItem = _backButton;
+       self.navigationItem.hidesBackButton = YES;
+    UIBarButtonItem *_backButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStyleDone target:self action:@selector(popNavigationController)];
+    self.navigationItem.leftBarButtonItem = _backButton;
+    [super viewWillAppear:animated];
+}
+
+-(void)popNavigationController {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
@@ -91,31 +106,7 @@
     return cell;
 }
 
-#pragma mark tableView delegate
-- (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *selectedTableViewCell = [self.punchOnTableView cellForRowAtIndexPath:indexPath];
-    [selectedTableViewCell setSelectionStyle:UITableViewCellSelectionStyleGray];
-    return indexPath;
-}
-
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *selectedTableViewCell = [self.punchOnTableView cellForRowAtIndexPath:indexPath];
-    [selectedTableViewCell setSelected:NO animated:YES];
-    
-    if ( selectedTableViewCell.accessoryType == UITableViewCellAccessoryCheckmark) {
-        selectedTableViewCell.accessoryType = UITableViewCellAccessoryNone;
-    } else {
-        selectedTableViewCell.accessoryType = UITableViewCellAccessoryCheckmark;
-    }
-}
-
 #pragma mark textView delegate
-- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
-    if ([text isEqualToString:@"\n"]) {
-        [textView resignFirstResponder];
-    }
-    return YES;
-}
 
 - (void)textViewDidBeginEditing:(UITextView *)textView {
     if ([textView.text isEqualToString:PUNCH_ON_HINT_TEXT]){ 
@@ -138,8 +129,6 @@
        self.navigationItem.rightBarButtonItem.enabled = NO;
    }
 }
-
-#pragma mark actions
                                                                    
 #pragma mark actions
 

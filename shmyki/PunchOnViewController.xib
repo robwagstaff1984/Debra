@@ -119,7 +119,7 @@
 							<object class="IBUITableView" id="379489934">
 								<reference key="NSNextResponder" ref="754516668"/>
 								<int key="NSvFlags">274</int>
-								<string key="NSFrameSize">{320, 367}</string>
+								<string key="NSFrameSize">{320, 401}</string>
 								<reference key="NSSuperview" ref="754516668"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView"/>
@@ -136,7 +136,7 @@
 								<float key="IBUISectionFooterHeight">22</float>
 							</object>
 						</array>
-						<string key="NSFrame">{{0, 223}, {320, 367}}</string>
+						<string key="NSFrame">{{0, 224}, {320, 401}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="379489934"/>
@@ -151,7 +151,7 @@
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 					</object>
 				</array>
-				<string key="NSFrame">{{0, 64}, {320, 367}}</string>
+				<string key="NSFrame">{{0, 20}, {320, 411}}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="869157663"/>
@@ -160,9 +160,6 @@
 					<bytes key="NSRGB">MC4wOTgwMzkyMjQ3NCAwLjQ1MDk4MDQyNDkgMQA</bytes>
 				</object>
 				<object class="IBUISimulatedStatusBarMetrics" key="IBUISimulatedStatusBarMetrics"/>
-				<object class="IBUISimulatedNavigationBarMetrics" key="IBUISimulatedTopBarMetrics">
-					<bool key="IBUIPrompted">NO</bool>
-				</object>
 				<object class="IBUISimulatedTabBarMetrics" key="IBUISimulatedBottomBarMetrics"/>
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 			</object>
