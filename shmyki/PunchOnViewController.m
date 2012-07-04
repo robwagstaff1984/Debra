@@ -25,7 +25,9 @@
         
         [self.tabBarItem setTitle:@"Punch On"];
         [[self navigationItem] setTitle:APP_NAME];
-        self.tabBarItem.image = [UIImage imageNamed:@"images/TabPunchOff"];
+        [self.tabBarItem setFinishedSelectedImage:[UIImage imageNamed:@"images/TabPunchOn"] withFinishedUnselectedImage:[UIImage imageNamed:@"images/TabPunchOff"]];
+
+        
         self.listOfPunchOnLogs = [[NSMutableArray alloc] initWithCapacity:MAX_PUNCH_ON_LOGS_RETRIEVED];
     }
     return self;

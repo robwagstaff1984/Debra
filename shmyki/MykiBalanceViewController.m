@@ -39,7 +39,7 @@
         
         [self setTitle:@"Balances"];
         [self.navigationItem setTitle:@"yourMyki"];
-        self.tabBarItem.image = [UIImage imageNamed:@"images/TabBalanceOff"];
+        [self.tabBarItem setFinishedSelectedImage:[UIImage imageNamed:@"images/TabBalanceOn"] withFinishedUnselectedImage:[UIImage imageNamed:@"images/TabBalanceOff"]];
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] 
                                                   initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self
                                                   action:@selector(switchToLoginState)];
