@@ -23,7 +23,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        self.navigationItem.title = @"yourMyki";
+
         mykiAccountInformation = [[MykiAccountInformation alloc] init]; 
         [mykiAccountInformation loadAccountInformation];
         [mykiAccountInformation loadAccountBalanceInformation];
@@ -38,7 +38,7 @@
         passwordTextField.clearsOnBeginEditing = NO;
         
         [self setTitle:@"Balances"];
-        [[self navigationItem] setTitle:@"Balances"];
+        [self.navigationItem setTitle:@"yourMyki"];
         self.tabBarItem.image = [UIImage imageNamed:@"images/TabBalanceOff"];
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] 
                                                   initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self
