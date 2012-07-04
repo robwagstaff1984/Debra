@@ -25,7 +25,6 @@
 
 - (IBAction)punchOnButtonPressed:(id)sender;
 //- (void) touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event;
-- (void)handleCustomPan:(UIPanGestureRecognizer *)sender;
 - (void)updatePunchOnLogs;
 
 @end

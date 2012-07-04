@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-#define APP_NAME @"yourKi"
+#define APP_NAME @"yourMyki"
 
 #define TAG_FOR_CLOSE_BUTTON_LABEL 88 
 #define TAG_FOR_CLOSE_BUTTON_IMAGE 89

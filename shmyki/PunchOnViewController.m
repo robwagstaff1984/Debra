@@ -68,7 +68,7 @@
 
 - (void) viewWillAppear:(BOOL)animated
 {
-    [self.navigationController setNavigationBarHidden:YES animated:animated];
+   // [self.navigationController setNavigationBarHidden:YES animated:animated];
     [super viewWillAppear:animated];
  //   UIBarButtonItem *_backButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:nil action:nil];
    // hidesBackButton
@@ -77,7 +77,8 @@
 
 - (void) viewWillDisappear:(BOOL)animated
 {
-    [self.navigationController setNavigationBarHidden:NO animated:animated];
+    //[self.navigationController setNavigationBarHidden:NO animated:animated];
+   // [self.navigationItem setHidesBackButton:YES animated:YES];
     [super viewWillDisappear:animated];
 }
 

@@ -19,7 +19,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        [self.navigationItem setTitle:@"Punch On"];
+        [self.navigationItem setTitle:@"yourMyki"];
         punchOnIssues = [[PunchOnIssues alloc] init];
         punchOnIsValid = NO;
     }
@@ -40,8 +40,9 @@
 {
     
     [commentsTextView setDelegate:self];
+    [commentsTextView becomeFirstResponder];
     [self addHintTextToCommentsTextView];
-   // [commentsTextView becomeFirstResponder];
+    
  
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] 
                                                                     initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self
@@ -63,10 +64,11 @@
 }  
 
 -(void)viewWillAppear:(BOOL)animated {
+    self.navigationItem.hidesBackButton = YES;
    // [self.navigationController setNavigationBarHidden:NO]; 
 //    UIBarButtonItem *_backButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStyleDone target:self action:@selector(popNavigationController)];
 //    self.navigationItem.leftBarButtonItem = _backButton;
-       self.navigationItem.hidesBackButton = YES;
+    //   self.navigationItem.hidesBackButton = YES;
     UIBarButtonItem *_backButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStyleDone target:self action:@selector(popNavigationController)];
     self.navigationItem.leftBarButtonItem = _backButton;
     [super viewWillAppear:animated];
@@ -109,19 +111,28 @@
 #pragma mark textView delegate
 
 - (void)textViewDidBeginEditing:(UITextView *)textView {
-    if ([textView.text isEqualToString:PUNCH_ON_HINT_TEXT]){ 
-        [self removeHintTextToCommentsTextView];
-    }
+    
 }       
 
 - (void)textViewDidEndEditing:(UITextView *)textView {
-    if (!textView.hasText){
-        [self addHintTextToCommentsTextView];
-    }
+   // if (!textView.hasText){
+     //   [self addHintTextToCommentsTextView];
+    //}
+}
+
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
+    if ([textView.text isEqualToString:PUNCH_ON_HINT_TEXT]){ 
+        [self removeHintTextToCommentsTextView];
+    } else if (textView.text){
+           [self addHintTextToCommentsTextView];
+        }
+    return YES;
 }
 
 - (void)textViewDidChange:(UITextView *)textView {
-   if (commentsTextView.hasText){
+    
+    
+    if (commentsTextView.hasText){
        punchOnIsValid = YES;
        self.navigationItem.rightBarButtonItem.enabled = YES;
    } else {
