@@ -75,7 +75,8 @@
 }
 
 -(void)popNavigationController {
-    [self.navigationController popViewControllerAnimated:YES];
+    //[self.navigationController popViewControllerAnimated:YES];
+    [self.navigationController dismissModalViewControllerAnimated:YES];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -143,7 +144,8 @@
     [(AppDelegate*)[[UIApplication sharedApplication] delegate] postToTwitter];
     [(AppDelegate*)[[UIApplication sharedApplication] delegate] saveCurrentUsersPunchOnLog];
     
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    [self.navigationController dismissModalViewControllerAnimated:YES];
+    //[self.navigationController popToRootViewControllerAnimated:YES];
     
 }
 

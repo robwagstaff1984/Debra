@@ -106,8 +106,10 @@
 #pragma mark IBActions
 - (IBAction)punchOnButtonPressed:(id)sender {
     UIViewController *enterIssueViewController = [[EnterIssueViewController alloc] initWithNibName:@"EnterIssueViewController" bundle:nil];
-
-    [self.navigationController pushViewController:enterIssueViewController animated:YES];
+    
+    UINavigationController *enterIssueVNavController = [[UINavigationController alloc] initWithRootViewController:enterIssueViewController];
+    [self.navigationController presentModalViewController:enterIssueVNavController animated:YES];
+ //   [self.navigationController pushViewController:enterIssueViewController animated:YES];
 }
 
 #pragma mark tableView datasource
