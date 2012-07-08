@@ -13,7 +13,7 @@
 
 @implementation InspectorMapViewController
 
-@synthesize inspectorMapView, locationManager, listOfInspectorLocations;
+@synthesize inspectorMapView, locationManager, listOfInspectorLocations, helpImages, inspectorHelpImageButton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -50,10 +50,15 @@
     MKCoordinateSpan span = {.latitudeDelta =  0.015, .longitudeDelta =  0.015};
     MKCoordinateRegion region = {coord, span};
     
+    self.helpImages = [[HelpImages alloc] init];
+    [self.helpImages loadHelpImageRequiredInfo];
     [inspectorMapView setRegion:region];
-    [self.locationManager startUpdatingLocation];
-
-    [inspectorMapView setShowsUserLocation:YES];
+    if (!self.helpImages.isInspectorHelpAlreadySeen) {
+        [self showInspectorHelp];
+    } else {
+        [self.locationManager startUpdatingLocation];
+        [inspectorMapView setShowsUserLocation:YES];
+    }
     [self findInspectors];
     
     // Do any additional setup after loading the view from its nib.
@@ -161,6 +166,32 @@
 
 -(IBAction)findInspectorsButtonPressed:(id)sender {
     [self findInspectors];    
+}
+
+-(IBAction)inspectorHelpTapped:(id)sender {
+    [self hideInspectorHelp];
+    [self.locationManager startUpdatingLocation];
+    [inspectorMapView setShowsUserLocation:YES];
+    //self.helpImages.isInspectorHelpAlreadySeen = YES;
+    //[self.helpImages saveHelpImageRequiredInfo];
+}
+
+-(void) hideInspectorHelp {
+    
+    [UIView animateWithDuration:.3 animations:^(void){
+        [self.inspectorHelpImageButton setAlpha:0.0];
+    }
+                     completion:^(BOOL finished){[self.inspectorHelpImageButton setHidden:TRUE];}
+     ];
+}
+
+-(void) showInspectorHelp {
+    [self.inspectorHelpImageButton setAlpha:0.0];
+    [self.inspectorHelpImageButton setHidden:FALSE];
+    [UIView animateWithDuration:.5 animations:^(void){
+        [self.inspectorHelpImageButton setAlpha:1.0];
+    }
+     ];
 }
 
 -(void) findInspectors {
