@@ -65,5 +65,9 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
+	<key>UIAppFonts</key>
+	<array>
+		<string>HelveticaNeue.dfont</string>
+	</array>
 </dict>
 </plist>

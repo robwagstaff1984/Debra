@@ -17,7 +17,7 @@
         // Initialization code
         messageLabel = [[UILabel alloc]init];
         messageLabel.textAlignment = UITextAlignmentLeft;
-        messageLabel.font = [UIFont systemFontOfSize:MESSAGE_FONT_SIZE];
+        messageLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:MESSAGE_FONT_SIZE];
         [messageLabel setLineBreakMode:UILineBreakModeWordWrap];
         [messageLabel setNumberOfLines:0];
         //[messageLabel setBackgroundColor:[UIColor redColor]];
@@ -25,13 +25,13 @@
         
         locationLabel = [[UILabel alloc]init];
         locationLabel.textAlignment = UITextAlignmentLeft;
-        locationLabel.font = [UIFont systemFontOfSize:LOCATION_FONT_SIZE];
+        locationLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:LOCATION_FONT_SIZE];
         [locationLabel setTextColor:[UIColor grayColor]];
        // [locationLabel setBackgroundColor:[UIColor greenColor]];
         
         dateLabel = [[UILabel alloc]init];
         dateLabel.textAlignment = UITextAlignmentLeft;
-        dateLabel.font = [UIFont systemFontOfSize:LOCATION_FONT_SIZE];
+        dateLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:LOCATION_FONT_SIZE];
         [dateLabel setTextColor:[UIColor grayColor]];
         //[dateLabel setBackgroundColor:[UIColor orangeColor]];
 
@@ -50,17 +50,20 @@
     
     CGSize constraint = CGSizeMake(320.0 - (CELL_CONTENT_HORIZONTAL_MARGIN * 2), 40000.0f);
     
-    CGSize messageLabelSize = [messageLabel.text sizeWithFont:[UIFont systemFontOfSize:MESSAGE_FONT_SIZE] constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
-    CGSize locationLabelSize = [locationLabel.text sizeWithFont:[UIFont systemFontOfSize:LOCATION_FONT_SIZE] constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
-    CGSize dateLabelSize = [dateLabel.text sizeWithFont:[UIFont systemFontOfSize:LOCATION_FONT_SIZE] constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
+    CGSize messageLabelSize = [messageLabel.text sizeWithFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:MESSAGE_FONT_SIZE] constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
+   // CGSize locationLabelSize = [locationLabel.text sizeWithFont:[UIFont systemFontOfSize:LOCATION_FONT_SIZE] constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
+    CGSize dateLabelSize = [dateLabel.text sizeWithFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:LOCATION_FONT_SIZE] constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
     
     frame= CGRectMake(boundsX+CELL_CONTENT_HORIZONTAL_MARGIN,CELL_CONTENT_VERTICAL_MARGIN ,320.0 - (CELL_CONTENT_HORIZONTAL_MARGIN * 2), messageLabelSize.height);
     messageLabel.frame = frame;
     
-    frame= CGRectMake(boundsX+CELL_CONTENT_HORIZONTAL_MARGIN, messageLabelSize.height + (CELL_CONTENT_VERTICAL_MARGIN * 2), locationLabelSize.width, locationLabelSize.height);
+    /*frame= CGRectMake(boundsX+CELL_CONTENT_HORIZONTAL_MARGIN, messageLabelSize.height + (CELL_CONTENT_VERTICAL_MARGIN * 2), locationLabelSize.width, locationLabelSize.height);
     locationLabel.frame = frame;
     
     frame= CGRectMake(boundsX+320 - dateLabelSize.width - CELL_CONTENT_HORIZONTAL_MARGIN ,messageLabelSize.height + (CELL_CONTENT_VERTICAL_MARGIN * 2), dateLabelSize.width, dateLabelSize.height);
+    dateLabel.frame = frame;*/
+    
+    frame= CGRectMake(boundsX+CELL_CONTENT_HORIZONTAL_MARGIN, messageLabelSize.height + (CELL_CONTENT_VERTICAL_MARGIN + CELL_CONTENT_MIDDLE_MARGIN), dateLabelSize.width, dateLabelSize.height);
     dateLabel.frame = frame;
 }
 
