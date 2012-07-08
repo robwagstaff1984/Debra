@@ -64,7 +64,7 @@
     
     textField = [[UITextField alloc] initWithFrame:CGRectMake(20, 10, 235, 40)];
     textField.delegate = self;
-    [textField setFont:[UIFont systemFontOfSize:14.0f]];
+    [textField setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:14.0f]];
     textField.autocapitalizationType = UITextAutocapitalizationTypeNone;
     textField.text = userDetail;
     [textField setPlaceholder:defaultText];
@@ -104,6 +104,15 @@
     self.errorView.layer.shadowOffset = CGSizeMake(0.0, -2.0f);
     self.errorView.layer.shadowOpacity = .21f;
     self.errorView.layer.shadowRadius = 2.0f;
+    
+    [balanceMykiPassExpiryLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:32.0f]];
+    [balanceMykiMoneyAmountLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:32.0f]];
+    [balanceMykiMoneyAdditionalLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:13.0f]];
+    [balanceMykiPassAdditionalLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:13.0f]];
+    [balanceHeaderLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:17.0f]];
+    [balanceFooterLabelOne setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:13.0f]];
+    [balanceFooterLabelTwo setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:13.0f]];
+    
 }
 
 - (void)viewDidUnload

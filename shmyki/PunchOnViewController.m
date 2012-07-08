@@ -74,6 +74,11 @@
     if (!self.helpImages.isPunchOnHelpAlreadySeen) {
         [self showPunchOnHelp];
     }
+    
+    self.punchOnCommentsView.layer.shadowColor = [[UIColor blackColor] CGColor];
+    self.punchOnCommentsView.layer.shadowOffset = CGSizeMake(0.0f, -2.0f);
+    self.punchOnCommentsView.layer.shadowOpacity = .15f;
+    self.punchOnCommentsView.layer.shadowRadius = 6.0f;
 }
 
 - (void)viewDidUnload
