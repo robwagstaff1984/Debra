@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "EnterIssueViewController.h"
+#import "HelpImages.h"
 
 @interface PunchOnViewController : UIViewController <UIGestureRecognizerDelegate, UITableViewDelegate, UITableViewDataSource> {
     int _punchOnCommentsViewPreTouchLocation;
@@ -22,9 +23,13 @@
 @property (nonatomic, strong) IBOutlet UITableView *punchOnCommentsTableView;
 @property (nonatomic, strong) NSMutableArray *listOfPunchOnLogs;
 @property (nonatomic) NSInteger totalPunchOns;
+@property (nonatomic, strong) HelpImages *helpImages;
+@property (nonatomic, strong) IBOutlet UIButton *punchOnHelpImageButton;
 
 - (IBAction)punchOnButtonPressed:(id)sender;
+-(IBAction)punchOnHelpTapped:(id)sender;
 //- (void) touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event;
 - (void)updatePunchOnLogs;
+
 
 @end

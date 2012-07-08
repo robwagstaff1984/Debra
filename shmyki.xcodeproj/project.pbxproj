@@ -73,6 +73,7 @@
 		8189725115A9092E0040FC23 /* Icon57px.png in Resources */ = {isa = PBXBuildFile; fileRef = 8189725015A9092D0040FC23 /* Icon57px.png */; };
 		8189725315A9093A0040FC23 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 8189725215A909390040FC23 /* Default.png */; };
 		8189725515A9093E0040FC23 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8189725415A9093E0040FC23 /* Default@2x.png */; };
+		8189726015A919280040FC23 /* HelpImages.m in Sources */ = {isa = PBXBuildFile; fileRef = 8189725F15A919280040FC23 /* HelpImages.m */; };
 		818BE4241584618B00775392 /* PunchOnLogsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 818BE4231584618B00775392 /* PunchOnLogsViewController.m */; };
 		818BE42A1584689400775392 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 818BE4291584689400775392 /* MapKit.framework */; };
 		818BE42C1584689E00775392 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 818BE42B1584689E00775392 /* CoreLocation.framework */; };
@@ -226,6 +227,8 @@
 		8189725015A9092D0040FC23 /* Icon57px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon57px.png; sourceTree = "<group>"; };
 		8189725215A909390040FC23 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		8189725415A9093E0040FC23 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		8189725E15A919280040FC23 /* HelpImages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpImages.h; sourceTree = "<group>"; };
+		8189725F15A919280040FC23 /* HelpImages.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelpImages.m; sourceTree = "<group>"; };
 		818BE4221584618A00775392 /* PunchOnLogsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PunchOnLogsViewController.h; sourceTree = "<group>"; };
 		818BE4231584618B00775392 /* PunchOnLogsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PunchOnLogsViewController.m; sourceTree = "<group>"; };
 		818BE4291584689400775392 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -555,6 +558,8 @@
 				819A6A211596C5F4002ABA35 /* StationLocations.m */,
 				8189722C15A469200040FC23 /* PunchOnLogsCache.h */,
 				8189722D15A469200040FC23 /* PunchOnLogsCache.m */,
+				8189725E15A919280040FC23 /* HelpImages.h */,
+				8189725F15A919280040FC23 /* HelpImages.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -715,6 +720,7 @@
 				8117068415A0257400AF9835 /* SA_OAuthTwitterController.m in Sources */,
 				8117068515A0257400AF9835 /* SA_OAuthTwitterEngine.m in Sources */,
 				8189722E15A469200040FC23 /* PunchOnLogsCache.m in Sources */,
+				8189726015A919280040FC23 /* HelpImages.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

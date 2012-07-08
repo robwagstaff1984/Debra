@@ -14,9 +14,11 @@
 #import "TableViewCellForPunchOnLogs.h"
 #import "TableViewHeaderHelper.h"
 #import "PunchOnLogsCache.h"
+#import "HelpImages.h"
+#import "AppDelegate.h"
 
 @implementation PunchOnViewController
-@synthesize punchOnCommentsView, punchOnCommentsTableView, listOfPunchOnLogs, totalPunchOns;
+@synthesize punchOnCommentsView, punchOnCommentsTableView, listOfPunchOnLogs, totalPunchOns, helpImages, punchOnHelpImageButton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -66,6 +68,11 @@
     
     self.listOfPunchOnLogs = [[PunchOnLogsCache sharedModel] loadPunchOnLogsCache];
     
+    self.helpImages = [[HelpImages alloc] init];
+    [self.helpImages loadHelpImageRequiredInfo];
+    if (!self.helpImages.isPunchOnHelpAlreadySeen) {
+        [self showPunchOnHelp];
+    }
 }
 
 - (void)viewDidUnload
@@ -79,6 +86,9 @@
 {
    // [self.navigationController setNavigationBarHidden:YES animated:animated];
     [super viewWillAppear:animated];
+    
+
+    
  //   UIBarButtonItem *_backButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:nil action:nil];
    // hidesBackButton
  
@@ -95,6 +105,7 @@
     [self updatePunchOnLogs];
            
     [super viewDidAppear:animated];
+
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -110,6 +121,30 @@
     UINavigationController *enterIssueVNavController = [[UINavigationController alloc] initWithRootViewController:enterIssueViewController];
     [self.navigationController presentModalViewController:enterIssueVNavController animated:YES];
  //   [self.navigationController pushViewController:enterIssueViewController animated:YES];
+}
+
+-(IBAction)punchOnHelpTapped:(id)sender {
+    [self hidePunchOnHelp];
+    self.helpImages.isPunchOnHelpAlreadySeen = YES;
+    [self.helpImages saveHelpImageRequiredInfo];
+}
+
+-(void) hidePunchOnHelp {
+
+    [UIView animateWithDuration:.3 animations:^(void){
+        [self.punchOnHelpImageButton setAlpha:0.0];
+    }
+                     completion:^(BOOL finished){[self.punchOnHelpImageButton setHidden:TRUE];}
+     ];
+}
+
+-(void) showPunchOnHelp {
+    [self.punchOnHelpImageButton setAlpha:0.0];
+    [self.punchOnHelpImageButton setHidden:FALSE];
+    [UIView animateWithDuration:.5 animations:^(void){
+            [self.punchOnHelpImageButton setAlpha:1.0];
+        }
+    ];
 }
 
 #pragma mark tableView datasource
