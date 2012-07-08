@@ -295,7 +295,7 @@
 										<string key="NSFrame">{{20, 179}, {280, 25}}</string>
 										<reference key="NSSuperview" ref="766586467"/>
 										<reference key="NSWindow"/>
-										<reference key="NSNextKeyView" ref="88977363"/>
+										<reference key="NSNextKeyView" ref="804986839"/>
 										<string key="NSReuseIdentifierKey">_NS:9</string>
 										<bool key="IBUIOpaque">NO</bool>
 										<bool key="IBUIClipsSubviews">YES</bool>
@@ -337,7 +337,7 @@
 												<string key="NSFrameSize">{280, 80}</string>
 												<reference key="NSSuperview" ref="460646777"/>
 												<reference key="NSWindow"/>
-												<reference key="NSNextKeyView" ref="804986839"/>
+												<reference key="NSNextKeyView"/>
 												<string key="NSReuseIdentifierKey">_NS:9</string>
 												<reference key="IBUIBackgroundColor" ref="961050831"/>
 												<bool key="IBUIClipsSubviews">YES</bool>
@@ -409,7 +409,7 @@
 									<object class="IBUITextView" id="26415635">
 										<reference key="NSNextResponder" ref="804986839"/>
 										<int key="NSvFlags">292</int>
-										<string key="NSFrame">{{20, 37}, {280, 66}}</string>
+										<string key="NSFrame">{{0, 28}, {320, 66}}</string>
 										<reference key="NSSuperview" ref="804986839"/>
 										<reference key="NSWindow"/>
 										<reference key="NSNextKeyView" ref="664547207"/>
@@ -429,10 +429,10 @@
 									<object class="IBUIButton" id="664547207">
 										<reference key="NSNextResponder" ref="804986839"/>
 										<int key="NSvFlags">292</int>
-										<string key="NSFrame">{{20, 98}, {274, 40}}</string>
+										<string key="NSFrame">{{20, 91}, {274, 40}}</string>
 										<reference key="NSSuperview" ref="804986839"/>
 										<reference key="NSWindow"/>
-										<reference key="NSNextKeyView"/>
+										<reference key="NSNextKeyView" ref="88977363"/>
 										<string key="NSReuseIdentifierKey">_NS:9</string>
 										<bool key="IBUIOpaque">NO</bool>
 										<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
