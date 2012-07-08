@@ -69,6 +69,10 @@
 		818020AB1585EC7300501773 /* images in Resources */ = {isa = PBXBuildFile; fileRef = 818020AA1585EC7300501773 /* images */; };
 		818811481585A9DA00CDDF3E /* InspectorMapKitAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 818811471585A9DA00CDDF3E /* InspectorMapKitAnnotation.m */; };
 		8189722E15A469200040FC23 /* PunchOnLogsCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 8189722D15A469200040FC23 /* PunchOnLogsCache.m */; };
+		8189724F15A909250040FC23 /* Icon114px.png in Resources */ = {isa = PBXBuildFile; fileRef = 8189724E15A909250040FC23 /* Icon114px.png */; };
+		8189725115A9092E0040FC23 /* Icon57px.png in Resources */ = {isa = PBXBuildFile; fileRef = 8189725015A9092D0040FC23 /* Icon57px.png */; };
+		8189725315A9093A0040FC23 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 8189725215A909390040FC23 /* Default.png */; };
+		8189725515A9093E0040FC23 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8189725415A9093E0040FC23 /* Default@2x.png */; };
 		818BE4241584618B00775392 /* PunchOnLogsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 818BE4231584618B00775392 /* PunchOnLogsViewController.m */; };
 		818BE42A1584689400775392 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 818BE4291584689400775392 /* MapKit.framework */; };
 		818BE42C1584689E00775392 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 818BE42B1584689E00775392 /* CoreLocation.framework */; };
@@ -218,6 +222,10 @@
 		818811471585A9DA00CDDF3E /* InspectorMapKitAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InspectorMapKitAnnotation.m; sourceTree = "<group>"; };
 		8189722C15A469200040FC23 /* PunchOnLogsCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PunchOnLogsCache.h; sourceTree = "<group>"; };
 		8189722D15A469200040FC23 /* PunchOnLogsCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PunchOnLogsCache.m; sourceTree = "<group>"; };
+		8189724E15A909250040FC23 /* Icon114px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon114px.png; sourceTree = "<group>"; };
+		8189725015A9092D0040FC23 /* Icon57px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon57px.png; sourceTree = "<group>"; };
+		8189725215A909390040FC23 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		8189725415A9093E0040FC23 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		818BE4221584618A00775392 /* PunchOnLogsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PunchOnLogsViewController.h; sourceTree = "<group>"; };
 		818BE4231584618B00775392 /* PunchOnLogsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PunchOnLogsViewController.m; sourceTree = "<group>"; };
 		818BE4291584689400775392 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -405,6 +413,10 @@
 		815C19BB157F63AC0019419C = {
 			isa = PBXGroup;
 			children = (
+				8189725415A9093E0040FC23 /* Default@2x.png */,
+				8189725215A909390040FC23 /* Default.png */,
+				8189725015A9092D0040FC23 /* Icon57px.png */,
+				8189724E15A909250040FC23 /* Icon114px.png */,
 				8117063715A0257300AF9835 /* Twitter+OAuth */,
 				814B25B3158B61950067D161 /* libxml2.dylib */,
 				814B25B1158B60C30067D161 /* libxml2.2.7.3.dylib */,
@@ -630,6 +642,10 @@
 				8117067315A0257400AF9835 /* jQueryInject.txt in Resources */,
 				8117067415A0257400AF9835 /* jQueryInjectLandscape.txt in Resources */,
 				8117068615A0257400AF9835 /* twitter_load.png in Resources */,
+				8189724F15A909250040FC23 /* Icon114px.png in Resources */,
+				8189725115A9092E0040FC23 /* Icon57px.png in Resources */,
+				8189725315A9093A0040FC23 /* Default.png in Resources */,
+				8189725515A9093E0040FC23 /* Default@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
