@@ -115,6 +115,13 @@
     }
 }
 
+- (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation 
+{
+    MKAnnotationView* annotationView = [mapView viewForAnnotation:userLocation];
+    annotationView.canShowCallout = NO;
+    
+}
+
 - (void)mapView:(MKMapView *)mapView didAddAnnotationViews:(NSArray *)views {   
     for (MKAnnotationView *pin in views) {
         if ([[pin annotation] isKindOfClass:[InspectorMapKitAnnotation class]])

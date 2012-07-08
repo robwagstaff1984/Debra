@@ -54,8 +54,8 @@
     if ([[self.tabBarController tabBar] respondsToSelector:@selector(setTintColor:)] == YES) {
         //[[UITabBar appearance] setTintColor:[[UIColor alloc] initWithRed:.32157 green:.35686 blue:.39216 alpha:1]];
        // [[UITabBar appearance] setSelectedImageTintColor:[[UIColor alloc] initWithRed:.23137 green:.26275 blue:.29804 alpha:1]];
-        [[UITabBar appearance] setBackgroundImage:[UIImage imageNamed:@"images/tabBarImage.png"]];
-        [[UITabBar appearance] setSelectionIndicatorImage:[UIImage imageNamed:@"images/tabBarSelected.png"]];
+        [[UITabBar appearance] setBackgroundImage:[UIImage imageNamed:@"images/TabBar.png"]];
+        [[UITabBar appearance] setSelectionIndicatorImage:[UIImage imageNamed:@"images/TabBarOn.png"]];
     }
    
     
