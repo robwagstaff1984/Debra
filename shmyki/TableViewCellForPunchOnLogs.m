@@ -12,8 +12,8 @@
 @implementation TableViewCellForPunchOnLogs
 @synthesize messageLabel, locationLabel, dateLabel;
 
-- (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString *)reuseIdentifier {
-    if (self = [super initWithFrame:frame reuseIdentifier:reuseIdentifier]) {
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
+    if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         // Initialization code
         messageLabel = [[UILabel alloc]init];
         messageLabel.textAlignment = UITextAlignmentLeft;
@@ -22,21 +22,13 @@
         [messageLabel setNumberOfLines:0];
         //[messageLabel setBackgroundColor:[UIColor redColor]];
         
-        
-        locationLabel = [[UILabel alloc]init];
-        locationLabel.textAlignment = UITextAlignmentLeft;
-        locationLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:LOCATION_FONT_SIZE];
-        [locationLabel setTextColor:[UIColor grayColor]];
-       // [locationLabel setBackgroundColor:[UIColor greenColor]];
-        
         dateLabel = [[UILabel alloc]init];
         dateLabel.textAlignment = UITextAlignmentLeft;
         dateLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:LOCATION_FONT_SIZE];
         [dateLabel setTextColor:[UIColor grayColor]];
-        //[dateLabel setBackgroundColor:[UIColor orangeColor]];
+       // [dateLabel setBackgroundColor:[UIColor orangeColor]];
 
         [self.contentView addSubview:messageLabel];
-        [self.contentView addSubview:locationLabel];
         [self.contentView addSubview:dateLabel];
     }
     return self;

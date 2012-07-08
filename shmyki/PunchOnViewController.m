@@ -18,7 +18,7 @@
 #import "AppDelegate.h"
 
 @implementation PunchOnViewController
-@synthesize punchOnCommentsView, punchOnCommentsTableView, listOfPunchOnLogs, totalPunchOns, helpImages, punchOnHelpImageButton;
+@synthesize punchOnCommentsView, punchOnCommentsTableView, listOfPunchOnLogs, totalPunchOns, helpImages, punchOnHelpImageButton, tableFixedHeader;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -61,8 +61,9 @@
     
     self.punchOnCommentsTableView.scrollEnabled =NO;
     self.punchOnCommentsTableView.allowsSelection = NO;
-    self.punchOnCommentsTableView.tableHeaderView.userInteractionEnabled = YES;
-    self.punchOnCommentsTableView.tableHeaderView = [TableViewHeaderHelper makeTableDownHeaderWith:self.totalPunchOns];
+    //self.punchOnCommentsTableView.tableHeaderView.userInteractionEnabled = YES;
+    //self.punchOnCommentsTableView.tableHeaderView = [TableViewHeaderHelper makeTableDownHeaderWith:self.totalPunchOns];
+    [self.tableFixedHeader addSubview: [TableViewHeaderHelper makeTableDownHeaderWith:self.totalPunchOns]];
     [self addGesturesToTableViewHeaderWithFadeEffect:NO];
     [punchOnCommentsView addGestureRecognizer:_panGestureUpRecognizerForCommentsView];
     
@@ -153,11 +154,12 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *CellIdentifier = @"punchOnLogsCell";
+    static NSString *cellIdentifier = @"punchOnLogsCell";
     
-    TableViewCellForPunchOnLogs *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    TableViewCellForPunchOnLogs *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (cell == nil) {
-        cell = [[TableViewCellForPunchOnLogs alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier];
+        cell = [[TableViewCellForPunchOnLogs alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+        
     }
     
     PunchOnLog *punchOnLog = [listOfPunchOnLogs objectAtIndex:indexPath.row];
@@ -201,7 +203,8 @@
             [self.listOfPunchOnLogs addObject:punchOnLog];
         }
         [self.punchOnCommentsTableView reloadData];
-        [(UILabel*)[self.punchOnCommentsTableView.tableHeaderView.subviews objectAtIndex:TOTAL_PUNCH_ONS_SUBVIEW_NUMBER] setText: [NSString stringWithFormat:@"%@         ",[[NSNumber numberWithInt:totalPunchOns] stringValue]]];
+        
+        [(UILabel*)[[[self.tableFixedHeader.subviews objectAtIndex:0] subviews] objectAtIndex:TOTAL_PUNCH_ONS_SUBVIEW_NUMBER] setText: [NSString stringWithFormat:@"%@         ",[[NSNumber numberWithInt:totalPunchOns] stringValue]]];
         [[PunchOnLogsCache sharedModel] savePunchOnLogsCache:self.listOfPunchOnLogs];
     }];
     
@@ -381,10 +384,14 @@
 -(void) toggleTableViewHeaderWithFadeEffect:(BOOL)fadeEffect {
     
     if(_commentsTableViewIsUp) {
-        self.punchOnCommentsTableView.tableHeaderView = [TableViewHeaderHelper makeTableUpHeaderWith:self.totalPunchOns];
+      //  self.punchOnCommentsTableView.tableHeaderView = [TableViewHeaderHelper makeTableUpHeaderWith:self.totalPunchOns];
+        [[[self.tableFixedHeader subviews] objectAtIndex:0] removeFromSuperview];
+        [self.tableFixedHeader addSubview: [TableViewHeaderHelper makeTableUpHeaderWith:self.totalPunchOns]];
         [self addGesturesToTableViewHeaderWithFadeEffect:fadeEffect];
     } else {
-        self.punchOnCommentsTableView.tableHeaderView = [TableViewHeaderHelper makeTableDownHeaderWith:self.totalPunchOns];
+      //  self.punchOnCommentsTableView.tableHeaderView = [TableViewHeaderHelper makeTableDownHeaderWith:self.totalPunchOns];
+        [[[self.tableFixedHeader subviews] objectAtIndex:0] removeFromSuperview];
+        [self.tableFixedHeader addSubview:[TableViewHeaderHelper makeTableDownHeaderWith:self.totalPunchOns]];
         [self addGesturesToTableViewHeaderWithFadeEffect:fadeEffect];
     }
 }
@@ -392,13 +399,16 @@
 
 -(void) addGesturesToTableViewHeaderWithFadeEffect:(BOOL)fadeEffect {
     UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(toggleCommentsTableViewUpAndDown)];
-    NSArray *tableHeaderSubViews = self.punchOnCommentsTableView.tableHeaderView.subviews;
-
+   // NSArray *tableHeaderSubViews = self.punchOnCommentsTableView.tableHeaderView.subviews;
+    
+    NSArray *tableHeaderSubViews = [[self.tableFixedHeader.subviews objectAtIndex:0] subviews];
     if(fadeEffect) {
-        self.punchOnCommentsTableView.tableHeaderView.alpha = 0;
+        //self.punchOnCommentsTableView.tableHeaderView.alpha = 0;
+        self.tableFixedHeader.alpha = 0;
         [UIView beginAnimations:nil context:NULL];
         [UIView setAnimationDuration:.6f];
-        self.punchOnCommentsTableView.tableHeaderView.alpha = 1;
+//        self.punchOnCommentsTableView.tableHeaderView.alpha = 1;
+        self.tableFixedHeader.alpha =1;
         [UIView commitAnimations];
     }
     for (UIView* tableHeaderSubView in tableHeaderSubViews) {

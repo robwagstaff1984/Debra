@@ -26,10 +26,10 @@
     
     closeButtonImage.frame = CGRectMake(300, 12, 12, 12);
 
-//    headerLabel.backgroundColor = [UIColor redColor];
-//    headerView.backgroundColor = [UIColor greenColor];
-//    closeButton.backgroundColor = [UIColor yellowColor];
-//    closeButtonImage.backgroundColor = [UIColor purpleColor];
+ //   headerLabel.backgroundColor = [UIColor redColor];
+  //  headerView.backgroundColor = [UIColor greenColor];
+    //closeButton.backgroundColor = [UIColor yellowColor];
+    //closeButtonImage.backgroundColor = [UIColor purpleColor];
 
     [headerView addSubview:closeButton];
     [headerView addSubview:closeButtonImage];
@@ -58,6 +58,10 @@
     UIImageView *closeButtonImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"images/IconArrowUp"]];
     
     closeButtonImage.frame = CGRectMake(300, 12, 12, 12);
+    
+  //  headerView.backgroundColor = [UIColor greenColor];
+    //closeButton.backgroundColor = [UIColor yellowColor];
+    //closeButtonImage.backgroundColor = [UIColor purpleColor];
     
     [headerView addSubview:closeButton];
     [headerView addSubview:closeButtonImage];
