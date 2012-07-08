@@ -100,6 +100,9 @@
     self.bottomView.layer.shadowOpacity = .21f;
     self.bottomView.layer.shadowRadius = 2.0f;
     
+    UITapGestureRecognizer *cancelTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
+    [self.bottomView addGestureRecognizer:cancelTap];
+    
     self.errorView.layer.shadowColor = [[UIColor blackColor] CGColor];
     self.errorView.layer.shadowOffset = CGSizeMake(0.0, -2.0f);
     self.errorView.layer.shadowOpacity = .21f;
@@ -379,5 +382,12 @@
     //[self switchToLoginState];
     [self retrieveMykiBalance];
 }
-     
+   
+#pragma mark touch event
+
+-(void) dismissKeyboard {
+    [usernameTextField resignFirstResponder];
+    [passwordTextField resignFirstResponder]; 
+}
+
 @end

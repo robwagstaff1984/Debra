@@ -10,7 +10,7 @@
 #import "MykiAccountInformation.h"
 #import "MBProgressHUD.h"
 
-@interface MykiBalanceViewController : UIViewController <UIWebViewDelegate, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, MBProgressHUDDelegate>
+@interface MykiBalanceViewController : UIViewController <UIWebViewDelegate, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, MBProgressHUDDelegate, UIGestureRecognizerDelegate>
 
 
 @property (nonatomic, strong) NSString *mykiLoginUrl;
