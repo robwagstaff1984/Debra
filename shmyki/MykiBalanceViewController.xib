@@ -429,16 +429,15 @@
 									<object class="IBUIButton" id="664547207">
 										<reference key="NSNextResponder" ref="804986839"/>
 										<int key="NSvFlags">292</int>
-										<string key="NSFrame">{{20, 98}, {280, 37}}</string>
+										<string key="NSFrame">{{20, 98}, {274, 40}}</string>
 										<reference key="NSSuperview" ref="804986839"/>
 										<reference key="NSWindow"/>
+										<reference key="NSNextKeyView"/>
 										<string key="NSReuseIdentifierKey">_NS:9</string>
 										<bool key="IBUIOpaque">NO</bool>
 										<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 										<int key="IBUIContentHorizontalAlignment">0</int>
 										<int key="IBUIContentVerticalAlignment">0</int>
-										<int key="IBUIButtonType">1</int>
-										<string key="IBUINormalTitle">Try Again</string>
 										<reference key="IBUIHighlightedTitleColor" ref="961050831"/>
 										<object class="NSColor" key="IBUINormalTitleColor">
 											<int key="NSColorSpace">1</int>
@@ -447,6 +446,10 @@
 										<object class="NSColor" key="IBUINormalTitleShadowColor">
 											<int key="NSColorSpace">3</int>
 											<bytes key="NSWhite">MC41AA</bytes>
+										</object>
+										<object class="NSCustomResource" key="IBUINormalBackgroundImage">
+											<string key="NSClassName">NSImage</string>
+											<string key="NSResourceName">images/BalancesTryagain.png</string>
 										</object>
 										<object class="IBUIFontDescription" key="IBUIFontDescription">
 											<int key="type">2</int>
@@ -466,7 +469,7 @@
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<object class="NSColor" key="IBUIBackgroundColor">
 									<int key="NSColorSpace">2</int>
-									<bytes key="NSRGB">MC44MTE3NjQ3NzY3IDAuODIzNTI5NDgxOSAwLjg0MzEzNzMyMzkAA</bytes>
+									<bytes key="NSRGB">MC45NzI1NDkwODA4IDAuOTcyNTQ5MDgwOCAwLjk3MjU0OTA4MDgAA</bytes>
 								</object>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 							</object>
@@ -965,10 +968,10 @@
 		</object>
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
-		<object class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
-			<string key="NS.key.0">images/BalanceLineBlk.png</string>
-			<string key="NS.object.0">{16, 16}</string>
-		</object>
+		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
+			<string key="images/BalanceLineBlk.png">{16, 16}</string>
+			<string key="images/BalancesTryagain.png">{16, 16}</string>
+		</dictionary>
 		<string key="IBCocoaTouchPluginVersion">1181</string>
 	</data>
 </archive>

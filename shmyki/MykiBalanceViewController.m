@@ -89,6 +89,21 @@
     [self drawBottomViewGradientWithCorners];
     [self drawBalanceViewGradientWithCornersWithActiveState:NO];
     [self showMykiAccountInformation];
+    
+    self.topView.layer.shadowColor = [[UIColor blackColor] CGColor];
+    self.topView.layer.shadowOffset = CGSizeMake(0.0f, 2.0f);
+    self.topView.layer.shadowOpacity = .21f;
+    self.topView.layer.shadowRadius = 2.0f;
+    
+    self.bottomView.layer.shadowColor = [[UIColor blackColor] CGColor];
+    self.bottomView.layer.shadowOffset = CGSizeMake(0.0, -2.0f);
+    self.bottomView.layer.shadowOpacity = .21f;
+    self.bottomView.layer.shadowRadius = 2.0f;
+    
+    self.errorView.layer.shadowColor = [[UIColor blackColor] CGColor];
+    self.errorView.layer.shadowOffset = CGSizeMake(0.0, -2.0f);
+    self.errorView.layer.shadowOpacity = .21f;
+    self.errorView.layer.shadowRadius = 2.0f;
 }
 
 - (void)viewDidUnload
