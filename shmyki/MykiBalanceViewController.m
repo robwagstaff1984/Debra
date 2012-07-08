@@ -329,14 +329,20 @@
 
 #pragma mark move views     
 -(void)switchToSuccessState {
+     
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:.4];
+    [usernameTextField resignFirstResponder];
+    [passwordTextField resignFirstResponder];
     self.bottomView.frame = CGRectMake(0, 705, 320, 205);
     self.errorView.frame = CGRectMake(0, 705, 320, 150);
     [self drawBalanceViewGradientWithCornersWithActiveState:YES];
     self.balanceSeperatorImage.image = [UIImage imageNamed:@"images/BalanceLine.png"];
     [UIView commitAnimations];
-        self.navigationItem.rightBarButtonItem.enabled = YES;
+    self.navigationItem.leftBarButtonItem = nil;
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] 
+                                                initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(switchToLoginState)];
+    
 }
 
 -(void)switchToLoginState {
@@ -347,7 +353,11 @@
     [self drawBalanceViewGradientWithCornersWithActiveState:NO];
     self.balanceSeperatorImage.image = [UIImage imageNamed:@"images/BalanceLineBlk.png"];
     [UIView commitAnimations];
-    self.navigationItem.rightBarButtonItem.enabled = NO;
+    
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] 
+                                             initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self
+                                             action:@selector(switchToSuccessState)];
+    self.navigationItem.rightBarButtonItem = nil;
 }
 
 -(void)switchToErrorState {
@@ -358,7 +368,11 @@
     [self drawBalanceViewGradientWithCornersWithActiveState:NO];
     self.balanceSeperatorImage.image = [UIImage imageNamed:@"images/BalanceLineBlk.png"];
     [UIView commitAnimations];
-    self.navigationItem.rightBarButtonItem.enabled = YES;
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] 
+                                             initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self
+                                             action:@selector(switchToSuccessState)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] 
+                                              initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(switchToLoginState)];
 }
 
 -(IBAction)tryAgainButtonTapped:(id)sender {
