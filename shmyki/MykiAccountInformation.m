@@ -11,7 +11,7 @@
 
 @implementation MykiAccountInformation
 
-@synthesize cardHolder, cardType, cardExpiry, cardStatus, currentMykiMoneyBalance, mykiMoneyTopUpInProgress,totalMykiMoneyBalance, currentMykiPassActive,currentMykiPassNotYetActive, lastMykiTransactionDate, mykiUsername, mykiPassword;
+@synthesize cardHolder, cardType, cardExpiry, cardStatus, currentMykiMoneyBalance, mykiMoneyTopUpInProgress,totalMykiMoneyBalance, currentMykiPassActive,currentMykiPassNotYetActive, lastMykiTransactionDate, mykiUsername, mykiPassword, lastUpdatedDate;
 
 -(void) saveAccountInformation {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];    
@@ -41,6 +41,7 @@
     [defaults setObject:currentMykiPassActive forKey:@"currentMykiPassActive"];
     [defaults setObject:currentMykiPassNotYetActive forKey:@"currentMykiPassNotYetActive"];
     [defaults setObject:lastMykiTransactionDate forKey:@"lastMykiTransactionDate"];
+    [defaults setObject:lastUpdatedDate forKey:@"lastUpdatedDate"];
     
     [defaults synchronize];
 
@@ -58,6 +59,7 @@
     NSString *storedCurrentMykiPassActive = [defaults objectForKey:@"currentMykiPassActive"];
     NSString *storedCurrentMykiPassNotYetActive = [defaults objectForKey:@"currentMykiPassNotYetActive"];
     NSString *storedLastMykiTransactionDate = [defaults objectForKey:@"lastMykiTransactionDate"];
+    NSString *storedLastUpdatedDate = [defaults objectForKey:@"lastUpdatedDate"];
 
     [self setCardHolder: storedCardHolder];
     [self setCardType: storedCardType];
@@ -68,6 +70,7 @@
     [self setCurrentMykiPassActive: storedCurrentMykiPassActive];
     [self setCurrentMykiPassNotYetActive: storedCurrentMykiPassNotYetActive];
     [self setLastMykiTransactionDate: storedLastMykiTransactionDate];
+    [self setLastUpdatedDate: storedLastUpdatedDate];
 }
 
 //-(void)setCurrentMykiPassActive:(NSString *)currentMykiPassActiveToSet {
@@ -87,6 +90,7 @@
     [self setCurrentMykiPassActive: [self convertMykiPassActiveToDays:[self extractInformationFromHtml:page withRegeEx:REG_EX_CURRENT_MYKI_PASS_ACTIVE]]];
     [self setCurrentMykiPassNotYetActive:[self convertMykiPassNotYetActive: [self extractInformationFromHtml:page withRegeEx:REG_EX_CURRENT_MYKI_PASS_NOT_YET_ACTIVE]]];
     [self setLastMykiTransactionDate:[self extractInformationFromHtml:page withRegeEx:REG_EX_LAST_MYKI_TRANSACTION_DATE]];
+
     [self saveAccountBalanceInformation];
 }
 
