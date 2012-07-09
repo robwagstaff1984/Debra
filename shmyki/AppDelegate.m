@@ -36,6 +36,10 @@
     UIViewController *punchOnViewController = [[PunchOnViewController alloc] initWithNibName:@"PunchOnViewController" bundle:nil];
     UINavigationController *punchOnNavController = [[UINavigationController alloc] initWithRootViewController:punchOnViewController];
     
+    if ([punchOnNavController.navigationBar respondsToSelector:@selector(setBackgroundImage:forBarMetrics:)] == YES) {
+        [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"images/TabBar.png"] forBarMetrics:UIBarMetricsDefault];
+    }
+    
     punchOnNavController.navigationBar.tintColor= [[UIColor alloc] initWithRed:.35686 green:.5098 blue:.67058 alpha:1];
     
     UIViewController *inspectorMapViewController = [[InspectorMapViewController alloc] initWithNibName:@"InspectorMapViewController" bundle:nil];
@@ -51,7 +55,7 @@
     
     //self.tabBarController.moreNavigationController.navigationBar.tintColor = [UIColor redColor];
     
-    if ([[self.tabBarController tabBar] respondsToSelector:@selector(setTintColor:)] == YES) {
+    if ([[self.tabBarController tabBar] respondsToSelector:@selector(setBackgroundImage:)] == YES) {
         //[[UITabBar appearance] setTintColor:[[UIColor alloc] initWithRed:.32157 green:.35686 blue:.39216 alpha:1]];
        // [[UITabBar appearance] setSelectedImageTintColor:[[UIColor alloc] initWithRed:.23137 green:.26275 blue:.29804 alpha:1]];
         [[UITabBar appearance] setBackgroundImage:[UIImage imageNamed:@"images/TabBar.png"]];

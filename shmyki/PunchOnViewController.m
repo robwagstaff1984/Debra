@@ -33,6 +33,10 @@
             self.tabBarItem.image = [UIImage imageNamed:@"images/TabPunchOff"];
         }
         
+
+        
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"about" style:UIBarButtonItemStylePlain target:self action:@selector(showAboutPage)];
+        
         self.listOfPunchOnLogs = [[NSMutableArray alloc] initWithCapacity:MAX_PUNCH_ON_LOGS_RETRIEVED];
     }
     return self;
@@ -151,6 +155,15 @@
             [self.punchOnHelpImageButton setAlpha:1.0];
         }
     ];
+}
+
+#pragma mark about page
+
+-(void) showAboutPage {
+    UIViewController *aboutPageViewController = [[UIViewController alloc] initWithNibName:@"AboutPageViewController" bundle:nil];
+    [aboutPageViewController setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
+    [aboutPageViewController setModalPresentationStyle: UIModalPresentationPageSheet];
+    [self.navigationController presentModalViewController:aboutPageViewController animated:YES];
 }
 
 #pragma mark tableView datasource
