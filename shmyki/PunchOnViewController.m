@@ -33,9 +33,18 @@
             self.tabBarItem.image = [UIImage imageNamed:@"images/TabPunchOff"];
         }
         
-
+        UIButton *aboutBarButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [aboutBarButton setBackgroundImage:[UIImage imageNamed:@"images/TabBarOn"] forState:UIControlStateNormal];
+        [aboutBarButton setTitle:@"about" forState:UIControlStateNormal];
+        [aboutBarButton setFrame:CGRectMake(0.0f, 0.0f, 60.0f, 30.0f)];
+        [aboutBarButton addTarget:self action:@selector(showAboutPage) forControlEvents:UIControlEventTouchUpInside];
+        [aboutBarButton.titleLabel setFont:[UIFont fontWithName:@"Helvetica-Bold" size:12.0f]];
         
-        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"about" style:UIBarButtonItemStylePlain target:self action:@selector(showAboutPage)];
+        UIBarButtonItem *aboutBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:aboutBarButton];
+        
+        
+        self.navigationItem.rightBarButtonItem = aboutBarButtonItem;
+       // self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"about" style:UIBarButtonItemStylePlain target:nil action:nil ];
         
         self.listOfPunchOnLogs = [[NSMutableArray alloc] initWithCapacity:MAX_PUNCH_ON_LOGS_RETRIEVED];
     }
