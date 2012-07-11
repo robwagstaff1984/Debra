@@ -167,7 +167,7 @@
 -(void) postToTwitter {
     
     if(self.isTwitterRequired) { 
-        NSString *twitterMessage = [NSString stringWithFormat:@"I just punched on with yourKi:\n\n\"%@\"",  currentUsersPunchOnLog.message];
+        NSString *twitterMessage = [NSString stringWithFormat:@"I just punched on with yourMyki:\n\n\"%@\"\n\n#yourMyki",  currentUsersPunchOnLog.message];
     
         [twitterEngine sendUpdate:twitterMessage];
     }
