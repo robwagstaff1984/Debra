@@ -19,6 +19,8 @@
     NSTimeInterval secondsBetween = [[NSDate date] timeIntervalSinceDate:date];
     int seconds = secondsBetween / 1;
     
+    if(date == nil) return nil;
+    
     if(seconds < SECONDS_IN_A_MINUTE) {
         dateDisplay = [NSString stringWithFormat:@"just now", seconds];
     } else if (seconds < SECONDS_IN_AN_HOUR) {

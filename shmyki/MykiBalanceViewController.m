@@ -55,6 +55,7 @@
             [self retrieveMykiBalance];
         } else {
             [self switchToLoginState];
+            self.navigationItem.leftBarButtonItem = nil;
         }
     }
     return self;
@@ -124,12 +125,17 @@
     [super viewDidUnload];
 }
 
+-(void)viewDidAppear:(BOOL)animated {
+    [self updateRefreshButton];
+}
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
 -(void)retrieveMykiBalance {
+    [self switchToLoggingInState];
 
     timer = [NSTimer scheduledTimerWithTimeInterval: 30.0 target:self selector:@selector(cancelRequest) userInfo:nil repeats: NO];
     
@@ -265,6 +271,9 @@
     float position;
     if ([notification.name isEqualToString:UIKeyboardWillShowNotification]) {
         position = 224.0;
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] 
+                                                 initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self
+                                                 action:@selector(switchToSuccessState)];
     } else {
         position = 0.0;
     }
@@ -364,6 +373,18 @@
     self.navigationItem.rightBarButtonItem = nil;
 }
 
+-(void)switchToLoggingInState {
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:.4];
+    self.bottomView.frame = CGRectMake(0, 705, 320, 205);
+    self.errorView.frame = CGRectMake(0, 705, 320, 150);
+    [self drawBalanceViewGradientWithCornersWithActiveState:NO];
+    self.balanceSeperatorImage.image = [UIImage imageNamed:@"images/BalanceLineBlk.png"];
+    self.navigationItem.leftBarButtonItem = nil;
+    self.navigationItem.rightBarButtonItem = nil;
+    [UIView commitAnimations];
+}
+
 -(void)switchToErrorState {
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:.4];
@@ -387,8 +408,14 @@
 -(void) updateRefreshButton {
     NSString* updatedDate =  [DateDisplayHelper getDisplayForDate:[mykiAccountInformation lastUpdatedDate] forPage:YourMykiIBalancePage];
     
-    [self.refreshButton.titleLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:14.0f]];
-    [self.refreshButton setTitle: [NSString stringWithFormat:@"Last Updated %@. Refresh", updatedDate] forState:UIControlStateNormal];
+    if (updatedDate ==nil) {
+        [self.refreshButton setHidden:YES];
+    } else {
+    
+        [self.refreshButton.titleLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:14.0f]];
+        [self.refreshButton setTitle: [NSString stringWithFormat:@"Last Updated %@. Refresh", updatedDate] forState:UIControlStateNormal];
+        [self.refreshButton setHidden:NO];
+    }
 }
    
 #pragma mark touch event
