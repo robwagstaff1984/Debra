@@ -413,7 +413,7 @@
     } else {
     
         [self.refreshButton.titleLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:14.0f]];
-        [self.refreshButton setTitle: [NSString stringWithFormat:@"Last Updated %@. Refresh", updatedDate] forState:UIControlStateNormal];
+        [self.refreshButton setTitle: [NSString stringWithFormat:@"Last Updated %@", updatedDate] forState:UIControlStateNormal];
         [self.refreshButton setHidden:NO];
     }
 }

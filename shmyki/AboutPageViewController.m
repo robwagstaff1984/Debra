@@ -13,6 +13,7 @@
 @end
 
 @implementation AboutPageViewController
+@synthesize twitterButton, facebookButton, webButton, rateButton, feedbackButton, comingFeaturesButton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -70,6 +71,31 @@
     [self.navigationController popViewControllerAnimated:YES];
    // [self setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
    // [self dismissModalViewControllerAnimated:YES];
+}
+
+#pragma mark IBActions
+-(IBAction)twitterButtonTapped:(id)sender {
+    
+}
+
+-(IBAction)facebookButtonTapped:(id)sender {
+    
+}
+
+-(IBAction)webButtonTapped:(id)sender {
+    
+}
+
+-(IBAction)rateButtonTapped:(id)sender {
+    
+}
+
+-(IBAction)feedbackButtonTapped:(id)sender {
+
+}
+
+-(IBAction)comingFeaturesButtonTapped:(id)sender {
+    
 }
 
 @end
