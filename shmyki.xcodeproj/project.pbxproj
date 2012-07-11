@@ -68,6 +68,7 @@
 		817BFA521587277100F3BEE1 /* ShmykiContstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 817BFA511587277100F3BEE1 /* ShmykiContstants.m */; };
 		817C21DE15AD96C400D35D3A /* ComingFeaturesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 817C21DC15AD96C400D35D3A /* ComingFeaturesViewController.m */; };
 		817C21DF15AD96C400D35D3A /* ComingFeaturesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 817C21DD15AD96C400D35D3A /* ComingFeaturesViewController.xib */; };
+		817C21E315AD9BBF00D35D3A /* YourMykiCustomButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 817C21E215AD9BBF00D35D3A /* YourMykiCustomButton.m */; };
 		818020AB1585EC7300501773 /* images in Resources */ = {isa = PBXBuildFile; fileRef = 818020AA1585EC7300501773 /* images */; };
 		818811481585A9DA00CDDF3E /* InspectorMapKitAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 818811471585A9DA00CDDF3E /* InspectorMapKitAnnotation.m */; };
 		8189722E15A469200040FC23 /* PunchOnLogsCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 8189722D15A469200040FC23 /* PunchOnLogsCache.m */; };
@@ -227,6 +228,8 @@
 		817C21DB15AD96C400D35D3A /* ComingFeaturesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComingFeaturesViewController.h; sourceTree = "<group>"; };
 		817C21DC15AD96C400D35D3A /* ComingFeaturesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComingFeaturesViewController.m; sourceTree = "<group>"; };
 		817C21DD15AD96C400D35D3A /* ComingFeaturesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ComingFeaturesViewController.xib; sourceTree = "<group>"; };
+		817C21E115AD9BBF00D35D3A /* YourMykiCustomButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YourMykiCustomButton.h; sourceTree = "<group>"; };
+		817C21E215AD9BBF00D35D3A /* YourMykiCustomButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YourMykiCustomButton.m; sourceTree = "<group>"; };
 		818020AA1585EC7300501773 /* images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = images; sourceTree = SOURCE_ROOT; };
 		818811461585A9DA00CDDF3E /* InspectorMapKitAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InspectorMapKitAnnotation.h; sourceTree = "<group>"; };
 		818811471585A9DA00CDDF3E /* InspectorMapKitAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InspectorMapKitAnnotation.m; sourceTree = "<group>"; };
@@ -415,6 +418,8 @@
 				8129EAD21591DD86004D0C6F /* TableViewCellForPunchOnLogs.m */,
 				8129EADE159204F9004D0C6F /* TableViewHeaderHelper.h */,
 				8129EADF159204F9004D0C6F /* TableViewHeaderHelper.m */,
+				817C21E115AD9BBF00D35D3A /* YourMykiCustomButton.h */,
+				817C21E215AD9BBF00D35D3A /* YourMykiCustomButton.m */,
 			);
 			name = customViews;
 			sourceTree = "<group>";
@@ -751,6 +756,7 @@
 				8189726D15AAE3060040FC23 /* AboutPageViewController.m in Sources */,
 				8189727115AB972E0040FC23 /* DateDisplayHelper.m in Sources */,
 				817C21DE15AD96C400D35D3A /* ComingFeaturesViewController.m in Sources */,
+				817C21E315AD9BBF00D35D3A /* YourMykiCustomButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

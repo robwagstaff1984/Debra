@@ -17,6 +17,7 @@
 #import "PunchOnLogsCache.h"
 #import "HelpImages.h"
 #import "AppDelegate.h"
+#import "YourMykiCustomButton.h"
 
 @implementation PunchOnViewController
 @synthesize punchOnCommentsView, punchOnCommentsTableView, listOfPunchOnLogs, totalPunchOns, helpImages, punchOnHelpImageButton, tableFixedHeader;
@@ -34,18 +35,7 @@
             self.tabBarItem.image = [UIImage imageNamed:@"images/TabPunchOff"];
         }
         
-        UIButton *aboutBarButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [aboutBarButton setBackgroundImage:[UIImage imageNamed:@"images/ButtonHeader"] forState:UIControlStateNormal];
-        [aboutBarButton setTitle:@"about" forState:UIControlStateNormal];
-        [aboutBarButton setFrame:CGRectMake(0.0f, 0.0f, 70.0f, 44.0f)];
-        [aboutBarButton addTarget:self action:@selector(showAboutPage) forControlEvents:UIControlEventTouchUpInside];
-        [aboutBarButton.titleLabel setFont:[UIFont fontWithName:@"Helvetica-Bold" size:12.0f]];
-        
-        UIBarButtonItem *aboutBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:aboutBarButton];
-        
-        
-        self.navigationItem.rightBarButtonItem = aboutBarButtonItem;
-       // self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"about" style:UIBarButtonItemStylePlain target:nil action:nil ];
+        self.navigationItem.rightBarButtonItem = [YourMykiCustomButton createYourMykiBarButtonItemWithText:@"about" withTarget:self withAction:@selector(showAboutPage)];
         
         self.listOfPunchOnLogs = [[NSMutableArray alloc] initWithCapacity:MAX_PUNCH_ON_LOGS_RETRIEVED];
     }

@@ -10,6 +10,7 @@
 #import "EnterLocationViewController.h"
 #import "ShmykiContstants.h"
 #import "AppDelegate.h"
+#import "YourMykiCustomButton.h"
 
 @implementation EnterIssueViewController
 
@@ -43,10 +44,7 @@
     [commentsTextView becomeFirstResponder];
     [self addHintTextToCommentsTextView];
     
- 
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] 
-                                                                    initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self
-                                                                    action:@selector(issueEntered)];
+    self.navigationItem.rightBarButtonItem = [YourMykiCustomButton createYourMykiBarButtonItemWithText:@"Done" withTarget:self withAction:@selector(issueEntered)];
     self.navigationItem.rightBarButtonItem.enabled = NO;
     //self.navigationItem.leftBarButtonItem.style = UIBarButtonSystemItemCancel;
     
@@ -65,12 +63,7 @@
 
 -(void)viewWillAppear:(BOOL)animated {
     self.navigationItem.hidesBackButton = YES;
-   // [self.navigationController setNavigationBarHidden:NO]; 
-//    UIBarButtonItem *_backButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStyleDone target:self action:@selector(popNavigationController)];
-//    self.navigationItem.leftBarButtonItem = _backButton;
-    //   self.navigationItem.hidesBackButton = YES;
-    UIBarButtonItem *_backButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStyleDone target:self action:@selector(popNavigationController)];
-    self.navigationItem.leftBarButtonItem = _backButton;
+    self.navigationItem.leftBarButtonItem = [YourMykiCustomButton createYourMykiBarButtonItemWithText:@"Cancel" withTarget:self withAction:@selector(popNavigationController)];;
     [super viewWillAppear:animated];
 }
 
