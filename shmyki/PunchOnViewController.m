@@ -172,9 +172,14 @@
 -(void) showAboutPage {
     UIViewController *aboutPageViewController = [[AboutPageViewController alloc] initWithNibName:@"AboutPageViewController" bundle:nil];
     
-    UINavigationController *aboutPageNavController = [[UINavigationController alloc] initWithRootViewController:aboutPageViewController];
-    [aboutPageNavController setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
-    [self.navigationController presentModalViewController:aboutPageNavController animated:YES];
+    /*[UIView animateWithDuration:0.75
+                     animations:^{
+                         [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+                         [self.navigationController pushViewController:aboutPageViewController animated:NO];
+                         [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:self.navigationController.view cache:NO];
+                     }];*/
+    
+    [self.navigationController pushViewController:aboutPageViewController animated:YES];
 }
 
 #pragma mark tableView datasource
