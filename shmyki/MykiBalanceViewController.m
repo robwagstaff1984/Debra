@@ -9,6 +9,7 @@
 #import "MykiBalanceViewController.h"
 #import "ShmykiContstants.h"
 #import <QuartzCore/QuartzCore.h>
+#import "DateDisplayHelper.h"
 
 @implementation MykiBalanceViewController
 
@@ -16,7 +17,7 @@
 @synthesize topView, bottomView, loginTableView, loginScrollView, pageScrollView, balanceDisplayView, errorView;
 @synthesize usernameTextField, passwordTextField;
 @synthesize balanceHeaderLabel, balanceMykiPassExpiryLabel, balanceMykiPassAdditionalLabel, balanceMykiMoneyAmountLabel, balanceMykiMoneyAdditionalLabel, balanceFooterLabelOne, balanceFooterLabelTwo, balanceSeperatorImage;
-@synthesize HUD, timer;
+@synthesize HUD, timer, refreshButton;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -345,7 +346,7 @@
     self.navigationItem.leftBarButtonItem = nil;
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] 
                                                 initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(switchToLoginState)];
-    
+    [self updateRefreshButton];
 }
 
 -(void)switchToLoginState {
@@ -381,6 +382,13 @@
 -(IBAction)tryAgainButtonTapped:(id)sender {
     //[self switchToLoginState];
     [self retrieveMykiBalance];
+}
+
+-(void) updateRefreshButton {
+    NSString* updatedDate =  [DateDisplayHelper getDisplayForDate:[mykiAccountInformation lastUpdatedDate] forPage:YourMykiIBalancePage];
+    
+    [self.refreshButton.titleLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:14.0f]];
+    [self.refreshButton setTitle: [NSString stringWithFormat:@"Last Updated %@. Refresh", updatedDate] forState:UIControlStateNormal];
 }
    
 #pragma mark touch event

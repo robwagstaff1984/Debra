@@ -296,7 +296,7 @@
 										<string key="NSFrame">{{20, 179}, {280, 25}}</string>
 										<reference key="NSSuperview" ref="766586467"/>
 										<reference key="NSWindow"/>
-										<reference key="NSNextKeyView" ref="50348026"/>
+										<reference key="NSNextKeyView" ref="974720094"/>
 										<string key="NSReuseIdentifierKey">_NS:9</string>
 										<bool key="IBUIOpaque">NO</bool>
 										<bool key="IBUIClipsSubviews">YES</bool>
@@ -338,7 +338,6 @@
 												<string key="NSFrameSize">{280, 80}</string>
 												<reference key="NSSuperview" ref="460646777"/>
 												<reference key="NSWindow"/>
-												<reference key="NSNextKeyView"/>
 												<string key="NSReuseIdentifierKey">_NS:9</string>
 												<reference key="IBUIBackgroundColor" ref="961050831"/>
 												<bool key="IBUIClipsSubviews">YES</bool>
@@ -444,7 +443,7 @@
 											<int key="NSColorSpace">1</int>
 											<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
 										</object>
-										<object class="NSColor" key="IBUINormalTitleShadowColor" id="759597967">
+										<object class="NSColor" key="IBUINormalTitleShadowColor" id="468358417">
 											<int key="NSColorSpace">3</int>
 											<bytes key="NSWhite">MC41AA</bytes>
 										</object>
@@ -452,11 +451,11 @@
 											<string key="NSClassName">NSImage</string>
 											<string key="NSResourceName">images/BalancesTryagain.png</string>
 										</object>
-										<object class="IBUIFontDescription" key="IBUIFontDescription" id="77079721">
+										<object class="IBUIFontDescription" key="IBUIFontDescription">
 											<int key="type">2</int>
 											<double key="pointSize">15</double>
 										</object>
-										<object class="NSFont" key="IBUIFont" id="389683085">
+										<object class="NSFont" key="IBUIFont">
 											<string key="NSName">Helvetica-Bold</string>
 											<double key="NSSize">15</double>
 											<int key="NSfFlags">16</int>
@@ -474,7 +473,7 @@
 								</object>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 							</object>
-							<object class="IBUIButton" id="50348026">
+							<object class="IBUIButton" id="974720094">
 								<reference key="NSNextResponder" ref="939612035"/>
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{23, 283}, {274, 40}}</string>
@@ -486,18 +485,22 @@
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<int key="IBUIContentHorizontalAlignment">0</int>
 								<int key="IBUIContentVerticalAlignment">0</int>
+								<int key="IBUIButtonType">1</int>
 								<reference key="IBUIHighlightedTitleColor" ref="961050831"/>
 								<object class="NSColor" key="IBUINormalTitleColor">
 									<int key="NSColorSpace">1</int>
-									<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
+									<bytes key="NSRGB">MC4xOTYwNzg0MzE0IDAuMzA5ODAzOTIxNiAwLjUyMTU2ODYyNzUAA</bytes>
 								</object>
-								<reference key="IBUINormalTitleShadowColor" ref="759597967"/>
-								<object class="NSCustomResource" key="IBUINormalBackgroundImage">
-									<string key="NSClassName">NSImage</string>
-									<string key="NSResourceName">images/BalanceRefresh.png</string>
+								<reference key="IBUINormalTitleShadowColor" ref="468358417"/>
+								<object class="IBUIFontDescription" key="IBUIFontDescription">
+									<int key="type">2</int>
+									<int key="size">2</int>
 								</object>
-								<reference key="IBUIFontDescription" ref="77079721"/>
-								<reference key="IBUIFont" ref="389683085"/>
+								<object class="NSFont" key="IBUIFont">
+									<string key="NSName">Helvetica-Bold</string>
+									<double key="NSSize">18</double>
+									<int key="NSfFlags">16</int>
+								</object>
 							</object>
 						</array>
 						<string key="NSFrameSize">{320, 432}</string>
@@ -667,6 +670,14 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">refreshButton</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="974720094"/>
+					</object>
+					<int key="connectionID">89</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">dataSource</string>
 						<reference key="source" ref="75499443"/>
 						<reference key="destination" ref="372490531"/>
@@ -725,7 +736,7 @@
 							<reference ref="88977363"/>
 							<reference ref="766586467"/>
 							<reference ref="804986839"/>
-							<reference ref="50348026"/>
+							<reference ref="974720094"/>
 						</array>
 						<reference key="parent" ref="191373211"/>
 					</object>
@@ -852,7 +863,7 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">88</int>
-						<reference key="object" ref="50348026"/>
+						<reference key="object" ref="974720094"/>
 						<reference key="parent" ref="939612035"/>
 					</object>
 				</array>
@@ -889,7 +900,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">88</int>
+			<int key="maxID">89</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -922,6 +933,7 @@
 						<string key="loginScrollView">UIScrollView</string>
 						<string key="loginTableView">UITableView</string>
 						<string key="pageScrollView">UIScrollView</string>
+						<string key="refreshButton">UIButton</string>
 						<string key="topView">UIView</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
@@ -981,6 +993,10 @@
 							<string key="name">pageScrollView</string>
 							<string key="candidateClassName">UIScrollView</string>
 						</object>
+						<object class="IBToOneOutletInfo" key="refreshButton">
+							<string key="name">refreshButton</string>
+							<string key="candidateClassName">UIButton</string>
+						</object>
 						<object class="IBToOneOutletInfo" key="topView">
 							<string key="name">topView</string>
 							<string key="candidateClassName">UIView</string>
@@ -1003,7 +1019,6 @@
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
 			<string key="images/BalanceLineBlk.png">{16, 16}</string>
-			<string key="images/BalanceRefresh.png">{16, 16}</string>
 			<string key="images/BalancesTryagain.png">{16, 16}</string>
 		</dictionary>
 		<string key="IBCocoaTouchPluginVersion">1181</string>

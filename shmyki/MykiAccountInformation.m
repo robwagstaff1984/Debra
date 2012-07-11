@@ -59,7 +59,7 @@
     NSString *storedCurrentMykiPassActive = [defaults objectForKey:@"currentMykiPassActive"];
     NSString *storedCurrentMykiPassNotYetActive = [defaults objectForKey:@"currentMykiPassNotYetActive"];
     NSString *storedLastMykiTransactionDate = [defaults objectForKey:@"lastMykiTransactionDate"];
-    NSString *storedLastUpdatedDate = [defaults objectForKey:@"lastUpdatedDate"];
+    NSDate *storedLastUpdatedDate = [defaults objectForKey:@"lastUpdatedDate"];
 
     [self setCardHolder: storedCardHolder];
     [self setCardType: storedCardType];
@@ -90,7 +90,7 @@
     [self setCurrentMykiPassActive: [self convertMykiPassActiveToDays:[self extractInformationFromHtml:page withRegeEx:REG_EX_CURRENT_MYKI_PASS_ACTIVE]]];
     [self setCurrentMykiPassNotYetActive:[self convertMykiPassNotYetActive: [self extractInformationFromHtml:page withRegeEx:REG_EX_CURRENT_MYKI_PASS_NOT_YET_ACTIVE]]];
     [self setLastMykiTransactionDate:[self extractInformationFromHtml:page withRegeEx:REG_EX_LAST_MYKI_TRANSACTION_DATE]];
-
+    [self setLastUpdatedDate:[NSDate date]];
     [self saveAccountBalanceInformation];
 }
 

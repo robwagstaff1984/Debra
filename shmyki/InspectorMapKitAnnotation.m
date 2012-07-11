@@ -8,6 +8,7 @@
 
 #import "InspectorMapKitAnnotation.h"
 #import "ShmykiContstants.h"
+#import "DateDisplayHelper.h"
 
 
 @implementation InspectorMapKitAnnotation
@@ -25,26 +26,7 @@
 
 - (NSString *)title
 {
-    NSString *displayTitle;
-    NSTimeInterval secondsBetween = [[NSDate date] timeIntervalSinceDate:spotDate];
-    int seconds = secondsBetween / 1;
-    
-    if(seconds < SECONDS_IN_A_MINUTE) {
-        displayTitle = [NSString stringWithFormat:@"just now", seconds];
-    } else if (seconds < SECONDS_IN_AN_HOUR) {
-        displayTitle = [NSString stringWithFormat:@"%d minutes ago", (seconds / SECONDS_IN_A_MINUTE)];
-    } else if (seconds < SECONDS_IN_AN_DAY) {
-         displayTitle = [NSString stringWithFormat:@"%d hours ago", (seconds / SECONDS_IN_AN_HOUR)];
-    } else if (seconds < SECONDS_IN_AN_WEEK) {
-         displayTitle = [NSString stringWithFormat:@"%d days ago", (seconds / SECONDS_IN_AN_DAY)];
-    } else {
-        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-        dateFormatter.dateFormat = @"MMM dd hh:mm a";     
-        [dateFormatter setTimeZone:[NSTimeZone localTimeZone]]; 
-        displayTitle =  [dateFormatter stringFromDate:[NSDate date]];
-    }
-    
-    return displayTitle;
+    return [DateDisplayHelper getDisplayForDate:spotDate forPage:YourMykiInspectorPage];
 }
 
 -(UIImage*) getPoiImageForTime {
