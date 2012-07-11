@@ -7,6 +7,8 @@
 //
 
 #import "AboutPageViewController.h"
+#import "ComingFeaturesViewController.h"
+#import "ShmykiContstants.h"
 
 @interface AboutPageViewController ()
 
@@ -19,7 +21,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-       
+        [[self navigationItem] setTitle:APP_NAME];
     }
     return self;
 }
@@ -95,7 +97,8 @@
 }
 
 -(IBAction)comingFeaturesButtonTapped:(id)sender {
-    
+    UIViewController *comingFeaturesViewController = [[ComingFeaturesViewController alloc] initWithNibName:@"ComingFeaturesViewController" bundle:nil];
+    [self.navigationController pushViewController:comingFeaturesViewController animated:YES];
 }
 
 @end
