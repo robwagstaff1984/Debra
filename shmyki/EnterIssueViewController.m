@@ -14,7 +14,7 @@
 
 @implementation EnterIssueViewController
 
-@synthesize commentsTextView, punchOnIssues, punchOnIsValid;
+@synthesize commentsTextView, punchOnIssues, punchOnIsValid, twitterButton, facebookButton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -23,6 +23,12 @@
         [self.navigationItem setTitle:@"yourMyki"];
         punchOnIssues = [[PunchOnIssues alloc] init];
         punchOnIsValid = NO;
+       // [[NSNotificationCenter defaultCenter] addObserver:self forKeyPath:@"TwitterCancelled" options:nil context:nil];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(cancelTwitter) 
+                                                     name:@"TwitterCancelled"
+                                                   object:nil];
     }
     return self;
 }
@@ -33,6 +39,10 @@
     [super didReceiveMemoryWarning];
     
     // Release any cached data, images, etc that aren't in use.
+}
+
+-(void)cancelTwitter {
+    [self.twitterButton setImage:[UIImage imageNamed: @"images/IconTwitterOff"] forState:UIControlStateNormal];
 }
 
 #pragma mark - View lifecycle

@@ -18,6 +18,8 @@
 @property (strong, nonatomic) IBOutlet UITextView *commentsTextView;
 //@property (strong, nonatomic) IBOutlet UITableView *punchOnTableView;
 @property (nonatomic) BOOL punchOnIsValid;
+@property (nonatomic, strong) IBOutlet UIButton* twitterButton;
+@property (nonatomic, strong) IBOutlet UIButton* facebookButton;
 
 - (IBAction)toggleTwitterButton:(id)sender;
 - (IBAction)toggleFacebookButton:(id)sender; 

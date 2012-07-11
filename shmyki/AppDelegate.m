@@ -175,6 +175,8 @@
 
 - (void) OAuthTwitterControllerCanceled: (SA_OAuthTwitterController *) controller {
     self.isTwitterRequired = NO;
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"TwitterCancelled" object:nil];
+    
 }
 
 #pragma mark Facebook request delegate
