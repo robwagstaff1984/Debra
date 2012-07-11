@@ -190,6 +190,7 @@
 
 -(void) presentTwitterLoginIfRequired {
     UIViewController* loginViewController = [(AppDelegate*)[[UIApplication sharedApplication]delegate] getlogInToTwitterViewController];  
+    //[(SA_OAuthTwitterController*)loginViewController setDelegate:self];
     if (loginViewController != nil) {
         [self presentModalViewController: loginViewController animated: YES]; 
     }

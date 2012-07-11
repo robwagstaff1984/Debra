@@ -37,7 +37,7 @@
     UINavigationController *punchOnNavController = [[UINavigationController alloc] initWithRootViewController:punchOnViewController];
     
     if ([punchOnNavController.navigationBar respondsToSelector:@selector(setBackgroundImage:forBarMetrics:)] == YES) {
-        [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"images/TabBar.png"] forBarMetrics:UIBarMetricsDefault];
+        [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"images/Header.png"] forBarMetrics:UIBarMetricsDefault];
     }
     
     punchOnNavController.navigationBar.tintColor= [[UIColor alloc] initWithRed:.35686 green:.5098 blue:.67058 alpha:1];
@@ -171,6 +171,10 @@
     
         [twitterEngine sendUpdate:twitterMessage];
     }
+}
+
+- (void) OAuthTwitterControllerCanceled: (SA_OAuthTwitterController *) controller {
+    self.isTwitterRequired = NO;
 }
 
 #pragma mark Facebook request delegate

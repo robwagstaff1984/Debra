@@ -8,6 +8,7 @@
 
 #import "PunchOnViewController.h"
 #import "EnterIssueViewController.h"
+#import "AboutPageViewController.h"
 #import "ShmykiContstants.h"
 #import "Parse/Parse.h"
 #import "PunchOnLog.h"
@@ -34,9 +35,9 @@
         }
         
         UIButton *aboutBarButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [aboutBarButton setBackgroundImage:[UIImage imageNamed:@"images/TabBarOn"] forState:UIControlStateNormal];
+        [aboutBarButton setBackgroundImage:[UIImage imageNamed:@"images/ButtonHeader"] forState:UIControlStateNormal];
         [aboutBarButton setTitle:@"about" forState:UIControlStateNormal];
-        [aboutBarButton setFrame:CGRectMake(0.0f, 0.0f, 60.0f, 30.0f)];
+        [aboutBarButton setFrame:CGRectMake(0.0f, 0.0f, 70.0f, 44.0f)];
         [aboutBarButton addTarget:self action:@selector(showAboutPage) forControlEvents:UIControlEventTouchUpInside];
         [aboutBarButton.titleLabel setFont:[UIFont fontWithName:@"Helvetica-Bold" size:12.0f]];
         
@@ -169,10 +170,11 @@
 #pragma mark about page
 
 -(void) showAboutPage {
-    UIViewController *aboutPageViewController = [[UIViewController alloc] initWithNibName:@"AboutPageViewController" bundle:nil];
-    [aboutPageViewController setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
-    [aboutPageViewController setModalPresentationStyle: UIModalPresentationPageSheet];
-    [self.navigationController presentModalViewController:aboutPageViewController animated:YES];
+    UIViewController *aboutPageViewController = [[AboutPageViewController alloc] initWithNibName:@"AboutPageViewController" bundle:nil];
+    
+    UINavigationController *aboutPageNavController = [[UINavigationController alloc] initWithRootViewController:aboutPageViewController];
+    [aboutPageNavController setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
+    [self.navigationController presentModalViewController:aboutPageNavController animated:YES];
 }
 
 #pragma mark tableView datasource
