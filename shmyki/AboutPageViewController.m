@@ -37,7 +37,7 @@
     [aboutBarButton.titleLabel setFont:[UIFont fontWithName:@"Helvetica-Bold" size:12.0f]];
     
     UIBarButtonItem *aboutBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:aboutBarButton];
-    self.navigationItem.rightBarButtonItem = aboutBarButtonItem;
+    self.navigationItem.leftBarButtonItem = aboutBarButtonItem;
     self.navigationItem.hidesBackButton = YES;
     // Do any additional setup after loading the view from its nib.
 }

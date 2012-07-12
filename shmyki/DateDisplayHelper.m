@@ -33,7 +33,7 @@
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
         dateFormatter.dateFormat = @"MMM dd hh:mm a";     
         [dateFormatter setTimeZone:[NSTimeZone localTimeZone]]; 
-        dateDisplay =  [dateFormatter stringFromDate:[NSDate date]];
+        dateDisplay =  [dateFormatter stringFromDate:date];
     }
     return dateDisplay;
 }

@@ -18,6 +18,7 @@
 #import "HelpImages.h"
 #import "AppDelegate.h"
 #import "YourMykiCustomButton.h"
+#import "DateDisplayHelper.h"
 
 @implementation PunchOnViewController
 @synthesize punchOnCommentsView, punchOnCommentsTableView, listOfPunchOnLogs, totalPunchOns, helpImages, punchOnHelpImageButton, tableFixedHeader;
@@ -189,7 +190,7 @@
     PunchOnLog *punchOnLog = [listOfPunchOnLogs objectAtIndex:indexPath.row];
     cell.messageLabel.text = punchOnLog.message;
     cell.locationLabel.text = punchOnLog.location;
-    cell.dateLabel.text = @"45 mins";
+    cell.dateLabel.text = [DateDisplayHelper getDisplayForDate:punchOnLog.dateLogged forPage:YourMykiPunchOnPage];
     
     return cell;
 }
@@ -224,6 +225,7 @@
             PunchOnLog *punchOnLog = [[PunchOnLog alloc] init];
             [punchOnLog setMessage:[punchOnLogParseObject objectForKey:@"message"]];
             [punchOnLog setLocation:[punchOnLogParseObject objectForKey:@"location"]];
+            [punchOnLog setDateLogged:punchOnLogParseObject.createdAt];
             [self.listOfPunchOnLogs addObject:punchOnLog];
         }
         [self.punchOnCommentsTableView reloadData];
