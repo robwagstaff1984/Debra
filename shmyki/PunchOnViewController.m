@@ -329,9 +329,9 @@
 -(void) panCommentsTableViewToAppropriateStateForLocation:(CGPoint)tableViewCenterLocation{
     int threshold;
     if (_commentsTableViewIsUp){
-        threshold = ((COMMENTS_ORIGIN_TO_ANCHOR_BOTTOM - COMMENTS_ORIGIN_TO_ANCHOR_TOP) *.33) + COMMENTS_ORIGIN_TO_ANCHOR_TOP;
+        threshold = ((COMMENTS_ORIGIN_TO_ANCHOR_BOTTOM - COMMENTS_ORIGIN_TO_ANCHOR_TOP) *.20) + COMMENTS_ORIGIN_TO_ANCHOR_TOP;
     } else {
-        threshold = ((COMMENTS_ORIGIN_TO_ANCHOR_BOTTOM - COMMENTS_ORIGIN_TO_ANCHOR_TOP) *.66) + COMMENTS_ORIGIN_TO_ANCHOR_TOP;
+        threshold = ((COMMENTS_ORIGIN_TO_ANCHOR_BOTTOM - COMMENTS_ORIGIN_TO_ANCHOR_TOP) *.80) + COMMENTS_ORIGIN_TO_ANCHOR_TOP;
     }
         
     int shouldReplaceHeader = YES;
