@@ -255,18 +255,18 @@
             break;
             
         case UIGestureRecognizerStateChanged:
-            if (1==1){}
-          //  NSLog(@"PAN UP %f %d",self.punchOnCommentsTableView.contentOffset.y, _punchOnCommentsViewPreTouchLocation);
-            CGPoint translationDifferenceFromPan = [sender translationInView:self.view];
-            punchOnCommentsLocation.y = _punchOnCommentsViewPreTouchLocation + translationDifferenceFromPan.y;
-            if(punchOnCommentsLocation.y < COMMENTS_ORIGIN_TO_ANCHOR_TOP) {
-                punchOnCommentsLocation.y = COMMENTS_ORIGIN_TO_ANCHOR_TOP;
-            } else if (punchOnCommentsLocation.y > COMMENTS_ORIGIN_TO_ANCHOR_BOTTOM) {
-                punchOnCommentsLocation.y = COMMENTS_ORIGIN_TO_ANCHOR_BOTTOM;
+            {
+              //  NSLog(@"PAN UP %f %d",self.punchOnCommentsTableView.contentOffset.y, _punchOnCommentsViewPreTouchLocation);
+                CGPoint translationDifferenceFromPan = [sender translationInView:self.view];
+                punchOnCommentsLocation.y = _punchOnCommentsViewPreTouchLocation + translationDifferenceFromPan.y;
+                if(punchOnCommentsLocation.y < COMMENTS_ORIGIN_TO_ANCHOR_TOP) {
+                    punchOnCommentsLocation.y = COMMENTS_ORIGIN_TO_ANCHOR_TOP;
+                } else if (punchOnCommentsLocation.y > (COMMENTS_ORIGIN_TO_ANCHOR_BOTTOM + COMMENTS_EXTRA_BOTTOM_SCROLL)) {
+                    punchOnCommentsLocation.y = COMMENTS_ORIGIN_TO_ANCHOR_BOTTOM + COMMENTS_EXTRA_BOTTOM_SCROLL;
+                }
+                
+                punchOnCommentsView.center = punchOnCommentsLocation;
             }
-            
-            punchOnCommentsView.center = punchOnCommentsLocation;
-            
             break;
             
         case UIGestureRecognizerStateEnded:
