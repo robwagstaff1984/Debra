@@ -16,6 +16,7 @@
 @property (nonatomic, strong) IBOutlet UIButton* rateButton;
 @property (nonatomic, strong) IBOutlet UIButton* feedbackButton;
 @property (nonatomic, strong) IBOutlet UIButton* comingFeaturesButton;
+@property (nonatomic, strong) IBOutlet UIView *legalShadowView;
 
 
 -(IBAction)twitterButtonTapped:(id)sender;

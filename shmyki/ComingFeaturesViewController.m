@@ -8,12 +8,15 @@
 
 #import "ComingFeaturesViewController.h"
 #import "ShmykiContstants.h"
+#import <Parse/Parse.h>
 
 @interface ComingFeaturesViewController ()
 
 @end
 
 @implementation ComingFeaturesViewController
+
+@synthesize comingShadowView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -38,6 +41,10 @@
     UIBarButtonItem *aboutBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:aboutBarButton];
     self.navigationItem.leftBarButtonItem = aboutBarButtonItem;
     
+    self.comingShadowView.layer.shadowColor = [[UIColor blackColor] CGColor];
+    self.comingShadowView.layer.shadowOffset = CGSizeMake(0.0f, -2.0f);
+    self.comingShadowView.layer.shadowOpacity = .15f;
+    self.comingShadowView.layer.shadowRadius = 6.0f;
 
     // Do any additional setup after loading the view from its nib.
 }

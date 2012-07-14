@@ -10,4 +10,6 @@
 
 @interface ComingFeaturesViewController : UIViewController
 
+@property (nonatomic, strong) IBOutlet UIView *comingShadowView;
+
 @end

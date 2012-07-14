@@ -10,12 +10,18 @@
 #import "ComingFeaturesViewController.h"
 #import "ShmykiContstants.h"
 
+
+
+#import "Parse/Parse.h"
+
+
+
 @interface AboutPageViewController ()
 
 @end
 
 @implementation AboutPageViewController
-@synthesize twitterButton, facebookButton, webButton, rateButton, feedbackButton, comingFeaturesButton;
+@synthesize twitterButton, facebookButton, webButton, rateButton, feedbackButton, comingFeaturesButton,legalShadowView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -39,6 +45,13 @@
     UIBarButtonItem *aboutBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:aboutBarButton];
     self.navigationItem.leftBarButtonItem = aboutBarButtonItem;
     self.navigationItem.hidesBackButton = YES;
+    
+    self.legalShadowView.layer.shadowColor = [[UIColor blackColor] CGColor];
+    self.legalShadowView.layer.shadowOffset = CGSizeMake(0.0f, -2.0f);
+    self.legalShadowView.layer.shadowOpacity = .15f;
+    self.legalShadowView.layer.shadowRadius = 6.0f;
+    
+    
     // Do any additional setup after loading the view from its nib.
 }
 
