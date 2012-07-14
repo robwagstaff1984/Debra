@@ -31,7 +31,7 @@
     [super viewDidLoad];
     UIButton *aboutBarButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [aboutBarButton setBackgroundImage:[UIImage imageNamed:@"images/ButtonHeader"] forState:UIControlStateNormal];
-    [aboutBarButton setTitle:@"cancel" forState:UIControlStateNormal];
+    [aboutBarButton setTitle:@"Back" forState:UIControlStateNormal];
     [aboutBarButton setFrame:CGRectMake(0.0f, 0.0f, 70.0f, 44.0f)];
     [aboutBarButton addTarget:self action:@selector(cancelAboutPage) forControlEvents:UIControlEventTouchUpInside];
     [aboutBarButton.titleLabel setFont:[UIFont fontWithName:@"Helvetica-Bold" size:12.0f]];

@@ -173,7 +173,7 @@
     [self.locationManager startUpdatingLocation];
     [inspectorMapView setShowsUserLocation:YES];
     //self.helpImages.isInspectorHelpAlreadySeen = YES;
-    //[self.helpImages saveHelpImageRequiredInfo];
+    [self.helpImages saveHelpImageRequiredInfo];
 }
 
 -(void) hideInspectorHelp {

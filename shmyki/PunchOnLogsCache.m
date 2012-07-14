@@ -34,7 +34,12 @@ static PunchOnLogsCache *sharedObject = nil;
 -(NSMutableArray*) loadPunchOnLogsCache {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSData *data = [defaults objectForKey:@"cachedPunchOnLogs"];
-    NSMutableArray *cachedPunchOnLogs = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+    NSMutableArray *cachedPunchOnLogs;
+    if (data != nil) {
+        cachedPunchOnLogs = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+    } else {
+        //TODO MAKE A DEFAULT CACHE
+    }
     return cachedPunchOnLogs;
 }
 @end

@@ -296,7 +296,7 @@
 										<string key="NSFrame">{{20, 179}, {280, 25}}</string>
 										<reference key="NSSuperview" ref="766586467"/>
 										<reference key="NSWindow"/>
-										<reference key="NSNextKeyView" ref="501290218"/>
+										<reference key="NSNextKeyView" ref="88977363"/>
 										<string key="NSReuseIdentifierKey">_NS:9</string>
 										<bool key="IBUIOpaque">NO</bool>
 										<bool key="IBUIClipsSubviews">YES</bool>
@@ -336,7 +336,6 @@
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<int key="IBUIContentHorizontalAlignment">0</int>
 								<int key="IBUIContentVerticalAlignment">0</int>
-								<int key="IBUIButtonType">1</int>
 								<bool key="IBUIAdjustsImageWhenHighlighted">NO</bool>
 								<reference key="IBUIHighlightedTitleColor" ref="961050831"/>
 								<object class="NSColor" key="IBUINormalTitleColor">
@@ -346,6 +345,10 @@
 								<object class="NSColor" key="IBUINormalTitleShadowColor" id="342449100">
 									<int key="NSColorSpace">3</int>
 									<bytes key="NSWhite">MC41AA</bytes>
+								</object>
+								<object class="NSCustomResource" key="IBUINormalBackgroundImage">
+									<string key="NSClassName">NSImage</string>
+									<string key="NSResourceName">images/BalanceRefresh.png</string>
 								</object>
 								<object class="IBUIFontDescription" key="IBUIFontDescription">
 									<int key="type">2</int>
@@ -371,6 +374,7 @@
 												<string key="NSFrameSize">{280, 80}</string>
 												<reference key="NSSuperview" ref="460646777"/>
 												<reference key="NSWindow"/>
+												<reference key="NSNextKeyView" ref="501290218"/>
 												<string key="NSReuseIdentifierKey">_NS:9</string>
 												<reference key="IBUIBackgroundColor" ref="961050831"/>
 												<bool key="IBUIClipsSubviews">YES</bool>
@@ -465,7 +469,6 @@
 										<string key="NSFrame">{{20, 91}, {274, 40}}</string>
 										<reference key="NSSuperview" ref="804986839"/>
 										<reference key="NSWindow"/>
-										<reference key="NSNextKeyView" ref="88977363"/>
 										<string key="NSReuseIdentifierKey">_NS:9</string>
 										<bool key="IBUIOpaque">NO</bool>
 										<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -702,6 +705,15 @@
 					</object>
 					<int key="connectionID">87</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">tryAgainButtonTapped:</string>
+						<reference key="source" ref="501290218"/>
+						<reference key="destination" ref="372490531"/>
+						<int key="IBEventType">7</int>
+					</object>
+					<int key="connectionID">90</int>
+				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<array key="orderedObjects">
@@ -896,12 +908,13 @@
 				<string key="83.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="84.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="88.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<real value="0.0" key="88.IBUIButtonInspectorSelectedStateConfigurationMetadataKey"/>
 			</dictionary>
 			<dictionary class="NSMutableDictionary" key="unlocalizedProperties"/>
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">89</int>
+			<int key="maxID">90</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -1020,6 +1033,7 @@
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
 			<string key="images/BalanceLineBlk.png">{16, 16}</string>
+			<string key="images/BalanceRefresh.png">{16, 16}</string>
 			<string key="images/BalancesTryagain.png">{16, 16}</string>
 		</dictionary>
 		<string key="IBCocoaTouchPluginVersion">1181</string>
