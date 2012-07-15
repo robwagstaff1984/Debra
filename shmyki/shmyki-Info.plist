@@ -14,6 +14,8 @@
 		<string>Icon57px.png</string>
 		<string>Default.png</string>
 		<string>Default@2x.png</string>
+		<string>Default.png</string>
+		<string>Default@2x.png</string>
 	</array>
 	<key>CFBundleIcons</key>
 	<dict>
@@ -23,6 +25,8 @@
 			<array>
 				<string>Icon114px.png</string>
 				<string>Icon57px.png</string>
+				<string>Default.png</string>
+				<string>Default@2x.png</string>
 				<string>Default.png</string>
 				<string>Default@2x.png</string>
 			</array>
@@ -55,6 +59,10 @@
 	<string>1.0</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>UIAppFonts</key>
+	<array>
+		<string>HelveticaNeue.dfont</string>
+	</array>
 	<key>UIPrerenderedIcon</key>
 	<true/>
 	<key>UIRequiredDeviceCapabilities</key>
@@ -64,10 +72,6 @@
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
-	</array>
-	<key>UIAppFonts</key>
-	<array>
-		<string>HelveticaNeue.dfont</string>
 	</array>
 </dict>
 </plist>

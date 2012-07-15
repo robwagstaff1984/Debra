@@ -287,7 +287,7 @@
 										<int key="IBUIBaselineAdjustment">0</int>
 										<float key="IBUIMinimumFontSize">10</float>
 										<int key="IBUITextAlignment">1</int>
-										<object class="IBUIFontDescription" key="IBUIFontDescription" id="22686846">
+										<object class="IBUIFontDescription" key="IBUIFontDescription" id="1044907609">
 											<string key="name">Helvetica-Light</string>
 											<string key="family">Helvetica</string>
 											<int key="traits">0</int>
@@ -314,7 +314,7 @@
 										<int key="IBUIBaselineAdjustment">0</int>
 										<float key="IBUIMinimumFontSize">10</float>
 										<int key="IBUITextAlignment">1</int>
-										<reference key="IBUIFontDescription" ref="22686846"/>
+										<reference key="IBUIFontDescription" ref="1044907609"/>
 										<reference key="IBUIFont" ref="685496849"/>
 									</object>
 								</array>
@@ -458,6 +458,7 @@
 										<string key="NSReuseIdentifierKey">_NS:9</string>
 										<bool key="IBUIClipsSubviews">YES</bool>
 										<bool key="IBUIMultipleTouchEnabled">YES</bool>
+										<bool key="IBUIUserInteractionEnabled">NO</bool>
 										<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 										<string key="IBUIText">We don't know what happened but please try again and let's hope it works this time</string>
 										<int key="IBUITextAlignment">1</int>
@@ -474,6 +475,7 @@
 										<string key="NSFrame">{{20, 91}, {274, 40}}</string>
 										<reference key="NSSuperview" ref="804986839"/>
 										<reference key="NSWindow"/>
+										<reference key="NSNextKeyView"/>
 										<string key="NSReuseIdentifierKey">_NS:9</string>
 										<bool key="IBUIOpaque">NO</bool>
 										<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>

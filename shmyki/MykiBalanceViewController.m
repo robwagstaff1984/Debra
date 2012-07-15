@@ -103,7 +103,10 @@
     self.bottomView.layer.shadowRadius = 2.0f;
     
     UITapGestureRecognizer *cancelTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
+    UITapGestureRecognizer *cancelEditTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(switchToSuccessState)];
+    
     [self.bottomView addGestureRecognizer:cancelTap];
+    [self.topView addGestureRecognizer:cancelEditTap];
     
     self.errorView.layer.shadowColor = [[UIColor blackColor] CGColor];
     self.errorView.layer.shadowOffset = CGSizeMake(0.0, -2.0f);
