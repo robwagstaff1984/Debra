@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MessageUI/MessageUI.h> 
 
-@interface AboutPageViewController : UIViewController
+@interface AboutPageViewController : UIViewController <MFMailComposeViewControllerDelegate>
 
 @property (nonatomic, strong) IBOutlet UIButton* twitterButton;
 @property (nonatomic, strong) IBOutlet UIButton* facebookButton;

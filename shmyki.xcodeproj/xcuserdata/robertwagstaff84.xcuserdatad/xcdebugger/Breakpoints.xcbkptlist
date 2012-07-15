@@ -1474,11 +1474,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "shmyki/AboutPageViewController.m"
-         timestampString = "363949086.028645"
+         timestampString = "364016280.829461"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "30"
-         endingLineNumber = "30"
+         startingLineNumber = "27"
+         endingLineNumber = "27"
          landmarkName = "-initWithNibName:bundle:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1487,11 +1487,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "shmyki/AboutPageViewController.m"
-         timestampString = "363949086.028645"
+         timestampString = "364016280.829461"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "28"
-         endingLineNumber = "28"
+         startingLineNumber = "25"
+         endingLineNumber = "25"
          landmarkName = "-initWithNibName:bundle:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1500,11 +1500,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "shmyki/AboutPageViewController.m"
-         timestampString = "363949086.028645"
+         timestampString = "364016280.829461"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "38"
-         endingLineNumber = "38"
+         startingLineNumber = "35"
+         endingLineNumber = "35"
          landmarkName = "-viewDidLoad"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1513,11 +1513,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "shmyki/AboutPageViewController.m"
-         timestampString = "363949086.028645"
+         timestampString = "364016280.829461"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "29"
-         endingLineNumber = "29"
+         startingLineNumber = "26"
+         endingLineNumber = "26"
          landmarkName = "-initWithNibName:bundle:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1526,11 +1526,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "shmyki/AboutPageViewController.m"
-         timestampString = "363949979.407306"
+         timestampString = "364016280.829461"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "113"
-         endingLineNumber = "113"
+         startingLineNumber = "116"
+         endingLineNumber = "116"
          landmarkName = "-comingFeaturesButtonTapped:"
          landmarkType = "5">
       </FileBreakpoint>

@@ -9,9 +9,6 @@
 #import "AboutPageViewController.h"
 #import "ComingFeaturesViewController.h"
 #import "ShmykiContstants.h"
-
-
-
 #import "Parse/Parse.h"
 
 
@@ -106,12 +103,22 @@
 }
 
 -(IBAction)feedbackButtonTapped:(id)sender {
-
+    MFMailComposeViewController *picmail = [[MFMailComposeViewController alloc] init];  
+    picmail.mailComposeDelegate = self;
+    [picmail setSubject:@"yourMyki Feedback"];
+    [picmail setToRecipients:[NSArray arrayWithObjects:FEEDBACK_EMAIL_ADDRESS, nil]];
+    
+    
+  //  [picmail setMessageBody:@"MESSAGE BODY" isHTML:NO];
+    [self presentModalViewController:picmail animated:YES];
 }
-
 -(IBAction)comingFeaturesButtonTapped:(id)sender {
     UIViewController *comingFeaturesViewController = [[ComingFeaturesViewController alloc] initWithNibName:@"ComingFeaturesViewController" bundle:nil];
     [self.navigationController pushViewController:comingFeaturesViewController animated:YES];
 }
 
+#pragma mark MFMailCompose delegate
+- (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error {
+    [controller dismissModalViewControllerAnimated:YES];
+}
 @end
