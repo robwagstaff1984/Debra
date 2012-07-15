@@ -79,13 +79,13 @@
 
 -(void) setUpFaceBook {
     
-    facebook = [[Facebook alloc] initWithAppId:@"332640806811699" andDelegate:self];
+    facebook = [[Facebook alloc] initWithAppId:@"201775129951445" andDelegate:self];
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    if ([defaults objectForKey:@"FBAccessTokenKey"] 
-        && [defaults objectForKey:@"FBExpirationDateKey"]) {
-        facebook.accessToken = [defaults objectForKey:@"FBAccessTokenKey"];
-        facebook.expirationDate = [defaults objectForKey:@"FBExpirationDateKey"];
+    if ([defaults objectForKey:@"FBAccessTokenKeyNew"] 
+        && [defaults objectForKey:@"FBExpirationDateKeyNew"]) {
+        facebook.accessToken = [defaults objectForKey:@"FBAccessTokenKeyNew"];
+        facebook.expirationDate = [defaults objectForKey:@"FBExpirationDateKeyNew"];
     }
 }
 
@@ -119,8 +119,8 @@
 
 - (void)fbDidLogin {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:[facebook accessToken] forKey:@"FBAccessTokenKey"];
-    [defaults setObject:[facebook expirationDate] forKey:@"FBExpirationDateKey"];
+    [defaults setObject:[facebook accessToken] forKey:@"FBAccessTokenKeyNew"];
+    [defaults setObject:[facebook expirationDate] forKey:@"FBExpirationDateKeyNew"];
     [defaults synchronize];
 }
 
