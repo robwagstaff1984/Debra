@@ -182,7 +182,7 @@
     [commentsTextView becomeFirstResponder];
     commentsTextView.autocorrectionType = UITextAutocorrectionTypeNo;
     [commentsTextView setText: PUNCH_ON_HINT_TEXT];
-    [commentsTextView setFont:[UIFont italicSystemFontOfSize:18.0f]];
+    [commentsTextView setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:18.0f]];
 	[commentsTextView setTextColor:[UIColor lightGrayColor]];
     commentsTextView.selectedRange = NSMakeRange(0, 0);
 }
@@ -191,7 +191,7 @@
     [commentsTextView setUserInteractionEnabled:YES];
     commentsTextView.autocorrectionType = UITextAutocorrectionTypeDefault;
     [commentsTextView setText: @""];
-    [commentsTextView setFont:[UIFont italicSystemFontOfSize:18.0f]];
+    [commentsTextView setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:18.0f]];
 	[commentsTextView setTextColor:[UIColor blackColor]];
 }
 

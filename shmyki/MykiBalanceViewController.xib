@@ -287,7 +287,12 @@
 										<int key="IBUIBaselineAdjustment">0</int>
 										<float key="IBUIMinimumFontSize">10</float>
 										<int key="IBUITextAlignment">1</int>
-										<reference key="IBUIFontDescription" ref="372728630"/>
+										<object class="IBUIFontDescription" key="IBUIFontDescription" id="22686846">
+											<string key="name">Helvetica-Light</string>
+											<string key="family">Helvetica</string>
+											<int key="traits">0</int>
+											<double key="pointSize">13</double>
+										</object>
 										<reference key="IBUIFont" ref="685496849"/>
 									</object>
 									<object class="IBUILabel" id="14117565">
@@ -309,7 +314,7 @@
 										<int key="IBUIBaselineAdjustment">0</int>
 										<float key="IBUIMinimumFontSize">10</float>
 										<int key="IBUITextAlignment">1</int>
-										<reference key="IBUIFontDescription" ref="372728630"/>
+										<reference key="IBUIFontDescription" ref="22686846"/>
 										<reference key="IBUIFont" ref="685496849"/>
 									</object>
 								</array>

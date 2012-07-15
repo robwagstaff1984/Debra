@@ -10,6 +10,7 @@
 #import "ShmykiContstants.h"
 #import <QuartzCore/QuartzCore.h>
 #import "DateDisplayHelper.h"
+#import "YourMykiCustomButton.h"
 
 @implementation MykiBalanceViewController
 
@@ -46,16 +47,14 @@
             self.tabBarItem.image = [UIImage imageNamed:@"images/TabInspectOff"];
         }
 
-        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] 
-                                                  initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self
-                                                  action:@selector(switchToLoginState)];
+        self.navigationItem.rightBarButtonItem = [YourMykiCustomButton createYourMykiBarButtonItemWithText:@"Edit" withTarget:self withAction:@selector(switchToLoginState)];
         self.navigationItem.rightBarButtonItem.enabled = NO;
         
         if([usernameTextField.text length] != 0 && [passwordTextField.text length] != 0) {
             [self retrieveMykiBalance];
         } else {
             [self switchToLoginState];
-            self.navigationItem.leftBarButtonItem = nil;
+           // self.navigationItem.leftBarButtonItem = nil;
         }
     }
     return self;
@@ -70,6 +69,7 @@
     textField.autocapitalizationType = UITextAutocapitalizationTypeNone;
     textField.text = userDetail;
     [textField setPlaceholder:defaultText];
+    textField.autocorrectionType = UITextAutocorrectionTypeNo;
 
     if(tag == PASSWORD_TEXTFIELD_TAG) {
        textField.secureTextEntry = YES;
@@ -271,9 +271,7 @@
     float position;
     if ([notification.name isEqualToString:UIKeyboardWillShowNotification]) {
         position = 224.0;
-        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] 
-                                                 initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self
-                                                 action:@selector(switchToSuccessState)];
+        self.navigationItem.rightBarButtonItem = [YourMykiCustomButton createYourMykiBarButtonItemWithText:@"Cancel" withTarget:self withAction:@selector(switchToSuccessState)];
     } else {
         position = 0.0;
     }
@@ -352,9 +350,9 @@
     [self drawBalanceViewGradientWithCornersWithActiveState:YES];
     self.balanceSeperatorImage.image = [UIImage imageNamed:@"images/BalanceLine.png"];
     [UIView commitAnimations];
-    self.navigationItem.leftBarButtonItem = nil;
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] 
-                                                initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(switchToLoginState)];
+   // self.navigationItem.leftBarButtonItem = nil;
+    self.navigationItem.rightBarButtonItem = [YourMykiCustomButton createYourMykiBarButtonItemWithText:@"Edit" withTarget:self withAction:@selector(switchToLoginState)];
+
     [self updateRefreshButton];
 }
 
@@ -367,10 +365,8 @@
     self.balanceSeperatorImage.image = [UIImage imageNamed:@"images/BalanceLineBlk.png"];
     [UIView commitAnimations];
     
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] 
-                                             initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self
-                                             action:@selector(switchToSuccessState)];
-    self.navigationItem.rightBarButtonItem = nil;
+    self.navigationItem.rightBarButtonItem = self.navigationItem.rightBarButtonItem = [YourMykiCustomButton createYourMykiBarButtonItemWithText:@"Cancel" withTarget:self withAction:@selector(switchToSuccessState)];
+   // self.navigationItem.rightBarButtonItem = nil;
 }
 
 -(void)switchToLoggingInState {
@@ -380,8 +376,8 @@
     self.errorView.frame = CGRectMake(0, 705, 320, 150);
     [self drawBalanceViewGradientWithCornersWithActiveState:NO];
     self.balanceSeperatorImage.image = [UIImage imageNamed:@"images/BalanceLineBlk.png"];
-    self.navigationItem.leftBarButtonItem = nil;
-    self.navigationItem.rightBarButtonItem = nil;
+    //self.navigationItem.leftBarButtonItem = nil;
+    self.navigationItem.rightBarButtonItem.enabled = NO;
     [UIView commitAnimations];
 }
 
@@ -393,11 +389,8 @@
     [self drawBalanceViewGradientWithCornersWithActiveState:NO];
     self.balanceSeperatorImage.image = [UIImage imageNamed:@"images/BalanceLineBlk.png"];
     [UIView commitAnimations];
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] 
-                                             initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self
-                                             action:@selector(switchToSuccessState)];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] 
-                                              initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(switchToLoginState)];
+  //  self.navigationItem.leftBarButtonItem = self.navigationItem.leftBarButtonItem = [YourMykiCustomButton createYourMykiBarButtonItemWithText:@"Cancel" withTarget:self withAction:@selector(switchToSuccessState)];
+    self.navigationItem.rightBarButtonItem = [YourMykiCustomButton createYourMykiBarButtonItemWithText:@"Edit" withTarget:self withAction:@selector(switchToLoginState)];
 }
 
 -(IBAction)tryAgainButtonTapped:(id)sender {
