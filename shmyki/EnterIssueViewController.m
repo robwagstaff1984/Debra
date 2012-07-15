@@ -126,7 +126,7 @@
 
 - (void)textViewDidChange:(UITextView *)textView {
 
-    if (commentsTextView.hasText){
+    if (commentsTextView.hasText && ![commentsTextView.text isEqualToString:PUNCH_ON_HINT_TEXT]){
        punchOnIsValid = YES;
        self.navigationItem.rightBarButtonItem.enabled = YES;
    } else {
@@ -177,6 +177,9 @@
 #pragma  mark helper methods 
 
 - (void) addHintTextToCommentsTextView {
+  //  [commentsTextView becomeFirstResponder];
+    [commentsTextView setUserInteractionEnabled:NO];
+    [commentsTextView becomeFirstResponder];
     commentsTextView.autocorrectionType = UITextAutocorrectionTypeNo;
     [commentsTextView setText: PUNCH_ON_HINT_TEXT];
     [commentsTextView setFont:[UIFont italicSystemFontOfSize:18.0f]];
@@ -185,6 +188,7 @@
 }
 
 - (void) removeHintTextToCommentsTextView {
+    [commentsTextView setUserInteractionEnabled:YES];
     commentsTextView.autocorrectionType = UITextAutocorrectionTypeDefault;
     [commentsTextView setText: @""];
     [commentsTextView setFont:[UIFont italicSystemFontOfSize:18.0f]];
