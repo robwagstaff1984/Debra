@@ -370,6 +370,7 @@
 }
 
 -(void)switchToLoggingInState {
+    self.navigationItem.rightBarButtonItem = [YourMykiCustomButton createYourMykiBarButtonItemWithText:@"Cancel" withTarget:self withAction:@selector(userCanceledLogin)];
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:.4];
     self.bottomView.frame = CGRectMake(0, 705, 320, 205);
@@ -377,7 +378,6 @@
     [self drawBalanceViewGradientWithCornersWithActiveState:NO];
     self.balanceSeperatorImage.image = [UIImage imageNamed:@"images/BalanceLineBlk.png"];
     //self.navigationItem.leftBarButtonItem = nil;
-    self.navigationItem.rightBarButtonItem.enabled = NO;
     [UIView commitAnimations];
 }
 
@@ -409,6 +409,15 @@
         [self.refreshButton setTitle: [NSString stringWithFormat:@"Last Updated %@", updatedDate] forState:UIControlStateNormal];
         [self.refreshButton setHidden:NO];
     }
+}
+
+-(void) userCanceledLogin {
+    [HUD hide:YES];
+    [mykiWebstiteWebView stopLoading];
+    self.userIsLoggedIn = NO;
+    [self switchToSuccessState];
+    self.navigationItem.rightBarButtonItem = [YourMykiCustomButton createYourMykiBarButtonItemWithText:@"Edit" withTarget:self withAction:@selector(switchToLoginState)];
+    [timer invalidate];
 }
    
 #pragma mark touch event
