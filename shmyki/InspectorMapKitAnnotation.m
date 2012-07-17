@@ -26,7 +26,7 @@
 
 - (NSString *)title
 {
-    return [NSString stringWithFormat:@"Inspector Spotted: %@",[DateDisplayHelper getDisplayForDate:spotDate forPage:YourMykiInspectorPage]];
+    return [NSString stringWithFormat:@"%@",[DateDisplayHelper getDisplayForDate:spotDate forPage:YourMykiInspectorPage]];
 }
 
 -(UIImage*) getPoiImageForTime {

@@ -25,7 +25,9 @@
 @property (nonatomic) NSInteger totalPunchOns;
 @property (nonatomic, strong) HelpImages *helpImages;
 @property (nonatomic, strong) IBOutlet UIButton *punchOnHelpImageButton;
+@property (nonatomic, strong) IBOutlet UIImageView *punchOnCoachMarks;
 @property (nonatomic, strong) IBOutlet UIView *tableFixedHeader;
+@property (nonatomic) BOOL showingCoachMarks;
 
 - (IBAction)punchOnButtonPressed:(id)sender;
 -(IBAction)punchOnHelpTapped:(id)sender;
