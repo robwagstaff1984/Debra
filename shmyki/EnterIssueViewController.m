@@ -117,6 +117,7 @@
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
     if ([textView.text isEqualToString:PUNCH_ON_HINT_TEXT]){ 
         [self removeHintTextToCommentsTextView];
+        return NO;
     } else if ([textView.text length] == 1 && [text isEqualToString:@""]){
         [self addHintTextToCommentsTextView];
         return NO;
@@ -177,19 +178,22 @@
 #pragma  mark helper methods 
 
 - (void) addHintTextToCommentsTextView {
-  //  [commentsTextView becomeFirstResponder];
     [commentsTextView setUserInteractionEnabled:NO];
-    [commentsTextView becomeFirstResponder];
+    [commentsTextView resignFirstResponder];
     commentsTextView.autocorrectionType = UITextAutocorrectionTypeNo;
+    [commentsTextView becomeFirstResponder];
     [commentsTextView setText: PUNCH_ON_HINT_TEXT];
     [commentsTextView setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:18.0f]];
 	[commentsTextView setTextColor:[UIColor lightGrayColor]];
     commentsTextView.selectedRange = NSMakeRange(0, 0);
+    
 }
 
 - (void) removeHintTextToCommentsTextView {
     [commentsTextView setUserInteractionEnabled:YES];
+    [commentsTextView resignFirstResponder];
     commentsTextView.autocorrectionType = UITextAutocorrectionTypeDefault;
+    [commentsTextView becomeFirstResponder];
     [commentsTextView setText: @""];
     [commentsTextView setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:18.0f]];
 	[commentsTextView setTextColor:[UIColor blackColor]];
