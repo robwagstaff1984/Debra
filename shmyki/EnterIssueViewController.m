@@ -125,7 +125,8 @@
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
     if ([textView.text isEqualToString:PUNCH_ON_HINT_TEXT]){ 
         [self removeHintTextToCommentsTextView];
-        return NO;
+        
+        return YES;
     } else if ([textView.text length] == 1 && [text isEqualToString:@""]){
         [self addHintTextToCommentsTextView];
         return NO;
