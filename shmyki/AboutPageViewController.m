@@ -91,7 +91,13 @@
 }
 
 -(IBAction)facebookButtonTapped:(id)sender {
-    
+    NSURL *url = [ [ NSURL alloc ] initWithString: @"fb://profile/451063014917607" ];
+    if ([[UIApplication sharedApplication] canOpenURL:url]) {
+        [[UIApplication sharedApplication] openURL:url];
+    } else {
+         url = [ [ NSURL alloc ] initWithString: @"http://www.facebook.com/pages/yourMyki/451063014917607" ];
+         [[UIApplication sharedApplication] openURL:url];
+    }
 }
 
 -(IBAction)webButtonTapped:(id)sender {
