@@ -1526,11 +1526,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "shmyki/AboutPageViewController.m"
-         timestampString = "364220720.363853"
+         timestampString = "364221713.724468"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "127"
-         endingLineNumber = "127"
+         startingLineNumber = "117"
+         endingLineNumber = "117"
          landmarkName = "-comingFeaturesButtonTapped:"
          landmarkType = "5">
       </FileBreakpoint>

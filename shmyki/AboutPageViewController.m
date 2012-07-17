@@ -67,26 +67,20 @@
 #pragma mark navigation
 
 -(void) cancelAboutPage {
-    
-    /*[UIView  beginAnimations:nil context:NULL];
-    [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
-    [UIView setAnimationDuration:0.75];
-    [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft forView:self.navigationController.view cache:NO];
-    [UIView commitAnimations];
-    
-    [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationDelay:0.375];
-    [self.navigationController popViewControllerAnimated:NO];
-    [UIView commitAnimations];
-    
-    NSViewAnimation*/
+
     [self.navigationController popViewControllerAnimated:YES];
-   // [self setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
-   // [self dismissModalViewControllerAnimated:YES];
 }
 
 #pragma mark IBActions
 -(IBAction)twitterButtonTapped:(id)sender {
+    NSURL *url = [NSURL URLWithString:@"twitter://yourMyki"];
+    [[UIApplication sharedApplication] openURL:url];
+    if ([[UIApplication sharedApplication] canOpenURL:url]) {
+        [[UIApplication sharedApplication] openURL:url];
+    } else {
+        url = [ [ NSURL alloc ] initWithString: @"http://twitter.com/yourMyki" ];
+        [[UIApplication sharedApplication] openURL:url];
+    }
     
 }
 
@@ -101,7 +95,8 @@
 }
 
 -(IBAction)webButtonTapped:(id)sender {
-    
+    NSURL *url = [ [ NSURL alloc ] initWithString: @"http://www.facebook.com/pages/yourMyki/451063014917607" ];
+    [[UIApplication sharedApplication] openURL:url];
 }
 
 -(IBAction)rateButtonTapped:(id)sender {
