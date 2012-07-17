@@ -29,6 +29,10 @@
                                                  selector:@selector(cancelTwitter) 
                                                      name:@"TwitterCancelled"
                                                    object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(cancelFacebook) 
+                                                     name:@"FacebookCancelled"
+                                                   object:nil];
     }
     return self;
 }
@@ -43,6 +47,10 @@
 
 -(void)cancelTwitter {
     [self.twitterButton setImage:[UIImage imageNamed: @"images/IconTwitterOff"] forState:UIControlStateNormal];
+}
+
+-(void)cancelFacebook {
+    [self.facebookButton setImage:[UIImage imageNamed: @"images/IconFacebookOff"] forState:UIControlStateNormal];
 }
 
 #pragma mark - View lifecycle

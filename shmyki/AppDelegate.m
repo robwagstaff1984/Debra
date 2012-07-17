@@ -125,6 +125,8 @@
 }
 
 - (void)fbDidNotLogin:(BOOL)cancelled {
+    self.isFaceBookRequired = NO;
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"FacebookCancelled" object:nil];
 }
 - (void)fbDidExtendToken:(NSString*)accessToken
                expiresAt:(NSDate*)expiresAt {

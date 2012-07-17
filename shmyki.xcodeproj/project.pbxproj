@@ -188,7 +188,7 @@
 		814B25B3158B61950067D161 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		814B25B5158B7A2A0067D161 /* MykiAccountInformation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MykiAccountInformation.h; sourceTree = "<group>"; };
 		814B25B6158B7A2A0067D161 /* MykiAccountInformation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MykiAccountInformation.m; sourceTree = "<group>"; };
-		815C19C6157F63AD0019419C /* shmyki.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = shmyki.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		815C19C6157F63AD0019419C /* yourMyki.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = yourMyki.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		815C19CA157F63AD0019419C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		815C19CC157F63AD0019419C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		815C19CE157F63AD0019419C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -459,7 +459,7 @@
 		815C19C7157F63AD0019419C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				815C19C6157F63AD0019419C /* shmyki.app */,
+				815C19C6157F63AD0019419C /* yourMyki.app */,
 				815C19F5157F63AD0019419C /* shmykiTests.octest */,
 			);
 			name = Products;
@@ -614,7 +614,7 @@
 			);
 			name = shmyki;
 			productName = shmyki;
-			productReference = 815C19C6157F63AD0019419C /* shmyki.app */;
+			productReference = 815C19C6157F63AD0019419C /* yourMyki.app */;
 			productType = "com.apple.product-type.application";
 		};
 		815C19F4157F63AD0019419C /* shmykiTests */ = {
@@ -874,7 +874,7 @@
 					"\"$(SRCROOT)/Twitter+OAuth/Libraries & Headers\"",
 				);
 				OTHER_LDFLAGS = "-fobjc-arc";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = yourMyki;
 				PROVISIONING_PROFILE = "505A1D85-1645-431F-9B49-BF9E173C8B88";
 				WRAPPER_EXTENSION = app;
 			};
@@ -899,7 +899,7 @@
 					"\"$(SRCROOT)/Twitter+OAuth/Libraries & Headers\"",
 				);
 				OTHER_LDFLAGS = "-fobjc-arc";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = yourMyki;
 				PROVISIONING_PROFILE = "505A1D85-1645-431F-9B49-BF9E173C8B88";
 				WRAPPER_EXTENSION = app;
 			};
