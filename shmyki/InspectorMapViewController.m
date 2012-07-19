@@ -108,6 +108,7 @@
                                                                                      reuseIdentifier:inspectorAnnotationIdentifier];
             
             customPinView.image = [(InspectorMapKitAnnotation*)annotation getPoiImageForTime];
+            customPinView.centerOffset = CGPointMake(0, POI_OFFSET_Y);
             customPinView.canShowCallout = YES;
 
             return customPinView;

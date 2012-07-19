@@ -74,6 +74,8 @@
 #define kOAuthConsumerKey				@"XpVsm04szjaPMBRuelQsQ"
 #define kOAuthConsumerSecret			@"BhYG56Bjlt7nlHL0JrVllZziH9dDCPB0GMUju7GIBM"
 
+#define POI_OFFSET_Y -14
+
 @interface ShmykiContstants
 
 
