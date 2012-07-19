@@ -466,7 +466,7 @@
     NSArray *tableHeaderSubViews = [[self.tableFixedHeader.subviews objectAtIndex:0] subviews];
     
     for (UIView* tableHeaderSubView in tableHeaderSubViews) {
-        if(tableHeaderSubView.tag != TAG_FOR_TABLE_HEADER_LABEL) {
+        if(tableHeaderSubView.tag == TAG_FOR_CLOSE_BUTTON_LABEL) {
             [tableHeaderSubView addGestureRecognizer:recognizer];
         }
     }
