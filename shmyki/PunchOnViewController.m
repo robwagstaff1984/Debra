@@ -462,25 +462,32 @@
 
 -(void) addGesturesToTableViewHeaderWithFadeEffect:(BOOL)fadeEffect {
     UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(toggleCommentsTableViewUpAndDown)];
-   // NSArray *tableHeaderSubViews = self.punchOnCommentsTableView.tableHeaderView.subviews;
     
     NSArray *tableHeaderSubViews = [[self.tableFixedHeader.subviews objectAtIndex:0] subviews];
-    if(fadeEffect) {
-        //self.punchOnCommentsTableView.tableHeaderView.alpha = 0;
-        self.tableFixedHeader.alpha = 0;
-        [UIView beginAnimations:nil context:NULL];
-        [UIView setAnimationDuration:.6f];
-//        self.punchOnCommentsTableView.tableHeaderView.alpha = 1;
-        self.tableFixedHeader.alpha =1;
-        [UIView commitAnimations];
-    }
+    
     for (UIView* tableHeaderSubView in tableHeaderSubViews) {
-        if(tableHeaderSubView.tag == TAG_FOR_CLOSE_BUTTON_LABEL) {
+        if(tableHeaderSubView.tag != TAG_FOR_TABLE_HEADER_LABEL) {
             [tableHeaderSubView addGestureRecognizer:recognizer];
         }
     }
+    
+    if(fadeEffect) {
+        
+        for (UIView* tableHeaderSubView in tableHeaderSubViews) {
+            if(tableHeaderSubView.tag != TAG_FOR_TABLE_HEADER_LABEL) {
+                tableHeaderSubView.alpha = 0;
+            }
+        }
+        [UIView beginAnimations:nil context:NULL];
+        [UIView setAnimationDuration:.6f];
+        
+        for (UIView* tableHeaderSubView in tableHeaderSubViews) {
+            if(tableHeaderSubView.tag != TAG_FOR_TABLE_HEADER_LABEL) {
+                tableHeaderSubView.alpha = 1;
+            }
+        }
+        [UIView commitAnimations];
+    }
 }
-
-
 
 @end

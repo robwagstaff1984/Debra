@@ -13,8 +13,15 @@
 
 +(UIView*) makeTableUpHeaderWith:(int)numberOfPunchOns {
     
-    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0,0,320,25)];
-                               
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0,0,320,29)];
+    
+    UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(20,4, 150, 25)];
+    headerLabel.text = @"Punch On Comments";
+    headerLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:14.0];
+    [headerLabel setTextColor:[UIColor grayColor]];
+    headerLabel.tag = TAG_FOR_TABLE_HEADER_LABEL;
+    headerLabel.userInteractionEnabled = NO;
+    
     UILabel *closeButton = [[UILabel alloc] initWithFrame:CGRectMake(263,4, 90, 25)];
     closeButton.text = @"close";
     closeButton.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:14.0];
@@ -33,18 +40,25 @@
 
     [headerView addSubview:closeButton];
     [headerView addSubview:closeButtonImage];
+    [headerView addSubview:headerLabel];
 
     return headerView;
 }
 
 +(UIView*) makeTableDownHeaderWith:(int)numberOfPunchOns {
     
-    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0,0,320,25)];
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0,0,320,29)];
     
     NSNumberFormatter *formatter = [NSNumberFormatter new];
     [formatter setNumberStyle:kCFNumberFormatterDecimalStyle]; // this line is important!
     NSString *numberOfPunchOnsFormatted = [formatter stringFromNumber:[NSNumber numberWithInteger:numberOfPunchOns]];
     
+    UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(20,4, 150, 25)];
+    headerLabel.text = @"Punch On Comments";
+    headerLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:14.0];
+    [headerLabel setTextColor:[UIColor grayColor]];
+    headerLabel.tag = TAG_FOR_TABLE_HEADER_LABEL;
+    headerLabel.userInteractionEnabled = NO;
     
     UILabel *closeButton = [[UILabel alloc] initWithFrame:CGRectMake(240,5, 90, 25)];
     closeButton.text = [NSString stringWithFormat:@"%@         ",numberOfPunchOnsFormatted];
@@ -65,6 +79,8 @@
     
     [headerView addSubview:closeButton];
     [headerView addSubview:closeButtonImage];
+    [headerView addSubview:headerLabel];
+    
     return headerView;
 }
 
