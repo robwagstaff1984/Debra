@@ -58,6 +58,7 @@
 						<string key="NSFrame">{{0, 235}, {320, 91}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -73,10 +74,10 @@
 							<object class="IBUIButton" id="152500744">
 								<reference key="NSNextResponder" ref="869157663"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{88, 28}, {144, 144}}</string>
+								<string key="NSFrame">{{105, 55}, {110, 110}}</string>
 								<reference key="NSSuperview" ref="869157663"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="754516668"/>
+								<reference key="NSNextKeyView" ref="648080152"/>
 								<string key="NSReuseIdentifierKey">_NS:225</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -91,7 +92,7 @@
 									<int key="NSColorSpace">1</int>
 									<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
 								</object>
-								<object class="NSColor" key="IBUINormalTitleShadowColor">
+								<object class="NSColor" key="IBUINormalTitleShadowColor" id="138238142">
 									<int key="NSColorSpace">3</int>
 									<bytes key="NSWhite">MC41AA</bytes>
 								</object>
@@ -104,11 +105,11 @@
 									<string key="NSClassName">NSImage</string>
 									<string key="NSResourceName">images/PunchOnButtonUp.png</string>
 								</object>
-								<object class="IBUIFontDescription" key="IBUIFontDescription">
+								<object class="IBUIFontDescription" key="IBUIFontDescription" id="548018118">
 									<int key="type">2</int>
 									<double key="pointSize">15</double>
 								</object>
-								<object class="NSFont" key="IBUIFont">
+								<object class="NSFont" key="IBUIFont" id="587504693">
 									<string key="NSName">Helvetica-Bold</string>
 									<double key="NSSize">15</double>
 									<int key="NSfFlags">16</int>
@@ -170,6 +171,47 @@
 						</object>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 					</object>
+					<object class="IBUIImageView" id="648080152">
+						<reference key="NSNextResponder" ref="191373211"/>
+						<int key="NSvFlags">-2147483356</int>
+						<string key="NSFrameSize">{320, 367}</string>
+						<reference key="NSSuperview" ref="191373211"/>
+						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView" ref="316217993"/>
+						<string key="NSReuseIdentifierKey">_NS:9</string>
+						<bool key="IBUIUserInteractionEnabled">NO</bool>
+						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+						<object class="NSCustomResource" key="IBUIImage">
+							<string key="NSClassName">NSImage</string>
+							<string key="NSResourceName">images/PunchOnCoachMarks.png</string>
+						</object>
+					</object>
+					<object class="IBUIButton" id="316217993">
+						<reference key="NSNextResponder" ref="191373211"/>
+						<int key="NSvFlags">-2147483356</int>
+						<string key="NSFrameSize">{320, 367}</string>
+						<reference key="NSSuperview" ref="191373211"/>
+						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView" ref="754516668"/>
+						<string key="NSReuseIdentifierKey">_NS:9</string>
+						<bool key="IBUIOpaque">NO</bool>
+						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+						<int key="IBUIContentHorizontalAlignment">0</int>
+						<int key="IBUIContentVerticalAlignment">0</int>
+						<bool key="IBUIAdjustsImageWhenHighlighted">NO</bool>
+						<reference key="IBUIHighlightedTitleColor" ref="753116461"/>
+						<object class="NSColor" key="IBUINormalTitleColor">
+							<int key="NSColorSpace">1</int>
+							<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
+						</object>
+						<reference key="IBUINormalTitleShadowColor" ref="138238142"/>
+						<object class="NSCustomResource" key="IBUINormalBackgroundImage">
+							<string key="NSClassName">NSImage</string>
+							<string key="NSResourceName">images/Welcome.png</string>
+						</object>
+						<reference key="IBUIFontDescription" ref="548018118"/>
+						<reference key="IBUIFont" ref="587504693"/>
+					</object>
 				</array>
 				<string key="NSFrame">{{0, 64}, {320, 367}}</string>
 				<reference key="NSSuperview"/>
@@ -222,6 +264,22 @@
 					<int key="connectionID">26</int>
 				</object>
 				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">punchOnHelpImageButton</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="316217993"/>
+					</object>
+					<int key="connectionID">37</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">punchOnCoachMarks</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="648080152"/>
+					</object>
+					<int key="connectionID">36</int>
+				</object>
+				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
 						<string key="label">punchOnButtonPressed:</string>
 						<reference key="source" ref="152500744"/>
@@ -246,6 +304,15 @@
 					</object>
 					<int key="connectionID">18</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">punchOnHelpTapped:</string>
+						<reference key="source" ref="316217993"/>
+						<reference key="destination" ref="372490531"/>
+						<int key="IBEventType">7</int>
+					</object>
+					<int key="connectionID">38</int>
+				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<array key="orderedObjects">
@@ -263,6 +330,8 @@
 							<reference ref="754516668"/>
 							<reference ref="869157663"/>
 							<reference ref="799691892"/>
+							<reference ref="648080152"/>
+							<reference ref="316217993"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -307,6 +376,7 @@
 					<object class="IBObjectRecord">
 						<int key="objectID">25</int>
 						<reference key="object" ref="713472577"/>
+						<array class="NSMutableArray" key="children"/>
 						<reference key="parent" ref="754516668"/>
 					</object>
 					<object class="IBObjectRecord">
@@ -317,6 +387,16 @@
 					<object class="IBObjectRecord">
 						<int key="objectID">32</int>
 						<reference key="object" ref="799691892"/>
+						<reference key="parent" ref="191373211"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">35</int>
+						<reference key="object" ref="316217993"/>
+						<reference key="parent" ref="191373211"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">34</int>
+						<reference key="object" ref="648080152"/>
 						<reference key="parent" ref="191373211"/>
 					</object>
 				</array>
@@ -333,6 +413,8 @@
 				<string key="25.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="27.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="32.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<string key="34.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<string key="35.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="4.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<real value="0.0" key="4.IBUIButtonInspectorSelectedStateConfigurationMetadataKey"/>
 			</dictionary>
@@ -340,19 +422,39 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">32</int>
+			<int key="maxID">38</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
 				<object class="IBPartialClassDescription">
 					<string key="className">PunchOnViewController</string>
 					<string key="superclassName">UIViewController</string>
+					<dictionary class="NSMutableDictionary" key="actions">
+						<string key="punchOnButtonPressed:">id</string>
+						<string key="punchOnHelpTapped:">id</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="actionInfosByName">
+						<object class="IBActionInfo" key="punchOnButtonPressed:">
+							<string key="name">punchOnButtonPressed:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="punchOnHelpTapped:">
+							<string key="name">punchOnHelpTapped:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="punchOnCoachMarks">UIImageView</string>
 						<string key="punchOnCommentsTableView">UITableView</string>
 						<string key="punchOnCommentsView">UIView</string>
+						<string key="punchOnHelpImageButton">UIButton</string>
 						<string key="tableFixedHeader">UIView</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="punchOnCoachMarks">
+							<string key="name">punchOnCoachMarks</string>
+							<string key="candidateClassName">UIImageView</string>
+						</object>
 						<object class="IBToOneOutletInfo" key="punchOnCommentsTableView">
 							<string key="name">punchOnCommentsTableView</string>
 							<string key="candidateClassName">UITableView</string>
@@ -360,6 +462,10 @@
 						<object class="IBToOneOutletInfo" key="punchOnCommentsView">
 							<string key="name">punchOnCommentsView</string>
 							<string key="candidateClassName">UIView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="punchOnHelpImageButton">
+							<string key="name">punchOnHelpImageButton</string>
+							<string key="candidateClassName">UIButton</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="tableFixedHeader">
 							<string key="name">tableFixedHeader</string>
@@ -385,7 +491,9 @@
 			<string key="images/PunchOnBG.png">{16, 16}</string>
 			<string key="images/PunchOnButtonDown.png">{16, 16}</string>
 			<string key="images/PunchOnButtonUp.png">{16, 16}</string>
+			<string key="images/PunchOnCoachMarks.png">{16, 16}</string>
 			<string key="images/PunchOnYourMyki.png">{16, 16}</string>
+			<string key="images/Welcome.png">{16, 16}</string>
 		</dictionary>
 		<string key="IBCocoaTouchPluginVersion">1181</string>
 	</data>

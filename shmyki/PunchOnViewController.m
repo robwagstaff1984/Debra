@@ -21,14 +21,14 @@
 #import "DateDisplayHelper.h"
 
 @implementation PunchOnViewController
-@synthesize punchOnCommentsView, punchOnCommentsTableView, listOfPunchOnLogs, totalPunchOns, tableFixedHeader;
+@synthesize punchOnCommentsView, punchOnCommentsTableView, listOfPunchOnLogs, totalPunchOns, tableFixedHeader, helpImages, punchOnCoachMarks, punchOnHelpImageButton, showingCoachMarks;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         
-        [self.tabBarItem setTitle:@"Punch On"];
+        [self.tabBarItem setTitle:@"yourVoice"];
         [[self navigationItem] setTitle:APP_NAME];
         if ([self.tabBarItem respondsToSelector:@selector(setFinishedSelectedImage:withFinishedUnselectedImage:)] ==YES) {
             [self.tabBarItem setFinishedSelectedImage:[UIImage imageNamed:@"images/TabPunchOn"] withFinishedUnselectedImage:[UIImage imageNamed:@"images/TabPunchOff"]];
@@ -73,6 +73,14 @@
     [punchOnCommentsView addGestureRecognizer:_panGestureUpRecognizerForCommentsView];
     
     self.listOfPunchOnLogs = [[PunchOnLogsCache sharedModel] loadPunchOnLogsCache];
+    
+    self.helpImages = [[HelpImages alloc] init];
+    [self.helpImages loadHelpImageRequiredInfo];
+    
+    //   self.helpImages.isPunchOnHelpAlreadySeen = NO;
+    if (!self.helpImages.isPunchOnHelpAlreadySeen) {
+        [self showPunchOnHelp];
+    }
     
     self.punchOnCommentsView.layer.shadowColor = [[UIColor blackColor] CGColor];
     self.punchOnCommentsView.layer.shadowOffset = CGSizeMake(0.0f, -2.0f);
@@ -422,6 +430,64 @@
         }
         [UIView commitAnimations];
     }
+}
+
+
+#pragma mark coach marks
+
+-(IBAction)punchOnHelpTapped:(id)sender {
+    [self hidePunchOnHelp];
+    self.helpImages.isPunchOnHelpAlreadySeen = YES;
+    [self.helpImages saveHelpImageRequiredInfo];
+}
+
+-(void) hidePunchOnHelp {
+    
+    [UIView animateWithDuration:.3 animations:^(void){
+        [self.punchOnHelpImageButton setAlpha:0.0];
+    }
+                     completion:^(BOOL finished){[self.punchOnHelpImageButton setHidden:TRUE];}
+     ];
+    [self showPunchOnCoachMarks];
+    [self hidePunchOnCoachMarksWithDelay:3.0 WithDuration:2.0];
+    
+}
+
+-(void) showPunchOnHelp {
+    [self.punchOnHelpImageButton setAlpha:0.0];
+    [self.punchOnHelpImageButton setHidden:FALSE];
+    [UIView animateWithDuration:.5 delay:.5 options:UIViewAnimationOptionTransitionCrossDissolve animations:^(void){
+        [self.punchOnHelpImageButton setAlpha:1.0];
+    } completion:nil];
+    
+}
+
+-(void) hidePunchOnCoachMarksWithDelay:(float) delay WithDuration:(float) duration{
+    
+    [self.punchOnHelpImageButton setHidden:FALSE];
+    //  [self.punchOnCoachMarks setAlpha:1.0];
+    [UIView animateWithDuration:duration delay:delay options:UIViewAnimationOptionTransitionCrossDissolve animations:^(void){
+        [self.punchOnCoachMarks setAlpha:0.0];
+    } completion:^(BOOL finished){
+        NSLog(@"hidePunchOn");
+        self.showingCoachMarks = NO;
+        // [self.punchOnCoachMarks setHidden:TRUE];
+    }];
+}
+
+-(void) showPunchOnCoachMarks {
+    
+    [self.punchOnCoachMarks setHidden:FALSE];
+    [self.punchOnCoachMarks setAlpha:1.0];
+    self.showingCoachMarks = YES;
+    NSLog(@"showPunchOn");
+    //    [self.punchOnCoachMarks setAlpha:0.0];
+    //    [self.punchOnCoachMarks setHidden:FALSE];
+    //    self.showingCoachMarks = YES;
+    //    [UIView animateWithDuration:.5 delay:0 options:UIViewAnimationOptionTransitionCrossDissolve animations:^(void){
+    //        [self.punchOnCoachMarks setAlpha:1.0];
+    //    } completion:nil];
+    
 }
 
 @end
