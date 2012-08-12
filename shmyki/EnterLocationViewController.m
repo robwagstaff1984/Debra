@@ -36,8 +36,6 @@
     
     self.navigationItem.leftBarButtonItem = [YourMykiCustomButton createYourMykiBarButtonItemWithText:@"Cancel" withTarget:self withAction:@selector(popNavigationController)];
     
-    self.navigationItem.rightBarButtonItem = [YourMykiCustomButton createYourMykiBarButtonItemWithText:@"Skip" withTarget:self withAction:@selector(savePunchOnLog)];
-    
     self.stationsSearchBar.delegate = self;
     self.stationsSearchBar.placeholder = @"Search Trams";
     self.navigationItem.title = @"yourLocation";
@@ -60,6 +58,7 @@
 -(void) popNavigationController {
     [self.navigationController popViewControllerAnimated:YES];
 }
+
 #pragma mark tableView data source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -206,17 +205,6 @@
 }
 
 #pragma mark Actions
-
--(void) savePunchOnLog {
-    [[(AppDelegate*)[[UIApplication sharedApplication] delegate] currentUsersPunchOnLog] setLocation:selectedLocation];
-    
-    [(AppDelegate*)[[UIApplication sharedApplication] delegate] postToFacebook];
-    [(AppDelegate*)[[UIApplication sharedApplication] delegate] postToTwitter];
-    [(AppDelegate*)[[UIApplication sharedApplication] delegate] saveCurrentUsersPunchOnLog];
-    
-    [self.navigationController popToRootViewControllerAnimated:YES];
-    
-}
 
 - (IBAction)tramButtonTapped:(id)sender {
     self.selectedTransportType = SELECTED_TRANSPORT_TRAM;

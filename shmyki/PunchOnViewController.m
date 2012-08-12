@@ -21,7 +21,7 @@
 #import "DateDisplayHelper.h"
 
 @implementation PunchOnViewController
-@synthesize punchOnCommentsView, punchOnCommentsTableView, listOfPunchOnLogs, totalPunchOns, helpImages, punchOnHelpImageButton, punchOnCoachMarks, tableFixedHeader, showingCoachMarks;
+@synthesize punchOnCommentsView, punchOnCommentsTableView, listOfPunchOnLogs, totalPunchOns, tableFixedHeader;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -74,14 +74,6 @@
     
     self.listOfPunchOnLogs = [[PunchOnLogsCache sharedModel] loadPunchOnLogsCache];
     
-    self.helpImages = [[HelpImages alloc] init];
-    [self.helpImages loadHelpImageRequiredInfo];
- 
- //   self.helpImages.isPunchOnHelpAlreadySeen = NO;
-    if (!self.helpImages.isPunchOnHelpAlreadySeen) {
-        [self showPunchOnHelp];
-    }
-    
     self.punchOnCommentsView.layer.shadowColor = [[UIColor blackColor] CGColor];
     self.punchOnCommentsView.layer.shadowOffset = CGSizeMake(0.0f, -2.0f);
     self.punchOnCommentsView.layer.shadowOpacity = .15f;
@@ -127,69 +119,14 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-#pragma mark IBActions
 - (IBAction)punchOnButtonPressed:(id)sender {
     UIViewController *enterIssueViewController = [[EnterIssueViewController alloc] initWithNibName:@"EnterIssueViewController" bundle:nil];
     
     UINavigationController *enterIssueVNavController = [[UINavigationController alloc] initWithRootViewController:enterIssueViewController];
     [self.navigationController presentModalViewController:enterIssueVNavController animated:YES];
- //   [self.navigationController pushViewController:enterIssueViewController animated:YES];
+    //   [self.navigationController pushViewController:enterIssueViewController animated:YES];
 }
 
--(IBAction)punchOnHelpTapped:(id)sender {
-    [self hidePunchOnHelp];
-    self.helpImages.isPunchOnHelpAlreadySeen = YES;
-    [self.helpImages saveHelpImageRequiredInfo];
-}
-
--(void) hidePunchOnHelp {
-
-    [UIView animateWithDuration:.3 animations:^(void){
-        [self.punchOnHelpImageButton setAlpha:0.0];
-    }
-                     completion:^(BOOL finished){[self.punchOnHelpImageButton setHidden:TRUE];}
-     ];
-    [self showPunchOnCoachMarks];
-    [self hidePunchOnCoachMarksWithDelay:3.0 WithDuration:2.0];
-    
-}
-
--(void) showPunchOnHelp {
-    [self.punchOnHelpImageButton setAlpha:0.0];
-    [self.punchOnHelpImageButton setHidden:FALSE];
-    [UIView animateWithDuration:.5 delay:.5 options:UIViewAnimationOptionTransitionCrossDissolve animations:^(void){
-        [self.punchOnHelpImageButton setAlpha:1.0];
-    } completion:nil];
-
-}
-
--(void) hidePunchOnCoachMarksWithDelay:(float) delay WithDuration:(float) duration{
-    
-    [self.punchOnHelpImageButton setHidden:FALSE];
-  //  [self.punchOnCoachMarks setAlpha:1.0];
-    [UIView animateWithDuration:duration delay:delay options:UIViewAnimationOptionTransitionCrossDissolve animations:^(void){
-        [self.punchOnCoachMarks setAlpha:0.0];
-    } completion:^(BOOL finished){
-        NSLog(@"hidePunchOn");
-        self.showingCoachMarks = NO;
-       // [self.punchOnCoachMarks setHidden:TRUE];
-    }];
-}
-
--(void) showPunchOnCoachMarks {
-    
-    [self.punchOnCoachMarks setHidden:FALSE];
-    [self.punchOnCoachMarks setAlpha:1.0];
-    self.showingCoachMarks = YES;
-     NSLog(@"showPunchOn");
-//    [self.punchOnCoachMarks setAlpha:0.0];
-//    [self.punchOnCoachMarks setHidden:FALSE];
-//    self.showingCoachMarks = YES;
-//    [UIView animateWithDuration:.5 delay:0 options:UIViewAnimationOptionTransitionCrossDissolve animations:^(void){
-//        [self.punchOnCoachMarks setAlpha:1.0];
-//    } completion:nil];
-    
-}
 
 #pragma mark about page
 
@@ -282,10 +219,7 @@
 
 #pragma mark custom pans
 - (void)handleCustomUpPan:(UIPanGestureRecognizer *)sender {
-    if(showingCoachMarks) {
-        [punchOnCoachMarks setHidden:YES];
-        showingCoachMarks = NO;
-    }
+
     CGPoint punchOnCommentsLocation = punchOnCommentsView.center;
     
     switch (sender.state) {
