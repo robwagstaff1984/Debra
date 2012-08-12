@@ -40,7 +40,7 @@
         passwordTextField.clearsOnBeginEditing = NO;
         
         [self setTitle:@"Balances"];
-        [self.navigationItem setTitle:@"yourMyki"];
+        [self.navigationItem setTitle:@"yourBalance"];
         if ([self.tabBarItem respondsToSelector:@selector(setFinishedSelectedImage:withFinishedUnselectedImage:)] ==YES) {
             [self.tabBarItem setFinishedSelectedImage:[UIImage imageNamed:@"images/TabBalanceOn"] withFinishedUnselectedImage:[UIImage imageNamed:@"images/TabBalanceOff"]];
         } else {

@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "StationLocations.h"
 
-@interface EnterLocationViewController : UIViewController <UITableViewDataSource, UITableViewDelegate> {
+@interface EnterLocationViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate> {
     NSIndexPath* lastIndexPath; 
 }
 

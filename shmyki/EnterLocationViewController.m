@@ -10,6 +10,7 @@
 #import "ShmykiContstants.h"
 #import "AppDelegate.h"
 #import "Parse/Parse.h"
+#import "YourMykiCustomButton.h"
 
 @implementation EnterLocationViewController
 
@@ -32,9 +33,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] 
-                                              initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self
-                                              action:@selector(savePunchOnLog)];
+    
+    self.navigationItem.leftBarButtonItem = [YourMykiCustomButton createYourMykiBarButtonItemWithText:@"Cancel" withTarget:self withAction:@selector(popNavigationController)];
+    
+    self.navigationItem.rightBarButtonItem = [YourMykiCustomButton createYourMykiBarButtonItemWithText:@"Skip" withTarget:self withAction:@selector(savePunchOnLog)];
+    
+    self.stationsSearchBar.delegate = self;
+    self.stationsSearchBar.placeholder = @"Search Trams";
+    self.navigationItem.title = @"yourLocation";
     //self.navigationItem.rightBarButtonItem.enabled = NO;
     // Do any additional setup after loading the view from its nib.
 }
@@ -51,6 +57,9 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+-(void) popNavigationController {
+    [self.navigationController popViewControllerAnimated:YES];
+}
 #pragma mark tableView data source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -121,26 +130,38 @@
 
 - (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
     
-    [UIView animateWithDuration:.3 animations:^(void){
+  //  NSLog(@"%@", [searchBar tintColor]);
+    [UIView animateWithDuration:.2 animations:^(void){
             [self.stationsSearchBar setFrame:CGRectMake(0, searchBar.frame.origin.y, 320, 44)];
             
         } 
         completion:^(BOOL finished){
-            [stationsSearchBar setShowsCancelButton:YES animated:YES];
+           
+            //[stationsSearchBar setShowsCancelButton:YES animated:YES];
         }
      ];
-
+    [stationsSearchBar setShowsCancelButton:YES animated:YES];
+    UIButton *cancelButton = [[stationsSearchBar subviews] objectAtIndex:2]; 
+   
+    cancelButton.tintColor = [UIColor colorWithHue:0.6 saturation:0.20 brightness:0.67 alpha:1.0];
+//     cancelButton.tintColor=[UIColor colorWithHue:150 saturation:150 brightness:30 alpha:1];
+  //  cancelButton.tintColor = [UIColor blueColor];
+   // cancelButton.tintColor=[UIColor colorWithRed:0.976471 green:0.976471 blue:0.976471 alpha:1];
+  //  [[UIButton appearanceWhenContainedIn:[self.stationsSearchBar class], nil] setBackgroundImage:[UIImage imageNamed:@"images/ButtonHeader"] forState:UIControlStateNormal];
+    
 }
 
 - (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar {
-    [UIView animateWithDuration:.3 animations:^(void){
-            [self.stationsSearchBar setFrame:CGRectMake(180, searchBar.frame.origin.y, 140, 44)];
+    [UIView animateWithDuration:.2 animations:^(void){
+            [self.stationsSearchBar setFrame:CGRectMake(140, searchBar.frame.origin.y, 180, 44)];
         }
         completion:^(BOOL finished){
-            [stationsSearchBar setShowsCancelButton:YES animated:NO];
+            //[stationsSearchBar setShowsCancelButton:YES animated:NO];
         }
     ];
+    
 }
+
 
 -(void)searchBar:(UISearchBar*)searchBar textDidChange:(NSString*)text
 {
@@ -168,6 +189,20 @@
         [searchBar resignFirstResponder];
     }
     return YES;
+}
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
+{
+    searchBar.text = @"";
+    [stationsSearchBar setShowsCancelButton:NO animated:YES];
+    [UIView animateWithDuration:.2 animations:^(void){
+        [self.stationsSearchBar setFrame:CGRectMake(140, searchBar.frame.origin.y, 180, 44)];
+    }
+         completion:^(BOOL finished){
+             [searchBar resignFirstResponder];
+         }
+    ];
+    
 }
 
 #pragma mark Actions
@@ -218,16 +253,19 @@
             self.tramButton.selected=YES;
             self.trainButton.selected=NO;
             self.busButton.selected=NO;
+            self.stationsSearchBar.placeholder = @"Search Trams";
             break;
         case SELECTED_TRANSPORT_TRAIN:
             self.tramButton.selected=NO;
             self.trainButton.selected=YES;
             self.busButton.selected=NO;
+            self.stationsSearchBar.placeholder = @"Search Trains";
             break;
         case SELECTED_TRANSPORT_BUS:
             self.tramButton.selected=NO;
             self.trainButton.selected=NO;
             self.busButton.selected=YES;
+            self.stationsSearchBar.placeholder = @"Search Buses";
         default:
             break;
     }

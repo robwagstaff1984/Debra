@@ -20,7 +20,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        [self.navigationItem setTitle:@"yourMyki"];
+        [self.navigationItem setTitle:@"yourVoice"];
         punchOnIssues = [[PunchOnIssues alloc] init];
         punchOnIsValid = NO;
        // [[NSNotificationCenter defaultCenter] addObserver:self forKeyPath:@"TwitterCancelled" options:nil context:nil];
@@ -81,7 +81,7 @@
 
 -(void)viewWillAppear:(BOOL)animated {
     self.navigationItem.hidesBackButton = YES;
-    self.navigationItem.leftBarButtonItem = [YourMykiCustomButton createYourMykiBarButtonItemWithText:@"Cancel" withTarget:self withAction:@selector(popNavigationController)];;
+    self.navigationItem.leftBarButtonItem = [YourMykiCustomButton createYourMykiBarButtonItemWithText:@"Cancel" withTarget:self withAction:@selector(popNavigationController)];
     [super viewWillAppear:animated];
 }
 
@@ -155,7 +155,7 @@
     [[(AppDelegate*)[[UIApplication sharedApplication]delegate] currentUsersPunchOnLog] setMessage:savedComment];
     [(AppDelegate*)[[UIApplication sharedApplication] delegate] postToFacebook];
     [(AppDelegate*)[[UIApplication sharedApplication] delegate] postToTwitter];
-    [(AppDelegate*)[[UIApplication sharedApplication] delegate] saveCurrentUsersPunchOnLog];
+    //[(AppDelegate*)[[UIApplication sharedApplication] delegate] saveCurrentUsersPunchOnLog];
     
     
     UIViewController *enterLocationViewController = [[EnterLocationViewController alloc] initWithNibName:@"EnterLocationViewController" bundle:nil];
