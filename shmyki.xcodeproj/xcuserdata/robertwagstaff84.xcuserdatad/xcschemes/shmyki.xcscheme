@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "815C19C5157F63AD0019419C"
-               BuildableName = "shmyki.app"
+               BuildableName = "yourMyki.app"
                BlueprintName = "shmyki"
                ReferencedContainer = "container:shmyki.xcodeproj">
             </BuildableReference>
@@ -43,7 +43,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "815C19C5157F63AD0019419C"
-            BuildableName = "shmyki.app"
+            BuildableName = "yourMyki.app"
             BlueprintName = "shmyki"
             ReferencedContainer = "container:shmyki.xcodeproj">
          </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "815C19C5157F63AD0019419C"
-            BuildableName = "shmyki.app"
+            BuildableName = "yourMyki.app"
             BlueprintName = "shmyki"
             ReferencedContainer = "container:shmyki.xcodeproj">
          </BuildableReference>
@@ -80,7 +80,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "815C19C5157F63AD0019419C"
-            BuildableName = "shmyki.app"
+            BuildableName = "yourMyki.app"
             BlueprintName = "shmyki"
             ReferencedContainer = "container:shmyki.xcodeproj">
          </BuildableReference>

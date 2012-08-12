@@ -1547,5 +1547,44 @@
          landmarkName = "-initWithNibName:bundle:"
          landmarkType = "5">
       </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "shmyki/EnterLocationViewController.m"
+         timestampString = "366440036.45847"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "218"
+         endingLineNumber = "218"
+         landmarkName = "-updateTransportButtons"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "shmyki/EnterLocationViewController.m"
+         timestampString = "366440041.088965"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "223"
+         endingLineNumber = "223"
+         landmarkName = "-updateTransportButtons"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "shmyki/EnterLocationViewController.m"
+         timestampString = "366440051.06432"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "216"
+         endingLineNumber = "216"
+         landmarkName = "-updateTransportButtons"
+         landmarkType = "5">
+      </FileBreakpoint>
    </FileBreakpoints>
 </Bucket>

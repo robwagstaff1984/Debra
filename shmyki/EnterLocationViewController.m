@@ -185,6 +185,7 @@
 
 - (IBAction)tramButtonTapped:(id)sender {
     self.selectedTransportType = SELECTED_TRANSPORT_TRAM;
+    [self updateTransportButtons];
     self.stationsForCurrentSelection = [stationLocations getStationsForSelectedTransport:selectedTransportType];
     self.filteredStationsForCurrentSelection = nil;
     self.stationsSearchBar.text = @"";
@@ -192,7 +193,9 @@
     [self.stationsTable reloadData];
 }
 - (IBAction)trainButtonTapped:(id)sender {
+    
     self.selectedTransportType = SELECTED_TRANSPORT_TRAIN;
+    [self updateTransportButtons];
     self.stationsForCurrentSelection = [stationLocations getStationsForSelectedTransport:selectedTransportType];
     self.filteredStationsForCurrentSelection = nil;
     self.stationsSearchBar.text = @"";
@@ -201,11 +204,34 @@
 }
 - (IBAction)busButtonTapped:(id)sender {
     self.selectedTransportType = SELECTED_TRANSPORT_BUS;
+    [self updateTransportButtons];
     self.stationsForCurrentSelection = [stationLocations getStationsForSelectedTransport:selectedTransportType];
     self.filteredStationsForCurrentSelection = nil;
     self.stationsSearchBar.text = @"";
     [self.stationsSearchBar resignFirstResponder];
     [self.stationsTable reloadData];
 }
+
+-(void) updateTransportButtons {
+    switch (self.selectedTransportType) {
+        case SELECTED_TRANSPORT_TRAM:
+            self.tramButton.selected=YES;
+            self.trainButton.selected=NO;
+            self.busButton.selected=NO;
+            break;
+        case SELECTED_TRANSPORT_TRAIN:
+            self.tramButton.selected=NO;
+            self.trainButton.selected=YES;
+            self.busButton.selected=NO;
+            break;
+        case SELECTED_TRANSPORT_BUS:
+            self.tramButton.selected=NO;
+            self.trainButton.selected=NO;
+            self.busButton.selected=YES;
+        default:
+            break;
+    }
+}
+
 
 @end
