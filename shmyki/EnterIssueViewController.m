@@ -157,7 +157,10 @@
     [(AppDelegate*)[[UIApplication sharedApplication] delegate] postToTwitter];
     [(AppDelegate*)[[UIApplication sharedApplication] delegate] saveCurrentUsersPunchOnLog];
     
-    [self.navigationController dismissModalViewControllerAnimated:YES];
+    
+    UIViewController *enterLocationViewController = [[EnterLocationViewController alloc] initWithNibName:@"EnterLocationViewController" bundle:nil];
+    [self.navigationController pushViewController:enterLocationViewController animated:YES];
+    //[self.navigationController dismissModalViewControllerAnimated:YES];
     //[self.navigationController popToRootViewControllerAnimated:YES];
     
 }

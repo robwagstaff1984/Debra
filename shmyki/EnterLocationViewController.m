@@ -119,6 +119,29 @@
 
 #pragma mark search bar delegate
 
+- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
+    
+    [UIView animateWithDuration:.3 animations:^(void){
+            [self.stationsSearchBar setFrame:CGRectMake(0, searchBar.frame.origin.y, 320, 44)];
+            
+        } 
+        completion:^(BOOL finished){
+            [stationsSearchBar setShowsCancelButton:YES animated:YES];
+        }
+     ];
+
+}
+
+- (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar {
+    [UIView animateWithDuration:.3 animations:^(void){
+            [self.stationsSearchBar setFrame:CGRectMake(180, searchBar.frame.origin.y, 140, 44)];
+        }
+        completion:^(BOOL finished){
+            [stationsSearchBar setShowsCancelButton:YES animated:NO];
+        }
+    ];
+}
+
 -(void)searchBar:(UISearchBar*)searchBar textDidChange:(NSString*)text
 {
     if(text.length == 0)
