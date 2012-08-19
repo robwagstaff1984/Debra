@@ -87,12 +87,11 @@
     if(cell == nil) {
         cell= [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault 
                                     reuseIdentifier:cellIdentifier];
-        
-        
-        [cell.textLabel setFont:[UIFont systemFontOfSize:14.0f]];
-        [cell.textLabel setTextColor:[UIColor grayColor]];
-        cell.selectionStyle = UITableViewCellSelectionStyleGray;
     }
+    
+    [cell.textLabel setFont:[UIFont systemFontOfSize:14.0f]];
+    [cell.textLabel setTextColor:[UIColor grayColor]];
+    cell.selectionStyle = UITableViewCellSelectionStyleGray;
 
     if(isFiltered) {
         cell.textLabel.text = [self.filteredStationsForCurrentSelection objectAtIndex:indexPath.row];

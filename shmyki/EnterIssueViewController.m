@@ -62,8 +62,9 @@
    // [commentsTextView becomeFirstResponder];
     [self addHintTextToCommentsTextView];
     [commentsTextView resignFirstResponder];
+    [commentsTextView setUserInteractionEnabled:YES];
     
-    self.navigationItem.rightBarButtonItem = [YourMykiCustomButton createYourMykiBarButtonItemWithText:@"Done" withTarget:self withAction:@selector(issueEntered)];
+    self.navigationItem.rightBarButtonItem = [YourMykiCustomButton createYourMykiBarButtonItemWithText:@"Save" withTarget:self withAction:@selector(issueEntered)];
     self.navigationItem.rightBarButtonItem.enabled = NO;
     //self.navigationItem.leftBarButtonItem.style = UIBarButtonSystemItemCancel;
     
@@ -120,10 +121,11 @@
         cell= [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault 
                                      reuseIdentifier:cellIdentifier];
         
-        [cell.textLabel setFont:[UIFont systemFontOfSize:14.0f]];
-        [cell.textLabel setTextColor:[UIColor grayColor]];
-        cell.textLabel.text = [self.punchOnIssues.issues objectAtIndex:indexPath.row];
     }
+    [cell.textLabel setFont:[UIFont systemFontOfSize:14.0f]];
+    [cell.textLabel setTextColor:[UIColor grayColor]];
+    cell.textLabel.text = [self.punchOnIssues.issues objectAtIndex:indexPath.row];
+
     
     return cell;
 }
@@ -146,8 +148,12 @@
     [[tableView cellForRowAtIndexPath:indexPath] setSelected:NO animated:YES];
     
     if(indexPath.row != 0) {
-        UIViewController *enterLocationViewController = [[EnterLocationViewController alloc] initWithNibName:@"EnterLocationViewController" bundle:nil];
-        [self.navigationController pushViewController:enterLocationViewController animated:YES];
+        double delayInSeconds = .4;
+        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+            UIViewController *enterLocationViewController = [[EnterLocationViewController alloc] initWithNibName:@"EnterLocationViewController" bundle:nil];
+            [self.navigationController pushViewController:enterLocationViewController animated:YES];
+        });
     }
 }
 
@@ -174,13 +180,44 @@
 
 - (void)textViewDidChange:(UITextView *)textView {
 
-    if (commentsTextView.hasText && ![commentsTextView.text isEqualToString:PUNCH_ON_HINT_TEXT]){
+   /* if (commentsTextView.hasText && ![commentsTextView.text isEqualToString:PUNCH_ON_HINT_TEXT]){
        punchOnIsValid = YES;
        self.navigationItem.rightBarButtonItem.enabled = YES;
    } else {
        punchOnIsValid = NO;
        self.navigationItem.rightBarButtonItem.enabled = NO;
-   }
+   }*/
+}
+
+- (void)textViewDidBeginEditing:(UITextView *)textView {
+    self.navigationItem.leftBarButtonItem = nil;
+
+    self.navigationItem.rightBarButtonItem = [YourMykiCustomButton createYourMykiBarButtonItemWithText:@"Done" withTarget:self withAction:@selector(doneAddingComments)];
+    self.navigationItem.rightBarButtonItem.enabled = YES;
+    
+    
+    if ([textView.text isEqualToString:PUNCH_ON_HINT_TEXT]){ 
+        [self removeHintTextToCommentsTextView];
+    }
+}
+
+-(void) textViewDidEndEditing:(UITextView *)textView { 
+
+}
+
+-(void) doneAddingComments {
+
+    [commentsTextView resignFirstResponder];
+    self.navigationItem.rightBarButtonItem = [YourMykiCustomButton createYourMykiBarButtonItemWithText:@"Save" withTarget:self withAction:@selector(issueEntered)];
+    self.navigationItem.leftBarButtonItem = [YourMykiCustomButton createYourMykiBarButtonItemWithText:@"Cancel" withTarget:self withAction:@selector(popNavigationController)];
+    
+    if([commentsTextView.text length] > 0) {
+        self.navigationItem.rightBarButtonItem.enabled = YES;
+    } else {
+        self.navigationItem.rightBarButtonItem.enabled = NO;
+        [self addHintTextToCommentsTextView];
+    }
+    [commentsTextView resignFirstResponder];
 }
                                                                    
 #pragma mark actions
@@ -228,7 +265,6 @@
 #pragma  mark helper methods 
 
 - (void) addHintTextToCommentsTextView {
-    [commentsTextView setUserInteractionEnabled:NO];
     [commentsTextView resignFirstResponder];
     commentsTextView.autocorrectionType = UITextAutocorrectionTypeNo;
     [commentsTextView becomeFirstResponder];
@@ -240,7 +276,7 @@
 }
 
 - (void) removeHintTextToCommentsTextView {
-    [commentsTextView setUserInteractionEnabled:YES];
+//    [commentsTextView setUserInteractionEnabled:YES];
     [commentsTextView resignFirstResponder];
     commentsTextView.autocorrectionType = UITextAutocorrectionTypeDefault;
     [commentsTextView becomeFirstResponder];
