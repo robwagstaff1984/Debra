@@ -18,11 +18,12 @@
     
     if (self != nil) {
         issues = [[NSMutableArray alloc] init];
-        [issues addObject:@"Generally unhappy with Myki"];
-        [issues addObject:@"Generally happy with Myki"];
-        [issues addObject:@"Myki machine was broken"];
+        [issues addObject:@"I just want to rant"];
+        [issues addObject:@"The tap machine didn't work"];
+        [issues addObject:@"My myki card won't work"];
         [issues addObject:@"Unable to top up at Myki machine"];
         [issues addObject:@"Myki overcharged me"];
+        [issues addObject:@"Other"];
     }
     return self;
 }

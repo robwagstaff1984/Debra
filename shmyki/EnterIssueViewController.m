@@ -14,7 +14,7 @@
 
 @implementation EnterIssueViewController
 
-@synthesize commentsTextView, punchOnIssues, punchOnIsValid, twitterButton, facebookButton;
+@synthesize commentsTextView, punchOnIssues, punchOnIsValid, twitterButton, facebookButton, punchOnTableView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -59,12 +59,20 @@
 {
     
     [commentsTextView setDelegate:self];
-    [commentsTextView becomeFirstResponder];
+   // [commentsTextView becomeFirstResponder];
     [self addHintTextToCommentsTextView];
+    [commentsTextView resignFirstResponder];
     
     self.navigationItem.rightBarButtonItem = [YourMykiCustomButton createYourMykiBarButtonItemWithText:@"Done" withTarget:self withAction:@selector(issueEntered)];
     self.navigationItem.rightBarButtonItem.enabled = NO;
     //self.navigationItem.leftBarButtonItem.style = UIBarButtonSystemItemCancel;
+    
+
+   // [punchOnTableView selectRowAtIndexPath:indexPath 
+   ////                        animated:NO 
+       //              scrollPosition:UITableViewScrollPositionMiddle];
+   // [[punchOnTableView cellForRowAtIndexPath:indexPath] setSelected:YES animated:NO];
+    //[punchOnTableView selectRowAtIndexPath:indexPath animated:NO scrollPosition: UITableViewScrollPositionNone];
     
     [super viewDidLoad];
 }
@@ -119,6 +127,36 @@
     
     return cell;
 }
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if(indexPath.row == 0) {
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    }
+}
+
+
+
+#pragma mark table view delegate
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSIndexPath *firstCell = [NSIndexPath indexPathForRow:0 inSection:0];
+    [tableView cellForRowAtIndexPath:firstCell].accessoryType = UITableViewCellAccessoryNone;
+    [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryCheckmark;
+    [[tableView cellForRowAtIndexPath:indexPath] setSelected:NO animated:YES];
+    
+    if(indexPath.row != 0) {
+        UIViewController *enterLocationViewController = [[EnterLocationViewController alloc] initWithNibName:@"EnterLocationViewController" bundle:nil];
+        [self.navigationController pushViewController:enterLocationViewController animated:YES];
+    }
+}
+
+- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
+    [[tableView cellForRowAtIndexPath:indexPath] setSelected:NO animated:YES];
+}
+
 
 #pragma mark textView delegate
 
