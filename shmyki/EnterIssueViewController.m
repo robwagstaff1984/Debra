@@ -12,7 +12,9 @@
 #import "AppDelegate.h"
 #import "YourMykiCustomButton.h"
 
-@implementation EnterIssueViewController
+@implementation EnterIssueViewController {
+    BOOL isFirstTimePageLoad;
+}
 
 @synthesize commentsTextView, punchOnIssues, punchOnIsValid, twitterButton, facebookButton, punchOnTableView;
 
@@ -23,6 +25,7 @@
         [self.navigationItem setTitle:@"yourVoice"];
         punchOnIssues = [[PunchOnIssues alloc] init];
         punchOnIsValid = NO;
+        isFirstTimePageLoad = YES;
        // [[NSNotificationCenter defaultCenter] addObserver:self forKeyPath:@"TwitterCancelled" options:nil context:nil];
         
         [[NSNotificationCenter defaultCenter] addObserver:self
@@ -33,6 +36,7 @@
                                                  selector:@selector(cancelFacebook) 
                                                      name:@"FacebookCancelled"
                                                    object:nil];
+        
     }
     return self;
 }
@@ -66,6 +70,8 @@
     
     self.navigationItem.rightBarButtonItem = [YourMykiCustomButton createYourMykiBarButtonItemWithText:@"Save" withTarget:self withAction:@selector(issueEntered)];
     self.navigationItem.rightBarButtonItem.enabled = NO;
+    
+
     //self.navigationItem.leftBarButtonItem.style = UIBarButtonSystemItemCancel;
     
 
@@ -76,6 +82,7 @@
     //[punchOnTableView selectRowAtIndexPath:indexPath animated:NO scrollPosition: UITableViewScrollPositionNone];
     
     [super viewDidLoad];
+    
 }
 
 - (void)viewDidUnload
@@ -113,7 +120,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 
-    static NSString *cellIdentifier = @"punchOnCell";
+    NSString *cellIdentifier = [NSString stringWithFormat:@"Cell%i",indexPath.row];
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     
@@ -132,7 +139,8 @@
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    if(indexPath.row == 0) {
+    if(indexPath.row == 0 && isFirstTimePageLoad) {
+        isFirstTimePageLoad = NO;
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
     }
 }
@@ -142,8 +150,11 @@
 #pragma mark table view delegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSIndexPath *firstCell = [NSIndexPath indexPathForRow:0 inSection:0];
-    [tableView cellForRowAtIndexPath:firstCell].accessoryType = UITableViewCellAccessoryNone;
+    for(int i=0; i< [self.punchOnIssues.issues count]; i++ ) {
+        NSIndexPath *currentIndexPath = [NSIndexPath indexPathForRow:i inSection:0];
+        [tableView cellForRowAtIndexPath:currentIndexPath].accessoryType = UITableViewCellAccessoryNone;
+    }
+    
     [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryCheckmark;
     [[tableView cellForRowAtIndexPath:indexPath] setSelected:NO animated:YES];
     
@@ -207,17 +218,18 @@
 
 -(void) doneAddingComments {
 
-    [commentsTextView resignFirstResponder];
-    self.navigationItem.rightBarButtonItem = [YourMykiCustomButton createYourMykiBarButtonItemWithText:@"Save" withTarget:self withAction:@selector(issueEntered)];
-    self.navigationItem.leftBarButtonItem = [YourMykiCustomButton createYourMykiBarButtonItemWithText:@"Cancel" withTarget:self withAction:@selector(popNavigationController)];
-    
+    BOOL enableRightBarButton;
     if([commentsTextView.text length] > 0) {
-        self.navigationItem.rightBarButtonItem.enabled = YES;
+        enableRightBarButton = YES;
     } else {
-        self.navigationItem.rightBarButtonItem.enabled = NO;
+        enableRightBarButton = NO;
         [self addHintTextToCommentsTextView];
     }
     [commentsTextView resignFirstResponder];
+
+    self.navigationItem.rightBarButtonItem = [YourMykiCustomButton createYourMykiBarButtonItemWithText:@"Save" withTarget:self withAction:@selector(issueEntered)];
+    self.navigationItem.leftBarButtonItem = [YourMykiCustomButton createYourMykiBarButtonItemWithText:@"Cancel" withTarget:self withAction:@selector(popNavigationController)];
+    self.navigationItem.rightBarButtonItem.enabled = enableRightBarButton;
 }
                                                                    
 #pragma mark actions

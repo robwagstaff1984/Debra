@@ -116,6 +116,13 @@
     [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryCheckmark;
     [[tableView cellForRowAtIndexPath:indexPath] setSelected:NO animated:YES];
     selectedLocation = [[[tableView cellForRowAtIndexPath:indexPath] textLabel] text];
+    
+    double delayInSeconds = .4;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        [self.navigationController popViewControllerAnimated:YES];
+    });
+    
 }
 
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
