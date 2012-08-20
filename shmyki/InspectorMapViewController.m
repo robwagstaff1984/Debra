@@ -13,7 +13,8 @@
 
 @implementation InspectorMapViewController
 
-@synthesize inspectorMapView, locationManager, listOfInspectorLocations, helpImages, inspectorHelpImageButton;
+@synthesize inspectorMapView, locationManager, listOfInspectorLocations, helpImages, inspectorHelpImageButton,
+inspectorCoachMarks, showingCoachMarks;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -173,7 +174,7 @@
     [self hideInspectorHelp];
     [self.locationManager startUpdatingLocation];
     [inspectorMapView setShowsUserLocation:YES];
-    //self.helpImages.isInspectorHelpAlreadySeen = YES;
+    self.helpImages.isInspectorHelpAlreadySeen = YES;
     [self.helpImages saveHelpImageRequiredInfo];
 }
 
@@ -184,6 +185,8 @@
     }
                      completion:^(BOOL finished){[self.inspectorHelpImageButton setHidden:TRUE];}
      ];
+    [self showInspectorCoachMarks];
+    [self hideInspectorCoachMarksWithDelay:3.0 WithDuration:2.0];
 }
 
 -(void) showInspectorHelp {
@@ -194,6 +197,25 @@
     }
      ];
 }
+
+
+-(void) hideInspectorCoachMarksWithDelay:(float) delay WithDuration:(float) duration{
+    
+    [self.inspectorHelpImageButton setHidden:FALSE];
+    [UIView animateWithDuration:duration delay:delay options:UIViewAnimationOptionTransitionCrossDissolve animations:^(void){
+        [self.inspectorCoachMarks setAlpha:0.0];
+    } completion:^(BOOL finished){
+        self.showingCoachMarks = NO;
+    }];
+}
+
+-(void) showInspectorCoachMarks {
+    
+    [self.inspectorCoachMarks setHidden:FALSE];
+    [self.inspectorCoachMarks setAlpha:1.0];
+    self.showingCoachMarks = YES;
+}
+
 
 -(void) findInspectors {
     PFQuery *query = [PFQuery queryWithClassName:@"InspectorLocation"];

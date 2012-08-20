@@ -469,7 +469,6 @@
     [UIView animateWithDuration:duration delay:delay options:UIViewAnimationOptionTransitionCrossDissolve animations:^(void){
         [self.punchOnCoachMarks setAlpha:0.0];
     } completion:^(BOOL finished){
-        NSLog(@"hidePunchOn");
         self.showingCoachMarks = NO;
         // [self.punchOnCoachMarks setHidden:TRUE];
     }];
@@ -480,7 +479,6 @@
     [self.punchOnCoachMarks setHidden:FALSE];
     [self.punchOnCoachMarks setAlpha:1.0];
     self.showingCoachMarks = YES;
-    NSLog(@"showPunchOn");
     //    [self.punchOnCoachMarks setAlpha:0.0];
     //    [self.punchOnCoachMarks setHidden:FALSE];
     //    self.showingCoachMarks = YES;

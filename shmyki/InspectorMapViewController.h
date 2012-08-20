@@ -18,6 +18,8 @@
 @property(strong) NSMutableArray *listOfInspectorLocations;
 @property (nonatomic, strong) HelpImages *helpImages;
 @property (nonatomic, strong) IBOutlet UIButton *inspectorHelpImageButton;
+@property (nonatomic, strong) IBOutlet UIImageView *inspectorCoachMarks;
+@property (nonatomic) BOOL showingCoachMarks;
 
 
 - (void) saveInspectorWithLocationCoordinate:(CLLocationCoordinate2D)inspectorLocationCoordinate; 
