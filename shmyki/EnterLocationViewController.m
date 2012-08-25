@@ -117,6 +117,8 @@
     [[tableView cellForRowAtIndexPath:indexPath] setSelected:NO animated:YES];
     selectedLocation = [[[tableView cellForRowAtIndexPath:indexPath] textLabel] text];
     
+    [[(AppDelegate*)[[UIApplication sharedApplication]delegate] currentUsersPunchOnLog] setLocation:selectedLocation];
+    [[(AppDelegate*)[[UIApplication sharedApplication]delegate] currentUsersPunchOnLog] setTransportationType:self.selectedTransportType];    
     double delayInSeconds = .4;
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){

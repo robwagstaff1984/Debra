@@ -216,19 +216,28 @@
 -(void) saveCurrentUsersPunchOnLog {
     PFObject *punchOnLog = [PFObject objectWithClassName:@"PunchOnLog"];
     
-    NSString *location = currentUsersPunchOnLog.location;
-    if(location == nil) {
-        location = @"";
-    }
-    
     NSString *message = currentUsersPunchOnLog.message;
     if(message == nil) {
         message = @"";
     }
     
-    [punchOnLog setObject:location forKey:@"location"];
+    [punchOnLog setObject:[self convertLocationToShortLocation:currentUsersPunchOnLog.location] forKey:@"location"];
     [punchOnLog setObject:message forKey:@"message"];
+    [punchOnLog setObject:[NSNumber numberWithInteger:currentUsersPunchOnLog.transportationType ] forKey:@"transportationType"];
     [punchOnLog saveInBackground];
+}
+
+-(NSString*) convertLocationToShortLocation: (NSString*)location {
+    NSString* shortLocation = @"";
+    if(currentUsersPunchOnLog.location != nil) {
+        if(currentUsersPunchOnLog.transportationType == SELECTED_TRANSPORT_TRAIN) {
+            shortLocation = currentUsersPunchOnLog.location;
+        } else {
+            NSRange rangeOfFirstSpaceCharacter = [currentUsersPunchOnLog.location rangeOfString:@" "];
+            shortLocation = [currentUsersPunchOnLog.location substringToIndex:rangeOfFirstSpaceCharacter.location];
+        }
+    }
+    return shortLocation;
 }
 
 #pragma mark multitask

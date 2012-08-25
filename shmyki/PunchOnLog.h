@@ -13,5 +13,6 @@
 @property(nonatomic, strong) NSString *message;
 @property(nonatomic, strong) NSString *location;
 @property(nonatomic, strong) NSDate *dateLogged;
+@property NSInteger transportationType;
 
 @end

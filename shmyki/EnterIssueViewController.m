@@ -239,14 +239,16 @@
     if(![commentsTextView.text isEqualToString:PUNCH_ON_HINT_TEXT]) {
         savedComment = commentsTextView.text;
     }
+    
     [[(AppDelegate*)[[UIApplication sharedApplication]delegate] currentUsersPunchOnLog] setMessage:savedComment];
+    
     [(AppDelegate*)[[UIApplication sharedApplication] delegate] postToFacebook];
     [(AppDelegate*)[[UIApplication sharedApplication] delegate] postToTwitter];
-    //[(AppDelegate*)[[UIApplication sharedApplication] delegate] saveCurrentUsersPunchOnLog];
+    [(AppDelegate*)[[UIApplication sharedApplication] delegate] saveCurrentUsersPunchOnLog];
     
     
-    UIViewController *enterLocationViewController = [[EnterLocationViewController alloc] initWithNibName:@"EnterLocationViewController" bundle:nil];
-    [self.navigationController pushViewController:enterLocationViewController animated:YES];
+   /* UIViewController *enterLocationViewController = [[EnterLocationViewController alloc] initWithNibName:@"EnterLocationViewController" bundle:nil];
+    [self.navigationController pushViewController:enterLocationViewController animated:YES];*/
     //[self.navigationController dismissModalViewControllerAnimated:YES];
     //[self.navigationController popToRootViewControllerAnimated:YES];
     

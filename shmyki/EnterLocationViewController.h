@@ -12,8 +12,8 @@
 @interface EnterLocationViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate> {
     NSIndexPath* lastIndexPath; 
 }
-
-@property NSInteger selectedTransportType;
+ 
+@property  NSInteger selectedTransportType;
 @property (nonatomic, strong) StationLocations *stationLocations;
 @property (nonatomic, strong) IBOutlet UITableView *stationsTable;
 
