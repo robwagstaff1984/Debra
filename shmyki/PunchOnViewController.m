@@ -169,6 +169,22 @@
     cell.messageLabel.text = punchOnLog.message;
     cell.locationLabel.text = punchOnLog.location;
     cell.dateLabel.text = [DateDisplayHelper getDisplayForDate:punchOnLog.dateLogged forPage:YourMykiPunchOnPage];
+   
+    if([cell.locationLabel.text length] > 0) {
+        switch (punchOnLog.transportationType) {
+            case SELECTED_TRANSPORT_TRAM:
+                [cell.locationIconLabel setImage:[UIImage imageNamed:@"/images/IconTram"]];
+                break;
+            case SELECTED_TRANSPORT_TRAIN:
+                [cell.locationIconLabel setImage:[UIImage imageNamed:@"/images/IconTrain"]];
+                break;
+            case SELECTED_TRANSPORT_BUS:
+                [cell.locationIconLabel setImage:[UIImage imageNamed:@"/images/IconBus"]];
+                break;
+        }
+    } else {
+        [cell.locationIconLabel setImage:nil];
+    }
     
     return cell;
 }
@@ -183,7 +199,7 @@
     NSString *tempDate = @"45 mins";
     CGSize dateLabelSize = [tempDate sizeWithFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:LOCATION_FONT_SIZE] constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
     
-    return messageLabelSize.height + dateLabelSize.height + (CELL_CONTENT_VERTICAL_MARGIN * 2) + CELL_CONTENT_MIDDLE_MARGIN;
+    return messageLabelSize.height + dateLabelSize.height + (CELL_CONTENT_VERTICAL_MARGIN * 3);
     
 }  
 
@@ -204,6 +220,7 @@
             [punchOnLog setMessage:[punchOnLogParseObject objectForKey:@"message"]];
             [punchOnLog setLocation:[punchOnLogParseObject objectForKey:@"location"]];
             [punchOnLog setDateLogged:punchOnLogParseObject.createdAt];
+            [punchOnLog setTransportationType:[[punchOnLogParseObject objectForKey:@"transportationType"] integerValue]];
             [self.listOfPunchOnLogs addObject:punchOnLog];
         }
         [self.punchOnCommentsTableView reloadData];

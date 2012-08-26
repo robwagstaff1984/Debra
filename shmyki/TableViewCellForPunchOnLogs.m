@@ -10,7 +10,7 @@
 #import "ShmykiContstants.h"
 
 @implementation TableViewCellForPunchOnLogs
-@synthesize messageLabel, locationLabel, dateLabel;
+@synthesize messageLabel, locationLabel, locationIconLabel, dateLabel;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
@@ -22,13 +22,24 @@
         [messageLabel setNumberOfLines:0];
         //[messageLabel setBackgroundColor:[UIColor redColor]];
         
+        locationLabel = [[UILabel alloc]init];
+        locationLabel.textAlignment = UITextAlignmentLeft;
+        locationLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:LOCATION_FONT_SIZE];
+        [locationLabel setTextColor:[UIColor grayColor]];
+       // [locationLabel setBackgroundColor:[UIColor purpleColor]];
+        
+        locationIconLabel = [[UIImageView alloc] init];
+        //[locationIconLabel setBackgroundColor:[UIColor greenColor]];
+        
         dateLabel = [[UILabel alloc]init];
         dateLabel.textAlignment = UITextAlignmentLeft;
-        dateLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:LOCATION_FONT_SIZE];
+        dateLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:DATE_FONT_SIZE];
         [dateLabel setTextColor:[UIColor grayColor]];
-       // [dateLabel setBackgroundColor:[UIColor orangeColor]];
+        //[dateLabel setBackgroundColor:[UIColor orangeColor]];
 
         [self.contentView addSubview:messageLabel];
+        [self.contentView addSubview:locationLabel]; 
+        [self.contentView addSubview:locationIconLabel];
         [self.contentView addSubview:dateLabel];
     }
     return self;
@@ -43,19 +54,19 @@
     CGSize constraint = CGSizeMake(320.0 - (CELL_CONTENT_HORIZONTAL_MARGIN * 2), 40000.0f);
     
     CGSize messageLabelSize = [messageLabel.text sizeWithFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:MESSAGE_FONT_SIZE] constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
-   // CGSize locationLabelSize = [locationLabel.text sizeWithFont:[UIFont systemFontOfSize:LOCATION_FONT_SIZE] constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
-    CGSize dateLabelSize = [dateLabel.text sizeWithFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:LOCATION_FONT_SIZE] constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
+    CGSize locationLabelSize = [locationLabel.text sizeWithFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:DATE_FONT_SIZE] constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
+    CGSize dateLabelSize = [dateLabel.text sizeWithFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:DATE_FONT_SIZE] constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
     
     frame= CGRectMake(boundsX+CELL_CONTENT_HORIZONTAL_MARGIN,CELL_CONTENT_VERTICAL_MARGIN ,320.0 - (CELL_CONTENT_HORIZONTAL_MARGIN * 2), messageLabelSize.height);
     messageLabel.frame = frame;
     
-    /*frame= CGRectMake(boundsX+CELL_CONTENT_HORIZONTAL_MARGIN, messageLabelSize.height + (CELL_CONTENT_VERTICAL_MARGIN * 2), locationLabelSize.width, locationLabelSize.height);
+    frame = CGRectMake(boundsX+CELL_CONTENT_HORIZONTAL_MARGIN - 4, messageLabelSize.height + (CELL_CONTENT_VERTICAL_MARGIN * 2) - 2, 20.0f, 20.0f);
+    locationIconLabel.frame = frame;
+    
+    frame= CGRectMake(boundsX+CELL_CONTENT_HORIZONTAL_MARGIN + LOCATION_ICON_SIZE -2, messageLabelSize.height + (CELL_CONTENT_VERTICAL_MARGIN * 2), locationLabelSize.width, locationLabelSize.height);
     locationLabel.frame = frame;
     
     frame= CGRectMake(boundsX+320 - dateLabelSize.width - CELL_CONTENT_HORIZONTAL_MARGIN ,messageLabelSize.height + (CELL_CONTENT_VERTICAL_MARGIN * 2), dateLabelSize.width, dateLabelSize.height);
-    dateLabel.frame = frame;*/
-    
-    frame= CGRectMake(boundsX+CELL_CONTENT_HORIZONTAL_MARGIN, messageLabelSize.height + (CELL_CONTENT_VERTICAL_MARGIN + CELL_CONTENT_MIDDLE_MARGIN), dateLabelSize.width, dateLabelSize.height);
     dateLabel.frame = frame;
 }
 

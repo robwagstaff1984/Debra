@@ -14,6 +14,7 @@
 @property(nonatomic,retain)UILabel *messageLabel;
 @property(nonatomic,retain)UILabel *locationLabel;
 @property(nonatomic,retain)UILabel *dateLabel;
+@property(nonatomic,retain)UIImageView *locationIconLabel;
 
 
 @end

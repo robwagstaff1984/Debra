@@ -235,6 +235,7 @@
         } else {
             NSRange rangeOfFirstSpaceCharacter = [currentUsersPunchOnLog.location rangeOfString:@" "];
             shortLocation = [currentUsersPunchOnLog.location substringToIndex:rangeOfFirstSpaceCharacter.location];
+            shortLocation = [NSString stringWithFormat:@"Route %@", shortLocation];
         }
     }
     return shortLocation;
