@@ -26,13 +26,12 @@
 @property (nonatomic, strong) IBOutlet UIView *tableFixedHeader;
 @property (nonatomic) BOOL showingCoachMarks;
 @property (nonatomic, strong) HelpImages *helpImages;
-@property (nonatomic, strong) IBOutlet UIButton *punchOnHelpImageButton;
 @property (nonatomic, strong) IBOutlet UIImageView *punchOnCoachMarks;
 
 //- (void) touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event;
 - (void)updatePunchOnLogs;
 - (IBAction)punchOnButtonPressed:(id)sender;
--(IBAction)punchOnHelpTapped:(id)sender;
+//-(IBAction)punchOnHelpTapped:(id)sender;
 
 
 @end

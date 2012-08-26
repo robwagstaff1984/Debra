@@ -63,7 +63,7 @@
     frame = CGRectMake(boundsX+CELL_CONTENT_HORIZONTAL_MARGIN - 4, messageLabelSize.height + (CELL_CONTENT_VERTICAL_MARGIN * 2) - 2, 20.0f, 20.0f);
     locationIconLabel.frame = frame;
     
-    frame= CGRectMake(boundsX+CELL_CONTENT_HORIZONTAL_MARGIN + LOCATION_ICON_SIZE -2, messageLabelSize.height + (CELL_CONTENT_VERTICAL_MARGIN * 2), locationLabelSize.width, locationLabelSize.height);
+    frame= CGRectMake(boundsX+CELL_CONTENT_HORIZONTAL_MARGIN + LOCATION_ICON_SIZE -1, messageLabelSize.height + (CELL_CONTENT_VERTICAL_MARGIN * 2), locationLabelSize.width, locationLabelSize.height);
     locationLabel.frame = frame;
     
     frame= CGRectMake(boundsX+320 - dateLabelSize.width - CELL_CONTENT_HORIZONTAL_MARGIN ,messageLabelSize.height + (CELL_CONTENT_VERTICAL_MARGIN * 2), dateLabelSize.width, dateLabelSize.height);

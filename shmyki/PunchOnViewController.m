@@ -21,7 +21,7 @@
 #import "DateDisplayHelper.h"
 
 @implementation PunchOnViewController
-@synthesize punchOnCommentsView, punchOnCommentsTableView, listOfPunchOnLogs, totalPunchOns, tableFixedHeader, helpImages, punchOnCoachMarks, punchOnHelpImageButton, showingCoachMarks;
+@synthesize punchOnCommentsView, punchOnCommentsTableView, listOfPunchOnLogs, totalPunchOns, tableFixedHeader, helpImages, punchOnCoachMarks, showingCoachMarks;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -68,18 +68,23 @@
     self.punchOnCommentsTableView.allowsSelection = NO;
     //self.punchOnCommentsTableView.tableHeaderView.userInteractionEnabled = YES;
     //self.punchOnCommentsTableView.tableHeaderView = [TableViewHeaderHelper makeTableDownHeaderWith:self.totalPunchOns];
+    self.listOfPunchOnLogs = [[PunchOnLogsCache sharedModel] loadPunchOnLogsCache];
+    self.totalPunchOns = [self.listOfPunchOnLogs count];
     [self.tableFixedHeader addSubview: [TableViewHeaderHelper makeTableDownHeaderWith:self.totalPunchOns]];
     [self addGesturesToTableViewHeaderWithFadeEffect:NO];
     [punchOnCommentsView addGestureRecognizer:_panGestureUpRecognizerForCommentsView];
     
-    self.listOfPunchOnLogs = [[PunchOnLogsCache sharedModel] loadPunchOnLogsCache];
+
     
     self.helpImages = [[HelpImages alloc] init];
     [self.helpImages loadHelpImageRequiredInfo];
     
     //   self.helpImages.isPunchOnHelpAlreadySeen = NO;
     if (!self.helpImages.isPunchOnHelpAlreadySeen) {
-        [self showPunchOnHelp];
+        [self showPunchOnCoachMarks];
+        [self hidePunchOnCoachMarksWithDelay:4.0 WithDuration:2.0];
+        self.helpImages.isPunchOnHelpAlreadySeen = YES;
+        [self.helpImages saveHelpImageRequiredInfo];
     }
     
     self.punchOnCommentsView.layer.shadowColor = [[UIColor blackColor] CGColor];
@@ -452,13 +457,13 @@
 
 #pragma mark coach marks
 
--(IBAction)punchOnHelpTapped:(id)sender {
+/*-(IBAction)punchOnHelpTapped:(id)sender {
     [self hidePunchOnHelp];
     self.helpImages.isPunchOnHelpAlreadySeen = YES;
     [self.helpImages saveHelpImageRequiredInfo];
-}
+}*/
 
--(void) hidePunchOnHelp {
+/*-(void) hidePunchOnHelp {
     
     [UIView animateWithDuration:.3 animations:^(void){
         [self.punchOnHelpImageButton setAlpha:0.0];
@@ -477,11 +482,11 @@
         [self.punchOnHelpImageButton setAlpha:1.0];
     } completion:nil];
     
-}
+}*/
 
 -(void) hidePunchOnCoachMarksWithDelay:(float) delay WithDuration:(float) duration{
     
-    [self.punchOnHelpImageButton setHidden:FALSE];
+   // [self.punchOnHelpImageButton setHidden:FALSE];
     //  [self.punchOnCoachMarks setAlpha:1.0];
     [UIView animateWithDuration:duration delay:delay options:UIViewAnimationOptionTransitionCrossDissolve animations:^(void){
         [self.punchOnCoachMarks setAlpha:0.0];
