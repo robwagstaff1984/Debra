@@ -38,7 +38,8 @@ static PunchOnLogsCache *sharedObject = nil;
     NSMutableArray *cachedPunchOnLogs;
     if (data != nil) {
         cachedPunchOnLogs = [NSKeyedUnarchiver unarchiveObjectWithData:data];
-    } else {
+    }
+    if([cachedPunchOnLogs count] == 0) {
         cachedPunchOnLogs = [self createDefaultPunchOnLogCache];
     }
     return cachedPunchOnLogs;
@@ -48,26 +49,28 @@ static PunchOnLogsCache *sharedObject = nil;
     NSMutableArray *defaultCachedPunchOnLogs = [[NSMutableArray alloc] init];
     NSDate *now = [NSDate date];
     
-    PunchOnLog *punchOnLog = [[PunchOnLog alloc] init];
+    PunchOnLog *punchOnLogOne = [[PunchOnLog alloc] init];
+    PunchOnLog *punchOnLogTwo = [[PunchOnLog alloc] init];
+    PunchOnLog *punchOnLogThree = [[PunchOnLog alloc] init];
     
     
-    [punchOnLog setMessage:@"Ahhhh, Myki is so frustrating! I miss metcards :("];
+    [punchOnLogOne setMessage:@"Ahhhh, Myki is so frustrating! I miss metcards :("];
    // [punchOnLog setLocation:@"Melbourne Central"];
    // [punchOnLog setTransportationType:2];
-    [punchOnLog setDateLogged:[now dateByAddingTimeInterval:60*60*24*1]];
-    [defaultCachedPunchOnLogs addObject:punchOnLog];
+    [punchOnLogOne setDateLogged:[now dateByAddingTimeInterval:60*60*24*1]];
+    [defaultCachedPunchOnLogs addObject:punchOnLogOne];
     
-    [punchOnLog setMessage:@"So packed on the team I couldn't get to the machine, what could I do?"];
-    [punchOnLog setLocation:@"109"];
-    [punchOnLog setTransportationType:0];
-    [punchOnLog setDateLogged:[now dateByAddingTimeInterval:60*60*24*2]];
-    [defaultCachedPunchOnLogs addObject:punchOnLog];
+    [punchOnLogTwo setMessage:@"So packed on the team I couldn't get to the machine, what could I do?"];
+    [punchOnLogTwo setLocation:@"109"];
+    [punchOnLogTwo setTransportationType:0];
+    [punchOnLogTwo setDateLogged:[now dateByAddingTimeInterval:60*60*24*2]];
+    [defaultCachedPunchOnLogs addObject:punchOnLogTwo];
     
-    [punchOnLog setMessage:@"I don't see what all the fuss is about. I think myki is great"];
-    [punchOnLog setLocation:@"Melbourne Central"];
-    [punchOnLog setTransportationType:1];
-    [punchOnLog setDateLogged:[now dateByAddingTimeInterval:60*60*24*3]];
-    [defaultCachedPunchOnLogs addObject:punchOnLog];
+    [punchOnLogThree setMessage:@"I don't see what all the fuss is about. I think myki is great"];
+    [punchOnLogThree setLocation:@"Melbourne Central"];
+    [punchOnLogThree setTransportationType:1];
+    [punchOnLogThree setDateLogged:[now dateByAddingTimeInterval:60*60*24*3]];
+    [defaultCachedPunchOnLogs addObject:punchOnLogThree];
     
     
     return defaultCachedPunchOnLogs;

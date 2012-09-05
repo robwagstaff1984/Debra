@@ -16,11 +16,15 @@
 +(NSString*) getDisplayForDate:(NSDate*)date forPage:(YourMykiPage) yourMykiPage {
     
     NSString* dateDisplay;
-    NSTimeInterval secondsBetween = [[NSDate date] timeIntervalSinceDate:date];
-    int seconds = secondsBetween / 1;
+   // NSTimeInterval secondsBetween = [[NSDate date] timeIntervalSinceDate:date];
+  //  int seconds = secondsBetween / 1;
     
-    if(date == nil) return nil;
+    NSDate *currentTime = [NSDate date];
+    NSTimeInterval secondsBetween = [currentTime timeIntervalSinceDate:date];
+    int seconds = [[NSNumber numberWithDouble:secondsBetween] intValue];
     
+    if(currentTime == nil) return nil;
+    //TODO dates not working
     if(seconds < SECONDS_IN_A_MINUTE) {
         dateDisplay = [NSString stringWithFormat:@"just now", seconds];
     } else if (seconds < SECONDS_IN_AN_HOUR) {

@@ -36,7 +36,7 @@
             self.tabBarItem.image = [UIImage imageNamed:@"images/TabPunchOff"];
         }
         
-        self.navigationItem.rightBarButtonItem = [YourMykiCustomButton createYourMykiBarButtonItemWithText:@"about" withTarget:self withAction:@selector(showAboutPage)];
+        self.navigationItem.rightBarButtonItem = [YourMykiCustomButton createYourMykiBarButtonItemWithText:@"About" withTarget:self withAction:@selector(showAboutPage)];
         
         self.listOfPunchOnLogs = [[NSMutableArray alloc] initWithCapacity:MAX_PUNCH_ON_LOGS_RETRIEVED];
     }
@@ -186,6 +186,8 @@
             case SELECTED_TRANSPORT_BUS:
                 [cell.locationIconLabel setImage:[UIImage imageNamed:@"/images/IconBus"]];
                 break;
+            default:
+                [cell.locationIconLabel setImage:[UIImage imageNamed:@"/images/IconTrain"]];
         }
     } else {
         [cell.locationIconLabel setImage:nil];

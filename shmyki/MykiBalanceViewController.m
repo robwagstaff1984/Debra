@@ -308,6 +308,7 @@
 	loginTableView.layer.cornerRadius = 8;
 }
 
+//CGContextDrawLinearGradient
 -(void) drawBalanceViewGradientWithCornersWithActiveState:(BOOL)isActiveState {
     CAGradientLayer *gradient = [CAGradientLayer layer];
     gradient.frame = balanceDisplayView.bounds;

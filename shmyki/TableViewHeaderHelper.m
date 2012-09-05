@@ -54,7 +54,7 @@
     NSString *numberOfPunchOnsFormatted = [formatter stringFromNumber:[NSNumber numberWithInteger:numberOfPunchOns]];
     
     UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(20,4, 150, 25)];
-    headerLabel.text = @"Punch On Comments";
+    headerLabel.text = @"yourComments";
     headerLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:14.0];
     [headerLabel setTextColor:[UIColor grayColor]];
     headerLabel.tag = TAG_FOR_TABLE_HEADER_LABEL;

@@ -123,6 +123,7 @@
     [self.trainLocations addObject:@"Holmesglen"];
     [self.trainLocations addObject:@"Hoppers Crossing"];
     [self.trainLocations addObject:@"Hughesdale"];
+    [self.trainLocations addObject:@"Huntingdale"];
     [self.trainLocations addObject:@"Hurstbridge"];
     [self.trainLocations addObject:@"Ivanhoe"];
     [self.trainLocations addObject:@"Jacana"];
