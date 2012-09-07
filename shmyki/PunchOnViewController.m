@@ -218,22 +218,24 @@
     // query.limit = MAX_PUNCH_ON_LOGS_RETRIEVED;
     [query findObjectsInBackgroundWithBlock:^(NSArray *punchOnLogParseObjects, NSError *error) {
         
-        self.totalPunchOns = [punchOnLogParseObjects count];
-        PFObject *punchOnLogParseObject;
-        self.listOfPunchOnLogs = [[NSMutableArray alloc] initWithCapacity:MAX_PUNCH_ON_LOGS_RETRIEVED];
-        for(int i=0; (i <[punchOnLogParseObjects count] && i < MAX_PUNCH_ON_LOGS_RETRIEVED); i++) {
-            punchOnLogParseObject = [punchOnLogParseObjects objectAtIndex:i];
-            PunchOnLog *punchOnLog = [[PunchOnLog alloc] init];
-            [punchOnLog setMessage:[punchOnLogParseObject objectForKey:@"message"]];
-            [punchOnLog setLocation:[punchOnLogParseObject objectForKey:@"location"]];
-            [punchOnLog setDateLogged:punchOnLogParseObject.createdAt];
-            [punchOnLog setTransportationType:[[punchOnLogParseObject objectForKey:@"transportationType"] integerValue]];
-            [self.listOfPunchOnLogs addObject:punchOnLog];
+        if(error == nil) {
+            self.totalPunchOns = [punchOnLogParseObjects count];
+            PFObject *punchOnLogParseObject;
+            self.listOfPunchOnLogs = [[NSMutableArray alloc] initWithCapacity:MAX_PUNCH_ON_LOGS_RETRIEVED];
+            for(int i=0; (i <[punchOnLogParseObjects count] && i < MAX_PUNCH_ON_LOGS_RETRIEVED); i++) {
+                punchOnLogParseObject = [punchOnLogParseObjects objectAtIndex:i];
+                PunchOnLog *punchOnLog = [[PunchOnLog alloc] init];
+                [punchOnLog setMessage:[punchOnLogParseObject objectForKey:@"message"]];
+                [punchOnLog setLocation:[punchOnLogParseObject objectForKey:@"location"]];
+                [punchOnLog setDateLogged:punchOnLogParseObject.createdAt];
+                [punchOnLog setTransportationType:[[punchOnLogParseObject objectForKey:@"transportationType"] integerValue]];
+                [self.listOfPunchOnLogs addObject:punchOnLog];
+            }
+            [self.punchOnCommentsTableView reloadData];
+            
+            [(UILabel*)[[[self.tableFixedHeader.subviews objectAtIndex:0] subviews] objectAtIndex:TOTAL_PUNCH_ONS_SUBVIEW_NUMBER] setText: [NSString stringWithFormat:@"%@         ",[[NSNumber numberWithInt:totalPunchOns] stringValue]]];
+            [[PunchOnLogsCache sharedModel] savePunchOnLogsCache:self.listOfPunchOnLogs];
         }
-        [self.punchOnCommentsTableView reloadData];
-        
-        [(UILabel*)[[[self.tableFixedHeader.subviews objectAtIndex:0] subviews] objectAtIndex:TOTAL_PUNCH_ONS_SUBVIEW_NUMBER] setText: [NSString stringWithFormat:@"%@         ",[[NSNumber numberWithInt:totalPunchOns] stringValue]]];
-        [[PunchOnLogsCache sharedModel] savePunchOnLogsCache:self.listOfPunchOnLogs];
     }];
     
 }
