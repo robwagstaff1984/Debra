@@ -231,12 +231,18 @@
                 [punchOnLog setTransportationType:[[punchOnLogParseObject objectForKey:@"transportationType"] integerValue]];
                 [self.listOfPunchOnLogs addObject:punchOnLog];
             }
-            [self.punchOnCommentsTableView reloadData];
             
             [(UILabel*)[[[self.tableFixedHeader.subviews objectAtIndex:0] subviews] objectAtIndex:TOTAL_PUNCH_ONS_SUBVIEW_NUMBER] setText: [NSString stringWithFormat:@"%@         ",[[NSNumber numberWithInt:totalPunchOns] stringValue]]];
             [[PunchOnLogsCache sharedModel] savePunchOnLogsCache:self.listOfPunchOnLogs];
         }
+        
+        self.listOfPunchOnLogs = [[PunchOnLogsCache sharedModel] loadPunchOnLogsCache];
+        self.totalPunchOns = [self.listOfPunchOnLogs count];
+        [self.punchOnCommentsTableView reloadData];
     }];
+    self.listOfPunchOnLogs = [[PunchOnLogsCache sharedModel] loadPunchOnLogsCache];
+    self.totalPunchOns = [self.listOfPunchOnLogs count];
+    [self.punchOnCommentsTableView reloadData];
     
 }
 

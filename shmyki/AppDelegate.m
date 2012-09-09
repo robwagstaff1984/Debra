@@ -17,6 +17,7 @@
 #import "Facebook.h"
 #import "SA_OAuthTwitterEngine.h"  
 #import "ShmykiContstants.h"
+#import "PunchOnLogsCache.h"
 
 
 @implementation AppDelegate
@@ -214,17 +215,26 @@
 #pragma mark Parse
 
 -(void) saveCurrentUsersPunchOnLog {
-    PFObject *punchOnLog = [PFObject objectWithClassName:@"PunchOnLog"];
+    PFObject *punchOnLogParseObject = [PFObject objectWithClassName:@"PunchOnLog"];
     
-    NSString *message = currentUsersPunchOnLog.message;
-    if(message == nil) {
-        message = @"";
-    }
+    NSString *message = currentUsersPunchOnLog.message ? currentUsersPunchOnLog.message : @"" ;
+    NSString *location = [self convertLocationToShortLocation:currentUsersPunchOnLog.location];
+    NSNumber *transportationType = [NSNumber numberWithInteger:currentUsersPunchOnLog.transportationType]; 
     
-    [punchOnLog setObject:[self convertLocationToShortLocation:currentUsersPunchOnLog.location] forKey:@"location"];
-    [punchOnLog setObject:message forKey:@"message"];
-    [punchOnLog setObject:[NSNumber numberWithInteger:currentUsersPunchOnLog.transportationType ] forKey:@"transportationType"];
-    [punchOnLog saveInBackground];
+    [punchOnLogParseObject setObject:location forKey:@"location"];
+    [punchOnLogParseObject setObject:message forKey:@"message"];
+    [punchOnLogParseObject setObject:transportationType forKey:@"transportationType"];
+    [punchOnLogParseObject saveInBackground];
+    
+    PunchOnLog *punchOnLog= [[PunchOnLog alloc] init];
+    [punchOnLog setMessage:message];
+    [punchOnLog setLocation:location];
+    [punchOnLog setTransportationType:2];
+    [punchOnLog setDateLogged:[[NSDate date] dateByAddingTimeInterval:60*60*24*1]];
+    
+    NSMutableArray* punchOnLogsCache = [[PunchOnLogsCache sharedModel] loadPunchOnLogsCache];
+    [punchOnLogsCache insertObject:punchOnLog atIndex:0];
+    [[PunchOnLogsCache sharedModel] savePunchOnLogsCache:punchOnLogsCache];
 }
 
 -(NSString*) convertLocationToShortLocation: (NSString*)location {
@@ -249,7 +259,6 @@
             
             if ([[(UINavigationController*)vc topViewController] isKindOfClass:[MykiBalanceViewController class]]) {
                 [(MykiBalanceViewController*)[(UINavigationController*)vc topViewController] retrieveMykiBalance];
-                //[(MykiBalanceViewController*)[(UINavigationController*)vc topViewController] retryRetrieveMykiBalance];
             }
         }
     }

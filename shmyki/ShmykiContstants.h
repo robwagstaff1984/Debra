@@ -37,8 +37,8 @@
 #define SECONDS_FOR_RED_POI 600
 #define SECONDS_FOR_AMBER_POI 3600
 
-#define MAX_INSPECTORS_DISPLAYED 30
-#define MAX_PUNCH_ON_LOGS_RETRIEVED 30
+#define MAX_INSPECTORS_DISPLAYED 150
+#define MAX_PUNCH_ON_LOGS_RETRIEVED 150
 #define PUNCH_ON_HINT_TEXT @"Have your voice heard! Tell us all what you think of Myki..."
 #define FEEDBACK_EMAIL_ADDRESS @"yourMyki@gmail.com"
 
