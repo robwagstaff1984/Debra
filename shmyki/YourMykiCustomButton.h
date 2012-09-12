@@ -10,6 +10,6 @@
 
 @interface YourMykiCustomButton : UIBarButtonItem
 
-+ (UIBarButtonItem*)createYourMykiBarButtonItemWithText:(NSString*) text withTarget:(id)target withAction:(SEL)action;
++ (UIBarButtonItem*)createYourMykiBarButtonItemWithText:(NSString*) text withTarget:(id)target withAction:(SEL)action isEnabled:(BOOL)isEnabled;
 
 @end

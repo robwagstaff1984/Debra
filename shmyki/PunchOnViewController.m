@@ -36,7 +36,7 @@
             self.tabBarItem.image = [UIImage imageNamed:@"images/TabPunchOff"];
         }
         
-        self.navigationItem.rightBarButtonItem = [YourMykiCustomButton createYourMykiBarButtonItemWithText:@"About" withTarget:self withAction:@selector(showAboutPage)];
+        self.navigationItem.rightBarButtonItem = [YourMykiCustomButton createYourMykiBarButtonItemWithText:@"About" withTarget:self withAction:@selector(showAboutPage) isEnabled:YES];
         
         self.listOfPunchOnLogs = [[NSMutableArray alloc] initWithCapacity:MAX_PUNCH_ON_LOGS_RETRIEVED];
     }
@@ -174,23 +174,19 @@
     cell.messageLabel.text = punchOnLog.message;
     cell.locationLabel.text = punchOnLog.location;
     cell.dateLabel.text = [DateDisplayHelper getDisplayForDate:punchOnLog.dateLogged forPage:YourMykiPunchOnPage];
-   
-    if([cell.locationLabel.text length] > 0) {
-        switch (punchOnLog.transportationType) {
-            case SELECTED_TRANSPORT_TRAM:
-                [cell.locationIconLabel setImage:[UIImage imageNamed:@"/images/IconTram"]];
-                break;
-            case SELECTED_TRANSPORT_TRAIN:
-                [cell.locationIconLabel setImage:[UIImage imageNamed:@"/images/IconTrain"]];
-                break;
-            case SELECTED_TRANSPORT_BUS:
-                [cell.locationIconLabel setImage:[UIImage imageNamed:@"/images/IconBus"]];
-                break;
-            default:
-                [cell.locationIconLabel setImage:[UIImage imageNamed:@"/images/IconTrain"]];
-        }
-    } else {
-        [cell.locationIconLabel setImage:nil];
+    
+    switch (punchOnLog.transportationType) {
+        case SELECTED_TRANSPORT_TRAM:
+            [cell.locationIconLabel setImage:[UIImage imageNamed:@"/images/IconTram"]];
+            break;
+        case SELECTED_TRANSPORT_TRAIN:
+            [cell.locationIconLabel setImage:[UIImage imageNamed:@"/images/IconTrain"]];
+            break;
+        case SELECTED_TRANSPORT_BUS:
+            [cell.locationIconLabel setImage:[UIImage imageNamed:@"/images/IconBus"]];
+            break;
+        default:
+            [cell.locationIconLabel setImage:[UIImage imageNamed:@"/images/IconComment"]];
     }
     
     return cell;

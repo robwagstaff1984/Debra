@@ -34,7 +34,7 @@
 {
     [super viewDidLoad];
     
-    self.navigationItem.leftBarButtonItem = [YourMykiCustomButton createYourMykiBarButtonItemWithText:@"Cancel" withTarget:self withAction:@selector(popNavigationController)];
+    self.navigationItem.leftBarButtonItem = [YourMykiCustomButton createYourMykiBarButtonItemWithText:@"Cancel" withTarget:self withAction:@selector(popNavigationController) isEnabled:YES];
     
     self.stationsSearchBar.delegate = self;
     self.stationsSearchBar.placeholder = @"Search Trams";

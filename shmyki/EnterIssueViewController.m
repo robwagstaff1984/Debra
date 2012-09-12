@@ -11,12 +11,13 @@
 #import "ShmykiContstants.h"
 #import "AppDelegate.h"
 #import "YourMykiCustomButton.h"
+#import <QuartzCore/QuartzCore.h>
 
 @implementation EnterIssueViewController {
     BOOL isFirstTimePageLoad;
 }
 
-@synthesize commentsTextView, punchOnIssues, punchOnIsValid, twitterButton, facebookButton, punchOnTableView;
+@synthesize commentsTextView, punchOnIssues, punchOnIsValid, twitterButton, facebookButton, punchOnTableView, punchOnTableViewWrapper;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -68,8 +69,18 @@
     [commentsTextView resignFirstResponder];
     [commentsTextView setUserInteractionEnabled:YES];
     
-    self.navigationItem.rightBarButtonItem = [YourMykiCustomButton createYourMykiBarButtonItemWithText:@"Save" withTarget:self withAction:@selector(issueEntered)];
     self.navigationItem.rightBarButtonItem.enabled = NO;
+    self.navigationItem.rightBarButtonItem = [YourMykiCustomButton createYourMykiBarButtonItemWithText:@"Save" withTarget:self withAction:@selector(issueEntered) isEnabled:NO];
+    self.navigationItem.rightBarButtonItem.enabled = NO;
+    
+    self.punchOnTableViewWrapper.layer.shadowColor = [[UIColor blackColor] CGColor];
+    self.punchOnTableViewWrapper.layer.shadowOffset = CGSizeMake(0.0f, -2.0f);
+    self.punchOnTableViewWrapper.layer.shadowOpacity = .20f;
+    self.punchOnTableViewWrapper.layer.shadowRadius = 3.0f;
+    
+    //TODO TRY THIS FOR IOS5
+//    [[UIBarButtonItem appearance] setTitleTextAttributes:textAttributes                   
+  //                                              forState:UIControlStateNormal];
     
 
     //self.navigationItem.leftBarButtonItem.style = UIBarButtonSystemItemCancel;
@@ -97,7 +108,7 @@
 
 -(void)viewWillAppear:(BOOL)animated {
     self.navigationItem.hidesBackButton = YES;
-    self.navigationItem.leftBarButtonItem = [YourMykiCustomButton createYourMykiBarButtonItemWithText:@"Cancel" withTarget:self withAction:@selector(popNavigationController)];
+    self.navigationItem.leftBarButtonItem = [YourMykiCustomButton createYourMykiBarButtonItemWithText:@"Cancel" withTarget:self withAction:@selector(popNavigationController) isEnabled:YES];
     [super viewWillAppear:animated];
 }
 
@@ -127,19 +138,27 @@
     if(cell == nil) {
         cell= [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault 
                                      reuseIdentifier:cellIdentifier];
+        cell.selectionStyle = UITableViewCellSelectionStyleGray;
         
     }
-    [cell.textLabel setFont:[UIFont systemFontOfSize:14.0f]];
-    [cell.textLabel setTextColor:[UIColor grayColor]];
-    cell.textLabel.text = [self.punchOnIssues.issues objectAtIndex:indexPath.row];
-
+    
+    if(indexPath.row == 0) {
+        cell.textLabel.text = @"Select a problem";   
+        [cell.textLabel setFont: [UIFont fontWithName:@"HelveticaNeue-Medium" size:14.0f]];
+        cell.textLabel.textColor = [UIColor lightGrayColor];
+        cell.textLabel.textAlignment = UITextAlignmentCenter;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    } else {
+        cell.textLabel.text = [self.punchOnIssues.issues objectAtIndex:indexPath.row];
+        [cell.textLabel setFont: [UIFont fontWithName:@"HelveticaNeue-Light" size:14.0f]];
+    }
     
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    if(indexPath.row == 0 && isFirstTimePageLoad) {
+    if(indexPath.row == 1 && isFirstTimePageLoad) {
         isFirstTimePageLoad = NO;
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
     }
@@ -150,21 +169,23 @@
 #pragma mark table view delegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    for(int i=0; i< [self.punchOnIssues.issues count]; i++ ) {
-        NSIndexPath *currentIndexPath = [NSIndexPath indexPathForRow:i inSection:0];
-        [tableView cellForRowAtIndexPath:currentIndexPath].accessoryType = UITableViewCellAccessoryNone;
-    }
-    
-    [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryCheckmark;
-    [[tableView cellForRowAtIndexPath:indexPath] setSelected:NO animated:YES];
-    
-    if(indexPath.row != 0) {
-        double delayInSeconds = .4;
-        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
-        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-            UIViewController *enterLocationViewController = [[EnterLocationViewController alloc] initWithNibName:@"EnterLocationViewController" bundle:nil];
-            [self.navigationController pushViewController:enterLocationViewController animated:YES];
-        });
+    if(indexPath.row != 0) {  
+        for(int i=0; i< [self.punchOnIssues.issues count]; i++ ) {
+            NSIndexPath *currentIndexPath = [NSIndexPath indexPathForRow:i inSection:0];
+            [tableView cellForRowAtIndexPath:currentIndexPath].accessoryType = UITableViewCellAccessoryNone;
+        }
+        
+        [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryCheckmark;
+        [[tableView cellForRowAtIndexPath:indexPath] setSelected:NO animated:YES];
+        
+        if(indexPath.row != 1) {
+            double delayInSeconds = .4;
+            dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+            dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+                UIViewController *enterLocationViewController = [[EnterLocationViewController alloc] initWithNibName:@"EnterLocationViewController" bundle:nil];
+                [self.navigationController pushViewController:enterLocationViewController animated:YES];
+            });
+        }
     }
 }
 
@@ -203,7 +224,7 @@
 - (void)textViewDidBeginEditing:(UITextView *)textView {
     self.navigationItem.leftBarButtonItem = nil;
 
-    self.navigationItem.rightBarButtonItem = [YourMykiCustomButton createYourMykiBarButtonItemWithText:@"Done" withTarget:self withAction:@selector(doneAddingComments)];
+    self.navigationItem.rightBarButtonItem = [YourMykiCustomButton createYourMykiBarButtonItemWithText:@"Done" withTarget:self withAction:@selector(doneAddingComments) isEnabled:YES];
     self.navigationItem.rightBarButtonItem.enabled = YES;
     
     
@@ -227,8 +248,8 @@
     }
     [commentsTextView resignFirstResponder];
 
-    self.navigationItem.rightBarButtonItem = [YourMykiCustomButton createYourMykiBarButtonItemWithText:@"Save" withTarget:self withAction:@selector(issueEntered)];
-    self.navigationItem.leftBarButtonItem = [YourMykiCustomButton createYourMykiBarButtonItemWithText:@"Cancel" withTarget:self withAction:@selector(popNavigationController)];
+    self.navigationItem.rightBarButtonItem = [YourMykiCustomButton createYourMykiBarButtonItemWithText:@"Save" withTarget:self withAction:@selector(issueEntered) isEnabled:YES];
+    self.navigationItem.leftBarButtonItem = [YourMykiCustomButton createYourMykiBarButtonItemWithText:@"Cancel" withTarget:self withAction:@selector(popNavigationController) isEnabled:YES];
     self.navigationItem.rightBarButtonItem.enabled = enableRightBarButton;
 }
                                                                    
@@ -278,7 +299,7 @@
     commentsTextView.autocorrectionType = UITextAutocorrectionTypeNo;
     [commentsTextView becomeFirstResponder];
     [commentsTextView setText: PUNCH_ON_HINT_TEXT];
-    [commentsTextView setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:18.0f]];
+    [commentsTextView setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:16.0f]];
 	[commentsTextView setTextColor:[UIColor lightGrayColor]];
     commentsTextView.selectedRange = NSMakeRange(0, 0);
     
@@ -290,7 +311,7 @@
     commentsTextView.autocorrectionType = UITextAutocorrectionTypeDefault;
     [commentsTextView becomeFirstResponder];
     [commentsTextView setText: @""];
-    [commentsTextView setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:18.0f]];
+    [commentsTextView setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:16.0f]];
 	[commentsTextView setTextColor:[UIColor blackColor]];
 }
 
