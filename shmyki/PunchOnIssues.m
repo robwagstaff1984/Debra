@@ -23,6 +23,10 @@
         [issues addObject:@"My myki card won't work"];
         [issues addObject:@"Unable to top up at Myki machine"];
         [issues addObject:@"Myki overcharged me"];
+        [issues addObject:@"Placeholder issue 1"];
+        [issues addObject:@"Placeholder issue 2"];
+        [issues addObject:@"Placeholder issue 3"];
+        [issues addObject:@"Placeholder issue 4"];
         [issues addObject:@"Other"];
     }
     return self;

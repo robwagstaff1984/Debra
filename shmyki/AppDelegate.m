@@ -229,7 +229,7 @@
     PunchOnLog *punchOnLog= [[PunchOnLog alloc] init];
     [punchOnLog setMessage:message];
     [punchOnLog setLocation:location];
-    [punchOnLog setTransportationType:2];
+    [punchOnLog setTransportationType:[transportationType integerValue]];
     [punchOnLog setDateLogged:[[NSDate date] dateByAddingTimeInterval:60*60*24*1]];
     
     NSMutableArray* punchOnLogsCache = [[PunchOnLogsCache sharedModel] loadPunchOnLogsCache];

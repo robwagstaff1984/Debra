@@ -17,7 +17,7 @@
     BOOL isFirstTimePageLoad;
 }
 
-@synthesize commentsTextView, punchOnIssues, punchOnIsValid, twitterButton, facebookButton, punchOnTableView, punchOnTableViewWrapper;
+@synthesize commentsTextView, punchOnIssues, punchOnIsValid, twitterButton, facebookButton, punchOnTableView, punchOnTableViewWrapper, shadowWrapper;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -70,28 +70,21 @@
     [commentsTextView setUserInteractionEnabled:YES];
     
     self.navigationItem.rightBarButtonItem.enabled = NO;
-    self.navigationItem.rightBarButtonItem = [YourMykiCustomButton createYourMykiBarButtonItemWithText:@"Save" withTarget:self withAction:@selector(issueEntered) isEnabled:NO];
+    self.navigationItem.rightBarButtonItem = [YourMykiCustomButton createYourMykiBarButtonItemWithText:@"Save" withTarget:self withAction:@selector(issueEntered)];
     self.navigationItem.rightBarButtonItem.enabled = NO;
     
-    self.punchOnTableViewWrapper.layer.shadowColor = [[UIColor blackColor] CGColor];
-    self.punchOnTableViewWrapper.layer.shadowOffset = CGSizeMake(0.0f, -2.0f);
-    self.punchOnTableViewWrapper.layer.shadowOpacity = .20f;
-    self.punchOnTableViewWrapper.layer.shadowRadius = 3.0f;
+    self.shadowWrapper.layer.shadowColor = [[UIColor blackColor] CGColor];
+    self.shadowWrapper.layer.shadowOffset = CGSizeMake(0.0f, 0.0f);
+    self.shadowWrapper.layer.shadowOpacity = .90f;
+    self.shadowWrapper.layer.shadowRadius = 3.0f;
     
     //TODO TRY THIS FOR IOS5
-//    [[UIBarButtonItem appearance] setTitleTextAttributes:textAttributes                   
-  //                                              forState:UIControlStateNormal];
     
+    /*
+    [self.navigationItem.rightBarButtonItem setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
+                                                                    [UIColor colorWithRed:220.0/255.0 green:104.0/255.0 blue:1.0/255.0 alpha:1.0], UITextAttributeTextColor, nil] forState:UIControlStateNormal];
+    */
 
-    //self.navigationItem.leftBarButtonItem.style = UIBarButtonSystemItemCancel;
-    
-
-   // [punchOnTableView selectRowAtIndexPath:indexPath 
-   ////                        animated:NO 
-       //              scrollPosition:UITableViewScrollPositionMiddle];
-   // [[punchOnTableView cellForRowAtIndexPath:indexPath] setSelected:YES animated:NO];
-    //[punchOnTableView selectRowAtIndexPath:indexPath animated:NO scrollPosition: UITableViewScrollPositionNone];
-    
     [super viewDidLoad];
     
 }
@@ -108,7 +101,7 @@
 
 -(void)viewWillAppear:(BOOL)animated {
     self.navigationItem.hidesBackButton = YES;
-    self.navigationItem.leftBarButtonItem = [YourMykiCustomButton createYourMykiBarButtonItemWithText:@"Cancel" withTarget:self withAction:@selector(popNavigationController) isEnabled:YES];
+    self.navigationItem.leftBarButtonItem = [YourMykiCustomButton createYourMykiBarButtonItemWithText:@"Cancel" withTarget:self withAction:@selector(popNavigationController)];
     [super viewWillAppear:animated];
 }
 
@@ -138,7 +131,7 @@
     if(cell == nil) {
         cell= [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault 
                                      reuseIdentifier:cellIdentifier];
-        cell.selectionStyle = UITableViewCellSelectionStyleGray;
+
         
     }
     
@@ -151,6 +144,7 @@
     } else {
         cell.textLabel.text = [self.punchOnIssues.issues objectAtIndex:indexPath.row];
         [cell.textLabel setFont: [UIFont fontWithName:@"HelveticaNeue-Light" size:14.0f]];
+        cell.selectionStyle = UITableViewCellSelectionStyleGray;
     }
     
     return cell;
@@ -224,7 +218,7 @@
 - (void)textViewDidBeginEditing:(UITextView *)textView {
     self.navigationItem.leftBarButtonItem = nil;
 
-    self.navigationItem.rightBarButtonItem = [YourMykiCustomButton createYourMykiBarButtonItemWithText:@"Done" withTarget:self withAction:@selector(doneAddingComments) isEnabled:YES];
+    self.navigationItem.rightBarButtonItem = [YourMykiCustomButton createYourMykiBarButtonItemWithText:@"Done" withTarget:self withAction:@selector(doneAddingComments)];
     self.navigationItem.rightBarButtonItem.enabled = YES;
     
     
@@ -240,7 +234,10 @@
 -(void) doneAddingComments {
 
     BOOL enableRightBarButton;
-    if([commentsTextView.text length] > 0) {
+    
+    if ([commentsTextView.text isEqualToString:PUNCH_ON_HINT_TEXT]) { 
+        enableRightBarButton = NO;
+    } else if([commentsTextView.text length] > 0) {
         enableRightBarButton = YES;
     } else {
         enableRightBarButton = NO;
@@ -248,8 +245,8 @@
     }
     [commentsTextView resignFirstResponder];
 
-    self.navigationItem.rightBarButtonItem = [YourMykiCustomButton createYourMykiBarButtonItemWithText:@"Save" withTarget:self withAction:@selector(issueEntered) isEnabled:YES];
-    self.navigationItem.leftBarButtonItem = [YourMykiCustomButton createYourMykiBarButtonItemWithText:@"Cancel" withTarget:self withAction:@selector(popNavigationController) isEnabled:YES];
+    self.navigationItem.rightBarButtonItem = [YourMykiCustomButton createYourMykiBarButtonItemWithText:@"Save" withTarget:self withAction:@selector(issueEntered)];
+    self.navigationItem.leftBarButtonItem = [YourMykiCustomButton createYourMykiBarButtonItemWithText:@"Cancel" withTarget:self withAction:@selector(popNavigationController)];
     self.navigationItem.rightBarButtonItem.enabled = enableRightBarButton;
 }
                                                                    

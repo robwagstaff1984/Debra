@@ -18,6 +18,7 @@
 @property (strong, nonatomic) IBOutlet UITextView *commentsTextView;
 @property (strong, nonatomic) IBOutlet UITableView *punchOnTableView;
 @property (strong, nonatomic) IBOutlet UIView *punchOnTableViewWrapper;
+@property (strong, nonatomic) IBOutlet UIView *shadowWrapper;
 @property (nonatomic) BOOL punchOnIsValid;
 @property (nonatomic, strong) IBOutlet UIButton* twitterButton;
 @property (nonatomic, strong) IBOutlet UIButton* facebookButton;
