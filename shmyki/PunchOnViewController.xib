@@ -73,7 +73,7 @@
 							<object class="IBUIButton" id="152500744">
 								<reference key="NSNextResponder" ref="869157663"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{105, 55}, {110, 110}}</string>
+								<string key="NSFrame">{{105, 55}, {110, 128}}</string>
 								<reference key="NSSuperview" ref="869157663"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="648080152"/>
@@ -176,7 +176,6 @@
 						<string key="NSFrameSize">{320, 367}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -378,25 +377,21 @@
 				<object class="IBPartialClassDescription">
 					<string key="className">PunchOnViewController</string>
 					<string key="superclassName">UIViewController</string>
-					<dictionary class="NSMutableDictionary" key="actions">
-						<string key="punchOnButtonPressed:">id</string>
-						<string key="punchOnHelpTapped:">id</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="actionInfosByName">
-						<object class="IBActionInfo" key="punchOnButtonPressed:">
+					<object class="NSMutableDictionary" key="actions">
+						<string key="NS.key.0">punchOnButtonPressed:</string>
+						<string key="NS.object.0">id</string>
+					</object>
+					<object class="NSMutableDictionary" key="actionInfosByName">
+						<string key="NS.key.0">punchOnButtonPressed:</string>
+						<object class="IBActionInfo" key="NS.object.0">
 							<string key="name">punchOnButtonPressed:</string>
 							<string key="candidateClassName">id</string>
 						</object>
-						<object class="IBActionInfo" key="punchOnHelpTapped:">
-							<string key="name">punchOnHelpTapped:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-					</dictionary>
+					</object>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="punchOnCoachMarks">UIImageView</string>
 						<string key="punchOnCommentsTableView">UITableView</string>
 						<string key="punchOnCommentsView">UIView</string>
-						<string key="punchOnHelpImageButton">UIButton</string>
 						<string key="tableFixedHeader">UIView</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
@@ -411,10 +406,6 @@
 						<object class="IBToOneOutletInfo" key="punchOnCommentsView">
 							<string key="name">punchOnCommentsView</string>
 							<string key="candidateClassName">UIView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="punchOnHelpImageButton">
-							<string key="name">punchOnHelpImageButton</string>
-							<string key="candidateClassName">UIButton</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="tableFixedHeader">
 							<string key="name">tableFixedHeader</string>
