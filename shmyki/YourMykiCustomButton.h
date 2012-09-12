@@ -11,5 +11,4 @@
 @interface YourMykiCustomButton : UIBarButtonItem
 
 + (UIBarButtonItem*)createYourMykiBarButtonItemWithText:(NSString*) text withTarget:(id)target withAction:(SEL)action;
-
 @end

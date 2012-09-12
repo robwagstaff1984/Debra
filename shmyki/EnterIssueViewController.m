@@ -69,7 +69,7 @@
     [commentsTextView resignFirstResponder];
     [commentsTextView setUserInteractionEnabled:YES];
     
-    self.navigationItem.rightBarButtonItem.enabled = NO;
+   // self.navigationItem.rightBarButtonItem.enabled = NO;
     self.navigationItem.rightBarButtonItem = [YourMykiCustomButton createYourMykiBarButtonItemWithText:@"Save" withTarget:self withAction:@selector(issueEntered)];
     self.navigationItem.rightBarButtonItem.enabled = NO;
     
