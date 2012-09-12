@@ -34,7 +34,10 @@
 -(void)postToFacebook;
 
 - (UIViewController*) getlogInToTwitterViewController;
+
+-(NSString*) convertLocationToShortLocation: (NSString*)location;
 -(void)postToTwitter;
 
 -(void)saveCurrentUsersPunchOnLog;
+-(void)clearCurrentUsersPunchOnLog;
 @end

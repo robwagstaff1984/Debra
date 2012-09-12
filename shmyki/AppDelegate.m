@@ -237,6 +237,10 @@
     [[PunchOnLogsCache sharedModel] savePunchOnLogsCache:punchOnLogsCache];
 }
 
+-(void)clearCurrentUsersPunchOnLog {
+    currentUsersPunchOnLog = [[PunchOnLog alloc] init];
+}
+
 -(NSString*) convertLocationToShortLocation: (NSString*)location {
     NSString* shortLocation = @"";
     if(currentUsersPunchOnLog.location != nil) {

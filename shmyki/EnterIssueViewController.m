@@ -17,7 +17,7 @@
     BOOL isFirstTimePageLoad;
 }
 
-@synthesize commentsTextView, punchOnIssues, punchOnIsValid, twitterButton, facebookButton, punchOnTableView, punchOnTableViewWrapper, shadowWrapper;
+@synthesize commentsTextView, punchOnIssues, punchOnIsValid, twitterButton, facebookButton, punchOnTableView, shadowWrapper, locationIcon, locationLabel;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -77,17 +77,12 @@
     self.shadowWrapper.layer.shadowOffset = CGSizeMake(0.0f, 0.0f);
     self.shadowWrapper.layer.shadowOpacity = .90f;
     self.shadowWrapper.layer.shadowRadius = 3.0f;
-    
-    //TODO TRY THIS FOR IOS5
-    
-    /*
-    [self.navigationItem.rightBarButtonItem setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
-                                                                    [UIColor colorWithRed:220.0/255.0 green:104.0/255.0 blue:1.0/255.0 alpha:1.0], UITextAttributeTextColor, nil] forState:UIControlStateNormal];
-    */
 
     [super viewDidLoad];
     
 }
+
+
 
 - (void)viewDidUnload
 {
@@ -97,6 +92,26 @@
 
 -(void)viewDidAppear: (BOOL)animated { 
     [super viewDidAppear:animated];
+    
+    NSString *currentUsersLocation = [[(AppDelegate*)[[UIApplication sharedApplication]delegate] currentUsersPunchOnLog ] location];
+    
+    if([currentUsersLocation length] > 0) {
+        self.locationLabel.text = [(AppDelegate*)[[UIApplication sharedApplication]delegate] convertLocationToShortLocation:currentUsersLocation]; 
+        
+        switch ([[(AppDelegate*)[[UIApplication sharedApplication]delegate] currentUsersPunchOnLog]transportationType]) {
+            case SELECTED_TRANSPORT_TRAM:
+                [self.locationIcon setImage:[UIImage imageNamed:@"/images/IconTram"]];
+                break;
+            case SELECTED_TRANSPORT_TRAIN:
+                [self.locationIcon setImage:[UIImage imageNamed:@"/images/IconTrain"]];
+                break;
+            case SELECTED_TRANSPORT_BUS:
+                [self.locationIcon setImage:[UIImage imageNamed:@"/images/IconBus"]];
+                break;
+            default:
+                [self.locationIcon setImage:[UIImage imageNamed:@"/images/IconComment"]];
+        } 
+    }
 }  
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -107,7 +122,9 @@
 
 -(void)popNavigationController {
     //[self.navigationController popViewControllerAnimated:YES];
+    [(AppDelegate*)[[UIApplication sharedApplication] delegate] clearCurrentUsersPunchOnLog];
     [self.navigationController dismissModalViewControllerAnimated:YES];
+    
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -263,6 +280,8 @@
     [(AppDelegate*)[[UIApplication sharedApplication] delegate] postToFacebook];
     [(AppDelegate*)[[UIApplication sharedApplication] delegate] postToTwitter];
     [(AppDelegate*)[[UIApplication sharedApplication] delegate] saveCurrentUsersPunchOnLog];
+    
+    [(AppDelegate*)[[UIApplication sharedApplication] delegate] clearCurrentUsersPunchOnLog];
     
     [self.navigationController dismissModalViewControllerAnimated:YES];
 }
