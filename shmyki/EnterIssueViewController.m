@@ -148,22 +148,20 @@
     if(cell == nil) {
         cell= [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault 
                                      reuseIdentifier:cellIdentifier];
-
-        
     }
+    
+    cell.textLabel.text = [self.punchOnIssues.issues objectAtIndex:indexPath.row];
     
     if(indexPath.row == 0) {
-        cell.textLabel.text = @"Select a problem";   
         [cell.textLabel setFont: [UIFont fontWithName:@"HelveticaNeue-Medium" size:14.0f]];
-        cell.textLabel.textColor = [UIColor lightGrayColor];
         cell.textLabel.textAlignment = UITextAlignmentCenter;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.textLabel.textColor = [UIColor lightGrayColor];
     } else {
-        cell.textLabel.text = [self.punchOnIssues.issues objectAtIndex:indexPath.row];
         [cell.textLabel setFont: [UIFont fontWithName:@"HelveticaNeue-Light" size:14.0f]];
         cell.selectionStyle = UITableViewCellSelectionStyleGray;
+        cell.textLabel.textColor = [UIColor blackColor];
     }
-    
     return cell;
 }
 

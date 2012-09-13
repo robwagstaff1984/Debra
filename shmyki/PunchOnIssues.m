@@ -18,6 +18,7 @@
     
     if (self != nil) {
         issues = [[NSMutableArray alloc] init];
+        [issues addObject:@"Select a problem"];
         [issues addObject:@"I just want to rant"];
         [issues addObject:@"The tap machine didn't work"];
         [issues addObject:@"My myki card won't work"];

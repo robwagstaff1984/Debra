@@ -22,17 +22,27 @@
     NSDate *currentTime = [NSDate date];
     NSTimeInterval secondsBetween = [currentTime timeIntervalSinceDate:date];
     int seconds = [[NSNumber numberWithDouble:secondsBetween] intValue];
+    NSString* plural=@"s";
     
     if(currentTime == nil) return nil;
     
     if(seconds < SECONDS_IN_A_MINUTE) {
         dateDisplay = [NSString stringWithFormat:@"just now", seconds];
     } else if (seconds < SECONDS_IN_AN_HOUR) {
-        dateDisplay = [NSString stringWithFormat:@"%d minutes ago", (seconds / SECONDS_IN_A_MINUTE)];
+        if( (seconds / SECONDS_IN_A_MINUTE) == 1) {
+            plural = @"";
+        }
+        dateDisplay = [NSString stringWithFormat:@"%d minute%@ ago", (seconds / SECONDS_IN_A_MINUTE),plural];
     } else if (seconds < SECONDS_IN_AN_DAY) {
-        dateDisplay = [NSString stringWithFormat:@"%d hours ago", (seconds / SECONDS_IN_AN_HOUR)];
+        if( (seconds / SECONDS_IN_AN_HOUR) == 1) {
+            plural = @"";
+        }
+        dateDisplay = [NSString stringWithFormat:@"%d hour%@ ago", (seconds / SECONDS_IN_AN_HOUR), plural];
     } else if (seconds < SECONDS_IN_AN_WEEK) {
-        dateDisplay = [NSString stringWithFormat:@"%d days ago", (seconds / SECONDS_IN_AN_DAY)];
+        if( (seconds / SECONDS_IN_AN_DAY) == 1) {
+            plural = @"";
+        }
+        dateDisplay = [NSString stringWithFormat:@"%d day%@ ago", (seconds / SECONDS_IN_AN_DAY), plural];
     } else {
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
         dateFormatter.dateFormat = @"MMM dd hh:mm a";     

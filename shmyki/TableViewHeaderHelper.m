@@ -16,7 +16,7 @@
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0,0,320,29)];
     
     UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(20,4, 150, 25)];
-    headerLabel.text = @"Punch On Comments";
+    headerLabel.text = @"Comments";
     headerLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:14.0];
     [headerLabel setTextColor:[UIColor grayColor]];
     headerLabel.tag = TAG_FOR_TABLE_HEADER_LABEL;
@@ -54,7 +54,7 @@
     NSString *numberOfPunchOnsFormatted = [formatter stringFromNumber:[NSNumber numberWithInteger:numberOfPunchOns]];
     
     UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(20,4, 150, 25)];
-    headerLabel.text = @"yourComments";
+    headerLabel.text = @"Comments";
     headerLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:14.0];
     [headerLabel setTextColor:[UIColor grayColor]];
     headerLabel.tag = TAG_FOR_TABLE_HEADER_LABEL;
