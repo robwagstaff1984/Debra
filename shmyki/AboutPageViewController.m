@@ -44,10 +44,9 @@
     self.navigationItem.hidesBackButton = YES;
     
     self.legalShadowView.layer.shadowColor = [[UIColor blackColor] CGColor];
-    self.legalShadowView.layer.shadowOffset = CGSizeMake(0.0f, -2.0f);
-    self.legalShadowView.layer.shadowOpacity = .15f;
-    self.legalShadowView.layer.shadowRadius = 6.0f;
-    
+    self.legalShadowView.layer.shadowOffset = CGSizeMake(0.0f, 1.0f);
+    self.legalShadowView.layer.shadowOpacity = .95f;
+    self.legalShadowView.layer.shadowRadius = 2.5f;
     
     // Do any additional setup after loading the view from its nib.
 }

@@ -114,7 +114,13 @@
     self.errorView.layer.shadowRadius = 2.0f;
     
     [balanceMykiPassExpiryLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:32.0f]];
+    [balanceMykiPassExpiryLabel setShadowColor:[UIColor darkGrayColor]];
+    [balanceMykiPassExpiryLabel setShadowOffset:CGSizeMake(0, 1.0)];
+    
     [balanceMykiMoneyAmountLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:32.0f]];
+    [balanceMykiMoneyAmountLabel setShadowColor:[UIColor darkGrayColor]];
+    [balanceMykiMoneyAmountLabel setShadowOffset:CGSizeMake(0, 1.0)];
+    
     [balanceMykiMoneyAdditionalLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:13.0f]];
     [balanceMykiPassAdditionalLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:13.0f]];
     [balanceHeaderLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:17.0f]];
