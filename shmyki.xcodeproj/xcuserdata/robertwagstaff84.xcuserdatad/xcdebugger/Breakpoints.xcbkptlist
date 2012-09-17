@@ -772,11 +772,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "shmyki/EnterLocationViewController.m"
-         timestampString = "366446904.907731"
+         timestampString = "369581930.135933"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "83"
-         endingLineNumber = "83"
+         startingLineNumber = "88"
+         endingLineNumber = "88"
          landmarkName = "-tableView:cellForRowAtIndexPath:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -798,11 +798,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "shmyki/EnterLocationViewController.m"
-         timestampString = "367071323.71561"
+         timestampString = "369581930.135933"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "109"
-         endingLineNumber = "109"
+         startingLineNumber = "114"
+         endingLineNumber = "114"
          landmarkName = "-tableView:cellForRowAtIndexPath:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -811,11 +811,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "shmyki/EnterLocationViewController.m"
-         timestampString = "366446904.907731"
+         timestampString = "369581930.135933"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "82"
-         endingLineNumber = "82"
+         startingLineNumber = "87"
+         endingLineNumber = "87"
          landmarkName = "-tableView:cellForRowAtIndexPath:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1084,11 +1084,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "shmyki/EnterLocationViewController.m"
-         timestampString = "369223121.823271"
+         timestampString = "369581930.135933"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "190"
-         endingLineNumber = "190"
+         startingLineNumber = "195"
+         endingLineNumber = "195"
          landmarkName = "-searchBar:shouldChangeTextInRange:replacementText:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1097,11 +1097,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "shmyki/EnterLocationViewController.m"
-         timestampString = "369223121.823271"
+         timestampString = "369581930.135933"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "191"
-         endingLineNumber = "191"
+         startingLineNumber = "196"
+         endingLineNumber = "196"
          landmarkName = "-searchBar:shouldChangeTextInRange:replacementText:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1500,11 +1500,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "shmyki/EnterLocationViewController.m"
-         timestampString = "369223121.823271"
+         timestampString = "369581930.135933"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "244"
-         endingLineNumber = "244"
+         startingLineNumber = "249"
+         endingLineNumber = "249"
          landmarkName = "-updateTransportButtons"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1513,11 +1513,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "shmyki/EnterLocationViewController.m"
-         timestampString = "369223121.823271"
+         timestampString = "369581930.135933"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "250"
-         endingLineNumber = "250"
+         startingLineNumber = "255"
+         endingLineNumber = "255"
          landmarkName = "-updateTransportButtons"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1526,11 +1526,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "shmyki/EnterLocationViewController.m"
-         timestampString = "369223121.823271"
+         timestampString = "369581930.135933"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "242"
-         endingLineNumber = "242"
+         startingLineNumber = "247"
+         endingLineNumber = "247"
          landmarkName = "-updateTransportButtons"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1539,11 +1539,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "shmyki/EnterLocationViewController.m"
-         timestampString = "369223121.823271"
+         timestampString = "369581930.135933"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "136"
-         endingLineNumber = "136"
+         startingLineNumber = "141"
+         endingLineNumber = "141"
          landmarkName = "-searchBarTextDidBeginEditing:"
          landmarkType = "5">
       </FileBreakpoint>

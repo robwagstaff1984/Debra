@@ -107,7 +107,7 @@
     if(self.isFaceBookRequired) {
         NSMutableDictionary* params = [[NSMutableDictionary alloc] initWithCapacity:3];
         
-        NSString *facebookMessage = [NSString stringWithFormat:@"I just punched on with yourKi:\n\n\"%@\"",  currentUsersPunchOnLog.message];
+        NSString *facebookMessage = [NSString stringWithFormat:@"I just had my voice heard with yourMyki:\n\n\"%@\"",  currentUsersPunchOnLog.message];
         [params setObject:facebookMessage forKey:@"message"];
         [params setObject:@"http://www.facebook.com/YourKiApp" forKey:@"link"];
         [params setObject:@"Get the app that give you your Myki balance, ticket inspector locations and access to the YourKi community" forKey:@"caption"];

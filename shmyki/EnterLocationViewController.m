@@ -15,7 +15,7 @@
 @implementation EnterLocationViewController
 
 @synthesize selectedTransportType, stationLocations, stationsTable, tramButton, trainButton, busButton, stationsSearchBar;
-@synthesize stationsForCurrentSelection, filteredStationsForCurrentSelection, isFiltered, selectedLocation;
+@synthesize stationsForCurrentSelection, filteredStationsForCurrentSelection, isFiltered, selectedLocation, shadowWrapper;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -39,6 +39,11 @@
     self.stationsSearchBar.delegate = self;
     self.stationsSearchBar.placeholder = @"Search Trams";
     self.navigationItem.title = @"yourLocation";
+    
+    self.shadowWrapper.layer.shadowColor = [[UIColor blackColor] CGColor];
+    self.shadowWrapper.layer.shadowOffset = CGSizeMake(0.0f, 0.0f);
+    self.shadowWrapper.layer.shadowOpacity = .90f;
+    self.shadowWrapper.layer.shadowRadius = 2.0f;
     //self.navigationItem.rightBarButtonItem.enabled = NO;
     // Do any additional setup after loading the view from its nib.
 }

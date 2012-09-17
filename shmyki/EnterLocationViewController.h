@@ -22,6 +22,7 @@
 @property (nonatomic, strong) IBOutlet UIButton *busButton;
 @property (nonatomic, strong) NSMutableArray *stationsForCurrentSelection;
 @property (nonatomic, strong) NSMutableArray *filteredStationsForCurrentSelection;
+@property (strong, nonatomic) IBOutlet UIView *shadowWrapper;
 
 @property (nonatomic, strong) IBOutlet UISearchBar *stationsSearchBar;
 @property (nonatomic, strong) NSString *selectedLocation;
