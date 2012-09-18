@@ -102,21 +102,25 @@ inspectorCoachMarks, showingCoachMarks;
     if ([annotation isKindOfClass:[InspectorMapKitAnnotation class]]) {
         static NSString*  inspectorAnnotationIdentifier = @"InspectorAnnotationIdentifier"; 
 
-        MKAnnotationView* annotationView = (MKAnnotationView *) [mapView dequeueReusableAnnotationViewWithIdentifier:inspectorAnnotationIdentifier]; 
-            
-        if (!annotationView) {
-            MKAnnotationView* customPinView = [[MKAnnotationView alloc] initWithAnnotation:annotation
+       // MKAnnotationView* annotationView = (MKAnnotationView *) [mapView dequeueReusableAnnotationViewWithIdentifier:inspectorAnnotationIdentifier]; 
+        
+        MKAnnotationView* customPinView;
+       // if (!annotationView) {
+            customPinView = [[MKAnnotationView alloc] initWithAnnotation:annotation
                                                                                      reuseIdentifier:inspectorAnnotationIdentifier];
             
-            customPinView.image = [(InspectorMapKitAnnotation*)annotation getPoiImageForTime];
-            customPinView.centerOffset = CGPointMake(0, POI_OFFSET_Y);
-            customPinView.canShowCallout = YES;
-
-            return customPinView;
-        } else{
-            annotationView.annotation = annotation;
-            return annotationView; 
-        }
+       // } //else{
+        
+        customPinView.image = [(InspectorMapKitAnnotation*)annotation getPoiImageForTime];
+        customPinView.centerOffset = CGPointMake(0, POI_OFFSET_Y);
+        customPinView.canShowCallout = YES;
+        customPinView.annotation = annotation;
+        
+        return customPinView;
+        
+        //    annotationView.annotation = annotation;
+          //  return annotationView; 
+       // }
     } else {
         return nil;
     }
@@ -130,9 +134,37 @@ inspectorCoachMarks, showingCoachMarks;
 }
 
 - (void)mapView:(MKMapView *)mapView didAddAnnotationViews:(NSArray *)views {   
-    for (MKAnnotationView *pin in views) {
-        if ([[pin annotation] isKindOfClass:[InspectorMapKitAnnotation class]])
-            
+
+    
+    
+    NSArray *sortedAnnotationViews = [views sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+        
+        
+        if ([[(MKAnnotationView*) obj1 annotation] isKindOfClass:[MKUserLocation class]]) {
+            NSLog(@"obj1 is location");
+        }
+        
+        if ([[(MKAnnotationView*) obj2 annotation] isKindOfClass:[MKUserLocation class]]) {
+            NSLog(@"obj2 is location");
+        }
+        
+        
+        NSDate *firstDate = [(InspectorMapKitAnnotation*) [((MKAnnotationView*) obj1) annotation] spotDate];
+        NSDate *secondDate = [(InspectorMapKitAnnotation*) [((MKAnnotationView*) obj2) annotation] spotDate];
+        
+        if ( firstDate < secondDate )
+            return NSOrderedAscending;
+        if ( firstDate > secondDate )
+            return NSOrderedDescending;
+        return NSOrderedSame;
+    }];
+    
+    
+    for (MKAnnotationView *pin in sortedAnnotationViews) {
+        
+        if ([[pin annotation] isKindOfClass:[MKUserLocation class]]) {
+            [[pin superview] bringSubviewToFront:pin];
+        } else if ([[pin annotation] isKindOfClass:[InspectorMapKitAnnotation class]]){
             if([(InspectorMapKitAnnotation*)[pin annotation] justSpotted]){
                 
                 CGRect endFrame = pin.frame;
@@ -144,7 +176,13 @@ inspectorCoachMarks, showingCoachMarks;
                 pin.frame = endFrame;
                 [UIView commitAnimations];
             }
+            [[pin superview] sendSubviewToBack:pin];
+            NSLog(@"ROB: %@", [(InspectorMapKitAnnotation*) [pin annotation] spotDate]);
+        }
     }
+     NSLog(@"ROB: END");
+    
+    
 } 
 
 #pragma mark IBActions

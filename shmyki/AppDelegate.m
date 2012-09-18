@@ -110,8 +110,8 @@
         NSString *facebookMessage = [NSString stringWithFormat:@"I just had my voice heard with yourMyki:\n\n\"%@\"",  currentUsersPunchOnLog.message];
         [params setObject:facebookMessage forKey:@"message"];
         [params setObject:@"http://www.facebook.com/pages/yourMyki/451063014917607" forKey:@"link"];
-        [params setObject:@"Get the app that give you your Myki balance, ticket inspector locations and access to the YourKi community" forKey:@"caption"];
-        [params setObject:@"YourKi -  \"It's YOUR key\""  forKey:@"description"];
+        [params setObject:@"Get the app that give you your Myki balance, ticket inspector locations and a chance to have your voice heard" forKey:@"caption"];
+       // [params setObject:@"yourMyki -  \"It's YOUR myki\""  forKey:@"description"];
         //[params setObject:@"http://a5.sphotos.ak.fbcdn.net/hphotos-ak-snc6/s720x720/251964_337995966278198_401361979_n.jpg"  forKey:@"picture"];
         
         [facebook requestWithGraphPath:@"me/feed" andParams:params andHttpMethod:@"POST" andDelegate:self];
