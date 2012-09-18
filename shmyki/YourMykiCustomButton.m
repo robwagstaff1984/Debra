@@ -18,7 +18,8 @@
     [yourMykiBarButton addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
     [yourMykiBarButton.titleLabel setFont:[UIFont fontWithName:@"Helvetica-Bold" size:12.0f]];
     [yourMykiBarButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [yourMykiBarButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateDisabled];
+   // [yourMykiBarButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateDisabled];
+     [yourMykiBarButton setTitleColor:[UIColor colorWithHue:0.0 saturation:0.0 brightness:.83 alpha:1.0] forState:UIControlStateDisabled];
     UIBarButtonItem *yourMykiBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:yourMykiBarButton];
     
     return yourMykiBarButtonItem;

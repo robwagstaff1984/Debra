@@ -94,7 +94,7 @@
 }
 
 -(IBAction)webButtonTapped:(id)sender {
-    NSURL *url = [ [ NSURL alloc ] initWithString: @"http://www.facebook.com/pages/yourMyki/451063014917607" ];
+    NSURL *url = [ [ NSURL alloc ] initWithString: @"http://yourmyki.com" ];
     [[UIApplication sharedApplication] openURL:url];
 }
 

@@ -19,6 +19,7 @@
 #import "AppDelegate.h"
 #import "YourMykiCustomButton.h"
 #import "DateDisplayHelper.h"
+#import "FeatureToggle.h"
 
 @implementation PunchOnViewController
 @synthesize punchOnCommentsView, punchOnCommentsTableView, listOfPunchOnLogs, totalPunchOns, tableFixedHeader, helpImages, punchOnCoachMarks, showingCoachMarks;
@@ -80,7 +81,7 @@
     [self.helpImages loadHelpImageRequiredInfo];
     
     //   self.helpImages.isPunchOnHelpAlreadySeen = NO;
-    if (!self.helpImages.isPunchOnHelpAlreadySeen) {
+    if (!self.helpImages.isPunchOnHelpAlreadySeen && FEATURE_PUNCH_ON_COACH_MARKS) {
         [self showPunchOnCoachMarks];
         [self hidePunchOnCoachMarksWithDelay:4.0 WithDuration:2.0];
         self.helpImages.isPunchOnHelpAlreadySeen = YES;
@@ -421,11 +422,15 @@
         [[[self.tableFixedHeader subviews] objectAtIndex:0] removeFromSuperview];
         [self.tableFixedHeader addSubview: [TableViewHeaderHelper makeTableUpHeaderWith:self.totalPunchOns]];
         [self addGesturesToTableViewHeaderWithFadeEffect:fadeEffect];
+        
+        self.navigationItem.rightBarButtonItem = nil;
+
     } else {
       //  self.punchOnCommentsTableView.tableHeaderView = [TableViewHeaderHelper makeTableDownHeaderWith:self.totalPunchOns];
         [[[self.tableFixedHeader subviews] objectAtIndex:0] removeFromSuperview];
         [self.tableFixedHeader addSubview:[TableViewHeaderHelper makeTableDownHeaderWith:self.totalPunchOns]];
         [self addGesturesToTableViewHeaderWithFadeEffect:fadeEffect];
+        self.navigationItem.rightBarButtonItem = [YourMykiCustomButton createYourMykiBarButtonItemWithText:@"About" withTarget:self withAction:@selector(showAboutPage)];
     }
 }
 

@@ -20,7 +20,7 @@ inspectorCoachMarks, showingCoachMarks;
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        self.title = NSLocalizedString(@"Inspectors", nil);
+        self.title = NSLocalizedString(@"Nearby", nil);
         if ([self.tabBarItem respondsToSelector:@selector(setFinishedSelectedImage:withFinishedUnselectedImage:)] ==YES) {
             [self.tabBarItem setFinishedSelectedImage:[UIImage imageNamed:@"images/TabInspectOn"] withFinishedUnselectedImage:[UIImage imageNamed:@"images/TabInspectOff"]];
         } else {
@@ -234,7 +234,8 @@ inspectorCoachMarks, showingCoachMarks;
         }
         
         [self removeInspectorAnnotations];
-        [self.inspectorMapView addAnnotations:[[listOfInspectorLocations reverseObjectEnumerator] allObjects]];
+//        [self.inspectorMapView addAnnotations:[[listOfInspectorLocations reverseObjectEnumerator] allObjects]];
+                [self.inspectorMapView addAnnotations:[[listOfInspectorLocations objectEnumerator] allObjects]];
     }];
 }
 
