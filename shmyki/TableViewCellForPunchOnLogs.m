@@ -51,7 +51,7 @@
     CGFloat boundsX = contentRect.origin.x;
     CGRect frame;
     
-    CGSize constraint = CGSizeMake(320.0 - (CELL_CONTENT_HORIZONTAL_MARGIN * 2), 40000.0f);
+    CGSize constraint = CGSizeMake(320.0 - (CELL_CONTENT_HORIZONTAL_MARGIN * 2), 500.0);
     
     CGSize messageLabelSize = [messageLabel.text sizeWithFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:MESSAGE_FONT_SIZE] constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
     CGSize locationLabelSize = [locationLabel.text sizeWithFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:DATE_FONT_SIZE] constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];

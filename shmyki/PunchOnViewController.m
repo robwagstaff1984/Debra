@@ -158,13 +158,6 @@
 -(void) showAboutPage {
     UIViewController *aboutPageViewController = [[AboutPageViewController alloc] initWithNibName:@"AboutPageViewController" bundle:nil];
     
-    /*[UIView animateWithDuration:0.75
-                     animations:^{
-                         [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
-                         [self.navigationController pushViewController:aboutPageViewController animated:NO];
-                         [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:self.navigationController.view cache:NO];
-                     }];*/
-    
     [self.navigationController pushViewController:aboutPageViewController animated:YES];
 }
 
