@@ -92,6 +92,7 @@
     self.punchOnCommentsView.layer.shadowOffset = CGSizeMake(0.0f, -2.0f);
     self.punchOnCommentsView.layer.shadowOpacity = .15f;
     self.punchOnCommentsView.layer.shadowRadius = 6.0f;
+    [self fadeInTableView];
 }
 
 - (void)viewDidUnload
@@ -122,9 +123,6 @@
 
 -(void)viewDidAppear:(BOOL)animated {
     [self updatePunchOnLogs];
-           
-    [super viewDidAppear:animated];
-
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -141,6 +139,19 @@
     //   [self.navigationController pushViewController:enterIssueViewController animated:YES];
 }
 
+
+-(void) fadeInTableView {
+    self.punchOnCommentsTableView.alpha = 0.0;
+    self.punchOnCommentsView.alpha = 0.0;
+
+    [UIView animateWithDuration:0.9 delay:0.0 options:UIViewAnimationOptionTransitionCrossDissolve animations:^(void){
+        self.punchOnCommentsTableView.alpha = 1.0;
+        self.punchOnCommentsView.alpha = 1.0;
+    } completion:^(BOOL finished){
+
+    }];
+
+}
 
 #pragma mark about page
 

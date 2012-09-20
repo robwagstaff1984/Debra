@@ -138,17 +138,7 @@ inspectorCoachMarks, showingCoachMarks;
     
     
     NSArray *sortedAnnotationViews = [views sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
-        
-        
-        if ([[(MKAnnotationView*) obj1 annotation] isKindOfClass:[MKUserLocation class]]) {
-            NSLog(@"obj1 is location");
-        }
-        
-        if ([[(MKAnnotationView*) obj2 annotation] isKindOfClass:[MKUserLocation class]]) {
-            NSLog(@"obj2 is location");
-        }
-        
-        
+
         NSDate *firstDate = [(InspectorMapKitAnnotation*) [((MKAnnotationView*) obj1) annotation] spotDate];
         NSDate *secondDate = [(InspectorMapKitAnnotation*) [((MKAnnotationView*) obj2) annotation] spotDate];
         
@@ -177,10 +167,10 @@ inspectorCoachMarks, showingCoachMarks;
                 [UIView commitAnimations];
             }
             [[pin superview] sendSubviewToBack:pin];
-            NSLog(@"ROB: %@", [(InspectorMapKitAnnotation*) [pin annotation] spotDate]);
+          //  NSLog(@"ROB: %@", [(InspectorMapKitAnnotation*) [pin annotation] spotDate]);
         }
     }
-     NSLog(@"ROB: END");
+     //NSLog(@"ROB: END");
     
     
 } 

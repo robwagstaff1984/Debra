@@ -39,7 +39,7 @@
 
 #define MAX_INSPECTORS_DISPLAYED 150
 #define MAX_PUNCH_ON_LOGS_RETRIEVED 150
-#define PUNCH_ON_HINT_TEXT @"Have your voice heard! Tell us all what you think of Myki..."
+#define PUNCH_ON_HINT_TEXT @"Have your voice heard. Let everyone know how you feel about myki"
 #define FEEDBACK_EMAIL_ADDRESS @"yourMyki@gmail.com"
 
 #define MYKI_LOGIN_URL @"https://www.mymyki.com.au/NTSWebPortal/Login.aspx"
