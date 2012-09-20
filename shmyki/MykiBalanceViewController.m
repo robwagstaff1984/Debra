@@ -115,11 +115,11 @@
     
     [balanceMykiPassExpiryLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:32.0f]];
 //    [balanceMykiPassExpiryLabel setShadowColor:[UIColor darkGrayColor]];
-     [balanceMykiPassExpiryLabel setShadowColor:[UIColor colorWithHue:.5813888 saturation:.0541666 brightness:.240833 alpha:1]];
+     [balanceMykiPassExpiryLabel setShadowColor:[UIColor colorWithHue:.586111 saturation:.130555 brightness:.197222 alpha:1]];
     [balanceMykiPassExpiryLabel setShadowOffset:CGSizeMake(0, 1.0)];
     
     [balanceMykiMoneyAmountLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:32.0f]];
-    [balanceMykiMoneyAmountLabel setShadowColor:[UIColor colorWithHue:.5813888 saturation:.0541666 brightness:.240833 alpha:1]];
+    [balanceMykiMoneyAmountLabel setShadowColor:[UIColor colorWithHue:.586111 saturation:.130555 brightness:.197222 alpha:1]];
     [balanceMykiMoneyAmountLabel setShadowOffset:CGSizeMake(0, 1.0)];
     
     [balanceMykiMoneyAdditionalLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:13.0f]];

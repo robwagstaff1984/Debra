@@ -94,7 +94,7 @@
 }
 
 -(IBAction)webButtonTapped:(id)sender {
-    NSURL *url = [ [ NSURL alloc ] initWithString: @"http://yourmyki.com" ];
+    NSURL *url = [ [ NSURL alloc ] initWithString: @"http://yourmyki.com.au" ];
     [[UIApplication sharedApplication] openURL:url];
 }
 

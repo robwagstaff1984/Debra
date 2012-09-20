@@ -107,7 +107,7 @@
     if(self.isFaceBookRequired) {
         NSMutableDictionary* params = [[NSMutableDictionary alloc] initWithCapacity:3];
         
-        NSString *facebookMessage = [NSString stringWithFormat:@"I just had my voice heard with yourMyki:\n\n\"%@\"",  currentUsersPunchOnLog.message];
+        NSString *facebookMessage = [NSString stringWithFormat:@"Another voice heard with yourMyki:\n\n\"%@\"",  currentUsersPunchOnLog.message];
         [params setObject:facebookMessage forKey:@"message"];
         [params setObject:@"http://www.facebook.com/pages/yourMyki/451063014917607" forKey:@"link"];
         [params setObject:@"Get the app that give you your Myki balance, ticket inspector locations and a chance to have your voice heard" forKey:@"caption"];
@@ -170,7 +170,7 @@
 -(void) postToTwitter {
     
     if(self.isTwitterRequired) { 
-        NSString *twitterMessage = [NSString stringWithFormat:@"I just had my voice heard with yourMyki:\n\n\"%@\"\n\n@yourMyki #yourMyki",  currentUsersPunchOnLog.message];
+        NSString *twitterMessage = [NSString stringWithFormat:@"Another voice heard with yourMyki:\n\n\"%@\"\n\n@yourMyki #yourMyki",  currentUsersPunchOnLog.message];
     
         [twitterEngine sendUpdate:twitterMessage];
     }

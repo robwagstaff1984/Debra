@@ -169,7 +169,7 @@
     
     if(indexPath.row == 1 && isFirstTimePageLoad) {
         isFirstTimePageLoad = NO;
-        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        cell.accessoryView = [[UIImageView alloc] initWithImage:[UIImage imageNamed: @"images/IconTick"]];
     }
 }
 
@@ -181,10 +181,10 @@
     if(indexPath.row != 0) {  
         for(int i=0; i< [self.punchOnIssues.issues count]; i++ ) {
             NSIndexPath *currentIndexPath = [NSIndexPath indexPathForRow:i inSection:0];
-            [tableView cellForRowAtIndexPath:currentIndexPath].accessoryType = UITableViewCellAccessoryNone;
+            [tableView cellForRowAtIndexPath:currentIndexPath].accessoryView = nil;
         }
         
-        [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryCheckmark;
+        [tableView cellForRowAtIndexPath:indexPath].accessoryView = [[UIImageView alloc] initWithImage:[UIImage imageNamed: @"images/IconTick"]];
         [[tableView cellForRowAtIndexPath:indexPath] setSelected:NO animated:YES];
         
         if(indexPath.row != 1) {
