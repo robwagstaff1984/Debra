@@ -41,7 +41,9 @@
         [self.contentView addSubview:locationLabel]; 
         [self.contentView addSubview:locationIconLabel];
         [self.contentView addSubview:dateLabel];
+        
     }
+    
     return self;
 }
 

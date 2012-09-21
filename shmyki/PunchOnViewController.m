@@ -194,6 +194,9 @@
             [cell.locationIconLabel setImage:[UIImage imageNamed:@"/images/IconComment"]];
     }
     
+    //cell.layer.shouldRasterize = YES;
+  //  cell.layer.rasterizationScale = [UIScreen mainScreen].scale;
+    
     return cell;
 }
 

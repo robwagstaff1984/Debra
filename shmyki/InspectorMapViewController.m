@@ -143,7 +143,7 @@ inspectorCoachMarks, showingCoachMarks;
         NSDate *secondDate = [(InspectorMapKitAnnotation*) [((MKAnnotationView*) obj2) annotation] spotDate];
         
         NSComparisonResult result = [secondDate compare:firstDate];
-        return result;xw
+        return result;
     }];
     
     
