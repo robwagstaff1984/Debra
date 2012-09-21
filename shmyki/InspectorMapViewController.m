@@ -138,15 +138,12 @@ inspectorCoachMarks, showingCoachMarks;
     
     
     NSArray *sortedAnnotationViews = [views sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
-
+        
         NSDate *firstDate = [(InspectorMapKitAnnotation*) [((MKAnnotationView*) obj1) annotation] spotDate];
         NSDate *secondDate = [(InspectorMapKitAnnotation*) [((MKAnnotationView*) obj2) annotation] spotDate];
         
-        if ( firstDate < secondDate )
-            return NSOrderedAscending;
-        if ( firstDate > secondDate )
-            return NSOrderedDescending;
-        return NSOrderedSame;
+        NSComparisonResult result = [secondDate compare:firstDate];
+        return result;xw
     }];
     
     
@@ -167,12 +164,8 @@ inspectorCoachMarks, showingCoachMarks;
                 [UIView commitAnimations];
             }
             [[pin superview] sendSubviewToBack:pin];
-          //  NSLog(@"ROB: %@", [(InspectorMapKitAnnotation*) [pin annotation] spotDate]);
         }
     }
-     //NSLog(@"ROB: END");
-    
-    
 } 
 
 #pragma mark IBActions
