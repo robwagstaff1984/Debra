@@ -34,11 +34,11 @@
     int seconds = secondsBetween / 1;
 
     if (seconds < SECONDS_FOR_RED_POI) {
-        return [UIImage imageNamed:@"/images/IconPoiRed"];
+        return [UIImage imageNamed:@"/images/MapPoiRed"];
     } else if (seconds < SECONDS_FOR_AMBER_POI) {
-        return [UIImage imageNamed:@"/images/IconPoiAmber"];
+        return [UIImage imageNamed:@"/images/MapPoiOrange"];
     } else {
-        return [UIImage imageNamed:@"/images/IconPoiBlack"];
+        return [UIImage imageNamed:@"/images/MapPoiGrey"];
     }
 }
 

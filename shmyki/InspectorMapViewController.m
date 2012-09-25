@@ -162,10 +162,16 @@ inspectorCoachMarks, showingCoachMarks;
                 [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
                 pin.frame = endFrame;
                 [UIView commitAnimations];
+               // [[pin superview] bringSubviewToFront:pin];
+            } else {
+                
+        
+                [[pin superview] sendSubviewToBack:pin];
+                 //     NSLog(@"ROB: %@", [(InspectorMapKitAnnotation*) [pin annotation] spotDate]);
             }
-            [[pin superview] sendSubviewToBack:pin];
         }
     }
+   // NSLog(@"ROB: END");
 } 
 
 #pragma mark IBActions
