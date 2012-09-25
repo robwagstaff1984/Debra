@@ -129,7 +129,7 @@
 }
 
 -(NSString*) convertMykiMoneyTopUpInProgress:(NSString*)mykiMoneyTopUpInProgressRaw  {
-    if([mykiMoneyTopUpInProgressRaw isEqualToString:@"$0.00"]) {
+    if([mykiMoneyTopUpInProgressRaw isEqualToString:@"$0.00"] || [mykiMoneyTopUpInProgressRaw length] ==0  || [mykiMoneyTopUpInProgressRaw isEqualToString:@" "]) {
         return @"";
     } else {
         return [NSString stringWithFormat:@"%@ in progress", mykiMoneyTopUpInProgressRaw];

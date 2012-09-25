@@ -36,8 +36,8 @@
         
         [self loadFirstTimeLogin];
         
-        usernameTextField = [self setUpTextField:usernameTextField withText:@"Username" withUserDetail:[mykiAccountInformation mykiUsername] withReturnKey:UIReturnKeyNext withTag:USERNAME_TEXTFIELD_TAG];
-        passwordTextField = [self setUpTextField:passwordTextField withText:@"Password" withUserDetail: [mykiAccountInformation mykiPassword] withReturnKey:UIReturnKeyDone withTag:PASSWORD_TEXTFIELD_TAG];        
+        usernameTextField = [self setUpTextField:usernameTextField withText:@"Myki username" withUserDetail:[mykiAccountInformation mykiUsername] withReturnKey:UIReturnKeyNext withTag:USERNAME_TEXTFIELD_TAG];
+        passwordTextField = [self setUpTextField:passwordTextField withText:@"Myki password" withUserDetail: [mykiAccountInformation mykiPassword] withReturnKey:UIReturnKeyDone withTag:PASSWORD_TEXTFIELD_TAG];
         
         passwordTextField.clearsOnBeginEditing = NO;
         
@@ -121,11 +121,13 @@
     
     [balanceMykiPassExpiryLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:32.0f]];
 //    [balanceMykiPassExpiryLabel setShadowColor:[UIColor darkGrayColor]];
-     [balanceMykiPassExpiryLabel setShadowColor:[UIColor colorWithHue:.586111 saturation:.130555 brightness:.197222 alpha:1]];
+     //[balanceMykiPassExpiryLabel setShadowColor:[UIColor colorWithHue:.586111 saturation:.130555 brightness:.197222 alpha:1]];
+    [balanceMykiPassExpiryLabel setShadowColor:[UIColor colorWithHue:.587222 saturation:.1313888 brightness:.198333 alpha:1]];
+    
     [balanceMykiPassExpiryLabel setShadowOffset:CGSizeMake(0, 1.0)];
     
     [balanceMykiMoneyAmountLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:32.0f]];
-    [balanceMykiMoneyAmountLabel setShadowColor:[UIColor colorWithHue:.586111 saturation:.130555 brightness:.197222 alpha:1]];
+    [balanceMykiMoneyAmountLabel setShadowColor:[UIColor colorWithHue:.587222 saturation:.1313888 brightness:.198333 alpha:1]];
     [balanceMykiMoneyAmountLabel setShadowOffset:CGSizeMake(0, 1.0)];
     
     [balanceMykiMoneyAdditionalLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:13.0f]];

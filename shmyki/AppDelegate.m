@@ -370,6 +370,8 @@ static const NSInteger kGANDispatchPeriodSec = 10;
                                          withError:&error]) {
         // Handle error here
     }
+    
+    [[GANTracker sharedTracker] trackPageview:@"App Launched" withError:nil];
 }
 
 @end
