@@ -27,7 +27,7 @@
     if(currentTime == nil) return nil;
     
     if(seconds < SECONDS_IN_A_MINUTE) {
-        dateDisplay = [NSString stringWithFormat:@"just now", seconds];
+        dateDisplay = [NSString stringWithFormat:@"just now"];
     } else if (seconds < SECONDS_IN_AN_HOUR) {
         if( (seconds / SECONDS_IN_A_MINUTE) == 1) {
             plural = @"";

@@ -18,6 +18,10 @@
 #import "SA_OAuthTwitterEngine.h"  
 #import "ShmykiContstants.h"
 #import "PunchOnLogsCache.h"
+#import "GANTracker.h"
+
+// Dispatch period in seconds
+static const NSInteger kGANDispatchPeriodSec = 10;
 
 
 @implementation AppDelegate
@@ -29,6 +33,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [self startGoogleAnalytics];
+    
     [Parse setApplicationId:@"0ZOhCs6SN4VQ6KfvV1nHUQrXSpU391AiWStEGKpf"
                   clientKey:@"nHODOwsVCOGeziCH3byVfDdQVZECBvWqCZHApSS9"];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
@@ -336,5 +342,34 @@
 {
 }
 */
+
+#pragma mark google analytics
+
+-(void) startGoogleAnalytics {
+    [[GANTracker sharedTracker] startTrackerWithAccountID:@"UA-35077732-1"
+                                           dispatchPeriod:kGANDispatchPeriodSec
+                                                 delegate:nil];
+    
+    NSError *error;
+    if (![[GANTracker sharedTracker] setCustomVariableAtIndex:1
+                                                         name:@"iPhone1"
+                                                        value:@"iv1"
+                                                    withError:&error]) {
+        // Handle error here
+    }
+    
+    if (![[GANTracker sharedTracker] trackEvent:@"my_category"
+                                         action:@"my_action"
+                                          label:@"my_label"
+                                          value:-1
+                                      withError:&error]) {
+        // Handle error here
+    }
+    
+    if (![[GANTracker sharedTracker] trackPageview:@"/app_entry_point"
+                                         withError:&error]) {
+        // Handle error here
+    }
+}
 
 @end

@@ -89,6 +89,8 @@
 		819A6A1E1595D22E002ABA35 /* EnterLocationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 819A6A1C1595D22E002ABA35 /* EnterLocationViewController.xib */; };
 		819A6A221596C5F4002ABA35 /* StationLocations.m in Sources */ = {isa = PBXBuildFile; fileRef = 819A6A211596C5F4002ABA35 /* StationLocations.m */; };
 		81BF9CD416088C8600BF14F8 /* FeatureToggle.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BF9CD316088C8600BF14F8 /* FeatureToggle.m */; };
+		81CC87751611C4C0008D61A7 /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 81CC87731611C4C0008D61A7 /* libGoogleAnalytics.a */; };
+		81CC87771611C524008D61A7 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 81CC87761611C524008D61A7 /* libsqlite3.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -261,6 +263,9 @@
 		819A6A211596C5F4002ABA35 /* StationLocations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StationLocations.m; sourceTree = "<group>"; };
 		81BF9CD216088C8600BF14F8 /* FeatureToggle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeatureToggle.h; sourceTree = "<group>"; };
 		81BF9CD316088C8600BF14F8 /* FeatureToggle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeatureToggle.m; sourceTree = "<group>"; };
+		81CC87731611C4C0008D61A7 /* libGoogleAnalytics.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalytics.a; sourceTree = "<group>"; };
+		81CC87741611C4C0008D61A7 /* GANTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GANTracker.h; sourceTree = "<group>"; };
+		81CC87761611C524008D61A7 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -285,6 +290,8 @@
 				815C1A8B1580AD800019419C /* Parse.framework in Frameworks */,
 				811705EB159EE78800AF9835 /* libfacebook_ios_sdk.a in Frameworks */,
 				8117067515A0257400AF9835 /* libOAuth.a in Frameworks */,
+				81CC87751611C4C0008D61A7 /* libGoogleAnalytics.a in Frameworks */,
+				81CC87771611C524008D61A7 /* libsqlite3.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -443,6 +450,7 @@
 		815C19BB157F63AC0019419C = {
 			isa = PBXGroup;
 			children = (
+				81CC87721611C4A3008D61A7 /* googleAnalytics */,
 				817C21F115B2736F00D35D3A /* MessageUI.framework */,
 				8189725415A9093E0040FC23 /* Default@2x.png */,
 				8189725215A909390040FC23 /* Default.png */,
@@ -476,6 +484,7 @@
 				815C1A981580AF2B0019419C /* QuartzCore.framework */,
 				815C1A961580AF200019419C /* Security.framework */,
 				815C1A941580AF110019419C /* libz.1.1.3.dylib */,
+				81CC87761611C524008D61A7 /* libsqlite3.dylib */,
 				815C1A921580AEB50019419C /* MobileCoreServices.framework */,
 				815C1A901580AEA40019419C /* SystemConfiguration.framework */,
 				815C1A8E1580AE870019419C /* CFNetwork.framework */,
@@ -602,6 +611,15 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
+		81CC87721611C4A3008D61A7 /* googleAnalytics */ = {
+			isa = PBXGroup;
+			children = (
+				81CC87731611C4C0008D61A7 /* libGoogleAnalytics.a */,
+				81CC87741611C4C0008D61A7 /* GANTracker.h */,
+			);
+			name = googleAnalytics;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -647,7 +665,7 @@
 		815C19BD157F63AC0019419C /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0430;
+				LastUpgradeCheck = 0450;
 				ORGANIZATIONNAME = "DWS Limited";
 			};
 			buildConfigurationList = 815C19C0157F63AC0019419C /* Build configuration list for PBXProject "shmyki" */;
@@ -878,10 +896,12 @@
 					"\"$(SRCROOT)/facebook-ios-sdk/lib/facebook-ios-sdk\"",
 					"\"$(SRCROOT)/facebook-ios-sdk\"",
 					"\"$(SRCROOT)/Twitter+OAuth/Libraries & Headers\"",
+					"\"$(SRCROOT)\"",
 				);
 				OTHER_LDFLAGS = "-fobjc-arc";
 				PRODUCT_NAME = yourMyki;
 				PROVISIONING_PROFILE = "CFAA0B2F-58DD-4B90-960C-EBBB8584B55A";
+				VALID_ARCHS = "armv7 i386";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -903,10 +923,12 @@
 					"\"$(SRCROOT)/facebook-ios-sdk/lib/facebook-ios-sdk\"",
 					"\"$(SRCROOT)/facebook-ios-sdk\"",
 					"\"$(SRCROOT)/Twitter+OAuth/Libraries & Headers\"",
+					"\"$(SRCROOT)\"",
 				);
 				OTHER_LDFLAGS = "-fobjc-arc";
 				PRODUCT_NAME = yourMyki;
 				PROVISIONING_PROFILE = "CFAA0B2F-58DD-4B90-960C-EBBB8584B55A";
+				VALID_ARCHS = "armv7 i386";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -924,6 +946,7 @@
 				INFOPLIST_FILE = "shmykiTests/shmykiTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
+				VALID_ARCHS = "armv7 i386";
 				WRAPPER_EXTENSION = octest;
 			};
 			name = Debug;
@@ -941,6 +964,7 @@
 				INFOPLIST_FILE = "shmykiTests/shmykiTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
+				VALID_ARCHS = "armv7 i386";
 				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;

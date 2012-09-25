@@ -258,6 +258,9 @@
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer; 
 {
+    //if (_commentsTableViewIsUp) {
+      //  return NO;
+   // }
     return YES;
 }
 
