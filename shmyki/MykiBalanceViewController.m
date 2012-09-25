@@ -18,7 +18,7 @@
 @synthesize topView, bottomView, loginTableView, loginScrollView, pageScrollView, balanceDisplayView, errorView;
 @synthesize usernameTextField, passwordTextField;
 @synthesize balanceHeaderLabel, balanceMykiPassExpiryLabel, balanceMykiPassAdditionalLabel, balanceMykiMoneyAmountLabel, balanceMykiMoneyAdditionalLabel, balanceFooterLabelOne, balanceFooterLabelTwo, balanceSeperatorImage;
-@synthesize HUD, timer, refreshButton;
+@synthesize HUD, timer, refreshButton, isUserLoginAttempted;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -34,6 +34,8 @@
         mykiWebstiteWebView.delegate = self;
         userIsLoggedIn = NO;
         
+        [self loadFirstTimeLogin];
+        
         usernameTextField = [self setUpTextField:usernameTextField withText:@"Username" withUserDetail:[mykiAccountInformation mykiUsername] withReturnKey:UIReturnKeyNext withTag:USERNAME_TEXTFIELD_TAG];
         passwordTextField = [self setUpTextField:passwordTextField withText:@"Password" withUserDetail: [mykiAccountInformation mykiPassword] withReturnKey:UIReturnKeyDone withTag:PASSWORD_TEXTFIELD_TAG];        
         
@@ -46,9 +48,13 @@
         } else {
             self.tabBarItem.image = [UIImage imageNamed:@"images/TabInspectOff"];
         }
-
-        self.navigationItem.rightBarButtonItem.enabled = NO;
-        self.navigationItem.rightBarButtonItem = [YourMykiCustomButton createYourMykiBarButtonItemWithText:@"Edit" withTarget:self withAction:@selector(switchToLoginState)];
+        
+        
+        if(self.isUserLoginAttempted) {
+            self.navigationItem.rightBarButtonItem.enabled = NO;
+            self.navigationItem.rightBarButtonItem = [YourMykiCustomButton createYourMykiBarButtonItemWithText:@"Edit" withTarget:self withAction:@selector(switchToLoginState)];
+        }
+        
         
         if([usernameTextField.text length] != 0 && [passwordTextField.text length] != 0) {
             [self retrieveMykiBalance];
@@ -102,8 +108,8 @@
     self.bottomView.layer.shadowOpacity = .21f;
     self.bottomView.layer.shadowRadius = 2.0f;
     
-    UITapGestureRecognizer *cancelTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
-    UITapGestureRecognizer *cancelEditTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(switchToSuccessState)];
+    UITapGestureRecognizer *cancelTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(bottomAreaDismissAction)];
+    UITapGestureRecognizer *cancelEditTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(topAreaDismissAction)];
     
     [self.bottomView addGestureRecognizer:cancelTap];
     [self.topView addGestureRecognizer:cancelEditTap];
@@ -169,7 +175,11 @@
 
 -(void) retryRetrieveMykiBalance {
     self.navigationItem.rightBarButtonItem.enabled = NO;
+    if(!self.isUserLoginAttempted) {
+        [self saveFirstTimeLogin];
+    }
     [self retrieveMykiBalance];
+    
 }
 
 -(void)stopRequest {
@@ -281,7 +291,11 @@
     float position;
     if ([notification.name isEqualToString:UIKeyboardWillShowNotification]) {
         position = 224.0;
-        self.navigationItem.rightBarButtonItem = [YourMykiCustomButton createYourMykiBarButtonItemWithText:@"Cancel" withTarget:self withAction:@selector(switchToSuccessState)];
+        if(self.isUserLoginAttempted) {
+            self.navigationItem.rightBarButtonItem = [YourMykiCustomButton createYourMykiBarButtonItemWithText:@"Cancel" withTarget:self withAction:@selector(switchToSuccessState)];
+        } else {
+            self.navigationItem.rightBarButtonItem = [YourMykiCustomButton createYourMykiBarButtonItemWithText:@"Cancel" withTarget:self withAction:@selector(switchToLoginState)];
+        }
     } else {
         position = 0.0;
     }
@@ -349,9 +363,30 @@
 	HUD = nil;
 }
 
-#pragma mark move views     
+#pragma mark dismissActions
+
+-(void) topAreaDismissAction {
+    if(self.isUserLoginAttempted) {
+        [self switchToSuccessState];
+    }
+}
+
+
+-(void) bottomAreaDismissAction {
+    
+    [self dismissKeyboard];
+    if(self.isUserLoginAttempted) {
+        self.navigationItem.rightBarButtonItem = [YourMykiCustomButton createYourMykiBarButtonItemWithText:@"Cancel" withTarget:self withAction:@selector(switchToSuccessState)];
+     } else {
+
+         self.navigationItem.rightBarButtonItem = nil;
+     }
+
+}
+
+#pragma mark move views   
 -(void)switchToSuccessState {
-     
+    
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:.4];
     [usernameTextField resignFirstResponder];
@@ -361,23 +396,29 @@
     [self drawBalanceViewGradientWithCornersWithActiveState:YES];
     self.balanceSeperatorImage.image = [UIImage imageNamed:@"images/BalanceLine.png"];
     [UIView commitAnimations];
-   // self.navigationItem.leftBarButtonItem = nil;
+    
     self.navigationItem.rightBarButtonItem = [YourMykiCustomButton createYourMykiBarButtonItemWithText:@"Edit" withTarget:self withAction:@selector(switchToLoginState)];
-
+    
     [self updateRefreshButton];
+    
 }
 
 -(void)switchToLoginState {
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:.4];
+    [self dismissKeyboard];
     self.bottomView.frame = CGRectMake(0, 224, 320, 205);
     self.errorView.frame = CGRectMake(0, 705, 320, 150);
     [self drawBalanceViewGradientWithCornersWithActiveState:NO];
     self.balanceSeperatorImage.image = [UIImage imageNamed:@"images/BalanceLineBlk.png"];
     [UIView commitAnimations];
     
-    self.navigationItem.rightBarButtonItem = self.navigationItem.rightBarButtonItem = [YourMykiCustomButton createYourMykiBarButtonItemWithText:@"Cancel" withTarget:self withAction:@selector(switchToSuccessState)];
-   // self.navigationItem.rightBarButtonItem = nil;
+    if (self.isUserLoginAttempted) {
+  
+        self.navigationItem.rightBarButtonItem = self.navigationItem.rightBarButtonItem = [YourMykiCustomButton createYourMykiBarButtonItemWithText:@"Cancel" withTarget:self withAction:@selector(switchToSuccessState)];
+    } else {
+        self.navigationItem.rightBarButtonItem = nil;
+    }
 }
 
 -(void)switchToLoggingInState {
@@ -436,6 +477,22 @@
 -(void) dismissKeyboard {
     [usernameTextField resignFirstResponder];
     [passwordTextField resignFirstResponder]; 
+}
+
+#pragma firstTimeLogin
+
+-(void) saveFirstTimeLogin {
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    self.isUserLoginAttempted = YES;
+    [defaults setBool:YES forKey:@"isUserLoginAttempted"];
+    
+    [defaults synchronize];
+}
+-(void) loadFirstTimeLogin {
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    self.isUserLoginAttempted = [defaults boolForKey:@"isUserLoginAttempted"];
 }
 
 @end

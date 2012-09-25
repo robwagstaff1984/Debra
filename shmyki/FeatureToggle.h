@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-#define FEATURE_PUNCH_ON_COACH_MARKS 1
+#define FEATURE_PUNCH_ON_COACH_MARKS 0
 
 @interface FeatureToggle : NSObject
 
