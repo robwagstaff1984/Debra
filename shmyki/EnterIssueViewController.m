@@ -330,6 +330,8 @@
     }
     
     [[(AppDelegate*)[[UIApplication sharedApplication]delegate] currentUsersPunchOnLog] setMessage:savedComment];
+    ((AppDelegate*)[[UIApplication sharedApplication]delegate]).currentUsersProblem = [self.punchOnIssues.issues objectAtIndex:selectedProblem];
+    
     
     [(AppDelegate*)[[UIApplication sharedApplication] delegate] postToFacebook];
     [(AppDelegate*)[[UIApplication sharedApplication] delegate] postToTwitter];

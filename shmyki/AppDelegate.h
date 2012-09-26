@@ -25,6 +25,8 @@
 
 @property (nonatomic, strong) PunchOnLog *currentUsersPunchOnLog;
 
+@property (nonatomic, strong) NSString* currentUsersProblem;
+
 @property (nonatomic) BOOL isFaceBookRequired;
 
 @property (nonatomic) BOOL isTwitterRequired;

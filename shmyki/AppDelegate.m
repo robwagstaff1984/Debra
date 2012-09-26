@@ -29,7 +29,7 @@ static const NSInteger kGANDispatchPeriodSec = 10;
 @synthesize window = _window;
 @synthesize tabBarController = _tabBarController;
 @synthesize navigationController = _navigationController;
-@synthesize facebook, twitterEngine, currentUsersPunchOnLog, isTwitterRequired, isFaceBookRequired;
+@synthesize facebook, twitterEngine, currentUsersPunchOnLog, isTwitterRequired, isFaceBookRequired, currentUsersProblem;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -225,11 +225,12 @@ static const NSInteger kGANDispatchPeriodSec = 10;
     
     NSString *message = currentUsersPunchOnLog.message ? currentUsersPunchOnLog.message : @"" ;
     NSString *location = [self convertLocationToShortLocation:currentUsersPunchOnLog.location];
-    NSNumber *transportationType = [NSNumber numberWithInteger:currentUsersPunchOnLog.transportationType]; 
+    NSNumber *transportationType = [NSNumber numberWithInteger:currentUsersPunchOnLog.transportationType];
     
     [punchOnLogParseObject setObject:location forKey:@"location"];
     [punchOnLogParseObject setObject:message forKey:@"message"];
     [punchOnLogParseObject setObject:transportationType forKey:@"transportationType"];
+    [punchOnLogParseObject setObject:currentUsersProblem forKey:@"currentUsersProblem"];
     [punchOnLogParseObject saveInBackground];
     
     PunchOnLog *punchOnLog= [[PunchOnLog alloc] init];
