@@ -10,6 +10,7 @@
 #import "InspectorMapKitAnnotation.h"
 #import "Parse/Parse.h"
 #import "ShmykiContstants.h"
+#import "GANTracker.h"
 
 @implementation InspectorMapViewController
 
@@ -73,6 +74,11 @@ inspectorCoachMarks, showingCoachMarks, needToDropInspectorPin, zIndexOfFrontPoi
     // e.g. self.myOutlet = nil;
 }
 
+- (void) viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [[GANTracker sharedTracker] trackPageview:@"nearby" withError:nil];
+}
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations

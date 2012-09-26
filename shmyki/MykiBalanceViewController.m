@@ -11,6 +11,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "DateDisplayHelper.h"
 #import "YourMykiCustomButton.h"
+#import "GANTracker.h"
 
 @implementation MykiBalanceViewController
 
@@ -145,6 +146,12 @@
 
 -(void)viewDidAppear:(BOOL)animated {
     [self updateRefreshButton];
+}
+
+- (void) viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [[GANTracker sharedTracker] trackPageview:@"yourBalance" withError:nil];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

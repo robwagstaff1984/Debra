@@ -7,10 +7,9 @@
 //
 
 #import "AboutPageViewController.h"
-#import "ComingFeaturesViewController.h"
 #import "ShmykiContstants.h"
 #import "Parse/Parse.h"
-
+#import "GANTracker.h"
 
 
 @interface AboutPageViewController ()
@@ -18,7 +17,7 @@
 @end
 
 @implementation AboutPageViewController
-@synthesize twitterButton, facebookButton, webButton, rateButton, feedbackButton, comingFeaturesButton,legalShadowView;
+@synthesize twitterButton, facebookButton, webButton, feedbackButton,legalShadowView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -56,6 +55,12 @@
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
+}
+
+- (void) viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [[GANTracker sharedTracker] trackPageview:@"about page" withError:nil];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -107,14 +112,7 @@
     picmail.mailComposeDelegate = self;
     [picmail setSubject:@"yourMyki Feedback"];
     [picmail setToRecipients:[NSArray arrayWithObjects:FEEDBACK_EMAIL_ADDRESS, nil]];
-    
-    
-  //  [picmail setMessageBody:@"MESSAGE BODY" isHTML:NO];
     [self presentModalViewController:picmail animated:YES];
-}
--(IBAction)comingFeaturesButtonTapped:(id)sender {
-    UIViewController *comingFeaturesViewController = [[ComingFeaturesViewController alloc] initWithNibName:@"ComingFeaturesViewController" bundle:nil];
-    [self.navigationController pushViewController:comingFeaturesViewController animated:YES];
 }
 
 #pragma mark MFMailCompose delegate

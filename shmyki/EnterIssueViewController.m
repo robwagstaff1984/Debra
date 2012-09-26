@@ -12,6 +12,7 @@
 #import "AppDelegate.h"
 #import "YourMykiCustomButton.h"
 #import <QuartzCore/QuartzCore.h>
+#import "GANTracker.h"
 
 @implementation EnterIssueViewController {
     BOOL isFirstTimePageLoad;
@@ -23,7 +24,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        [self.navigationItem setTitle:@"yourVoice"];
+        [self.navigationItem setTitle:@"enter issue"];
         punchOnIssues = [[PunchOnIssues alloc] init];
         punchOnIsValid = NO;
         isFirstTimePageLoad = YES;
@@ -119,6 +120,7 @@
     self.navigationItem.hidesBackButton = YES;
     self.navigationItem.leftBarButtonItem = [YourMykiCustomButton createYourMykiBarButtonItemWithText:@"Cancel" withTarget:self withAction:@selector(popNavigationController)];
     [super viewWillAppear:animated];
+    [[GANTracker sharedTracker] trackPageview:@"yourVoice" withError:nil];
 }
 
 -(void)popNavigationController {

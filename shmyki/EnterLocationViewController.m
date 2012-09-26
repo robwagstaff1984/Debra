@@ -11,6 +11,7 @@
 #import "AppDelegate.h"
 #import "Parse/Parse.h"
 #import "YourMykiCustomButton.h"
+#import "GANTracker.h"
 
 @implementation EnterLocationViewController
 
@@ -53,6 +54,12 @@
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
+}
+
+- (void) viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [[GANTracker sharedTracker] trackPageview:@"enter location" withError:nil];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

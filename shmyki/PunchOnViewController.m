@@ -20,6 +20,7 @@
 #import "YourMykiCustomButton.h"
 #import "DateDisplayHelper.h"
 #import "FeatureToggle.h"
+#import "GANTracker.h"
 
 @implementation PunchOnViewController
 @synthesize punchOnCommentsView, punchOnCommentsTableView, listOfPunchOnLogs, totalPunchOns, tableFixedHeader, helpImages, punchOnCoachMarks, showingCoachMarks;
@@ -104,14 +105,8 @@
 
 - (void) viewWillAppear:(BOOL)animated
 {
-   // [self.navigationController setNavigationBarHidden:YES animated:animated];
     [super viewWillAppear:animated];
-    
-
-    
- //   UIBarButtonItem *_backButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:nil action:nil];
-   // hidesBackButton
- 
+    [[GANTracker sharedTracker] trackPageview:@"yourVoice" withError:nil];
 }
 
 - (void) viewWillDisappear:(BOOL)animated

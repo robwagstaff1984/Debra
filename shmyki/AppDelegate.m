@@ -10,7 +10,6 @@
 
 #import "PunchOnViewController.h"
 #import "InspectorMapViewController.h"
-#import "InformationViewController.h"
 #import "PunchOnLogsViewController.h"
 #import "MykiBalanceViewController.h"
 #import <Parse/Parse.h>

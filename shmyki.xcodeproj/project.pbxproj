@@ -53,8 +53,6 @@
 		815C1A11157F64470019419C /* PunchOnViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 815C1A0F157F64470019419C /* PunchOnViewController.xib */; };
 		815C1A24157F68D20019419C /* InspectorMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 815C1A22157F68D20019419C /* InspectorMapViewController.m */; };
 		815C1A25157F68D20019419C /* InspectorMapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 815C1A23157F68D20019419C /* InspectorMapViewController.xib */; };
-		815C1A29157F79490019419C /* InformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 815C1A27157F79490019419C /* InformationViewController.m */; };
-		815C1A2A157F79490019419C /* InformationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 815C1A28157F79490019419C /* InformationViewController.xib */; };
 		815C1A2E157F836D0019419C /* EnterIssueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 815C1A2C157F836C0019419C /* EnterIssueViewController.m */; };
 		815C1A2F157F836D0019419C /* EnterIssueViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 815C1A2D157F836C0019419C /* EnterIssueViewController.xib */; };
 		815C1A8B1580AD800019419C /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 815C1A8A1580AD800019419C /* Parse.framework */; };
@@ -66,8 +64,6 @@
 		815C1A971580AF200019419C /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 815C1A961580AF200019419C /* Security.framework */; };
 		815C1A991580AF2B0019419C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 815C1A981580AF2B0019419C /* QuartzCore.framework */; };
 		817BFA521587277100F3BEE1 /* ShmykiContstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 817BFA511587277100F3BEE1 /* ShmykiContstants.m */; };
-		817C21DE15AD96C400D35D3A /* ComingFeaturesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 817C21DC15AD96C400D35D3A /* ComingFeaturesViewController.m */; };
-		817C21DF15AD96C400D35D3A /* ComingFeaturesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 817C21DD15AD96C400D35D3A /* ComingFeaturesViewController.xib */; };
 		817C21E315AD9BBF00D35D3A /* YourMykiCustomButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 817C21E215AD9BBF00D35D3A /* YourMykiCustomButton.m */; };
 		817C21F215B2737000D35D3A /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 817C21F115B2736F00D35D3A /* MessageUI.framework */; };
 		818020AB1585EC7300501773 /* images in Resources */ = {isa = PBXBuildFile; fileRef = 818020AA1585EC7300501773 /* images */; };
@@ -213,9 +209,6 @@
 		815C1A21157F68D20019419C /* InspectorMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InspectorMapViewController.h; sourceTree = "<group>"; };
 		815C1A22157F68D20019419C /* InspectorMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InspectorMapViewController.m; sourceTree = "<group>"; };
 		815C1A23157F68D20019419C /* InspectorMapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InspectorMapViewController.xib; sourceTree = "<group>"; };
-		815C1A26157F79490019419C /* InformationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InformationViewController.h; sourceTree = "<group>"; };
-		815C1A27157F79490019419C /* InformationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InformationViewController.m; sourceTree = "<group>"; };
-		815C1A28157F79490019419C /* InformationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InformationViewController.xib; sourceTree = "<group>"; };
 		815C1A2B157F836C0019419C /* EnterIssueViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnterIssueViewController.h; sourceTree = "<group>"; };
 		815C1A2C157F836C0019419C /* EnterIssueViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnterIssueViewController.m; sourceTree = "<group>"; };
 		815C1A2D157F836C0019419C /* EnterIssueViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EnterIssueViewController.xib; sourceTree = "<group>"; };
@@ -229,9 +222,6 @@
 		815C1A981580AF2B0019419C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		817BFA501587277100F3BEE1 /* ShmykiContstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShmykiContstants.h; sourceTree = "<group>"; };
 		817BFA511587277100F3BEE1 /* ShmykiContstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShmykiContstants.m; sourceTree = "<group>"; };
-		817C21DB15AD96C400D35D3A /* ComingFeaturesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComingFeaturesViewController.h; sourceTree = "<group>"; };
-		817C21DC15AD96C400D35D3A /* ComingFeaturesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComingFeaturesViewController.m; sourceTree = "<group>"; };
-		817C21DD15AD96C400D35D3A /* ComingFeaturesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ComingFeaturesViewController.xib; sourceTree = "<group>"; };
 		817C21E115AD9BBF00D35D3A /* YourMykiCustomButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YourMykiCustomButton.h; sourceTree = "<group>"; };
 		817C21E215AD9BBF00D35D3A /* YourMykiCustomButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YourMykiCustomButton.m; sourceTree = "<group>"; };
 		817C21F115B2736F00D35D3A /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
@@ -553,9 +543,6 @@
 				815C1A21157F68D20019419C /* InspectorMapViewController.h */,
 				815C1A22157F68D20019419C /* InspectorMapViewController.m */,
 				815C1A23157F68D20019419C /* InspectorMapViewController.xib */,
-				815C1A26157F79490019419C /* InformationViewController.h */,
-				815C1A27157F79490019419C /* InformationViewController.m */,
-				815C1A28157F79490019419C /* InformationViewController.xib */,
 				818BE4221584618A00775392 /* PunchOnLogsViewController.h */,
 				818BE4231584618B00775392 /* PunchOnLogsViewController.m */,
 				815C1A2B157F836C0019419C /* EnterIssueViewController.h */,
@@ -570,9 +557,6 @@
 				8189726A15AAE3030040FC23 /* AboutPageViewController.h */,
 				8189726B15AAE3040040FC23 /* AboutPageViewController.m */,
 				8189726C15AAE3050040FC23 /* AboutPageViewController.xib */,
-				817C21DB15AD96C400D35D3A /* ComingFeaturesViewController.h */,
-				817C21DC15AD96C400D35D3A /* ComingFeaturesViewController.m */,
-				817C21DD15AD96C400D35D3A /* ComingFeaturesViewController.xib */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -695,7 +679,6 @@
 				815C19D5157F63AD0019419C /* InfoPlist.strings in Resources */,
 				815C1A11157F64470019419C /* PunchOnViewController.xib in Resources */,
 				815C1A25157F68D20019419C /* InspectorMapViewController.xib in Resources */,
-				815C1A2A157F79490019419C /* InformationViewController.xib in Resources */,
 				815C1A2F157F836D0019419C /* EnterIssueViewController.xib in Resources */,
 				818020AB1585EC7300501773 /* images in Resources */,
 				814B25AC158B461D0067D161 /* MykiBalanceViewController.xib in Resources */,
@@ -710,7 +693,6 @@
 				8189725515A9093E0040FC23 /* Default@2x.png in Resources */,
 				8189726915A951E60040FC23 /* HelveticaNeue.dfont in Resources */,
 				8189726E15AAE3060040FC23 /* AboutPageViewController.xib in Resources */,
-				817C21DF15AD96C400D35D3A /* ComingFeaturesViewController.xib in Resources */,
 				81D1E42616132D5C0079AF3D /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -750,7 +732,6 @@
 				815C19DB157F63AD0019419C /* AppDelegate.m in Sources */,
 				815C1A10157F64470019419C /* PunchOnViewController.m in Sources */,
 				815C1A24157F68D20019419C /* InspectorMapViewController.m in Sources */,
-				815C1A29157F79490019419C /* InformationViewController.m in Sources */,
 				815C1A2E157F836D0019419C /* EnterIssueViewController.m in Sources */,
 				818BE4241584618B00775392 /* PunchOnLogsViewController.m in Sources */,
 				818811481585A9DA00CDDF3E /* InspectorMapKitAnnotation.m in Sources */,
@@ -784,7 +765,6 @@
 				8189726015A919280040FC23 /* HelpImages.m in Sources */,
 				8189726D15AAE3060040FC23 /* AboutPageViewController.m in Sources */,
 				8189727115AB972E0040FC23 /* DateDisplayHelper.m in Sources */,
-				817C21DE15AD96C400D35D3A /* ComingFeaturesViewController.m in Sources */,
 				817C21E315AD9BBF00D35D3A /* YourMykiCustomButton.m in Sources */,
 				81BF9CD416088C8600BF14F8 /* FeatureToggle.m in Sources */,
 			);
