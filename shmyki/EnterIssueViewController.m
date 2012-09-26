@@ -141,7 +141,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 
-    NSString *cellIdentifier = [NSString stringWithFormat:@"Cell%i",indexPath.row];
+  /*  NSString *cellIdentifier = [NSString stringWithFormat:@"Cell%i",indexPath.row];
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     
@@ -162,7 +162,48 @@
         cell.selectionStyle = UITableViewCellSelectionStyleGray;
         cell.textLabel.textColor = [UIColor blackColor];
     }
-    return cell;
+    return cell;*/
+    
+    
+
+     
+
+     
+
+     
+    if(indexPath.row == 0) {
+        NSString *cellIdentifier = [NSString stringWithFormat:@"TitleCell"];
+        
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+        
+        if(cell == nil) {
+            cell= [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                         reuseIdentifier:cellIdentifier];
+        }
+        cell.textLabel.text = [self.punchOnIssues.issues objectAtIndex:indexPath.row];
+        
+        [cell.textLabel setFont: [UIFont fontWithName:@"HelveticaNeue-Medium" size:14.0f]];
+        cell.textLabel.textAlignment = UITextAlignmentCenter;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.textLabel.textColor = [UIColor lightGrayColor];
+         return cell;
+    } else {
+        NSString *cellIdentifier = [NSString stringWithFormat:@"problemCell"];
+        
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+        
+        if(cell == nil) {
+            cell= [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                         reuseIdentifier:cellIdentifier];
+        }
+        cell.textLabel.text = [self.punchOnIssues.issues objectAtIndex:indexPath.row];
+        [cell.textLabel setFont: [UIFont fontWithName:@"HelveticaNeue-Light" size:14.0f]];
+        cell.selectionStyle = UITableViewCellSelectionStyleGray;
+        cell.textLabel.textColor = [UIColor blackColor];
+         return cell;
+    }
+    
+    
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -200,7 +241,7 @@
 
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
+    [tableView cellForRowAtIndexPath:indexPath].accessoryView = nil;
     [[tableView cellForRowAtIndexPath:indexPath] setSelected:NO animated:YES];
 }
 

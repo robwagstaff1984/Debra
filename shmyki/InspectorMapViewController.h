@@ -20,6 +20,8 @@
 @property (nonatomic, strong) IBOutlet UIButton *inspectorHelpImageButton;
 @property (nonatomic, strong) IBOutlet UIImageView *inspectorCoachMarks;
 @property (nonatomic) BOOL showingCoachMarks;
+@property (nonatomic) BOOL needToDropInspectorPin;
+@property (nonatomic) float zIndexOfFrontPoi;
 
 
 - (void) saveInspectorWithLocationCoordinate:(CLLocationCoordinate2D)inspectorLocationCoordinate; 

@@ -14,7 +14,7 @@
 @implementation InspectorMapViewController
 
 @synthesize inspectorMapView, locationManager, listOfInspectorLocations, helpImages, inspectorHelpImageButton,
-inspectorCoachMarks, showingCoachMarks;
+inspectorCoachMarks, showingCoachMarks, needToDropInspectorPin, zIndexOfFrontPoi;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -93,6 +93,7 @@ inspectorCoachMarks, showingCoachMarks;
     region.span = span;
     region.center = newLocation.coordinate;
     [inspectorMapView setRegion:region animated:TRUE];
+
 }
 
 #pragma mark mapViewDelegate 
@@ -128,32 +129,42 @@ inspectorCoachMarks, showingCoachMarks;
 
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation 
 {
-    MKAnnotationView* annotationView = [mapView viewForAnnotation:userLocation];
-    annotationView.canShowCallout = NO;
-    
+
 }
 
 - (void)mapView:(MKMapView *)mapView didAddAnnotationViews:(NSArray *)views {   
 
     
-    
+   
     NSArray *sortedAnnotationViews = [views sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
         
         NSDate *firstDate = [(InspectorMapKitAnnotation*) [((MKAnnotationView*) obj1) annotation] spotDate];
         NSDate *secondDate = [(InspectorMapKitAnnotation*) [((MKAnnotationView*) obj2) annotation] spotDate];
         
-        NSComparisonResult result = [secondDate compare:firstDate];
+        NSComparisonResult result = [firstDate compare:secondDate];
+        
         return result;
     }];
     
-    
+    float zIndexCounter = .001;
     for (MKAnnotationView *pin in sortedAnnotationViews) {
         
         if ([[pin annotation] isKindOfClass:[MKUserLocation class]]) {
-            [[pin superview] bringSubviewToFront:pin];
+           // [[pin superview] bringSubviewToFront:pin];
+             [pin bringSubviewToFront:pin];
+            
         } else if ([[pin annotation] isKindOfClass:[InspectorMapKitAnnotation class]]){
+           // NSLog(@"ROB: %@", [(InspectorMapKitAnnotation*) [pin annotation] spotDate]);
+//            pin.layer.zPosition = self.zIndexOfFrontPoi + .01;
+//            zIndexCounter = zIndexCounter + .001;
             if([(InspectorMapKitAnnotation*)[pin annotation] justSpotted]){
-                
+//                [[pin superview] bringSubviewToFront:pin];
+               //  [[pin  superview ]bringSubviewToFront:pin];
+//                pin.layer.zPosition = .99;
+                pin.layer.zPosition = self.zIndexOfFrontPoi + .01;
+                zIndexCounter = zIndexCounter + .001;
+                NSLog(@"NEXT ONE IS JUST SPOTTED");
+                [(InspectorMapKitAnnotation*)[pin annotation] setJustSpotted:NO];
                 CGRect endFrame = pin.frame;
                 pin.frame = CGRectOffset(pin.frame, 0, -230);
                 
@@ -162,17 +173,87 @@ inspectorCoachMarks, showingCoachMarks;
                 [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
                 pin.frame = endFrame;
                 [UIView commitAnimations];
-               // [[pin superview] bringSubviewToFront:pin];
+               //
             } else {
-                
-        
-                [[pin superview] sendSubviewToBack:pin];
-                 //     NSLog(@"ROB: %@", [(InspectorMapKitAnnotation*) [pin annotation] spotDate]);
+                pin.layer.zPosition = zIndexCounter;
+                zIndexCounter = zIndexCounter + .001;
             }
+                //pin.layer.zPosition = i;
+                //i = i + .001;
+        
+               // [[pin superview] sendSubviewToBack:pin];
+                // [[pin superview] bringSubviewToFront:pin];
+                 //     NSLog(@"ROB: %@", [(InspectorMapKitAnnotation*) [pin annotation] spotDate]);
+            //}
+
         }
+        NSLog(@"Z index: %f", [[pin layer] zPosition]);
     }
+    self.zIndexOfFrontPoi = MAX(zIndexCounter, zIndexOfFrontPoi);
    // NSLog(@"ROB: END");
-} 
+  
+   /* for (MKAnnotationView *pin in views) {
+        
+        if ([[pin annotation] isKindOfClass:[InspectorMapKitAnnotation class]]){
+            if([(InspectorMapKitAnnotation*)[pin annotation] justSpotted]) {
+                NSLog(@"just spotted");
+                pin.canShowCallout = NO;
+                [mapView selectAnnotation:[pin annotation]  animated:YES];
+              //  [pin setSelected:YES];
+                //[pin bringSubviewToFront:pin];
+                //[pin setSelected:YES];
+                [(InspectorMapKitAnnotation*)[pin annotation] setJustSpotted:NO];
+                CGRect endFrame = pin.frame;
+                pin.frame = CGRectOffset(pin.frame, 0, -230);
+                
+                [UIView beginAnimations:nil context:nil];
+                [UIView setAnimationDuration:0.45f];
+                [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+                pin.frame = endFrame;
+                [UIView commitAnimations];
+                
+                //[pin setSelected:YES];
+            } else {
+               NSLog(@"ROB: %@", [(InspectorMapKitAnnotation*) [pin annotation] spotDate]);
+               // [[pin superview] sendSubviewToBack:pin];
+            }
+        } else {
+            NSLog(@"Not an inspector pin");
+        }
+    }*/
+    
+}
+
+- (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view {
+    NSLog(@"selected Z index: %f", [[view layer] zPosition]);
+    view.layer.zPosition = view.layer.zPosition + 1;
+}
+
+- (void)mapView:(MKMapView *)mapView didDeselectAnnotationView:(MKAnnotationView *)view {
+        view.layer.zPosition = view.layer.zPosition - 1;
+}
+
+
+
+
+-(void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated {
+    [self dropInspectorPinIfRequired];
+}
+
+-(void) dropInspectorPinIfRequired {
+    if(self.needToDropInspectorPin) {
+        CLLocationCoordinate2D inspectorLocationCoordinate = [self.locationManager.location coordinate];
+        InspectorMapKitAnnotation *annotation = [[InspectorMapKitAnnotation alloc] initWithCoords:inspectorLocationCoordinate];
+        
+        [annotation setSpotDate:[NSDate date]];
+        [annotation setJustSpotted:YES];
+        [inspectorMapView addAnnotation:annotation];
+        
+        [self saveInspectorWithLocationCoordinate:inspectorLocationCoordinate];
+    }
+    self.needToDropInspectorPin = NO;
+}
+
 
 #pragma mark IBActions
 
@@ -181,16 +262,9 @@ inspectorCoachMarks, showingCoachMarks;
 }
 
 -(IBAction)spotAnInspector:(id)sender {
+    self.needToDropInspectorPin = YES;
     [self.locationManager startUpdatingLocation];
-    CLLocationCoordinate2D inspectorLocationCoordinate = [self.locationManager.location coordinate];
 
-    InspectorMapKitAnnotation *annotation = [[InspectorMapKitAnnotation alloc] initWithCoords:inspectorLocationCoordinate];
-    
-    [annotation setSpotDate:[NSDate date]];
-    [annotation setJustSpotted:YES];
-    [inspectorMapView addAnnotation:annotation];
-    
-    [self saveInspectorWithLocationCoordinate:inspectorLocationCoordinate];
 }
 
 -(IBAction)findInspectorsButtonPressed:(id)sender {
