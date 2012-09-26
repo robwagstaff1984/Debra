@@ -172,7 +172,7 @@ inspectorCoachMarks, showingCoachMarks, needToDropInspectorPin, zIndexOfFrontPoi
                 
                // zIndexCounter = zIndexCounter + .001;
                 self.zIndexOfFrontPoi = self.zIndexOfFrontPoi + .001;
-                 NSLog(@"just spotted z index: %f", pin.layer.zPosition);
+                // NSLog(@"just spotted z index: %f", pin.layer.zPosition);
                 [(InspectorMapKitAnnotation*)[pin annotation] setJustSpotted:NO];
                 CGRect endFrame = pin.frame;
                 pin.frame = CGRectOffset(pin.frame, 0, -230);
@@ -186,7 +186,7 @@ inspectorCoachMarks, showingCoachMarks, needToDropInspectorPin, zIndexOfFrontPoi
                 pin.layer.zPosition = zIndexCounter;
                 zIndexCounter = zIndexCounter + .001;
             }
-            NSLog(@"zindex: %f", pin.layer.zPosition);
+            //NSLog(@"zindex: %f", pin.layer.zPosition);
         }
     }
     self.zIndexOfFrontPoi = MAX(zIndexCounter, zIndexOfFrontPoi);    
