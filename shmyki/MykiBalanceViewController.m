@@ -18,7 +18,7 @@
 @synthesize topView, bottomView, loginTableView, loginScrollView, pageScrollView, balanceDisplayView, errorView;
 @synthesize usernameTextField, passwordTextField;
 @synthesize balanceHeaderLabel, balanceMykiPassExpiryLabel, balanceMykiPassAdditionalLabel, balanceMykiMoneyAmountLabel, balanceMykiMoneyAdditionalLabel, balanceFooterLabelOne, balanceFooterLabelTwo, balanceSeperatorImage;
-@synthesize HUD, timer, refreshButton, isUserLoginAttempted, isProblemWithMykiCredentials;
+@synthesize HUD, timer, refreshButton, isUserLoginAttempted, isProblemWithMykiCredentials, invalidCredentialsLabel;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -155,7 +155,7 @@
 -(void)retrieveMykiBalance {
     [self switchToLoggingInState];
 
-    timer = [NSTimer scheduledTimerWithTimeInterval: 30.0 target:self selector:@selector(cancelRequest) userInfo:nil repeats: NO];
+    timer = [NSTimer scheduledTimerWithTimeInterval: 20.0 target:self selector:@selector(cancelRequest) userInfo:nil repeats: NO];
     
     HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     HUD.delegate = self;
@@ -427,6 +427,7 @@
 }
 
 -(void)switchToLoggingInState {
+    self.invalidCredentialsLabel.hidden = YES;
     self.navigationItem.rightBarButtonItem = [YourMykiCustomButton createYourMykiBarButtonItemWithText:@"Cancel" withTarget:self withAction:@selector(userCanceledLogin)];
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:.4];
@@ -440,6 +441,7 @@
 
 -(void)switchToErrorState {
     if(self.isProblemWithMykiCredentials) {
+        self.invalidCredentialsLabel.hidden = NO;
         [self switchToLoginState];
         self.isProblemWithMykiCredentials = NO;
     } else {

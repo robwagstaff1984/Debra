@@ -178,7 +178,7 @@ inspectorCoachMarks, showingCoachMarks, needToDropInspectorPin, zIndexOfFrontPoi
                 pin.frame = CGRectOffset(pin.frame, 0, -230);
                 
                 [UIView beginAnimations:nil context:nil];
-                [UIView setAnimationDuration:4.45f];
+                [UIView setAnimationDuration:.45f];
                 [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
                 pin.frame = endFrame;
                 [UIView commitAnimations];

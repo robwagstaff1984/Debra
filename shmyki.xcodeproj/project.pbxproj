@@ -91,6 +91,7 @@
 		81BF9CD416088C8600BF14F8 /* FeatureToggle.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BF9CD316088C8600BF14F8 /* FeatureToggle.m */; };
 		81CC87751611C4C0008D61A7 /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 81CC87731611C4C0008D61A7 /* libGoogleAnalytics.a */; };
 		81CC87771611C524008D61A7 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 81CC87761611C524008D61A7 /* libsqlite3.dylib */; };
+		81D1E42616132D5C0079AF3D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81D1E42516132D5C0079AF3D /* Default-568h@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -265,6 +266,7 @@
 		81CC87731611C4C0008D61A7 /* libGoogleAnalytics.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalytics.a; sourceTree = "<group>"; };
 		81CC87741611C4C0008D61A7 /* GANTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GANTracker.h; sourceTree = "<group>"; };
 		81CC87761611C524008D61A7 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		81D1E42516132D5C0079AF3D /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -453,6 +455,7 @@
 				817C21F115B2736F00D35D3A /* MessageUI.framework */,
 				8189725415A9093E0040FC23 /* Default@2x.png */,
 				8189725215A909390040FC23 /* Default.png */,
+				81D1E42516132D5C0079AF3D /* Default-568h@2x.png */,
 				8189725015A9092D0040FC23 /* Icon57px.png */,
 				8189724E15A909250040FC23 /* Icon114px.png */,
 				8117063715A0257300AF9835 /* Twitter+OAuth */,
@@ -708,6 +711,7 @@
 				8189726915A951E60040FC23 /* HelveticaNeue.dfont in Resources */,
 				8189726E15AAE3060040FC23 /* AboutPageViewController.xib in Resources */,
 				817C21DF15AD96C400D35D3A /* ComingFeaturesViewController.xib in Resources */,
+				81D1E42616132D5C0079AF3D /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
