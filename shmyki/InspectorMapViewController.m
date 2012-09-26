@@ -87,12 +87,23 @@ inspectorCoachMarks, showingCoachMarks, needToDropInspectorPin, zIndexOfFrontPoi
 
     [manager stopUpdatingLocation];
     MKCoordinateSpan span; 
-    span.latitudeDelta = 0.02; 
-    span.longitudeDelta = 0.02;
+    span.latitudeDelta = 0.0214265;
+    span.longitudeDelta = 0.0214265;
     MKCoordinateRegion region; 
     region.span = span;
     region.center = newLocation.coordinate;
-    [inspectorMapView setRegion:region animated:TRUE];
+
+    if( [self firstDouble:oldLocation.coordinate.latitude isEqualTo:newLocation.coordinate.latitude] &&
+       [self firstDouble:oldLocation.coordinate.longitude isEqualTo:newLocation.coordinate.longitude] &&
+       [self firstDouble:region.center.latitude isEqualTo:inspectorMapView.region.center.latitude] &&
+       [self firstDouble:region.center.longitude isEqualTo:inspectorMapView.region.center.longitude]){
+        
+        //   (region.center.longitude != inspectorMapView.region.center.longitude))
+        [self dropInspectorPinIfRequired];
+    } else {
+        [inspectorMapView setRegion:region animated:TRUE];
+    }
+    
 
 }
 
@@ -150,90 +161,44 @@ inspectorCoachMarks, showingCoachMarks, needToDropInspectorPin, zIndexOfFrontPoi
     for (MKAnnotationView *pin in sortedAnnotationViews) {
         
         if ([[pin annotation] isKindOfClass:[MKUserLocation class]]) {
-           // [[pin superview] bringSubviewToFront:pin];
-             [pin bringSubviewToFront:pin];
+
+            pin.layer.zPosition = 1.001;
             
         } else if ([[pin annotation] isKindOfClass:[InspectorMapKitAnnotation class]]){
-           // NSLog(@"ROB: %@", [(InspectorMapKitAnnotation*) [pin annotation] spotDate]);
-//            pin.layer.zPosition = self.zIndexOfFrontPoi + .01;
-//            zIndexCounter = zIndexCounter + .001;
+
             if([(InspectorMapKitAnnotation*)[pin annotation] justSpotted]){
-//                [[pin superview] bringSubviewToFront:pin];
-               //  [[pin  superview ]bringSubviewToFront:pin];
-//                pin.layer.zPosition = .99;
-                pin.layer.zPosition = self.zIndexOfFrontPoi + .01;
-                zIndexCounter = zIndexCounter + .001;
-                NSLog(@"NEXT ONE IS JUST SPOTTED");
+                
+                pin.layer.zPosition = self.zIndexOfFrontPoi + .001;
+                
+               // zIndexCounter = zIndexCounter + .001;
+                self.zIndexOfFrontPoi = self.zIndexOfFrontPoi + .001;
+                 NSLog(@"just spotted z index: %f", pin.layer.zPosition);
                 [(InspectorMapKitAnnotation*)[pin annotation] setJustSpotted:NO];
                 CGRect endFrame = pin.frame;
                 pin.frame = CGRectOffset(pin.frame, 0, -230);
                 
                 [UIView beginAnimations:nil context:nil];
-                [UIView setAnimationDuration:0.45f];
+                [UIView setAnimationDuration:4.45f];
                 [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
                 pin.frame = endFrame;
                 [UIView commitAnimations];
-               //
             } else {
                 pin.layer.zPosition = zIndexCounter;
                 zIndexCounter = zIndexCounter + .001;
             }
-                //pin.layer.zPosition = i;
-                //i = i + .001;
-        
-               // [[pin superview] sendSubviewToBack:pin];
-                // [[pin superview] bringSubviewToFront:pin];
-                 //     NSLog(@"ROB: %@", [(InspectorMapKitAnnotation*) [pin annotation] spotDate]);
-            //}
-
+            NSLog(@"zindex: %f", pin.layer.zPosition);
         }
-        NSLog(@"Z index: %f", [[pin layer] zPosition]);
     }
-    self.zIndexOfFrontPoi = MAX(zIndexCounter, zIndexOfFrontPoi);
-   // NSLog(@"ROB: END");
-  
-   /* for (MKAnnotationView *pin in views) {
-        
-        if ([[pin annotation] isKindOfClass:[InspectorMapKitAnnotation class]]){
-            if([(InspectorMapKitAnnotation*)[pin annotation] justSpotted]) {
-                NSLog(@"just spotted");
-                pin.canShowCallout = NO;
-                [mapView selectAnnotation:[pin annotation]  animated:YES];
-              //  [pin setSelected:YES];
-                //[pin bringSubviewToFront:pin];
-                //[pin setSelected:YES];
-                [(InspectorMapKitAnnotation*)[pin annotation] setJustSpotted:NO];
-                CGRect endFrame = pin.frame;
-                pin.frame = CGRectOffset(pin.frame, 0, -230);
-                
-                [UIView beginAnimations:nil context:nil];
-                [UIView setAnimationDuration:0.45f];
-                [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
-                pin.frame = endFrame;
-                [UIView commitAnimations];
-                
-                //[pin setSelected:YES];
-            } else {
-               NSLog(@"ROB: %@", [(InspectorMapKitAnnotation*) [pin annotation] spotDate]);
-               // [[pin superview] sendSubviewToBack:pin];
-            }
-        } else {
-            NSLog(@"Not an inspector pin");
-        }
-    }*/
-    
+    self.zIndexOfFrontPoi = MAX(zIndexCounter, zIndexOfFrontPoi);    
 }
 
 - (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view {
-    NSLog(@"selected Z index: %f", [[view layer] zPosition]);
     view.layer.zPosition = view.layer.zPosition + 1;
 }
 
 - (void)mapView:(MKMapView *)mapView didDeselectAnnotationView:(MKAnnotationView *)view {
-        view.layer.zPosition = view.layer.zPosition - 1;
+    view.layer.zPosition = view.layer.zPosition - 1;
 }
-
-
 
 
 -(void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated {
@@ -356,6 +321,18 @@ inspectorCoachMarks, showingCoachMarks, needToDropInspectorPin, zIndexOfFrontPoi
     [inspectorLocation setObject:[NSNumber numberWithDouble:inspectorLocationCoordinate.latitude]  forKey:@"latitude"];
     [inspectorLocation setObject:[NSNumber numberWithDouble:inspectorLocationCoordinate.longitude] forKey:@"longitude"];
     [inspectorLocation saveInBackground];
+}
+
+#pragma compareDoubles
+
+#define kVerySmallValue (0.000001)
+
+- (BOOL)firstDouble:(double)first isEqualTo:(double)second {
+    
+    if(fabsf(first - second) < kVerySmallValue)
+        return YES;
+    else
+        return NO;
 }
 
 @end
