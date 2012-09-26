@@ -17,6 +17,7 @@
 @property (nonatomic, strong) UIWebView *mykiWebstiteWebView;
 @property (nonatomic) BOOL userIsLoggedIn;
 @property (nonatomic) BOOL isUserLoginAttempted;
+@property (nonatomic) BOOL isProblemWithMykiCredentials;
 @property (nonatomic, strong) MykiAccountInformation *mykiAccountInformation;
 @property (nonatomic, strong) IBOutlet UIView *topView;
 @property (nonatomic, strong) IBOutlet UIView *bottomView;

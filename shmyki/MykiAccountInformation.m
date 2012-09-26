@@ -100,6 +100,14 @@
     return [loggedInPageTitle isEqualToString:@"Myki-Session Expired"];
 }
 
+-(BOOL)isProblemWithCredentials:(NSString*)page {
+    
+  //  NSString *loginErrorMessage = [self extractInformationFromHtml:page withRegeEx:REG_EX_ERROR_CREDENTIALS];
+   // return [loginErrorMessage isEqualToString:@"Invalid Username/Password"];
+    NSRange isRange = [page rangeOfString:ERROR_CREDENTIALS options:NSCaseInsensitiveSearch];
+    return isRange.length != 0;
+}
+
 -(NSString*) convertMykiPassActiveToDays:(NSString*)currentMykiPassActiveRaw {
     NSString* currentMykiPassActiveDateString = [self extractInformationFromHtml:currentMykiPassActiveRaw withRegeEx:REG_EX_CURRENT_MYKI_PASS_ACTIVE_IN_DAYS];
     
@@ -196,9 +204,6 @@
     }
     return bottomLabelTwo;
 }
-
-
-
 
 
 @end

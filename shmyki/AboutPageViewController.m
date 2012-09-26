@@ -24,7 +24,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        [[self navigationItem] setTitle:APP_NAME];
+        [[self navigationItem] setTitle:@"About"];
     }
     return self;
 }

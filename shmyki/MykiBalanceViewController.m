@@ -18,7 +18,7 @@
 @synthesize topView, bottomView, loginTableView, loginScrollView, pageScrollView, balanceDisplayView, errorView;
 @synthesize usernameTextField, passwordTextField;
 @synthesize balanceHeaderLabel, balanceMykiPassExpiryLabel, balanceMykiPassAdditionalLabel, balanceMykiMoneyAmountLabel, balanceMykiMoneyAdditionalLabel, balanceFooterLabelOne, balanceFooterLabelTwo, balanceSeperatorImage;
-@synthesize HUD, timer, refreshButton, isUserLoginAttempted;
+@synthesize HUD, timer, refreshButton, isUserLoginAttempted, isProblemWithMykiCredentials;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -200,9 +200,13 @@
         NSURL *url = [NSURL URLWithString:fullURL];  
         NSError *error;
         NSString *page = [NSString stringWithContentsOfURL:url encoding:NSASCIIStringEncoding error:&error];
+
         [timer invalidate];
         if([page length] == 0 || [mykiAccountInformation isLoginUnsuccessful:page]) {
             self.userIsLoggedIn = NO;
+
+            NSString *currentPage = [webView stringByEvaluatingJavaScriptFromString:@"document.body.innerHTML"];
+            self.isProblemWithMykiCredentials = [mykiAccountInformation isProblemWithCredentials:currentPage];
             [self switchToErrorState];
             [HUD hide:YES];
         } else {
@@ -226,7 +230,6 @@
         HUD.labelText = @"Retrieving Balance";
     }
 }
-
 
 -(void) showMykiAccountInformation {
 
@@ -436,15 +439,20 @@
 }
 
 -(void)switchToErrorState {
-    [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationDuration:.4];
-    self.bottomView.frame = CGRectMake(0, 705, 320, 205);
-    self.errorView.frame = CGRectMake(0, 224, 320, 150);
-    [self drawBalanceViewGradientWithCornersWithActiveState:NO];
-    self.balanceSeperatorImage.image = [UIImage imageNamed:@"images/BalanceLineBlk.png"];
-    [UIView commitAnimations];
-  //  self.navigationItem.leftBarButtonItem = self.navigationItem.leftBarButtonItem = [YourMykiCustomButton createYourMykiBarButtonItemWithText:@"Cancel" withTarget:self withAction:@selector(switchToSuccessState)];
-    self.navigationItem.rightBarButtonItem = [YourMykiCustomButton createYourMykiBarButtonItemWithText:@"Edit" withTarget:self withAction:@selector(switchToLoginState)];
+    if(self.isProblemWithMykiCredentials) {
+        [self switchToLoginState];
+        self.isProblemWithMykiCredentials = NO;
+    } else {
+        [UIView beginAnimations:nil context:NULL];
+        [UIView setAnimationDuration:.4];
+        self.bottomView.frame = CGRectMake(0, 705, 320, 205);
+        self.errorView.frame = CGRectMake(0, 224, 320, 150);
+        [self drawBalanceViewGradientWithCornersWithActiveState:NO];
+        self.balanceSeperatorImage.image = [UIImage imageNamed:@"images/BalanceLineBlk.png"];
+        [UIView commitAnimations];
+        //  self.navigationItem.leftBarButtonItem = self.navigationItem.leftBarButtonItem = [YourMykiCustomButton createYourMykiBarButtonItemWithText:@"Cancel" withTarget:self withAction:@selector(switchToSuccessState)];
+        self.navigationItem.rightBarButtonItem = [YourMykiCustomButton createYourMykiBarButtonItemWithText:@"Edit" withTarget:self withAction:@selector(switchToLoginState)];
+    }
 }
 
 -(IBAction)tryAgainButtonTapped:(id)sender {

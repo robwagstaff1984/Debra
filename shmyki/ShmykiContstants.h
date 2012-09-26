@@ -60,6 +60,7 @@
 #define REG_EX_LAST_MYKI_TRANSACTION_DATE @"<strong>Last myki transaction date</strong></td>\\s+<td>\\s+(.+)</td>"
 #define REG_EX_CURRENT_MYKI_PASS_ACTIVE_IN_DAYS @".*Valid to (.+)"
 #define REG_EX_ERROR_LOGGING_IN @"<title>\\s*(Myki-Session Expired)\\s*</title>"
+#define ERROR_CREDENTIALS @"Invalid Username/Password"
 
 #define DEFAULT_HEADER_LABEL @"Sign in to see your account details"
 #define DEFAULT_BOTTOM_LABEL_ONE @"You need to have a registered account with"

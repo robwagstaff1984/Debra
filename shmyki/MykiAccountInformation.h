@@ -31,6 +31,7 @@
 -(void) loadAccountBalanceInformation;
 -(void) extractMykiAccountInfoFromHtml:(NSString*) page;
 -(BOOL) isLoginUnsuccessful:(NSString*)page;
+-(BOOL)isProblemWithCredentials:(NSString*)page;
 
 -(NSString*)transformAccountInfoToHeaderLabel;
 -(NSString*)transformMykiPassToMykiPassLabel;
