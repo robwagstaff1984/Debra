@@ -17,7 +17,7 @@
     BOOL isFirstTimePageLoad;
 }
 
-@synthesize commentsTextView, punchOnIssues, punchOnIsValid, twitterButton, facebookButton, punchOnTableView, shadowWrapper, locationIcon, locationLabel;
+@synthesize commentsTextView, punchOnIssues, punchOnIsValid, twitterButton, facebookButton, punchOnTableView, shadowWrapper, locationIcon, locationLabel, selectedProblem;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -27,6 +27,7 @@
         punchOnIssues = [[PunchOnIssues alloc] init];
         punchOnIsValid = NO;
         isFirstTimePageLoad = YES;
+        self.selectedProblem = 1;
        // [[NSNotificationCenter defaultCenter] addObserver:self forKeyPath:@"TwitterCancelled" options:nil context:nil];
         
         [[NSNotificationCenter defaultCenter] addObserver:self
@@ -179,13 +180,14 @@
         if(cell == nil) {
             cell= [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
                                          reuseIdentifier:cellIdentifier];
+            [cell.textLabel setFont: [UIFont fontWithName:@"HelveticaNeue-Medium" size:14.0f]];
+            cell.textLabel.textAlignment = UITextAlignmentCenter;
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            cell.textLabel.textColor = [UIColor lightGrayColor];
         }
         cell.textLabel.text = [self.punchOnIssues.issues objectAtIndex:indexPath.row];
         
-        [cell.textLabel setFont: [UIFont fontWithName:@"HelveticaNeue-Medium" size:14.0f]];
-        cell.textLabel.textAlignment = UITextAlignmentCenter;
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell.textLabel.textColor = [UIColor lightGrayColor];
+
          return cell;
     } else {
         NSString *cellIdentifier = [NSString stringWithFormat:@"problemCell"];
@@ -193,14 +195,23 @@
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
         
         if(cell == nil) {
+            
+            
             cell= [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
                                          reuseIdentifier:cellIdentifier];
+            [cell.textLabel setFont: [UIFont fontWithName:@"HelveticaNeue-Light" size:14.0f]];
+            //cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            cell.selectionStyle = UITableViewCellSelectionStyleGray;
+            cell.textLabel.textColor = [UIColor blackColor];
+        
         }
         cell.textLabel.text = [self.punchOnIssues.issues objectAtIndex:indexPath.row];
-        [cell.textLabel setFont: [UIFont fontWithName:@"HelveticaNeue-Light" size:14.0f]];
-        cell.selectionStyle = UITableViewCellSelectionStyleGray;
-        cell.textLabel.textColor = [UIColor blackColor];
-         return cell;
+        if(indexPath.row == self.selectedProblem) {
+            cell.accessoryView = [[UIImageView alloc] initWithImage:[UIImage imageNamed: @"images/IconTick"]];
+        } else {
+            cell.accessoryView = nil;
+        }
+        return cell;
     }
     
     
@@ -212,6 +223,7 @@
         isFirstTimePageLoad = NO;
         cell.accessoryView = [[UIImageView alloc] initWithImage:[UIImage imageNamed: @"images/IconTick"]];
     }
+    
 }
 
 
@@ -219,14 +231,17 @@
 #pragma mark table view delegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if(indexPath.row != 0) {  
+    if(indexPath.row != 0) {
+        self.selectedProblem = indexPath.row;
+        
         for(int i=0; i< [self.punchOnIssues.issues count]; i++ ) {
             NSIndexPath *currentIndexPath = [NSIndexPath indexPathForRow:i inSection:0];
             [tableView cellForRowAtIndexPath:currentIndexPath].accessoryView = nil;
         }
         
         [tableView cellForRowAtIndexPath:indexPath].accessoryView = [[UIImageView alloc] initWithImage:[UIImage imageNamed: @"images/IconTick"]];
-        [[tableView cellForRowAtIndexPath:indexPath] setSelected:NO animated:YES];
+
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
         
         if(indexPath.row != 1) {
             double delayInSeconds = .4;
@@ -241,8 +256,8 @@
 
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [tableView cellForRowAtIndexPath:indexPath].accessoryView = nil;
-    [[tableView cellForRowAtIndexPath:indexPath] setSelected:NO animated:YES];
+    //[tableView cellForRowAtIndexPath:indexPath].accessoryView = nil;
+    //[[tableView cellForRowAtIndexPath:indexPath] setSelected:NO animated:YES];
 }
 
 

@@ -25,6 +25,7 @@
 @property (nonatomic, strong) IBOutlet UIButton* facebookButton;
 @property (strong, nonatomic) IBOutlet UIImageView* locationIcon;
 @property (strong, nonatomic) IBOutlet UILabel* locationLabel;
+@property (nonatomic) int selectedProblem;
 
 
 - (IBAction)toggleTwitterButton:(id)sender;
