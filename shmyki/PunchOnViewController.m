@@ -202,10 +202,8 @@
     CGSize constraint = CGSizeMake(320.0 - (CELL_CONTENT_HORIZONTAL_MARGIN * 2), 500.0);
     
     CGSize messageLabelSize = [punchOnLog.message sizeWithFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:MESSAGE_FONT_SIZE] constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
-    NSString *tempDate = @"45 mins";
-    CGSize dateLabelSize = [tempDate sizeWithFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:LOCATION_FONT_SIZE] constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
     
-    return messageLabelSize.height + dateLabelSize.height + (CELL_CONTENT_VERTICAL_MARGIN * 3);
+    return messageLabelSize.height + DATE_LABEL_HEIGHT + (CELL_CONTENT_VERTICAL_MARGIN * 3);
     
 }  
 
@@ -349,24 +347,31 @@
         threshold = ((COMMENTS_ORIGIN_TO_ANCHOR_BOTTOM - COMMENTS_ORIGIN_TO_ANCHOR_TOP) *.80) + COMMENTS_ORIGIN_TO_ANCHOR_TOP;
     }
         
-    int shouldReplaceHeader = YES;
-    if(tableViewCenterLocation.y < threshold) {
-        tableViewCenterLocation.y = COMMENTS_ORIGIN_TO_ANCHOR_TOP;
-         shouldReplaceHeader = !_commentsTableViewIsUp;
-        punchOnCommentsTableView.scrollEnabled = YES;
-        _commentsTableViewIsUp = YES;
-        [punchOnCommentsView addGestureRecognizer:_panGestureDownRecognizerForCommentsView];
-        [punchOnCommentsView removeGestureRecognizer:_panGestureUpRecognizerForCommentsView];
 
-    } else {
-        tableViewCenterLocation.y = COMMENTS_ORIGIN_TO_ANCHOR_BOTTOM;
-        shouldReplaceHeader = _commentsTableViewIsUp;
-        _commentsTableViewIsUp = NO;
-        punchOnCommentsTableView.scrollEnabled = NO;
-        [punchOnCommentsView removeGestureRecognizer:_panGestureDownRecognizerForCommentsView];
-        [punchOnCommentsView addGestureRecognizer:_panGestureUpRecognizerForCommentsView];
+    if(tableViewCenterLocation.y != COMMENTS_ORIGIN_TO_ANCHOR_TOP) {
+        
+        int shouldReplaceHeader = YES;
+        if(tableViewCenterLocation.y < threshold) {
+            tableViewCenterLocation.y = COMMENTS_ORIGIN_TO_ANCHOR_TOP;
+            shouldReplaceHeader = !_commentsTableViewIsUp;
+            punchOnCommentsTableView.scrollEnabled = YES;
+            _commentsTableViewIsUp = YES;
+            [punchOnCommentsView addGestureRecognizer:_panGestureDownRecognizerForCommentsView];
+            [punchOnCommentsView removeGestureRecognizer:_panGestureUpRecognizerForCommentsView];
+            
+            
+        } else {
+            tableViewCenterLocation.y = COMMENTS_ORIGIN_TO_ANCHOR_BOTTOM;
+            shouldReplaceHeader = _commentsTableViewIsUp;
+            _commentsTableViewIsUp = NO;
+            punchOnCommentsTableView.scrollEnabled = NO;
+            [punchOnCommentsView removeGestureRecognizer:_panGestureDownRecognizerForCommentsView];
+            [punchOnCommentsView addGestureRecognizer:_panGestureUpRecognizerForCommentsView];
+            [self panCommentsTableToLocationY: tableViewCenterLocation.y modeDidChange:shouldReplaceHeader];
+        }
+        [self panCommentsTableToLocationY: tableViewCenterLocation.y modeDidChange:shouldReplaceHeader];
     }
-    [self panCommentsTableToLocationY: tableViewCenterLocation.y modeDidChange:shouldReplaceHeader];
+
 }
 
 -(void) panCommentsTableToLocationY:(int)locationY modeDidChange:(BOOL)isModeChanged{
