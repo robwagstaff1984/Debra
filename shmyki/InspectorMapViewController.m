@@ -78,6 +78,7 @@ inspectorCoachMarks, showingCoachMarks, needToDropInspectorPin, zIndexOfFrontPoi
 {
     [super viewWillAppear:animated];
     [[GANTracker sharedTracker] trackPageview:@"nearby" withError:nil];
+    [self findInspectors];
 }
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
