@@ -21,6 +21,7 @@
 #import "DateDisplayHelper.h"
 #import "FeatureToggle.h"
 #import "GANTracker.h"
+#import <QuartzCore/QuartzCore.h>
 
 @implementation PunchOnViewController
 @synthesize punchOnCommentsView, punchOnCommentsTableView, listOfPunchOnLogs, totalPunchOns, tableFixedHeader, helpImages, punchOnCoachMarks, showingCoachMarks;

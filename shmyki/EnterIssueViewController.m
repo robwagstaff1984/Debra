@@ -24,7 +24,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        [self.navigationItem setTitle:@"enter issue"];
+        [self.navigationItem setTitle:@"Add comment"];
         punchOnIssues = [[PunchOnIssues alloc] init];
         punchOnIsValid = NO;
         isFirstTimePageLoad = YES;

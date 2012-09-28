@@ -12,6 +12,7 @@
 #import "Parse/Parse.h"
 #import "YourMykiCustomButton.h"
 #import "GANTracker.h"
+#import <QuartzCore/QuartzCore.h>
 
 @implementation EnterLocationViewController
 

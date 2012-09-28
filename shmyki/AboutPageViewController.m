@@ -10,6 +10,7 @@
 #import "ShmykiContstants.h"
 #import "Parse/Parse.h"
 #import "GANTracker.h"
+#import <QuartzCore/QuartzCore.h>
 
 
 @interface AboutPageViewController ()

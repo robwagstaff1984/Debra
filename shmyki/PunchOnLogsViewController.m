@@ -20,7 +20,7 @@
         self.className = @"PunchOnLog";
         
         // The key of the PFObject to display in the label of the default cell style
-        self.keyToDisplay = @"message";
+        self.textKey = @"message";
         
         // Whether the built-in pull-to-refresh is enabled
         self.pullToRefreshEnabled = YES;

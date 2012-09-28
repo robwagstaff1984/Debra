@@ -11,6 +11,7 @@
 #import "Parse/Parse.h"
 #import "ShmykiContstants.h"
 #import "GANTracker.h"
+#import <QuartzCore/QuartzCore.h>
 
 @implementation InspectorMapViewController
 
@@ -21,7 +22,7 @@ inspectorCoachMarks, showingCoachMarks, needToDropInspectorPin, zIndexOfFrontPoi
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        self.title = NSLocalizedString(@"Nearby", nil);
+        self.title = NSLocalizedString(@"Inpsectors", nil);
         if ([self.tabBarItem respondsToSelector:@selector(setFinishedSelectedImage:withFinishedUnselectedImage:)] ==YES) {
             [self.tabBarItem setFinishedSelectedImage:[UIImage imageNamed:@"images/TabInspectOn"] withFinishedUnselectedImage:[UIImage imageNamed:@"images/TabInspectOff"]];
         } else {
