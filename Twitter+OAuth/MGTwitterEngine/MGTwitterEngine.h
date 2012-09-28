@@ -12,7 +12,7 @@
 #import "MGTwitterParserDelegate.h"
 
 @interface MGTwitterEngine : NSObject <MGTwitterParserDelegate> {
-    NSObject <MGTwitterEngineDelegate> *_delegate;
+    /*__weak*/ NSObject <MGTwitterEngineDelegate> *_delegate;
     NSString *_username;
     NSString *_password;
     NSMutableDictionary *_connections;   // MGTwitterHTTPURLConnection objects
