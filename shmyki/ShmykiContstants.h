@@ -61,8 +61,10 @@
 #define REG_EX_CURRENT_MYKI_PASS_NOT_YET_ACTIVE @"<strong>Current myki pass \\(not yet active\\)</strong></td>\\s+<td>\\s+(.+)<br />"
 #define REG_EX_LAST_MYKI_TRANSACTION_DATE @"<strong>Last myki transaction date</strong></td>\\s+<td>\\s+(.+)</td>"
 #define REG_EX_CURRENT_MYKI_PASS_ACTIVE_IN_DAYS @".*Valid to (.+)"
-#define REG_EX_ERROR_LOGGING_IN @"<title>\\s*(Myki-Session Expired)\\s*</title>"
-#define REG_EX_ERROR_LOGGING_IN_404 @"<title>\\s*(Page not found)\\s*</title>"
+//#define REG_EX_ERROR_LOGGING_IN @"<title>\\s*(Myki-Session Expired)\\s*</title>"
+//#define REG_EX_ERROR_LOGGING_IN_404 @"<title>\\s*(Page not found)\\s*</title>"
+#define ERROR_SESSION_EXPIRED @"<title>\\s*(Myki-Session Expired)\\s*</title>"
+#define ERROR_404 @"<title>\\s*(Page not found)\\s*</title>"
 #define ERROR_CREDENTIALS @"Invalid Username/Password"
 
 #define DEFAULT_HEADER_LABEL @"Sign in to see your account details"

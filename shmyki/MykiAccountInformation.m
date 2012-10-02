@@ -103,22 +103,20 @@
 
 -(BOOL)isLoginUnsuccessful:(NSString*)page {
 
-    NSString *loggedInSessionExpiredPageTitle = [self extractInformationFromHtml:page withRegeEx:REG_EX_ERROR_LOGGING_IN];
-    NSString *loggedIn404PageTitle = [self extractInformationFromHtml:page withRegeEx:REG_EX_ERROR_LOGGING_IN_404];
+    NSRange isSessionExpiredProblemRange = [page rangeOfString:ERROR_SESSION_EXPIRED options:NSCaseInsensitiveSearch];
+    NSRange isCredentialsProblemRange = [page rangeOfString:ERROR_404 options:NSCaseInsensitiveSearch];
+    NSRange is404PageProblemRange = [page rangeOfString:ERROR_CREDENTIALS options:NSCaseInsensitiveSearch];
     
-    if([loggedInSessionExpiredPageTitle isEqualToString:@"Myki-Session Expired"] || [loggedIn404PageTitle isEqualToString:@"Page not found"]) {
+    if(isSessionExpiredProblemRange.length !=0 || isCredentialsProblemRange.length !=0 || is404PageProblemRange.length !=0) {
         return YES;
     }
-    
     return NO;
+    
 }
 
 -(BOOL)isProblemWithCredentials:(NSString*)page {
     
-  //  NSString *loginErrorMessage = [self extractInformationFromHtml:page withRegeEx:REG_EX_ERROR_CREDENTIALS];
-   // return [loginErrorMessage isEqualToString:@"Invalid Username/Password"];
     NSRange isRange = [page rangeOfString:ERROR_CREDENTIALS options:NSCaseInsensitiveSearch];
-    
     return isRange.length != 0;
 }
 

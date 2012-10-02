@@ -262,7 +262,7 @@
 
 -(void) processMykiAccountBalancePageHTML:(NSString*)mykiAccountBalancePageHTML withError:(NSError*) error withhCurrentPage:(NSString*) currentPage {
     
-    if(error != nil || [mykiAccountBalancePageHTML length] == 0 || [mykiAccountInformation isLoginUnsuccessful:currentPage] || [mykiAccountInformation isProblemWithCredentials:currentPage]) {
+    if(error != nil || [mykiAccountBalancePageHTML length] == 0 || [mykiAccountInformation isLoginUnsuccessful:currentPage]) {
         self.userIsLoggedIn = NO;
         
         self.isProblemWithMykiCredentials = [mykiAccountInformation isProblemWithCredentials:currentPage];
