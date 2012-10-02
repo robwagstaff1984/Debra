@@ -201,42 +201,84 @@
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
+
+   // NSString *currentPage = [webView stringByEvaluatingJavaScriptFromString:@"document.body.innerHTML"];
+   // NSLog(@"%@",currentPage);
     if(userIsLoggedIn) {
         // [webView stopLoading];
         NSString *fullURL = MYKI_ACCOUNT_INFO_URL;
-        NSURL *url = [NSURL URLWithString:fullURL];  
-        NSError *error;
-        NSString *page = [NSString stringWithContentsOfURL:url encoding:NSASCIIStringEncoding error:&error];
+        NSURL *mykiAccountInfoUrl = [NSURL URLWithString:fullURL];
 
-        [timer invalidate];
-        if([page length] == 0 || [mykiAccountInformation isLoginUnsuccessful:page]) {
-            self.userIsLoggedIn = NO;
-
-            NSString *currentPage = [webView stringByEvaluatingJavaScriptFromString:@"document.body.innerHTML"];
-            self.isProblemWithMykiCredentials = [mykiAccountInformation isProblemWithCredentials:currentPage];
-            [self switchToErrorState];
-            [HUD hide:YES];
-        } else {
-            [mykiAccountInformation extractMykiAccountInfoFromHtml:page];
-            self.userIsLoggedIn = NO;
-            [self showMykiAccountInformation];
-            [self switchToSuccessState];
-            [HUD hide:YES];
-        }
+        NSURLRequest *urlRequest = [NSURLRequest requestWithURL:mykiAccountInfoUrl];
+        NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+        NSString *currentPage = [webView stringByEvaluatingJavaScriptFromString:@"document.body.innerHTML"];
+        
+        [NSURLConnection sendAsynchronousRequest:urlRequest queue:queue completionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
+        {
+            NSLog(@"did recieve response: %@", [response URL]);
+            NSString *mykiAccountBalancePageHTML = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
+            NSLog(@"%@", mykiAccountBalancePageHTML);
+            [timer invalidate];
+            
+            NSString *wrongPageUrl = MYKI_ACCOUNT_WRONG_PAGE_URL;
+            if([[[response URL] absoluteString] isEqualToString:wrongPageUrl]) {
+                NSLog(@"WRONG PAGE");
+                
+                NSString *retryURLString = MYKI_ACCOUNT_INFO_URL;
+                NSURL *retryURL = [NSURL URLWithString:retryURLString];
+                NSURLRequest *retryURLlRequest = [NSURLRequest requestWithURL:retryURL];
+                NSOperationQueue *retryQueue = [[NSOperationQueue alloc] init];
+                
+                [NSURLConnection sendAsynchronousRequest:retryURLlRequest queue:retryQueue completionHandler:^(NSURLResponse *response2, NSData *data2, NSError *error2)
+                 {
+                    NSLog(@"did recieve response2: %@", [response2 URL]);
+                    NSString *retryMykiAccountBalancePageHTML = [[NSString alloc] initWithData:data2 encoding:NSASCIIStringEncoding];
+                    NSLog(@"Page 2: %@", mykiAccountBalancePageHTML);
+                    [self processMykiAccountBalancePageHTML:retryMykiAccountBalancePageHTML withError:error withhCurrentPage:currentPage];
+            
+                 }];
+            } else {
+                [self processMykiAccountBalancePageHTML:mykiAccountBalancePageHTML withError:error withhCurrentPage:currentPage];
+            }
+ 
+        }];
+        
+        
     } else {
-               
+        
         NSString *populateUserNameJavascript = [NSString stringWithFormat:JAVASCRIPT_ENTER_USERNAME, [mykiAccountInformation mykiUsername]];
         NSString *populatePasswordJavascript = [NSString stringWithFormat:JAVASCRIPT_ENTER_PASSWORD, [mykiAccountInformation mykiPassword]];
-        NSString *submitMykiLoginField = JAVASCRIPT_CLICK_SUBMIT; 
+        NSString *submitMykiLoginField = JAVASCRIPT_CLICK_SUBMIT;
         
         [self.mykiWebstiteWebView stringByEvaluatingJavaScriptFromString: populateUserNameJavascript];
         [self.mykiWebstiteWebView stringByEvaluatingJavaScriptFromString: populatePasswordJavascript];
-        [self.mykiWebstiteWebView stringByEvaluatingJavaScriptFromString:submitMykiLoginField]; 
-
-        userIsLoggedIn = YES;   
+        [self.mykiWebstiteWebView stringByEvaluatingJavaScriptFromString:submitMykiLoginField];
+        
+        userIsLoggedIn = YES;
         HUD.labelText = @"Retrieving Balance";
     }
 }
+
+
+-(void) processMykiAccountBalancePageHTML:(NSString*)mykiAccountBalancePageHTML withError:(NSError*) error withhCurrentPage:(NSString*) currentPage {
+    
+    if(error != nil || [mykiAccountBalancePageHTML length] == 0 || [mykiAccountInformation isLoginUnsuccessful:currentPage] || [mykiAccountInformation isProblemWithCredentials:currentPage]) {
+        self.userIsLoggedIn = NO;
+        
+        self.isProblemWithMykiCredentials = [mykiAccountInformation isProblemWithCredentials:currentPage];
+        [self switchToErrorState];
+        [HUD hide:YES];
+    } else {
+        [mykiAccountInformation extractMykiAccountInfoFromHtml:mykiAccountBalancePageHTML];
+        self.userIsLoggedIn = NO;
+        [self showMykiAccountInformation];
+        [self switchToSuccessState];
+        [HUD hide:YES];
+        
+    }
+}
+
+#pragma mark NSURLConnectionDataDelegate
 
 -(void) showMykiAccountInformation {
 
@@ -409,6 +451,7 @@
     self.balanceSeperatorImage.image = [UIImage imageNamed:@"images/BalanceLine.png"];
     [UIView commitAnimations];
     
+    NSLog(@"turning on right button");
     self.navigationItem.rightBarButtonItem = [YourMykiCustomButton createYourMykiBarButtonItemWithText:@"Edit" withTarget:self withAction:@selector(switchToLoginState)];
     
     [self updateRefreshButton];

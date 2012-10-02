@@ -45,6 +45,7 @@
 
 #define MYKI_LOGIN_URL @"https://www.mymyki.com.au/NTSWebPortal/Login.aspx"
 #define MYKI_ACCOUNT_INFO_URL @"https://www.mymyki.com.au/NTSWebPortal/Registered/ManageMyCard.aspx?menu=Manage%20my%20card";
+#define MYKI_ACCOUNT_WRONG_PAGE_URL @"https://www.mymyki.com.au/NTSWebPortal/registered/mymykiaccount.aspx?menu=My%20myki%20account";
 #define JAVASCRIPT_ENTER_USERNAME @"var usernameField = document.getElementById(\"ctl00_uxContentPlaceHolder_uxUsername\"); usernameField.value ='%@';"
 #define JAVASCRIPT_ENTER_PASSWORD @"var passwordField = document.getElementById(\"ctl00_uxContentPlaceHolder_uxPassword\"); passwordField.value ='%@';"
 #define JAVASCRIPT_CLICK_SUBMIT @"var submitButton = document.getElementById(\"ctl00_uxContentPlaceHolder_uxLogin\"); submitButton.click();"
@@ -61,6 +62,7 @@
 #define REG_EX_LAST_MYKI_TRANSACTION_DATE @"<strong>Last myki transaction date</strong></td>\\s+<td>\\s+(.+)</td>"
 #define REG_EX_CURRENT_MYKI_PASS_ACTIVE_IN_DAYS @".*Valid to (.+)"
 #define REG_EX_ERROR_LOGGING_IN @"<title>\\s*(Myki-Session Expired)\\s*</title>"
+#define REG_EX_ERROR_LOGGING_IN_404 @"<title>\\s*(Page not found)\\s*</title>"
 #define ERROR_CREDENTIALS @"Invalid Username/Password"
 
 #define DEFAULT_HEADER_LABEL @"Sign in to see your account details"

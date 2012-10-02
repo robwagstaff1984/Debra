@@ -90,14 +90,27 @@
     [self setCurrentMykiPassActive: [self convertMykiPassActiveToDays:[self extractInformationFromHtml:page withRegeEx:REG_EX_CURRENT_MYKI_PASS_ACTIVE]]];
     [self setCurrentMykiPassNotYetActive:[self convertMykiPassNotYetActive: [self extractInformationFromHtml:page withRegeEx:REG_EX_CURRENT_MYKI_PASS_NOT_YET_ACTIVE]]];
     [self setLastMykiTransactionDate:[self extractInformationFromHtml:page withRegeEx:REG_EX_LAST_MYKI_TRANSACTION_DATE]];
-    [self setLastUpdatedDate:[NSDate date]];
-    [self saveAccountBalanceInformation];
+    
+    
+    if(self.cardHolder == nil && self.cardExpiry ==nil && self.currentMykiMoneyBalance == nil && [self.currentMykiPassActive isEqualToString:@"N/A"]) {
+        NSLog(@"DONT UPDATE");
+    } else {
+        NSLog(@"UPDATED STUFF");
+        [self setLastUpdatedDate:[NSDate date]];
+        [self saveAccountBalanceInformation];
+    }
 }
 
 -(BOOL)isLoginUnsuccessful:(NSString*)page {
 
-    NSString *loggedInPageTitle = [self extractInformationFromHtml:page withRegeEx:REG_EX_ERROR_LOGGING_IN];
-    return [loggedInPageTitle isEqualToString:@"Myki-Session Expired"];
+    NSString *loggedInSessionExpiredPageTitle = [self extractInformationFromHtml:page withRegeEx:REG_EX_ERROR_LOGGING_IN];
+    NSString *loggedIn404PageTitle = [self extractInformationFromHtml:page withRegeEx:REG_EX_ERROR_LOGGING_IN_404];
+    
+    if([loggedInSessionExpiredPageTitle isEqualToString:@"Myki-Session Expired"] || [loggedIn404PageTitle isEqualToString:@"Page not found"]) {
+        return YES;
+    }
+    
+    return NO;
 }
 
 -(BOOL)isProblemWithCredentials:(NSString*)page {
@@ -105,22 +118,26 @@
   //  NSString *loginErrorMessage = [self extractInformationFromHtml:page withRegeEx:REG_EX_ERROR_CREDENTIALS];
    // return [loginErrorMessage isEqualToString:@"Invalid Username/Password"];
     NSRange isRange = [page rangeOfString:ERROR_CREDENTIALS options:NSCaseInsensitiveSearch];
+    
     return isRange.length != 0;
 }
 
 -(NSString*) convertMykiPassActiveToDays:(NSString*)currentMykiPassActiveRaw {
-    NSString* currentMykiPassActiveDateString = [self extractInformationFromHtml:currentMykiPassActiveRaw withRegeEx:REG_EX_CURRENT_MYKI_PASS_ACTIVE_IN_DAYS];
+    NSString* currentMykiPassActiveDateString =@"N/A";
     
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
-    [dateFormatter setDateFormat:@"dd MMM yyyy hh:mm:ss a"];
-    NSDate *currentMykiPassActiveDate = [dateFormatter dateFromString:currentMykiPassActiveDateString];
-    if(currentMykiPassActiveDate != nil) {
-         NSTimeInterval secondsTillExpiry = [[NSDate date] timeIntervalSinceDate:currentMykiPassActiveDate];
-        int daysTillMykiExpiry = ((secondsTillExpiry / SECONDS_IN_AN_DAY) - 1) * -1;
-        currentMykiPassActiveDateString = [NSString stringWithFormat:@"%d Days", daysTillMykiExpiry];
-    } else {
-        currentMykiPassActiveDateString =@"N/A";
+    if([currentMykiPassActiveRaw length] != 0 ) {
+        
+        currentMykiPassActiveDateString = [self extractInformationFromHtml:currentMykiPassActiveRaw withRegeEx:REG_EX_CURRENT_MYKI_PASS_ACTIVE_IN_DAYS];
+        
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
+        [dateFormatter setDateFormat:@"dd MMM yyyy hh:mm:ss a"];
+        NSDate *currentMykiPassActiveDate = [dateFormatter dateFromString:currentMykiPassActiveDateString];
+        if(currentMykiPassActiveDate != nil) {
+            NSTimeInterval secondsTillExpiry = [[NSDate date] timeIntervalSinceDate:currentMykiPassActiveDate];
+            int daysTillMykiExpiry = ((secondsTillExpiry / SECONDS_IN_AN_DAY) - 1) * -1;
+            currentMykiPassActiveDateString = [NSString stringWithFormat:@"%d Days", daysTillMykiExpiry];
+        }
     }
     return currentMykiPassActiveDateString;
 }
@@ -148,7 +165,11 @@
     NSError *error;
     NSRegularExpression *regEx = [NSRegularExpression regularExpressionWithPattern:regExString options:0 error:&error];
     NSTextCheckingResult *result = [regEx firstMatchInString:page options:0 range:NSMakeRange(0, [page length])];
-    return [page substringWithRange:[result rangeAtIndex:1]];
+    if(result == nil) {
+        return nil;
+    } else {
+        return [page substringWithRange:[result rangeAtIndex:1]];
+    }
 }
 
 
