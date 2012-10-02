@@ -73,11 +73,6 @@
     [self setLastUpdatedDate: storedLastUpdatedDate];
 }
 
-//-(void)setCurrentMykiPassActive:(NSString *)currentMykiPassActiveToSet {
-//    NSLog(currentMykiPassActiveToSet);
-//    currentMykiPassActive = currentMykiPassActiveToSet;
-//}
-
 -(void) extractMykiAccountInfoFromHtml:(NSString*) page {
 
     [self setCardHolder:[self extractInformationFromHtml:page withRegeEx:REG_EX_CARD_HOLDER]];
@@ -93,9 +88,9 @@
     
     
     if(self.cardHolder == nil && self.cardExpiry ==nil && self.currentMykiMoneyBalance == nil && [self.currentMykiPassActive isEqualToString:@"N/A"]) {
-        NSLog(@"DONT UPDATE");
+        //NSLog(@"DONT UPDATE");
     } else {
-        NSLog(@"UPDATED STUFF");
+        //NSLog(@"UPDATED STUFF");
         [self setLastUpdatedDate:[NSDate date]];
         [self saveAccountBalanceInformation];
     }

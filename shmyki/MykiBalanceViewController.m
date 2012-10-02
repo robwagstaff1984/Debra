@@ -215,25 +215,25 @@
         
         [NSURLConnection sendAsynchronousRequest:urlRequest queue:queue completionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
         {
-            NSLog(@"did recieve response: %@", [response URL]);
+            //NSLog(@"did recieve response: %@", [response URL]);
             NSString *mykiAccountBalancePageHTML = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
-            NSLog(@"%@", mykiAccountBalancePageHTML);
+           // NSLog(@"%@", mykiAccountBalancePageHTML);
             [timer invalidate];
             
             NSString *wrongPageUrl = MYKI_ACCOUNT_WRONG_PAGE_URL;
             if([[[response URL] absoluteString] isEqualToString:wrongPageUrl]) {
-                NSLog(@"WRONG PAGE");
+             //   NSLog(@"WRONG PAGE");
                 
                 NSString *retryURLString = MYKI_ACCOUNT_INFO_URL;
                 NSURL *retryURL = [NSURL URLWithString:retryURLString];
                 NSURLRequest *retryURLlRequest = [NSURLRequest requestWithURL:retryURL];
-                NSOperationQueue *retryQueue = [[NSOperationQueue alloc] init];
+                //NSOperationQueue *retryQueue = [[NSOperationQueue alloc] init];
                 
-                [NSURLConnection sendAsynchronousRequest:retryURLlRequest queue:retryQueue completionHandler:^(NSURLResponse *response2, NSData *data2, NSError *error2)
+                [NSURLConnection sendAsynchronousRequest:retryURLlRequest queue:queue completionHandler:^(NSURLResponse *response2, NSData *data2, NSError *error2)
                  {
-                    NSLog(@"did recieve response2: %@", [response2 URL]);
+                  //  NSLog(@"did recieve response2: %@", [response2 URL]);
                     NSString *retryMykiAccountBalancePageHTML = [[NSString alloc] initWithData:data2 encoding:NSASCIIStringEncoding];
-                    NSLog(@"Page 2: %@", mykiAccountBalancePageHTML);
+                    //NSLog(@"Page 2: %@", mykiAccountBalancePageHTML);
                     [self processMykiAccountBalancePageHTML:retryMykiAccountBalancePageHTML withError:error withhCurrentPage:currentPage];
             
                  }];
@@ -451,7 +451,7 @@
     self.balanceSeperatorImage.image = [UIImage imageNamed:@"images/BalanceLine.png"];
     [UIView commitAnimations];
     
-    NSLog(@"turning on right button");
+    //NSLog(@"turning on right button");
     self.navigationItem.rightBarButtonItem = [YourMykiCustomButton createYourMykiBarButtonItemWithText:@"Edit" withTarget:self withAction:@selector(switchToLoginState)];
     
     [self updateRefreshButton];
