@@ -10,12 +10,11 @@
 #import "MykiAccountInformation.h"
 #import "MBProgressHUD.h"
 
-@interface MykiBalanceViewController : UIViewController <UIWebViewDelegate, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, MBProgressHUDDelegate, UIGestureRecognizerDelegate, NSURLConnectionDataDelegate>
+@interface MykiBalanceViewController : UIViewController <UIWebViewDelegate, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, MBProgressHUDDelegate, UIGestureRecognizerDelegate>
 
 
 @property (nonatomic, strong) NSString *mykiLoginUrl;
 @property (nonatomic, strong) IBOutlet UIWebView *mykiWebstiteWebView;
-@property (nonatomic) BOOL userIsLoggedIn;
 @property (nonatomic) BOOL isUserLoginAttempted;
 @property (nonatomic) BOOL isProblemWithMykiCredentials;
 @property (nonatomic, strong) MykiAccountInformation *mykiAccountInformation;
