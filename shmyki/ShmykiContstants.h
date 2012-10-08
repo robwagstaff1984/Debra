@@ -50,6 +50,10 @@
 #define JAVASCRIPT_ENTER_PASSWORD @"var passwordField = document.getElementById(\"ctl00_uxContentPlaceHolder_uxPassword\"); passwordField.value ='%@';"
 #define JAVASCRIPT_CLICK_SUBMIT @"var submitButton = document.getElementById(\"ctl00_uxContentPlaceHolder_uxLogin\"); submitButton.click();"
 
+//#define JAVASCRIPT_CLICK_MANAGE_MY_CARD @"var submitButton = document.getElementById(\"navManagemycard\"); submitButton.click();"
+#define JAVASCRIPT_CLICK_MANAGE_MY_CARD @"var manageLink = document.getElementByClassName(\"current\"); manageLink.click();"
+
+
 #define REG_EX_CARD_HOLDER @"<strong>Card holder</strong></td>\\s+<td>\\s+(.+)</td>"
 #define REG_EX_CARD_TYPE @"<strong>Card type</strong>\\s+</td>\\s+<td>\\s+(.*?)\\s+</td>"
 #define REG_EX_CARD_EXPIRY @"<strong>Card expiry</strong></td>\\s+<td>\\s+(.+)</td>"
@@ -61,11 +65,13 @@
 #define REG_EX_CURRENT_MYKI_PASS_NOT_YET_ACTIVE @"<strong>Current myki pass \\(not yet active\\)</strong></td>\\s+<td>\\s+(.+)<br />"
 #define REG_EX_LAST_MYKI_TRANSACTION_DATE @"<strong>Last myki transaction date</strong></td>\\s+<td>\\s+(.+)</td>"
 #define REG_EX_CURRENT_MYKI_PASS_ACTIVE_IN_DAYS @".*Valid to (.+)"
+#define MYKI_PAGE_TITLE_REGEX @"<title>\\s*(.+)\\s*</title>"
 //#define REG_EX_ERROR_LOGGING_IN @"<title>\\s*(Myki-Session Expired)\\s*</title>"
 //#define REG_EX_ERROR_LOGGING_IN_404 @"<title>\\s*(Page not found)\\s*</title>"
 #define ERROR_SESSION_EXPIRED @"<title>\\s*(Myki-Session Expired)\\s*</title>"
 #define ERROR_404 @"<title>\\s*(Page not found)\\s*</title>"
 #define ERROR_CREDENTIALS @"Invalid Username/Password"
+
 
 #define DEFAULT_HEADER_LABEL @"Sign in to see your account details"
 #define DEFAULT_BOTTOM_LABEL_ONE @"You need to have a registered account with"

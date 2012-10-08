@@ -31,8 +31,9 @@
         [mykiAccountInformation loadAccountInformation];
         [mykiAccountInformation loadAccountBalanceInformation];
         mykiLoginUrl = MYKI_LOGIN_URL;
-        mykiWebstiteWebView = [[UIWebView alloc] init];
-        mykiWebstiteWebView.delegate = self;
+        //mykiWebstiteWebView = [[UIWebView alloc] initWithFrame:CGRectMake(0,0, 250, 320)];
+       // mykiWebstiteWebView = [[UIWebView alloc] init];
+        //mykiWebstiteWebView.delegate = self;
         userIsLoggedIn = NO;
         
         [self loadFirstTimeLogin];
@@ -162,20 +163,22 @@
 -(void)retrieveMykiBalance {
     [self switchToLoggingInState];
 
-    timer = [NSTimer scheduledTimerWithTimeInterval: 20.0 target:self selector:@selector(cancelRequest) userInfo:nil repeats: NO];
+    timer = [NSTimer scheduledTimerWithTimeInterval: 30.0 target:self selector:@selector(cancelRequest) userInfo:nil repeats: NO];
     
     HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     HUD.delegate = self;
     HUD.dimBackground = YES;
     HUD.labelText = @"Connecting";
-
+    
     NSURLRequest *requestObj = [NSURLRequest requestWithURL:[NSURL URLWithString:mykiLoginUrl]];
-       // NSURLRequest *requestObj = [NSURLRequest requestWithURL:[NSURL URLWithString:mykiLoginUrl] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:30.0f];
     [mykiWebstiteWebView loadRequest:requestObj];
+    
+    
     
 }
 
 -(void) cancelRequest {
+    NSLog(@"Canceled it");
     [HUD hide:YES];
     [mykiWebstiteWebView stopLoading];
     self.userIsLoggedIn = NO;
@@ -200,7 +203,7 @@
     [timer invalidate];
 }
 
-- (void)webViewDidFinishLoad:(UIWebView *)webView {
+/*- (void)webViewDidFinishLoad:(UIWebView *)webView {
 
    // NSString *currentPage = [webView stringByEvaluatingJavaScriptFromString:@"document.body.innerHTML"];
    // NSLog(@"%@",currentPage);
@@ -213,6 +216,8 @@
         NSOperationQueue *queue = [[NSOperationQueue alloc] init];
         NSString *currentPage = [webView stringByEvaluatingJavaScriptFromString:@"document.body.innerHTML"];
         
+        
+        HUD.labelText = @"Retrieving Balance";
         [NSURLConnection sendAsynchronousRequest:urlRequest queue:queue completionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
         {
             //NSLog(@"did recieve response: %@", [response URL]);
@@ -255,8 +260,67 @@
         [self.mykiWebstiteWebView stringByEvaluatingJavaScriptFromString:submitMykiLoginField];
         
         userIsLoggedIn = YES;
-        HUD.labelText = @"Retrieving Balance";
+        HUD.labelText = @"Logging in";
     }
+}*/
+
+-(void)webViewDidFinishLoad:(UIWebView *)webView {
+    
+    NSString *pageTitle = [webView stringByEvaluatingJavaScriptFromString:@"document.title"];
+    NSLog(@"Page title: %@", pageTitle);
+    if([pageTitle isEqualToString:@"Login"]) {
+        [self resetTimer];
+        HUD.labelText = @"Logging in";
+        NSString *currentPage = [webView stringByEvaluatingJavaScriptFromString:@"document.body.innerHTML"];
+        self.isProblemWithMykiCredentials = [mykiAccountInformation isProblemWithCredentials:currentPage];
+        if (self.isProblemWithMykiCredentials) {
+            [self switchToErrorState];
+            [timer invalidate];
+            [HUD hide:YES];
+        } else {
+            NSString *populateUserNameJavascript = [NSString stringWithFormat:JAVASCRIPT_ENTER_USERNAME, [mykiAccountInformation mykiUsername]];
+            NSString *populatePasswordJavascript = [NSString stringWithFormat:JAVASCRIPT_ENTER_PASSWORD, [mykiAccountInformation mykiPassword]];
+            NSString *submitMykiLoginField = JAVASCRIPT_CLICK_SUBMIT;
+            
+            [self.mykiWebstiteWebView stringByEvaluatingJavaScriptFromString: populateUserNameJavascript];
+            [self.mykiWebstiteWebView stringByEvaluatingJavaScriptFromString: populatePasswordJavascript];
+            [self.mykiWebstiteWebView stringByEvaluatingJavaScriptFromString:submitMykiLoginField];
+        }
+    } else if ([pageTitle isEqualToString:@"My myki account"]) {
+        [self resetTimer];
+        HUD.labelText = @"Retrieving Balance";
+        
+       // NSString *currentPage = [webView stringByEvaluatingJavaScriptFromString:@"document.body.innerHTML"];
+       // NSLog(@"%@",currentPage);
+        NSString* manageMyCardUrl = MYKI_ACCOUNT_INFO_URL;
+        NSURLRequest *manageMyCardRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:manageMyCardUrl]];
+        [mykiWebstiteWebView loadRequest:manageMyCardRequest];
+    }else if ([pageTitle isEqualToString:@"Manage my card"]) {
+        [self resetTimer];
+        NSLog(@"Manage my card");
+        NSString *currentPage = [webView stringByEvaluatingJavaScriptFromString:@"document.body.innerHTML"];
+        [self processMykiAccountBalancePageHTML:currentPage];
+    }
+    else {
+        [self switchToErrorState];
+        [timer invalidate];
+        [HUD hide:YES];
+        NSLog(@"Some other Page title: %@", pageTitle);
+    }
+}
+
+-(void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
+    NSLog (@"Error!: %@", error);
+}
+
+
+
+-(void) processMykiAccountBalancePageHTML:(NSString*)mykiAccountBalancePageHTML  {
+    [timer invalidate];
+    [mykiAccountInformation extractMykiAccountInfoFromHtml:mykiAccountBalancePageHTML];
+    [self showMykiAccountInformation];
+    [self switchToSuccessState];
+    [HUD hide:YES];
 }
 
 
@@ -278,6 +342,10 @@
     }
 }
 
+-(void) resetTimer {
+    [timer invalidate];
+    timer = [NSTimer scheduledTimerWithTimeInterval: 30.0 target:self selector:@selector(cancelRequest) userInfo:nil repeats: NO];
+}
 #pragma mark NSURLConnectionDataDelegate
 
 -(void) showMykiAccountInformation {

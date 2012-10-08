@@ -14,7 +14,7 @@
 
 
 @property (nonatomic, strong) NSString *mykiLoginUrl;
-@property (nonatomic, strong) UIWebView *mykiWebstiteWebView;
+@property (nonatomic, strong) IBOutlet UIWebView *mykiWebstiteWebView;
 @property (nonatomic) BOOL userIsLoggedIn;
 @property (nonatomic) BOOL isUserLoginAttempted;
 @property (nonatomic) BOOL isProblemWithMykiCredentials;

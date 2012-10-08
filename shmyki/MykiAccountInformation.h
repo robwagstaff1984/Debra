@@ -37,5 +37,6 @@
 -(NSString*)transformMykiPassToMykiPassLabel;
 -(NSString*)transformMykiMoneyToMykiMoneyLabel; 
 -(NSString*)transformAccountInfoToBottomLabelOne;
--(NSString*)transformAccountInfoToBottomLabelTwo; 
+-(NSString*)transformAccountInfoToBottomLabelTwo;
+
 @end
