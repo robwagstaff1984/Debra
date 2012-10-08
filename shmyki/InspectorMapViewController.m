@@ -260,7 +260,7 @@ inspectorCoachMarks, showingCoachMarks, needToDropInspectorPin, zIndexOfFrontPoi
                      completion:^(BOOL finished){[self.inspectorHelpImageButton setHidden:TRUE];}
      ];
     [self showInspectorCoachMarks];
-    [self hideInspectorCoachMarksWithDelay:3.0 WithDuration:2.0];
+    [self hideInspectorCoachMarksWithDelay:6.0 WithDuration:2.0];
 }
 
 -(void) showInspectorHelp {

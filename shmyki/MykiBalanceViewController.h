@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "MykiAccountInformation.h"
 #import "MBProgressHUD.h"
+@class Reachability;
 
 @interface MykiBalanceViewController : UIViewController <UIWebViewDelegate, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, MBProgressHUDDelegate, UIGestureRecognizerDelegate>
 
@@ -28,6 +29,9 @@
 @property (nonatomic, strong) IBOutlet UIScrollView *pageScrollView;
 @property (nonatomic, strong) IBOutlet UIView *balanceDisplayView;
 
+@property (nonatomic, strong) IBOutlet UILabel *errorTextLabel;
+@property (nonatomic, strong) IBOutlet UITextView *errorTextView;
+
 @property (nonatomic, strong) IBOutlet UILabel* balanceHeaderLabel;
 @property (nonatomic, strong) IBOutlet UILabel* balanceMykiPassExpiryLabel;
 @property (nonatomic, strong) IBOutlet UILabel* balanceMykiPassAdditionalLabel;
@@ -42,6 +46,7 @@
 
 @property (nonatomic, strong) MBProgressHUD *HUD;
 @property (nonatomic, strong) NSTimer *timer;
+@property (nonatomic) BOOL isInternetDown;
 
 -(void)retrieveMykiBalance;
 -(void) retryRetrieveMykiBalance;

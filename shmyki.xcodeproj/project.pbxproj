@@ -97,6 +97,7 @@
 		81BF9CD416088C8600BF14F8 /* FeatureToggle.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BF9CD316088C8600BF14F8 /* FeatureToggle.m */; };
 		81CC87751611C4C0008D61A7 /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 81CC87731611C4C0008D61A7 /* libGoogleAnalytics.a */; };
 		81CC87771611C524008D61A7 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 81CC87761611C524008D61A7 /* libsqlite3.dylib */; };
+		81E9C8E21622915E000E2E0D /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 81E9C8E11622915E000E2E0D /* Reachability.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -275,6 +276,8 @@
 		81CC87731611C4C0008D61A7 /* libGoogleAnalytics.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalytics.a; sourceTree = "<group>"; };
 		81CC87741611C4C0008D61A7 /* GANTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GANTracker.h; sourceTree = "<group>"; };
 		81CC87761611C524008D61A7 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		81E9C8E01622915E000E2E0D /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		81E9C8E11622915E000E2E0D /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -282,6 +285,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				815C1A911580AEA40019419C /* SystemConfiguration.framework in Frameworks */,
 				817C21F215B2737000D35D3A /* MessageUI.framework in Frameworks */,
 				814B25B4158B61950067D161 /* libxml2.dylib in Frameworks */,
 				818BE42C1584689E00775392 /* CoreLocation.framework in Frameworks */,
@@ -290,7 +294,6 @@
 				815C1A971580AF200019419C /* Security.framework in Frameworks */,
 				815C1A951580AF120019419C /* libz.1.1.3.dylib in Frameworks */,
 				815C1A931580AEB50019419C /* MobileCoreServices.framework in Frameworks */,
-				815C1A911580AEA40019419C /* SystemConfiguration.framework in Frameworks */,
 				815C1A8F1580AE870019419C /* CFNetwork.framework in Frameworks */,
 				815C1A8D1580AE7C0019419C /* AudioToolbox.framework in Frameworks */,
 				815C19CB157F63AD0019419C /* UIKit.framework in Frameworks */,
@@ -452,6 +455,8 @@
 				8189726815A951E60040FC23 /* HelveticaNeue.dfont */,
 				8129EAE91594B844004D0C6F /* MBProgressHUD.h */,
 				8129EAEA1594B844004D0C6F /* MBProgressHUD.m */,
+				81E9C8E01622915E000E2E0D /* Reachability.h */,
+				81E9C8E11622915E000E2E0D /* Reachability.m */,
 			);
 			name = "third party";
 			sourceTree = "<group>";
@@ -803,6 +808,7 @@
 				81296ADC161554C0005B65D8 /* NSString+UUID.m in Sources */,
 				81296ADD161554C0005B65D8 /* SA_OAuthTwitterController.m in Sources */,
 				81296ADE161554C0005B65D8 /* SA_OAuthTwitterEngine.m in Sources */,
+				81E9C8E21622915E000E2E0D /* Reachability.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -12,11 +12,12 @@
 #import "DateDisplayHelper.h"
 #import "YourMykiCustomButton.h"
 #import "GANTracker.h"
+#import "Reachability.h"
 
 @implementation MykiBalanceViewController
 
 @synthesize mykiLoginUrl, mykiWebstiteWebView, mykiAccountInformation;
-@synthesize topView, bottomView, loginTableView, loginScrollView, pageScrollView, balanceDisplayView, errorView;
+@synthesize topView, bottomView, loginTableView, loginScrollView, pageScrollView, balanceDisplayView, errorView, errorTextView, errorTextLabel, isInternetDown;
 @synthesize usernameTextField, passwordTextField;
 @synthesize balanceHeaderLabel, balanceMykiPassExpiryLabel, balanceMykiPassAdditionalLabel, balanceMykiMoneyAmountLabel, balanceMykiMoneyAdditionalLabel, balanceFooterLabelOne, balanceFooterLabelTwo, balanceSeperatorImage;
 @synthesize HUD, timer, refreshButton, isUserLoginAttempted, isProblemWithMykiCredentials, invalidCredentialsLabel;
@@ -171,6 +172,14 @@
     
     NSURLRequest *requestObj = [NSURLRequest requestWithURL:[NSURL URLWithString:mykiLoginUrl]];
     [mykiWebstiteWebView loadRequest:requestObj];
+    
+    if(![self isInternetConnected]) {
+        self.isInternetDown = YES;
+        [self switchToErrorState];
+        [timer invalidate];
+        [HUD hide:YES];
+        self.isInternetDown = NO;
+    }
 }
 
 -(void) resetTimer {
@@ -475,6 +484,14 @@
         [self switchToLoginState];
         self.isProblemWithMykiCredentials = NO;
     } else {
+        if(self.isInternetDown) {
+            self.errorTextLabel.text =@"No internet connection";
+            self.errorTextView.text = @"There seems to be a problem with your internet connection. Please try again later";
+        } else {
+            self.errorTextLabel.text =@"Sorry there's been an error";
+            self.errorTextView.text = @"We don't know what happened but please try again and let's hope it works this time";
+        }
+        
         [UIView beginAnimations:nil context:NULL];
         [UIView setAnimationDuration:.4];
         self.bottomView.frame = CGRectMake(0, 705, 320, 205);
@@ -536,4 +553,16 @@
     self.isUserLoginAttempted = [defaults boolForKey:@"isUserLoginAttempted"];
 }
 
+#pragma mark internet check
+
+- (BOOL)isInternetConnected
+{
+    Reachability *reachability = [Reachability reachabilityForInternetConnection];
+    NetworkStatus networkStatus = [reachability currentReachabilityStatus];
+    
+    Reachability *hostReachability = [Reachability reachabilityWithHostName: @"www.google.com"];
+    NetworkStatus hostStatus = [hostReachability currentReachabilityStatus];
+    
+    return !(networkStatus == NotReachable) && !(hostStatus == NotReachable);
+}
 @end
