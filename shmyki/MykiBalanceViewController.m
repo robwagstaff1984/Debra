@@ -33,8 +33,8 @@
         [mykiAccountInformation loadAccountBalanceInformation];
         mykiLoginUrl = MYKI_LOGIN_URL;
 
-       // mykiWebstiteWebView = [[UIWebView alloc] init];
-        //mykiWebstiteWebView.delegate = self;
+        mykiWebstiteWebView = [[UIWebView alloc] init];
+        mykiWebstiteWebView.delegate = self;
         
         [self loadFirstTimeLogin];
         
