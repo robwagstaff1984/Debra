@@ -73,5 +73,7 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
+	<key>FacebookAppID</key>
+	<string>201775129951445</string>
 </dict>
 </plist>

@@ -13,11 +13,11 @@
 #import "PunchOnLogsViewController.h"
 #import "MykiBalanceViewController.h"
 #import <Parse/Parse.h>
-#import "Facebook.h"
 #import "SA_OAuthTwitterEngine.h"  
 #import "ShmykiContstants.h"
 #import "PunchOnLogsCache.h"
 #import "GANTracker.h"
+#import <FacebookSDK/FacebookSDK.h>
 
 // Dispatch period in seconds
 static const NSInteger kGANDispatchPeriodSec = 10;
@@ -28,7 +28,7 @@ static const NSInteger kGANDispatchPeriodSec = 10;
 @synthesize window = _window;
 @synthesize tabBarController = _tabBarController;
 @synthesize navigationController = _navigationController;
-@synthesize facebook, twitterEngine, currentUsersPunchOnLog, isTwitterRequired, isFaceBookRequired, currentUsersProblem;
+@synthesize twitterEngine, currentUsersPunchOnLog, isTwitterRequired, isFaceBookRequired, currentUsersProblem;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -85,44 +85,85 @@ static const NSInteger kGANDispatchPeriodSec = 10;
 
 -(void) setUpFaceBook {
     
-    facebook = [[Facebook alloc] initWithAppId:@"201775129951445" andDelegate:self];
+    /*facebook = [[Facebook alloc] initWithAppId:@"201775129951445" andDelegate:self];
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     if ([defaults objectForKey:@"FBAccessTokenKeyNew"] 
         && [defaults objectForKey:@"FBExpirationDateKeyNew"]) {
         facebook.accessToken = [defaults objectForKey:@"FBAccessTokenKeyNew"];
         facebook.expirationDate = [defaults objectForKey:@"FBExpirationDateKeyNew"];
-    }
+    }*/
+    
+   /* if (FBSession.activeSession.state == FBSessionStateCreatedTokenLoaded) {
+        // To-do, show logged in view
+    } else {
+        // No, display the login page.
+        [self showLoginView];
+    }*/
 }
 
 -(void) logInToFacebook {
-    if (![facebook isSessionValid]) {
+    /*if (![facebook isSessionValid]) {
         NSArray *permissions = [[NSArray alloc] initWithObjects:
                                 @"publish_actions", 
                                 nil];
         [facebook authorize:permissions];
         [facebook authorize:nil];
-    }
-}
+    }*/
+   /* [FBSession openActiveSessionWithReadPermissions:nil
+                                              allowLoginUI:YES
+                                         completionHandler:^(FBSession *session, FBSessionState state, NSError *error) {
+                                           //  [self sessionStateChanged:session state:state error:error];
+                                         }];*/
+    
+    
+}/*
 -(void) logOutOfFacebook {
     [facebook logout];
 }
-
+*/
 -(void) postToFacebook {
     if(self.isFaceBookRequired) {
-        NSMutableDictionary* params = [[NSMutableDictionary alloc] initWithCapacity:3];
+       // NSMutableDictionary* params = [[NSMutableDictionary alloc] initWithCapacity:3];
         
-        NSString *facebookMessage = [NSString stringWithFormat:@"Another voice heard with yourMyki:\n\n\"%@\"",  currentUsersPunchOnLog.message];
-        [params setObject:facebookMessage forKey:@"message"];
-        [params setObject:@"http://www.facebook.com/pages/yourMyki/451063014917607" forKey:@"link"];
-        [params setObject:@"Get the app that give you your Myki balance, ticket inspector locations and a chance to have your voice heard" forKey:@"caption"];
-       // [params setObject:@"yourMyki -  \"It's YOUR myki\""  forKey:@"description"];
-        //[params setObject:@"http://a5.sphotos.ak.fbcdn.net/hphotos-ak-snc6/s720x720/251964_337995966278198_401361979_n.jpg"  forKey:@"picture"];
+        NSString *facebookMessage = [NSString stringWithFormat:@"Another voice heard with yourMyki:\n\n\"%@",  currentUsersPunchOnLog.message];
         
-        [facebook requestWithGraphPath:@"me/feed" andParams:params andHttpMethod:@"POST" andDelegate:self];
+        //https://itunes.apple.com/au/app/yourmyki/id565960865?mt=8&uo=4
+        
+//        [params setObject:facebookMessage forKey:@"message"];
+//        [params setObject:@"http://www.facebook.com/pages/yourMyki/451063014917607" forKey:@"link"];
+//        [params setObject:@"Get the app that give you your Myki balance, ticket inspector locations and a chance to have your voice heard" forKey:@"caption"];
+//       // [params setObject:@"yourMyki -  \"It's YOUR myki\""  forKey:@"description"];
+//        //[params setObject:@"http://a5.sphotos.ak.fbcdn.net/hphotos-ak-snc6/s720x720/251964_337995966278198_401361979_n.jpg"  forKey:@"picture"];
+//        
+//        [facebook requestWithGraphPath:@"me/feed" andParams:params andHttpMethod:@"POST" andDelegate:self];
+//     
+    
+        
+        [FBRequestConnection startForPostStatusUpdate:facebookMessage
+                                    completionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
+                                        
+                                    }];
+
+        
     }
 }
 
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication
+         annotation:(id)annotation {
+    // attempt to extract a token from the url
+    return [FBSession.activeSession handleOpenURL:url];
+}
+
+- (void)applicationWillTerminate:(UIApplication *)application {
+    // FBSample logic
+    // if the app is going away, we close the session object
+    [FBSession.activeSession close];
+}
+
+/*
 - (void)fbDidLogin {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:[facebook accessToken] forKey:@"FBAccessTokenKeyNew"];
@@ -149,7 +190,7 @@ static const NSInteger kGANDispatchPeriodSec = 10;
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url
   sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
     return [facebook handleOpenURL:url]; 
-}
+}*/
 
 #pragma mark twitter 
 
@@ -189,12 +230,12 @@ static const NSInteger kGANDispatchPeriodSec = 10;
 
 #pragma mark Facebook request delegate
 
-- (void)request:(FBRequest *)request didFailWithError:(NSError *)error {
+/*- (void)request:(FBRequest *)request didFailWithError:(NSError *)error {
         NSLog(@"2%@", error);
 }
 - (void)request:(FBRequest *)request didLoad:(id)result {
        NSLog(@"didLoad"); 
-}
+}*/
 
 #pragma mark SA_OAuthTwitterEngineDelegate  
 - (void) storeCachedTwitterOAuthData: (NSString *) data forUsername: (NSString *) username {  
@@ -312,22 +353,23 @@ static const NSInteger kGANDispatchPeriodSec = 10;
      */
 }
 
-- (void)applicationDidBecomeActive:(UIApplication *)application
-{
- 
-    /*
-     Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-     */
-}
+//- (void)applicationDidBecomeActive:(UIApplication *)application
+//{
+// 
+//    /*
+//     Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+//     */
+//}
+//
+//- (void)applicationWillTerminate:(UIApplication *)application
+//{
+//    /*
+//     Called when the application is about to terminate.
+//     Save data if appropriate.
+//     See also applicationDidEnterBackground:.
+//     */
+//}
 
-- (void)applicationWillTerminate:(UIApplication *)application
-{
-    /*
-     Called when the application is about to terminate.
-     Save data if appropriate.
-     See also applicationDidEnterBackground:.
-     */
-}
 
 /*
 // Optional UITabBarControllerDelegate method.

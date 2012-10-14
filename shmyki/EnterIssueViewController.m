@@ -13,6 +13,7 @@
 #import "YourMykiCustomButton.h"
 #import <QuartzCore/QuartzCore.h>
 #import "GANTracker.h"
+#import <FacebookSDK/FacebookSDK.h>
 
 @implementation EnterIssueViewController {
     BOOL isFirstTimePageLoad;
@@ -361,7 +362,25 @@
         [sender setImage:[UIImage imageNamed: @"images/IconFacebookOff"] forState:UIControlStateNormal];
     } else {
         [sender setImage:[UIImage imageNamed: @"images/IconFacebookOn"] forState:UIControlStateNormal];
-        [(AppDelegate*)[[UIApplication sharedApplication] delegate] logInToFacebook];
+        //[(AppDelegate*)[[UIApplication sharedApplication] delegate] logInToFacebook];
+        
+        NSArray *permissions =
+        [NSArray arrayWithObjects:@"publish_actions", nil];
+        
+        /*[FBSession openActiveSessionWithReadPermissions:permissions
+                                           allowLoginUI:YES
+                                      completionHandler:^(FBSession *session, FBSessionState status, NSError *error) {
+                                          
+                                      }];*/
+        
+        [FBSession openActiveSessionWithPublishPermissions:permissions defaultAudience:FBSessionDefaultAudienceFriends allowLoginUI:true completionHandler:^(FBSession *session, FBSessionState status, NSError *error) {
+            
+            
+            //NSLog(@"facebook publishactions request, %@", error);
+            // Now call FBRequestConnection to post in the stream
+            
+        }];
+        
     }
     [(AppDelegate*)[[UIApplication sharedApplication]delegate] setIsFaceBookRequired:!facebookIsSelected];
 }

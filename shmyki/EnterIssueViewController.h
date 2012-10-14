@@ -8,11 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "PunchOnIssues.h"
+#import <FacebookSDK/FacebookSDK.h>
 
 
 @class SA_OAuthTwitterEngine; 
 
-@interface EnterIssueViewController : UIViewController <UITextViewDelegate, UITableViewDataSource, UITableViewDelegate> 
+@interface EnterIssueViewController : UIViewController <UITextViewDelegate, UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) PunchOnIssues *punchOnIssues;
 @property (strong, nonatomic) IBOutlet UITextView *commentsTextView;
@@ -27,6 +28,7 @@
 @property (strong, nonatomic) IBOutlet UILabel* locationLabel;
 @property (nonatomic) int selectedProblem;
 
+//@property FBLoginView *fbLoginView;
 
 - (IBAction)toggleTwitterButton:(id)sender;
 - (IBAction)toggleFacebookButton:(id)sender; 

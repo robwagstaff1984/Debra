@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		811705EA159EE78800AF9835 /* FBDialog.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 811705DD159EE78800AF9835 /* FBDialog.bundle */; };
-		811705EB159EE78800AF9835 /* libfacebook_ios_sdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 811705E3159EE78800AF9835 /* libfacebook_ios_sdk.a */; };
 		811F46FE16141768004898F5 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 811F46F416141768004898F5 /* Icon.png */; };
 		811F46FF16141768004898F5 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 811F46F516141768004898F5 /* Icon@2x.png */; };
 		811F470016141768004898F5 /* Icon22px.png in Resources */ = {isa = PBXBuildFile; fileRef = 811F46F616141768004898F5 /* Icon22px.png */; };
@@ -73,6 +71,10 @@
 		815C1A951580AF120019419C /* libz.1.1.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 815C1A941580AF110019419C /* libz.1.1.3.dylib */; };
 		815C1A971580AF200019419C /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 815C1A961580AF200019419C /* Security.framework */; };
 		815C1A991580AF2B0019419C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 815C1A981580AF2B0019419C /* QuartzCore.framework */; };
+		815F016C16294D8900499056 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 815F016B16294D8900499056 /* FacebookSDK.framework */; };
+		815F01D2162A879900499056 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 815F01D1162A879900499056 /* Social.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		815F01D4162A87A300499056 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 815F01D3162A87A300499056 /* AdSupport.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		815F01D6162A87BE00499056 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 815F01D5162A87BE00499056 /* Accounts.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		817BFA521587277100F3BEE1 /* ShmykiContstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 817BFA511587277100F3BEE1 /* ShmykiContstants.m */; };
 		817C21E315AD9BBF00D35D3A /* YourMykiCustomButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 817C21E215AD9BBF00D35D3A /* YourMykiCustomButton.m */; };
 		817C21F215B2737000D35D3A /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 817C21F115B2736F00D35D3A /* MessageUI.framework */; };
@@ -111,21 +113,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		811705DB159EE78800AF9835 /* Facebook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Facebook.h; sourceTree = "<group>"; };
-		811705DC159EE78800AF9835 /* FBConnect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBConnect.h; sourceTree = "<group>"; };
-		811705DD159EE78800AF9835 /* FBDialog.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = FBDialog.bundle; sourceTree = "<group>"; };
-		811705DE159EE78800AF9835 /* FBDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBDialog.h; sourceTree = "<group>"; };
-		811705DF159EE78800AF9835 /* FBFrictionlessRequestSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBFrictionlessRequestSettings.h; sourceTree = "<group>"; };
-		811705E0159EE78800AF9835 /* FBLoginDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBLoginDialog.h; sourceTree = "<group>"; };
-		811705E1159EE78800AF9835 /* FBRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBRequest.h; sourceTree = "<group>"; };
-		811705E2159EE78800AF9835 /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
-		811705E3159EE78800AF9835 /* libfacebook_ios_sdk.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libfacebook_ios_sdk.a; sourceTree = "<group>"; };
-		811705E4159EE78800AF9835 /* NSObject+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJSON.h"; sourceTree = "<group>"; };
-		811705E5159EE78800AF9835 /* NSString+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SBJSON.h"; sourceTree = "<group>"; };
-		811705E6159EE78800AF9835 /* SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJSON.h; sourceTree = "<group>"; };
-		811705E7159EE78800AF9835 /* SBJsonBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonBase.h; sourceTree = "<group>"; };
-		811705E8159EE78800AF9835 /* SBJsonParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonParser.h; sourceTree = "<group>"; };
-		811705E9159EE78800AF9835 /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
 		811F46F416141768004898F5 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		811F46F516141768004898F5 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		811F46F616141768004898F5 /* Icon22px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon22px.png; sourceTree = "<group>"; };
@@ -240,6 +227,10 @@
 		815C1A941580AF110019419C /* libz.1.1.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.1.3.dylib; path = usr/lib/libz.1.1.3.dylib; sourceTree = SDKROOT; };
 		815C1A961580AF200019419C /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		815C1A981580AF2B0019419C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		815F016B16294D8900499056 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
+		815F01D1162A879900499056 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		815F01D3162A87A300499056 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		815F01D5162A87BE00499056 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		817BFA501587277100F3BEE1 /* ShmykiContstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShmykiContstants.h; sourceTree = "<group>"; };
 		817BFA511587277100F3BEE1 /* ShmykiContstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShmykiContstants.m; sourceTree = "<group>"; };
 		817C21E115AD9BBF00D35D3A /* YourMykiCustomButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YourMykiCustomButton.h; sourceTree = "<group>"; };
@@ -285,6 +276,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				815F01D6162A87BE00499056 /* Accounts.framework in Frameworks */,
+				815F01D4162A87A300499056 /* AdSupport.framework in Frameworks */,
+				815F01D2162A879900499056 /* Social.framework in Frameworks */,
 				815C1A911580AEA40019419C /* SystemConfiguration.framework in Frameworks */,
 				817C21F215B2737000D35D3A /* MessageUI.framework in Frameworks */,
 				814B25B4158B61950067D161 /* libxml2.dylib in Frameworks */,
@@ -300,10 +294,10 @@
 				815C19CD157F63AD0019419C /* Foundation.framework in Frameworks */,
 				815C19CF157F63AD0019419C /* CoreGraphics.framework in Frameworks */,
 				815C1A8B1580AD800019419C /* Parse.framework in Frameworks */,
-				811705EB159EE78800AF9835 /* libfacebook_ios_sdk.a in Frameworks */,
 				81CC87751611C4C0008D61A7 /* libGoogleAnalytics.a in Frameworks */,
 				81CC87771611C524008D61A7 /* libsqlite3.dylib in Frameworks */,
 				81296ACE161554C0005B65D8 /* libOAuth.a in Frameworks */,
+				815F016C16294D8900499056 /* FacebookSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -320,28 +314,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		811705DA159EE78800AF9835 /* facebook-ios-sdk */ = {
-			isa = PBXGroup;
-			children = (
-				811705DB159EE78800AF9835 /* Facebook.h */,
-				811705DC159EE78800AF9835 /* FBConnect.h */,
-				811705DD159EE78800AF9835 /* FBDialog.bundle */,
-				811705DE159EE78800AF9835 /* FBDialog.h */,
-				811705DF159EE78800AF9835 /* FBFrictionlessRequestSettings.h */,
-				811705E0159EE78800AF9835 /* FBLoginDialog.h */,
-				811705E1159EE78800AF9835 /* FBRequest.h */,
-				811705E2159EE78800AF9835 /* JSON.h */,
-				811705E3159EE78800AF9835 /* libfacebook_ios_sdk.a */,
-				811705E4159EE78800AF9835 /* NSObject+SBJSON.h */,
-				811705E5159EE78800AF9835 /* NSString+SBJSON.h */,
-				811705E6159EE78800AF9835 /* SBJSON.h */,
-				811705E7159EE78800AF9835 /* SBJsonBase.h */,
-				811705E8159EE78800AF9835 /* SBJsonParser.h */,
-				811705E9159EE78800AF9835 /* SBJsonWriter.h */,
-			);
-			path = "facebook-ios-sdk";
-			sourceTree = "<group>";
-		};
 		81296A90161554BF005B65D8 /* Twitter+OAuth */ = {
 			isa = PBXGroup;
 			children = (
@@ -465,7 +437,6 @@
 			isa = PBXGroup;
 			children = (
 				81CC87721611C4A3008D61A7 /* googleAnalytics */,
-				817C21F115B2736F00D35D3A /* MessageUI.framework */,
 				8189725415A9093E0040FC23 /* Default@2x.png */,
 				8189725215A909390040FC23 /* Default.png */,
 				811F46F416141768004898F5 /* Icon.png */,
@@ -482,7 +453,6 @@
 				8189724E15A909250040FC23 /* Icon114px.png */,
 				814B25B3158B61950067D161 /* libxml2.dylib */,
 				81296A90161554BF005B65D8 /* Twitter+OAuth */,
-				811705DA159EE78800AF9835 /* facebook-ios-sdk */,
 				815C19D0157F63AD0019419C /* shmyki */,
 				815C19FC157F63AD0019419C /* shmykiTests */,
 				815C19C9157F63AD0019419C /* Frameworks */,
@@ -502,6 +472,11 @@
 		815C19C9157F63AD0019419C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				815F01D5162A87BE00499056 /* Accounts.framework */,
+				815F01D3162A87A300499056 /* AdSupport.framework */,
+				815F01D1162A879900499056 /* Social.framework */,
+				817C21F115B2736F00D35D3A /* MessageUI.framework */,
+				815F016B16294D8900499056 /* FacebookSDK.framework */,
 				818BE42B1584689E00775392 /* CoreLocation.framework */,
 				818BE4291584689400775392 /* MapKit.framework */,
 				815C1A981580AF2B0019419C /* QuartzCore.framework */,
@@ -691,6 +666,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				he,
 			);
 			mainGroup = 815C19BB157F63AC0019419C;
 			productRefGroup = 815C19C7157F63AD0019419C /* Products */;
@@ -715,7 +691,6 @@
 				818020AB1585EC7300501773 /* images in Resources */,
 				814B25AC158B461D0067D161 /* MykiBalanceViewController.xib in Resources */,
 				819A6A1E1595D22E002ABA35 /* EnterLocationViewController.xib in Resources */,
-				811705EA159EE78800AF9835 /* FBDialog.bundle in Resources */,
 				8189724F15A909250040FC23 /* Icon114px.png in Resources */,
 				8189725115A9092E0040FC23 /* Icon57px.png in Resources */,
 				8189725315A9093A0040FC23 /* Default.png in Resources */,
@@ -906,7 +881,10 @@
 		815C1A08157F63AD0019419C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				ARCHS = (
+					"$(ARCHS_STANDARD_32_BIT)",
+					i386,
+				);
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -924,12 +902,14 @@
 					"\"$(SRCROOT)/Twitter+OAuth/Libraries & Headers\"",
 					"\"$(SRCROOT)\"",
 					"\"$(SRCROOT)/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
+					"\"$(SRCROOT)/../playground/facebook-ios-sdk/build/Release-iphonesimulator\"",
+					"\"$(SRCROOT)/../playground/facebook-ios-sdk/build/Release-iphoneos\"",
 				);
 				OTHER_LDFLAGS = "-fobjc-arc";
 				PRODUCT_NAME = yourMyki;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				VALID_ARCHS = "armv7 armv7s";
+				VALID_ARCHS = "armv7 armv7s i386";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -937,7 +917,10 @@
 		815C1A09157F63AD0019419C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				ARCHS = (
+					"$(ARCHS_STANDARD_32_BIT)",
+					i386,
+				);
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -955,12 +938,14 @@
 					"\"$(SRCROOT)/Twitter+OAuth/Libraries & Headers\"",
 					"\"$(SRCROOT)\"",
 					"\"$(SRCROOT)/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
+					"\"$(SRCROOT)/../playground/facebook-ios-sdk/build/Release-iphonesimulator\"",
+					"\"$(SRCROOT)/../playground/facebook-ios-sdk/build/Release-iphoneos\"",
 				);
 				OTHER_LDFLAGS = "-fobjc-arc";
 				PRODUCT_NAME = yourMyki;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				VALID_ARCHS = "armv7 armv7s";
+				VALID_ARCHS = "armv7 armv7s i386";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
