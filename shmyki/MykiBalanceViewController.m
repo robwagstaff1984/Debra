@@ -161,24 +161,27 @@
 }
 
 -(void)retrieveMykiBalance {
-    [self switchToLoggingInState];
-
-    timer = [NSTimer scheduledTimerWithTimeInterval: 30.0 target:self selector:@selector(cancelRequest) userInfo:nil repeats: NO];
-    
-    HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    HUD.delegate = self;
-    HUD.dimBackground = YES;
-    HUD.labelText = @"Connecting";
-    
-    NSURLRequest *requestObj = [NSURLRequest requestWithURL:[NSURL URLWithString:mykiLoginUrl]];
-    [mykiWebstiteWebView loadRequest:requestObj];
-    
-    if(![self isInternetConnected]) {
-        self.isInternetDown = YES;
-        [self switchToErrorState];
-        [timer invalidate];
-        [HUD hide:YES];
-        self.isInternetDown = NO;
+    if([usernameTextField.text length] != 0 && [passwordTextField.text length] != 0) {
+        
+        [self switchToLoggingInState];
+        
+        timer = [NSTimer scheduledTimerWithTimeInterval: 30.0 target:self selector:@selector(cancelRequest) userInfo:nil repeats: NO];
+        
+        HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        HUD.delegate = self;
+        HUD.dimBackground = YES;
+        HUD.labelText = @"Connecting";
+        
+        NSURLRequest *requestObj = [NSURLRequest requestWithURL:[NSURL URLWithString:mykiLoginUrl]];
+        [mykiWebstiteWebView loadRequest:requestObj];
+        
+        if(![self isInternetConnected]) {
+            self.isInternetDown = YES;
+            [self switchToErrorState];
+            [timer invalidate];
+            [HUD hide:YES];
+            self.isInternetDown = NO;
+        }
     }
 }
 
