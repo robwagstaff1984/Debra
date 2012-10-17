@@ -405,7 +405,7 @@
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
-         shouldBeEnabled = "Yes"
+         shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "shmyki/AppDelegate.m"
@@ -480,6 +480,32 @@
          startingLineNumber = "157"
          endingLineNumber = "157"
          landmarkName = "-extractInformationFromHtml:withRegeEx:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "shmyki/AppDelegate.m"
+         timestampString = "372137212.550954"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "145"
+         endingLineNumber = "145"
+         landmarkName = "-postToFacebook"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "shmyki/EnterIssueViewController.m"
+         timestampString = "372137667.258453"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "379"
+         endingLineNumber = "379"
+         landmarkName = "-toggleFacebookButton:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

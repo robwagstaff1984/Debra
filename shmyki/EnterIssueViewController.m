@@ -376,7 +376,7 @@
         [FBSession openActiveSessionWithPublishPermissions:permissions defaultAudience:FBSessionDefaultAudienceFriends allowLoginUI:true completionHandler:^(FBSession *session, FBSessionState status, NSError *error) {
             
             
-            //NSLog(@"facebook publishactions request, %@", error);
+            NSLog(@"facebook publishactions request, erro: %@ status, %d", error, status);
             // Now call FBRequestConnection to post in the stream
             
         }];
