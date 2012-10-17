@@ -78,8 +78,8 @@
 
 #pragma mark IBActions
 -(IBAction)twitterButtonTapped:(id)sender {
-    NSURL *url = [NSURL URLWithString:@"twitter://yourMyki"];
-    [[UIApplication sharedApplication] openURL:url];
+    NSURL *url = [NSURL URLWithString:@"twitter:///user?screen_name=yourMyki"];
+   // [[UIApplication sharedApplication] openURL:url];
     if ([[UIApplication sharedApplication] canOpenURL:url]) {
         [[UIApplication sharedApplication] openURL:url];
     } else {

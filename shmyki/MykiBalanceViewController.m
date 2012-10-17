@@ -179,6 +179,7 @@
             self.isInternetDown = YES;
             [self switchToErrorState];
             [timer invalidate];
+            [mykiWebstiteWebView stopLoading];
             [HUD hide:YES];
             self.isInternetDown = NO;
         }
@@ -242,9 +243,15 @@
         
        // NSString *currentPage = [webView stringByEvaluatingJavaScriptFromString:@"document.body.innerHTML"];
        // NSLog(@"%@",currentPage);
+        
         NSString* manageMyCardUrl = MYKI_ACCOUNT_INFO_URL;
         NSURLRequest *manageMyCardRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:manageMyCardUrl]];
-        [mykiWebstiteWebView loadRequest:manageMyCardRequest];
+        int64_t delayInSeconds = 1.0;
+        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+            [mykiWebstiteWebView loadRequest:manageMyCardRequest];
+        });
+        
     }else if ([pageTitle isEqualToString:@"Manage my card"]) {
         [self resetTimer];
         NSLog(@"Manage my card");
