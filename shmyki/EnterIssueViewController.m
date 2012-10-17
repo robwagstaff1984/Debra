@@ -14,6 +14,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "GANTracker.h"
 #import <FacebookSDK/FacebookSDK.h>
+#import <Accounts/Accounts.h>
 
 @implementation EnterIssueViewController {
     BOOL isFirstTimePageLoad;
@@ -373,11 +374,26 @@
                                           
                                       }];*/
         
-        [FBSession openActiveSessionWithPublishPermissions:permissions defaultAudience:FBSessionDefaultAudienceFriends allowLoginUI:true completionHandler:^(FBSession *session, FBSessionState status, NSError *error) {
+        [FBSession openActiveSessionWithPublishPermissions:permissions defaultAudience:FBSessionDefaultAudienceFriends allowLoginUI:true completionHandler:^(FBSession *session, FBSessionState state, NSError *error) {
             
             
-            NSLog(@"facebook publishactions request, erro: %@ status, %d", error, status);
-            // Now call FBRequestConnection to post in the stream
+            NSLog(@"facebook publishactions request, error: %@ state, %d", error, state);
+            
+            if(error)
+            {
+                NSLog(@"Session error");
+                [self fbResync];
+                [NSThread sleepForTimeInterval:0.5];   //half a second
+                [FBSession openActiveSessionWithReadPermissions:permissions
+                                                   allowLoginUI:YES
+                                              completionHandler:^(FBSession *session, FBSessionState state, NSError *error) {
+                                                  [self sessionStateChanged:session state:state error:error];
+                                              }];
+                
+            } else {
+                [self sessionStateChanged:session state:state error:error];
+            }
+            
             
         }];
         
@@ -413,6 +429,60 @@
     //[(SA_OAuthTwitterController*)loginViewController setDelegate:self];
     if (loginViewController != nil) {
         [self presentModalViewController: loginViewController animated: YES]; 
+    }
+}
+
+- (void)sessionStateChanged:(FBSession *)session
+                      state:(FBSessionState) state
+                      error:(NSError *)error
+{
+    switch (state) {
+        case FBSessionStateOpen:
+            if (!error) {
+                // We have a valid session
+                NSLog(@"User session found");
+            }
+            break;
+        case FBSessionStateClosed:
+        case FBSessionStateClosedLoginFailed:
+            [FBSession.activeSession closeAndClearTokenInformation];
+            break;
+        default:
+            break;
+    }
+    
+//    [[NSNotificationCenter defaultCenter]
+//     postNotificationName:FBSessionStateChangedNotification
+//     object:session];
+//    
+//    if (error) {
+//        UIAlertView *alertView = [[UIAlertView alloc]
+//                                  initWithTitle:@"Error"
+//                                  message:error.localizedDescription
+//                                  delegate:nil
+//                                  cancelButtonTitle:@"OK"
+//                                  otherButtonTitles:nil];
+//        [alertView show];
+//    }
+}
+
+-(void)fbResync
+{
+    ACAccountStore *accountStore;
+    ACAccountType *accountTypeFB;
+    if ((accountStore = [[ACAccountStore alloc] init]) && (accountTypeFB = [accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierFacebook] ) ){
+        
+        NSArray *fbAccounts = [accountStore accountsWithAccountType:accountTypeFB];
+        id account;
+        if (fbAccounts && [fbAccounts count] > 0 && (account = [fbAccounts objectAtIndex:0])){
+            
+            [accountStore renewCredentialsForAccount:account completion:^(ACAccountCredentialRenewResult renewResult, NSError *error) {
+                //we don't actually need to inspect renewResult or error.
+                if (error){
+                    
+                }
+            }];
+        }
     }
 }
 

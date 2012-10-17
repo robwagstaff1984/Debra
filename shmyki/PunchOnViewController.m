@@ -349,7 +349,7 @@
     }
         
 
-    if(tableViewCenterLocation.y != COMMENTS_ORIGIN_TO_ANCHOR_TOP) {
+    if(tableViewCenterLocation.y != COMMENTS_ORIGIN_TO_ANCHOR_TOP || !_commentsTableViewIsUp) {
         
         int shouldReplaceHeader = YES;
         if(tableViewCenterLocation.y < threshold) {
