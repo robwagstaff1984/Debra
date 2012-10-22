@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "EnterIssueViewController.h"
 #import "HelpImages.h"
+@class DateDisplayHelper;
 
 @interface PunchOnViewController : UIViewController <UIGestureRecognizerDelegate, UITableViewDelegate, UITableViewDataSource> {
     int _punchOnCommentsViewPreTouchLocation;
@@ -27,6 +28,8 @@
 @property (nonatomic) BOOL showingCoachMarks;
 @property (nonatomic, strong) HelpImages *helpImages;
 @property (nonatomic, strong) IBOutlet UIImageView *punchOnCoachMarks;
+@property (nonatomic, strong) DateDisplayHelper *dateDisplayHelper;
+
 
 //- (void) touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event;
 - (void)updatePunchOnLogs;

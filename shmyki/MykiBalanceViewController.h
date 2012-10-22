@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "MykiAccountInformation.h"
 #import "MBProgressHUD.h"
+@class DateDisplayHelper;
 @class Reachability;
 
 @interface MykiBalanceViewController : UIViewController <UIWebViewDelegate, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, MBProgressHUDDelegate, UIGestureRecognizerDelegate>
@@ -47,6 +48,9 @@
 @property (nonatomic, strong) MBProgressHUD *HUD;
 @property (nonatomic, strong) NSTimer *timer;
 @property (nonatomic) BOOL isInternetDown;
+
+@property (nonatomic, strong) DateDisplayHelper *dateDisplayHelper;
+
 
 -(void)retrieveMykiBalance;
 -(void) retryRetrieveMykiBalance;

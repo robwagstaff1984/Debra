@@ -13,6 +13,7 @@
 #import "YourMykiCustomButton.h"
 #import "GANTracker.h"
 #import "Reachability.h"
+#import "DateDisplayHelper.h"
 
 @implementation MykiBalanceViewController
 
@@ -20,7 +21,7 @@
 @synthesize topView, bottomView, loginTableView, loginScrollView, pageScrollView, balanceDisplayView, errorView, errorTextView, errorTextLabel, isInternetDown;
 @synthesize usernameTextField, passwordTextField;
 @synthesize balanceHeaderLabel, balanceMykiPassExpiryLabel, balanceMykiPassAdditionalLabel, balanceMykiMoneyAmountLabel, balanceMykiMoneyAdditionalLabel, balanceFooterLabelOne, balanceFooterLabelTwo, balanceSeperatorImage;
-@synthesize HUD, timer, refreshButton, isUserLoginAttempted, isProblemWithMykiCredentials, invalidCredentialsLabel;
+@synthesize HUD, timer, refreshButton, isUserLoginAttempted, isProblemWithMykiCredentials, invalidCredentialsLabel, dateDisplayHelper;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -64,6 +65,7 @@
             [self switchToLoginState];
            // self.navigationItem.leftBarButtonItem = nil;
         }
+        dateDisplayHelper = [[DateDisplayHelper alloc] init];
     }
     return self;
 }
@@ -520,7 +522,7 @@
 }
 
 -(void) updateRefreshButton {
-    NSString* updatedDate =  [DateDisplayHelper getDisplayForDate:[mykiAccountInformation lastUpdatedDate] forPage:YourMykiIBalancePage];
+    NSString* updatedDate =  [dateDisplayHelper getDisplayForDate:[mykiAccountInformation lastUpdatedDate] forPage:YourMykiIBalancePage];
     
     if (updatedDate ==nil) {
         [self.refreshButton setHidden:YES];

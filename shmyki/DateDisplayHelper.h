@@ -16,7 +16,7 @@ typedef enum {
 
 @interface DateDisplayHelper : NSObject
 
-
-+(NSString*) getDisplayForDate:(NSDate*)date forPage:(YourMykiPage) yourMykiPage;
+@property NSDateFormatter *dateFormatter;
+-(NSString*) getDisplayForDate:(NSDate*)date forPage:(YourMykiPage) yourMykiPage;
 
 @end

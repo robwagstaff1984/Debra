@@ -22,9 +22,10 @@
 #import "FeatureToggle.h"
 #import "GANTracker.h"
 #import <QuartzCore/QuartzCore.h>
+#import "DateDisplayHelper.h"
 
 @implementation PunchOnViewController
-@synthesize punchOnCommentsView, punchOnCommentsTableView, listOfPunchOnLogs, totalPunchOns, tableFixedHeader, helpImages, punchOnCoachMarks, showingCoachMarks;
+@synthesize punchOnCommentsView, punchOnCommentsTableView, listOfPunchOnLogs, totalPunchOns, tableFixedHeader, helpImages, punchOnCoachMarks, showingCoachMarks, dateDisplayHelper;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -40,7 +41,7 @@
         }
         
         self.navigationItem.rightBarButtonItem = [YourMykiCustomButton createYourMykiBarButtonItemWithText:@"About" withTarget:self withAction:@selector(showAboutPage)];
-        
+        dateDisplayHelper = [[DateDisplayHelper alloc] init];
         self.listOfPunchOnLogs = [[NSMutableArray alloc] initWithCapacity:MAX_PUNCH_ON_LOGS_RETRIEVED];
     }
     return self;
@@ -162,6 +163,41 @@
     return [self.listOfPunchOnLogs count];
 }
 
+//trying out a quicker way. works but bugs with updating
+/*- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSString *cellIdentifier = [NSString stringWithFormat:@"Cell%d", indexPath.row];
+    
+    TableViewCellForPunchOnLogs *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    if (cell == nil) {
+        cell = [[TableViewCellForPunchOnLogs alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+        PunchOnLog *punchOnLog = [listOfPunchOnLogs objectAtIndex:indexPath.row];
+        cell.messageLabel.text = punchOnLog.message;
+        cell.locationLabel.text = punchOnLog.location;
+        cell.dateLabel.text = [DateDisplayHelper getDisplayForDate:punchOnLog.dateLogged forPage:YourMykiPunchOnPage];
+        
+        switch (punchOnLog.transportationType) {
+            case SELECTED_TRANSPORT_TRAM:
+                [cell.locationIconLabel setImage:[UIImage imageNamed:@"/images/IconTram"]];
+                break;
+            case SELECTED_TRANSPORT_TRAIN:
+                [cell.locationIconLabel setImage:[UIImage imageNamed:@"/images/IconTrain"]];
+                break;
+            case SELECTED_TRANSPORT_BUS:
+                [cell.locationIconLabel setImage:[UIImage imageNamed:@"/images/IconBus"]];
+                break;
+            default:
+                [cell.locationIconLabel setImage:[UIImage imageNamed:@"/images/IconComment"]];
+        }
+    }
+    
+    
+    
+    //cell.layer.shouldRasterize = YES;
+  //  cell.layer.rasterizationScale = [UIScreen mainScreen].scale;
+    
+    return cell;
+}*/
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *cellIdentifier = @"punchOnLogsCell";
     
@@ -174,7 +210,8 @@
     PunchOnLog *punchOnLog = [listOfPunchOnLogs objectAtIndex:indexPath.row];
     cell.messageLabel.text = punchOnLog.message;
     cell.locationLabel.text = punchOnLog.location;
-    cell.dateLabel.text = [DateDisplayHelper getDisplayForDate:punchOnLog.dateLogged forPage:YourMykiPunchOnPage];
+  //  cell.dateLabel.text = @"test";
+    cell.dateLabel.text = [dateDisplayHelper getDisplayForDate:punchOnLog.dateLogged forPage:YourMykiPunchOnPage];
     
     switch (punchOnLog.transportationType) {
         case SELECTED_TRANSPORT_TRAM:
@@ -191,20 +228,15 @@
     }
     
     //cell.layer.shouldRasterize = YES;
-  //  cell.layer.rasterizationScale = [UIScreen mainScreen].scale;
+    //  cell.layer.rasterizationScale = [UIScreen mainScreen].scale;
     
     return cell;
 }
 
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath;
-{
-    PunchOnLog *punchOnLog = [listOfPunchOnLogs objectAtIndex:[indexPath row]];  
-    
-    CGSize constraint = CGSizeMake(320.0 - (CELL_CONTENT_HORIZONTAL_MARGIN * 2), 500.0);
-    
-    CGSize messageLabelSize = [punchOnLog.message sizeWithFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:MESSAGE_FONT_SIZE] constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
-    
-    return messageLabelSize.height + DATE_LABEL_HEIGHT + (CELL_CONTENT_VERTICAL_MARGIN * 3);
+{    
+    return [[listOfPunchOnLogs objectAtIndex:[indexPath row]] cellHeight];
     
 }  
 
@@ -220,6 +252,8 @@
             self.totalPunchOns = [punchOnLogParseObjects count];
             PFObject *punchOnLogParseObject;
             self.listOfPunchOnLogs = [[NSMutableArray alloc] initWithCapacity:MAX_PUNCH_ON_LOGS_RETRIEVED];
+
+            
             for(int i=0; (i <[punchOnLogParseObjects count] && i < MAX_PUNCH_ON_LOGS_RETRIEVED); i++) {
                 punchOnLogParseObject = [punchOnLogParseObjects objectAtIndex:i];
                 PunchOnLog *punchOnLog = [[PunchOnLog alloc] init];
@@ -227,6 +261,9 @@
                 [punchOnLog setLocation:[punchOnLogParseObject objectForKey:@"location"]];
                 [punchOnLog setDateLogged:punchOnLogParseObject.createdAt];
                 [punchOnLog setTransportationType:[[punchOnLogParseObject objectForKey:@"transportationType"] integerValue]];
+                
+
+        
                 [self.listOfPunchOnLogs addObject:punchOnLog];
             }
             
@@ -236,6 +273,7 @@
         
         self.listOfPunchOnLogs = [[PunchOnLogsCache sharedModel] loadPunchOnLogsCache];
         self.totalPunchOns = [self.listOfPunchOnLogs count];
+        
         [self.punchOnCommentsTableView reloadData];
     }];
     self.listOfPunchOnLogs = [[PunchOnLogsCache sharedModel] loadPunchOnLogsCache];

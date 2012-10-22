@@ -13,20 +13,21 @@
 
 @implementation InspectorMapKitAnnotation
 
-@synthesize coordinate, subtitle, title, spotDate, inspectorAnnotationColour, justSpotted;
+@synthesize coordinate, subtitle, title, spotDate, inspectorAnnotationColour, justSpotted, dateDisplayHelper;
 
 - (id) initWithCoords:(CLLocationCoordinate2D) coords{
     self = [super init];
     
-    if (self != nil)
+    if (self != nil) {
         coordinate = coords;
-    
+        dateDisplayHelper = [[DateDisplayHelper alloc] init];
+    }
     return self;
 }
 
 - (NSString *)title
 {
-    return [NSString stringWithFormat:@"%@",[DateDisplayHelper getDisplayForDate:spotDate forPage:YourMykiInspectorPage]];
+    return [NSString stringWithFormat:@"%@",[dateDisplayHelper getDisplayForDate:spotDate forPage:YourMykiInspectorPage]];
 }
 
 -(UIImage*) getPoiImageForTime {

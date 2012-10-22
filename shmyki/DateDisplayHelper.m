@@ -11,9 +11,18 @@
 
 @implementation DateDisplayHelper
 
+@synthesize dateFormatter;
 
+- (id)init
+{
+    self = [super init];
+    if (self) {
+        dateFormatter = [[NSDateFormatter alloc] init];
+    }
+    return self;
+}
 
-+(NSString*) getDisplayForDate:(NSDate*)date forPage:(YourMykiPage) yourMykiPage {
+-(NSString*) getDisplayForDate:(NSDate*)date forPage:(YourMykiPage) yourMykiPage {
     
     NSString* dateDisplay;
    // NSTimeInterval secondsBetween = [[NSDate date] timeIntervalSinceDate:date];
@@ -44,7 +53,6 @@
         }
         dateDisplay = [NSString stringWithFormat:@"%d day%@ ago", (seconds / SECONDS_IN_AN_DAY), plural];
     } else {
-        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
         dateFormatter.dateFormat = @"MMM dd hh:mm a";     
         [dateFormatter setTimeZone:[NSTimeZone localTimeZone]]; 
         dateDisplay =  [dateFormatter stringFromDate:date];

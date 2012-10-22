@@ -7,6 +7,7 @@
 //
 
 #import <MapKit/MapKit.h>
+@class DateDisplayHelper;
 
 @interface InspectorMapKitAnnotation : NSObject <MKAnnotation> 
 
@@ -17,6 +18,7 @@
 @property (nonatomic, strong) NSDate *spotDate;
 @property (nonatomic) NSUInteger inspectorAnnotationColour;
 @property (nonatomic) BOOL justSpotted;
+@property (nonatomic, strong) DateDisplayHelper *dateDisplayHelper;
 
 
 - (id)initWithCoords:(CLLocationCoordinate2D) coords;
