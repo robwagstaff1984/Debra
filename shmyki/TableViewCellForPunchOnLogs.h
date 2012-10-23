@@ -16,5 +16,6 @@
 @property(nonatomic,retain)UILabel *dateLabel;
 @property(nonatomic,retain)UIImageView *locationIconLabel;
 
+@property float messageLabelHeight;
 
 @end

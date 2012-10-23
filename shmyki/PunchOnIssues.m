@@ -22,6 +22,7 @@
         [issues addObject:@"I just want to rant"];
         [issues addObject:@"Tap on reader didn't work"];
         [issues addObject:@"Tap on reader is slow, causing people jams"];
+        [issues addObject:@"'Multiple card read' error is frustrating"];
         [issues addObject:@"Myki tracks my location without my consent"];
         [issues addObject:@"Top up machine is not working"];
         [issues addObject:@"Top up machines are hard to use"];

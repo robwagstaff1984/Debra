@@ -204,15 +204,14 @@
     TableViewCellForPunchOnLogs *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (cell == nil) {
         cell = [[TableViewCellForPunchOnLogs alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
-        
     }
     
     PunchOnLog *punchOnLog = [listOfPunchOnLogs objectAtIndex:indexPath.row];
     cell.messageLabel.text = punchOnLog.message;
     cell.locationLabel.text = punchOnLog.location;
-  //  cell.dateLabel.text = @"test";
     cell.dateLabel.text = [dateDisplayHelper getDisplayForDate:punchOnLog.dateLogged forPage:YourMykiPunchOnPage];
-    
+    cell.messageLabelHeight = punchOnLog.messageLabelHeight;
+
     switch (punchOnLog.transportationType) {
         case SELECTED_TRANSPORT_TRAM:
             [cell.locationIconLabel setImage:[UIImage imageNamed:@"/images/IconTram"]];
@@ -226,9 +225,6 @@
         default:
             [cell.locationIconLabel setImage:[UIImage imageNamed:@"/images/IconComment"]];
     }
-    
-    //cell.layer.shouldRasterize = YES;
-    //  cell.layer.rasterizationScale = [UIScreen mainScreen].scale;
     
     return cell;
 }
@@ -342,27 +338,29 @@
             _punchOnCommentsViewPreTouchLocation = punchOnCommentsView.center.y;
             break;
             
-        case UIGestureRecognizerStateChanged:
-            if (1==1){}
-            CGPoint translationDifferenceFromPan = [sender translationInView:self.view];
-            if (self.punchOnCommentsTableView.contentOffset.y <= 0 && translationDifferenceFromPan.y > 0 ) {
-                self.punchOnCommentsTableView.scrollEnabled =NO;
-                
-                
-                punchOnCommentsLocation.y = _punchOnCommentsViewPreTouchLocation + translationDifferenceFromPan.y;
-                if(punchOnCommentsLocation.y < COMMENTS_ORIGIN_TO_ANCHOR_TOP) {
-                    punchOnCommentsLocation.y = COMMENTS_ORIGIN_TO_ANCHOR_TOP;
-                } else if (punchOnCommentsLocation.y > COMMENTS_ORIGIN_TO_ANCHOR_BOTTOM) {
-                    punchOnCommentsLocation.y = COMMENTS_ORIGIN_TO_ANCHOR_BOTTOM;
+        case UIGestureRecognizerStateChanged: {
+            
+
+            if (self.punchOnCommentsTableView.contentOffset.y <= 0) {
+                CGPoint translationDifferenceFromPan = [sender translationInView:self.view];
+                if(translationDifferenceFromPan.y > 0 ) {
+                    self.punchOnCommentsTableView.scrollEnabled =NO;
+                    
+                    punchOnCommentsLocation.y = _punchOnCommentsViewPreTouchLocation + translationDifferenceFromPan.y;
+                    if(punchOnCommentsLocation.y < COMMENTS_ORIGIN_TO_ANCHOR_TOP) {
+                        punchOnCommentsLocation.y = COMMENTS_ORIGIN_TO_ANCHOR_TOP;
+                    } else if (punchOnCommentsLocation.y > COMMENTS_ORIGIN_TO_ANCHOR_BOTTOM) {
+                        punchOnCommentsLocation.y = COMMENTS_ORIGIN_TO_ANCHOR_BOTTOM;
+                    }
+                    
+                    punchOnCommentsView.center = punchOnCommentsLocation;
                 }
-                
-                punchOnCommentsView.center = punchOnCommentsLocation;
-            } else {
-               // self.punchOnCommentsTableView.scrollEnabled =YES;
             }
+            
             
             break;
             
+        }
         case UIGestureRecognizerStateEnded:
             
             [self panCommentsTableViewToAppropriateStateForLocation:punchOnCommentsLocation];

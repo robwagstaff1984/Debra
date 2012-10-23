@@ -194,7 +194,6 @@
 }
 
 -(void) cancelRequest {
-    NSLog(@"Canceled it");
     [HUD hide:YES];
     [mykiWebstiteWebView stopLoading];
     [self switchToErrorState];
@@ -220,7 +219,6 @@
 -(void)webViewDidFinishLoad:(UIWebView *)webView {
     
     NSString *pageTitle = [webView stringByEvaluatingJavaScriptFromString:@"document.title"];
-    NSLog(@"Page title: %@", pageTitle);
     if([pageTitle isEqualToString:@"Login"]) {
         [self resetTimer];
         HUD.labelText = @"Logging in";
@@ -243,9 +241,6 @@
         [self resetTimer];
         HUD.labelText = @"Retrieving Balance";
         
-       // NSString *currentPage = [webView stringByEvaluatingJavaScriptFromString:@"document.body.innerHTML"];
-       // NSLog(@"%@",currentPage);
-        
         NSString* manageMyCardUrl = MYKI_ACCOUNT_INFO_URL;
         NSURLRequest *manageMyCardRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:manageMyCardUrl]];
         int64_t delayInSeconds = 1.0;
@@ -256,7 +251,6 @@
         
     }else if ([pageTitle isEqualToString:@"Manage my card"]) {
         [self resetTimer];
-        NSLog(@"Manage my card");
         NSString *currentPage = [webView stringByEvaluatingJavaScriptFromString:@"document.body.innerHTML"];
         [self processMykiAccountBalancePageHTML:currentPage];
     }
@@ -452,7 +446,6 @@
     self.balanceSeperatorImage.image = [UIImage imageNamed:@"images/BalanceLine.png"];
     [UIView commitAnimations];
     
-    //NSLog(@"turning on right button");
     self.navigationItem.rightBarButtonItem = [YourMykiCustomButton createYourMykiBarButtonItemWithText:@"Edit" withTarget:self withAction:@selector(switchToLoginState)];
     
     [self updateRefreshButton];
