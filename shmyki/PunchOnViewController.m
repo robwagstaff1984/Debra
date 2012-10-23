@@ -404,7 +404,7 @@
             punchOnCommentsTableView.scrollEnabled = NO;
             [punchOnCommentsView removeGestureRecognizer:_panGestureDownRecognizerForCommentsView];
             [punchOnCommentsView addGestureRecognizer:_panGestureUpRecognizerForCommentsView];
-            [self panCommentsTableToLocationY: tableViewCenterLocation.y modeDidChange:shouldReplaceHeader];
+           // [self panCommentsTableToLocationY: tableViewCenterLocation.y modeDidChange:shouldReplaceHeader];
         }
         [self panCommentsTableToLocationY: tableViewCenterLocation.y modeDidChange:shouldReplaceHeader];
     }
@@ -463,21 +463,21 @@
 }
 
 -(void) toggleTableViewHeaderWithFadeEffect:(BOOL)fadeEffect {
-    
     if(_commentsTableViewIsUp) {
-      //  self.punchOnCommentsTableView.tableHeaderView = [TableViewHeaderHelper makeTableUpHeaderWith:self.totalPunchOns];
         [[[self.tableFixedHeader subviews] objectAtIndex:0] removeFromSuperview];
         [self.tableFixedHeader addSubview: [TableViewHeaderHelper makeTableUpHeaderWith:self.totalPunchOns]];
         [self addGesturesToTableViewHeaderWithFadeEffect:fadeEffect];
         
-        self.navigationItem.rightBarButtonItem = nil;
+        [self.navigationItem setRightBarButtonItem:nil animated:NO];
+        [self.navigationItem setLeftBarButtonItem:[YourMykiCustomButton createYourMykiBarButtonItemWithText:@"Add" withTarget:self withAction:@selector(punchOnButtonPressed:)] animated:NO];
 
     } else {
-      //  self.punchOnCommentsTableView.tableHeaderView = [TableViewHeaderHelper makeTableDownHeaderWith:self.totalPunchOns];
         [[[self.tableFixedHeader subviews] objectAtIndex:0] removeFromSuperview];
         [self.tableFixedHeader addSubview:[TableViewHeaderHelper makeTableDownHeaderWith:self.totalPunchOns]];
         [self addGesturesToTableViewHeaderWithFadeEffect:fadeEffect];
-        self.navigationItem.rightBarButtonItem = [YourMykiCustomButton createYourMykiBarButtonItemWithText:@"About" withTarget:self withAction:@selector(showAboutPage)];
+        
+        [self.navigationItem setLeftBarButtonItem:nil animated:NO];
+        [self.navigationItem setRightBarButtonItem:[YourMykiCustomButton createYourMykiBarButtonItemWithText:@"About" withTarget:self withAction:@selector(showAboutPage)] animated:NO];
     }
 }
 

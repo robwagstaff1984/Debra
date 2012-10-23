@@ -59,12 +59,12 @@
         }
         
         
-        if([usernameTextField.text length] != 0 && [passwordTextField.text length] != 0) {
+      /*  if([usernameTextField.text length] != 0 && [passwordTextField.text length] != 0) {
             [self retrieveMykiBalance];
         } else {
             [self switchToLoginState];
            // self.navigationItem.leftBarButtonItem = nil;
-        }
+        }*/
         dateDisplayHelper = [[DateDisplayHelper alloc] init];
     }
     return self;
