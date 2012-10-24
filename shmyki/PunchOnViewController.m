@@ -245,7 +245,8 @@
     [query findObjectsInBackgroundWithBlock:^(NSArray *punchOnLogParseObjects, NSError *error) {
         
         if(error == nil) {
-            self.totalPunchOns = [punchOnLogParseObjects count];
+            
+            [self getCurrentCountOfPunchOns];
             PFObject *punchOnLogParseObject;
             self.listOfPunchOnLogs = [[NSMutableArray alloc] initWithCapacity:MAX_PUNCH_ON_LOGS_RETRIEVED];
 
@@ -257,26 +258,33 @@
                 [punchOnLog setLocation:[punchOnLogParseObject objectForKey:@"location"]];
                 [punchOnLog setDateLogged:punchOnLogParseObject.createdAt];
                 [punchOnLog setTransportationType:[[punchOnLogParseObject objectForKey:@"transportationType"] integerValue]];
-                
-
-        
                 [self.listOfPunchOnLogs addObject:punchOnLog];
             }
-            if(!_commentsTableViewIsUp) {
-                [(UILabel*)[[[self.tableFixedHeader.subviews objectAtIndex:0] subviews] objectAtIndex:TOTAL_PUNCH_ONS_SUBVIEW_NUMBER] setText: [NSString stringWithFormat:@"%@         ",[[NSNumber numberWithInt:totalPunchOns] stringValue]]];
-            }
+
             [[PunchOnLogsCache sharedModel] savePunchOnLogsCache:self.listOfPunchOnLogs];
         }
         
         self.listOfPunchOnLogs = [[PunchOnLogsCache sharedModel] loadPunchOnLogsCache];
-        self.totalPunchOns = [self.listOfPunchOnLogs count];
-        
         [self.punchOnCommentsTableView reloadData];
     }];
+
+    
     self.listOfPunchOnLogs = [[PunchOnLogsCache sharedModel] loadPunchOnLogsCache];
     self.totalPunchOns = [self.listOfPunchOnLogs count];
     [self.punchOnCommentsTableView reloadData];
     
+}
+
+-(void) getCurrentCountOfPunchOns {
+    PFQuery *query = [PFQuery queryWithClassName:@"PunchOnLog"];
+    [query countObjectsInBackgroundWithBlock:^(int count, NSError *error) {
+        if (!error) {
+            if(!_commentsTableViewIsUp) {
+                [(UILabel*)[[[self.tableFixedHeader.subviews objectAtIndex:0] subviews] objectAtIndex:TOTAL_PUNCH_ONS_SUBVIEW_NUMBER] setText: [NSString stringWithFormat:@"%@         ",[[NSNumber numberWithInt:totalPunchOns] stringValue]]];
+            }
+            self.totalPunchOns = [self.listOfPunchOnLogs count];
+        }
+    }];
 }
 
 #pragma mark gesture recognition delegate
