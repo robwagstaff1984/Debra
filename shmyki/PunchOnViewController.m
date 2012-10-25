@@ -313,16 +313,33 @@
             
         case UIGestureRecognizerStateChanged:
             {
-              //  NSLog(@"PAN UP %f %d",self.punchOnCommentsTableView.contentOffset.y, _punchOnCommentsViewPreTouchLocation);
                 CGPoint translationDifferenceFromPan = [sender translationInView:self.view];
                 punchOnCommentsLocation.y = _punchOnCommentsViewPreTouchLocation + translationDifferenceFromPan.y;
-                if(punchOnCommentsLocation.y < COMMENTS_ORIGIN_TO_ANCHOR_TOP) {
-                    punchOnCommentsLocation.y = COMMENTS_ORIGIN_TO_ANCHOR_TOP;
-                } else if (punchOnCommentsLocation.y > (COMMENTS_ORIGIN_TO_ANCHOR_BOTTOM + COMMENTS_EXTRA_BOTTOM_SCROLL)) {
+               // NSLog(@"SDFGF %f", punchOnCommentsLocation.y);
+                
+
+                if (punchOnCommentsLocation.y > (COMMENTS_ORIGIN_TO_ANCHOR_BOTTOM + COMMENTS_EXTRA_BOTTOM_SCROLL)) {
+                    //if below myki logo, lock it there
                     punchOnCommentsLocation.y = COMMENTS_ORIGIN_TO_ANCHOR_BOTTOM + COMMENTS_EXTRA_BOTTOM_SCROLL;
                 }
                 
+                if(punchOnCommentsLocation.y < COMMENTS_ORIGIN_TO_ANCHOR_TOP) {
+                    // if above top of screen lock it there
+                    punchOnCommentsLocation.y = COMMENTS_ORIGIN_TO_ANCHOR_TOP;
+                }
+                
+
+
                 punchOnCommentsView.center = punchOnCommentsLocation;
+                
+                if(punchOnCommentsView.center.y <= COMMENTS_ORIGIN_TO_NAV_BAR) {
+                    //if up to nav bar, move nav bar up.
+                    UINavigationBar *navBar = self.navigationController.navigationBar;
+                    navBar.frame = CGRectMake(navBar.frame.origin.x,
+                                              20 - (COMMENTS_ORIGIN_TO_NAV_BAR - punchOnCommentsView.center.y),
+                                              navBar.frame.size.width,
+                                              navBar.frame.size.height);
+                }
             }
             break;
             
@@ -355,14 +372,41 @@
                 if(translationDifferenceFromPan.y > 0 ) {
                     self.punchOnCommentsTableView.scrollEnabled =NO;
                     
-                    punchOnCommentsLocation.y = _punchOnCommentsViewPreTouchLocation + translationDifferenceFromPan.y;
+                    /*punchOnCommentsLocation.y = _punchOnCommentsViewPreTouchLocation + translationDifferenceFromPan.y;
                     if(punchOnCommentsLocation.y < COMMENTS_ORIGIN_TO_ANCHOR_TOP) {
                         punchOnCommentsLocation.y = COMMENTS_ORIGIN_TO_ANCHOR_TOP;
                     } else if (punchOnCommentsLocation.y > COMMENTS_ORIGIN_TO_ANCHOR_BOTTOM) {
                         punchOnCommentsLocation.y = COMMENTS_ORIGIN_TO_ANCHOR_BOTTOM;
                     }
                     
+                    punchOnCommentsView.center = punchOnCommentsLocation;*/
+                    punchOnCommentsLocation.y = _punchOnCommentsViewPreTouchLocation + translationDifferenceFromPan.y;
+                    NSLog(@"SDFGF %f", punchOnCommentsLocation.y);
+                    
+                    if(punchOnCommentsLocation.y < COMMENTS_ORIGIN_TO_ANCHOR_TOP) {
+                        //if above top of screen lock it there
+                        punchOnCommentsLocation.y = COMMENTS_ORIGIN_TO_ANCHOR_TOP;
+                    }
+                    
+                    if (punchOnCommentsLocation.y > COMMENTS_ORIGIN_TO_ANCHOR_BOTTOM) {
+                        punchOnCommentsLocation.y = COMMENTS_ORIGIN_TO_ANCHOR_BOTTOM;
+                    }
+
+                    
+                    
+                    
                     punchOnCommentsView.center = punchOnCommentsLocation;
+                    
+                    NSLog(@"punchOnCommentsView %f", punchOnCommentsView.center.y);
+                    if(punchOnCommentsView.center.y >= COMMENTS_ORIGIN_TO_ANCHOR_TOP) {
+                        //if scrolling down from top of screen move nav bar down
+                        NSLog(@"in here %f ", punchOnCommentsLocation.y);
+                        UINavigationBar *navBar = self.navigationController.navigationBar;
+                        navBar.frame = CGRectMake(navBar.frame.origin.x,
+                                                  - navBar.frame.size.height + 20 + (punchOnCommentsView.center.y - COMMENTS_ORIGIN_TO_ANCHOR_TOP),
+                                                  navBar.frame.size.width,
+                                                  navBar.frame.size.height);
+                    }
                 }
             }
             
