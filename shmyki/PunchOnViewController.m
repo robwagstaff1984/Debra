@@ -387,7 +387,7 @@
                     
                     punchOnCommentsView.center = punchOnCommentsLocation;*/
                     punchOnCommentsLocation.y = _punchOnCommentsViewPreTouchLocation + translationDifferenceFromPan.y;
-                    NSLog(@"SDFGF %f", punchOnCommentsLocation.y);
+                    //NSLog(@"SDFGF %f", punchOnCommentsLocation.y);
                     
                     if(punchOnCommentsLocation.y < COMMENTS_ORIGIN_TO_ANCHOR_TOP) {
                         //if above top of screen lock it there
@@ -403,11 +403,11 @@
                     
                     punchOnCommentsView.center = punchOnCommentsLocation;
                     
-                    NSLog(@"punchOnCommentsView %f", punchOnCommentsView.center.y);
+                   // NSLog(@"punchOnCommentsView %f", punchOnCommentsView.center.y);
                     
                     if(punchOnCommentsView.center.y >= COMMENTS_ORIGIN_TO_ANCHOR_TOP && punchOnCommentsView.center.y < COMMENTS_ORIGIN_TO_NAV_BAR) {
                         //if scrolling down from top of screen move nav bar down
-                        NSLog(@"in here %f ", punchOnCommentsLocation.y);
+                     //   NSLog(@"in here %f ", punchOnCommentsLocation.y);
                         UINavigationBar *navBar = self.navigationController.navigationBar;
                         navBar.frame = CGRectMake(navBar.frame.origin.x,
                                                   - navBar.frame.size.height + 20 + (punchOnCommentsView.center.y - COMMENTS_ORIGIN_TO_ANCHOR_TOP),
@@ -455,15 +455,18 @@
         
         int shouldReplaceHeader = YES;
         if(tableViewCenterLocation.y < threshold) {
+            //pan table up
             tableViewCenterLocation.y = COMMENTS_ORIGIN_TO_ANCHOR_TOP;
             shouldReplaceHeader = !_commentsTableViewIsUp;
             punchOnCommentsTableView.scrollEnabled = YES;
             _commentsTableViewIsUp = YES;
             [punchOnCommentsView addGestureRecognizer:_panGestureDownRecognizerForCommentsView];
             [punchOnCommentsView removeGestureRecognizer:_panGestureUpRecognizerForCommentsView];
+            [self panCommentsTableUpToLocationY: tableViewCenterLocation.y modeDidChange:shouldReplaceHeader];
             
             
         } else {
+            //pan table down
             tableViewCenterLocation.y = COMMENTS_ORIGIN_TO_ANCHOR_BOTTOM;
             shouldReplaceHeader = _commentsTableViewIsUp;
             _commentsTableViewIsUp = NO;
@@ -471,16 +474,74 @@
             [punchOnCommentsView removeGestureRecognizer:_panGestureDownRecognizerForCommentsView];
             [punchOnCommentsView addGestureRecognizer:_panGestureUpRecognizerForCommentsView];
            // [self panCommentsTableToLocationY: tableViewCenterLocation.y modeDidChange:shouldReplaceHeader];
+            [self panCommentsTableDownToLocationY: tableViewCenterLocation.y modeDidChange:shouldReplaceHeader];
         }
-        [self panCommentsTableToLocationY: tableViewCenterLocation.y modeDidChange:shouldReplaceHeader];
+        
     }
 
 }
 
--(void) panCommentsTableToLocationY:(int)locationY modeDidChange:(BOOL)isModeChanged{
+-(void) panCommentsTableUpToLocationY:(int)destinationLocationY modeDidChange:(BOOL)isModeChanged{
+    
+    float totalAnimationDuration;
+    float distanceToStatusBar =  punchOnCommentsView.center.y - destinationLocationY;
+    float distanceToNavBar = distanceToStatusBar - 44;
+
+    if(isModeChanged) {
+        if(distanceToStatusBar > 100) {
+            totalAnimationDuration = 0.25f;
+        } else {
+             totalAnimationDuration = 0.1f;
+        }
+    } else {
+        totalAnimationDuration = 0.4f;
+    }
+    
+    float navBarAnimationDuration;
+    float statusBarAnimationDuration;
+    CGPoint animationPartOnePanToLocation = punchOnCommentsView.center;
+    CGPoint animationPartTwoPanToLocation = punchOnCommentsView.center;
+   
+    if(distanceToNavBar <= 0) {
+        // if bouncing back up when already at the top
+        navBarAnimationDuration = 0.0;
+        statusBarAnimationDuration = totalAnimationDuration;
+        //animationPartOnePanToLocation.y = destinationLocationY;
+        animationPartTwoPanToLocation.y = destinationLocationY;
+    } else {
+        //if panning up from the bottom
+        navBarAnimationDuration = (distanceToNavBar / distanceToStatusBar) * totalAnimationDuration;
+        statusBarAnimationDuration = ((distanceToStatusBar - distanceToNavBar) / distanceToStatusBar) * totalAnimationDuration;
+        animationPartOnePanToLocation.y = destinationLocationY + 44;
+        animationPartTwoPanToLocation.y = destinationLocationY;
+    }
+    
+    NSLog(@"distanceStatus: %f distanceNav: %f totalAnimation: %f navBarAnimation: %f statusAnimation: %f ", distanceToStatusBar, distanceToNavBar, totalAnimationDuration, navBarAnimationDuration, statusBarAnimationDuration);
+    NSLog(@"part1 y:%f part2 y:%f", animationPartOnePanToLocation.y, animationPartTwoPanToLocation.y);
+    
+    [UIView animateWithDuration:navBarAnimationDuration delay:0.0 options:UIViewAnimationCurveLinear animations:^{
+        punchOnCommentsView.center = animationPartOnePanToLocation;
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:statusBarAnimationDuration delay:-1.0 options:UIViewAnimationCurveEaseOut animations:^{
+            punchOnCommentsView.center = animationPartTwoPanToLocation;
+            UINavigationBar *navBar = self.navigationController.navigationBar;
+            navBar.frame = CGRectMake(navBar.frame.origin.x,
+                                      -24,
+                                      navBar.frame.size.width,
+                                      navBar.frame.size.height);
+        } completion:nil];
+    }];
+
+    if(isModeChanged) {
+        [self toggleTableViewHeaderWithFadeEffect:YES];
+    }
+
+}
+
+-(void) panCommentsTableDownToLocationY:(int)destinationLocationY modeDidChange:(BOOL)isModeChanged{
     
     float animationDuration;
-    int distance =  punchOnCommentsView.center.y - locationY;
+    int distance =  punchOnCommentsView.center.y - destinationLocationY;
     if (distance < 0 ) {
         distance = -1 * distance;
     }
@@ -488,26 +549,26 @@
         if(distance > 100) {
             animationDuration = .25f;
         } else {
-             animationDuration = .1f;
+            animationDuration = .1f;
         }
     } else {
         animationDuration = .4f;
     }
     
     
-    
+   // NSLog(@"distance: %d animation duration %f", distance, animationDuration);
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
     [UIView setAnimationDuration:animationDuration];
     CGPoint panToLocation = punchOnCommentsView.center;
-    panToLocation.y = locationY;
+    panToLocation.y = destinationLocationY;
     punchOnCommentsView.center = panToLocation;
     [UIView commitAnimations];
     
     if(isModeChanged) {
         [self toggleTableViewHeaderWithFadeEffect:YES];
     }
-
+    
 }
 
 - (void)toggleCommentsTableViewUpAndDown
@@ -515,14 +576,14 @@
     if(_commentsTableViewIsUp)  {
         _commentsTableViewIsUp = NO;
         self.punchOnCommentsTableView.scrollEnabled = NO;
-        [self panCommentsTableToLocationY:COMMENTS_ORIGIN_TO_ANCHOR_BOTTOM modeDidChange:YES];
+        [self panCommentsTableDownToLocationY:COMMENTS_ORIGIN_TO_ANCHOR_BOTTOM modeDidChange:YES];
         [punchOnCommentsView removeGestureRecognizer:_panGestureDownRecognizerForCommentsView];
         [punchOnCommentsView addGestureRecognizer:_panGestureUpRecognizerForCommentsView];
 
     } else {
         _commentsTableViewIsUp = YES;
         self.punchOnCommentsTableView.scrollEnabled = YES;
-        [self panCommentsTableToLocationY:COMMENTS_ORIGIN_TO_ANCHOR_TOP modeDidChange:YES];
+        [self panCommentsTableUpToLocationY:COMMENTS_ORIGIN_TO_ANCHOR_TOP modeDidChange:YES];
         [punchOnCommentsView addGestureRecognizer:_panGestureDownRecognizerForCommentsView];
         [punchOnCommentsView removeGestureRecognizer:_panGestureUpRecognizerForCommentsView];
     }
@@ -535,14 +596,14 @@
         [self addGesturesToTableViewHeaderWithFadeEffect:fadeEffect];
         
         [self.navigationItem setRightBarButtonItem:nil animated:NO];
-        [self.navigationItem setLeftBarButtonItem:[YourMykiCustomButton createYourMykiBarButtonItemWithText:@"Add" withTarget:self withAction:@selector(punchOnButtonPressed:)] animated:NO];
+        //[self.navigationItem setLeftBarButtonItem:[YourMykiCustomButton createYourMykiBarButtonItemWithText:@"Add" withTarget:self withAction:@selector(punchOnButtonPressed:)] animated:NO];
 
     } else {
         [[[self.tableFixedHeader subviews] objectAtIndex:0] removeFromSuperview];
         [self.tableFixedHeader addSubview:[TableViewHeaderHelper makeTableDownHeaderWith:self.totalPunchOns]];
         [self addGesturesToTableViewHeaderWithFadeEffect:fadeEffect];
         
-        [self.navigationItem setLeftBarButtonItem:nil animated:NO];
+      //  [self.navigationItem setLeftBarButtonItem:nil animated:NO];
         [self.navigationItem setRightBarButtonItem:[YourMykiCustomButton createYourMykiBarButtonItemWithText:@"About" withTarget:self withAction:@selector(showAboutPage)] animated:NO];
     }
 }
