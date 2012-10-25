@@ -336,7 +336,13 @@
                     //if up to nav bar, move nav bar up.
                     UINavigationBar *navBar = self.navigationController.navigationBar;
                     navBar.frame = CGRectMake(navBar.frame.origin.x,
-                                              20 - (COMMENTS_ORIGIN_TO_NAV_BAR - punchOnCommentsView.center.y),
+                                              20  - (COMMENTS_ORIGIN_TO_NAV_BAR - punchOnCommentsView.center.y),
+                                              navBar.frame.size.width,
+                                              navBar.frame.size.height);
+                } else {
+                    UINavigationBar *navBar = self.navigationController.navigationBar;
+                    navBar.frame = CGRectMake(navBar.frame.origin.x,
+                                              20,
                                               navBar.frame.size.width,
                                               navBar.frame.size.height);
                 }
@@ -398,12 +404,19 @@
                     punchOnCommentsView.center = punchOnCommentsLocation;
                     
                     NSLog(@"punchOnCommentsView %f", punchOnCommentsView.center.y);
-                    if(punchOnCommentsView.center.y >= COMMENTS_ORIGIN_TO_ANCHOR_TOP) {
+                    
+                    if(punchOnCommentsView.center.y >= COMMENTS_ORIGIN_TO_ANCHOR_TOP && punchOnCommentsView.center.y < COMMENTS_ORIGIN_TO_NAV_BAR) {
                         //if scrolling down from top of screen move nav bar down
                         NSLog(@"in here %f ", punchOnCommentsLocation.y);
                         UINavigationBar *navBar = self.navigationController.navigationBar;
                         navBar.frame = CGRectMake(navBar.frame.origin.x,
                                                   - navBar.frame.size.height + 20 + (punchOnCommentsView.center.y - COMMENTS_ORIGIN_TO_ANCHOR_TOP),
+                                                  navBar.frame.size.width,
+                                                  navBar.frame.size.height);
+                    } else {
+                        UINavigationBar *navBar = self.navigationController.navigationBar;
+                        navBar.frame = CGRectMake(navBar.frame.origin.x,
+                                                  20,
                                                   navBar.frame.size.width,
                                                   navBar.frame.size.height);
                     }

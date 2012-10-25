@@ -126,7 +126,7 @@ static const NSInteger kGANDispatchPeriodSec = 10;
     if(self.isFaceBookRequired) {
        // NSMutableDictionary* params = [[NSMutableDictionary alloc] initWithCapacity:3];
         
-        NSString *facebookMessage = [NSString stringWithFormat:@"Another voice heard with yourMyki:\n\n\"%@\"\n\nhttp://itunes.apple.com/us/yourMyki/id565960865",  currentUsersPunchOnLog.message];
+        NSString *facebookMessage = [NSString stringWithFormat:@"Another voice heard with yourMyki:\n\n\"%@\"\n\nhttps://itunes.apple.com/us/yourMyki/id565960865",  currentUsersPunchOnLog.message];
         
         //https://itunes.apple.com/au/app/yourmyki/id565960865?mt=8&uo=4
         
