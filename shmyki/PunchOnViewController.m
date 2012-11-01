@@ -508,12 +508,12 @@ typedef enum {
     
     if(isModeChanged) {
         if(punchOnCommentsView.center.y - destinationLocationY > 100) {
-            totalAnimationDuration = 2.25f;
+            totalAnimationDuration = 0.25f;
         } else {
-            totalAnimationDuration = 2.1f;
+            totalAnimationDuration = 0.1f;
         }
     } else {
-        totalAnimationDuration = 2.4f;
+        totalAnimationDuration = 0.4f;
     }
 
 
@@ -532,9 +532,37 @@ typedef enum {
             navBarYPosition = -24;
             
             
+            if(distanceForAnimationPartOne < 0) {
+                distanceForAnimationPartOne = 0;
+                timeForAnimationPartOne = 0;
+                timeForAnimationPartTwo = totalAnimationDuration;
+                locationForAnimationPartOne.y = punchOnCommentsView.center.y;
+            }
+            
             
             break;
         case PanBackToTopFromUp:
+            
+            distanceForAnimationPartOne= punchOnCommentsView.center.y - destinationLocationY  - 44;
+            distanceForAnimationPartTwo = 44;
+            
+            totalDistanceForAnimation = distanceForAnimationPartOne + distanceForAnimationPartTwo;
+            
+            timeForAnimationPartOne = (distanceForAnimationPartOne / totalDistanceForAnimation) * totalAnimationDuration;
+            timeForAnimationPartTwo = (distanceForAnimationPartTwo / totalDistanceForAnimation) * totalAnimationDuration;
+            
+            locationForAnimationPartOne.y = destinationLocationY  + 44;
+            locationForAnimationPartTwo.y = destinationLocationY;
+            navBarYPosition = -24;
+            
+            //if only partially back up
+            if(distanceForAnimationPartOne < 0) {
+                distanceForAnimationPartOne = 0;
+                timeForAnimationPartOne = 0;
+                timeForAnimationPartTwo = totalAnimationDuration;
+                locationForAnimationPartOne.y = punchOnCommentsView.center.y;
+            }
+            
             
             break;
             
@@ -555,7 +583,20 @@ typedef enum {
             break;
             
         case PanBackToDownFromBottom:
-
+            
+            distanceForAnimationPartOne= punchOnCommentsView.center.y - destinationLocationY;
+            distanceForAnimationPartTwo = distanceForAnimationPartOne;
+            totalDistanceForAnimation = distanceForAnimationPartOne + distanceForAnimationPartTwo;
+            
+            timeForAnimationPartOne = totalAnimationDuration;
+            timeForAnimationPartTwo = 0;
+            
+            // locationForAnimationPartOne.y = destinationLocationY;
+            locationForAnimationPartOne.y = destinationLocationY;
+            locationForAnimationPartTwo.y = destinationLocationY;
+            navBarYPosition= 20;
+            
+            
             break;
             
         default:
