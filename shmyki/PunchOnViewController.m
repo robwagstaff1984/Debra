@@ -308,6 +308,10 @@ typedef enum {
     return YES;
 }
 
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
+    return YES;
+}
+
 #pragma mark custom pans
 - (void)handleCustomUpPan:(UIPanGestureRecognizer *)sender {
 
@@ -506,48 +510,31 @@ typedef enum {
     CGPoint locationForAnimationPartTwo = punchOnCommentsView.center;
     float navBarYPosition;
     
-    if(isModeChanged) {
-        if(punchOnCommentsView.center.y - destinationLocationY > 100) {
-            totalAnimationDuration = 0.25f;
-        } else {
-            totalAnimationDuration = 0.1f;
-        }
-    } else {
-        totalAnimationDuration = 0.4f;
-    }
+  //  NSLog(@"punchOnCommentsView.center.y %f", punchOnCommentsView.center.y );
+    //    NSLog(@"destinationLocationY %d", destinationLocationY );
+    UIViewAnimationCurve animationCurveOne = UIViewAnimationCurveEaseInOut;
 
 
     
     switch (currentPanType) {
         case PanUpFromBottom:
-            distanceForAnimationPartOne= punchOnCommentsView.center.y - destinationLocationY  - 44;
-            distanceForAnimationPartTwo = 44;
-            totalDistanceForAnimation = distanceForAnimationPartOne + distanceForAnimationPartTwo;
-            
-            timeForAnimationPartOne = (distanceForAnimationPartOne / totalDistanceForAnimation) * totalAnimationDuration;
-            timeForAnimationPartTwo = (distanceForAnimationPartTwo / totalDistanceForAnimation) * totalAnimationDuration;
-            
-            locationForAnimationPartOne.y = destinationLocationY  + 44;
-            locationForAnimationPartTwo.y = destinationLocationY;
-            navBarYPosition = -24;
-            
-            
-            if(distanceForAnimationPartOne < 0) {
-                distanceForAnimationPartOne = 0;
-                timeForAnimationPartOne = 0;
-                timeForAnimationPartTwo = totalAnimationDuration;
-                locationForAnimationPartOne.y = punchOnCommentsView.center.y;
-            }
-            
-            
-            break;
         case PanBackToTopFromUp:
             
             distanceForAnimationPartOne= punchOnCommentsView.center.y - destinationLocationY  - 44;
             distanceForAnimationPartTwo = 44;
-            
             totalDistanceForAnimation = distanceForAnimationPartOne + distanceForAnimationPartTwo;
+            if(isModeChanged) {
+                 if(totalDistanceForAnimation > 130) {
+                     totalAnimationDuration = 0.25f;
+                 } else {
+                    totalAnimationDuration = 0.12f;
+                 }
+            } else {
+                totalAnimationDuration = 0.4f;
+            }
             
+            
+    
             timeForAnimationPartOne = (distanceForAnimationPartOne / totalDistanceForAnimation) * totalAnimationDuration;
             timeForAnimationPartTwo = (distanceForAnimationPartTwo / totalDistanceForAnimation) * totalAnimationDuration;
             
@@ -563,64 +550,68 @@ typedef enum {
                 locationForAnimationPartOne.y = punchOnCommentsView.center.y;
             }
             
-            
             break;
             
         case PanDownFromTop:
-
-            distanceForAnimationPartOne= punchOnCommentsView.center.y - destinationLocationY;
-            distanceForAnimationPartTwo = distanceForAnimationPartOne;
-            totalDistanceForAnimation = distanceForAnimationPartOne + distanceForAnimationPartTwo;
-            
-            timeForAnimationPartOne = totalAnimationDuration;
-            timeForAnimationPartTwo = 0;
-            
-           // locationForAnimationPartOne.y = destinationLocationY;
-            locationForAnimationPartOne.y = destinationLocationY;
-            locationForAnimationPartTwo.y = destinationLocationY;
-            navBarYPosition= 20;
-            
-            break;
-            
         case PanBackToDownFromBottom:
             
             distanceForAnimationPartOne= punchOnCommentsView.center.y - destinationLocationY;
-            distanceForAnimationPartTwo = distanceForAnimationPartOne;
-            totalDistanceForAnimation = distanceForAnimationPartOne + distanceForAnimationPartTwo;
+            totalDistanceForAnimation = distanceForAnimationPartOne + 0;
+
+            if(isModeChanged) {
+                if(totalDistanceForAnimation < -100) {
+                    totalAnimationDuration = 0.25f;
+                } else {
+                    totalAnimationDuration = 0.12f;
+                }
+            } else {
+                totalAnimationDuration = 0.4f;
+            }
             
+            //NSLog(@"totalDistanceForAnimation %f", distanceForAnimationPartOne);
             timeForAnimationPartOne = totalAnimationDuration;
             timeForAnimationPartTwo = 0;
             
-            // locationForAnimationPartOne.y = destinationLocationY;
             locationForAnimationPartOne.y = destinationLocationY;
             locationForAnimationPartTwo.y = destinationLocationY;
             navBarYPosition= 20;
-            
+         //   animationCurveOne = UIViewAnimationCurveEaseInOut;
             
             break;
-            
         default:
             break;
     }
-    
-
-    NSLog(@"distanceForAnimationPartOne %f",distanceForAnimationPartOne);
-    NSLog(@"distanceForAnimationPartTwo %f",distanceForAnimationPartTwo);
-    NSLog(@"destinationLocationY %d",destinationLocationY);
-    NSLog(@"locationForAnimationPartOne.y: %f",locationForAnimationPartOne.y);
-    NSLog(@"locationForAnimationPartTwo.y: %f",locationForAnimationPartTwo.y);
-    NSLog(@"timeForAnimationPartOne: %f",timeForAnimationPartOne);
-    NSLog(@"timeForAnimationPartTwo: %f",timeForAnimationPartTwo);
+  
     
     
-    [UIView animateWithDuration:timeForAnimationPartOne delay:0.0 options:UIViewAnimationCurveLinear animations:^{        
+//
+//    NSLog(@"distanceForAnimationPartOne %f",distanceForAnimationPartOne);
+//    NSLog(@"distanceForAnimationPartTwo %f",distanceForAnimationPartTwo);
+//    NSLog(@"destinationLocationY %d",destinationLocationY);
+//    NSLog(@"locationForAnimationPartOne.y: %f",locationForAnimationPartOne.y);
+//    NSLog(@"locationForAnimationPartTwo.y: %f",locationForAnimationPartTwo.y);
+//    NSLog(@"timeForAnimationPartOne: %f",timeForAnimationPartOne);
+//    NSLog(@"timeForAnimationPartTwo: %f",timeForAnimationPartTwo);
+    
+    
+    [UIView animateWithDuration:timeForAnimationPartOne delay:0.0 options:animationCurveOne animations:^{        
         punchOnCommentsView.center = locationForAnimationPartOne;
     } completion:^(BOOL finished) {
         [UIView animateWithDuration:timeForAnimationPartTwo delay:0.0 options:UIViewAnimationCurveEaseOut animations:^{
             punchOnCommentsView.center = locationForAnimationPartTwo;
             self.navigationController.navigationBar.frame = CGRectMake(0,navBarYPosition,320,44);
-        } completion:nil];
+        } completion:^(BOOL finished) {
+//            if(navBarYPosition == -24) {
+//                while ( self.navigationController.navigationBar.gestureRecognizers.count) {
+//                    [ self.navigationController.navigationBar removeGestureRecognizer:[ self.navigationController.navigationBar.gestureRecognizers objectAtIndex:0]];
+//                }
+//            }
+            if (isModeChanged) {
+                [self toggleTableViewHeaderWithFadeEffect:YES];
+            }
+        }];
     }];
+
 }
 
 -(PanType) determinPanType:(int)destinationLocationY {
@@ -638,154 +629,8 @@ typedef enum {
             currentPanType = PanBackToDownFromBottom;
         }
     }
-    NSLog(@"current Pan type: %d", currentPanType);
+    //NSLog(@"current Pan type: %d", currentPanType);
     return currentPanType;
-}
-
-
--(void) panCommentsTableUpToLocationY:(int)destinationLocationY modeDidChange:(BOOL)isModeChanged{
-    
-    float totalAnimationDuration;
-    float distanceToStatusBar =  punchOnCommentsView.center.y - destinationLocationY;
-    float distanceToNavBar = distanceToStatusBar - 44;
-
-    if(isModeChanged) {
-        if(distanceToStatusBar > 100) {
-            totalAnimationDuration = 0.25f;
-        } else {
-             totalAnimationDuration = 0.1f;
-        }
-    } else {
-        totalAnimationDuration = 0.4f;
-    }
-    
-    float navBarAnimationDuration;
-    float statusBarAnimationDuration;
-    CGPoint animationPartOnePanToLocation = punchOnCommentsView.center;
-    CGPoint animationPartTwoPanToLocation = punchOnCommentsView.center;
-   
-    if(distanceToNavBar <= 0) {
-        // if bouncing back up when already at the top
-        navBarAnimationDuration = 0.0;
-        statusBarAnimationDuration = totalAnimationDuration;
-        //animationPartOnePanToLocation.y = destinationLocationY;
-        animationPartTwoPanToLocation.y = destinationLocationY;
-    } else {
-        //if panning up from the bottom
-        navBarAnimationDuration = (distanceToNavBar / distanceToStatusBar) * totalAnimationDuration;
-        statusBarAnimationDuration = ((distanceToStatusBar - distanceToNavBar) / distanceToStatusBar) * totalAnimationDuration;
-        animationPartOnePanToLocation.y = destinationLocationY + 44;
-        animationPartTwoPanToLocation.y = destinationLocationY;
-    }
-    
-//    NSLog(@"distanceStatus: %f distanceNav: %f totalAnimation: %f navBarAnimation: %f statusAnimation: %f ", distanceToStatusBar, distanceToNavBar, totalAnimationDuration, navBarAnimationDuration, statusBarAnimationDuration);
-//    NSLog(@"part1 y:%f part2 y:%f", animationPartOnePanToLocation.y, animationPartTwoPanToLocation.y);
-//    
-    [UIView animateWithDuration:navBarAnimationDuration delay:0.0 options:UIViewAnimationCurveLinear animations:^{
-      //  NSLog(@"POCV%f , AP1%f", punchOnCommentsView.center.y, animationPartOnePanToLocation.y);
-        
-        punchOnCommentsView.center = animationPartOnePanToLocation;
-        
-//        int64_t delayInSeconds = navBarAnimationDuration;
-//        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
-//        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-//            [UIView animateWithDuration:statusBarAnimationDuration delay:0.0 options:UIViewAnimationCurveEaseOut animations:^{
-//              //  NSLog(@"start 2");
-//                punchOnCommentsView.center = animationPartTwoPanToLocation;
-//                UINavigationBar *navBar = self.navigationController.navigationBar;
-//                navBar.frame = CGRectMake(navBar.frame.origin.x,
-//                                          -24,
-//                                          navBar.frame.size.width,
-//                                          navBar.frame.size.height);
-//            } completion:nil];
-//        });
-        
-        
-    } completion:^(BOOL finished) {
-        [UIView animateWithDuration:statusBarAnimationDuration delay:0.0 options:UIViewAnimationCurveEaseOut animations:^{
-            punchOnCommentsView.center = animationPartTwoPanToLocation;
-            //UINavigationBar *navBar = self.navigationController.navigationBar;
-            self.navigationController.navigationBar.frame = CGRectMake(0,
-                                      -24,
-                                      320,
-                                      44);
-        } completion:nil];
-    }];
-    
-    
-
-
-
-    if(isModeChanged) {
-        [self toggleTableViewHeaderWithFadeEffect:YES];
-    }
-
-}
-
--(void) panCommentsTableDownToLocationY:(int)destinationLocationY modeDidChange:(BOOL)isModeChanged{
-    float totalAnimationDuration;
-    float distanceToStatusBar =  punchOnCommentsView.center.y - destinationLocationY;
-    float distanceToNavBar = distanceToStatusBar - 44;
-    
-    if(isModeChanged) {
-        if(distanceToStatusBar > 100) {
-            totalAnimationDuration = 2.25f;
-        } else {
-            totalAnimationDuration = 2.1f;
-        }
-    } else {
-        totalAnimationDuration = 2.4f;
-    }
-    
-    float navBarAnimationDuration;
-    float statusBarAnimationDuration;
-    CGPoint animationPartOnePanToLocation = punchOnCommentsView.center;
-    CGPoint animationPartTwoPanToLocation = punchOnCommentsView.center;
-    
-    if(distanceToNavBar <= 0) {
-        // if bouncing back up when already at the top
-        navBarAnimationDuration = 0.0;
-        statusBarAnimationDuration = totalAnimationDuration;
-        animationPartOnePanToLocation.y = destinationLocationY;
-        animationPartTwoPanToLocation.y = destinationLocationY;
-    } else {
-        //if panning up from the bottom
-        navBarAnimationDuration = (distanceToNavBar / distanceToStatusBar) * totalAnimationDuration;
-        statusBarAnimationDuration = ((distanceToStatusBar - distanceToNavBar) / distanceToStatusBar) * totalAnimationDuration;
-        animationPartOnePanToLocation.y = destinationLocationY + 44;
-        animationPartTwoPanToLocation.y = destinationLocationY;
-    }
-    
-//    NSLog(@"distanceStatus: %f distanceNav: %f totalAnimation: %f navBarAnimation: %f statusAnimation: %f ", distanceToStatusBar, distanceToNavBar, totalAnimationDuration, navBarAnimationDuration, statusBarAnimationDuration);
-//    NSLog(@"part1 y:%f part2 y:%f", animationPartOnePanToLocation.y, animationPartTwoPanToLocation.y);
-    
-    [UIView animateWithDuration:navBarAnimationDuration delay:0.0 options:UIViewAnimationCurveLinear animations:^{
-        punchOnCommentsView.center = animationPartOnePanToLocation;
-        
-//        [UIView animateWithDuration:statusBarAnimationDuration delay:navBarAnimationDuration options:UIViewAnimationCurveEaseOut animations:^{
-//                        punchOnCommentsView.center = animationPartTwoPanToLocation;
-//                        UINavigationBar *navBar = self.navigationController.navigationBar;
-//                        navBar.frame = CGRectMake(navBar.frame.origin.x,
-//                                                  20,
-//                                                  navBar.frame.size.width,
-//                                                  navBar.frame.size.height);
-//        } completion:nil];
-        
-    } completion:^(BOOL finished) {
-        [UIView animateWithDuration:statusBarAnimationDuration delay:0.0 options:UIViewAnimationCurveEaseOut animations:^{
-            punchOnCommentsView.center = animationPartTwoPanToLocation;
-            //UINavigationBar *navBar = self.navigationController.navigationBar;
-            self.navigationController.navigationBar.frame = CGRectMake(0,
-                                      20,
-                                      320,
-                                      44);
-        } completion:nil];
-    }];
-    
-    if(isModeChanged) {
-        [self toggleTableViewHeaderWithFadeEffect:YES];
-    }
-
 }
 
 - (void)toggleCommentsTableViewUpAndDown
@@ -793,14 +638,14 @@ typedef enum {
     if(_commentsTableViewIsUp)  {
         _commentsTableViewIsUp = NO;
         self.punchOnCommentsTableView.scrollEnabled = NO;
-        [self panCommentsTableDownToLocationY:COMMENTS_ORIGIN_TO_ANCHOR_BOTTOM modeDidChange:YES];
+        [self panCommentsToAppropriateLocation:COMMENTS_ORIGIN_TO_ANCHOR_BOTTOM modeDidChange:YES];
         [punchOnCommentsView removeGestureRecognizer:_panGestureDownRecognizerForCommentsView];
         [punchOnCommentsView addGestureRecognizer:_panGestureUpRecognizerForCommentsView];
 
     } else {
         _commentsTableViewIsUp = YES;
         self.punchOnCommentsTableView.scrollEnabled = YES;
-        [self panCommentsTableUpToLocationY:COMMENTS_ORIGIN_TO_ANCHOR_TOP modeDidChange:YES];
+        [self panCommentsToAppropriateLocation:COMMENTS_ORIGIN_TO_ANCHOR_TOP modeDidChange:YES];
         [punchOnCommentsView addGestureRecognizer:_panGestureDownRecognizerForCommentsView];
         [punchOnCommentsView removeGestureRecognizer:_panGestureUpRecognizerForCommentsView];
     }
@@ -812,7 +657,7 @@ typedef enum {
         [self.tableFixedHeader addSubview: [TableViewHeaderHelper makeTableUpHeaderWith:self.totalPunchOns]];
         [self addGesturesToTableViewHeaderWithFadeEffect:fadeEffect];
         
-        [self.navigationItem setRightBarButtonItem:nil animated:NO];
+       // [self.navigationItem setRightBarButtonItem:nil animated:NO];
         //[self.navigationItem setLeftBarButtonItem:[YourMykiCustomButton createYourMykiBarButtonItemWithText:@"Add" withTarget:self withAction:@selector(punchOnButtonPressed:)] animated:NO];
 
     } else {
@@ -821,7 +666,7 @@ typedef enum {
         [self addGesturesToTableViewHeaderWithFadeEffect:fadeEffect];
         
       //  [self.navigationItem setLeftBarButtonItem:nil animated:NO];
-        [self.navigationItem setRightBarButtonItem:[YourMykiCustomButton createYourMykiBarButtonItemWithText:@"About" withTarget:self withAction:@selector(showAboutPage)] animated:NO];
+       // [self.navigationItem setRightBarButtonItem:[YourMykiCustomButton createYourMykiBarButtonItemWithText:@"About" withTarget:self withAction:@selector(showAboutPage)] animated:NO];
     }
 }
 
@@ -831,8 +676,12 @@ typedef enum {
     
     NSArray *tableHeaderSubViews = [[self.tableFixedHeader.subviews objectAtIndex:0] subviews];
     
+    [self.tableFixedHeader setBackgroundColor:[UIColor blueColor]];
+    
     for (UIView* tableHeaderSubView in tableHeaderSubViews) {
+            [tableHeaderSubView setBackgroundColor:[UIColor greenColor]];
         if(tableHeaderSubView.tag == TAG_FOR_CLOSE_BUTTON_LABEL) {
+            [tableHeaderSubView setBackgroundColor:[UIColor purpleColor]];
             [tableHeaderSubView addGestureRecognizer:recognizer];
         }
     }
