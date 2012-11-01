@@ -17,6 +17,7 @@
 		811F470516141768004898F5 /* Icon114px.png in Resources */ = {isa = PBXBuildFile; fileRef = 811F46FB16141768004898F5 /* Icon114px.png */; };
 		811F470616141768004898F5 /* Icon512px.png in Resources */ = {isa = PBXBuildFile; fileRef = 811F46FC16141768004898F5 /* Icon512px.png */; };
 		811F470716141768004898F5 /* icon1024px.png in Resources */ = {isa = PBXBuildFile; fileRef = 811F46FD16141768004898F5 /* icon1024px.png */; };
+		8125E8491641FBC8000D8338 /* PunchOnViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 815C1A0E157F64470019419C /* PunchOnViewController.m */; };
 		81296ACC161554C0005B65D8 /* jQueryInject.txt in Resources */ = {isa = PBXBuildFile; fileRef = 81296A92161554BF005B65D8 /* jQueryInject.txt */; };
 		81296ACD161554C0005B65D8 /* jQueryInjectLandscape.txt in Resources */ = {isa = PBXBuildFile; fileRef = 81296A93161554BF005B65D8 /* jQueryInjectLandscape.txt */; };
 		81296ACE161554C0005B65D8 /* libOAuth.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 81296A94161554BF005B65D8 /* libOAuth.a */; };
@@ -57,7 +58,6 @@
 		815C19F9157F63AD0019419C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 815C19CC157F63AD0019419C /* Foundation.framework */; };
 		815C1A01157F63AD0019419C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 815C19FF157F63AD0019419C /* InfoPlist.strings */; };
 		815C1A04157F63AD0019419C /* shmykiTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 815C1A03157F63AD0019419C /* shmykiTests.m */; };
-		815C1A10157F64470019419C /* PunchOnViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 815C1A0E157F64470019419C /* PunchOnViewController.m */; };
 		815C1A11157F64470019419C /* PunchOnViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 815C1A0F157F64470019419C /* PunchOnViewController.xib */; };
 		815C1A24157F68D20019419C /* InspectorMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 815C1A22157F68D20019419C /* InspectorMapViewController.m */; };
 		815C1A25157F68D20019419C /* InspectorMapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 815C1A23157F68D20019419C /* InspectorMapViewController.xib */; };
@@ -746,8 +746,8 @@
 			files = (
 				815C19D7157F63AD0019419C /* main.m in Sources */,
 				815C19DB157F63AD0019419C /* AppDelegate.m in Sources */,
-				815C1A10157F64470019419C /* PunchOnViewController.m in Sources */,
 				815C1A24157F68D20019419C /* InspectorMapViewController.m in Sources */,
+				8125E8491641FBC8000D8338 /* PunchOnViewController.m in Sources */,
 				815C1A2E157F836D0019419C /* EnterIssueViewController.m in Sources */,
 				818BE4241584618B00775392 /* PunchOnLogsViewController.m in Sources */,
 				818811481585A9DA00CDDF3E /* InspectorMapKitAnnotation.m in Sources */,

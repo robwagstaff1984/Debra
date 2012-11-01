@@ -8,11 +8,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "shmyki/PunchOnViewController.m"
-         timestampString = "372835814.460071"
+         timestampString = "372905919.04092"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "460"
-         endingLineNumber = "460"
+         startingLineNumber = "467"
+         endingLineNumber = "467"
          landmarkName = "-panCommentsTableViewToAppropriateStateForLocation:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -21,11 +21,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "shmyki/PunchOnViewController.m"
-         timestampString = "372835814.460071"
+         timestampString = "372905919.04092"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "457"
-         endingLineNumber = "457"
+         startingLineNumber = "464"
+         endingLineNumber = "464"
          landmarkName = "-panCommentsTableViewToAppropriateStateForLocation:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -34,11 +34,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "shmyki/PunchOnViewController.m"
-         timestampString = "372749410.982426"
+         timestampString = "372905919.04092"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "316"
-         endingLineNumber = "316"
+         startingLineNumber = "323"
+         endingLineNumber = "323"
          landmarkName = "-handleCustomUpPan:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -47,11 +47,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "shmyki/PunchOnViewController.m"
-         timestampString = "372837435.285384"
+         timestampString = "373424124.88417"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "486"
-         endingLineNumber = "486"
+         startingLineNumber = "607"
+         endingLineNumber = "607"
          landmarkName = "-panCommentsTableUpToLocationY:modeDidChange:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -60,11 +60,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "shmyki/PunchOnViewController.m"
-         timestampString = "372902905.423937"
+         timestampString = "373424124.88417"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "564"
-         endingLineNumber = "564"
+         startingLineNumber = "685"
+         endingLineNumber = "685"
          landmarkName = "-panCommentsTableDownToLocationY:modeDidChange:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -73,11 +73,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "shmyki/PunchOnViewController.m"
-         timestampString = "372857132.93146"
+         timestampString = "373424124.88417"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "507"
-         endingLineNumber = "507"
+         startingLineNumber = "628"
+         endingLineNumber = "628"
          landmarkName = "-panCommentsTableUpToLocationY:modeDidChange:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -86,12 +86,142 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "shmyki/PunchOnViewController.m"
-         timestampString = "372902905.423937"
+         timestampString = "373424124.88417"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "585"
-         endingLineNumber = "585"
+         startingLineNumber = "706"
+         endingLineNumber = "706"
          landmarkName = "-panCommentsTableDownToLocationY:modeDidChange:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "shmyki/PunchOnViewController.m"
+         timestampString = "373424124.88417"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "626"
+         endingLineNumber = "626"
+         landmarkName = "-panCommentsTableUpToLocationY:modeDidChange:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "shmyki/PunchOnViewController.m"
+         timestampString = "373424124.88417"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "704"
+         endingLineNumber = "704"
+         landmarkName = "-panCommentsTableDownToLocationY:modeDidChange:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "shmyki/PunchOnViewController.m"
+         timestampString = "373424124.88417"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "627"
+         endingLineNumber = "627"
+         landmarkName = "-panCommentsTableUpToLocationY:modeDidChange:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "shmyki/PunchOnViewController.m"
+         timestampString = "372919985.767393"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "484"
+         endingLineNumber = "484"
+         landmarkName = "-panCommentsTableViewToAppropriateStateForLocation:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "shmyki/PunchOnViewController.m"
+         timestampString = "373423994.861192"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "523"
+         endingLineNumber = "523"
+         landmarkName = "-panCommentsToAppropriateLocation:modeDidChange:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "shmyki/PunchOnViewController.m"
+         timestampString = "373423994.861192"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "521"
+         endingLineNumber = "521"
+         landmarkName = "-panCommentsToAppropriateLocation:modeDidChange:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "shmyki/PunchOnViewController.m"
+         timestampString = "372924427.179984"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "494"
+         endingLineNumber = "494"
+         landmarkName = "-panCommentsToAppropriateLocation:modeDidChange:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "shmyki/PunchOnViewController.m"
+         timestampString = "373424124.88417"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "547"
+         endingLineNumber = "547"
+         landmarkName = "-panCommentsToAppropriateLocation:modeDidChange:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "shmyki/PunchOnViewController.m"
+         timestampString = "373424124.88417"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "556"
+         endingLineNumber = "556"
+         landmarkName = "-panCommentsToAppropriateLocation:modeDidChange:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "shmyki/PunchOnViewController.m"
+         timestampString = "373424124.88417"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "546"
+         endingLineNumber = "546"
+         landmarkName = "-panCommentsToAppropriateLocation:modeDidChange:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>
