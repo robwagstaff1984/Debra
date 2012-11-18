@@ -279,10 +279,10 @@
     PFQuery *query = [PFQuery queryWithClassName:@"PunchOnLog"];
     [query countObjectsInBackgroundWithBlock:^(int count, NSError *error) {
         if (!error) {
+            self.totalPunchOns = count;
             if(!_commentsTableViewIsUp) {
-                [(UILabel*)[[[self.tableFixedHeader.subviews objectAtIndex:0] subviews] objectAtIndex:TOTAL_PUNCH_ONS_SUBVIEW_NUMBER] setText: [NSString stringWithFormat:@"%@         ",[[NSNumber numberWithInt:totalPunchOns] stringValue]]];
+                [(UILabel*)[[[self.tableFixedHeader.subviews objectAtIndex:0] subviews] objectAtIndex:TOTAL_PUNCH_ONS_SUBVIEW_NUMBER] setText: [NSString stringWithFormat:@"%@         ",[[NSNumber numberWithInt:self.totalPunchOns] stringValue]]];
             }
-            self.totalPunchOns = [self.listOfPunchOnLogs count];
         }
     }];
 }
