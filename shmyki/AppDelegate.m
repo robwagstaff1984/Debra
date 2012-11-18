@@ -18,6 +18,7 @@
 #import "PunchOnLogsCache.h"
 #import "GANTracker.h"
 #import <FacebookSDK/FacebookSDK.h>
+#import "CustomWindow.h"
 
 // Dispatch period in seconds
 static const NSInteger kGANDispatchPeriodSec = 10;
@@ -37,6 +38,8 @@ static const NSInteger kGANDispatchPeriodSec = 10;
     [Parse setApplicationId:@"0ZOhCs6SN4VQ6KfvV1nHUQrXSpU391AiWStEGKpf"
                   clientKey:@"nHODOwsVCOGeziCH3byVfDdQVZECBvWqCZHApSS9"];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+  //  self.window = [[CustomWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    
     UIViewController *mykiBalanceViewController = [[MykiBalanceViewController alloc] initWithNibName:@"MykiBalanceViewController" bundle:nil];
     
     UIViewController *punchOnViewController = [[PunchOnViewController alloc] initWithNibName:@"PunchOnViewController" bundle:nil];

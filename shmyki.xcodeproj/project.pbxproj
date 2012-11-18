@@ -18,6 +18,7 @@
 		811F470616141768004898F5 /* Icon512px.png in Resources */ = {isa = PBXBuildFile; fileRef = 811F46FC16141768004898F5 /* Icon512px.png */; };
 		811F470716141768004898F5 /* icon1024px.png in Resources */ = {isa = PBXBuildFile; fileRef = 811F46FD16141768004898F5 /* icon1024px.png */; };
 		8125E8491641FBC8000D8338 /* PunchOnViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 815C1A0E157F64470019419C /* PunchOnViewController.m */; };
+		8125E85816423FA0000D8338 /* CustomWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 8125E85716423FA0000D8338 /* CustomWindow.m */; };
 		81296ACC161554C0005B65D8 /* jQueryInject.txt in Resources */ = {isa = PBXBuildFile; fileRef = 81296A92161554BF005B65D8 /* jQueryInject.txt */; };
 		81296ACD161554C0005B65D8 /* jQueryInjectLandscape.txt in Resources */ = {isa = PBXBuildFile; fileRef = 81296A93161554BF005B65D8 /* jQueryInjectLandscape.txt */; };
 		81296ACE161554C0005B65D8 /* libOAuth.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 81296A94161554BF005B65D8 /* libOAuth.a */; };
@@ -123,6 +124,8 @@
 		811F46FB16141768004898F5 /* Icon114px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon114px.png; sourceTree = "<group>"; };
 		811F46FC16141768004898F5 /* Icon512px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon512px.png; sourceTree = "<group>"; };
 		811F46FD16141768004898F5 /* icon1024px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon1024px.png; sourceTree = "<group>"; };
+		8125E85616423FA0000D8338 /* CustomWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomWindow.h; sourceTree = "<group>"; };
+		8125E85716423FA0000D8338 /* CustomWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomWindow.m; sourceTree = "<group>"; };
 		81296A92161554BF005B65D8 /* jQueryInject.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = jQueryInject.txt; sourceTree = "<group>"; };
 		81296A93161554BF005B65D8 /* jQueryInjectLandscape.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = jQueryInjectLandscape.txt; sourceTree = "<group>"; };
 		81296A94161554BF005B65D8 /* libOAuth.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libOAuth.a; sourceTree = "<group>"; };
@@ -417,6 +420,8 @@
 				8129EADF159204F9004D0C6F /* TableViewHeaderHelper.m */,
 				817C21E115AD9BBF00D35D3A /* YourMykiCustomButton.h */,
 				817C21E215AD9BBF00D35D3A /* YourMykiCustomButton.m */,
+				8125E85616423FA0000D8338 /* CustomWindow.h */,
+				8125E85716423FA0000D8338 /* CustomWindow.m */,
 			);
 			name = customViews;
 			sourceTree = "<group>";
@@ -784,6 +789,7 @@
 				81296ADD161554C0005B65D8 /* SA_OAuthTwitterController.m in Sources */,
 				81296ADE161554C0005B65D8 /* SA_OAuthTwitterEngine.m in Sources */,
 				81E9C8E21622915E000E2E0D /* Reachability.m in Sources */,
+				8125E85816423FA0000D8338 /* CustomWindow.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

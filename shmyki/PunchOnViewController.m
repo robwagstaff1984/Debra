@@ -23,6 +23,7 @@
 #import "GANTracker.h"
 #import <QuartzCore/QuartzCore.h>
 #import "DateDisplayHelper.h"
+#import "CustomWindow.h"
 
 typedef enum {
     PanUpFromBottom = 1,
@@ -601,11 +602,12 @@ typedef enum {
             punchOnCommentsView.center = locationForAnimationPartTwo;
             self.navigationController.navigationBar.frame = CGRectMake(0,navBarYPosition,320,44);
         } completion:^(BOOL finished) {
-//            if(navBarYPosition == -24) {
-//                while ( self.navigationController.navigationBar.gestureRecognizers.count) {
-//                    [ self.navigationController.navigationBar removeGestureRecognizer:[ self.navigationController.navigationBar.gestureRecognizers objectAtIndex:0]];
-//                }
-//            }
+            /*if(navBarYPosition == -24) {
+                [(CustomWindow*)[(AppDelegate*)[[UIApplication sharedApplication]delegate] window] setInterceptEvents:YES];
+            } else {
+                [(CustomWindow*)[(AppDelegate*)[[UIApplication sharedApplication]delegate] window] setInterceptEvents:NO];
+            }*/
+            
             if (isModeChanged) {
                 [self toggleTableViewHeaderWithFadeEffect:YES];
             }
