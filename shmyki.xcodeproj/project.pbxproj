@@ -885,8 +885,8 @@
 					"$(ARCHS_STANDARD_32_BIT)",
 					i386,
 				);
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Benjamin Kappler (XCQLLQUS9J)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Benjamin Kappler (XCQLLQUS9J)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -907,8 +907,8 @@
 				);
 				OTHER_LDFLAGS = "-fobjc-arc";
 				PRODUCT_NAME = yourMyki;
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				PROVISIONING_PROFILE = "BBC1F7C3-2712-4918-BAA7-C642B10D93E4";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "BBC1F7C3-2712-4918-BAA7-C642B10D93E4";
 				VALID_ARCHS = "armv7 armv7s i386";
 				WRAPPER_EXTENSION = app;
 			};

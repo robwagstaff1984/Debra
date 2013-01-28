@@ -13,7 +13,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "472"
          endingLineNumber = "472"
-         landmarkName = "-panCommentsTableViewToAppropriateStateForLocation:"
+         landmarkName = "-toggleCommentsTableViewUpAndDown"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -26,7 +26,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "469"
          endingLineNumber = "469"
-         landmarkName = "-panCommentsTableViewToAppropriateStateForLocation:"
+         landmarkName = "-toggleCommentsTableViewUpAndDown"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -52,7 +52,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "489"
          endingLineNumber = "489"
-         landmarkName = "-panCommentsTableViewToAppropriateStateForLocation:"
+         landmarkName = "-toggleTableViewHeaderWithFadeEffect:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -65,7 +65,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "520"
          endingLineNumber = "520"
-         landmarkName = "-panCommentsToAppropriateLocation:modeDidChange:"
+         landmarkName = "-addGesturesToTableViewHeaderWithFadeEffect:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -78,7 +78,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "499"
          endingLineNumber = "499"
-         landmarkName = "-panCommentsToAppropriateLocation:modeDidChange:"
+         landmarkName = "-addGesturesToTableViewHeaderWithFadeEffect:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -91,7 +91,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "559"
          endingLineNumber = "559"
-         landmarkName = "-panCommentsToAppropriateLocation:modeDidChange:"
+         landmarkName = "-hidePunchOnCoachMarksWithDelay:WithDuration:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -103,9 +103,7 @@
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "641"
-         endingLineNumber = "641"
-         landmarkName = "-toggleCommentsTableViewUpAndDown"
-         landmarkType = "5">
+         endingLineNumber = "641">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -116,9 +114,7 @@
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "680"
-         endingLineNumber = "680"
-         landmarkName = "-addGesturesToTableViewHeaderWithFadeEffect:"
-         landmarkType = "5">
+         endingLineNumber = "680">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -129,9 +125,7 @@
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "642"
-         endingLineNumber = "642"
-         landmarkName = "-toggleCommentsTableViewUpAndDown"
-         landmarkType = "5">
+         endingLineNumber = "642">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -143,7 +137,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "309"
          endingLineNumber = "309"
-         landmarkName = "-gestureRecognizer:shouldRecognizeSimultaneouslyWithGestureRecognizer:"
+         landmarkName = "-handleCustomUpPan:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -156,7 +150,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "301"
          endingLineNumber = "301"
-         landmarkName = "-touchesBegan:withEvent:"
+         landmarkName = "-gestureRecognizer:shouldRecognizeSimultaneouslyWithGestureRecognizer:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -169,7 +163,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "313"
          endingLineNumber = "313"
-         landmarkName = "-gestureRecognizer:shouldReceiveTouch:"
+         landmarkName = "-handleCustomUpPan:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -209,6 +203,58 @@
          startingLineNumber = "287"
          endingLineNumber = "287"
          landmarkName = "-getCurrentCountOfPunchOns"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "shmyki/AppDelegate.m"
+         timestampString = "374913450.153871"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "206"
+         endingLineNumber = "206"
+         landmarkName = "-getlogInToTwitterViewController"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "shmyki/AppDelegate.m"
+         timestampString = "374913451.42212"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "198"
+         endingLineNumber = "198"
+         landmarkName = "-setUpTwitter"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "shmyki/AppDelegate.m"
+         timestampString = "374913453.241459"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "218"
+         endingLineNumber = "218"
+         landmarkName = "-postToTwitter"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "shmyki/EnterIssueViewController.m"
+         timestampString = "374913528.988691"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "332"
+         endingLineNumber = "332"
+         landmarkName = "-issueEntered"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>
