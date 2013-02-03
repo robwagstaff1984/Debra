@@ -275,11 +275,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "shmyki/InspectorMapViewController.m"
-         timestampString = "381562921.786657"
+         timestampString = "381565580.167348"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "306"
-         endingLineNumber = "306"
+         startingLineNumber = "327"
+         endingLineNumber = "327"
          landmarkName = "-findInspectors"
          landmarkType = "5">
       </FileBreakpoint>

@@ -214,18 +214,30 @@ inspectorCoachMarks, showingCoachMarks, needToDropInspectorPin, zIndexOfFrontPoi
 }
 
 -(void) dropInspectorPinIfRequired {
-    if(self.needToDropInspectorPin) {
+    if(self.needToDropInspectorPin || self.needToDropDisturbancePin || self.needToDropPolicePin) {
         CLLocationCoordinate2D inspectorLocationCoordinate = [self.locationManager.location coordinate];
         /*TODO pin type*/
-        InspectorMapKitAnnotation *annotation = [[InspectorMapKitAnnotation alloc] initWithCoords:inspectorLocationCoordinate spotType:nil];
+        
+        NSString * spotType = nil;
+        if (self.needToDropDisturbancePin) {
+            spotType = @"DISTURBANCE";
+        } else if (self.needToDropPolicePin) {
+            spotType = @"POLICE";
+        } else {
+            spotType = @"INSPECTOR";
+        }
+        InspectorMapKitAnnotation *annotation = [[InspectorMapKitAnnotation alloc] initWithCoords:inspectorLocationCoordinate spotType:spotType];
         
         [annotation setSpotDate:[NSDate date]];
         [annotation setJustSpotted:YES];
+        [annotation setSpotType:spotType];
         [inspectorMapView addAnnotation:annotation];
         
-        [self saveInspectorWithLocationCoordinate:inspectorLocationCoordinate];
+        [self saveInspectorWithLocationCoordinate:inspectorLocationCoordinate spotType:spotType];
     }
     self.needToDropInspectorPin = NO;
+    self.needToDropPolicePin = NO;
+    self.needToDropDisturbancePin = NO;
 }
 
 
@@ -238,7 +250,15 @@ inspectorCoachMarks, showingCoachMarks, needToDropInspectorPin, zIndexOfFrontPoi
 -(IBAction)spotAnInspector:(id)sender {
     self.needToDropInspectorPin = YES;
     [self.locationManager startUpdatingLocation];
+}
 
+-(IBAction)spotAPoliceOfficer:(id)sender {
+    self.needToDropPolicePin = YES;
+    [self.locationManager startUpdatingLocation];
+}
+-(IBAction)spotADisturbance:(id)sender {
+    self.needToDropDisturbancePin = YES;
+    [self.locationManager startUpdatingLocation];
 }
 
 -(IBAction)findInspectorsButtonPressed:(id)sender {
@@ -252,6 +272,7 @@ inspectorCoachMarks, showingCoachMarks, needToDropInspectorPin, zIndexOfFrontPoi
     self.helpImages.isInspectorHelpAlreadySeen = YES;
     [self.helpImages saveHelpImageRequiredInfo];
 }
+
 
 -(void) hideInspectorHelp {
     
@@ -325,10 +346,11 @@ inspectorCoachMarks, showingCoachMarks, needToDropInspectorPin, zIndexOfFrontPoi
 }
 
 #pragma mark Parse saving
-- (void) saveInspectorWithLocationCoordinate:(CLLocationCoordinate2D)inspectorLocationCoordinate  {
+- (void) saveInspectorWithLocationCoordinate:(CLLocationCoordinate2D)inspectorLocationCoordinate spotType:(NSString*)spotType  {
     PFObject *inspectorLocation = [PFObject objectWithClassName:@"InspectorLocation"];
     [inspectorLocation setObject:[NSNumber numberWithDouble:inspectorLocationCoordinate.latitude]  forKey:@"latitude"];
     [inspectorLocation setObject:[NSNumber numberWithDouble:inspectorLocationCoordinate.longitude] forKey:@"longitude"];
+    [inspectorLocation setObject:spotType forKey:@"spotType"];
     [inspectorLocation saveInBackground];
 }
 

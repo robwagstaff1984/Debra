@@ -21,9 +21,11 @@
 @property (nonatomic, strong) IBOutlet UIImageView *inspectorCoachMarks;
 @property (nonatomic) BOOL showingCoachMarks;
 @property (nonatomic) BOOL needToDropInspectorPin;
+@property (nonatomic) BOOL needToDropPolicePin;
+@property (nonatomic) BOOL needToDropDisturbancePin;
 @property (nonatomic) float zIndexOfFrontPoi;
 
 
-- (void) saveInspectorWithLocationCoordinate:(CLLocationCoordinate2D)inspectorLocationCoordinate; 
+- (void) saveInspectorWithLocationCoordinate:(CLLocationCoordinate2D)inspectorLocationCoordinate spotType:(NSString*)spotType;
 -(IBAction)inspectorHelpTapped:(id)sender;
 @end
