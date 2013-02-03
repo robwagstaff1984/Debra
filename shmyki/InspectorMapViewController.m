@@ -216,7 +216,8 @@ inspectorCoachMarks, showingCoachMarks, needToDropInspectorPin, zIndexOfFrontPoi
 -(void) dropInspectorPinIfRequired {
     if(self.needToDropInspectorPin) {
         CLLocationCoordinate2D inspectorLocationCoordinate = [self.locationManager.location coordinate];
-        InspectorMapKitAnnotation *annotation = [[InspectorMapKitAnnotation alloc] initWithCoords:inspectorLocationCoordinate];
+        /*TODO pin type*/
+        InspectorMapKitAnnotation *annotation = [[InspectorMapKitAnnotation alloc] initWithCoords:inspectorLocationCoordinate spotType:nil];
         
         [annotation setSpotDate:[NSDate date]];
         [annotation setJustSpotted:YES];
@@ -301,8 +302,8 @@ inspectorCoachMarks, showingCoachMarks, needToDropInspectorPin, zIndexOfFrontPoi
             CLLocationCoordinate2D coordinate;
             coordinate.latitude = [[inspectorLocationObject objectForKey:@"latitude"] doubleValue];
             coordinate.longitude = [[inspectorLocationObject objectForKey:@"longitude"] doubleValue];
-            
-            InspectorMapKitAnnotation *inspectorAnnotation = [[InspectorMapKitAnnotation alloc] initWithCoords:coordinate];
+            NSString* spotType = [inspectorLocationObject objectForKey:@"spotType"];
+            InspectorMapKitAnnotation *inspectorAnnotation = [[InspectorMapKitAnnotation alloc] initWithCoords:coordinate spotType:spotType];
             [inspectorAnnotation setSpotDate: inspectorLocationObject.createdAt];
             [listOfInspectorLocations addObject:inspectorAnnotation];
         }

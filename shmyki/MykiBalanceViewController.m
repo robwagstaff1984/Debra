@@ -34,7 +34,7 @@
         [mykiAccountInformation loadAccountBalanceInformation];
         mykiLoginUrl = MYKI_LOGIN_URL;
 
-        mykiWebstiteWebView = [[UIWebView alloc] init];
+        mykiWebstiteWebView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, 320, 200)];
         mykiWebstiteWebView.delegate = self;
         
         [self loadFirstTimeLogin];
@@ -139,7 +139,7 @@
     [balanceHeaderLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:17.0f]];
     [balanceFooterLabelOne setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:13.0f]];
     [balanceFooterLabelTwo setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:13.0f]];
-    
+    [self.view addSubview:self.mykiWebstiteWebView];
 }
 
 - (void)viewDidUnload
@@ -253,6 +253,16 @@
         [self resetTimer];
         NSString *currentPage = [webView stringByEvaluatingJavaScriptFromString:@"document.body.innerHTML"];
         [self processMykiAccountBalancePageHTML:currentPage];
+        
+//        NSString* changeCardJavascript = @"alert('rob');";
+        //NSString* changeCardJavascript = @"document.getElementById('ctl00_uxContentPlaceHolder_uxCardList').selectedIndex=1;";
+      // NSString* changeCardJavascript = @"var cardDropdown = document.getElementById('ctl00_uxContentPlaceHolder_uxCardList');var numberOfCards = cardDropdown.options.length;for (var i=0; i<numberOfCards; i++){if (cardDropdown.options[i].value == \"308425073890053\"){cardDropdown.options[i].selected = true;break;}}";
+        
+        //NSString* changeCardSubmitJavascript = @"var submitButton = document.getElementById(\"ctl00_uxContentPlaceHolder_uxGo\"); submitButton.click();";
+        
+        
+        //[self.mykiWebstiteWebView stringByEvaluatingJavaScriptFromString: changeCardJavascript];
+        //[self.mykiWebstiteWebView stringByEvaluatingJavaScriptFromString: changeCardSubmitJavascript];
     }
     else {
         [self switchToErrorState];
