@@ -41,6 +41,8 @@
 		8129EAD31591DD86004D0C6F /* TableViewCellForPunchOnLogs.m in Sources */ = {isa = PBXBuildFile; fileRef = 8129EAD21591DD86004D0C6F /* TableViewCellForPunchOnLogs.m */; };
 		8129EAE0159204F9004D0C6F /* TableViewHeaderHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8129EADF159204F9004D0C6F /* TableViewHeaderHelper.m */; };
 		8129EAEB1594B844004D0C6F /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 8129EAEA1594B844004D0C6F /* MBProgressHUD.m */; };
+		813AA06D16C75A2000AEB27F /* MHPagingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 813AA06C16C75A2000AEB27F /* MHPagingScrollView.m */; };
+		813AA07116C75E1D00AEB27F /* BalanceInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 813AA07016C75E1D00AEB27F /* BalanceInfoView.m */; };
 		814B25981589E88A0067D161 /* PunchOnIssues.m in Sources */ = {isa = PBXBuildFile; fileRef = 814B25971589E88A0067D161 /* PunchOnIssues.m */; };
 		814B25AB158B461D0067D161 /* MykiBalanceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 814B25A9158B461C0067D161 /* MykiBalanceViewController.m */; };
 		814B25AC158B461D0067D161 /* MykiBalanceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 814B25AA158B461C0067D161 /* MykiBalanceViewController.xib */; };
@@ -186,6 +188,10 @@
 		8129EADF159204F9004D0C6F /* TableViewHeaderHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewHeaderHelper.m; sourceTree = "<group>"; };
 		8129EAE91594B844004D0C6F /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		8129EAEA1594B844004D0C6F /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		813AA06B16C75A2000AEB27F /* MHPagingScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHPagingScrollView.h; sourceTree = "<group>"; };
+		813AA06C16C75A2000AEB27F /* MHPagingScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHPagingScrollView.m; sourceTree = "<group>"; };
+		813AA06F16C75E1D00AEB27F /* BalanceInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BalanceInfoView.h; sourceTree = "<group>"; };
+		813AA07016C75E1D00AEB27F /* BalanceInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BalanceInfoView.m; sourceTree = "<group>"; };
 		814B25961589E88A0067D161 /* PunchOnIssues.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PunchOnIssues.h; sourceTree = "<group>"; };
 		814B25971589E88A0067D161 /* PunchOnIssues.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PunchOnIssues.m; sourceTree = "<group>"; };
 		814B25A8158B461C0067D161 /* MykiBalanceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MykiBalanceViewController.h; sourceTree = "<group>"; };
@@ -417,6 +423,8 @@
 				8129EADF159204F9004D0C6F /* TableViewHeaderHelper.m */,
 				817C21E115AD9BBF00D35D3A /* YourMykiCustomButton.h */,
 				817C21E215AD9BBF00D35D3A /* YourMykiCustomButton.m */,
+				813AA06F16C75E1D00AEB27F /* BalanceInfoView.h */,
+				813AA07016C75E1D00AEB27F /* BalanceInfoView.m */,
 			);
 			name = customViews;
 			sourceTree = "<group>";
@@ -424,6 +432,7 @@
 		8129EAE81594B809004D0C6F /* third party */ = {
 			isa = PBXGroup;
 			children = (
+				813AA06A16C75A2000AEB27F /* MHPagingScrollView */,
 				8189726815A951E60040FC23 /* HelveticaNeue.dfont */,
 				8129EAE91594B844004D0C6F /* MBProgressHUD.h */,
 				8129EAEA1594B844004D0C6F /* MBProgressHUD.m */,
@@ -431,6 +440,15 @@
 				81E9C8E11622915E000E2E0D /* Reachability.m */,
 			);
 			name = "third party";
+			sourceTree = "<group>";
+		};
+		813AA06A16C75A2000AEB27F /* MHPagingScrollView */ = {
+			isa = PBXGroup;
+			children = (
+				813AA06B16C75A2000AEB27F /* MHPagingScrollView.h */,
+				813AA06C16C75A2000AEB27F /* MHPagingScrollView.m */,
+			);
+			path = MHPagingScrollView;
 			sourceTree = "<group>";
 		};
 		815C19BB157F63AC0019419C = {
@@ -784,6 +802,8 @@
 				81296ADD161554C0005B65D8 /* SA_OAuthTwitterController.m in Sources */,
 				81296ADE161554C0005B65D8 /* SA_OAuthTwitterEngine.m in Sources */,
 				81E9C8E21622915E000E2E0D /* Reachability.m in Sources */,
+				813AA06D16C75A2000AEB27F /* MHPagingScrollView.m in Sources */,
+				813AA07116C75E1D00AEB27F /* BalanceInfoView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

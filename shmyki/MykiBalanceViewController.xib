@@ -15,6 +15,7 @@
 			<string>IBUIButton</string>
 			<string>IBUIImageView</string>
 			<string>IBUILabel</string>
+			<string>IBUIPageControl</string>
 			<string>IBUIScrollView</string>
 			<string>IBUITableView</string>
 			<string>IBUITextView</string>
@@ -302,7 +303,7 @@
 										<string key="NSFrame">{{20, 179}, {280, 25}}</string>
 										<reference key="NSSuperview" ref="766586467"/>
 										<reference key="NSWindow"/>
-										<reference key="NSNextKeyView" ref="88977363"/>
+										<reference key="NSNextKeyView" ref="974606870"/>
 										<string key="NSReuseIdentifierKey">_NS:9</string>
 										<bool key="IBUIOpaque">NO</bool>
 										<bool key="IBUIClipsSubviews">YES</bool>
@@ -508,7 +509,6 @@
 										<string key="NSFrame">{{20, 91}, {274, 40}}</string>
 										<reference key="NSSuperview" ref="804986839"/>
 										<reference key="NSWindow"/>
-										<reference key="NSNextKeyView"/>
 										<string key="NSReuseIdentifierKey">_NS:9</string>
 										<bool key="IBUIOpaque">NO</bool>
 										<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -545,6 +545,33 @@
 									<bytes key="NSRGB">MC45NzI1NDkwODA4IDAuOTcyNTQ5MDgwOCAwLjk3MjU0OTA4MDgAA</bytes>
 								</object>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+							</object>
+							<object class="IBUIScrollView" id="974606870">
+								<reference key="NSNextResponder" ref="939612035"/>
+								<int key="NSvFlags">268</int>
+								<string key="NSFrame">{{20, 50}, {280, 100}}</string>
+								<reference key="NSSuperview" ref="939612035"/>
+								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView" ref="920764271"/>
+								<string key="NSReuseIdentifierKey">_NS:9</string>
+								<bool key="IBUIClipsSubviews">YES</bool>
+								<bool key="IBUIMultipleTouchEnabled">YES</bool>
+								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+							</object>
+							<object class="IBUIPageControl" id="920764271">
+								<reference key="NSNextResponder" ref="939612035"/>
+								<int key="NSvFlags">1316</int>
+								<object class="NSPSMatrix" key="NSFrameMatrix"/>
+								<string key="NSFrame">{{141, 144}, {38, 36}}</string>
+								<reference key="NSSuperview" ref="939612035"/>
+								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView" ref="88977363"/>
+								<string key="NSReuseIdentifierKey">_NS:9</string>
+								<bool key="IBUIOpaque">NO</bool>
+								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+								<int key="IBUIContentHorizontalAlignment">0</int>
+								<int key="IBUIContentVerticalAlignment">0</int>
+								<int key="IBUINumberOfPages">3</int>
 							</object>
 						</array>
 						<string key="NSFrameSize">{320, 432}</string>
@@ -642,22 +669,6 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">balanceMykiPassExpiryLabel</string>
-						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="696693541"/>
-					</object>
-					<int key="connectionID">66</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">balanceMykiMoneyAmountLabel</string>
-						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="50436484"/>
-					</object>
-					<int key="connectionID">68</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">balanceFooterLabelOne</string>
 						<reference key="source" ref="372490531"/>
 						<reference key="destination" ref="951513701"/>
@@ -679,22 +690,6 @@
 						<reference key="destination" ref="75499443"/>
 					</object>
 					<int key="connectionID">47</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">balanceMykiPassAdditionalLabel</string>
-						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="643384376"/>
-					</object>
-					<int key="connectionID">75</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">balanceMykiMoneyAdditionalLabel</string>
-						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="1044493923"/>
-					</object>
-					<int key="connectionID">76</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
@@ -746,6 +741,22 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">pageControl</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="920764271"/>
+					</object>
+					<int key="connectionID">101</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">pagingScrollView</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="974606870"/>
+					</object>
+					<int key="connectionID">103</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">dataSource</string>
 						<reference key="source" ref="75499443"/>
 						<reference key="destination" ref="372490531"/>
@@ -777,6 +788,31 @@
 						<int key="IBEventType">7</int>
 					</object>
 					<int key="connectionID">90</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">pageTurn</string>
+						<reference key="source" ref="920764271"/>
+						<reference key="destination" ref="372490531"/>
+						<int key="IBEventType">13</int>
+					</object>
+					<int key="connectionID">102</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">delegate</string>
+						<reference key="source" ref="974606870"/>
+						<reference key="destination" ref="372490531"/>
+					</object>
+					<int key="connectionID">104</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">pagingDelegate</string>
+						<reference key="source" ref="974606870"/>
+						<reference key="destination" ref="372490531"/>
+					</object>
+					<int key="connectionID">105</int>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -814,6 +850,8 @@
 							<reference ref="766586467"/>
 							<reference ref="804986839"/>
 							<reference ref="501290218"/>
+							<reference ref="920764271"/>
+							<reference ref="974606870"/>
 						</array>
 						<reference key="parent" ref="191373211"/>
 					</object>
@@ -949,6 +987,16 @@
 						<reference key="object" ref="225798121"/>
 						<reference key="parent" ref="88977363"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">98</int>
+						<reference key="object" ref="920764271"/>
+						<reference key="parent" ref="939612035"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">99</int>
+						<reference key="object" ref="974606870"/>
+						<reference key="parent" ref="939612035"/>
+					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -963,6 +1011,7 @@
 				<string key="44.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="48.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="50.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<string key="53.CustomClassName">UIPaging</string>
 				<string key="53.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="56.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="57.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -980,38 +1029,59 @@
 				<string key="88.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<real value="0.0" key="88.IBUIButtonInspectorSelectedStateConfigurationMetadataKey"/>
 				<string key="91.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<string key="98.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<string key="99.CustomClassName">MHPagingScrollView</string>
+				<string key="99.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 			</dictionary>
 			<dictionary class="NSMutableDictionary" key="unlocalizedProperties"/>
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">97</int>
+			<int key="maxID">105</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
 				<object class="IBPartialClassDescription">
-					<string key="className">MykiBalanceViewController</string>
-					<string key="superclassName">UIViewController</string>
-					<object class="NSMutableDictionary" key="actions">
-						<string key="NS.key.0">tryAgainButtonTapped:</string>
+					<string key="className">MHPagingScrollView</string>
+					<string key="superclassName">UIScrollView</string>
+					<object class="NSMutableDictionary" key="outlets">
+						<string key="NS.key.0">pagingDelegate</string>
 						<string key="NS.object.0">id</string>
 					</object>
-					<object class="NSMutableDictionary" key="actionInfosByName">
-						<string key="NS.key.0">tryAgainButtonTapped:</string>
-						<object class="IBActionInfo" key="NS.object.0">
-							<string key="name">tryAgainButtonTapped:</string>
+					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<string key="NS.key.0">pagingDelegate</string>
+						<object class="IBToOneOutletInfo" key="NS.object.0">
+							<string key="name">pagingDelegate</string>
 							<string key="candidateClassName">id</string>
 						</object>
 					</object>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/MHPagingScrollView.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">MykiBalanceViewController</string>
+					<string key="superclassName">UIViewController</string>
+					<dictionary class="NSMutableDictionary" key="actions">
+						<string key="pageTurn">id</string>
+						<string key="tryAgainButtonTapped:">id</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="actionInfosByName">
+						<object class="IBActionInfo" key="pageTurn">
+							<string key="name">pageTurn</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="tryAgainButtonTapped:">
+							<string key="name">tryAgainButtonTapped:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="balanceDisplayView">UIView</string>
 						<string key="balanceFooterLabelOne">UILabel</string>
 						<string key="balanceFooterLabelTwo">UILabel</string>
 						<string key="balanceHeaderLabel">UILabel</string>
-						<string key="balanceMykiMoneyAdditionalLabel">UILabel</string>
-						<string key="balanceMykiMoneyAmountLabel">UILabel</string>
-						<string key="balanceMykiPassAdditionalLabel">UILabel</string>
-						<string key="balanceMykiPassExpiryLabel">UILabel</string>
 						<string key="balanceSeperatorImage">UIImageView</string>
 						<string key="bottomView">UIView</string>
 						<string key="errorTextLabel">UILabel</string>
@@ -1021,7 +1091,9 @@
 						<string key="loginScrollView">UIScrollView</string>
 						<string key="loginTableView">UITableView</string>
 						<string key="mykiWebstiteWebView">UIWebView</string>
+						<string key="pageControl">UIPageControl</string>
 						<string key="pageScrollView">UIScrollView</string>
+						<string key="pagingScrollView">MHPagingScrollView</string>
 						<string key="refreshButton">UIButton</string>
 						<string key="topView">UIView</string>
 					</dictionary>
@@ -1040,22 +1112,6 @@
 						</object>
 						<object class="IBToOneOutletInfo" key="balanceHeaderLabel">
 							<string key="name">balanceHeaderLabel</string>
-							<string key="candidateClassName">UILabel</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="balanceMykiMoneyAdditionalLabel">
-							<string key="name">balanceMykiMoneyAdditionalLabel</string>
-							<string key="candidateClassName">UILabel</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="balanceMykiMoneyAmountLabel">
-							<string key="name">balanceMykiMoneyAmountLabel</string>
-							<string key="candidateClassName">UILabel</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="balanceMykiPassAdditionalLabel">
-							<string key="name">balanceMykiPassAdditionalLabel</string>
-							<string key="candidateClassName">UILabel</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="balanceMykiPassExpiryLabel">
-							<string key="name">balanceMykiPassExpiryLabel</string>
 							<string key="candidateClassName">UILabel</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="balanceSeperatorImage">
@@ -1094,9 +1150,17 @@
 							<string key="name">mykiWebstiteWebView</string>
 							<string key="candidateClassName">UIWebView</string>
 						</object>
+						<object class="IBToOneOutletInfo" key="pageControl">
+							<string key="name">pageControl</string>
+							<string key="candidateClassName">UIPageControl</string>
+						</object>
 						<object class="IBToOneOutletInfo" key="pageScrollView">
 							<string key="name">pageScrollView</string>
 							<string key="candidateClassName">UIScrollView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="pagingScrollView">
+							<string key="name">pagingScrollView</string>
+							<string key="candidateClassName">MHPagingScrollView</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="refreshButton">
 							<string key="name">refreshButton</string>

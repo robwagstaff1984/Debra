@@ -14,14 +14,15 @@
 #import "GANTracker.h"
 #import "Reachability.h"
 #import "DateDisplayHelper.h"
+#import "BalanceInfoView.h"
 
 @implementation MykiBalanceViewController
 
 @synthesize mykiLoginUrl, mykiWebstiteWebView, mykiAccountInformation;
 @synthesize topView, bottomView, loginTableView, loginScrollView, pageScrollView, balanceDisplayView, errorView, errorTextView, errorTextLabel, isInternetDown;
 @synthesize usernameTextField, passwordTextField;
-@synthesize balanceHeaderLabel, balanceMykiPassExpiryLabel, balanceMykiPassAdditionalLabel, balanceMykiMoneyAmountLabel, balanceMykiMoneyAdditionalLabel, balanceFooterLabelOne, balanceFooterLabelTwo, balanceSeperatorImage;
-@synthesize HUD, timer, refreshButton, isUserLoginAttempted, isProblemWithMykiCredentials, invalidCredentialsLabel, dateDisplayHelper;
+@synthesize balanceHeaderLabel, balanceFooterLabelOne, balanceFooterLabelTwo, balanceSeperatorImage;
+@synthesize HUD, timer, refreshButton, isUserLoginAttempted, isProblemWithMykiCredentials, invalidCredentialsLabel, dateDisplayHelper, pageControl, pagingScrollView;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -123,23 +124,17 @@
     self.errorView.layer.shadowOpacity = .21f;
     self.errorView.layer.shadowRadius = 2.0f;
     
-    [balanceMykiPassExpiryLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:32.0f]];
-//    [balanceMykiPassExpiryLabel setShadowColor:[UIColor darkGrayColor]];
-     //[balanceMykiPassExpiryLabel setShadowColor:[UIColor colorWithHue:.586111 saturation:.130555 brightness:.197222 alpha:1]];
-    [balanceMykiPassExpiryLabel setShadowColor:[UIColor colorWithHue:.587222 saturation:.1313888 brightness:.198333 alpha:1]];
-    
-    [balanceMykiPassExpiryLabel setShadowOffset:CGSizeMake(0, 1.0)];
-    
-    [balanceMykiMoneyAmountLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:32.0f]];
-    [balanceMykiMoneyAmountLabel setShadowColor:[UIColor colorWithHue:.587222 saturation:.1313888 brightness:.198333 alpha:1]];
-    [balanceMykiMoneyAmountLabel setShadowOffset:CGSizeMake(0, 1.0)];
-    
-    [balanceMykiMoneyAdditionalLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:13.0f]];
-    [balanceMykiPassAdditionalLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:13.0f]];
     [balanceHeaderLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:17.0f]];
     [balanceFooterLabelOne setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:13.0f]];
     [balanceFooterLabelTwo setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:13.0f]];
   //  [self.view addSubview:self.mykiWebstiteWebView];
+    
+    self.numPages = 3;
+    self.pagingScrollView.previewInsets = UIEdgeInsetsMake(0.0f, 50.0f, 0.0f, 50.0f);
+	[self.pagingScrollView reloadPages];
+    
+	self.pageControl.currentPage = 0;
+	self.pageControl.numberOfPages = _numPages;
 }
 
 - (void)viewDidUnload
@@ -289,10 +284,12 @@
 
 -(void) showMykiAccountInformation {
 
-    [balanceMykiPassExpiryLabel setText: [mykiAccountInformation transformMykiPassToMykiPassLabel]];
-    [balanceMykiMoneyAmountLabel setText: [mykiAccountInformation transformMykiMoneyToMykiMoneyLabel]];
-    [balanceMykiMoneyAdditionalLabel setText:[mykiAccountInformation mykiMoneyTopUpInProgress]];
-    [balanceMykiPassAdditionalLabel setText:[mykiAccountInformation currentMykiPassNotYetActive]];
+    [self.pagingScrollView reloadPages];
+    
+//    [balanceMykiPassExpiryLabel setText: [mykiAccountInformation transformMykiPassToMykiPassLabel]];
+//    [balanceMykiMoneyAmountLabel setText: [mykiAccountInformation transformMykiMoneyToMykiMoneyLabel]];
+//    [balanceMykiMoneyAdditionalLabel setText:[mykiAccountInformation mykiMoneyTopUpInProgress]];
+//    [balanceMykiPassAdditionalLabel setText:[mykiAccountInformation currentMykiPassNotYetActive]];
     
     [balanceHeaderLabel setText: [mykiAccountInformation transformAccountInfoToHeaderLabel]];
     [balanceFooterLabelOne setText: [mykiAccountInformation transformAccountInfoToBottomLabelOne]];
@@ -582,4 +579,50 @@
     
     return !(networkStatus == NotReachable) && !(hostStatus == NotReachable);
 }
+
+
+
+#pragma mark - UIScrollViewDelegate
+
+- (void)scrollViewDidScroll:(UIScrollView *)theScrollView
+{
+	self.pageControl.currentPage = [self.pagingScrollView indexOfSelectedPage];
+	[self.pagingScrollView scrollViewDidScroll];
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)theScrollView
+{
+//	if ([self.pagingScrollView indexOfSelectedPage] == self.numPages - 1)
+//	{
+//		self.numPages++;
+//		[self.pagingScrollView reloadPages];
+//		self.pageControl.numberOfPages = self.numPages;
+//	}
+}
+
+#pragma mark - MHPagingScrollViewDelegate
+
+- (NSUInteger)numberOfPagesInPagingScrollView:(MHPagingScrollView *)pagingScrollView
+{
+	return self.numPages;
+}
+
+- (UIView *)pagingScrollView:(MHPagingScrollView *)thePagingScrollView pageForIndex:(NSUInteger)index
+{
+    BalanceInfoView * balancePage = [[BalanceInfoView alloc] init];
+                                     
+    balancePage.frame = CGRectMake(20, 50, 280, 100);
+    if (index == 0 ) {
+        balancePage.backgroundColor = [UIColor whiteColor];
+    } else {
+        balancePage.backgroundColor = [UIColor greenColor];
+    }
+    return balancePage;
+}
+
+- (IBAction)pageTurn {
+    
+}
+
+
 @end

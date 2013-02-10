@@ -9,10 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "MykiAccountInformation.h"
 #import "MBProgressHUD.h"
+#import "MHPagingScrollView.h"
 @class DateDisplayHelper;
 @class Reachability;
 
-@interface MykiBalanceViewController : UIViewController <UIWebViewDelegate, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, MBProgressHUDDelegate, UIGestureRecognizerDelegate>
+@interface MykiBalanceViewController : UIViewController <UIWebViewDelegate, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, MBProgressHUDDelegate, UIGestureRecognizerDelegate, MHPagingScrollViewDelegate, UIScrollViewDelegate>
 
 
 @property (nonatomic, strong) NSString *mykiLoginUrl;
@@ -34,10 +35,6 @@
 @property (nonatomic, strong) IBOutlet UITextView *errorTextView;
 
 @property (nonatomic, strong) IBOutlet UILabel* balanceHeaderLabel;
-@property (nonatomic, strong) IBOutlet UILabel* balanceMykiPassExpiryLabel;
-@property (nonatomic, strong) IBOutlet UILabel* balanceMykiPassAdditionalLabel;
-@property (nonatomic, strong) IBOutlet UILabel* balanceMykiMoneyAmountLabel;
-@property (nonatomic, strong) IBOutlet UILabel* balanceMykiMoneyAdditionalLabel;
 @property (nonatomic, strong) IBOutlet UILabel* balanceFooterLabelOne;
 @property (nonatomic, strong) IBOutlet UILabel* balanceFooterLabelTwo;
 @property (nonatomic, strong) IBOutlet UIImageView* balanceSeperatorImage;
@@ -49,6 +46,11 @@
 @property (nonatomic, strong) NSTimer *timer;
 @property (nonatomic) BOOL isInternetDown;
 @property (nonatomic) BOOL isRequestingSecondCard;
+@property (nonatomic, strong) IBOutlet MHPagingScrollView *pagingScrollView;
+@property (nonatomic, strong) IBOutlet UIPageControl *pageControl;
+@property (nonatomic) int numPages;
+
+- (IBAction)pageTurn;
 
 @property (nonatomic, strong) DateDisplayHelper *dateDisplayHelper;
 
