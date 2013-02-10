@@ -48,6 +48,7 @@
 @property (nonatomic, strong) MBProgressHUD *HUD;
 @property (nonatomic, strong) NSTimer *timer;
 @property (nonatomic) BOOL isInternetDown;
+@property (nonatomic) BOOL isRequestingSecondCard;
 
 @property (nonatomic, strong) DateDisplayHelper *dateDisplayHelper;
 
