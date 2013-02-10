@@ -33,23 +33,37 @@
 
 -(UIImage*) getPoiImageForTime {
     
-    if([self.spotType isEqualToString:@"DISTURBANCE"]) {
-        return [UIImage imageNamed:@"/images/ButtonBusOn"];
-    } else if([self.spotType isEqualToString:@"POLICE"]){
-        return [UIImage imageNamed:@"/images/ButtonTramOn"];
-    } else {
-        
-        NSTimeInterval secondsBetween = [[NSDate date] timeIntervalSinceDate:spotDate];
-        int seconds = secondsBetween / 1;
-        
-        if (seconds < SECONDS_FOR_RED_POI) {
-            return [UIImage imageNamed:@"/images/MapPoiRed"];
-        } else if (seconds < SECONDS_FOR_AMBER_POI) {
-            return [UIImage imageNamed:@"/images/MapPoiOrange"];
+    
+    
+    NSTimeInterval secondsBetween = [[NSDate date] timeIntervalSinceDate:spotDate];
+    int seconds = secondsBetween / 1;
+    
+    if (seconds < SECONDS_FOR_RED_POI) {
+        if([self.spotType isEqualToString:@"DISTURBANCE"]) {
+            return [UIImage imageNamed:@"/images/PoiRedDisturb"];
+        } else if([self.spotType isEqualToString:@"POLICE"]){
+            return [UIImage imageNamed:@"/images/PoiRedPolice"];
         } else {
-            return [UIImage imageNamed:@"/images/MapPoiGrey"];
+            return [UIImage imageNamed:@"/images/PoiRedInspector"];
+        }
+    } else if (seconds < SECONDS_FOR_AMBER_POI) {
+        if([self.spotType isEqualToString:@"DISTURBANCE"]) {
+            return [UIImage imageNamed:@"/images/PoiOrangeDisturb"];
+        } else if([self.spotType isEqualToString:@"POLICE"]){
+            return [UIImage imageNamed:@"/images/PoiOrangePolice"];
+        } else {
+            return [UIImage imageNamed:@"/images/PoiOrangeInspector"];
+        }
+    } else {
+        if([self.spotType isEqualToString:@"DISTURBANCE"]) {
+            return [UIImage imageNamed:@"/images/PoiBlackDisturb"];
+        } else if([self.spotType isEqualToString:@"POLICE"]){
+            return [UIImage imageNamed:@"/images/PoiBlackPolice"];
+        } else {
+            return [UIImage imageNamed:@"/images/PoiBlackInspector"];
         }
     }
+    
 }
 
 @end
