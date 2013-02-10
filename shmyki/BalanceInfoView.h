@@ -15,4 +15,8 @@
 @property (nonatomic, strong) UILabel* balanceMykiMoneyAmountLabel;
 @property (nonatomic, strong) UILabel* balanceMykiMoneyAdditionalLabel;
 
+@property (nonatomic, strong) UIImageView* balanceSeperatorImage;
+
+-(void) drawBalanceViewGradientWithCornersWithActiveState:(BOOL)isActiveState;
+
 @end

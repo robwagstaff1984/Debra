@@ -19,10 +19,10 @@
 @implementation MykiBalanceViewController
 
 @synthesize mykiLoginUrl, mykiWebstiteWebView, mykiAccountInformation;
-@synthesize topView, bottomView, loginTableView, loginScrollView, pageScrollView, balanceDisplayView, errorView, errorTextView, errorTextLabel, isInternetDown;
+@synthesize topView, bottomView, loginTableView, loginScrollView, pageScrollView, errorView, errorTextView, errorTextLabel, isInternetDown;
 @synthesize usernameTextField, passwordTextField;
-@synthesize balanceHeaderLabel, balanceFooterLabelOne, balanceFooterLabelTwo, balanceSeperatorImage;
 @synthesize HUD, timer, refreshButton, isUserLoginAttempted, isProblemWithMykiCredentials, invalidCredentialsLabel, dateDisplayHelper, pageControl, pagingScrollView;
+@synthesize balanceFooterLabelOne,balanceFooterLabelTwo, balanceHeaderLabel;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -100,7 +100,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(scrollViewToPositionForNotification:) name:UIKeyboardWillHideNotification object:nil];
     
     [self drawBottomViewGradientWithCorners];
-    [self drawBalanceViewGradientWithCornersWithActiveState:NO];
+   //TODO [self drawBalanceViewGradientWithCornersWithActiveState:NO];
     [self showMykiAccountInformation];
     
     self.topView.layer.shadowColor = [[UIColor blackColor] CGColor];
@@ -124,13 +124,14 @@
     self.errorView.layer.shadowOpacity = .21f;
     self.errorView.layer.shadowRadius = 2.0f;
     
-    [balanceHeaderLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:17.0f]];
-    [balanceFooterLabelOne setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:13.0f]];
-    [balanceFooterLabelTwo setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:13.0f]];
+    [self.balanceFooterLabelOne setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:13.0f]];
+    [self.balanceFooterLabelTwo setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:13.0f]];
+    [self.balanceHeaderLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:17.0f]];
+    
   //  [self.view addSubview:self.mykiWebstiteWebView];
     
     self.numPages = 3;
-    self.pagingScrollView.previewInsets = UIEdgeInsetsMake(0.0f, 50.0f, 0.0f, 50.0f);
+    self.pagingScrollView.previewInsets = UIEdgeInsetsMake(0.0f, 0.0f, 0.0f, 0.0f);
 	[self.pagingScrollView reloadPages];
     
 	self.pageControl.currentPage = 0;
@@ -290,10 +291,10 @@
 //    [balanceMykiMoneyAmountLabel setText: [mykiAccountInformation transformMykiMoneyToMykiMoneyLabel]];
 //    [balanceMykiMoneyAdditionalLabel setText:[mykiAccountInformation mykiMoneyTopUpInProgress]];
 //    [balanceMykiPassAdditionalLabel setText:[mykiAccountInformation currentMykiPassNotYetActive]];
-    
-    [balanceHeaderLabel setText: [mykiAccountInformation transformAccountInfoToHeaderLabel]];
-    [balanceFooterLabelOne setText: [mykiAccountInformation transformAccountInfoToBottomLabelOne]];
-    [balanceFooterLabelTwo setText: [mykiAccountInformation transformAccountInfoToBottomLabelTwo]];
+//    
+//    [balanceHeaderLabel setText: [mykiAccountInformation transformAccountInfoToHeaderLabel]];
+//    [balanceFooterLabelOne setText: [mykiAccountInformation transformAccountInfoToBottomLabelOne]];
+//    [balanceFooterLabelTwo setText: [mykiAccountInformation transformAccountInfoToBottomLabelTwo]];
 }
 
 #pragma mark UITableViewDataSource
@@ -387,31 +388,6 @@
 	loginTableView.layer.cornerRadius = 8;
 }
 
-//CGContextDrawLinearGradient
--(void) drawBalanceViewGradientWithCornersWithActiveState:(BOOL)isActiveState {
-    CAGradientLayer *gradient = [CAGradientLayer layer];
-    gradient.frame = balanceDisplayView.bounds;
-    UIColor *startColour;
-    UIColor *endColour;
-    if(isActiveState) {
-        startColour = [UIColor colorWithHue:0.5833 saturation:0.50 brightness:0.62 alpha:1.0];
-        endColour = [UIColor colorWithHue:0.5833 saturation:0.35 brightness:0.88 alpha:1.0];
-    } else {
-        startColour = [UIColor colorWithHue:0.0 saturation:0.00 brightness:0.45 alpha:1.0];
-        endColour = [UIColor colorWithHue:0.0 saturation:0.00 brightness:0.70 alpha:1.0];
-    }
-    gradient.colors = [NSArray arrayWithObjects:(id)[startColour CGColor], (id)[endColour CGColor], nil];
-    balanceDisplayView.layer.cornerRadius = 10;
-    gradient.cornerRadius = 10;
-    
-    CALayer *currentGradient = [balanceDisplayView.layer.sublayers objectAtIndex:0];
-    if(currentGradient.position.x != 74) {
-        [balanceDisplayView.layer replaceSublayer:[balanceDisplayView.layer.sublayers objectAtIndex:0] with:gradient];
-    } else {
-        [balanceDisplayView.layer insertSublayer:gradient atIndex:0];
-    }
-}
-
 #pragma mark -
 #pragma mark MBProgressHUDDelegate methods
 
@@ -451,10 +427,8 @@
     [passwordTextField resignFirstResponder];
     self.bottomView.frame = CGRectMake(0, 705, 320, 205);
     self.errorView.frame = CGRectMake(0, 705, 320, 150);
-    [self drawBalanceViewGradientWithCornersWithActiveState:YES];
-    self.balanceSeperatorImage.image = [UIImage imageNamed:@"images/BalanceLine.png"];
+   //TODO [self drawBalanceViewGradientWithCornersWithActiveState:YES];
     [UIView commitAnimations];
-    
     self.navigationItem.rightBarButtonItem = [YourMykiCustomButton createYourMykiBarButtonItemWithText:@"Edit" withTarget:self withAction:@selector(switchToLoginState)];
     
     [self updateRefreshButton];
@@ -467,8 +441,7 @@
     [self dismissKeyboard];
     self.bottomView.frame = CGRectMake(0, 224, 320, 205);
     self.errorView.frame = CGRectMake(0, 705, 320, 150);
-    [self drawBalanceViewGradientWithCornersWithActiveState:NO];
-    self.balanceSeperatorImage.image = [UIImage imageNamed:@"images/BalanceLineBlk.png"];
+  //TODO [self drawBalanceViewGradientWithCornersWithActiveState:NO];
     [UIView commitAnimations];
     
     if (self.isUserLoginAttempted) {
@@ -486,9 +459,7 @@
     [UIView setAnimationDuration:.4];
     self.bottomView.frame = CGRectMake(0, 705, 320, 205);
     self.errorView.frame = CGRectMake(0, 705, 320, 150);
-    [self drawBalanceViewGradientWithCornersWithActiveState:NO];
-    self.balanceSeperatorImage.image = [UIImage imageNamed:@"images/BalanceLineBlk.png"];
-    //self.navigationItem.leftBarButtonItem = nil;
+    //TODO[self drawBalanceViewGradientWithCornersWithActiveState:NO];
     [UIView commitAnimations];
 }
 
@@ -510,8 +481,7 @@
         [UIView setAnimationDuration:.4];
         self.bottomView.frame = CGRectMake(0, 705, 320, 205);
         self.errorView.frame = CGRectMake(0, 224, 320, 150);
-        [self drawBalanceViewGradientWithCornersWithActiveState:NO];
-        self.balanceSeperatorImage.image = [UIImage imageNamed:@"images/BalanceLineBlk.png"];
+       //TODO [self drawBalanceViewGradientWithCornersWithActiveState:NO];
         [UIView commitAnimations];
         //  self.navigationItem.leftBarButtonItem = self.navigationItem.leftBarButtonItem = [YourMykiCustomButton createYourMykiBarButtonItemWithText:@"Cancel" withTarget:self withAction:@selector(switchToSuccessState)];
         self.navigationItem.rightBarButtonItem = [YourMykiCustomButton createYourMykiBarButtonItemWithText:@"Edit" withTarget:self withAction:@selector(switchToLoginState)];
@@ -609,15 +579,12 @@
 
 - (UIView *)pagingScrollView:(MHPagingScrollView *)thePagingScrollView pageForIndex:(NSUInteger)index
 {
-    BalanceInfoView * balancePage = [[BalanceInfoView alloc] init];
+    BalanceInfoView * balanceInfoView = [[BalanceInfoView alloc] init];
                                      
-    balancePage.frame = CGRectMake(20, 50, 280, 100);
-    if (index == 0 ) {
-        balancePage.backgroundColor = [UIColor whiteColor];
-    } else {
-        balancePage.backgroundColor = [UIColor greenColor];
-    }
-    return balancePage;
+    balanceInfoView.frame = CGRectMake(20, 50, 280, 100);
+    [balanceInfoView drawBalanceViewGradientWithCornersWithActiveState:YES];
+    
+    return balanceInfoView;
 }
 
 - (IBAction)pageTurn {

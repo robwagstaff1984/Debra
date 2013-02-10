@@ -29,15 +29,13 @@
 @property (nonatomic, strong) UITextField *usernameTextField;
 @property (nonatomic, strong) UITextField *passwordTextField;
 @property (nonatomic, strong) IBOutlet UIScrollView *pageScrollView;
-@property (nonatomic, strong) IBOutlet UIView *balanceDisplayView;
+
+@property (nonatomic, strong) UILabel* balanceFooterLabelOne;
+@property (nonatomic, strong) UILabel* balanceFooterLabelTwo;
+@property (nonatomic, strong) UILabel* balanceHeaderLabel;
 
 @property (nonatomic, strong) IBOutlet UILabel *errorTextLabel;
 @property (nonatomic, strong) IBOutlet UITextView *errorTextView;
-
-@property (nonatomic, strong) IBOutlet UILabel* balanceHeaderLabel;
-@property (nonatomic, strong) IBOutlet UILabel* balanceFooterLabelOne;
-@property (nonatomic, strong) IBOutlet UILabel* balanceFooterLabelTwo;
-@property (nonatomic, strong) IBOutlet UIImageView* balanceSeperatorImage;
 
 @property (nonatomic, strong) IBOutlet UIButton* refreshButton;
 @property (nonatomic, strong) IBOutlet UILabel* invalidCredentialsLabel;
