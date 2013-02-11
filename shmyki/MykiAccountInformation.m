@@ -8,15 +8,23 @@
 
 #import "MykiAccountInformation.h"
 #import "ShmykiContstants.h"
+#import "MykiCardInformation.h"
 
 @implementation MykiAccountInformation
 
-@synthesize cardHolder, cardType, cardExpiry, cardStatus, currentMykiMoneyBalance, mykiMoneyTopUpInProgress,totalMykiMoneyBalance, currentMykiPassActive,currentMykiPassNotYetActive, lastMykiTransactionDate, mykiUsername, mykiPassword, lastUpdatedDate;
+- (id)init
+{
+    self = [super init];
+    if (self) {
+        self.mykiCards = [[NSMutableArray alloc] init];
+    }
+    return self;
+}
 
 -(void) saveAccountInformation {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];    
-    [defaults setObject:mykiUsername forKey:@"mykiUsername"];
-    [defaults setObject:mykiPassword forKey:@"mykiPassword"];
+    [defaults setObject:self.mykiUsername forKey:@"mykiUsername"];
+    [defaults setObject:self.mykiPassword forKey:@"mykiPassword"];
     
     [defaults synchronize];
 }
@@ -31,66 +39,81 @@
 }
 
 -(void) saveAccountBalanceInformation {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];    
-    [defaults setObject:cardHolder forKey:@"cardHolder"];
-    [defaults setObject:cardType forKey:@"cardType"];
-    [defaults setObject:cardExpiry forKey:@"cardExpiry"];
-    [defaults setObject:cardStatus forKey:@"cardStatus"];
-    [defaults setObject:currentMykiMoneyBalance forKey:@"currentMykiMoneyBalance"];
-    [defaults setObject:mykiMoneyTopUpInProgress forKey:@"mykiMoneyTopUpInProgress"];
-    [defaults setObject:currentMykiPassActive forKey:@"currentMykiPassActive"];
-    [defaults setObject:currentMykiPassNotYetActive forKey:@"currentMykiPassNotYetActive"];
-    [defaults setObject:lastMykiTransactionDate forKey:@"lastMykiTransactionDate"];
-    [defaults setObject:lastUpdatedDate forKey:@"lastUpdatedDate"];
-    
-    [defaults synchronize];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 
+    int cardNumber = 0;
+    for (MykiCardInformation* mykiCard in self.mykiCards) {
+        [defaults setObject:mykiCard.cardHolder forKey:[NSString stringWithFormat:@"cardHolder%d", cardNumber]];
+        [defaults setObject:mykiCard.cardType forKey:[NSString stringWithFormat:@"cardType%d", cardNumber]];
+        [defaults setObject:mykiCard.cardExpiry forKey:[NSString stringWithFormat:@"cardExpiry%d", cardNumber]];
+        [defaults setObject:mykiCard.cardStatus forKey:[NSString stringWithFormat:@"cardStatus%d", cardNumber]];
+        [defaults setObject:mykiCard.currentMykiMoneyBalance forKey:[NSString stringWithFormat:@"currentMykiMoneyBalance%d", cardNumber]];
+        [defaults setObject:mykiCard.mykiMoneyTopUpInProgress forKey:[NSString stringWithFormat:@"mykiMoneyTopUpInProgress%d", cardNumber]];
+        [defaults setObject:mykiCard.currentMykiPassActive forKey:[NSString stringWithFormat:@"currentMykiPassActive%d", cardNumber]];
+        [defaults setObject:mykiCard.currentMykiPassNotYetActive forKey:[NSString stringWithFormat:@"currentMykiPassNotYetActive%d", cardNumber]];
+        [defaults setObject:mykiCard.lastMykiTransactionDate forKey:[NSString stringWithFormat:@"lastMykiTransactionDate%d", cardNumber]];
+        
+        cardNumber++;
+    }
+    [defaults setObject:self.lastUpdatedDate forKey:@"lastUpdatedDate%d"];
+    [defaults synchronize];
 }
 
 -(void) loadAccountBalanceInformation {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
-    NSString *storedCardHolder = [defaults objectForKey:@"cardHolder"];
-    NSString *storedCardType = [defaults objectForKey:@"cardType"];
-    NSString *storedCardExpiry = [defaults objectForKey:@"cardExpiry"];
-    NSString *storedCardStatus = [defaults objectForKey:@"cardStatus"];
-    NSString *storedCurrentMykiMoneyBalance = [defaults objectForKey:@"currentMykiMoneyBalance"];
-    NSString *storedMykiMoneyTopUpInProgress = [defaults objectForKey:@"mykiMoneyTopUpInProgress"];
-    NSString *storedCurrentMykiPassActive = [defaults objectForKey:@"currentMykiPassActive"];
-    NSString *storedCurrentMykiPassNotYetActive = [defaults objectForKey:@"currentMykiPassNotYetActive"];
-    NSString *storedLastMykiTransactionDate = [defaults objectForKey:@"lastMykiTransactionDate"];
-    NSDate *storedLastUpdatedDate = [defaults objectForKey:@"lastUpdatedDate"];
+    BOOL moreCardsAvailable = YES;
+    int cardNumber = 0;
+    while (moreCardsAvailable) {
+        NSString *storedCardHolder = [defaults objectForKey:[NSString stringWithFormat:@"cardHolder%d", cardNumber]];
+        NSString *storedCardType = [defaults objectForKey:[NSString stringWithFormat:@"cardType%d", cardNumber]];
+        NSString *storedCardExpiry = [defaults objectForKey:[NSString stringWithFormat:@"cardExpiry%d", cardNumber]];
+        NSString *storedCardStatus = [defaults objectForKey:[NSString stringWithFormat:@"cardStatus%d", cardNumber]];
+        NSString *storedCurrentMykiMoneyBalance = [defaults objectForKey:[NSString stringWithFormat:@"currentMykiMoneyBalance%d", cardNumber]];
+        NSString *storedMykiMoneyTopUpInProgress = [defaults objectForKey:[NSString stringWithFormat:@"mykiMoneyTopUpInProgress%d", cardNumber]];
+        NSString *storedCurrentMykiPassActive = [defaults objectForKey:[NSString stringWithFormat:@"currentMykiPassActive%d", cardNumber]];
+        NSString *storedCurrentMykiPassNotYetActive = [defaults objectForKey:[NSString stringWithFormat:@"currentMykiPassNotYetActive%d", cardNumber]];
+        NSString *storedLastMykiTransactionDate = [defaults objectForKey:[NSString stringWithFormat:@"lastMykiTransactionDate%d", cardNumber]];
 
-    [self setCardHolder: storedCardHolder];
-    [self setCardType: storedCardType];
-    [self setCardExpiry: storedCardExpiry];
-    [self setCardStatus: storedCardStatus];
-    [self setCurrentMykiMoneyBalance: storedCurrentMykiMoneyBalance];
-    [self setMykiMoneyTopUpInProgress: storedMykiMoneyTopUpInProgress];
-    [self setCurrentMykiPassActive: storedCurrentMykiPassActive];
-    [self setCurrentMykiPassNotYetActive: storedCurrentMykiPassNotYetActive];
-    [self setLastMykiTransactionDate: storedLastMykiTransactionDate];
-    [self setLastUpdatedDate: storedLastUpdatedDate];
+        if ([storedCardHolder length]) {
+            MykiCardInformation* mykiCardInformation = [[MykiCardInformation alloc] init];
+            [mykiCardInformation setCardHolder: storedCardHolder];
+            [mykiCardInformation setCardType: storedCardType];
+            [mykiCardInformation setCardExpiry: storedCardExpiry];
+            [mykiCardInformation setCardStatus: storedCardStatus];
+            [mykiCardInformation setCurrentMykiMoneyBalance: storedCurrentMykiMoneyBalance];
+            [mykiCardInformation setMykiMoneyTopUpInProgress: storedMykiMoneyTopUpInProgress];
+            [mykiCardInformation setCurrentMykiPassActive: storedCurrentMykiPassActive];
+            [mykiCardInformation setCurrentMykiPassNotYetActive: storedCurrentMykiPassNotYetActive];
+            [mykiCardInformation setLastMykiTransactionDate: storedLastMykiTransactionDate];
+            [self.mykiCards addObject:mykiCardInformation];
+        } else {
+            moreCardsAvailable = NO;
+        }
+    }
+    NSDate *storedLastUpdatedDate = [defaults objectForKey:@"lastUpdatedDate"];
+    [self setLastUpdatedDate:storedLastUpdatedDate];
 }
 
--(void) extractMykiAccountInfoFromHtml:(NSString*) page {
-
-    [self setCardHolder:[self extractInformationFromHtml:page withRegeEx:REG_EX_CARD_HOLDER]];
-    [self setCardType:[self extractInformationFromHtml:page withRegeEx:REG_EX_CARD_TYPE]];
-    [self setCardExpiry:[self extractInformationFromHtml:page withRegeEx:REG_EX_CARD_EXPIRY]];
-    [self setCardStatus:[self extractInformationFromHtml:page withRegeEx:REG_EX_CARD_STATUS]];
-    [self setCurrentMykiMoneyBalance:[self extractInformationFromHtml:page withRegeEx:REG_EX_CURRENT_MYKI_MONEY_BALANCE]];
-    [self setMykiMoneyTopUpInProgress:[self convertMykiMoneyTopUpInProgress:[self extractInformationFromHtml:page withRegeEx:REG_EX_MYKI_MONEY_TOP_UP_IN_PROGRESS]]];
-    [self setCurrentMykiPassActive: [self convertMykiPassActiveToDays:[self extractInformationFromHtml:page withRegeEx:REG_EX_CURRENT_MYKI_PASS_ACTIVE]]];
-    [self setCurrentMykiPassNotYetActive:[self convertMykiPassNotYetActive: [self extractInformationFromHtml:page withRegeEx:REG_EX_CURRENT_MYKI_PASS_NOT_YET_ACTIVE]]];
-    [self setLastMykiTransactionDate:[self extractInformationFromHtml:page withRegeEx:REG_EX_LAST_MYKI_TRANSACTION_DATE]];
+-(void) extractMykiAccountInfoFromHtml:(NSString*) page forCardNumber:(int)cardNumber {
+    
+    MykiCardInformation* mykiCardInformation = [[MykiCardInformation alloc] init];
+    
+    [mykiCardInformation setCardHolder:[self extractInformationFromHtml:page withRegeEx:REG_EX_CARD_HOLDER]];
+    [mykiCardInformation setCardType:[self extractInformationFromHtml:page withRegeEx:REG_EX_CARD_TYPE]];
+    [mykiCardInformation setCardExpiry:[self extractInformationFromHtml:page withRegeEx:REG_EX_CARD_EXPIRY]];
+    [mykiCardInformation setCardStatus:[self extractInformationFromHtml:page withRegeEx:REG_EX_CARD_STATUS]];
+    [mykiCardInformation setCurrentMykiMoneyBalance:[self extractInformationFromHtml:page withRegeEx:REG_EX_CURRENT_MYKI_MONEY_BALANCE]];
+    [mykiCardInformation setMykiMoneyTopUpInProgress:[self convertMykiMoneyTopUpInProgress:[self extractInformationFromHtml:page withRegeEx:REG_EX_MYKI_MONEY_TOP_UP_IN_PROGRESS]]];
+    [mykiCardInformation setCurrentMykiPassActive: [self convertMykiPassActiveToDays:[self extractInformationFromHtml:page withRegeEx:REG_EX_CURRENT_MYKI_PASS_ACTIVE]]];
+    [mykiCardInformation setCurrentMykiPassNotYetActive:[self convertMykiPassNotYetActive: [self extractInformationFromHtml:page withRegeEx:REG_EX_CURRENT_MYKI_PASS_NOT_YET_ACTIVE]]];
+    [mykiCardInformation setLastMykiTransactionDate:[self extractInformationFromHtml:page withRegeEx:REG_EX_LAST_MYKI_TRANSACTION_DATE]];
     
     
-    if(self.cardHolder == nil && self.cardExpiry ==nil && self.currentMykiMoneyBalance == nil && [self.currentMykiPassActive isEqualToString:@"N/A"]) {
-        //NSLog(@"DONT UPDATE");
+    if(mykiCardInformation.cardHolder == nil && mykiCardInformation.cardExpiry ==nil && mykiCardInformation.currentMykiMoneyBalance == nil && [mykiCardInformation.currentMykiPassActive isEqualToString:@"N/A"]) {
     } else {
-        //NSLog(@"UPDATED STUFF");
         [self setLastUpdatedDate:[NSDate date]];
+        self.mykiCards[cardNumber] = mykiCardInformation;
         [self saveAccountBalanceInformation];
     }
 }
@@ -164,43 +187,47 @@
     }
 }
 
-
 #pragma mark transform account info to labels
--(NSString*)transformAccountInfoToHeaderLabel {
+-(NSString*)transformAccountInfoToHeaderLabelForCardNumber:(int)cardNumber {
 
     NSString *headerLabel = @"";
-    if([cardExpiry length] != 0) {
-        headerLabel = [NSString stringWithFormat: @"Last transaction %@", lastMykiTransactionDate];
+    MykiCardInformation* mykiCard = self.mykiCards[cardNumber];
+    if([mykiCard.cardExpiry length] != 0) {
+        headerLabel = [NSString stringWithFormat: @"Last transaction %@", mykiCard.lastMykiTransactionDate];
     } else {
         headerLabel = DEFAULT_HEADER_LABEL;
     }
     return headerLabel;
 }
  
--(NSString*)transformMykiPassToMykiPassLabel {
+-(NSString*)transformMykiPassToMykiPassLabelForCardNumber:(int)cardNumber {
     
     NSString *mykiPassLabel =@"Days";
-    if([currentMykiPassActive length ] != 0) {
-        mykiPassLabel = currentMykiPassActive;
+    MykiCardInformation* mykiCard = self.mykiCards[cardNumber];
+    if([mykiCard.currentMykiPassActive length ] != 0) {
+        mykiPassLabel = mykiCard.currentMykiPassActive;
     }
     return mykiPassLabel;
 }
 
--(NSString*)transformMykiMoneyToMykiMoneyLabel {
+-(NSString*)transformMykiMoneyToMykiMoneyLabelForCardNumber:(int)cardNumber {
     
     NSString *mykiMoneyLabel =@"$";
-    if([currentMykiMoneyBalance length] != 0) {
-        mykiMoneyLabel = currentMykiMoneyBalance;
+    MykiCardInformation* mykiCard = self.mykiCards[cardNumber];
+    if([mykiCard.currentMykiMoneyBalance length] != 0) {
+        mykiMoneyLabel = mykiCard.currentMykiMoneyBalance;
     }
     return mykiMoneyLabel;
 }
 
--(NSString*)transformAccountInfoToBottomLabelOne {
+-(NSString*)transformAccountInfoToBottomLabelOneForCardNumber:(int)cardNumber { 
     NSString *bottomLabelOne = @"";
-    if([cardHolder length] != 0) {
-        bottomLabelOne = [bottomLabelOne stringByAppendingString:cardHolder];
-        if([cardStatus length] != 0) {
-            bottomLabelOne = [bottomLabelOne stringByAppendingFormat:@" has an %@ %@ card", cardStatus, cardType];
+    MykiCardInformation* mykiCard = self.mykiCards[cardNumber];
+    
+    if([mykiCard.cardHolder length] != 0) {
+        bottomLabelOne = [bottomLabelOne stringByAppendingString:mykiCard.cardHolder];
+        if([mykiCard.cardStatus length] != 0) {
+            bottomLabelOne = [bottomLabelOne stringByAppendingFormat:@" has an %@ %@ card", mykiCard.cardStatus, mykiCard.cardType];
         } 
     } else {
         bottomLabelOne = DEFAULT_BOTTOM_LABEL_ONE;
@@ -208,10 +235,11 @@
     return bottomLabelOne;
 }
 
--(NSString*)transformAccountInfoToBottomLabelTwo {
+-(NSString*)transformAccountInfoToBottomLabelTwoForCardNumber:(int)cardNumber {
     NSString *bottomLabelTwo = @"";
-    if([cardExpiry length] != 0) {
-        bottomLabelTwo = [NSString stringWithFormat: @"Expires %@", cardExpiry];
+    MykiCardInformation* mykiCard = self.mykiCards[cardNumber];
+    if([mykiCard.cardExpiry length] != 0) {
+        bottomLabelTwo = [NSString stringWithFormat: @"Expires %@", mykiCard.cardExpiry];
     } else {
         bottomLabelTwo = DEFAULT_BOTTOM_LABEL_TWO;
     }

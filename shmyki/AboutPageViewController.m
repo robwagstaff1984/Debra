@@ -111,7 +111,7 @@
 -(IBAction)feedbackButtonTapped:(id)sender {
     MFMailComposeViewController *picmail = [[MFMailComposeViewController alloc] init];  
     picmail.mailComposeDelegate = self;
-    [picmail setSubject:@"yourMyki Feedback"];
+    [picmail setSubject:@"yourMyki iOS Feedback"];
     [picmail setToRecipients:[NSArray arrayWithObjects:FEEDBACK_EMAIL_ADDRESS, nil]];
     [self presentModalViewController:picmail animated:YES];
 }

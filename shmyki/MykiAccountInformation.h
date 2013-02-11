@@ -10,33 +10,23 @@
 
 @interface MykiAccountInformation : NSObject
 
-@property (nonatomic, strong) NSString* cardHolder;
-@property (nonatomic, strong) NSString* cardType;
-@property (nonatomic, strong) NSString* cardExpiry;
-@property (nonatomic, strong) NSString* cardStatus;
-@property (nonatomic, strong) NSString* currentMykiMoneyBalance;
-@property (nonatomic, strong) NSString* mykiMoneyTopUpInProgress;
-@property (nonatomic, strong) NSString* totalMykiMoneyBalance;
-@property (nonatomic, strong) NSString* currentMykiPassActive;
-@property (nonatomic, strong) NSString* currentMykiPassNotYetActive;
-@property (nonatomic, strong) NSString* lastMykiTransactionDate;
-@property (nonatomic, strong) NSDate* lastUpdatedDate;
-
+@property (nonatomic, strong) NSMutableArray* mykiCards;
 @property (nonatomic, strong) NSString *mykiUsername; 
 @property (nonatomic, strong) NSString *mykiPassword;
+@property (nonatomic, strong) NSDate* lastUpdatedDate;
 
 -(void) saveAccountInformation;
 -(void) loadAccountInformation;
 -(void) saveAccountBalanceInformation;
 -(void) loadAccountBalanceInformation;
--(void) extractMykiAccountInfoFromHtml:(NSString*) page;
+-(void) extractMykiAccountInfoFromHtml:(NSString*) page forCardNumber:(int)cardNumber;
 -(BOOL) isLoginUnsuccessful:(NSString*)page;
--(BOOL)isProblemWithCredentials:(NSString*)page;
+-(BOOL) isProblemWithCredentials:(NSString*)page;
 
--(NSString*)transformAccountInfoToHeaderLabel;
--(NSString*)transformMykiPassToMykiPassLabel;
--(NSString*)transformMykiMoneyToMykiMoneyLabel; 
--(NSString*)transformAccountInfoToBottomLabelOne;
--(NSString*)transformAccountInfoToBottomLabelTwo;
+-(NSString*)transformAccountInfoToHeaderLabelForCardNumber:(int)cardNumber;
+-(NSString*)transformMykiPassToMykiPassLabelForCardNumber:(int)cardNumber;
+-(NSString*)transformMykiMoneyToMykiMoneyLabelForCardNumber:(int)cardNumber;
+-(NSString*)transformAccountInfoToBottomLabelOneForCardNumber:(int)cardNumber;
+-(NSString*)transformAccountInfoToBottomLabelTwoForCardNumber:(int)cardNumber;
 
 @end

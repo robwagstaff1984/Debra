@@ -43,10 +43,12 @@
 @property (nonatomic, strong) MBProgressHUD *HUD;
 @property (nonatomic, strong) NSTimer *timer;
 @property (nonatomic) BOOL isInternetDown;
-@property (nonatomic) BOOL isRequestingSecondCard;
+@property (nonatomic) BOOL isRequestingMoreCardData;
+@property (nonatomic) BOOL isRequestingNumberOfCards;
 @property (nonatomic, strong) IBOutlet MHPagingScrollView *pagingScrollView;
 @property (nonatomic, strong) IBOutlet UIPageControl *pageControl;
 @property (nonatomic) int numPages;
+@property (nonatomic) int currentlyRequestedCard;
 
 - (IBAction)pageTurn;
 

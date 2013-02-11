@@ -23,6 +23,7 @@
 @synthesize usernameTextField, passwordTextField;
 @synthesize HUD, timer, refreshButton, isUserLoginAttempted, isProblemWithMykiCredentials, invalidCredentialsLabel, dateDisplayHelper, pageControl, pagingScrollView;
 @synthesize balanceFooterLabelOne,balanceFooterLabelTwo, balanceHeaderLabel;
+@synthesize numPages, currentlyRequestedCard;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -59,13 +60,6 @@
             self.navigationItem.rightBarButtonItem = [YourMykiCustomButton createYourMykiBarButtonItemWithText:@"Edit" withTarget:self withAction:@selector(switchToLoginState)];
         }
         
-        
-      /*  if([usernameTextField.text length] != 0 && [passwordTextField.text length] != 0) {
-            [self retrieveMykiBalance];
-        } else {
-            [self switchToLoginState];
-           // self.navigationItem.leftBarButtonItem = nil;
-        }*/
         dateDisplayHelper = [[DateDisplayHelper alloc] init];
     }
     return self;
@@ -128,14 +122,16 @@
     [self.balanceFooterLabelTwo setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:13.0f]];
     [self.balanceHeaderLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:17.0f]];
     
-  //  [self.view addSubview:self.mykiWebstiteWebView];
+    [self.view addSubview:self.mykiWebstiteWebView];
     
-    self.numPages = 3;
+    self.numPages = 1;
+    self.currentlyRequestedCard = 0;
+    self.isRequestingNumberOfCards = YES;
     self.pagingScrollView.previewInsets = UIEdgeInsetsMake(0.0f, 0.0f, 0.0f, 0.0f);
 	[self.pagingScrollView reloadPages];
     
 	self.pageControl.currentPage = 0;
-	self.pageControl.numberOfPages = _numPages;
+	self.pageControl.numberOfPages = self.numPages;
 }
 
 - (void)viewDidUnload
@@ -244,23 +240,35 @@
         dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
             [mykiWebstiteWebView loadRequest:manageMyCardRequest];
         });
-        self.isRequestingSecondCard = YES;
+        self.isRequestingMoreCardData = YES;
         
     }else if ([pageTitle isEqualToString:@"Manage my card"]) {
         [self resetTimer];
         NSString *currentPage = [webView stringByEvaluatingJavaScriptFromString:@"document.body.innerHTML"];
-        [self processMykiAccountBalancePageHTML:currentPage];
+       // [self processMykiAccountBalancePageHTML:currentPage];
         
-        if(self.isRequestingSecondCard) {
-            NSString* changeCardJavascript = @"var cardDropdown = document.getElementById('ctl00_uxContentPlaceHolder_uxCardList');var numberOfCards = cardDropdown.options.length;for (var i=0; i<numberOfCards; i++){if (cardDropdown.options[i].value == \"308425073890053\"){cardDropdown.options[i].selected = true;break;}}";
-            
-            NSString* changeCardSubmitJavascript = @"var submitButton = document.getElementById(\"ctl00_uxContentPlaceHolder_uxGo\"); submitButton.click();";
-            
-            
-            [self.mykiWebstiteWebView stringByEvaluatingJavaScriptFromString: changeCardJavascript];
-            [self.mykiWebstiteWebView stringByEvaluatingJavaScriptFromString: changeCardSubmitJavascript];
+        if(self.isRequestingNumberOfCards) {
+            NSString* numberOfCardsJavascript = @"document.getElementById('ctl00_uxContentPlaceHolder_uxCardList').options.length";
+            NSString* numberOfCardsReturnValue = [self.mykiWebstiteWebView stringByEvaluatingJavaScriptFromString:numberOfCardsJavascript];
+            int numberOfCards = [numberOfCardsReturnValue integerValue];
+            self.numPages = numberOfCards;
+            self.isRequestingNumberOfCards = NO;
         }
-        self.isRequestingSecondCard = NO;
+        
+        if (self.isRequestingMoreCardData) {
+            
+            if (self.currentlyRequestedCard >= self.numPages) {
+                self.isRequestingMoreCardData = NO;
+                [self finishedProcessingBalances];
+            } else {
+                NSString* changeCardJavascript = @"var cardDropdown = document.getElementById('ctl00_uxContentPlaceHolder_uxCardList');var numberOfCards = cardDropdown.options.length;for (var i=0; i<numberOfCards; i++){if (cardDropdown.options[i].value == \"308425073890053\"){cardDropdown.options[i].selected = true;break;}}";
+                
+                NSString* changeCardSubmitJavascript = @"var submitButton = document.getElementById(\"ctl00_uxContentPlaceHolder_uxGo\"); submitButton.click();";
+                [self.mykiWebstiteWebView stringByEvaluatingJavaScriptFromString: changeCardJavascript];
+                [self.mykiWebstiteWebView stringByEvaluatingJavaScriptFromString: changeCardSubmitJavascript];
+                self.currentlyRequestedCard++;
+            }
+        }
     }
     else {
         [self switchToErrorState];
@@ -275,9 +283,12 @@
 }
 
 #pragma mark account info helpers
--(void) processMykiAccountBalancePageHTML:(NSString*)mykiAccountBalancePageHTML  {
+//-(void) processMykiAccountBalancePageHTML:(NSString*)mykiAccountBalancePageHTML  {
+   // [mykiAccountInformation extractMykiAccountInfoFromHtml:mykiAccountBalancePageHTML];
+//}
+
+-(void) finishedProcessingBalances {
     [timer invalidate];
-    [mykiAccountInformation extractMykiAccountInfoFromHtml:mykiAccountBalancePageHTML];
     [self showMykiAccountInformation];
     [self switchToSuccessState];
     [HUD hide:YES];
