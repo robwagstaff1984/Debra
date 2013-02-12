@@ -23,9 +23,16 @@
 -(BOOL) isLoginUnsuccessful:(NSString*)page;
 -(BOOL) isProblemWithCredentials:(NSString*)page;
 
--(NSString*)transformAccountInfoToHeaderLabelForCardNumber:(int)cardNumber;
+-(NSString*)transformAccountInfoToHeaderLabelOneForCardNumber:(int)cardNumber;
+-(NSString*)transformAccountInfoToHeaderLabelTwoForCardNumber:(int)cardNumber;
+
 -(NSString*)transformMykiPassToMykiPassLabelForCardNumber:(int)cardNumber;
 -(NSString*)transformMykiMoneyToMykiMoneyLabelForCardNumber:(int)cardNumber;
+
+-(NSString*)transformMykiMoneyTopUpInProgressToLabelForCardNumber:(int)cardNumber;
+-(NSString*)transformCurrentMykiPassNotYetActiveToLabelForCardNumber:(int)cardNumber;
+
+
 -(NSString*)transformAccountInfoToBottomLabelOneForCardNumber:(int)cardNumber;
 -(NSString*)transformAccountInfoToBottomLabelTwoForCardNumber:(int)cardNumber;
 

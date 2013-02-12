@@ -14,6 +14,7 @@
 @property (nonatomic, strong) NSString* cardType;
 @property (nonatomic, strong) NSString* cardExpiry;
 @property (nonatomic, strong) NSString* cardStatus;
+@property (nonatomic, strong) NSString* cardIDNumber;
 @property (nonatomic, strong) NSString* currentMykiMoneyBalance;
 @property (nonatomic, strong) NSString* mykiMoneyTopUpInProgress;
 @property (nonatomic, strong) NSString* currentMykiPassActive;

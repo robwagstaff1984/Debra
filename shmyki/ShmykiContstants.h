@@ -55,7 +55,6 @@
 #define JAVASCRIPT_ENTER_PASSWORD @"var passwordField = document.getElementById(\"ctl00_uxContentPlaceHolder_uxPassword\"); passwordField.value ='%@';"
 #define JAVASCRIPT_CLICK_SUBMIT @"var submitButton = document.getElementById(\"ctl00_uxContentPlaceHolder_uxLogin\"); submitButton.click();"
 
-//#define JAVASCRIPT_CLICK_MANAGE_MY_CARD @"var submitButton = document.getElementById(\"navManagemycard\"); submitButton.click();"
 #define JAVASCRIPT_CLICK_MANAGE_MY_CARD @"var manageLink = document.getElementByClassName(\"current\"); manageLink.click();"
 
 
@@ -63,20 +62,17 @@
 #define REG_EX_CARD_TYPE @"<strong>Card type</strong>\\s+</td>\\s+<td>\\s+(.*?)\\s+</td>"
 #define REG_EX_CARD_EXPIRY @"<strong>Card expiry</strong></td>\\s+<td>\\s+(.+)</td>"
 #define REG_EX_CARD_STATUS @"<strong>Card status</strong></td>\\s+<td>\\s+(.+)</td>"
+#define REG_EX_CARD_NUMBER_ADDITIONALS @"ctl00_uxContentPlaceHolder_uxCardList\">\\s+.+<option value.*</option>.*\\s+<option selected=\"selected\" value=\"(.+)\">[0-9]+</option>"
+#define REG_EX_CARD_NUMBER_ONE         @"ctl00_uxContentPlaceHolder_uxCardList\">\\s+?.+?<option value=\"[0-9]+?\">(.*?)</option>"
+
 #define REG_EX_CURRENT_MYKI_MONEY_BALANCE @"<strong>Current myki money balance</strong></td>\\s+<td>\\s+(.+)</td>\\s+</tr>\\s+<tr>\\s+<td>\\s+<strong>myki money top up in progress"
-//#define REG_EX_CURRENT_MYKI_MONEY_BALANCE @"<strong>Current myki money balance</strong></td>\\s+<td>\\s+(.+)</td>"
 #define REG_EX_MYKI_MONEY_TOP_UP_IN_PROGRESS @"<strong>myki money top up in progress</strong></td>\\s+<td>\\s+(.+)</td>\\s+</tr>\\s+<tr>\\s+<td>\\s+<strong>Total myki money balance"
-//#define REG_EX_MYKI_MONEY_TOP_UP_IN_PROGRESS @"<strong>myki money top up in progress</strong></td>\\s+<td>\\s+(.+)</td>.+<strong>Total myki money"
 #define REG_EX_CURRENT_MYKI_PASS_ACTIVE @"<strong>Current myki pass \\(active\\)</strong></td>\\s+<td>\\s+(.+)<br>\\s+</td>\\s+</tr>\\s+<tr id=\"ctl00_uxContentPlaceHolder_Tr1"
-//#define REG_EX_CURRENT_MYKI_PASS_ACTIVE @"<strong>Current myki pass \\(active\\)</strong></td>\\s+<td>\\s+(.+)<br>\\s+</td>.+<tr id=\"ctl00_uxContentPlaceHolder_Tr1"
 
 #define REG_EX_CURRENT_MYKI_PASS_NOT_YET_ACTIVE @"<strong>Current myki pass \\(not yet active\\)</strong></td>\\s+<td>\\s+(.+)<br>\\s+</td>\\s+</tr>\\s+<tr>\\s+<td>\\s+<strong>Last myki"
-//#define REG_EX_CURRENT_MYKI_PASS_NOT_YET_ACTIVE @"<strong>Current myki pass \\(not yet active\\)</strong></td>\\s+<td>\\s+(.+)<br>.+<strong>Last"
 #define REG_EX_LAST_MYKI_TRANSACTION_DATE @"<strong>Last myki transaction date</strong></td>\\s+<td>\\s+(.+)</td>"
 #define REG_EX_CURRENT_MYKI_PASS_ACTIVE_IN_DAYS @".*Valid to (.+)"
 #define MYKI_PAGE_TITLE_REGEX @"<title>\\s*(.+)\\s*</title>"
-//#define REG_EX_ERROR_LOGGING_IN @"<title>\\s*(Myki-Session Expired)\\s*</title>"
-//#define REG_EX_ERROR_LOGGING_IN_404 @"<title>\\s*(Page not found)\\s*</title>"
 #define ERROR_SESSION_EXPIRED @"<title>\\s*(Myki-Session Expired)\\s*</title>"
 #define ERROR_404 @"<title>\\s*(Page not found)\\s*</title>"
 #define ERROR_CREDENTIALS @"Invalid Username/Password"

@@ -110,6 +110,13 @@
     [mykiCardInformation setCurrentMykiPassNotYetActive:[self convertMykiPassNotYetActive: [self extractInformationFromHtml:page withRegeEx:REG_EX_CURRENT_MYKI_PASS_NOT_YET_ACTIVE]]];
     [mykiCardInformation setLastMykiTransactionDate:[self extractInformationFromHtml:page withRegeEx:REG_EX_LAST_MYKI_TRANSACTION_DATE]];
     
+    [mykiCardInformation setCardIDNumber:[self extractInformationFromHtml:page withRegeEx:REG_EX_CARD_NUMBER_ADDITIONALS]];
+    NSLog(@"other: %@", mykiCardInformation.cardIDNumber);
+    if (![mykiCardInformation.cardIDNumber length]) {
+        [mykiCardInformation setCardIDNumber:[self extractInformationFromHtml:page withRegeEx:REG_EX_CARD_NUMBER_ONE]];
+        NSLog(@"1: %@", mykiCardInformation.cardIDNumber);
+    }
+    
     
     if(mykiCardInformation.cardHolder == nil && mykiCardInformation.cardExpiry ==nil && mykiCardInformation.currentMykiMoneyBalance == nil && [mykiCardInformation.currentMykiPassActive isEqualToString:@"N/A"]) {
     } else {
@@ -189,18 +196,28 @@
 }
 
 #pragma mark transform account info to labels
--(NSString*)transformAccountInfoToHeaderLabelForCardNumber:(int)cardNumber {
+-(NSString*)transformAccountInfoToHeaderLabelOneForCardNumber:(int)cardNumber {
 
     NSString *headerLabel = @"";
     MykiCardInformation* mykiCard = self.mykiCards[cardNumber];
-    if([mykiCard.cardExpiry length] != 0) {
-        headerLabel = [NSString stringWithFormat: @"Last transaction %@", mykiCard.lastMykiTransactionDate];
-    } else {
-        headerLabel = DEFAULT_HEADER_LABEL;
+    if([mykiCard.cardHolder length] != 0) {
+        headerLabel = mykiCard.cardHolder;
     }
     return headerLabel;
 }
- 
+
+-(NSString*)transformAccountInfoToHeaderLabelTwoForCardNumber:(int)cardNumber {
+    
+    NSString *headerLabel = DEFAULT_HEADER_LABEL;
+    MykiCardInformation* mykiCard = self.mykiCards[cardNumber];
+    if([mykiCard.cardExpiry length] != 0) {
+        
+        headerLabel = [NSString stringWithFormat: @"Card %d - %@", cardNumber+1, mykiCard.cardIDNumber];
+    } 
+    return headerLabel;
+}
+
+#pragma mark main balances
 -(NSString*)transformMykiPassToMykiPassLabelForCardNumber:(int)cardNumber {
     
     NSString *mykiPassLabel =@"Days";
@@ -221,15 +238,32 @@
     return mykiMoneyLabel;
 }
 
+#pragma mark additional balances
+-(NSString*)transformMykiMoneyTopUpInProgressToLabelForCardNumber:(int)cardNumber {
+    NSString* mykiMoneyTopUpInProgressLabel = @"";
+    MykiCardInformation* mykiCard = self.mykiCards[cardNumber];
+    if([mykiCard.mykiMoneyTopUpInProgress length ] != 0) {
+        mykiMoneyTopUpInProgressLabel = mykiCard.mykiMoneyTopUpInProgress;
+    }
+    return mykiMoneyTopUpInProgressLabel;
+}
+
+-(NSString*)transformCurrentMykiPassNotYetActiveToLabelForCardNumber:(int)cardNumber {
+    NSString* currentMykiPassNotYetActivesLabel = @"";
+    MykiCardInformation* mykiCard = self.mykiCards[cardNumber];
+    if([mykiCard.currentMykiPassNotYetActive length ] != 0) {
+        currentMykiPassNotYetActivesLabel = mykiCard.currentMykiPassNotYetActive;
+    }
+    return currentMykiPassNotYetActivesLabel;
+}
+
+#pragma mark footer labels
 -(NSString*)transformAccountInfoToBottomLabelOneForCardNumber:(int)cardNumber { 
     NSString *bottomLabelOne = @"";
     MykiCardInformation* mykiCard = self.mykiCards[cardNumber];
     
-    if([mykiCard.cardHolder length] != 0) {
-        bottomLabelOne = [bottomLabelOne stringByAppendingString:mykiCard.cardHolder];
-        if([mykiCard.cardStatus length] != 0) {
-            bottomLabelOne = [bottomLabelOne stringByAppendingFormat:@" has an %@ %@ card", mykiCard.cardStatus, mykiCard.cardType];
-        } 
+    if([mykiCard.lastMykiTransactionDate length] != 0) {
+        bottomLabelOne = [NSString stringWithFormat: @"Last transaction %@", mykiCard.lastMykiTransactionDate];
     } else {
         bottomLabelOne = DEFAULT_BOTTOM_LABEL_ONE;
     }
@@ -239,8 +273,9 @@
 -(NSString*)transformAccountInfoToBottomLabelTwoForCardNumber:(int)cardNumber {
     NSString *bottomLabelTwo = @"";
     MykiCardInformation* mykiCard = self.mykiCards[cardNumber];
-    if([mykiCard.cardExpiry length] != 0) {
-        bottomLabelTwo = [NSString stringWithFormat: @"Expires %@", mykiCard.cardExpiry];
+    
+    if([mykiCard.cardStatus length] != 0) {
+        bottomLabelTwo = [NSString stringWithFormat:@"%@ %@ card Expires %@", mykiCard.cardStatus, mykiCard.cardType, mykiCard.cardExpiry];
     } else {
         bottomLabelTwo = DEFAULT_BOTTOM_LABEL_TWO;
     }

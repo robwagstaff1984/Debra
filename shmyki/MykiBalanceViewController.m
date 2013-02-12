@@ -22,7 +22,7 @@
 @synthesize topView, bottomView, loginTableView, loginScrollView, pageScrollView, errorView, errorTextView, errorTextLabel, isInternetDown;
 @synthesize usernameTextField, passwordTextField;
 @synthesize HUD, timer, refreshButton, isUserLoginAttempted, isProblemWithMykiCredentials, invalidCredentialsLabel, dateDisplayHelper, pageControl, pagingScrollView;
-@synthesize balanceFooterLabelOne,balanceFooterLabelTwo, balanceHeaderLabel;
+@synthesize balanceFooterLabelOne,balanceFooterLabelTwo, balanceHeaderLabelOne,balanceHeaderLabelTwo;
 @synthesize numPages, currentlyRequestedCard, isActiveState;
 
 
@@ -118,7 +118,8 @@
     
     [self.balanceFooterLabelOne setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:13.0f]];
     [self.balanceFooterLabelTwo setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:13.0f]];
-    [self.balanceHeaderLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:17.0f]];
+    [self.balanceHeaderLabelOne setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:17.0f]];
+    [self.balanceHeaderLabelTwo setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:15.0f]];
     
     //[self.view addSubview:self.mykiWebstiteWebView];
     
@@ -242,22 +243,20 @@
         
     }else if ([pageTitle isEqualToString:@"Manage my card"]) {
         [self resetTimer];
-        NSString *currentPage = [webView stringByEvaluatingJavaScriptFromString:@"document.body.innerHTML"];
         [self requestNumberOfCardsIfRequired];
         
         if (self.isRequestingMoreCardData) {
-            
-            [mykiAccountInformation extractMykiAccountInfoFromHtml:currentPage forCardNumber:self.currentlyRequestedCard];
+
+            NSString *currentHTMLPage = [webView stringByEvaluatingJavaScriptFromString:@"document.body.innerHTML"];
+            [mykiAccountInformation extractMykiAccountInfoFromHtml:currentHTMLPage forCardNumber:self.currentlyRequestedCard];
             self.currentlyRequestedCard++;
+            
             if (self.currentlyRequestedCard >= self.numPages) {
                 self.isRequestingMoreCardData = NO;
                 [self finishedProcessingBalances];
             } else {
-                NSString* changeCardJavascript = [NSString stringWithFormat: @"var cardDropdown = document.getElementById('ctl00_uxContentPlaceHolder_uxCardList');var numberOfCards = cardDropdown.options.length;for (var i=0; i<numberOfCards; i++){if (cardDropdown.options[i].value == cardDropdown.options[%d].value){cardDropdown.options[i].selected = true;break;}}", self.currentlyRequestedCard];
-                
-                NSString* changeCardSubmitJavascript = @"var submitButton = document.getElementById(\"ctl00_uxContentPlaceHolder_uxGo\"); submitButton.click();";
-                [self.mykiWebstiteWebView stringByEvaluatingJavaScriptFromString: changeCardJavascript];
-                [self.mykiWebstiteWebView stringByEvaluatingJavaScriptFromString: changeCardSubmitJavascript];
+                [self changeCardSelectorTo:self.currentlyRequestedCard];
+                [self tapChangeCardButton];
             }
         }
     }
@@ -271,6 +270,18 @@
 
 -(void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
     NSLog (@"Error!: %@", error);
+}
+
+
+-(void) changeCardSelectorTo:(int)cardNumber{
+    NSString* changeCardJavascript = [NSString stringWithFormat: @"var cardDropdown = document.getElementById('ctl00_uxContentPlaceHolder_uxCardList');var numberOfCards = cardDropdown.options.length;for (var i=0; i<numberOfCards; i++){if (cardDropdown.options[i].value == cardDropdown.options[%d].value){cardDropdown.options[i].selected = true;break;}}",cardNumber];
+    
+    [self.mykiWebstiteWebView stringByEvaluatingJavaScriptFromString: changeCardJavascript];
+}
+
+-(void) tapChangeCardButton {
+    NSString* changeCardSubmitJavascript = @"var submitButton = document.getElementById(\"ctl00_uxContentPlaceHolder_uxGo\"); submitButton.click();";
+    [self.mykiWebstiteWebView stringByEvaluatingJavaScriptFromString: changeCardSubmitJavascript];
 }
 
 -(void) requestNumberOfCardsIfRequired {
@@ -296,17 +307,7 @@
 }
 
 -(void) showMykiAccountInformation {
-
     [self.pagingScrollView reloadData];
-    
-//    [balanceMykiPassExpiryLabel setText: [mykiAccountInformation transformMykiPassToMykiPassLabel]];
-//    [balanceMykiMoneyAmountLabel setText: [mykiAccountInformation transformMykiMoneyToMykiMoneyLabel]];
-//    [balanceMykiMoneyAdditionalLabel setText:[mykiAccountInformation mykiMoneyTopUpInProgress]];
-//    [balanceMykiPassAdditionalLabel setText:[mykiAccountInformation currentMykiPassNotYetActive]];
-//    
-//    [balanceHeaderLabel setText: [mykiAccountInformation transformAccountInfoToHeaderLabel]];
-//    [balanceFooterLabelOne setText: [mykiAccountInformation transformAccountInfoToBottomLabelOne]];
-//    [balanceFooterLabelTwo setText: [mykiAccountInformation transformAccountInfoToBottomLabelTwo]];
 }
 
 #pragma mark UITableViewDataSource
@@ -581,6 +582,28 @@
 {
     BalanceInfoView * balanceInfoView = [[BalanceInfoView alloc] init];
     balanceInfoView.frame = CGRectMake(20, 50, 280, 100);
+
+    if([self.mykiAccountInformation.mykiCards count]) {
+        [balanceInfoView.balanceMykiPassExpiryLabel setText:[mykiAccountInformation transformMykiPassToMykiPassLabelForCardNumber:index]];
+        [balanceInfoView.balanceMykiMoneyAmountLabel setText:[mykiAccountInformation transformMykiMoneyToMykiMoneyLabelForCardNumber:index]];
+        [balanceInfoView.balanceMykiPassAdditionalLabel setText:[mykiAccountInformation transformCurrentMykiPassNotYetActiveToLabelForCardNumber:index]];
+        [balanceInfoView.balanceMykiMoneyAdditionalLabel setText:[mykiAccountInformation transformMykiMoneyTopUpInProgressToLabelForCardNumber:index]];
+        
+        
+        [self.balanceHeaderLabelOne setText:[mykiAccountInformation transformAccountInfoToHeaderLabelOneForCardNumber:index]];
+        [self.balanceHeaderLabelTwo setText:[mykiAccountInformation transformAccountInfoToHeaderLabelTwoForCardNumber:index]];
+        [self.balanceFooterLabelOne setText:[mykiAccountInformation transformAccountInfoToBottomLabelOneForCardNumber:index]];
+        [self.balanceFooterLabelTwo setText:[mykiAccountInformation transformAccountInfoToBottomLabelTwoForCardNumber:index]];
+        
+        //    [balanceMykiPassExpiryLabel setText: [mykiAccountInformation transformMykiPassToMykiPassLabel]];
+        //    [balanceMykiMoneyAmountLabel setText: [mykiAccountInformation transformMykiMoneyToMykiMoneyLabel]];
+        //    [balanceMykiMoneyAdditionalLabel setText:[mykiAccountInformation mykiMoneyTopUpInProgress]];
+        //    [balanceMykiPassAdditionalLabel setText:[mykiAccountInformation currentMykiPassNotYetActive]];
+        //
+        //    [balanceHeaderLabel setText: [mykiAccountInformation transformAccountInfoToHeaderLabel]];
+        //    [balanceFooterLabelOne setText: [mykiAccountInformation transformAccountInfoToBottomLabelOne]];
+        //    [balanceFooterLabelTwo setText: [mykiAccountInformation transformAccountInfoToBottomLabelTwo]];
+    }
     
     [balanceInfoView drawBalanceViewGradientWithCornersWithActiveState:self.isActiveState];
     return balanceInfoView;

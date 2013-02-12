@@ -30,9 +30,10 @@
 @property (nonatomic, strong) UITextField *passwordTextField;
 @property (nonatomic, strong) IBOutlet UIScrollView *pageScrollView;
 
-@property (nonatomic, strong) UILabel* balanceFooterLabelOne;
-@property (nonatomic, strong) UILabel* balanceFooterLabelTwo;
-@property (nonatomic, strong) UILabel* balanceHeaderLabel;
+@property (nonatomic, strong) IBOutlet UILabel* balanceHeaderLabelOne;
+@property (nonatomic, strong) IBOutlet UILabel* balanceHeaderLabelTwo;
+@property (nonatomic, strong) IBOutlet UILabel* balanceFooterLabelOne;
+@property (nonatomic, strong) IBOutlet UILabel* balanceFooterLabelTwo;
 
 @property (nonatomic, strong) IBOutlet UILabel *errorTextLabel;
 @property (nonatomic, strong) IBOutlet UITextView *errorTextView;
