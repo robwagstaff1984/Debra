@@ -10,6 +10,8 @@
 #import "MykiAccountInformation.h"
 #import "MBProgressHUD.h"
 #import "MHPagingScrollView.h"
+#import "PageControl.h"
+
 @class DateDisplayHelper;
 @class Reachability;
 
@@ -48,11 +50,10 @@
 @property (nonatomic) BOOL isRequestingNumberOfCards;
 @property (nonatomic) BOOL isActiveState;
 @property (nonatomic, strong) IBOutlet MHPagingScrollView *pagingScrollView;
-@property (nonatomic, strong) IBOutlet UIPageControl *pageControl;
+@property (nonatomic, strong) PageControl *pageControl;
 @property (nonatomic) int numPages;
 @property (nonatomic) int currentlyRequestedCard;
 
-- (IBAction)pageTurn;
 
 @property (nonatomic, strong) DateDisplayHelper *dateDisplayHelper;
 

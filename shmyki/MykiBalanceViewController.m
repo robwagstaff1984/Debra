@@ -123,11 +123,16 @@
     
     //[self.view addSubview:self.mykiWebstiteWebView];
     
-    self.numPages = 1;
+    self.numPages = MAX(1, self.mykiAccountInformation.mykiCards.count);
     self.currentlyRequestedCard = 0;
     self.isRequestingNumberOfCards = YES;
-	self.pageControl.currentPage = 0;
+    self.pageControl = [[PageControl alloc] initWithFrame:CGRectMake(141, 148, 39, 36)];
+	self.pageControl.currentPage = 1;
 	self.pageControl.numberOfPages = self.numPages;
+    self.pageControl.hidden = YES;
+    
+    [self.view addSubview:self.pageControl];
+    
     self.isActiveState = NO;
     [self showMykiAccountInformation];
 }
@@ -291,13 +296,12 @@
         int numberOfCards = [numberOfCardsReturnValue integerValue];
         self.numPages = numberOfCards;
         self.isRequestingNumberOfCards = NO;
+        self.pageControl.numberOfPages = numberOfCards;
+        self.pageControl.hidden = NO;
     }
 }
 
 #pragma mark account info helpers
-//-(void) processMykiAccountBalancePageHTML:(NSString*)mykiAccountBalancePageHTML  {
-   // [mykiAccountInformation extractMykiAccountInfoFromHtml:mykiAccountBalancePageHTML];
-//}
 
 -(void) finishedProcessingBalances {
     [timer invalidate];
@@ -589,29 +593,23 @@
         [balanceInfoView.balanceMykiPassAdditionalLabel setText:[mykiAccountInformation transformCurrentMykiPassNotYetActiveToLabelForCardNumber:index]];
         [balanceInfoView.balanceMykiMoneyAdditionalLabel setText:[mykiAccountInformation transformMykiMoneyTopUpInProgressToLabelForCardNumber:index]];
         
-        
         [self.balanceHeaderLabelOne setText:[mykiAccountInformation transformAccountInfoToHeaderLabelOneForCardNumber:index]];
         [self.balanceHeaderLabelTwo setText:[mykiAccountInformation transformAccountInfoToHeaderLabelTwoForCardNumber:index]];
         [self.balanceFooterLabelOne setText:[mykiAccountInformation transformAccountInfoToBottomLabelOneForCardNumber:index]];
         [self.balanceFooterLabelTwo setText:[mykiAccountInformation transformAccountInfoToBottomLabelTwoForCardNumber:index]];
-        
-        //    [balanceMykiPassExpiryLabel setText: [mykiAccountInformation transformMykiPassToMykiPassLabel]];
-        //    [balanceMykiMoneyAmountLabel setText: [mykiAccountInformation transformMykiMoneyToMykiMoneyLabel]];
-        //    [balanceMykiMoneyAdditionalLabel setText:[mykiAccountInformation mykiMoneyTopUpInProgress]];
-        //    [balanceMykiPassAdditionalLabel setText:[mykiAccountInformation currentMykiPassNotYetActive]];
-        //
-        //    [balanceHeaderLabel setText: [mykiAccountInformation transformAccountInfoToHeaderLabel]];
-        //    [balanceFooterLabelOne setText: [mykiAccountInformation transformAccountInfoToBottomLabelOne]];
-        //    [balanceFooterLabelTwo setText: [mykiAccountInformation transformAccountInfoToBottomLabelTwo]];
     }
     
     [balanceInfoView drawBalanceViewGradientWithCornersWithActiveState:self.isActiveState];
     return balanceInfoView;
 }
 
-- (IBAction)pageTurn {
-    
+-(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    int page = scrollView.contentOffset.x/scrollView.frame.size.width;
+    self.pageControl.currentPage=page;
 }
+
+
 
 
 @end

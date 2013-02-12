@@ -51,6 +51,7 @@
         [defaults setObject:mykiCard.mykiMoneyTopUpInProgress forKey:[NSString stringWithFormat:@"mykiMoneyTopUpInProgress%d", cardNumber]];
         [defaults setObject:mykiCard.currentMykiPassActive forKey:[NSString stringWithFormat:@"currentMykiPassActive%d", cardNumber]];
         [defaults setObject:mykiCard.currentMykiPassNotYetActive forKey:[NSString stringWithFormat:@"currentMykiPassNotYetActive%d", cardNumber]];
+        [defaults setObject:mykiCard.cardIDNumber forKey:[NSString stringWithFormat:@"cardIDNumber%d", cardNumber]];
         [defaults setObject:mykiCard.lastMykiTransactionDate forKey:[NSString stringWithFormat:@"lastMykiTransactionDate%d", cardNumber]];
         
         cardNumber++;
@@ -73,6 +74,7 @@
         NSString *storedMykiMoneyTopUpInProgress = [defaults objectForKey:[NSString stringWithFormat:@"mykiMoneyTopUpInProgress%d", cardNumber]];
         NSString *storedCurrentMykiPassActive = [defaults objectForKey:[NSString stringWithFormat:@"currentMykiPassActive%d", cardNumber]];
         NSString *storedCurrentMykiPassNotYetActive = [defaults objectForKey:[NSString stringWithFormat:@"currentMykiPassNotYetActive%d", cardNumber]];
+        NSString *storedCardIDNumber = [defaults objectForKey:[NSString stringWithFormat:@"cardIDNumber%d", cardNumber]];
         NSString *storedLastMykiTransactionDate = [defaults objectForKey:[NSString stringWithFormat:@"lastMykiTransactionDate%d", cardNumber]];
 
         if ([storedCardHolder length]) {
@@ -85,6 +87,7 @@
             [mykiCardInformation setMykiMoneyTopUpInProgress: storedMykiMoneyTopUpInProgress];
             [mykiCardInformation setCurrentMykiPassActive: storedCurrentMykiPassActive];
             [mykiCardInformation setCurrentMykiPassNotYetActive: storedCurrentMykiPassNotYetActive];
+            [mykiCardInformation setCardIDNumber:storedCardIDNumber];
             [mykiCardInformation setLastMykiTransactionDate: storedLastMykiTransactionDate];
             [self.mykiCards addObject:mykiCardInformation];
             cardNumber++;

@@ -44,6 +44,7 @@
 		813AA06D16C75A2000AEB27F /* MHPagingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 813AA06C16C75A2000AEB27F /* MHPagingScrollView.m */; };
 		813AA07116C75E1D00AEB27F /* BalanceInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 813AA07016C75E1D00AEB27F /* BalanceInfoView.m */; };
 		813AA08816C9030B00AEB27F /* MykiCardInformation.m in Sources */ = {isa = PBXBuildFile; fileRef = 813AA08716C9030A00AEB27F /* MykiCardInformation.m */; };
+		813AA08C16CA82A300AEB27F /* PageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 813AA08B16CA82A300AEB27F /* PageControl.m */; };
 		814B25981589E88A0067D161 /* PunchOnIssues.m in Sources */ = {isa = PBXBuildFile; fileRef = 814B25971589E88A0067D161 /* PunchOnIssues.m */; };
 		814B25AB158B461D0067D161 /* MykiBalanceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 814B25A9158B461C0067D161 /* MykiBalanceViewController.m */; };
 		814B25AC158B461D0067D161 /* MykiBalanceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 814B25AA158B461C0067D161 /* MykiBalanceViewController.xib */; };
@@ -195,6 +196,8 @@
 		813AA07016C75E1D00AEB27F /* BalanceInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BalanceInfoView.m; sourceTree = "<group>"; };
 		813AA08616C9030A00AEB27F /* MykiCardInformation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MykiCardInformation.h; sourceTree = "<group>"; };
 		813AA08716C9030A00AEB27F /* MykiCardInformation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MykiCardInformation.m; sourceTree = "<group>"; };
+		813AA08A16CA82A300AEB27F /* PageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageControl.h; sourceTree = "<group>"; };
+		813AA08B16CA82A300AEB27F /* PageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageControl.m; sourceTree = "<group>"; };
 		814B25961589E88A0067D161 /* PunchOnIssues.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PunchOnIssues.h; sourceTree = "<group>"; };
 		814B25971589E88A0067D161 /* PunchOnIssues.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PunchOnIssues.m; sourceTree = "<group>"; };
 		814B25A8158B461C0067D161 /* MykiBalanceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MykiBalanceViewController.h; sourceTree = "<group>"; };
@@ -441,6 +444,8 @@
 				8129EAEA1594B844004D0C6F /* MBProgressHUD.m */,
 				81E9C8E01622915E000E2E0D /* Reachability.h */,
 				81E9C8E11622915E000E2E0D /* Reachability.m */,
+				813AA08A16CA82A300AEB27F /* PageControl.h */,
+				813AA08B16CA82A300AEB27F /* PageControl.m */,
 			);
 			name = "third party";
 			sourceTree = "<group>";
@@ -810,6 +815,7 @@
 				813AA06D16C75A2000AEB27F /* MHPagingScrollView.m in Sources */,
 				813AA07116C75E1D00AEB27F /* BalanceInfoView.m in Sources */,
 				813AA08816C9030B00AEB27F /* MykiCardInformation.m in Sources */,
+				813AA08C16CA82A300AEB27F /* PageControl.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
