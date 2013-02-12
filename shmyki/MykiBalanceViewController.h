@@ -45,6 +45,7 @@
 @property (nonatomic) BOOL isInternetDown;
 @property (nonatomic) BOOL isRequestingMoreCardData;
 @property (nonatomic) BOOL isRequestingNumberOfCards;
+@property (nonatomic) BOOL isActiveState;
 @property (nonatomic, strong) IBOutlet MHPagingScrollView *pagingScrollView;
 @property (nonatomic, strong) IBOutlet UIPageControl *pageControl;
 @property (nonatomic) int numPages;

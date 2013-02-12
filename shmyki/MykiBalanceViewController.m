@@ -23,7 +23,7 @@
 @synthesize usernameTextField, passwordTextField;
 @synthesize HUD, timer, refreshButton, isUserLoginAttempted, isProblemWithMykiCredentials, invalidCredentialsLabel, dateDisplayHelper, pageControl, pagingScrollView;
 @synthesize balanceFooterLabelOne,balanceFooterLabelTwo, balanceHeaderLabel;
-@synthesize numPages, currentlyRequestedCard;
+@synthesize numPages, currentlyRequestedCard, isActiveState;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -94,9 +94,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(scrollViewToPositionForNotification:) name:UIKeyboardWillHideNotification object:nil];
     
     [self drawBottomViewGradientWithCorners];
-   //TODO [self drawBalanceViewGradientWithCornersWithActiveState:NO];
-    [self showMykiAccountInformation];
-    
+
     self.topView.layer.shadowColor = [[UIColor blackColor] CGColor];
     self.topView.layer.shadowOffset = CGSizeMake(0.0f, 2.0f);
     self.topView.layer.shadowOpacity = .21f;
@@ -122,15 +120,15 @@
     [self.balanceFooterLabelTwo setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:13.0f]];
     [self.balanceHeaderLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:17.0f]];
     
-    [self.view addSubview:self.mykiWebstiteWebView];
+    //[self.view addSubview:self.mykiWebstiteWebView];
     
     self.numPages = 1;
     self.currentlyRequestedCard = 0;
     self.isRequestingNumberOfCards = YES;
 	self.pageControl.currentPage = 0;
 	self.pageControl.numberOfPages = self.numPages;
-
-	[self.pagingScrollView reloadPages];
+    self.isActiveState = NO;
+    [self showMykiAccountInformation];
 }
 
 
@@ -299,7 +297,7 @@
 
 -(void) showMykiAccountInformation {
 
-    [self.pagingScrollView reloadPages];
+    [self.pagingScrollView reloadData];
     
 //    [balanceMykiPassExpiryLabel setText: [mykiAccountInformation transformMykiPassToMykiPassLabel]];
 //    [balanceMykiMoneyAmountLabel setText: [mykiAccountInformation transformMykiMoneyToMykiMoneyLabel]];
@@ -432,30 +430,29 @@
 
 }
 
-#pragma mark move views   
+#pragma mark move views
 -(void)switchToSuccessState {
-    
+    self.isActiveState = YES;
+    [self.pagingScrollView reloadData];
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:.4];
     [usernameTextField resignFirstResponder];
     [passwordTextField resignFirstResponder];
     self.bottomView.frame = CGRectMake(0, 705, 320, 205);
     self.errorView.frame = CGRectMake(0, 705, 320, 150);
-   //TODO [self drawBalanceViewGradientWithCornersWithActiveState:YES];
     [UIView commitAnimations];
     self.navigationItem.rightBarButtonItem = [YourMykiCustomButton createYourMykiBarButtonItemWithText:@"Edit" withTarget:self withAction:@selector(switchToLoginState)];
-    
     [self updateRefreshButton];
-    
 }
 
 -(void)switchToLoginState {
+    self.isActiveState = NO;
+    [self.pagingScrollView reloadData];
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:.4];
     [self dismissKeyboard];
     self.bottomView.frame = CGRectMake(0, 224, 320, 205);
     self.errorView.frame = CGRectMake(0, 705, 320, 150);
-  //TODO [self drawBalanceViewGradientWithCornersWithActiveState:NO];
     [UIView commitAnimations];
     
     if (self.isUserLoginAttempted) {
@@ -467,17 +464,21 @@
 }
 
 -(void)switchToLoggingInState {
+    self.isActiveState = NO;
+    [self.pagingScrollView reloadData];
     self.invalidCredentialsLabel.hidden = YES;
     self.navigationItem.rightBarButtonItem = [YourMykiCustomButton createYourMykiBarButtonItemWithText:@"Cancel" withTarget:self withAction:@selector(userCanceledLogin)];
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:.4];
     self.bottomView.frame = CGRectMake(0, 705, 320, 205);
     self.errorView.frame = CGRectMake(0, 705, 320, 150);
-    //TODO[self drawBalanceViewGradientWithCornersWithActiveState:NO];
+
     [UIView commitAnimations];
 }
 
 -(void)switchToErrorState {
+    self.isActiveState = NO;
+    [self.pagingScrollView reloadData];
     if(self.isProblemWithMykiCredentials) {
         self.invalidCredentialsLabel.hidden = NO;
         [self switchToLoginState];
@@ -495,15 +496,12 @@
         [UIView setAnimationDuration:.4];
         self.bottomView.frame = CGRectMake(0, 705, 320, 205);
         self.errorView.frame = CGRectMake(0, 224, 320, 150);
-       //TODO [self drawBalanceViewGradientWithCornersWithActiveState:NO];
         [UIView commitAnimations];
-        //  self.navigationItem.leftBarButtonItem = self.navigationItem.leftBarButtonItem = [YourMykiCustomButton createYourMykiBarButtonItemWithText:@"Cancel" withTarget:self withAction:@selector(switchToSuccessState)];
         self.navigationItem.rightBarButtonItem = [YourMykiCustomButton createYourMykiBarButtonItemWithText:@"Edit" withTarget:self withAction:@selector(switchToLoginState)];
     }
 }
 
 -(IBAction)tryAgainButtonTapped:(id)sender {
-    //[self switchToLoginState];
     [self retrieveMykiBalance];
 }
 
@@ -564,24 +562,12 @@
     return !(networkStatus == NotReachable) && !(hostStatus == NotReachable);
 }
 
-
-
 #pragma mark - UIScrollViewDelegate
 
 - (void)scrollViewDidScroll:(UIScrollView *)theScrollView
 {
 	self.pageControl.currentPage = [self.pagingScrollView indexOfSelectedPage];
 	[self.pagingScrollView scrollViewDidScroll];
-}
-
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)theScrollView
-{
-//	if ([self.pagingScrollView indexOfSelectedPage] == self.numPages - 1)
-//	{
-//		self.numPages++;
-//		[self.pagingScrollView reloadPages];
-//		self.pageControl.numberOfPages = self.numPages;
-//	}
 }
 
 #pragma mark - MHPagingScrollViewDelegate
@@ -594,10 +580,9 @@
 - (UIView *)pagingScrollView:(MHPagingScrollView *)thePagingScrollView pageForIndex:(NSUInteger)index
 {
     BalanceInfoView * balanceInfoView = [[BalanceInfoView alloc] init];
-                                     
     balanceInfoView.frame = CGRectMake(20, 50, 280, 100);
-    [balanceInfoView drawBalanceViewGradientWithCornersWithActiveState:YES];
     
+    [balanceInfoView drawBalanceViewGradientWithCornersWithActiveState:self.isActiveState];
     return balanceInfoView;
 }
 

@@ -69,7 +69,6 @@
 
 -(void) drawBalanceViewGradientWithCornersWithActiveState:(BOOL)isActiveState {
     CAGradientLayer *gradient = [CAGradientLayer layer];
-//    gradient.frame = self.bounds;
     gradient.frame = CGRectMake(20, 0, 280, 100);
     UIColor *startColour;
     UIColor *endColour;
@@ -85,13 +84,7 @@
     gradient.colors = [NSArray arrayWithObjects:(id)[startColour CGColor], (id)[endColour CGColor], nil];
     self.layer.cornerRadius = 10;
     gradient.cornerRadius = 10;
-    
-//    CALayer *currentGradient = [self.layer.sublayers objectAtIndex:0];
-//    if(currentGradient.position.x != 74) {
-//        [self.layer replaceSublayer:[self.layer.sublayers objectAtIndex:0] with:gradient];
-//    } else {
-        [self.layer insertSublayer:gradient atIndex:0];
-//    }
+    [self.layer insertSublayer:gradient atIndex:0];
 }
 
 

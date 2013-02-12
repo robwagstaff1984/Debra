@@ -56,6 +56,8 @@
  */
 - (void)reloadPages;
 
+-(void) reloadData;
+
 /*
  * Call this from your view controller's UIScrollViewDelegate.
  */

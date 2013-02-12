@@ -126,7 +126,7 @@
 	return rect;
 }
 
-- (void)tilePages 
+- (void)tilePages
 {
 	CGRect visibleBounds = self.bounds;
 	CGFloat pageWidth = CGRectGetWidth(visibleBounds);
@@ -170,6 +170,44 @@
 {
 	self.contentSize = [self contentSizeForPagingScrollView];
 	[self tilePages];
+}
+
+-(void) reloadData {
+    [self reloadPages];
+    
+	CGRect visibleBounds = self.bounds;
+	CGFloat pageWidth = CGRectGetWidth(visibleBounds);
+	visibleBounds.origin.x -= _previewInsets.left;
+	visibleBounds.size.width += (_previewInsets.left + _previewInsets.right);
+    
+	int firstNeededPageIndex = floorf(CGRectGetMinX(visibleBounds) / pageWidth);
+	int lastNeededPageIndex = floorf((CGRectGetMaxX(visibleBounds) - 1.0f) / pageWidth);
+	firstNeededPageIndex = MAX(firstNeededPageIndex, 0);
+	lastNeededPageIndex = MIN(lastNeededPageIndex, (int)[self numberOfPages] - 1);
+    
+	for (MHPage *page in _visiblePages)
+	{
+		if ((int)page.index >= firstNeededPageIndex || (int)page.index <= lastNeededPageIndex)
+		{
+			[_recycledPages addObject:page];
+			[page.view removeFromSuperview];
+		}
+	}
+    
+	[_visiblePages minusSet:_recycledPages];
+    
+	for (int i = firstNeededPageIndex; i <= lastNeededPageIndex; ++i)
+	{
+        UIView *pageView = [_pagingDelegate pagingScrollView:self pageForIndex:i];
+        pageView.frame = [self frameForPageAtIndex:i];
+        pageView.autoresizingMask = UIViewAutoresizingFlexibleHeight;
+        [self addSubview:pageView];
+        
+        MHPage *page = [[MHPage alloc] init];
+        page.index = i;
+        page.view = pageView;
+        [_visiblePages addObject:page];
+	}
 }
 
 - (void)scrollViewDidScroll
