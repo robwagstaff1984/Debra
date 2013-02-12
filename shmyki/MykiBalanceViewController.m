@@ -127,12 +127,12 @@
     self.numPages = 1;
     self.currentlyRequestedCard = 0;
     self.isRequestingNumberOfCards = YES;
-    self.pagingScrollView.previewInsets = UIEdgeInsetsMake(0.0f, 0.0f, 0.0f, 0.0f);
-	[self.pagingScrollView reloadPages];
-    
 	self.pageControl.currentPage = 0;
 	self.pageControl.numberOfPages = self.numPages;
+
+	[self.pagingScrollView reloadPages];
 }
+
 
 - (void)viewDidUnload
 {
@@ -245,28 +245,21 @@
     }else if ([pageTitle isEqualToString:@"Manage my card"]) {
         [self resetTimer];
         NSString *currentPage = [webView stringByEvaluatingJavaScriptFromString:@"document.body.innerHTML"];
-       // [self processMykiAccountBalancePageHTML:currentPage];
-        
-        if(self.isRequestingNumberOfCards) {
-            NSString* numberOfCardsJavascript = @"document.getElementById('ctl00_uxContentPlaceHolder_uxCardList').options.length";
-            NSString* numberOfCardsReturnValue = [self.mykiWebstiteWebView stringByEvaluatingJavaScriptFromString:numberOfCardsJavascript];
-            int numberOfCards = [numberOfCardsReturnValue integerValue];
-            self.numPages = numberOfCards;
-            self.isRequestingNumberOfCards = NO;
-        }
+        [self requestNumberOfCardsIfRequired];
         
         if (self.isRequestingMoreCardData) {
             
+            [mykiAccountInformation extractMykiAccountInfoFromHtml:currentPage forCardNumber:self.currentlyRequestedCard];
+            self.currentlyRequestedCard++;
             if (self.currentlyRequestedCard >= self.numPages) {
                 self.isRequestingMoreCardData = NO;
                 [self finishedProcessingBalances];
             } else {
-                NSString* changeCardJavascript = @"var cardDropdown = document.getElementById('ctl00_uxContentPlaceHolder_uxCardList');var numberOfCards = cardDropdown.options.length;for (var i=0; i<numberOfCards; i++){if (cardDropdown.options[i].value == \"308425073890053\"){cardDropdown.options[i].selected = true;break;}}";
+                NSString* changeCardJavascript = [NSString stringWithFormat: @"var cardDropdown = document.getElementById('ctl00_uxContentPlaceHolder_uxCardList');var numberOfCards = cardDropdown.options.length;for (var i=0; i<numberOfCards; i++){if (cardDropdown.options[i].value == cardDropdown.options[%d].value){cardDropdown.options[i].selected = true;break;}}", self.currentlyRequestedCard];
                 
                 NSString* changeCardSubmitJavascript = @"var submitButton = document.getElementById(\"ctl00_uxContentPlaceHolder_uxGo\"); submitButton.click();";
                 [self.mykiWebstiteWebView stringByEvaluatingJavaScriptFromString: changeCardJavascript];
                 [self.mykiWebstiteWebView stringByEvaluatingJavaScriptFromString: changeCardSubmitJavascript];
-                self.currentlyRequestedCard++;
             }
         }
     }
@@ -280,6 +273,16 @@
 
 -(void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
     NSLog (@"Error!: %@", error);
+}
+
+-(void) requestNumberOfCardsIfRequired {
+    if(self.isRequestingNumberOfCards) {
+        NSString* numberOfCardsJavascript = @"document.getElementById('ctl00_uxContentPlaceHolder_uxCardList').options.length";
+        NSString* numberOfCardsReturnValue = [self.mykiWebstiteWebView stringByEvaluatingJavaScriptFromString:numberOfCardsJavascript];
+        int numberOfCards = [numberOfCardsReturnValue integerValue];
+        self.numPages = numberOfCards;
+        self.isRequestingNumberOfCards = NO;
+    }
 }
 
 #pragma mark account info helpers

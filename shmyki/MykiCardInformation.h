@@ -16,7 +16,6 @@
 @property (nonatomic, strong) NSString* cardStatus;
 @property (nonatomic, strong) NSString* currentMykiMoneyBalance;
 @property (nonatomic, strong) NSString* mykiMoneyTopUpInProgress;
-@property (nonatomic, strong) NSString* totalMykiMoneyBalance;
 @property (nonatomic, strong) NSString* currentMykiPassActive;
 @property (nonatomic, strong) NSString* currentMykiPassNotYetActive;
 @property (nonatomic, strong) NSString* lastMykiTransactionDate;

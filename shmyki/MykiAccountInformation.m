@@ -87,6 +87,7 @@
             [mykiCardInformation setCurrentMykiPassNotYetActive: storedCurrentMykiPassNotYetActive];
             [mykiCardInformation setLastMykiTransactionDate: storedLastMykiTransactionDate];
             [self.mykiCards addObject:mykiCardInformation];
+            cardNumber++;
         } else {
             moreCardsAvailable = NO;
         }
