@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 #define FEATURE_PUNCH_ON_COACH_MARKS 0
+#define INSPECTOR_COACH_MARKS 0
 
 @interface FeatureToggle : NSObject
 

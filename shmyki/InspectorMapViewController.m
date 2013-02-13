@@ -12,8 +12,13 @@
 #import "ShmykiContstants.h"
 #import "GANTracker.h"
 #import <QuartzCore/QuartzCore.h>
+#import "FeatureToggle.h"
+#import <objc/runtime.h>
 
 @implementation InspectorMapViewController
+
+static char key;
+
 
 @synthesize inspectorMapView, locationManager, listOfInspectorLocations, helpImages, inspectorHelpImageButton,
 inspectorCoachMarks, showingCoachMarks, needToDropInspectorPin, zIndexOfFrontPoi;
@@ -215,29 +220,49 @@ inspectorCoachMarks, showingCoachMarks, needToDropInspectorPin, zIndexOfFrontPoi
 
 -(void) dropInspectorPinIfRequired {
     if(self.needToDropInspectorPin || self.needToDropDisturbancePin || self.needToDropPolicePin) {
-        CLLocationCoordinate2D inspectorLocationCoordinate = [self.locationManager.location coordinate];
-        /*TODO pin type*/
+    
         
-        NSString * spotType = nil;
+        NSString* spotType;
+        NSString* alertTitle;
+        NSString* alertMessage;
         if (self.needToDropDisturbancePin) {
             spotType = @"DISTURBANCE";
+            alertTitle = @"Report danger?";
+            alertMessage= @"You can help others by reporting a threat";
         } else if (self.needToDropPolicePin) {
             spotType = @"POLICE";
+            alertTitle = @"Spot Police?";
+            alertMessage= @"Spotting police will let others know where to find help";
         } else {
             spotType = @"INSPECTOR";
+            alertTitle = @"Tag inspector?";
+            alertMessage= @"Customer service representatives are nearby";
         }
-        InspectorMapKitAnnotation *annotation = [[InspectorMapKitAnnotation alloc] initWithCoords:inspectorLocationCoordinate spotType:spotType];
-        
-        [annotation setSpotDate:[NSDate date]];
-        [annotation setJustSpotted:YES];
-        [annotation setSpotType:spotType];
-        [inspectorMapView addAnnotation:annotation];
-        
-        [self saveInspectorWithLocationCoordinate:inspectorLocationCoordinate spotType:spotType];
+        UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:alertTitle message:alertMessage delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Confirm", nil];
+        [alertView show];
+        objc_setAssociatedObject(alertView, &key, spotType, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     }
     self.needToDropInspectorPin = NO;
     self.needToDropPolicePin = NO;
     self.needToDropDisturbancePin = NO;
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if(buttonIndex == 1) {
+         NSString *associatedSpotType = objc_getAssociatedObject(alertView, &key);
+        [self dropPinOfType:associatedSpotType];
+    }
+}
+
+-(void) dropPinOfType:(NSString*)spotType {
+     CLLocationCoordinate2D inspectorLocationCoordinate = [self.locationManager.location coordinate];
+    InspectorMapKitAnnotation *annotation = [[InspectorMapKitAnnotation alloc] initWithCoords:inspectorLocationCoordinate spotType:spotType];
+    
+    [annotation setSpotDate:[NSDate date]];
+    [annotation setJustSpotted:YES];
+    [annotation setSpotType:spotType];
+    [inspectorMapView addAnnotation:annotation];
+    [self saveInspectorWithLocationCoordinate:inspectorLocationCoordinate spotType:spotType];
 }
 
 
@@ -281,8 +306,10 @@ inspectorCoachMarks, showingCoachMarks, needToDropInspectorPin, zIndexOfFrontPoi
     }
                      completion:^(BOOL finished){[self.inspectorHelpImageButton setHidden:TRUE];}
      ];
-    [self showInspectorCoachMarks];
-    [self hideInspectorCoachMarksWithDelay:6.0 WithDuration:2.0];
+    if(INSPECTOR_COACH_MARKS) {
+        [self showInspectorCoachMarks];
+        [self hideInspectorCoachMarksWithDelay:6.0 WithDuration:2.0];
+    }
 }
 
 -(void) showInspectorHelp {

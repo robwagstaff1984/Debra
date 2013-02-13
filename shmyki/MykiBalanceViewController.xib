@@ -165,6 +165,18 @@
 										<reference key="IBUIFontDescription" ref="1044907609"/>
 										<reference key="IBUIFont" ref="995824245"/>
 									</object>
+									<object class="IBUIScrollView" id="782178929">
+										<reference key="NSNextResponder" ref="766586467"/>
+										<int key="NSvFlags">268</int>
+										<string key="NSFrame">{{0, 57}, {320, 100}}</string>
+										<reference key="NSSuperview" ref="766586467"/>
+										<reference key="NSWindow"/>
+										<reference key="NSNextKeyView"/>
+										<string key="NSReuseIdentifierKey">_NS:9</string>
+										<bool key="IBUIClipsSubviews">YES</bool>
+										<bool key="IBUIMultipleTouchEnabled">YES</bool>
+										<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+									</object>
 								</array>
 								<string key="NSFrameSize">{320, 224}</string>
 								<reference key="NSSuperview" ref="939612035"/>
@@ -395,18 +407,6 @@
 								</object>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 							</object>
-							<object class="IBUIScrollView" id="782178929">
-								<reference key="NSNextResponder" ref="939612035"/>
-								<int key="NSvFlags">268</int>
-								<string key="NSFrame">{{0, 55}, {320, 100}}</string>
-								<reference key="NSSuperview" ref="939612035"/>
-								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView"/>
-								<string key="NSReuseIdentifierKey">_NS:9</string>
-								<bool key="IBUIClipsSubviews">YES</bool>
-								<bool key="IBUIMultipleTouchEnabled">YES</bool>
-								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-							</object>
 						</array>
 						<string key="NSFrameSize">{320, 432}</string>
 						<reference key="NSSuperview" ref="191373211"/>
@@ -551,14 +551,6 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">pagingScrollView</string>
-						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="782178929"/>
-					</object>
-					<int key="connectionID">103</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">balanceHeaderLabelTwo</string>
 						<reference key="source" ref="372490531"/>
 						<reference key="destination" ref="452620253"/>
@@ -572,6 +564,14 @@
 						<reference key="destination" ref="160891960"/>
 					</object>
 					<int key="connectionID">108</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">pagingScrollView</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="782178929"/>
+					</object>
+					<int key="connectionID">103</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
@@ -659,7 +659,6 @@
 							<reference ref="766586467"/>
 							<reference ref="804986839"/>
 							<reference ref="501290218"/>
-							<reference ref="782178929"/>
 						</array>
 						<reference key="parent" ref="191373211"/>
 					</object>
@@ -671,6 +670,7 @@
 							<reference ref="452620253"/>
 							<reference ref="14117565"/>
 							<reference ref="160891960"/>
+							<reference ref="782178929"/>
 						</array>
 						<reference key="parent" ref="939612035"/>
 					</object>
@@ -747,13 +747,13 @@
 						<reference key="parent" ref="88977363"/>
 					</object>
 					<object class="IBObjectRecord">
-						<int key="objectID">99</int>
-						<reference key="object" ref="782178929"/>
-						<reference key="parent" ref="939612035"/>
-					</object>
-					<object class="IBObjectRecord">
 						<int key="objectID">106</int>
 						<reference key="object" ref="160891960"/>
+						<reference key="parent" ref="766586467"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">99</int>
+						<reference key="object" ref="782178929"/>
 						<reference key="parent" ref="766586467"/>
 					</object>
 				</array>

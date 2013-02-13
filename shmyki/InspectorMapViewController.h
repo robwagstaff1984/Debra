@@ -11,7 +11,7 @@
 #import <CoreLocation/CoreLocation.h>
 #import "HelpImages.h"
 
-@interface InspectorMapViewController : UIViewController<MKMapViewDelegate, CLLocationManagerDelegate>
+@interface InspectorMapViewController : UIViewController<MKMapViewDelegate, CLLocationManagerDelegate, UIAlertViewDelegate>
 
 @property (strong, nonatomic) IBOutlet MKMapView *inspectorMapView;
 @property (strong) CLLocationManager *locationManager;
