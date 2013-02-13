@@ -119,19 +119,19 @@
     [self.balanceFooterLabelOne setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:13.0f]];
     [self.balanceFooterLabelTwo setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:13.0f]];
     [self.balanceHeaderLabelOne setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:17.0f]];
-    [self.balanceHeaderLabelTwo setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:17.0f]];
+    [self.balanceHeaderLabelTwo setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:15.0f]];
     
     //[self.view addSubview:self.mykiWebstiteWebView];
+    self.pageControl = [[PageControl alloc] initWithFrame:CGRectMake(141, 150, 39, 36)];
+	self.pageControl.currentPage = 1;
+    self.pageControl.hidden = YES;
     
     self.numPages = MAX(1, self.mykiAccountInformation.mykiCards.count);
     self.currentlyRequestedCard = 0;
     self.isRequestingNumberOfCards = YES;
-    self.pageControl = [[PageControl alloc] initWithFrame:CGRectMake(141, 148, 39, 36)];
-	self.pageControl.currentPage = 1;
 	self.pageControl.numberOfPages = self.numPages;
-    self.pageControl.hidden = YES;
-    
-    [self.view addSubview:self.pageControl];
+
+    [self.topView addSubview:self.pageControl];
     
     self.isActiveState = NO;
     [self showMykiAccountInformation];
@@ -162,8 +162,14 @@
     if([usernameTextField.text length] != 0 && [passwordTextField.text length] != 0) {
         
         [self switchToLoggingInState];
+        self.numPages = MAX(1, self.mykiAccountInformation.mykiCards.count);
+        self.currentlyRequestedCard = 0;
+        self.isRequestingNumberOfCards = YES;
+        self.pageControl.numberOfPages = self.numPages;
+        
         
         timer = [NSTimer scheduledTimerWithTimeInterval: 30.0 target:self selector:@selector(cancelRequest) userInfo:nil repeats: NO];
+        
         
         HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         HUD.delegate = self;
@@ -293,11 +299,10 @@
     if(self.isRequestingNumberOfCards) {
         NSString* numberOfCardsJavascript = @"document.getElementById('ctl00_uxContentPlaceHolder_uxCardList').options.length";
         NSString* numberOfCardsReturnValue = [self.mykiWebstiteWebView stringByEvaluatingJavaScriptFromString:numberOfCardsJavascript];
-        int numberOfCards = [numberOfCardsReturnValue integerValue];
-        self.numPages = numberOfCards;
+        self.numPages = [numberOfCardsReturnValue integerValue];
         self.isRequestingNumberOfCards = NO;
-        self.pageControl.numberOfPages = numberOfCards;
-        self.pageControl.hidden = NO;
+        self.pageControl.numberOfPages = self.numPages;
+        self.pageControl.hidden = !(self.numPages > 1);
     }
 }
 
