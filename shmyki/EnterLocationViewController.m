@@ -130,7 +130,7 @@
     selectedLocation = [[[tableView cellForRowAtIndexPath:indexPath] textLabel] text];
     
     [[(AppDelegate*)[[UIApplication sharedApplication]delegate] currentUsersPunchOnLog] setLocation:selectedLocation];
-    [[(AppDelegate*)[[UIApplication sharedApplication]delegate] currentUsersPunchOnLog] setTransportationType:self.selectedTransportType];    
+    [[(AppDelegate*)[[UIApplication sharedApplication]delegate] currentUsersPunchOnLog] setTransportationType: [stationLocations getTransportationTypeForStation:selectedLocation]];    
     
     [self.navigationController popViewControllerAnimated:YES];
 }
@@ -187,7 +187,7 @@
         isFiltered = true;
         filteredStationsForCurrentSelection = [[NSMutableArray alloc] init];
         
-        for (NSString* stationLocation in stationsForCurrentSelection)
+        for (NSString* stationLocation in [stationLocations getAllStationsForAllTransportTypes])
         {
             NSRange stationLocationRange = [stationLocation rangeOfString:text options:NSCaseInsensitiveSearch];
             if(stationLocationRange.location != NSNotFound)

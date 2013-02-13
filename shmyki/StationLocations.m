@@ -650,4 +650,21 @@
     }
 }
 
+-(NSMutableArray*)getAllStationsForAllTransportTypes {
+    NSMutableArray* allStations = [[NSMutableArray alloc] initWithArray:self.trainLocations];
+    [allStations addObjectsFromArray:self.tramLocations];
+    [allStations addObjectsFromArray:self.busLocations];
+    return allStations;
+}
+
+-(NSInteger) getTransportationTypeForStation:(NSString*)station {
+    if([self.trainLocations containsObject:station]) {
+        return SELECTED_TRANSPORT_TRAIN ;
+    } else if([self.busLocations containsObject:station] )  {
+        return SELECTED_TRANSPORT_BUS  ;
+    } else  {
+
+        return  SELECTED_TRANSPORT_TRAM;
+    }
+}
 @end

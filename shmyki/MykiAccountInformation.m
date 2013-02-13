@@ -114,12 +114,9 @@
     [mykiCardInformation setLastMykiTransactionDate:[self extractInformationFromHtml:page withRegeEx:REG_EX_LAST_MYKI_TRANSACTION_DATE]];
     
     [mykiCardInformation setCardIDNumber:[self extractInformationFromHtml:page withRegeEx:REG_EX_CARD_NUMBER_ADDITIONALS]];
-    NSLog(@"other: %@", mykiCardInformation.cardIDNumber);
     if (![mykiCardInformation.cardIDNumber length]) {
         [mykiCardInformation setCardIDNumber:[self extractInformationFromHtml:page withRegeEx:REG_EX_CARD_NUMBER_ONE]];
-        NSLog(@"1: %@", mykiCardInformation.cardIDNumber);
     }
-    
     
     if(mykiCardInformation.cardHolder == nil && mykiCardInformation.cardExpiry ==nil && mykiCardInformation.currentMykiMoneyBalance == nil && [mykiCardInformation.currentMykiPassActive isEqualToString:@"N/A"]) {
     } else {

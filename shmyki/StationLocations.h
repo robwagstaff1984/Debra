@@ -17,4 +17,6 @@
 
 -(NSInteger)getNumberOfStationsForSelectedTransport:(NSInteger)selectedTransportType;
 -(NSMutableArray*)getStationsForSelectedTransport:(NSInteger)selectedTransportType;
+-(NSMutableArray*)getAllStationsForAllTransportTypes;
+-(NSInteger) getTransportationTypeForStation:(NSString*)station;
 @end
