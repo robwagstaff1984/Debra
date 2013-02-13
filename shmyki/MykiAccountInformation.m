@@ -202,10 +202,10 @@
 -(NSString*)transformAccountInfoToHeaderLabelOneForCardNumber:(int)cardNumber {
 
     NSString *headerLabel = @"";
-    MykiCardInformation* mykiCard = self.mykiCards[cardNumber];
-    if([mykiCard.cardHolder length] != 0) {
-        headerLabel = mykiCard.cardHolder;
-    }
+//    MykiCardInformation* mykiCard = self.mykiCards[cardNumber];
+//    if([mykiCard.cardHolder length] != 0) {
+//        headerLabel = mykiCard.cardHolder;
+//    }
     return headerLabel;
 }
 
@@ -215,8 +215,12 @@
     MykiCardInformation* mykiCard = self.mykiCards[cardNumber];
     if([mykiCard.cardExpiry length] != 0) {
         
-        headerLabel = [NSString stringWithFormat: @"Card %d - %@", cardNumber+1, mykiCard.cardIDNumber];
-    } 
+        if([self.mykiCards count] > 1) {
+            headerLabel = [NSString stringWithFormat: @"Card %d of %d - %@", cardNumber+1,[self.mykiCards count], mykiCard.cardIDNumber];
+        } else {
+            headerLabel = [NSString stringWithFormat: @"Card %d - %@", cardNumber+1, mykiCard.cardIDNumber];
+        }
+    }
     return headerLabel;
 }
 

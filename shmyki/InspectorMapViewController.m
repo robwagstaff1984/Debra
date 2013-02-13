@@ -36,7 +36,8 @@ inspectorCoachMarks, showingCoachMarks, needToDropInspectorPin, zIndexOfFrontPoi
         self.listOfInspectorLocations = [[NSMutableArray alloc] initWithCapacity:MAX_INSPECTORS_DISPLAYED];
         self.locationManager = nil;
         self.locationManager = [[CLLocationManager alloc] init]; 
-        self.locationManager.delegate = self; 
+        self.locationManager.delegate = self;
+        [self findInspectors];
     }
     return self;
 }
@@ -67,7 +68,6 @@ inspectorCoachMarks, showingCoachMarks, needToDropInspectorPin, zIndexOfFrontPoi
         [self.locationManager startUpdatingLocation];
         [inspectorMapView setShowsUserLocation:YES];
     }
-    [self findInspectors];
     
     // Do any additional setup after loading the view from its nib.
 }
@@ -357,8 +357,7 @@ inspectorCoachMarks, showingCoachMarks, needToDropInspectorPin, zIndexOfFrontPoi
         }
         
         [self removeInspectorAnnotations];
-//        [self.inspectorMapView addAnnotations:[[listOfInspectorLocations reverseObjectEnumerator] allObjects]];
-                [self.inspectorMapView addAnnotations:[[listOfInspectorLocations objectEnumerator] allObjects]];
+        [self.inspectorMapView addAnnotations:[[listOfInspectorLocations objectEnumerator] allObjects]];
     }];
 }
 

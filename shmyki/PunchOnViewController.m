@@ -74,6 +74,7 @@
     //self.punchOnCommentsTableView.tableHeaderView = [TableViewHeaderHelper makeTableDownHeaderWith:self.totalPunchOns];
     self.listOfPunchOnLogs = [[PunchOnLogsCache sharedModel] loadPunchOnLogsCache];
     self.totalPunchOns = [self.listOfPunchOnLogs count];
+    [self.punchOnCommentsTableView reloadData];
     [self.tableFixedHeader addSubview: [TableViewHeaderHelper makeTableDownHeaderWith:self.totalPunchOns]];
     [self addGesturesToTableViewHeaderWithFadeEffect:NO];
     [punchOnCommentsView addGestureRecognizer:_panGestureUpRecognizerForCommentsView];
@@ -206,7 +207,7 @@
         cell = [[TableViewCellForPunchOnLogs alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
     
-    PunchOnLog *punchOnLog = [listOfPunchOnLogs objectAtIndex:indexPath.row];
+    PunchOnLog *punchOnLog = [self.listOfPunchOnLogs objectAtIndex:indexPath.row];
     cell.messageLabel.text = punchOnLog.message;
     cell.locationLabel.text = punchOnLog.location;
     cell.dateLabel.text = [dateDisplayHelper getDisplayForDate:punchOnLog.dateLogged forPage:YourMykiPunchOnPage];
@@ -265,6 +266,7 @@
         }
         
         self.listOfPunchOnLogs = [[PunchOnLogsCache sharedModel] loadPunchOnLogsCache];
+        self.totalPunchOns = [self.listOfPunchOnLogs count];
         [self.punchOnCommentsTableView reloadData];
     }];
 

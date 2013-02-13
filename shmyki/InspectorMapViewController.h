@@ -28,4 +28,7 @@
 
 - (void) saveInspectorWithLocationCoordinate:(CLLocationCoordinate2D)inspectorLocationCoordinate spotType:(NSString*)spotType;
 -(IBAction)inspectorHelpTapped:(id)sender;
+
+-(void) findInspectors;
+
 @end

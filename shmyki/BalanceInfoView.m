@@ -72,14 +72,14 @@
     
     UILabel* mykiPassHeading = [[UILabel alloc] initWithFrame:CGRectMake(20, 5, 141, 25)];
     mykiPassHeading.text = @"myki pass expiry";
-    [mykiPassHeading setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:14.0f]];
+    [mykiPassHeading setFont:[UIFont fontWithName:@"HelveticaNeue-Medium" size:14.0f]];
     mykiPassHeading.textColor = [UIColor whiteColor];
     mykiPassHeading.textAlignment = UITextAlignmentCenter;
     mykiPassHeading.backgroundColor = [UIColor clearColor];
     
     UILabel* mykiMoneyHeading = [[UILabel alloc] initWithFrame:CGRectMake(159, 5, 141, 25)];
     mykiMoneyHeading.text = @"myki money";
-    [mykiMoneyHeading setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:14.0f]];
+    [mykiMoneyHeading setFont:[UIFont fontWithName:@"HelveticaNeue-Medium" size:14.0f]];
     mykiMoneyHeading.textColor = [UIColor whiteColor];
     mykiMoneyHeading.textAlignment = UITextAlignmentCenter;
     mykiMoneyHeading.backgroundColor = [UIColor clearColor];
