@@ -121,7 +121,8 @@
     [self.balanceHeaderLabelOne setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:17.0f]];
     [self.balanceHeaderLabelTwo setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:15.0f]];
     
-    //[self.view addSubview:self.mykiWebstiteWebView];
+    [self.view addSubview:self.mykiWebstiteWebView];
+
     self.pageControl = [[PageControl alloc] initWithFrame:CGRectMake(141, 150, 39, 36)];
 	self.pageControl.currentPage = 1;
     self.pageControl.hidden = YES;
@@ -270,8 +271,42 @@
                 [self tapChangeCardButton];
             }
         }
-    }
-    else {
+    } else if ([pageTitle isEqualToString:@"Top up your myki"]) {
+       // NSLog(@"top up");
+        if (self.topUpType == topUpTypeMykiMoney) {
+            
+        } else {
+            
+        }
+        
+//        if (self.topUpPage ==topUpPageSpecifyTopUp) {
+//            NSLog(@"Specify top up");
+//            NSString *specifyTopUpPage = JAVASCRIPT_SPECIFY_TOP_UP_SUBMIT;
+//            self.topUpPage = topUpPageReviewTopUp;
+//            [self.mykiWebstiteWebView stringByEvaluatingJavaScriptFromString:specifyTopUpPage];
+       // } else
+        if (self.topUpPage == topUpPageReviewTopUp) {
+            NSLog(@"review top up");
+            self.mykiWebstiteWebView.frame = CGRectMake(0, 0, 320, 480);
+            self.mykiWebstiteWebView.hidden = NO;
+        } else {
+            NSLog(@"Choose top up");
+            int64_t delayInSeconds = 5.0;
+            dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+            dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+                NSString *submitChooseTopUpPage = JAVASCRIPT_CHOOSE_TOP_UP_SUMBIT;
+                self.topUpPage= topUpPageSpecifyTopUp;
+                [self.mykiWebstiteWebView stringByEvaluatingJavaScriptFromString: submitChooseTopUpPage];
+                
+            });
+        }
+    } else if ([pageTitle isEqualToString:@"Top up myki money"]) {
+        NSLog(@"Specify top up");
+        NSString *specifyTopUpPage = JAVASCRIPT_SPECIFY_TOP_UP_SUBMIT;
+        self.topUpPage = topUpPageReviewTopUp;
+        [self.mykiWebstiteWebView stringByEvaluatingJavaScriptFromString:specifyTopUpPage];
+        
+    } else {
         [self switchToErrorState];
         [timer invalidate];
         [HUD hide:YES];
@@ -513,6 +548,15 @@
 
 -(IBAction)tryAgainButtonTapped:(id)sender {
     [self retrieveMykiBalance];
+}
+
+-(IBAction)topUpButtonTapped:(id)sender {
+    
+    self.topUpType = topUpTypeMykiMoney;
+    
+    NSString* chooseTopUpURL = MYKI_ACCOUNT_CHOOSE_TOP_UP_PAGE_URL;
+    NSURLRequest *requestObj = [NSURLRequest requestWithURL:[NSURL URLWithString:chooseTopUpURL]];
+    [mykiWebstiteWebView loadRequest:requestObj];
 }
 
 -(void) updateRefreshButton {

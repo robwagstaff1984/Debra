@@ -15,6 +15,19 @@
 @class DateDisplayHelper;
 @class Reachability;
 
+typedef enum {
+    topUpTypeUnknown = 1,
+    topUpTypeMykiMoney = 2,
+    topUpTypeMykiPass = 3
+} topUpType;
+
+typedef enum {
+    topUpPageUnknown = 1,
+    topUpPageChooseTopUp = 2,
+    topUpPageSpecifyTopUp = 3,
+    topUpPageReviewTopUp = 4
+} topUpPage;
+
 @interface MykiBalanceViewController : UIViewController <UIWebViewDelegate, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, MBProgressHUDDelegate, UIGestureRecognizerDelegate, MHPagingScrollViewDelegate, UIScrollViewDelegate>
 
 
@@ -54,14 +67,16 @@
 @property (nonatomic) int numPages;
 @property (nonatomic) int currentlyRequestedCard;
 
+@property (nonatomic) topUpType topUpType;
+@property (nonatomic) topUpPage topUpPage;
 
 @property (nonatomic, strong) DateDisplayHelper *dateDisplayHelper;
-
 
 -(void)retrieveMykiBalance;
 -(void) retryRetrieveMykiBalance;
 -(void) stopRequest;
 - (void)webViewDidFinishLoad:(UIWebView *)webView;
 -(IBAction)tryAgainButtonTapped:(id)sender;
+-(IBAction)topUpButtonTapped:(id)sender;
 
 @end

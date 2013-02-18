@@ -51,12 +51,15 @@
 #define MYKI_LOGIN_URL @"https://www.mymyki.com.au/NTSWebPortal/Login.aspx"
 #define MYKI_ACCOUNT_INFO_URL @"https://www.mymyki.com.au/NTSWebPortal/Registered/ManageMyCard.aspx?menu=Manage%20my%20card";
 #define MYKI_ACCOUNT_WRONG_PAGE_URL @"https://www.mymyki.com.au/NTSWebPortal/registered/mymykiaccount.aspx?menu=My%20myki%20account";
+#define MYKI_ACCOUNT_CHOOSE_TOP_UP_PAGE_URL @"https://www.mymyki.com.au/NTSWebPortal/Registered/topup/ChooseTopUp.aspx?menu=One-off%20top%20up";
+
 #define JAVASCRIPT_ENTER_USERNAME @"var usernameField = document.getElementById(\"ctl00_uxContentPlaceHolder_uxUsername\"); usernameField.value ='%@';"
 #define JAVASCRIPT_ENTER_PASSWORD @"var passwordField = document.getElementById(\"ctl00_uxContentPlaceHolder_uxPassword\"); passwordField.value ='%@';"
 #define JAVASCRIPT_CLICK_SUBMIT @"var submitButton = document.getElementById(\"ctl00_uxContentPlaceHolder_uxLogin\"); submitButton.click();"
-
 #define JAVASCRIPT_CLICK_MANAGE_MY_CARD @"var manageLink = document.getElementByClassName(\"current\"); manageLink.click();"
 
+#define JAVASCRIPT_CHOOSE_TOP_UP_SUMBIT @"var submitButton = document.getElementById(\"ctl00_uxContentPlaceHolder_uxSubmit\"); submitButton.click();";
+#define JAVASCRIPT_SPECIFY_TOP_UP_SUBMIT @"var submitButton = document.getElementById(\"ctl00_uxContentPlaceHolder_uxSubmit\"); submitButton.click();";
 
 #define REG_EX_CARD_HOLDER @"<strong>Card holder</strong></td>\\s+<td>\\s+(.+)</td>"
 #define REG_EX_CARD_TYPE @"<strong>Card type</strong>\\s+</td>\\s+<td>\\s+(.*?)\\s+</td>"

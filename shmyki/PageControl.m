@@ -34,8 +34,8 @@
     {
         // Default colors.
         self.backgroundColor = [UIColor clearColor];
-        self.dotColorCurrentPage = [UIColor blackColor];
-        self.dotColorOtherPage = [UIColor lightGrayColor];
+        self.dotColorCurrentPage = [UIColor colorWithRed:0.318 green:0.471 blue:0.627 alpha:1];
+        self.dotColorOtherPage = [UIColor colorWithRed:0.584 green:0.604 blue:0.627 alpha:1];
     }
     return self;
 }

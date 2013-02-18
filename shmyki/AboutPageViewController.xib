@@ -54,30 +54,49 @@
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<bool key="IBUIEditable">NO</bool>
 						<object class="NSMutableString" key="IBUIText">
-							<bytes key="NS.bytes">eW91ck15a2kgaXMgbm90IGFmZmlsaWF0ZWQgd2l0aCBteWtpwq4gb3IgdGhlIFRyYW5zcG9ydCBUaWNr
-ZXRpbmcgQXV0aG9yaXR5LiAKCkthcHBzIEFwcHMgUHR5IEx0ZCBkb2VzIG5vdCBhY2NlcHQgYW55IGxp
-YWJpbGl0eSBmb3Igb2ZmZW5zaXZlIGxhbmd1YWdlIG9yIGFidXNpdmUgY29tbWVudHMgaW4gdGhlIGFw
-cC4gQW55IGNvbnRlbnQsIGNvbW1lbnRzLCB2aWV3cywgb3Igb3BpbmlvbnMgZXhwcmVzc2VkIG9yIHN1
-Ym1pdHRlZCBieSB0aGUgdXNlcnMgb2YgdGhlIGFwcCBhcmUgc29sZWx5IHRoZSB2aWV3cywgb3Bpbmlv
-bnMgYW5kIHJlc3BvbnNpYmlsaXR5IG9mIHRoZSBwZXJzb24gc3VibWl0dGluZyB0aGVtIGFuZCBkbyBu
-b3QgbmVjZXNzYXJpbHkgcmVmbGVjdCB0aGUgb3BpbmlvbnMgb2YgS2FwcHMgQXBwcyBQdHkgTHRkLiBL
-YXBwcyBBcHBzIFB0eSBMdGQgaXMgbm90IHJlc3BvbnNpYmxlIGZvciBjb250ZW50IHRoYXQgdGhpcmQg
-cGFydGllcyBwdWJsaXNoLCBwb3N0LCB1cGxvYWQsIGRpc3RyaWJ1dGUgb3Igb3RoZXJ3aXNlIHRyYW5z
-bWl0IHZpYSB0aGUgYXBwLgoKVW5kZXIgbm8gY2lyY3Vtc3RhbmNlcyB3aWxsIEthcHBzIEFwcHMgUHR5
-IEx0ZCBiZSByZXNwb25zaWJsZSBvciBsaWFibGUgaW4gYW55IHdheSBmb3IgYW55IGNvbnRlbnQsIGlu
-Y2x1ZGluZyBidXQgbm90IGxpbWl0ZWQgdG8sIGFueSBlcnJvcnMgb3Igb21pc3Npb25zIGluIHRoZSBj
-b250ZW50LCBhbmQgbWFrZXMgbm8gY2xhaW0gdG8gdGhlIGFjY3VyYWN5IGFuZCBhdXRoZW50aWNpdHkg
-b2YgdGhlIGNvbnRlbnQuCgpJbiBubyBldmVudCB3aWxsIEthcHBzIEFwcHMgUHR5IEx0ZCBhY2NlcHQg
-YW55IHJlc3BvbnNpYmlsaXR5IG9yIGxpYWJpbGl0eSBmb3IgYW55IGxvc3Mgb3IgZGFtYWdlcyBvZiBh
-bnkga2luZCBpbmN1cnJlZCBhcyBhIHJlc3VsdCBvZiBhbnkgY29udGVudCBjb21tdW5pY2F0ZWQsIG9y
-IG5vdCBjb21tdW5pY2F0ZWQsIGluIHRoZSB5b3VyTXlraSBhcHAuCgpLYXBwcyBBcHBzIFB0eSBMdGQg
-YWNjZXB0cyBubyBsaWFiaWxpdHkgZm9yIGFueSBkaXJlY3QsIGluZGlyZWN0IG9yIGNvbnNlcXVlbnRp
-YWwgZGFtYWdlcyByZXN1bHRpbmcgZnJvbSB0aGUgbG9zcyBvZiB1c2UsIGRhdGEsIGNvbm5lY3Rpb24g
-b3IgcGVyZm9ybWFuY2Ugb2YgdGhlIGFwcCBvciB0aGUgY29udGVudC4gCgp5b3VyTXlraSByZXR1cm5z
-IGNvbnRlbnQgZnJvbSBodHRwOi8vd3d3Lm15bXlraS5jb20uYXUgYW5kIGFzIHN1Y2gsIHdpbGwgb25s
-eSBjb250aW51ZSB0byBkbyBzbyB3aGlsZSB0aGF0IHdlYnNpdGUgaXMgYWNjZXNzaWJsZSBhbmQgYWN0
-aXZlLgoKbXlracKuIGlzIGEgcmVnaXN0ZXJlZCB0cmFkZW1hcmsgb2YgdGhlIFRyYW5zcG9ydCBUaWNr
-ZXRpbmcgQXV0aG9yaXR5Lg</bytes>
+							<bytes key="NS.bytes">S2FwcHMgQXBwcyBQdHkgTHRkIGRvZXMgbm90IGFjY2VwdCBhbnkgbGlhYmlsaXR5IGZvciBvZmZlbnNp
+dmUgbGFuZ3VhZ2Ugb3IgYWJ1c2l2ZSBjb21tZW50cyBpbiB0aGUgYXBwLiBBbnkgY29udGVudCwgY29t
+bWVudHMsIHZpZXdzLCBvciBvcGluaW9ucyBleHByZXNzZWQgb3Igc3VibWl0dGVkIGJ5IHRoZSB1c2Vy
+cyBvZiB0aGUgYXBwIGFyZSBzb2xlbHkgdGhlIHZpZXdzLCBvcGluaW9ucyBhbmQgcmVzcG9uc2liaWxp
+dHkgb2YgdGhlIHBlcnNvbiBzdWJtaXR0aW5nIHRoZW0gYW5kIGRvIG5vdCBuZWNlc3NhcmlseSByZWZs
+ZWN0IHRoZSBvcGluaW9ucyBvZiBLYXBwcyBBcHBzIFB0eSBMdGQuIEthcHBzIEFwcHMgUHR5IEx0ZCBp
+cyBub3QgcmVzcG9uc2libGUgZm9yIGNvbnRlbnQgdGhhdCB0aGlyZCBwYXJ0aWVzIHB1Ymxpc2gsIHBv
+c3QsIHVwbG9hZCwgZGlzdHJpYnV0ZSBvciBvdGhlcndpc2UgdHJhbnNtaXQgdmlhIHRoZSBhcHAuCgpV
+bmRlciBubyBjaXJjdW1zdGFuY2VzIHdpbGwgS2FwcHMgQXBwcyBQdHkgTHRkIGJlIHJlc3BvbnNpYmxl
+IG9yIGxpYWJsZSBpbiBhbnkgd2F5IGZvciBhbnkgY29udGVudCwgaW5jbHVkaW5nIGJ1dCBub3QgbGlt
+aXRlZCB0bywgYW55IGVycm9ycyBvciBvbWlzc2lvbnMgaW4gdGhlIGNvbnRlbnQsIGFuZCBtYWtlcyBu
+byBjbGFpbSB0byB0aGUgYWNjdXJhY3kgYW5kIGF1dGhlbnRpY2l0eSBvZiB0aGUgY29udGVudC4KCklu
+IG5vIGV2ZW50IHdpbGwgS2FwcHMgQXBwcyBQdHkgTHRkIGFjY2VwdCBhbnkgcmVzcG9uc2liaWxpdHkg
+b3IgbGlhYmlsaXR5IGZvciBhbnkgbG9zcyBvciBkYW1hZ2VzIG9mIGFueSBraW5kIGluY3VycmVkIGFz
+IGEgcmVzdWx0IG9mIGFueSBjb250ZW50IGNvbW11bmljYXRlZCwgb3Igbm90IGNvbW11bmljYXRlZCwg
+aW4gdGhlIHlvdXJNeWtpIGFwcC4KCkthcHBzIEFwcHMgUHR5IEx0ZCBhY2NlcHRzIG5vIGxpYWJpbGl0
+eSBmb3IgYW55IGRpcmVjdCwgaW5kaXJlY3Qgb3IgY29uc2VxdWVudGlhbCBkYW1hZ2VzIHJlc3VsdGlu
+ZyBmcm9tIHRoZSBsb3NzIG9mIHVzZSwgZGF0YSwgY29ubmVjdGlvbiBvciBwZXJmb3JtYW5jZSBvZiB0
+aGUgYXBwIG9yIHRoZSBjb250ZW50LiB5b3VyTXlraSByZXR1cm5zIGNvbnRlbnQgZnJvbSBodHRwOi8v
+d3d3Lm15bXlraS5jb20uYXUgYW5kIGFzIHN1Y2gsIHdpbGwgb25seSBjb250aW51ZSB0byBkbyBzbyB3
+aGlsZSB0aGF0IHdlYnNpdGUgaXMgYWNjZXNzaWJsZSBhbmQgYWN0aXZlLiBLYXBwcyBBcHBzIHdpbGwg
+bm90IGJlIHJlc3BvbnNpYmxlIGZvciBhbnkgaW5hYmlsaXR5IG9mIHlvdXIgbW9iaWxlIGRldmljZSB0
+byBhY2Nlc3Mgb3IgdXNlIHlvdXJNeWtpLCBvciBmb3IgYW55IGxvc3Mgb3IgZGFtYWdlIHRvIHlvdSwg
+b3IgYW55b25lIGVsc2UsIHJlc3VsdGluZyBmcm9tIHlvdXIgYWNjZXNzIG9yIHVzZSwgb3IgYXR0ZW1w
+dGVkIGFjY2VzcyBvZiB0aGUgYXBwLgoKS2FwcHMgQXBwcyBQdHkgTHRkIHdpbGwgbm90IGJlIGxpYWJs
+ZSBmb3IgYW55IGxvc3MgYXJpc2luZyBmcm9tIGFueSBzZWN1cml0eSBicmVhY2gsIG9yIG90aGVyd2lz
+ZSBmcmF1ZHVsZW50IGFjdGl2aXR5IGJ5IHlvdSBvciBhbnlvbmUgZWxzZS4gCgpLYXBwcyBBcHBzIFB0
+eSBMdGQgbWF5IGF0IGl0cyBzb2xlIGRpc2NyZXRpb24gY2hhbmdlIG9yIGNlYXNlLCB0ZW1wb3Jhcmls
+eSBvciBwZXJtYW5lbnRseSwgYW55IGVsZW1lbnQgb3IgZnVuY3Rpb25hbGl0eSBvZiB5b3VyTXlraSBh
+dCBhbnkgdGltZSBpbmNsdWRpbmcgYnV0IG5vdCBsaW1pdGVkIHRvLCBpbnRyb2R1Y2luZyBuZXcgY29u
+dGVudCwgb3Igc3VwcGxlbWVudGluZywgY2hhbmdpbmcgb3IgZGlzY29udGludWluZyBhbnkgcGFydCBv
+ZiB0aGUgYXBwbGljYXRpb24uIFdpdGhvdXQgbGltaXRpbmcgYW55IG90aGVyIHJlbWVkaWVzIGF2YWls
+YWJsZSwgS2FwcHMgQXBwcyBQdHkgTHRkIGhhcyB0aGUgdW5mZXR0ZXJlZCByaWdodCB0byByZW1vdmUs
+IGRlbGV0ZSBvciBtb2RpZnkgYW55IGNvbnRlbnQgdGhhdCBpdCBjb25zaWRlcnMgdG8gYmUgaW5hcHBy
+b3ByaWF0ZSBvciBpbmFjY3VyYXRlLCBhdCBpdHMgYWJzb2x1dGUgZGlzY3JldGlvbiwgd2l0aG91dCBj
+b25zdWx0YXRpb24gd2l0aCB5b3UKCllvdSBhcmUgcmVzcG9uc2libGUgZm9yIGVuc3VyaW5nIHRoYXQg
+dGhlIGNvbnRlbnQgYW5kIGl0cyB1c2UsIG1lYW5pbmcsIGVmZmVjdCBhbmQgcGxhY2VtZW50IGlzIG5v
+dDsKYSkgdW5sYXdmdWwsIG9ic2NlbmUsIGhhcm1mdWwsIG9mIGJhZCB0YXN0ZSBvciBvdGhlcndpc2Ug
+aW5hcHByb3ByaWF0ZSAKYikgZmFsc2UsIG1pc2xlYWRpbmcgb3IgaW5hY2N1cmF0ZSwgb3Igb3RoZXJ3
+aXNlIApjKSBiZSBmcmF1ZHVsZW50CmQpIGJlIGRlZmFtYXRvcnkgb3Igb2ZmZW5zaXZlCgpZb3UgaW5k
+ZW1uaWZ5IEthcHBzIEFwcHMgUHR5IEx0ZCBmb3IgYW55IGNsYWltcywgbG9zcywgbGlhYmlsaXR5IG9y
+IGRhbWFnZSBhcmlzaW5nIGZyb20gYW55IGNvbm5lY3Rpb24sIGFjY2VzcyBvciB1c2UsIG9yIGF0dGVt
+cHRlZCBhY2Nlc3Mgb2YgeW91ck15a2kuA</bytes>
 						</object>
 						<object class="IBUITextInputTraits" key="IBUITextInputTraits">
 							<int key="IBUIAutocapitalizationType">2</int>
@@ -467,7 +486,6 @@ ZXRpbmcgQXV0aG9yaXR5Lg</bytes>
 					<string key="className">AboutPageViewController</string>
 					<string key="superclassName">UIViewController</string>
 					<dictionary class="NSMutableDictionary" key="actions">
-						<string key="comingFeaturesButtonTapped:">id</string>
 						<string key="facebookButtonTapped:">id</string>
 						<string key="feedbackButtonTapped:">id</string>
 						<string key="rateButtonTapped:">id</string>
@@ -475,10 +493,6 @@ ZXRpbmcgQXV0aG9yaXR5Lg</bytes>
 						<string key="webButtonTapped:">id</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="actionInfosByName">
-						<object class="IBActionInfo" key="comingFeaturesButtonTapped:">
-							<string key="name">comingFeaturesButtonTapped:</string>
-							<string key="candidateClassName">id</string>
-						</object>
 						<object class="IBActionInfo" key="facebookButtonTapped:">
 							<string key="name">facebookButtonTapped:</string>
 							<string key="candidateClassName">id</string>
@@ -501,19 +515,13 @@ ZXRpbmcgQXV0aG9yaXR5Lg</bytes>
 						</object>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="comingFeaturesButton">UIButton</string>
 						<string key="facebookButton">UIButton</string>
 						<string key="feedbackButton">UIButton</string>
 						<string key="legalShadowView">UIView</string>
-						<string key="rateButton">UIButton</string>
 						<string key="twitterButton">UIButton</string>
 						<string key="webButton">UIButton</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="comingFeaturesButton">
-							<string key="name">comingFeaturesButton</string>
-							<string key="candidateClassName">UIButton</string>
-						</object>
 						<object class="IBToOneOutletInfo" key="facebookButton">
 							<string key="name">facebookButton</string>
 							<string key="candidateClassName">UIButton</string>
@@ -525,10 +533,6 @@ ZXRpbmcgQXV0aG9yaXR5Lg</bytes>
 						<object class="IBToOneOutletInfo" key="legalShadowView">
 							<string key="name">legalShadowView</string>
 							<string key="candidateClassName">UIView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="rateButton">
-							<string key="name">rateButton</string>
-							<string key="candidateClassName">UIButton</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="twitterButton">
 							<string key="name">twitterButton</string>
