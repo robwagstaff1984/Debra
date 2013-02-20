@@ -283,24 +283,33 @@
             NSLog(@"review top up");
             self.mykiWebstiteWebView.frame = CGRectMake(0, 0, 320, 416);
             self.mykiWebstiteWebView.hidden = NO;
-            self.mykiWebstiteWebView.scalesPageToFit = YES;
+           // self.mykiWebstiteWebView.scalesPageToFit = YES;
             
             [self.mykiWebstiteWebView stringByEvaluatingJavaScriptFromString:JAVASCRIPT_RESTYLE_REVIEW_PAGE];
             
             UIViewController *mykiWebViewController= [[UIViewController alloc] init];
             mykiWebViewController.view.backgroundColor = [UIColor whiteColor];
+            //self.mykiWebstiteWebView.scalesPageToFit = YES;
+            
+           // float zoomScale = 1.0 / mykiWebstiteWebView.scrollView.minimumZoomScale;
+           // self.mykiWebstiteWebView.scrollView.zoomScale = .8;
             [mykiWebViewController.view addSubview:self.mykiWebstiteWebView];
+            
             
             NSString *currentHTMLPage = [webView stringByEvaluatingJavaScriptFromString:@"document.all[0].innerHTML"];
             
             UINavigationController* navigationController = [[UINavigationController alloc] initWithRootViewController:mykiWebViewController];
+            navigationController.navigationItem.leftBarButtonItem = [YourMykiCustomButton createYourMykiBarButtonItemWithText:@"Cancel" withTarget:self withAction:@selector(backTapped:)];
+            [navigationController.navigationItem setHidesBackButton:YES];
             self.topUpPage = topUpPagePostReviewTopUp;
+            [HUD hide:YES];
             [self presentViewController:navigationController animated:YES completion:nil];
         } else if (self.topUpPage == topUpPageReviewTopUp) {
             NSLog(@"post review");
         } else {
+            HUD.labelText = @"Pre filling your top up data";
             NSLog(@"Choose top up");
-            int64_t delayInSeconds = 3.0;
+            int64_t delayInSeconds = 4.0;
             dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
             dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
                 NSString *submitChooseTopUpPage = JAVASCRIPT_CHOOSE_TOP_UP_SUMBIT;
@@ -563,6 +572,11 @@
     
     self.topUpType = topUpTypeMykiMoney;
     
+    HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    HUD.delegate = self;
+    HUD.dimBackground = YES;
+    HUD.labelText = @"Connecting to Myki top up";
+    [HUD show:YES];
     NSString* chooseTopUpURL = MYKI_ACCOUNT_CHOOSE_TOP_UP_PAGE_URL;
     NSURLRequest *requestObj = [NSURLRequest requestWithURL:[NSURL URLWithString:chooseTopUpURL]];
     [mykiWebstiteWebView loadRequest:requestObj];
@@ -576,7 +590,8 @@
     } else {
     
         [self.refreshButton.titleLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:14.0f]];
-        [self.refreshButton setTitle: [NSString stringWithFormat:@"Last Updated %@", updatedDate] forState:UIControlStateNormal];
+        //[self.refreshButton setTitle: [NSString stringWithFormat:@"Last Updated %@", updatedDate] forState:UIControlStateNormal];
+        [self.refreshButton setTitle: @"Top Up" forState:UIControlStateNormal];
         [self.refreshButton setHidden:NO];
     }
 }
@@ -668,6 +683,10 @@
 }
 
 
+-(void)backTapped:(id)sender {
+    NSLog(@"back");
+    [(UIViewController*)sender dismissModalViewControllerAnimated:YES];
+}
 
 
 @end
