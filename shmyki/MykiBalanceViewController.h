@@ -25,7 +25,8 @@ typedef enum {
     topUpPageUnknown = 1,
     topUpPageChooseTopUp = 2,
     topUpPageSpecifyTopUp = 3,
-    topUpPageReviewTopUp = 4
+    topUpPageReviewTopUp = 4,
+    topUpPagePostReviewTopUp = 5
 } topUpPage;
 
 @interface MykiBalanceViewController : UIViewController <UIWebViewDelegate, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, MBProgressHUDDelegate, UIGestureRecognizerDelegate, MHPagingScrollViewDelegate, UIScrollViewDelegate>

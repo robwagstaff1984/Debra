@@ -60,6 +60,9 @@
 
 #define JAVASCRIPT_CHOOSE_TOP_UP_SUMBIT @"var submitButton = document.getElementById(\"ctl00_uxContentPlaceHolder_uxSubmit\"); submitButton.click();";
 #define JAVASCRIPT_SPECIFY_TOP_UP_SUBMIT @"var submitButton = document.getElementById(\"ctl00_uxContentPlaceHolder_uxSubmit\"); submitButton.click();";
+#define JAVASCRIPT_RESTYLE_REVIEW_PAGE @"document.getElementById(\"content\").style[\"visibility\"] = \"visible\"; document.getElementById(\"bg\").style[\"visibility\"] = \"hidden\";  document.getElementById(\"bg\").style[\"margin\"] = \"0px\";  document.getElementById(\"header\").style[\"display\"] = \"none\"; document.getElementById(\"ctl00_threecol1\").style[\"padding\"] = \"0px\"; document.getElementById(\"containerbottom\").style[\"padding\"] = \"0px\";  document.getElementById(\"footer\").style[\"display\"] = \"none\"; document.getElementById(\"container\").style[\"margin\"] = \"0px\"; document.getElementById(\"container\").style[\"padding\"] = \"0px\"; document.getElementsByClassName('AspNet-Menu-Vertical')[0].style['display'] = \"none\"; document.getElementById(\"containerthree\").style[\"margin-left\"] = \"0px\";document.getElementById(\"container\").style[\"width\"] = \"auto\";document.getElementById(\"containerthree\").style[\"width\"] = \"auto\";document.getElementById(\"containerbottom\").style[\"width\"] = \"auto\"; document.getElementById(\"ctl00_uxadv\").style[\"display\"] = \"none\"; document.getElementById(\"content\").style[\"margin-right\"] = \"0px\"; document.getElementById(\"bg\").style[\"width\"] = \"411px\";"
+
+
 
 #define REG_EX_CARD_HOLDER @"<strong>Card holder</strong></td>\\s+<td>\\s+(.+)</td>"
 #define REG_EX_CARD_TYPE @"<strong>Card type</strong>\\s+</td>\\s+<td>\\s+(.*?)\\s+</td>"

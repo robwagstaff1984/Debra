@@ -103,6 +103,9 @@
 		81BF9CD416088C8600BF14F8 /* FeatureToggle.m in Sources */ = {isa = PBXBuildFile; fileRef = 81BF9CD316088C8600BF14F8 /* FeatureToggle.m */; };
 		81CC87751611C4C0008D61A7 /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 81CC87731611C4C0008D61A7 /* libGoogleAnalytics.a */; };
 		81CC87771611C524008D61A7 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 81CC87761611C524008D61A7 /* libsqlite3.dylib */; };
+		81E205CB16D232370044BB7B /* SVModalWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81E205C716D232370044BB7B /* SVModalWebViewController.m */; };
+		81E205CC16D232370044BB7B /* SVWebViewController.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 81E205C816D232370044BB7B /* SVWebViewController.bundle */; };
+		81E205CD16D232370044BB7B /* SVWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81E205CA16D232370044BB7B /* SVWebViewController.m */; };
 		81E9C8E21622915E000E2E0D /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 81E9C8E11622915E000E2E0D /* Reachability.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 /* End PBXBuildFile section */
 
@@ -279,6 +282,11 @@
 		81CC87731611C4C0008D61A7 /* libGoogleAnalytics.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalytics.a; sourceTree = "<group>"; };
 		81CC87741611C4C0008D61A7 /* GANTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GANTracker.h; sourceTree = "<group>"; };
 		81CC87761611C524008D61A7 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		81E205C616D232370044BB7B /* SVModalWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVModalWebViewController.h; sourceTree = "<group>"; };
+		81E205C716D232370044BB7B /* SVModalWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVModalWebViewController.m; sourceTree = "<group>"; };
+		81E205C816D232370044BB7B /* SVWebViewController.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVWebViewController.bundle; sourceTree = "<group>"; };
+		81E205C916D232370044BB7B /* SVWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVWebViewController.h; sourceTree = "<group>"; };
+		81E205CA16D232370044BB7B /* SVWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVWebViewController.m; sourceTree = "<group>"; };
 		81E9C8E01622915E000E2E0D /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		81E9C8E11622915E000E2E0D /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -438,6 +446,7 @@
 		8129EAE81594B809004D0C6F /* third party */ = {
 			isa = PBXGroup;
 			children = (
+				81E205C516D232370044BB7B /* SVWebViewController */,
 				813AA06A16C75A2000AEB27F /* MHPagingScrollView */,
 				8189726815A951E60040FC23 /* HelveticaNeue.dfont */,
 				8129EAE91594B844004D0C6F /* MBProgressHUD.h */,
@@ -640,6 +649,18 @@
 			name = googleAnalytics;
 			sourceTree = "<group>";
 		};
+		81E205C516D232370044BB7B /* SVWebViewController */ = {
+			isa = PBXGroup;
+			children = (
+				81E205C616D232370044BB7B /* SVModalWebViewController.h */,
+				81E205C716D232370044BB7B /* SVModalWebViewController.m */,
+				81E205C816D232370044BB7B /* SVWebViewController.bundle */,
+				81E205C916D232370044BB7B /* SVWebViewController.h */,
+				81E205CA16D232370044BB7B /* SVWebViewController.m */,
+			);
+			path = SVWebViewController;
+			sourceTree = SOURCE_ROOT;
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -738,6 +759,7 @@
 				81296ACC161554C0005B65D8 /* jQueryInject.txt in Resources */,
 				81296ACD161554C0005B65D8 /* jQueryInjectLandscape.txt in Resources */,
 				81296ADF161554C0005B65D8 /* twitter_load.png in Resources */,
+				81E205CC16D232370044BB7B /* SVWebViewController.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -816,6 +838,8 @@
 				813AA07116C75E1D00AEB27F /* BalanceInfoView.m in Sources */,
 				813AA08816C9030B00AEB27F /* MykiCardInformation.m in Sources */,
 				813AA08C16CA82A300AEB27F /* PageControl.m in Sources */,
+				81E205CB16D232370044BB7B /* SVModalWebViewController.m in Sources */,
+				81E205CD16D232370044BB7B /* SVWebViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
