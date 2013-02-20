@@ -15,6 +15,7 @@
 #import "Reachability.h"
 #import "DateDisplayHelper.h"
 #import "BalanceInfoView.h"
+#import "TopUpWebViewViewController.h"
 
 @implementation MykiBalanceViewController
 
@@ -281,26 +282,15 @@
 
         if (self.topUpPage == topUpPageReviewTopUp) {
             NSLog(@"review top up");
+            [self switchToSuccessState];
             self.mykiWebstiteWebView.frame = CGRectMake(0, 0, 320, 416);
             self.mykiWebstiteWebView.hidden = NO;
-           // self.mykiWebstiteWebView.scalesPageToFit = YES;
-            
             [self.mykiWebstiteWebView stringByEvaluatingJavaScriptFromString:JAVASCRIPT_RESTYLE_REVIEW_PAGE];
             
-            UIViewController *mykiWebViewController= [[UIViewController alloc] init];
+            TopUpWebViewViewController *mykiWebViewController= [[TopUpWebViewViewController alloc] init];
             mykiWebViewController.view.backgroundColor = [UIColor whiteColor];
-            //self.mykiWebstiteWebView.scalesPageToFit = YES;
-            
-           // float zoomScale = 1.0 / mykiWebstiteWebView.scrollView.minimumZoomScale;
-           // self.mykiWebstiteWebView.scrollView.zoomScale = .8;
             [mykiWebViewController.view addSubview:self.mykiWebstiteWebView];
-            
-            
-            NSString *currentHTMLPage = [webView stringByEvaluatingJavaScriptFromString:@"document.all[0].innerHTML"];
-            
             UINavigationController* navigationController = [[UINavigationController alloc] initWithRootViewController:mykiWebViewController];
-            navigationController.navigationItem.leftBarButtonItem = [YourMykiCustomButton createYourMykiBarButtonItemWithText:@"Cancel" withTarget:self withAction:@selector(backTapped:)];
-            [navigationController.navigationItem setHidesBackButton:YES];
             self.topUpPage = topUpPagePostReviewTopUp;
             [HUD hide:YES];
             [self presentViewController:navigationController animated:YES completion:nil];
@@ -309,14 +299,8 @@
         } else {
             HUD.labelText = @"Pre filling your top up data";
             NSLog(@"Choose top up");
-            int64_t delayInSeconds = 4.0;
-            dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
-            dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-                NSString *submitChooseTopUpPage = JAVASCRIPT_CHOOSE_TOP_UP_SUMBIT;
-                self.topUpPage= topUpPageSpecifyTopUp;
-                [self.mykiWebstiteWebView stringByEvaluatingJavaScriptFromString: submitChooseTopUpPage];
-                
-            });
+            timer = [NSTimer scheduledTimerWithTimeInterval: 1 target:self selector:@selector(pollForChooseTopUpPageLoaded:) userInfo:nil repeats: YES];
+            
         }
     } else if ([pageTitle isEqualToString:@"Top up myki money"]) {
         NSLog(@"Specify top up");
@@ -571,7 +555,7 @@
 -(IBAction)topUpButtonTapped:(id)sender {
     
     self.topUpType = topUpTypeMykiMoney;
-    
+    [self switchToLoggingInState];
     HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     HUD.delegate = self;
     HUD.dimBackground = YES;
@@ -682,10 +666,20 @@
     self.pageControl.currentPage=page;
 }
 
+-(void)pollForChooseTopUpPageLoaded:(id) sender {
+    NSLog(@"Robert");
+    NSString *submitChooseTopUpPage = JAVASCRIPT_CHOOSE_TOP_UP_SUMBIT;
+    
 
--(void)backTapped:(id)sender {
-    NSLog(@"back");
-    [(UIViewController*)sender dismissModalViewControllerAnimated:YES];
+    NSError *error;
+    NSString *currentHTMLPage = [self.mykiWebstiteWebView stringByEvaluatingJavaScriptFromString:@"document.all[0].innerHTML"];
+    NSRegularExpression *regEx = [NSRegularExpression regularExpressionWithPattern:@"id=\"(ctl00_uxContentPlaceHolder_uxCardlist)\"" options:0 error:&error];
+    NSTextCheckingResult *result = [regEx firstMatchInString:currentHTMLPage options:0 range:NSMakeRange(0, [currentHTMLPage length])];
+    if(result) {
+        [self.mykiWebstiteWebView stringByEvaluatingJavaScriptFromString: submitChooseTopUpPage];
+        self.topUpPage= topUpPageSpecifyTopUp;
+        [timer invalidate];
+    }
 }
 
 
