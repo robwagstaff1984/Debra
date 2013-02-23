@@ -44,8 +44,13 @@
         
         usernameTextField = [self setUpTextField:usernameTextField withText:@"Myki username" withUserDetail:[mykiAccountInformation mykiUsername] withReturnKey:UIReturnKeyNext withTag:USERNAME_TEXTFIELD_TAG];
         passwordTextField = [self setUpTextField:passwordTextField withText:@"Myki password" withUserDetail: [mykiAccountInformation mykiPassword] withReturnKey:UIReturnKeyDone withTag:PASSWORD_TEXTFIELD_TAG];
-        self.mykiMoneyTextField = [self setUpTextField:self.mykiMoneyTextField withText:@"Enter top up amount" withUserDetail: nil withReturnKey:UIReturnKeyDone withTag:MYKI_MONEY_TEXTFIELD_TAG];
+        self.mykiMoneyTextField = [self setUpTextField:self.mykiMoneyTextField withText:@"Enter top up amount" withUserDetail: @"" withReturnKey:UIReturnKeyDone withTag:MYKI_MONEY_TEXTFIELD_TAG];
         
+        self.mykiMoneyTextField.frame = CGRectMake(23, 90, 274, 40);
+        
+        self.mykiMoneyTextField.borderStyle = UITextBorderStyleRoundedRect;
+        [self.mykiMoneyTextField setContentVerticalAlignment:UIControlContentVerticalAlignmentCenter];
+        [self.mykiMoneyTextField setFont:[UIFont fontWithName:@"HelveticaNeue" size:18.0f]];
         
         passwordTextField.clearsOnBeginEditing = NO;
         
