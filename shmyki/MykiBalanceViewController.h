@@ -45,6 +45,7 @@ typedef enum {
 @property (nonatomic, strong) IBOutlet UIScrollView *loginScrollView;
 @property (nonatomic, strong) UITextField *usernameTextField;
 @property (nonatomic, strong) UITextField *passwordTextField;
+@property (nonatomic, strong) UITextField *mykiMoneyTextField;
 @property (nonatomic, strong) IBOutlet UIScrollView *pageScrollView;
 
 @property (nonatomic, strong) IBOutlet UILabel* balanceHeaderLabelOne;

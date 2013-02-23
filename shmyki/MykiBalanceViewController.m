@@ -44,6 +44,8 @@
         
         usernameTextField = [self setUpTextField:usernameTextField withText:@"Myki username" withUserDetail:[mykiAccountInformation mykiUsername] withReturnKey:UIReturnKeyNext withTag:USERNAME_TEXTFIELD_TAG];
         passwordTextField = [self setUpTextField:passwordTextField withText:@"Myki password" withUserDetail: [mykiAccountInformation mykiPassword] withReturnKey:UIReturnKeyDone withTag:PASSWORD_TEXTFIELD_TAG];
+        self.mykiMoneyTextField = [self setUpTextField:self.mykiMoneyTextField withText:@"Enter top up amount" withUserDetail: nil withReturnKey:UIReturnKeyDone withTag:MYKI_MONEY_TEXTFIELD_TAG];
+        
         
         passwordTextField.clearsOnBeginEditing = NO;
         
@@ -123,7 +125,7 @@
     [self.balanceHeaderLabelTwo setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:15.0f]];
     
     //[self.view addSubview:self.mykiWebstiteWebView];
-
+    [self.toppingUpView addSubview:self.mykiMoneyTextField];
     self.topUpMoneyButton.selected = YES;
     
     self.pageControl = [[PageControl alloc] initWithFrame:CGRectMake(141, 150, 39, 36)];
