@@ -40,6 +40,7 @@ typedef enum {
 @property (nonatomic, strong) IBOutlet UIView *topView;
 @property (nonatomic, strong) IBOutlet UIView *bottomView;
 @property (nonatomic, strong) IBOutlet UIView *errorView;
+@property (nonatomic, strong) IBOutlet UIView *toppingUpView;
 @property (nonatomic, strong) IBOutlet UITableView *loginTableView;
 @property (nonatomic, strong) IBOutlet UIScrollView *loginScrollView;
 @property (nonatomic, strong) UITextField *usernameTextField;

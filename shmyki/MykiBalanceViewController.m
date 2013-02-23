@@ -494,6 +494,7 @@
     [UIView setAnimationDuration:.4];
     [usernameTextField resignFirstResponder];
     [passwordTextField resignFirstResponder];
+    self.toppingUpView.frame = CGRectMake(0, 705, 320, 205);
     self.bottomView.frame = CGRectMake(0, 705, 320, 205);
     self.errorView.frame = CGRectMake(0, 705, 320, 150);
     [UIView commitAnimations];
@@ -507,6 +508,7 @@
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:.4];
     [self dismissKeyboard];
+    self.toppingUpView.frame = CGRectMake(0, 705, 320, 205);
     self.bottomView.frame = CGRectMake(0, 224, 320, 205);
     self.errorView.frame = CGRectMake(0, 705, 320, 150);
     [UIView commitAnimations];
@@ -526,6 +528,7 @@
     self.navigationItem.rightBarButtonItem = [YourMykiCustomButton createYourMykiBarButtonItemWithText:@"Cancel" withTarget:self withAction:@selector(userCanceledLogin)];
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:.4];
+    self.toppingUpView.frame = CGRectMake(0, 705, 320, 205);
     self.bottomView.frame = CGRectMake(0, 705, 320, 205);
     self.errorView.frame = CGRectMake(0, 705, 320, 150);
 
@@ -551,6 +554,7 @@
         
         [UIView beginAnimations:nil context:NULL];
         [UIView setAnimationDuration:.4];
+        self.toppingUpView.frame = CGRectMake(0, 705, 320, 205);
         self.bottomView.frame = CGRectMake(0, 705, 320, 205);
         self.errorView.frame = CGRectMake(0, 224, 320, 150);
         [UIView commitAnimations];
@@ -558,23 +562,36 @@
     }
 }
 
+-(void) switchToToppingUpState {
+    
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:.4];
+    self.toppingUpView.frame = CGRectMake(0, 224, 320, 205);
+    self.bottomView.frame = CGRectMake(0, 705, 320, 205);
+    self.errorView.frame = CGRectMake(0, 705, 320, 150);
+    
+    [UIView commitAnimations];
+    
+
+}
+
 -(IBAction)tryAgainButtonTapped:(id)sender {
     [self retrieveMykiBalance];
 }
 
 -(IBAction)topUpButtonTapped:(id)sender {
-    
-    self.topUpType = topUpTypeMykiMoney;
-    [self switchToLoggingInState];
-    HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    HUD.delegate = self;
-    HUD.dimBackground = YES;
-    HUD.labelText = @"Connecting to Myki top up";
-    [HUD show:YES];
-    self.isRequestingTopUp = YES;
-    NSString* chooseTopUpURL = MYKI_ACCOUNT_CHOOSE_TOP_UP_PAGE_URL;
-    NSURLRequest *requestObj = [NSURLRequest requestWithURL:[NSURL URLWithString:chooseTopUpURL]];
-    [mykiWebstiteWebView loadRequest:requestObj];
+    [self switchToToppingUpState];
+//    self.topUpType = topUpTypeMykiMoney;
+//    [self switchToLoggingInState];
+//    HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+//    HUD.delegate = self;
+//    HUD.dimBackground = YES;
+//    HUD.labelText = @"Connecting to Myki top up";
+//    [HUD show:YES];
+//    self.isRequestingTopUp = YES;
+//    NSString* chooseTopUpURL = MYKI_ACCOUNT_CHOOSE_TOP_UP_PAGE_URL;
+//    NSURLRequest *requestObj = [NSURLRequest requestWithURL:[NSURL URLWithString:chooseTopUpURL]];
+//    [mykiWebstiteWebView loadRequest:requestObj];
 }
 
 -(void) userCanceledLogin {
