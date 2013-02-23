@@ -58,6 +58,10 @@
 #define JAVASCRIPT_CLICK_SUBMIT @"var submitButton = document.getElementById(\"ctl00_uxContentPlaceHolder_uxLogin\"); submitButton.click();"
 #define JAVASCRIPT_CLICK_MANAGE_MY_CARD @"var manageLink = document.getElementByClassName(\"current\"); manageLink.click();"
 
+#define JAVASCRIPT_BALANCE_CHANGE_CARD @"var cardDropdown = document.getElementById('ctl00_uxContentPlaceHolder_uxCardList');var numberOfCards = cardDropdown.options.length;for (var i=0; i<numberOfCards; i++){if (cardDropdown.options[i].value == cardDropdown.options[%d].value){cardDropdown.options[i].selected = true;break;}}"
+
+#define JAVASCRIPT_TOP_UP_CHANGE_CARD @"document.getElementById('ctl00_uxContentPlaceHolder_uxCardlist').options[%d].selected = true"
+
 #define JAVASCRIPT_CHOOSE_TOP_UP_SUMBIT @"var submitButton = document.getElementById(\"ctl00_uxContentPlaceHolder_uxSubmit\"); submitButton.click();";
 #define JAVASCRIPT_SPECIFY_TOP_UP_MONEY_AND_SUBMIT @"document.getElementById('ctl00_uxContentPlaceHolder_uxAmounts')[3].selected = true; document.getElementById('ctl00_uxContentPlaceHolder_uxAmountlist').style[\"visibility\"] = \"visible\"; document.getElementById('ctl00_uxContentPlaceHolder_uxAmountlist').value = \"%@\"; var submitButton = document.getElementById(\"ctl00_uxContentPlaceHolder_uxSubmit\"); submitButton.click();"
 

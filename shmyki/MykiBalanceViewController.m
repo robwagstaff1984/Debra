@@ -37,7 +37,7 @@
         [mykiAccountInformation loadAccountBalanceInformation];
         mykiLoginUrl = MYKI_LOGIN_URL;
 
-        mykiWebstiteWebView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, 320, 200)];
+        mykiWebstiteWebView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 60, 320, 200)];
         mykiWebstiteWebView.delegate = self;
         
         [self loadFirstTimeLogin];
@@ -129,7 +129,7 @@
     [self.balanceHeaderLabelOne setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:17.0f]];
     [self.balanceHeaderLabelTwo setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:15.0f]];
     
-  //  [self.view addSubview:self.mykiWebstiteWebView];
+    //[self.view addSubview:self.mykiWebstiteWebView];
     self.mykiMoneyTextField.keyboardType = UIKeyboardTypeNumberPad;
     [self.toppingUpView addSubview:self.mykiMoneyTextField];
     self.topUpMoneyButton.selected = YES;
@@ -345,7 +345,7 @@
 
 
 -(void) changeCardSelectorTo:(int)cardNumber{
-    NSString* changeCardJavascript = [NSString stringWithFormat: @"var cardDropdown = document.getElementById('ctl00_uxContentPlaceHolder_uxCardList');var numberOfCards = cardDropdown.options.length;for (var i=0; i<numberOfCards; i++){if (cardDropdown.options[i].value == cardDropdown.options[%d].value){cardDropdown.options[i].selected = true;break;}}",cardNumber];
+    NSString* changeCardJavascript = [NSString stringWithFormat: JAVASCRIPT_BALANCE_CHANGE_CARD, cardNumber];
     
     [self.mykiWebstiteWebView stringByEvaluatingJavaScriptFromString: changeCardJavascript];
 }
@@ -726,16 +726,21 @@
 }
 
 -(void)pollForChooseTopUpPageLoaded:(id) sender {
-    NSLog(@"Robert");
-    NSString *submitChooseTopUpPage = JAVASCRIPT_CHOOSE_TOP_UP_SUMBIT;
-    
+   // NSString *submitChooseTopUpPage = JAVASCRIPT_CHOOSE_TOP_UP_SUMBIT;
+
 
     NSError *error;
     NSString *currentHTMLPage = [self.mykiWebstiteWebView stringByEvaluatingJavaScriptFromString:@"document.all[0].innerHTML"];
     NSRegularExpression *regEx = [NSRegularExpression regularExpressionWithPattern:@"id=\"(ctl00_uxContentPlaceHolder_uxCardlist)\"" options:0 error:&error];
     NSTextCheckingResult *result = [regEx firstMatchInString:currentHTMLPage options:0 range:NSMakeRange(0, [currentHTMLPage length])];
     if(result) {
+        
+        NSString *changeCardForTopUpPage = [NSString stringWithFormat: JAVASCRIPT_TOP_UP_CHANGE_CARD, self.pagingScrollView.indexOfSelectedPage];
+        [self.mykiWebstiteWebView stringByEvaluatingJavaScriptFromString: changeCardForTopUpPage];
+        
+        NSString *submitChooseTopUpPage = JAVASCRIPT_CHOOSE_TOP_UP_SUMBIT;
         [self.mykiWebstiteWebView stringByEvaluatingJavaScriptFromString: submitChooseTopUpPage];
+
         self.topUpPage= topUpPageSpecifyTopUp;
         [timer invalidate];
     }
