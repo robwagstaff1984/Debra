@@ -130,6 +130,7 @@
     [self.balanceHeaderLabelTwo setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:15.0f]];
     
     //[self.view addSubview:self.mykiWebstiteWebView];
+    self.mykiMoneyTextField.keyboardType = UIKeyboardTypeNumberPad;
     [self.toppingUpView addSubview:self.mykiMoneyTextField];
     self.topUpMoneyButton.selected = YES;
     
@@ -415,6 +416,20 @@
             [mykiAccountInformation setMykiPassword: passwordTextField.text];
             [mykiAccountInformation saveAccountInformation];
             [passwordTextField resignFirstResponder];
+        } else if (textFieldTag == MYKI_MONEY_TEXTFIELD_TAG) {
+            if([self.mykiMoneyTextField.text length]) {
+                [self submitTopUp];
+            }
+        }
+    } else if (textField.tag == MYKI_MONEY_TEXTFIELD_TAG) {
+        
+        self.navigationItem.rightBarButtonItem = [YourMykiCustomButton createYourMykiBarButtonItemWithText:@"Top Up" withTarget:self withAction:@selector(submitTopUp)];
+        
+        if([textField.text length]==0){
+            textField.text = @"$";
+        } else if ([textField.text length]==2 && ![string length]) {
+            textField.text = @"";
+            self.navigationItem.rightBarButtonItem = [YourMykiCustomButton createYourMykiBarButtonItemWithText:@"Cancel" withTarget:self withAction:@selector(switchToSuccessState)];
         }
     }
     return YES;
@@ -501,8 +516,7 @@
     [self.pagingScrollView reloadData];
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:.4];
-    [usernameTextField resignFirstResponder];
-    [passwordTextField resignFirstResponder];
+    [self dismissKeyboard];
     self.toppingUpView.frame = CGRectMake(0, 705, 320, 205);
     self.bottomView.frame = CGRectMake(0, 705, 320, 205);
     self.errorView.frame = CGRectMake(0, 705, 320, 150);
@@ -572,7 +586,8 @@
 }
 
 -(void) switchToToppingUpState {
-    
+    self.mykiMoneyTextField.text = @"";
+    self.navigationItem.rightBarButtonItem = [YourMykiCustomButton createYourMykiBarButtonItemWithText:@"Cancel" withTarget:self withAction:@selector(switchToSuccessState)];
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:.4];
     self.toppingUpView.frame = CGRectMake(0, 224, 320, 205);
@@ -580,8 +595,6 @@
     self.errorView.frame = CGRectMake(0, 705, 320, 150);
     
     [UIView commitAnimations];
-    
-
 }
 
 -(IBAction)tryAgainButtonTapped:(id)sender {
@@ -590,27 +603,34 @@
 
 -(IBAction)topUpButtonTapped:(id)sender {
     [self switchToToppingUpState];
-//    self.topUpType = topUpTypeMykiMoney;
-//    [self switchToLoggingInState];
-//    HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-//    HUD.delegate = self;
-//    HUD.dimBackground = YES;
-//    HUD.labelText = @"Connecting to Myki top up";
-//    [HUD show:YES];
-//    self.isRequestingTopUp = YES;
-//    NSString* chooseTopUpURL = MYKI_ACCOUNT_CHOOSE_TOP_UP_PAGE_URL;
-//    NSURLRequest *requestObj = [NSURLRequest requestWithURL:[NSURL URLWithString:chooseTopUpURL]];
-//    [mykiWebstiteWebView loadRequest:requestObj];
+
+}
+-(void) submitTopUp {
+    self.topUpType = topUpTypeMykiMoney;
+    [self.mykiMoneyTextField resignFirstResponder];
+    [self switchToLoggingInState];
+    HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    HUD.delegate = self;
+    HUD.dimBackground = YES;
+    HUD.labelText = @"Connecting to Myki top up";
+    [HUD show:YES];
+    self.isRequestingTopUp = YES;
+    [mykiWebstiteWebView stopLoading];
+    NSString* chooseTopUpURL = MYKI_ACCOUNT_CHOOSE_TOP_UP_PAGE_URL;
+    NSURLRequest *requestObj = [NSURLRequest requestWithURL:[NSURL URLWithString:chooseTopUpURL]];
+    [mykiWebstiteWebView loadRequest:requestObj];
 }
 
 -(IBAction) topUpMoneyButtonTapped:(id)sender {
     [self.topUpMoneyButton setBackgroundImage:[UIImage imageNamed:@"images/ButtonTopupMoneyDown.png"] forState:UIControlStateNormal];
     [self.topUpPassButton setBackgroundImage:[UIImage imageNamed:@"images/ButtonTopupPassUp.png"] forState:UIControlStateNormal];
+    self.topUpType = topUpTypeMykiMoney;
 }
 
 -(IBAction) topUpPassButtonTapped:(id)sender {
     [self.topUpMoneyButton setBackgroundImage:[UIImage imageNamed:@"images/ButtonTopupMoneyUp.png"] forState:UIControlStateNormal];
     [self.topUpPassButton setBackgroundImage:[UIImage imageNamed:@"images/ButtonTopupPassDown.png"] forState:UIControlStateNormal];
+    self.topUpType = topUpTypeMykiPass;
 }
 
 -(void) userCanceledLogin {
@@ -625,7 +645,8 @@
 
 -(void) dismissKeyboard {
     [usernameTextField resignFirstResponder];
-    [passwordTextField resignFirstResponder]; 
+    [passwordTextField resignFirstResponder];
+    [self.mykiMoneyTextField resignFirstResponder];
 }
 
 #pragma firstTimeLogin
