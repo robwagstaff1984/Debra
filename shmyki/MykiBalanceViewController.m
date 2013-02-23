@@ -145,10 +145,6 @@
     [super viewDidUnload];
 }
 
--(void)viewDidAppear:(BOOL)animated {
-    [self updateRefreshButton];
-}
-
 - (void) viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
@@ -223,6 +219,7 @@
 -(void)webViewDidFinishLoad:(UIWebView *)webView {
     
     NSString *pageTitle = [webView stringByEvaluatingJavaScriptFromString:@"document.title"];
+    NSLog(@"page title: %@", pageTitle);
     if([pageTitle isEqualToString:@"Login"]) {
         [self resetTimer];
         HUD.labelText = @"Logging in";
@@ -243,17 +240,24 @@
         }
     } else if ([pageTitle isEqualToString:@"My myki account"]) {
         [self resetTimer];
-        HUD.labelText = @"Retrieving Balance";
         
-        NSString* manageMyCardUrl = MYKI_ACCOUNT_INFO_URL;
-        NSURLRequest *manageMyCardRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:manageMyCardUrl]];
-        int64_t delayInSeconds = 1.0;
-        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
-        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-            [mykiWebstiteWebView loadRequest:manageMyCardRequest];
-        });
-        self.isRequestingMoreCardData = YES;
-        
+        if(self.isRequestingTopUp) {
+            HUD.labelText = @"Connecting to Myki top up";
+            NSString* chooseTopUpURL = MYKI_ACCOUNT_CHOOSE_TOP_UP_PAGE_URL;
+            NSURLRequest *requestObj = [NSURLRequest requestWithURL:[NSURL URLWithString:chooseTopUpURL]];
+            [mykiWebstiteWebView loadRequest:requestObj];
+        } else {
+            HUD.labelText = @"Retrieving Balance";
+            
+            NSString* manageMyCardUrl = MYKI_ACCOUNT_INFO_URL;
+            NSURLRequest *manageMyCardRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:manageMyCardUrl]];
+            int64_t delayInSeconds = 1.0;
+            dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+            dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+                [mykiWebstiteWebView loadRequest:manageMyCardRequest];
+            });
+            self.isRequestingMoreCardData = YES;
+        }
     }else if ([pageTitle isEqualToString:@"Manage my card"]) {
         [self resetTimer];
         [self requestNumberOfCardsIfRequired];
@@ -292,6 +296,7 @@
             [mykiWebViewController.view addSubview:self.mykiWebstiteWebView];
             UINavigationController* navigationController = [[UINavigationController alloc] initWithRootViewController:mykiWebViewController];
             self.topUpPage = topUpPagePostReviewTopUp;
+            self.isRequestingTopUp = NO;
             [HUD hide:YES];
             [self presentViewController:navigationController animated:YES completion:nil];
         } else if (self.topUpPage == topUpPageReviewTopUp) {
@@ -308,6 +313,9 @@
         self.topUpPage = topUpPageReviewTopUp;
         [self.mykiWebstiteWebView stringByEvaluatingJavaScriptFromString:specifyTopUpPage];
         
+    } else if ([pageTitle isEqualToString:@"Page not found"]) {
+        NSURLRequest *requestObj = [NSURLRequest requestWithURL:[NSURL URLWithString:mykiLoginUrl]];
+        [mykiWebstiteWebView loadRequest:requestObj];
     } else {
         [self switchToErrorState];
         [timer invalidate];
@@ -489,7 +497,6 @@
     self.errorView.frame = CGRectMake(0, 705, 320, 150);
     [UIView commitAnimations];
     self.navigationItem.rightBarButtonItem = [YourMykiCustomButton createYourMykiBarButtonItemWithText:@"Edit" withTarget:self withAction:@selector(switchToLoginState)];
-    [self updateRefreshButton];
 }
 
 -(void)switchToLoginState {
@@ -561,23 +568,10 @@
     HUD.dimBackground = YES;
     HUD.labelText = @"Connecting to Myki top up";
     [HUD show:YES];
+    self.isRequestingTopUp = YES;
     NSString* chooseTopUpURL = MYKI_ACCOUNT_CHOOSE_TOP_UP_PAGE_URL;
     NSURLRequest *requestObj = [NSURLRequest requestWithURL:[NSURL URLWithString:chooseTopUpURL]];
     [mykiWebstiteWebView loadRequest:requestObj];
-}
-
--(void) updateRefreshButton {
-    NSString* updatedDate =  [dateDisplayHelper getDisplayForDate:[mykiAccountInformation lastUpdatedDate] forPage:YourMykiIBalancePage];
-    
-    if (updatedDate ==nil) {
-        [self.refreshButton setHidden:YES];
-    } else {
-    
-        [self.refreshButton.titleLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:14.0f]];
-        //[self.refreshButton setTitle: [NSString stringWithFormat:@"Last Updated %@", updatedDate] forState:UIControlStateNormal];
-        [self.refreshButton setTitle: @"Top Up" forState:UIControlStateNormal];
-        [self.refreshButton setHidden:NO];
-    }
 }
 
 -(void) userCanceledLogin {

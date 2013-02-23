@@ -70,6 +70,7 @@ typedef enum {
 
 @property (nonatomic) topUpType topUpType;
 @property (nonatomic) topUpPage topUpPage;
+@property (nonatomic) BOOL isRequestingTopUp;
 
 @property (nonatomic, strong) DateDisplayHelper *dateDisplayHelper;
 
