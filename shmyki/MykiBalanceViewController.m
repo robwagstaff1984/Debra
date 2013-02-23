@@ -129,7 +129,7 @@
     [self.balanceHeaderLabelOne setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:17.0f]];
     [self.balanceHeaderLabelTwo setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:15.0f]];
     
-    //[self.view addSubview:self.mykiWebstiteWebView];
+  //  [self.view addSubview:self.mykiWebstiteWebView];
     self.mykiMoneyTextField.keyboardType = UIKeyboardTypeNumberPad;
     [self.toppingUpView addSubview:self.mykiMoneyTextField];
     self.topUpMoneyButton.selected = YES;
@@ -319,9 +319,14 @@
         }
     } else if ([pageTitle isEqualToString:@"Top up myki money"]) {
         NSLog(@"Specify top up");
-        NSString *specifyTopUpPage = JAVASCRIPT_SPECIFY_TOP_UP_SUBMIT;
-        self.topUpPage = topUpPageReviewTopUp;
-        [self.mykiWebstiteWebView stringByEvaluatingJavaScriptFromString:specifyTopUpPage];
+        
+        if (self.topUpType == topUpTypeMykiMoney) {
+            self.topUpPage = topUpPageReviewTopUp;
+        
+            NSString* topUpAmount = [self.mykiMoneyTextField.text substringFromIndex:1];
+            NSString* specifyTopUpPage =  [NSString stringWithFormat:JAVASCRIPT_SPECIFY_TOP_UP_MONEY_AND_SUBMIT, topUpAmount];
+            [self.mykiWebstiteWebView stringByEvaluatingJavaScriptFromString:specifyTopUpPage];
+        }
         
     } else if ([pageTitle isEqualToString:@"Page not found"]) {
         NSURLRequest *requestObj = [NSURLRequest requestWithURL:[NSURL URLWithString:mykiLoginUrl]];
