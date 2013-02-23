@@ -72,6 +72,8 @@ typedef enum {
 @property (nonatomic) topUpType topUpType;
 @property (nonatomic) topUpPage topUpPage;
 @property (nonatomic) BOOL isRequestingTopUp;
+@property (nonatomic, strong) IBOutlet UIButton* topUpMoneyButton;
+@property (nonatomic, strong) IBOutlet UIButton* topUpPassButton;
 
 @property (nonatomic, strong) DateDisplayHelper *dateDisplayHelper;
 
@@ -81,5 +83,6 @@ typedef enum {
 - (void)webViewDidFinishLoad:(UIWebView *)webView;
 -(IBAction)tryAgainButtonTapped:(id)sender;
 -(IBAction)topUpButtonTapped:(id)sender;
-
+-(IBAction) topUpMoneyButtonTapped:(id)sender;
+-(IBAction) topUpPassButtonTapped:(id)sender;
 @end

@@ -124,6 +124,8 @@
     
     //[self.view addSubview:self.mykiWebstiteWebView];
 
+    self.topUpMoneyButton.selected = YES;
+    
     self.pageControl = [[PageControl alloc] initWithFrame:CGRectMake(141, 150, 39, 36)];
 	self.pageControl.currentPage = 1;
     self.pageControl.hidden = YES;
@@ -592,6 +594,16 @@
 //    NSString* chooseTopUpURL = MYKI_ACCOUNT_CHOOSE_TOP_UP_PAGE_URL;
 //    NSURLRequest *requestObj = [NSURLRequest requestWithURL:[NSURL URLWithString:chooseTopUpURL]];
 //    [mykiWebstiteWebView loadRequest:requestObj];
+}
+
+-(IBAction) topUpMoneyButtonTapped:(id)sender {
+    [self.topUpMoneyButton setBackgroundImage:[UIImage imageNamed:@"images/ButtonTopupMoneyDown.png"] forState:UIControlStateNormal];
+    [self.topUpPassButton setBackgroundImage:[UIImage imageNamed:@"images/ButtonTopupPassUp.png"] forState:UIControlStateNormal];
+}
+
+-(IBAction) topUpPassButtonTapped:(id)sender {
+    [self.topUpMoneyButton setBackgroundImage:[UIImage imageNamed:@"images/ButtonTopupMoneyUp.png"] forState:UIControlStateNormal];
+    [self.topUpPassButton setBackgroundImage:[UIImage imageNamed:@"images/ButtonTopupPassDown.png"] forState:UIControlStateNormal];
 }
 
 -(void) userCanceledLogin {
