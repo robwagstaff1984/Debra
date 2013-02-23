@@ -488,6 +488,7 @@
 #pragma mark move views
 -(void)switchToSuccessState {
     self.isActiveState = YES;
+    self.isRequestingTopUp = NO;
     [self.pagingScrollView reloadData];
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:.4];
@@ -501,6 +502,7 @@
 
 -(void)switchToLoginState {
     self.isActiveState = NO;
+    self.isRequestingTopUp = NO;
     [self.pagingScrollView reloadData];
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:.4];
@@ -532,6 +534,7 @@
 
 -(void)switchToErrorState {
     self.isActiveState = NO;
+    self.isRequestingTopUp = NO;
     [self.pagingScrollView reloadData];
     if(self.isProblemWithMykiCredentials) {
         self.invalidCredentialsLabel.hidden = NO;
