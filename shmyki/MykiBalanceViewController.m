@@ -155,7 +155,7 @@
     [self.balanceHeaderLabelOne setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:17.0f]];
     [self.balanceHeaderLabelTwo setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:15.0f]];
     
-    [self.view addSubview:self.mykiWebstiteWebView];
+  //  [self.view addSubview:self.mykiWebstiteWebView];
     [self.toppingUpView addSubview:self.mykiMoneyTextField];
     [self.toppingUpView addSubview:self.mykiPassDaysTextField];
     [self.toppingUpView addSubview:self.mykiPassZoneFromTextField];
@@ -347,17 +347,19 @@
             
         }
     } else if ([pageTitle isEqualToString:@"Top up myki money"]) {
-        NSLog(@"Specify top up");
+        NSLog(@"Specify top up money");
         
-        if (self.topUpType == topUpTypeMykiMoney) {
-            self.topUpPage = topUpPageReviewTopUp;
+        self.topUpPage = topUpPageReviewTopUp;
         
-            NSString* topUpAmount = [self.mykiMoneyTextField.text substringFromIndex:1];
-            NSString* specifyTopUpPage =  [NSString stringWithFormat:JAVASCRIPT_SPECIFY_TOP_UP_MONEY_AND_SUBMIT, topUpAmount];
-            [self.mykiWebstiteWebView stringByEvaluatingJavaScriptFromString:specifyTopUpPage];
-        } else {
-            NSLog(@"ROBERT");
-        }
+        NSString* topUpAmount = [self.mykiMoneyTextField.text substringFromIndex:1];
+        NSString* specifyTopUpPage =  [NSString stringWithFormat:JAVASCRIPT_SPECIFY_TOP_UP_MONEY_AND_SUBMIT, topUpAmount];
+        [self.mykiWebstiteWebView stringByEvaluatingJavaScriptFromString:specifyTopUpPage];
+        
+    } else if ([pageTitle isEqualToString:@"Top up myki pass"]) {
+        NSLog(@"Specify top up pass");
+        self.topUpPage = topUpPageReviewTopUp;
+        NSString* specifyPassTopUpPage= [NSString stringWithFormat: JAVASCRIPT_SPECIFY_TOP_UP_PASS_AND_SUBMIT, self.mykiPassDaysTextField.text, self.mykiPassZoneFromTextField.text,self.mykiPassZoneToTextField.text];
+        [self.mykiWebstiteWebView stringByEvaluatingJavaScriptFromString:specifyPassTopUpPage];
         
     } else if ([pageTitle isEqualToString:@"Page not found"]) {
         NSURLRequest *requestObj = [NSURLRequest requestWithURL:[NSURL URLWithString:mykiLoginUrl]];
@@ -788,8 +790,13 @@
         NSString *changeCardForTopUpPage = [NSString stringWithFormat: JAVASCRIPT_TOP_UP_CHANGE_CARD, self.pagingScrollView.indexOfSelectedPage];
         [self.mykiWebstiteWebView stringByEvaluatingJavaScriptFromString: changeCardForTopUpPage];
         
-        NSString *submitChooseTopUpPage = JAVASCRIPT_CHOOSE_TOP_UP_SUMBIT;
-        [self.mykiWebstiteWebView stringByEvaluatingJavaScriptFromString: submitChooseTopUpPage];
+        if(self.topUpType == topUpTypeMykiMoney) {
+            NSString *submitChooseTopUpPage = JAVASCRIPT_CHOOSE_TOP_UP_MONEY_SUMBIT;
+            [self.mykiWebstiteWebView stringByEvaluatingJavaScriptFromString: submitChooseTopUpPage];
+        } else {
+            NSString *submitChooseTopUpPage = JAVASCRIPT_CHOOSE_TOP_UP_PASS_SUMBIT;
+            [self.mykiWebstiteWebView stringByEvaluatingJavaScriptFromString: submitChooseTopUpPage];
+        }
 
         self.topUpPage= topUpPageSpecifyTopUp;
         [timer invalidate];
