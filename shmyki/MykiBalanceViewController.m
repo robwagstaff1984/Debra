@@ -37,7 +37,7 @@
         [mykiAccountInformation loadAccountBalanceInformation];
         mykiLoginUrl = MYKI_LOGIN_URL;
 
-        mykiWebstiteWebView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 60, 320, 200)];
+        mykiWebstiteWebView = [[UIWebView alloc] initWithFrame:CGRectMake(60, 60, 200, 200)];
         mykiWebstiteWebView.delegate = self;
         
         [self loadFirstTimeLogin];
@@ -49,6 +49,8 @@
         self.mykiPassDaysTextField = [self setUpTopUpTextField:self.mykiPassDaysTextField withText:@"Enter Days" withReturnKey:UIReturnKeyNext withTag:MYKI_PASS_DAYS_TEXTFIELD_TAG withFrame:CGRectMake(23, 90, 274, 40)];
         self.mykiPassZoneFromTextField = [self setUpTopUpTextField:self.mykiPassZoneFromTextField withText:@"From Zone" withReturnKey:UIReturnKeyNext withTag:MYKI_PASS_ZONE_FROM_TEXTFIELD_TAG withFrame:CGRectMake(23, 150, 137, 40)];
         self.mykiPassZoneToTextField = [self setUpTopUpTextField:self.mykiPassZoneToTextField withText:@"To Zone" withReturnKey:UIReturnKeyNext withTag:MYKI_PASS_ZONE_TO_TEXTFIELD_TAG withFrame:CGRectMake(160, 150, 137, 40)];
+        
+        self.mykiPassDaysTextField.hidden = YES;
         
         passwordTextField.clearsOnBeginEditing = NO;
         
@@ -100,6 +102,7 @@
     [textField setPlaceholder:defaultText];
     textField.autocorrectionType = UITextAutocorrectionTypeNo;
     textField.borderStyle = UITextBorderStyleRoundedRect;
+    textField.keyboardType = UIKeyboardTypeNumberPad;
     
     [textField setContentVerticalAlignment:UIControlContentVerticalAlignmentCenter];
     [textField setFont:[UIFont fontWithName:@"HelveticaNeue" size:15.0f]];
@@ -152,8 +155,7 @@
     [self.balanceHeaderLabelOne setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:17.0f]];
     [self.balanceHeaderLabelTwo setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:15.0f]];
     
-    //[self.view addSubview:self.mykiWebstiteWebView];
-    self.mykiMoneyTextField.keyboardType = UIKeyboardTypeNumberPad;
+    [self.view addSubview:self.mykiWebstiteWebView];
     [self.toppingUpView addSubview:self.mykiMoneyTextField];
     [self.toppingUpView addSubview:self.mykiPassDaysTextField];
     [self.toppingUpView addSubview:self.mykiPassZoneFromTextField];
@@ -353,6 +355,8 @@
             NSString* topUpAmount = [self.mykiMoneyTextField.text substringFromIndex:1];
             NSString* specifyTopUpPage =  [NSString stringWithFormat:JAVASCRIPT_SPECIFY_TOP_UP_MONEY_AND_SUBMIT, topUpAmount];
             [self.mykiWebstiteWebView stringByEvaluatingJavaScriptFromString:specifyTopUpPage];
+        } else {
+            NSLog(@"ROBERT");
         }
         
     } else if ([pageTitle isEqualToString:@"Page not found"]) {
@@ -461,6 +465,12 @@
             textField.text = @"$";
         } else if ([textField.text length]==2 && ![string length]) {
             textField.text = @"";
+            self.navigationItem.rightBarButtonItem = [YourMykiCustomButton createYourMykiBarButtonItemWithText:@"Cancel" withTarget:self withAction:@selector(switchToSuccessState)];
+        }
+    } else if(textField.tag == MYKI_PASS_DAYS_TEXTFIELD_TAG || textField.tag == MYKI_PASS_ZONE_FROM_TEXTFIELD_TAG || textField.tag == MYKI_PASS_ZONE_TO_TEXTFIELD_TAG) {
+        if([textField.text length]==0 && [self.mykiPassDaysTextField.text length] && [self.mykiPassZoneFromTextField.text length] && [self.mykiPassDaysTextField.text length]) {
+            self.navigationItem.rightBarButtonItem = [YourMykiCustomButton createYourMykiBarButtonItemWithText:@"Top Up" withTarget:self withAction:@selector(submitTopUp)];
+        } else {
             self.navigationItem.rightBarButtonItem = [YourMykiCustomButton createYourMykiBarButtonItemWithText:@"Cancel" withTarget:self withAction:@selector(switchToSuccessState)];
         }
     }
@@ -638,7 +648,6 @@
 
 }
 -(void) submitTopUp {
-    self.topUpType = topUpTypeMykiMoney;
     [self.mykiMoneyTextField resignFirstResponder];
     [self.mykiPassDaysTextField resignFirstResponder];
     [self.mykiPassZoneFromTextField resignFirstResponder];
