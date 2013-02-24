@@ -44,13 +44,11 @@
         
         usernameTextField = [self setUpTextField:usernameTextField withText:@"Myki username" withUserDetail:[mykiAccountInformation mykiUsername] withReturnKey:UIReturnKeyNext withTag:USERNAME_TEXTFIELD_TAG];
         passwordTextField = [self setUpTextField:passwordTextField withText:@"Myki password" withUserDetail: [mykiAccountInformation mykiPassword] withReturnKey:UIReturnKeyDone withTag:PASSWORD_TEXTFIELD_TAG];
-        self.mykiMoneyTextField = [self setUpTextField:self.mykiMoneyTextField withText:@"Enter top up amount" withUserDetail: @"" withReturnKey:UIReturnKeyDone withTag:MYKI_MONEY_TEXTFIELD_TAG];
         
-        self.mykiMoneyTextField.frame = CGRectMake(23, 90, 274, 40);
-        
-        self.mykiMoneyTextField.borderStyle = UITextBorderStyleRoundedRect;
-        [self.mykiMoneyTextField setContentVerticalAlignment:UIControlContentVerticalAlignmentCenter];
-        [self.mykiMoneyTextField setFont:[UIFont fontWithName:@"HelveticaNeue" size:18.0f]];
+        self.mykiMoneyTextField = [self setUpTopUpTextField:self.mykiMoneyTextField withText:@"Enter top up amount" withReturnKey:UIReturnKeyNext withTag:MYKI_MONEY_TEXTFIELD_TAG withFrame:CGRectMake(23, 90, 274, 40)];
+        self.mykiPassDaysTextField = [self setUpTopUpTextField:self.mykiPassDaysTextField withText:@"Enter Days" withReturnKey:UIReturnKeyNext withTag:MYKI_PASS_DAYS_TEXTFIELD_TAG withFrame:CGRectMake(23, 90, 274, 40)];
+        self.mykiPassZoneFromTextField = [self setUpTopUpTextField:self.mykiPassZoneFromTextField withText:@"From Zone" withReturnKey:UIReturnKeyNext withTag:MYKI_PASS_ZONE_FROM_TEXTFIELD_TAG withFrame:CGRectMake(23, 150, 137, 40)];
+        self.mykiPassZoneToTextField = [self setUpTopUpTextField:self.mykiPassZoneToTextField withText:@"To Zone" withReturnKey:UIReturnKeyNext withTag:MYKI_PASS_ZONE_TO_TEXTFIELD_TAG withFrame:CGRectMake(160, 150, 137, 40)];
         
         passwordTextField.clearsOnBeginEditing = NO;
         
@@ -93,6 +91,31 @@
     [textField setReturnKeyType:returnKey];
     return textField;
 }
+
+-(UITextField*) setUpTopUpTextField:(UITextField*)textField withText:(NSString*)defaultText withReturnKey:(UIReturnKeyType)returnKey withTag:(int)tag withFrame:(CGRect)frame {
+    
+    textField = [[UITextField alloc] initWithFrame:CGRectMake(20, 10, 235, 40)];
+    textField.delegate = self;
+    textField.autocapitalizationType = UITextAutocapitalizationTypeNone;
+    [textField setPlaceholder:defaultText];
+    textField.autocorrectionType = UITextAutocorrectionTypeNo;
+    textField.borderStyle = UITextBorderStyleRoundedRect;
+    
+    [textField setContentVerticalAlignment:UIControlContentVerticalAlignmentCenter];
+    [textField setFont:[UIFont fontWithName:@"HelveticaNeue" size:15.0f]];
+    textField.frame = frame;
+    
+    
+    if(tag == PASSWORD_TEXTFIELD_TAG) {
+        textField.secureTextEntry = YES;
+    }
+    
+    NSInteger usernameTag = tag;
+    textField.tag = usernameTag;
+    [textField setReturnKeyType:returnKey];
+    return textField;
+}
+
 #pragma mark view methods
 
 - (void)viewDidLoad
@@ -132,6 +155,10 @@
     //[self.view addSubview:self.mykiWebstiteWebView];
     self.mykiMoneyTextField.keyboardType = UIKeyboardTypeNumberPad;
     [self.toppingUpView addSubview:self.mykiMoneyTextField];
+    [self.toppingUpView addSubview:self.mykiPassDaysTextField];
+    [self.toppingUpView addSubview:self.mykiPassZoneFromTextField];
+    [self.toppingUpView addSubview:self.mykiPassZoneToTextField];
+
     self.topUpMoneyButton.selected = YES;
     
     self.pageControl = [[PageControl alloc] initWithFrame:CGRectMake(141, 150, 39, 36)];
@@ -613,6 +640,9 @@
 -(void) submitTopUp {
     self.topUpType = topUpTypeMykiMoney;
     [self.mykiMoneyTextField resignFirstResponder];
+    [self.mykiPassDaysTextField resignFirstResponder];
+    [self.mykiPassZoneFromTextField resignFirstResponder];
+    [self.mykiPassZoneToTextField resignFirstResponder];
     [self switchToLoggingInState];
     HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     HUD.delegate = self;
@@ -630,12 +660,20 @@
     [self.topUpMoneyButton setBackgroundImage:[UIImage imageNamed:@"images/ButtonTopupMoneyDown.png"] forState:UIControlStateNormal];
     [self.topUpPassButton setBackgroundImage:[UIImage imageNamed:@"images/ButtonTopupPassUp.png"] forState:UIControlStateNormal];
     self.topUpType = topUpTypeMykiMoney;
+    self.mykiMoneyTextField.hidden = NO;
+    self.mykiPassDaysTextField.hidden = YES;
+    self.mykiPassZoneFromTextField.hidden = YES;
+    self.mykiPassZoneToTextField.hidden = YES;
 }
 
 -(IBAction) topUpPassButtonTapped:(id)sender {
     [self.topUpMoneyButton setBackgroundImage:[UIImage imageNamed:@"images/ButtonTopupMoneyUp.png"] forState:UIControlStateNormal];
     [self.topUpPassButton setBackgroundImage:[UIImage imageNamed:@"images/ButtonTopupPassDown.png"] forState:UIControlStateNormal];
     self.topUpType = topUpTypeMykiPass;
+    self.mykiMoneyTextField.hidden = YES;
+    self.mykiPassDaysTextField.hidden = NO;
+    self.mykiPassZoneFromTextField.hidden = NO;
+    self.mykiPassZoneToTextField.hidden = NO;
 }
 
 -(void) userCanceledLogin {
@@ -652,6 +690,9 @@
     [usernameTextField resignFirstResponder];
     [passwordTextField resignFirstResponder];
     [self.mykiMoneyTextField resignFirstResponder];
+    [self.mykiPassDaysTextField resignFirstResponder];
+    [self.mykiPassZoneFromTextField resignFirstResponder];
+    [self.mykiPassZoneToTextField resignFirstResponder];
 }
 
 #pragma firstTimeLogin
