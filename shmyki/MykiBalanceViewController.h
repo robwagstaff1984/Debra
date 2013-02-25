@@ -46,6 +46,7 @@ typedef enum {
 @property (nonatomic, strong) UITextField *usernameTextField;
 @property (nonatomic, strong) UITextField *passwordTextField;
 @property (nonatomic, strong) UITextField *mykiMoneyTextField;
+@property (nonatomic, strong) UITextField *mykiMoneyTextFieldContainer;
 @property (nonatomic, strong) UITextField *mykiPassDaysTextField;
 @property (nonatomic, strong) UITextField *mykiPassZoneFromTextField;
 @property (nonatomic, strong) UITextField *mykiPassZoneToTextField;
