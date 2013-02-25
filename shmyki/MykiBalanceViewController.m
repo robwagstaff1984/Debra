@@ -631,6 +631,9 @@
 
 -(void) switchToToppingUpState {
     self.mykiMoneyTextField.text = @"";
+    self.mykiPassDaysTextField.text = @"";
+    self.mykiPassZoneFromTextField.text = @"";
+    self.mykiPassZoneToTextField.text = @"";
     self.navigationItem.rightBarButtonItem = [YourMykiCustomButton createYourMykiBarButtonItemWithText:@"Cancel" withTarget:self withAction:@selector(switchToSuccessState)];
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:.4];

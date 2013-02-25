@@ -275,11 +275,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "shmyki/MykiBalanceViewController.m"
-         timestampString = "383378391.066106"
+         timestampString = "383483802.308592"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "750"
-         endingLineNumber = "750"
+         startingLineNumber = "755"
+         endingLineNumber = "755"
          landmarkName = "-numberOfPagesInPagingScrollView:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -470,11 +470,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "shmyki/MykiBalanceViewController.m"
-         timestampString = "383374478.081724"
+         timestampString = "383483864.523159"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "198"
-         endingLineNumber = "198"
+         startingLineNumber = "200"
+         endingLineNumber = "200"
          landmarkName = "-retrieveMykiBalance"
          landmarkType = "5">
       </FileBreakpoint>
@@ -483,11 +483,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "shmyki/MykiBalanceViewController.m"
-         timestampString = "383378391.066106"
+         timestampString = "383483802.308592"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "592"
-         endingLineNumber = "592"
+         startingLineNumber = "594"
+         endingLineNumber = "594"
          landmarkName = "-switchToLoggingInState"
          landmarkType = "5">
       </FileBreakpoint>
@@ -522,11 +522,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "shmyki/MykiBalanceViewController.m"
-         timestampString = "383378391.066106"
+         timestampString = "383483802.308592"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "365"
-         endingLineNumber = "365"
+         startingLineNumber = "367"
+         endingLineNumber = "367"
          landmarkName = "-webViewDidFinishLoad:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -535,11 +535,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "shmyki/MykiBalanceViewController.m"
-         timestampString = "383375926.267792"
+         timestampString = "383483802.308592"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "357"
-         endingLineNumber = "357"
+         startingLineNumber = "359"
+         endingLineNumber = "359"
          landmarkName = "-webViewDidFinishLoad:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -548,72 +548,7 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "shmyki/MykiBalanceViewController.m"
-         timestampString = "383374478.081724"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "260"
-         endingLineNumber = "260"
-         landmarkName = "-webViewDidFinishLoad:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "shmyki/MykiBalanceViewController.m"
-         timestampString = "383374478.081724"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "330"
-         endingLineNumber = "330"
-         landmarkName = "-webViewDidFinishLoad:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "shmyki/MykiBalanceViewController.m"
-         timestampString = "383374478.081724"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "335"
-         endingLineNumber = "335"
-         landmarkName = "-webViewDidFinishLoad:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "shmyki/MykiBalanceViewController.m"
-         timestampString = "383378391.066106"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "796"
-         endingLineNumber = "796"
-         landmarkName = "-pollForChooseTopUpPageLoaded:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "shmyki/MykiBalanceViewController.m"
-         timestampString = "383378391.066106"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "785"
-         endingLineNumber = "785"
-         landmarkName = "-pollForChooseTopUpPageLoaded:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "shmyki/MykiBalanceViewController.m"
-         timestampString = "383374478.081724"
+         timestampString = "383483864.523159"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "262"
@@ -626,11 +561,76 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "shmyki/MykiBalanceViewController.m"
-         timestampString = "383374478.081724"
+         timestampString = "383483864.523159"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "177"
-         endingLineNumber = "177"
+         startingLineNumber = "332"
+         endingLineNumber = "332"
+         landmarkName = "-webViewDidFinishLoad:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "shmyki/MykiBalanceViewController.m"
+         timestampString = "383483802.308592"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "337"
+         endingLineNumber = "337"
+         landmarkName = "-webViewDidFinishLoad:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "shmyki/MykiBalanceViewController.m"
+         timestampString = "383483802.308592"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "801"
+         endingLineNumber = "801"
+         landmarkName = "-pollForChooseTopUpPageLoaded:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "shmyki/MykiBalanceViewController.m"
+         timestampString = "383483802.308592"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "790"
+         endingLineNumber = "790"
+         landmarkName = "-pollForChooseTopUpPageLoaded:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "shmyki/MykiBalanceViewController.m"
+         timestampString = "383483864.523159"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "264"
+         endingLineNumber = "264"
+         landmarkName = "-webViewDidFinishLoad:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "shmyki/MykiBalanceViewController.m"
+         timestampString = "383483864.523159"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "179"
+         endingLineNumber = "179"
          landmarkName = "-viewDidLoad"
          landmarkType = "5">
       </FileBreakpoint>
@@ -639,11 +639,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "shmyki/MykiBalanceViewController.m"
-         timestampString = "383374478.081724"
+         timestampString = "383483864.523159"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "160"
-         endingLineNumber = "160"
+         startingLineNumber = "162"
+         endingLineNumber = "162"
          landmarkName = "-viewDidLoad"
          landmarkType = "5">
       </FileBreakpoint>
@@ -652,11 +652,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "shmyki/MykiBalanceViewController.m"
-         timestampString = "383378391.066106"
+         timestampString = "383483802.308592"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "633"
-         endingLineNumber = "633"
+         startingLineNumber = "635"
+         endingLineNumber = "635"
          landmarkName = "-switchToToppingUpState"
          landmarkType = "5">
       </FileBreakpoint>
@@ -665,11 +665,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "shmyki/MykiBalanceViewController.m"
-         timestampString = "383378391.066106"
+         timestampString = "383483802.308592"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "635"
-         endingLineNumber = "635"
+         startingLineNumber = "640"
+         endingLineNumber = "640"
          landmarkName = "-switchToToppingUpState"
          landmarkType = "5">
       </FileBreakpoint>
@@ -691,11 +691,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "shmyki/MykiBalanceViewController.m"
-         timestampString = "383378391.066106"
+         timestampString = "383483802.308592"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "558"
-         endingLineNumber = "558"
+         startingLineNumber = "560"
+         endingLineNumber = "560"
          landmarkName = "-switchToSuccessState"
          landmarkType = "5">
       </FileBreakpoint>
@@ -704,11 +704,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "shmyki/MykiBalanceViewController.m"
-         timestampString = "383378391.066106"
+         timestampString = "383483802.308592"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "445"
-         endingLineNumber = "445"
+         startingLineNumber = "447"
+         endingLineNumber = "447"
          landmarkName = "-textField:shouldChangeCharactersInRange:replacementString:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -717,11 +717,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "shmyki/MykiBalanceViewController.m"
-         timestampString = "383378391.066106"
+         timestampString = "383483802.308592"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "701"
-         endingLineNumber = "701"
+         startingLineNumber = "706"
+         endingLineNumber = "706"
          landmarkName = "-dismissKeyboard"
          landmarkType = "5">
       </FileBreakpoint>
@@ -730,11 +730,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "shmyki/MykiBalanceViewController.m"
-         timestampString = "383375926.267792"
+         timestampString = "383483802.308592"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "355"
-         endingLineNumber = "355"
+         startingLineNumber = "357"
+         endingLineNumber = "357"
          landmarkName = "-webViewDidFinishLoad:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -743,11 +743,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "shmyki/MykiBalanceViewController.m"
-         timestampString = "383378391.066106"
+         timestampString = "383483802.308592"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "790"
-         endingLineNumber = "790"
+         startingLineNumber = "795"
+         endingLineNumber = "795"
          landmarkName = "-pollForChooseTopUpPageLoaded:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -756,11 +756,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "shmyki/MykiBalanceViewController.m"
-         timestampString = "383374478.081724"
+         timestampString = "383483864.523159"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "306"
-         endingLineNumber = "306"
+         startingLineNumber = "308"
+         endingLineNumber = "308"
          landmarkName = "-webViewDidFinishLoad:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -769,11 +769,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "shmyki/MykiBalanceViewController.m"
-         timestampString = "383378391.066106"
+         timestampString = "383483802.308592"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "673"
-         endingLineNumber = "673"
+         startingLineNumber = "678"
+         endingLineNumber = "678"
          landmarkName = "-topUpMoneyButtonTapped:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -782,11 +782,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "shmyki/MykiBalanceViewController.m"
-         timestampString = "383378391.066106"
+         timestampString = "383483802.308592"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "674"
-         endingLineNumber = "674"
+         startingLineNumber = "679"
+         endingLineNumber = "679"
          landmarkName = "-topUpMoneyButtonTapped:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -795,11 +795,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "shmyki/MykiBalanceViewController.m"
-         timestampString = "383375926.267792"
+         timestampString = "383483802.308592"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "351"
-         endingLineNumber = "351"
+         startingLineNumber = "353"
+         endingLineNumber = "353"
          landmarkName = "-webViewDidFinishLoad:"
          landmarkType = "5">
       </FileBreakpoint>
