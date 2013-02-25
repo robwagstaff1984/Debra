@@ -336,8 +336,9 @@
             self.isRequestingTopUp = NO;
             [HUD hide:YES];
             [self presentViewController:navigationController animated:YES completion:nil];
-        } else if (self.topUpPage == topUpPageReviewTopUp) {
+        } else if (self.topUpPage == topUpPagePostReviewTopUp) {
             NSLog(@"post review");
+            [self.mykiWebstiteWebView stringByEvaluatingJavaScriptFromString:JAVASCRIPT_RESTYLE_REVIEW_PAGE];
         } else {
             HUD.labelText = @"Pre filling your top up data";
             NSLog(@"Choose top up");
@@ -466,7 +467,7 @@
             [self enableTopUpMoneyIfValid];
         } else if ([string isEqualToString:@""]) {
             textField.text = [textField.text substringToIndex:textField.text.length-1];
-            [self enableTopUpMoneyIfValid];;
+            [self enableTopUpMoneyIfValid];
         }
         textField.text = [NSString stringWithFormat:@"%@%@", textField.text, string];
         [self enableTopUpMoneyIfValid];
