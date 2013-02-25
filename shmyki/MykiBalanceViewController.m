@@ -51,6 +51,9 @@
         self.mykiPassZoneToTextField = [self setUpTopUpTextField:self.mykiPassZoneToTextField withText:@"To Zone" withReturnKey:UIReturnKeyNext withTag:MYKI_PASS_ZONE_TO_TEXTFIELD_TAG withFrame:CGRectMake(160, 150, 137, 40)];
         
         self.mykiPassDaysTextField.hidden = YES;
+        self.mykiPassZoneFromTextField.hidden = YES;
+        self.mykiPassZoneToTextField.hidden = YES;
+        self.topUpType = topUpTypeMykiMoney;
         
         passwordTextField.clearsOnBeginEditing = NO;
         
@@ -64,8 +67,8 @@
         
         
         if(self.isUserLoginAttempted) {
-            self.navigationItem.rightBarButtonItem.enabled = NO;
-            self.navigationItem.rightBarButtonItem = [YourMykiCustomButton createYourMykiBarButtonItemWithText:@"Edit" withTarget:self withAction:@selector(switchToLoginState)];
+            self.navigationItem.leftBarButtonItem.enabled = NO;
+            self.navigationItem.leftBarButtonItem = [YourMykiCustomButton createYourMykiBarButtonItemWithText:@"Edit" withTarget:self withAction:@selector(switchToLoginState)];
         }
         
         dateDisplayHelper = [[DateDisplayHelper alloc] init];
@@ -239,7 +242,7 @@
 }
 
 -(void) retryRetrieveMykiBalance {
-    self.navigationItem.rightBarButtonItem.enabled = NO;
+    self.navigationItem.leftBarButtonItem.enabled = NO;
     if(!self.isUserLoginAttempted) {
         [self saveFirstTimeLogin];
     }
@@ -317,11 +320,6 @@
         }
     } else if ([pageTitle isEqualToString:@"Top up your myki"]) {
        // NSLog(@"top up");
-        if (self.topUpType == topUpTypeMykiMoney) {
-            
-        } else {
-            
-        }
 
         if (self.topUpPage == topUpPageReviewTopUp) {
             NSLog(@"review top up");
@@ -460,24 +458,60 @@
             }
         }
     } else if (textField.tag == MYKI_MONEY_TEXTFIELD_TAG) {
-        
-        self.navigationItem.rightBarButtonItem = [YourMykiCustomButton createYourMykiBarButtonItemWithText:@"Top Up" withTarget:self withAction:@selector(submitTopUp)];
-        
+    
         if([textField.text length]==0){
             textField.text = @"$";
         } else if ([textField.text length]==2 && ![string length]) {
             textField.text = @"";
-            self.navigationItem.rightBarButtonItem = [YourMykiCustomButton createYourMykiBarButtonItemWithText:@"Cancel" withTarget:self withAction:@selector(switchToSuccessState)];
+            [self enableTopUpMoneyIfValid];
+        } else if ([string isEqualToString:@""]) {
+            textField.text = [textField.text substringToIndex:textField.text.length-1];
+            [self enableTopUpMoneyIfValid];;
         }
+        textField.text = [NSString stringWithFormat:@"%@%@", textField.text, string];
+        [self enableTopUpMoneyIfValid];
+        return NO;
     } else if(textField.tag == MYKI_PASS_DAYS_TEXTFIELD_TAG || textField.tag == MYKI_PASS_ZONE_FROM_TEXTFIELD_TAG || textField.tag == MYKI_PASS_ZONE_TO_TEXTFIELD_TAG) {
-        if([textField.text length]==0 && [self.mykiPassDaysTextField.text length] && [self.mykiPassZoneFromTextField.text length] && [self.mykiPassDaysTextField.text length]) {
-            self.navigationItem.rightBarButtonItem = [YourMykiCustomButton createYourMykiBarButtonItemWithText:@"Top Up" withTarget:self withAction:@selector(submitTopUp)];
+        
+        if([string isEqualToString:@""]) {
+            textField.text = [textField.text substringToIndex:textField.text.length-1];
+        } else if ([textField.text length]==1 && ![string length]) {
+            textField.text = @"";
         } else {
-            self.navigationItem.rightBarButtonItem = [YourMykiCustomButton createYourMykiBarButtonItemWithText:@"Cancel" withTarget:self withAction:@selector(switchToSuccessState)];
+            textField.text = [NSString stringWithFormat:@"%@%@", textField.text, string];
         }
+        [self enableTopUpPassIfValid];
+        return NO;
     }
     return YES;
 }
+
+
+-(void) enableTopUpMoneyIfValid {
+    if ([self.mykiMoneyTextField.text length]) {
+        int mykiMoneyAmount = [[self.mykiMoneyTextField.text substringFromIndex:1] integerValue];
+        if (mykiMoneyAmount >= 10 && mykiMoneyAmount <= 250) {
+            self.navigationItem.rightBarButtonItem.enabled = YES;
+        } else {
+            self.navigationItem.rightBarButtonItem.enabled = NO;
+        }
+    } else {
+        self.navigationItem.rightBarButtonItem.enabled = NO;
+    }
+}
+
+-(void) enableTopUpPassIfValid {
+    int mykiDaysAmount = [self.mykiPassDaysTextField.text integerValue];
+    int mykiZoneFrom = [self.self.mykiPassZoneFromTextField.text integerValue];
+    int mykiZoneTo = [self.self.mykiPassZoneToTextField.text integerValue];
+    
+    if(mykiDaysAmount >= 28 && mykiDaysAmount <= 365 && mykiZoneFrom >= 1 && mykiZoneFrom <=81 && mykiZoneTo >= 1 && mykiZoneTo <=81 && mykiZoneFrom <= mykiZoneTo) {
+        self.navigationItem.rightBarButtonItem.enabled = YES;
+    } else {
+        self.navigationItem.rightBarButtonItem.enabled = NO;
+    }
+}
+
 
 #pragma  mark helper methods 
 -(void)scrollViewToPositionForNotification:(NSNotification*)notification {
@@ -486,9 +520,9 @@
     if ([notification.name isEqualToString:UIKeyboardWillShowNotification]) {
         position = 224.0;
         if(self.isUserLoginAttempted) {
-            self.navigationItem.rightBarButtonItem = [YourMykiCustomButton createYourMykiBarButtonItemWithText:@"Cancel" withTarget:self withAction:@selector(switchToSuccessState)];
+            self.navigationItem.leftBarButtonItem = [YourMykiCustomButton createYourMykiBarButtonItemWithText:@"Cancel" withTarget:self withAction:@selector(switchToSuccessState)];
         } else {
-            self.navigationItem.rightBarButtonItem = [YourMykiCustomButton createYourMykiBarButtonItemWithText:@"Cancel" withTarget:self withAction:@selector(switchToLoginState)];
+            self.navigationItem.leftBarButtonItem = [YourMykiCustomButton createYourMykiBarButtonItemWithText:@"Cancel" withTarget:self withAction:@selector(switchToLoginState)];
         }
     } else {
         position = 0.0;
@@ -545,10 +579,10 @@
     
     [self dismissKeyboard];
     if(self.isUserLoginAttempted) {
-        self.navigationItem.rightBarButtonItem = [YourMykiCustomButton createYourMykiBarButtonItemWithText:@"Cancel" withTarget:self withAction:@selector(switchToSuccessState)];
+        self.navigationItem.leftBarButtonItem = [YourMykiCustomButton createYourMykiBarButtonItemWithText:@"Cancel" withTarget:self withAction:@selector(switchToSuccessState)];
      } else {
 
-         self.navigationItem.rightBarButtonItem = nil;
+         self.navigationItem.leftBarButtonItem = nil;
      }
 
 }
@@ -558,6 +592,7 @@
     self.isActiveState = YES;
     self.isRequestingTopUp = NO;
     [self.pagingScrollView reloadData];
+    self.topUpPage = topUpPageChooseTopUp;
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:.4];
     [self dismissKeyboard];
@@ -565,12 +600,14 @@
     self.bottomView.frame = CGRectMake(0, 705, 320, 205);
     self.errorView.frame = CGRectMake(0, 705, 320, 150);
     [UIView commitAnimations];
+    self.navigationItem.leftBarButtonItem = nil;
     self.navigationItem.rightBarButtonItem = [YourMykiCustomButton createYourMykiBarButtonItemWithText:@"Edit" withTarget:self withAction:@selector(switchToLoginState)];
 }
 
 -(void)switchToLoginState {
     self.isActiveState = NO;
     self.isRequestingTopUp = NO;
+    self.topUpPage = topUpPageChooseTopUp;
     [self.pagingScrollView reloadData];
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:.4];
@@ -582,9 +619,10 @@
     
     if (self.isUserLoginAttempted) {
   
-        self.navigationItem.rightBarButtonItem = self.navigationItem.rightBarButtonItem = [YourMykiCustomButton createYourMykiBarButtonItemWithText:@"Cancel" withTarget:self withAction:@selector(switchToSuccessState)];
-    } else {
+        self.navigationItem.leftBarButtonItem = self.navigationItem.leftBarButtonItem = [YourMykiCustomButton createYourMykiBarButtonItemWithText:@"Cancel" withTarget:self withAction:@selector(switchToSuccessState)];
         self.navigationItem.rightBarButtonItem = nil;
+    } else {
+        self.navigationItem.leftBarButtonItem = nil;
     }
 }
 
@@ -592,7 +630,7 @@
     self.isActiveState = NO;
     [self.pagingScrollView reloadData];
     self.invalidCredentialsLabel.hidden = YES;
-    self.navigationItem.rightBarButtonItem = [YourMykiCustomButton createYourMykiBarButtonItemWithText:@"Cancel" withTarget:self withAction:@selector(userCanceledLogin)];
+    self.navigationItem.leftBarButtonItem = [YourMykiCustomButton createYourMykiBarButtonItemWithText:@"Cancel" withTarget:self withAction:@selector(userCanceledLogin)];
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:.4];
     self.toppingUpView.frame = CGRectMake(0, 705, 320, 205);
@@ -605,6 +643,7 @@
 -(void)switchToErrorState {
     self.isActiveState = NO;
     self.isRequestingTopUp = NO;
+    self.topUpPage = topUpPageChooseTopUp;
     [self.pagingScrollView reloadData];
     if(self.isProblemWithMykiCredentials) {
         self.invalidCredentialsLabel.hidden = NO;
@@ -634,7 +673,10 @@
     self.mykiPassDaysTextField.text = @"";
     self.mykiPassZoneFromTextField.text = @"";
     self.mykiPassZoneToTextField.text = @"";
-    self.navigationItem.rightBarButtonItem = [YourMykiCustomButton createYourMykiBarButtonItemWithText:@"Cancel" withTarget:self withAction:@selector(switchToSuccessState)];
+    self.navigationItem.leftBarButtonItem = [YourMykiCustomButton createYourMykiBarButtonItemWithText:@"Cancel" withTarget:self withAction:@selector(switchToSuccessState)];
+    self.navigationItem.rightBarButtonItem = [YourMykiCustomButton createYourMykiBarButtonItemWithText:@"Top Up" withTarget:self withAction:@selector(submitTopUp)];
+    self.navigationItem.rightBarButtonItem.enabled = NO;
+    
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:.4];
     self.toppingUpView.frame = CGRectMake(0, 224, 320, 205);
