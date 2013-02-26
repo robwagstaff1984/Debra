@@ -49,18 +49,24 @@
         self.mykiMoneyTextField = [self setUpTopUpTextField:self.mykiMoneyTextField withText:@"$" withReturnKey:UIReturnKeyNext withTag:MYKI_MONEY_TEXTFIELD_TAG withFrame:CGRectMake(143, 90, 154, 40)];
         self.mykiMoneyTextField.borderStyle = UITextBorderStyleNone;
         
-        self.mykiPassDaysTextFieldContainer = [self setUpTopUpTextField:self.mykiPassDaysTextFieldContainer withText:@"Enter Days" withReturnKey:UIReturnKeyNext withTag:MYKI_PASS_DAYS_TEXTFIELD_CONTAINER_TAG withFrame:CGRectMake(23, 90, 274, 40)];
-        self.mykiPassDaysTextField = [self setUpTopUpTextField:self.mykiPassDaysTextField withText:@"" withReturnKey:UIReturnKeyNext withTag:MYKI_PASS_DAYS_TEXTFIELD_TAG withFrame:CGRectMake(143, 90, 154, 40)];
+        self.mykiPassDaysTextFieldContainer = [self setUpTopUpTextField:self.mykiPassDaysTextFieldContainer withText:@"Days:" withReturnKey:UIReturnKeyNext withTag:MYKI_PASS_DAYS_TEXTFIELD_CONTAINER_TAG withFrame:CGRectMake(23, 90, 274, 40)];
+        self.mykiPassDaysTextField = [self setUpTopUpTextField:self.mykiPassDaysTextField withText:@"" withReturnKey:UIReturnKeyNext withTag:MYKI_PASS_DAYS_TEXTFIELD_TAG withFrame:CGRectMake(73, 90, 224, 40)];
         self.mykiPassDaysTextField.borderStyle = UITextBorderStyleNone;
         
+        self.mykiPassZoneFromTextFieldContainer = [self setUpTopUpTextField:self.mykiPassZoneFromTextField withText:@"From Zone:" withReturnKey:UIReturnKeyNext withTag:MYKI_PASS_ZONE_FROM_TEXTFIELD_CONTAINER_TAG withFrame:CGRectMake(23, 150, 137, 40)];
+        self.mykiPassZoneFromTextField = [self setUpTopUpTextField:self.mykiPassZoneFromTextField withText:@"" withReturnKey:UIReturnKeyNext withTag:MYKI_PASS_ZONE_FROM_TEXTFIELD_TAG withFrame:CGRectMake(123, 150, 37, 40)];
+        self.mykiPassZoneFromTextField.borderStyle = UITextBorderStyleNone;
         
-        self.mykiPassZoneFromTextField = [self setUpTopUpTextField:self.mykiPassZoneFromTextField withText:@"From Zone" withReturnKey:UIReturnKeyNext withTag:MYKI_PASS_ZONE_FROM_TEXTFIELD_TAG withFrame:CGRectMake(23, 150, 137, 40)];
-        self.mykiPassZoneToTextField = [self setUpTopUpTextField:self.mykiPassZoneToTextField withText:@"To Zone" withReturnKey:UIReturnKeyNext withTag:MYKI_PASS_ZONE_TO_TEXTFIELD_TAG withFrame:CGRectMake(160, 150, 137, 40)];
+        self.mykiPassZoneToTextFieldContainer = [self setUpTopUpTextField:self.mykiPassZoneToTextField withText:@"To Zone:" withReturnKey:UIReturnKeyNext withTag:MYKI_PASS_ZONE_TO_TEXTFIELD_CONTAINER_TAG withFrame:CGRectMake(160, 150, 137, 40)];
+        self.mykiPassZoneToTextField = [self setUpTopUpTextField:self.mykiPassZoneToTextField withText:@"" withReturnKey:UIReturnKeyNext withTag:MYKI_PASS_ZONE_TO_TEXTFIELD_TAG withFrame:CGRectMake(260, 150, 37, 40)];
+        self.mykiPassZoneToTextField.borderStyle = UITextBorderStyleNone;
         
         self.mykiPassDaysTextField.hidden = YES;
         self.mykiPassDaysTextFieldContainer.hidden = YES;
         self.mykiPassZoneFromTextField.hidden = YES;
+        self.mykiPassZoneFromTextFieldContainer.hidden = YES;
         self.mykiPassZoneToTextField.hidden = YES;
+        self.mykiPassZoneToTextFieldContainer.hidden = YES;
         self.topUpType = topUpTypeMykiMoney;
         
         passwordTextField.clearsOnBeginEditing = NO;
@@ -173,7 +179,10 @@
     [self.toppingUpView addSubview:self.mykiPassDaysTextFieldContainer];
     [self.toppingUpView addSubview:self.mykiPassDaysTextField];
 
+    [self.toppingUpView addSubview:self.mykiPassZoneFromTextFieldContainer];
     [self.toppingUpView addSubview:self.mykiPassZoneFromTextField];
+    
+    [self.toppingUpView addSubview:self.mykiPassZoneToTextFieldContainer];
     [self.toppingUpView addSubview:self.mykiPassZoneToTextField];
 
     self.topUpMoneyButton.selected = YES;
@@ -296,11 +305,14 @@
         [self resetTimer];
         
         if(self.isRequestingTopUp) {
+            NSLog(@"is requesting Top up");
             HUD.labelText = @"Connecting to Myki top up";
             NSString* chooseTopUpURL = MYKI_ACCOUNT_CHOOSE_TOP_UP_PAGE_URL;
             NSURLRequest *requestObj = [NSURLRequest requestWithURL:[NSURL URLWithString:chooseTopUpURL]];
+            [mykiWebstiteWebView stopLoading];
             [mykiWebstiteWebView loadRequest:requestObj];
         } else {
+            NSLog(@"is requesting Balance");
             HUD.labelText = @"Retrieving Balance";
             
             NSString* manageMyCardUrl = MYKI_ACCOUNT_INFO_URL;
@@ -342,7 +354,9 @@
             
             TopUpWebViewViewController *mykiWebViewController= [[TopUpWebViewViewController alloc] init];
             mykiWebViewController.view.backgroundColor = [UIColor whiteColor];
-            [mykiWebViewController.view addSubview:self.mykiWebstiteWebView];
+            
+            [mykiWebViewController.view insertSubview:self.mykiWebstiteWebView atIndex:0];
+            
             UINavigationController* navigationController = [[UINavigationController alloc] initWithRootViewController:mykiWebViewController];
             self.topUpPage = topUpPagePostReviewTopUp;
             self.isRequestingTopUp = NO;
@@ -505,6 +519,12 @@
         return NO;
     } else if(textField.tag == MYKI_PASS_DAYS_TEXTFIELD_CONTAINER_TAG) {
         [self.mykiPassDaysTextField becomeFirstResponder];
+        return NO;
+    } else if(textField.tag == MYKI_PASS_ZONE_FROM_TEXTFIELD_CONTAINER_TAG) {
+        [self.mykiPassZoneFromTextField becomeFirstResponder];
+        return NO;
+    } else if(textField.tag == MYKI_PASS_ZONE_TO_TEXTFIELD_CONTAINER_TAG) {
+        [self.mykiPassZoneToTextField becomeFirstResponder];
         return NO;
     }
     
@@ -727,12 +747,14 @@
     [self.mykiPassZoneFromTextField resignFirstResponder];
     [self.mykiPassZoneToTextField resignFirstResponder];
     [self switchToLoggingInState];
+    
     HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     HUD.delegate = self;
     HUD.dimBackground = YES;
     HUD.labelText = @"Connecting to Myki top up";
     [HUD show:YES];
     self.isRequestingTopUp = YES;
+    self.topUpPage = topUpPageUnknown;
     [mykiWebstiteWebView stopLoading];
     NSString* chooseTopUpURL = MYKI_ACCOUNT_CHOOSE_TOP_UP_PAGE_URL;
     NSURLRequest *requestObj = [NSURLRequest requestWithURL:[NSURL URLWithString:chooseTopUpURL]];
@@ -748,7 +770,9 @@
     self.mykiPassDaysTextField.hidden = YES;
     self.mykiPassDaysTextFieldContainer.hidden = YES;
     self.mykiPassZoneFromTextField.hidden = YES;
+    self.mykiPassZoneFromTextFieldContainer.hidden = YES;
     self.mykiPassZoneToTextField.hidden = YES;
+    self.mykiPassZoneToTextFieldContainer.hidden = YES;
 }
 
 -(IBAction) topUpPassButtonTapped:(id)sender {
@@ -760,7 +784,9 @@
     self.mykiPassDaysTextField.hidden = NO;
     self.mykiPassDaysTextFieldContainer.hidden = NO;
     self.mykiPassZoneFromTextField.hidden = NO;
+    self.mykiPassZoneFromTextFieldContainer.hidden = NO;
     self.mykiPassZoneToTextField.hidden = NO;
+    self.mykiPassZoneToTextFieldContainer.hidden = NO;
 }
 
 -(void) userCanceledLogin {
