@@ -44,18 +44,21 @@
         
         usernameTextField = [self setUpTextField:usernameTextField withText:@"Myki username" withUserDetail:[mykiAccountInformation mykiUsername] withReturnKey:UIReturnKeyNext withTag:USERNAME_TEXTFIELD_TAG];
         passwordTextField = [self setUpTextField:passwordTextField withText:@"Myki password" withUserDetail: [mykiAccountInformation mykiPassword] withReturnKey:UIReturnKeyDone withTag:PASSWORD_TEXTFIELD_TAG];
-        
-        //self.mykiMoneyTextField = [self setUpTopUpTextField:self.mykiMoneyTextField withText:@"Enter top up amount" withReturnKey:UIReturnKeyNext withTag:MYKI_MONEY_TEXTFIELD_TAG withFrame:CGRectMake(23, 90, 274, 40)];
+
         self.mykiMoneyTextFieldContainer = [self setUpTopUpTextField:self.mykiMoneyTextFieldContainer withText:@"Top up amount:" withReturnKey:UIReturnKeyNext withTag:MYKI_MONEY_TEXTFIELD_CONTAINER_TAG withFrame:CGRectMake(23, 90, 274, 40)];
         self.mykiMoneyTextField = [self setUpTopUpTextField:self.mykiMoneyTextField withText:@"$" withReturnKey:UIReturnKeyNext withTag:MYKI_MONEY_TEXTFIELD_TAG withFrame:CGRectMake(143, 90, 154, 40)];
         self.mykiMoneyTextField.borderStyle = UITextBorderStyleNone;
         
+        self.mykiPassDaysTextFieldContainer = [self setUpTopUpTextField:self.mykiPassDaysTextFieldContainer withText:@"Enter Days" withReturnKey:UIReturnKeyNext withTag:MYKI_PASS_DAYS_TEXTFIELD_CONTAINER_TAG withFrame:CGRectMake(23, 90, 274, 40)];
+        self.mykiPassDaysTextField = [self setUpTopUpTextField:self.mykiPassDaysTextField withText:@"" withReturnKey:UIReturnKeyNext withTag:MYKI_PASS_DAYS_TEXTFIELD_TAG withFrame:CGRectMake(143, 90, 154, 40)];
+        self.mykiPassDaysTextField.borderStyle = UITextBorderStyleNone;
         
-        self.mykiPassDaysTextField = [self setUpTopUpTextField:self.mykiPassDaysTextField withText:@"Enter Days" withReturnKey:UIReturnKeyNext withTag:MYKI_PASS_DAYS_TEXTFIELD_TAG withFrame:CGRectMake(23, 90, 274, 40)];
+        
         self.mykiPassZoneFromTextField = [self setUpTopUpTextField:self.mykiPassZoneFromTextField withText:@"From Zone" withReturnKey:UIReturnKeyNext withTag:MYKI_PASS_ZONE_FROM_TEXTFIELD_TAG withFrame:CGRectMake(23, 150, 137, 40)];
         self.mykiPassZoneToTextField = [self setUpTopUpTextField:self.mykiPassZoneToTextField withText:@"To Zone" withReturnKey:UIReturnKeyNext withTag:MYKI_PASS_ZONE_TO_TEXTFIELD_TAG withFrame:CGRectMake(160, 150, 137, 40)];
         
         self.mykiPassDaysTextField.hidden = YES;
+        self.mykiPassDaysTextFieldContainer.hidden = YES;
         self.mykiPassZoneFromTextField.hidden = YES;
         self.mykiPassZoneToTextField.hidden = YES;
         self.topUpType = topUpTypeMykiMoney;
@@ -166,7 +169,10 @@
   //  [self.view addSubview:self.mykiWebstiteWebView];
     [self.toppingUpView addSubview:self.mykiMoneyTextFieldContainer];
     [self.toppingUpView addSubview:self.mykiMoneyTextField];
+    
+    [self.toppingUpView addSubview:self.mykiPassDaysTextFieldContainer];
     [self.toppingUpView addSubview:self.mykiPassDaysTextField];
+
     [self.toppingUpView addSubview:self.mykiPassZoneFromTextField];
     [self.toppingUpView addSubview:self.mykiPassZoneToTextField];
 
@@ -497,7 +503,12 @@
     if(textField.tag == MYKI_MONEY_TEXTFIELD_CONTAINER_TAG) {
         [self.mykiMoneyTextField becomeFirstResponder];
         return NO;
+    } else if(textField.tag == MYKI_PASS_DAYS_TEXTFIELD_CONTAINER_TAG) {
+        [self.mykiPassDaysTextField becomeFirstResponder];
+        return NO;
     }
+    
+        
     return YES;
 }
 
@@ -733,7 +744,9 @@
     [self.topUpPassButton setBackgroundImage:[UIImage imageNamed:@"images/ButtonTopupPassUp.png"] forState:UIControlStateNormal];
     self.topUpType = topUpTypeMykiMoney;
     self.mykiMoneyTextField.hidden = NO;
+    self.mykiMoneyTextFieldContainer.hidden = NO;
     self.mykiPassDaysTextField.hidden = YES;
+    self.mykiPassDaysTextFieldContainer.hidden = YES;
     self.mykiPassZoneFromTextField.hidden = YES;
     self.mykiPassZoneToTextField.hidden = YES;
 }
@@ -743,7 +756,9 @@
     [self.topUpPassButton setBackgroundImage:[UIImage imageNamed:@"images/ButtonTopupPassDown.png"] forState:UIControlStateNormal];
     self.topUpType = topUpTypeMykiPass;
     self.mykiMoneyTextField.hidden = YES;
+    self.mykiMoneyTextFieldContainer.hidden = YES;
     self.mykiPassDaysTextField.hidden = NO;
+    self.mykiPassDaysTextFieldContainer.hidden = NO;
     self.mykiPassZoneFromTextField.hidden = NO;
     self.mykiPassZoneToTextField.hidden = NO;
 }
