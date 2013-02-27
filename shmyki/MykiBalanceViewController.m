@@ -53,12 +53,12 @@
         self.mykiPassDaysTextField = [self setUpTopUpTextField:self.mykiPassDaysTextField withText:@"" withReturnKey:UIReturnKeyNext withTag:MYKI_PASS_DAYS_TEXTFIELD_TAG withFrame:CGRectMake(73, 80, 224, 40)];
         self.mykiPassDaysTextField.borderStyle = UITextBorderStyleNone;
         
-        self.mykiPassZoneFromTextFieldContainer = [self setUpTopUpTextField:self.mykiPassZoneFromTextField withText:@"From Zone:" withReturnKey:UIReturnKeyNext withTag:MYKI_PASS_ZONE_FROM_TEXTFIELD_CONTAINER_TAG withFrame:CGRectMake(23, 146, 127, 40)];
-        self.mykiPassZoneFromTextField = [self setUpTopUpTextField:self.mykiPassZoneFromTextField withText:@"" withReturnKey:UIReturnKeyNext withTag:MYKI_PASS_ZONE_FROM_TEXTFIELD_TAG withFrame:CGRectMake(113, 146, 37, 40)];
+        self.mykiPassZoneFromTextFieldContainer = [self setUpTopUpTextField:self.mykiPassZoneFromTextField withText:@"From Zone:" withReturnKey:UIReturnKeyNext withTag:MYKI_PASS_ZONE_FROM_TEXTFIELD_CONTAINER_TAG withFrame:CGRectMake(23, 148, 127, 40)];
+        self.mykiPassZoneFromTextField = [self setUpTopUpTextField:self.mykiPassZoneFromTextField withText:@"" withReturnKey:UIReturnKeyNext withTag:MYKI_PASS_ZONE_FROM_TEXTFIELD_TAG withFrame:CGRectMake(113, 148, 37, 40)];
         self.mykiPassZoneFromTextField.borderStyle = UITextBorderStyleNone;
         
-        self.mykiPassZoneToTextFieldContainer = [self setUpTopUpTextField:self.mykiPassZoneToTextField withText:@"To Zone:" withReturnKey:UIReturnKeyNext withTag:MYKI_PASS_ZONE_TO_TEXTFIELD_CONTAINER_TAG withFrame:CGRectMake(170, 146, 127, 40)];
-        self.mykiPassZoneToTextField = [self setUpTopUpTextField:self.mykiPassZoneToTextField withText:@"" withReturnKey:UIReturnKeyNext withTag:MYKI_PASS_ZONE_TO_TEXTFIELD_TAG withFrame:CGRectMake(245, 146, 37, 40)];
+        self.mykiPassZoneToTextFieldContainer = [self setUpTopUpTextField:self.mykiPassZoneToTextField withText:@"To Zone:" withReturnKey:UIReturnKeyNext withTag:MYKI_PASS_ZONE_TO_TEXTFIELD_CONTAINER_TAG withFrame:CGRectMake(170, 148, 127, 40)];
+        self.mykiPassZoneToTextField = [self setUpTopUpTextField:self.mykiPassZoneToTextField withText:@"" withReturnKey:UIReturnKeyNext withTag:MYKI_PASS_ZONE_TO_TEXTFIELD_TAG withFrame:CGRectMake(245, 148, 37, 40)];
         self.mykiPassZoneToTextField.borderStyle = UITextBorderStyleNone;
 
         
@@ -308,6 +308,8 @@
         [self resetTimer];
         HUD.labelText = @"Logging in";
         NSString *currentPage = [webView stringByEvaluatingJavaScriptFromString:@"document.body.innerHTML"];
+        NSLog(@"currentPage: %@",currentPage);
+        
         self.isProblemWithMykiCredentials = [mykiAccountInformation isProblemWithCredentials:currentPage];
         if (self.isProblemWithMykiCredentials) {
             [self switchToErrorState];
@@ -385,8 +387,14 @@
             [HUD hide:YES];
             [self presentViewController:navigationController animated:YES completion:nil];
         } else if (self.topUpPage == topUpPagePostReviewTopUp) {
+            [timer invalidate];
             NSLog(@"post review");
+            NSString *postReviewPage = [webView stringByEvaluatingJavaScriptFromString:@"document.body.innerHTML"];
+            NSLog(@"Post review page: %@", postReviewPage);
             [self.mykiWebstiteWebView stringByEvaluatingJavaScriptFromString:JAVASCRIPT_RESTYLE_REVIEW_PAGE];
+            
+            
+            
         } else {
             HUD.labelText = @"Pre filling your top up data";
             NSLog(@"Choose top up");
@@ -773,7 +781,7 @@
     HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     HUD.delegate = self;
     HUD.dimBackground = YES;
-    HUD.labelText = @"Connecting to Myki top up";
+    HUD.labelText = @"Connecting to myki top up";
     [HUD show:YES];
     self.isRequestingTopUp = YES;
     self.topUpPage = topUpPageUnknown;

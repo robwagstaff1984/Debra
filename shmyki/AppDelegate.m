@@ -75,8 +75,8 @@ static const NSInteger kGANDispatchPeriodSec = 10;
     [self.window makeKeyAndVisible];
     currentUsersPunchOnLog = [[PunchOnLog alloc] init];
     
-    [self setUpFaceBook];
-    [self setUpTwitter];
+   // [self setUpFaceBook];
+    //[self setUpTwitter];
     return YES;
 }
 
