@@ -71,6 +71,8 @@ typedef enum {
 
 @property (nonatomic, strong) MBProgressHUD *HUD;
 @property (nonatomic, strong) NSTimer *timer;
+@property (nonatomic, strong) NSTimer *loopTimer;
+
 @property (nonatomic) BOOL isInternetDown;
 @property (nonatomic) BOOL isRequestingMoreCardData;
 @property (nonatomic) BOOL isRequestingNumberOfCards;

@@ -36,10 +36,18 @@
     self.topUpDisclaimer.adjustsImageWhenHighlighted = NO;
     [self.topUpDisclaimer setBackgroundImage:[UIImage imageNamed:@"images/TopupDisclaimer.png"] forState:UIControlStateNormal];
     
+    self.topUpDisclaimer.alpha = 0;
+    
+
     
     [self.view addSubview:self.topUpDisclaimer];
-	// Do any additional setup after loading the view.
+    [UIView animateWithDuration:.5 delay:.5 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        self.topUpDisclaimer.alpha = 1;
+    } completion:nil];
+
 }
+
+
 
 -(void)backTapped:(id)sender {
     [self dismissModalViewControllerAnimated:YES];

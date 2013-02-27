@@ -22,7 +22,7 @@
 @synthesize mykiLoginUrl, mykiWebstiteWebView, mykiAccountInformation;
 @synthesize topView, bottomView, loginTableView, loginScrollView, pageScrollView, errorView, errorTextView, errorTextLabel, isInternetDown;
 @synthesize usernameTextField, passwordTextField;
-@synthesize HUD, timer, refreshButton, isUserLoginAttempted, isProblemWithMykiCredentials, invalidCredentialsLabel, dateDisplayHelper, pageControl, pagingScrollView;
+@synthesize HUD, timer, loopTimer, refreshButton, isUserLoginAttempted, isProblemWithMykiCredentials, invalidCredentialsLabel, dateDisplayHelper, pageControl, pagingScrollView;
 @synthesize balanceFooterLabelOne,balanceFooterLabelTwo, balanceHeaderLabelOne,balanceHeaderLabelTwo;
 @synthesize numPages, currentlyRequestedCard, isActiveState;
 
@@ -365,10 +365,11 @@
         }
     } else if ([pageTitle isEqualToString:@"Top up your myki"]) {
        // NSLog(@"top up");
-
+         [self resetTimer];
         if (self.topUpPage == topUpPageReviewTopUp) {
             NSLog(@"review top up");
             [self switchToSuccessState];
+            [timer invalidate];
             self.mykiWebstiteWebView.frame = CGRectMake(0, 0, 320, 416);
             self.mykiWebstiteWebView.hidden = NO;
             [self.mykiWebstiteWebView stringByEvaluatingJavaScriptFromString:JAVASCRIPT_RESTYLE_REVIEW_PAGE];
@@ -389,7 +390,7 @@
         } else {
             HUD.labelText = @"Pre filling your top up data";
             NSLog(@"Choose top up");
-            timer = [NSTimer scheduledTimerWithTimeInterval: 1 target:self selector:@selector(pollForChooseTopUpPageLoaded:) userInfo:nil repeats: YES];
+            loopTimer = [NSTimer scheduledTimerWithTimeInterval: 1 target:self selector:@selector(pollForChooseTopUpPageLoaded:) userInfo:nil repeats: YES];
             
         }
     } else if ([pageTitle isEqualToString:@"Top up myki money"]) {
@@ -779,6 +780,7 @@
     [mykiWebstiteWebView stopLoading];
     NSString* chooseTopUpURL = MYKI_ACCOUNT_CHOOSE_TOP_UP_PAGE_URL;
     NSURLRequest *requestObj = [NSURLRequest requestWithURL:[NSURL URLWithString:chooseTopUpURL]];
+    timer = [NSTimer scheduledTimerWithTimeInterval: 30.0 target:self selector:@selector(cancelRequest) userInfo:nil repeats: NO];
     [mykiWebstiteWebView loadRequest:requestObj];
 }
 
@@ -926,7 +928,7 @@
         }
 
         self.topUpPage= topUpPageSpecifyTopUp;
-        [timer invalidate];
+        [loopTimer invalidate];
     }
 }
 
