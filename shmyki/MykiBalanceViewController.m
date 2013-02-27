@@ -308,7 +308,7 @@
         [self resetTimer];
         HUD.labelText = @"Logging in";
         NSString *currentPage = [webView stringByEvaluatingJavaScriptFromString:@"document.body.innerHTML"];
-        NSLog(@"currentPage: %@",currentPage);
+       // NSLog(@"currentPage: %@",currentPage);
         
         self.isProblemWithMykiCredentials = [mykiAccountInformation isProblemWithCredentials:currentPage];
         if (self.isProblemWithMykiCredentials) {
@@ -579,7 +579,7 @@
     int mykiZoneFrom = [self.self.mykiPassZoneFromTextField.text integerValue];
     int mykiZoneTo = [self.self.mykiPassZoneToTextField.text integerValue];
     
-    if(mykiDaysAmount >= 28 && mykiDaysAmount <= 365 && mykiZoneFrom >= 1 && mykiZoneFrom <=81 && mykiZoneTo >= 1 && mykiZoneTo <=81 && mykiZoneFrom <= mykiZoneTo) {
+    if(((mykiDaysAmount == 7) || (mykiDaysAmount >= 28 && mykiDaysAmount <= 365)) && mykiZoneFrom >= 1 && mykiZoneFrom <=81 && mykiZoneTo >= 1 && mykiZoneTo <=81 && mykiZoneFrom <= mykiZoneTo) {
         self.navigationItem.rightBarButtonItem.enabled = YES;
     } else {
         self.navigationItem.rightBarButtonItem.enabled = NO;
