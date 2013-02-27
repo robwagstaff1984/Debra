@@ -90,7 +90,7 @@
         passwordTextField.clearsOnBeginEditing = NO;
         
         [self setTitle:@"Balances"];
-        [self.navigationItem setTitle:@"yourBalance"];
+        [self.navigationItem setTitle:@"yourCard"];
         if ([self.tabBarItem respondsToSelector:@selector(setFinishedSelectedImage:withFinishedUnselectedImage:)] ==YES) {
             [self.tabBarItem setFinishedSelectedImage:[UIImage imageNamed:@"images/TabBalanceOn"] withFinishedUnselectedImage:[UIImage imageNamed:@"images/TabBalanceOff"]];
         } else {
