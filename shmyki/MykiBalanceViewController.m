@@ -303,7 +303,7 @@
 -(void)webViewDidFinishLoad:(UIWebView *)webView {
     
     NSString *pageTitle = [webView stringByEvaluatingJavaScriptFromString:@"document.title"];
-    NSLog(@"page title: %@", pageTitle);
+    //NSLog(@"page title: %@", pageTitle);
     if([pageTitle isEqualToString:@"Login"]) {
         [self resetTimer];
         HUD.labelText = @"Logging in";
@@ -329,14 +329,14 @@
         
         if(self.isRequestingTopUp) {
             NSLog(@"is requesting Top up");
-            HUD.labelText = @"Connecting to Myki top up";
+            HUD.labelText = @"Connecting to myki";
             NSString* chooseTopUpURL = MYKI_ACCOUNT_CHOOSE_TOP_UP_PAGE_URL;
             NSURLRequest *requestObj = [NSURLRequest requestWithURL:[NSURL URLWithString:chooseTopUpURL]];
             [mykiWebstiteWebView stopLoading];
             [mykiWebstiteWebView loadRequest:requestObj];
         } else {
             NSLog(@"is requesting Balance");
-            HUD.labelText = @"Retrieving Balance";
+            HUD.labelText = @"Retrieving balance";
             
             NSString* manageMyCardUrl = MYKI_ACCOUNT_INFO_URL;
             NSURLRequest *manageMyCardRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:manageMyCardUrl]];
@@ -376,12 +376,12 @@
             self.mykiWebstiteWebView.hidden = NO;
             [self.mykiWebstiteWebView stringByEvaluatingJavaScriptFromString:JAVASCRIPT_RESTYLE_REVIEW_PAGE];
             
-            TopUpWebViewViewController *mykiWebViewController= [[TopUpWebViewViewController alloc] init];
-            mykiWebViewController.view.backgroundColor = [UIColor whiteColor];
+            self.mykiWebViewController= [[TopUpWebViewViewController alloc] init];
+            self.mykiWebViewController.view.backgroundColor = [UIColor whiteColor];
             
-            [mykiWebViewController.view insertSubview:self.mykiWebstiteWebView atIndex:0];
+            [self.mykiWebViewController.view insertSubview:self.mykiWebstiteWebView atIndex:0];
             
-            UINavigationController* navigationController = [[UINavigationController alloc] initWithRootViewController:mykiWebViewController];
+            UINavigationController* navigationController = [[UINavigationController alloc] initWithRootViewController:self.mykiWebViewController];
             self.topUpPage = topUpPagePostReviewTopUp;
             self.isRequestingTopUp = NO;
             [HUD hide:YES];
@@ -389,12 +389,10 @@
         } else if (self.topUpPage == topUpPagePostReviewTopUp) {
             [timer invalidate];
             NSLog(@"post review");
-            NSString *postReviewPage = [webView stringByEvaluatingJavaScriptFromString:@"document.body.innerHTML"];
-            NSLog(@"Post review page: %@", postReviewPage);
+            self.mykiWebViewController.navigationItem.leftBarButtonItem = nil;
+            self.mykiWebViewController.navigationItem.rightBarButtonItem = [YourMykiCustomButton createYourMykiBarButtonItemWithText:@"Done" withTarget:self.mykiWebViewController withAction:@selector(backTapped:)];
             [self.mykiWebstiteWebView stringByEvaluatingJavaScriptFromString:JAVASCRIPT_RESTYLE_REVIEW_PAGE];
-            
-            
-            
+        
         } else {
             HUD.labelText = @"Pre filling your top up data";
             NSLog(@"Choose top up");
@@ -781,7 +779,7 @@
     HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     HUD.delegate = self;
     HUD.dimBackground = YES;
-    HUD.labelText = @"Connecting to myki top up";
+    HUD.labelText = @"Connecting to myki";
     [HUD show:YES];
     self.isRequestingTopUp = YES;
     self.topUpPage = topUpPageUnknown;

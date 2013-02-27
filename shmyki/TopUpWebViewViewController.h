@@ -10,4 +10,6 @@
 
 @interface TopUpWebViewViewController : UIViewController
 
+-(void)backTapped:(id)sender;
+
 @end

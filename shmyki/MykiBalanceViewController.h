@@ -14,6 +14,7 @@
 
 @class DateDisplayHelper;
 @class Reachability;
+@class TopUpWebViewViewController;
 
 typedef enum {
     topUpTypeUnknown = 1,
@@ -72,6 +73,8 @@ typedef enum {
 @property (nonatomic, strong) MBProgressHUD *HUD;
 @property (nonatomic, strong) NSTimer *timer;
 @property (nonatomic, strong) NSTimer *loopTimer;
+
+@property (nonatomic, strong) TopUpWebViewViewController *mykiWebViewController;
 
 @property (nonatomic) BOOL isInternetDown;
 @property (nonatomic) BOOL isRequestingMoreCardData;
