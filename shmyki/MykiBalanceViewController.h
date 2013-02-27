@@ -53,6 +53,8 @@ typedef enum {
 @property (nonatomic, strong) UITextField *mykiPassZoneFromTextFieldContainer;
 @property (nonatomic, strong) UITextField *mykiPassZoneToTextField;
 @property (nonatomic, strong) UITextField *mykiPassZoneToTextFieldContainer;
+@property (nonatomic, strong) UILabel* mykiMoneyLabel;
+@property (nonatomic, strong) UILabel* mykiPassLabel;
 
 @property (nonatomic, strong) IBOutlet UIScrollView *pageScrollView;
 

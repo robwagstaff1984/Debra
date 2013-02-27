@@ -33,7 +33,9 @@
     self.topUpDisclaimer = [UIButton buttonWithType:UIButtonTypeCustom];
     self.topUpDisclaimer.frame = CGRectMake(0, 0, 320, 416);
     [self.topUpDisclaimer addTarget:self action:@selector(dismissWarning) forControlEvents:UIControlEventTouchUpInside];
+    self.topUpDisclaimer.adjustsImageWhenHighlighted = NO;
     [self.topUpDisclaimer setBackgroundImage:[UIImage imageNamed:@"images/TopupDisclaimer.png"] forState:UIControlStateNormal];
+    
     
     [self.view addSubview:self.topUpDisclaimer];
 	// Do any additional setup after loading the view.
